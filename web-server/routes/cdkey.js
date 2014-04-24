@@ -9,6 +9,10 @@ var localDateString = function(date) {
 };
 
 var areaString = function(area) {
+  if (area.length == 0) {
+    return '所有';
+  } 
+
   var _str = '';
   for (var i = 0; i < area.length; i++) {
     var a = area[i];

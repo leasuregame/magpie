@@ -209,7 +209,8 @@ products =
 
       curCount = player.cardsCount - RESOURE_LIMIT.card_count_min + 1
       totalGold = countTotalGold curCount, product, times
-      
+      console.log('consume: ', totalGold)
+
       if player.gold < totalGold
         return next(null, {code: 501, msg: "魔石不足"})
 
@@ -260,7 +261,7 @@ countTotalGold = (curCount, product, times) ->
   
   curCounts.reduce (preVal,curVal) -> 
     g = product.consume + (product.consume_inc or 0) * (curVal-1)
-    if product.consume_max or product.consume_max == 0
+    if not product.consume_max or product.consume_max == 0
       return preVal + g
     else
       preVal + _.min([g, product.consume_max])

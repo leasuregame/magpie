@@ -3,6 +3,7 @@ playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 entityUtil = require('../../../util/entityUtil')
 _ = require 'underscore'
+_string = require 'underscore.string'
 
 module.exports = (app) ->
   new Handler(app)
@@ -12,10 +13,14 @@ Handler = (@app) ->
 Handler::verifyCdkey = (msg, session, next) ->
   playerId = session.get('playerId')
   areaId = session.get('areaId')
+  platform = session.platform
   cdkey = msg.cdkey
 
   if not cdkey or not validCdkey(cdkey)
     return next(null, {code: 501, msg: '请输入有效的激活码'})
+
+  if not _string.startsWith(cdkey.toUpperCase(), platform.toUpperCase())
+    return next(null, {code: 501, msg: '激活码不能在该平台使用'})
 
   [keyPrefix, val] = cdkey.split('-')
   player = null

@@ -13,7 +13,7 @@ Handler = (@app) ->
 Handler::verifyCdkey = (msg, session, next) ->
   playerId = session.get('playerId')
   areaId = session.get('areaId')
-  platform = session.platform
+  platform = session.get('platform')
   cdkey = msg.cdkey
 
   if not cdkey or not validCdkey(cdkey)

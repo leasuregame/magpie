@@ -31,6 +31,8 @@ html
               a(href='/admin/msgPush') 消息推送
             li(class=menu=='reward' ? 'active':'')
               a(href='/admin/sendReward') 奖励发放
+            li(class=menu=='area' ? 'active':'')
+              a(href='/admin/areaeditor') 区服管理
             
           p.navbar-text.navbar-right
             a.navbar-link(href='/logout') 注销
@@ -39,3 +41,4 @@ html
       hr
       div.footer.well.text-center Copyright© 2014 LeasureGame Inc. 
 
+    block footer  

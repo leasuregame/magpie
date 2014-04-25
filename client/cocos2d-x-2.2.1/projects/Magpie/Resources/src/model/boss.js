@@ -498,7 +498,15 @@ var Boss = Entity.extend({
     },
 
     removeCdNeedGold: function () {
-        return Math.min(200, this._rmTimerCount * 20);
+        var needGold = 0;
+        if(this._rmTimerCount <= 10) {
+            needGold = 20;
+        } else if(this._rmTimerCount <= 20) {
+            needGold = 30;
+        } else {
+            needGold = 50;
+        }
+        return needGold;
     },
 
     _cdChangeEvent: function () {

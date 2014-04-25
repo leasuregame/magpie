@@ -150,16 +150,13 @@ var LoginLayer = cc.Layer.extend({
 
         var area = this._areaList[id];
         this._selectAreaName.setString(area.name);
-        this._selectAreaName.setColor(area.color);
+        this._selectAreaName.setColor(cc.c3b(255, 225, 62));
     },
 
     updateSelectAreaName: function (id) {
         cc.log("LoginLayer updateSelectAreaName");
 
-        var area = this._areaList[id];
-        this._selectAreaName.setString(area.name);
-        this._selectAreaName.setColor(area.color);
-
+        this.resetAreaName(id);
         this._loginFrame.setVisible(true);
     },
 

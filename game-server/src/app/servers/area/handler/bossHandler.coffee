@@ -343,7 +343,7 @@ Handler::attack = (msg, session, next) ->
         return cb({code: 501, msg: '不能攻击陌生人的Boss哦'})
 
       if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() or boss.isDeath()
-        return cb({code: 501, msg: 'Boss已结束'})
+        return cb({code: 501, msg: 'Boss已逃跑'})
 
       if boss.playerId isnt playerId and boss.status is configData.bossStatus.STATUS.SLEEP
         return cb({code: 501, msg: 'Boss未苏醒'})

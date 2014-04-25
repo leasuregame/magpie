@@ -210,7 +210,9 @@ Handler::luckyCard = (msg, session, next) ->
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
     
-    cards4 = cards.filter (c) -> c.star < 5
+    cards4 = cards.filter (c) -> 
+      _tid = c.tableId + 5 - c.star
+      c.star < 5 and _tid not in lids
     idx = _.random(0, cards4.length-1)
     
     card = cards4[idx]

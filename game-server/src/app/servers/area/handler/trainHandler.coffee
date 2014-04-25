@@ -210,7 +210,9 @@ Handler::luckyCard = (msg, session, next) ->
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
     
-    cards4 = cards.filter (c) -> c.star < 5
+    cards4 = cards.filter (c) -> 
+      _tid = c.tableId + 5 - c.star
+      c.star < 5 and _tid not in lids
     idx = _.random(0, cards4.length-1)
     
     card = cards4[idx]
@@ -377,7 +379,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       sp_need = sp_need - sp_left
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need)
+      player.decrease('skillPoint', sp_need)  
       cb(null, player, card)
 
     (player, card, cb) ->

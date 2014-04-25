@@ -1,12 +1,5 @@
 extends adminLayout
 
-block head
-  script(type='text/javascript', src='/js/serverAPI.js')
-  script(type='text/javascript', src='/js/async.js')
-  script(type='text/javascript', src='/js/lib/build/build.js')
-  script.
-    require('boot');
-
 block content
   div.form-inline(role='form')
     div.form-group
@@ -17,6 +10,7 @@ block content
       label.control-label 区服
       br
       select.form-control(id='area')
+        option(value='-1') 所有
     div.form-group
       label.control-label 开始日期
       input(type='date' class='form-control' id='startDate' placeholder='开始日期' required)

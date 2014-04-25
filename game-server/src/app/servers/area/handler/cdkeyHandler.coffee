@@ -57,7 +57,7 @@ Handler::verifyCdkey = (msg, session, next) ->
     
     (valified, cb) ->
       if valified
-        return cb({code: 501, msg: '每个玩家只能使用一个激活码'})
+        return cb({code: 501, msg: '每个玩家同个区只能使用一个激活码'})
       cb()
           
     (cb) =>

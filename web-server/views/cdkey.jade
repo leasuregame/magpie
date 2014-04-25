@@ -10,10 +10,9 @@ block head
 block content
   div.form-inline(role='form')
     div.form-group
-      label.control-label 激活码前缀
+      label.control-label 激活码前缀 
       br
-      select.form-control(id='cdkeyPrefix')
-        option TB1-
+      input(type='text' class='form-control' style='width: 100px' id='cdkeyPrefix' placeholder='激活码前缀' required)
     div.form-group
       label.control-label 区服
       br

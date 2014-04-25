@@ -314,11 +314,11 @@ var Player = (function(_super) {
             kneelCountLeft: KNEELCOUNT_DEFAULT,
             kneelList: [],
             rmTimerCount: 1,
-            goldLuckyCard10: {
+            goldLuckyCard10: { // 每日高级魔石10连抽次数
                 count: 0,
                 got: false
             },
-            goldLuckyCardForFragment: {
+            goldLuckyCardForFragment: { // 每日单次高级魔石抽卡次数，判断是否获得卡魂
                 count: 0,
                 got: false
             }
@@ -346,9 +346,9 @@ var Player = (function(_super) {
         rank: null,
         friends: [],
         friendsCount: DEFAULT_FRIENDS_COUNT,
-        rowFragmentCount: 0,
-        highFragmentCount: 0,
-        highDrawCardCount: 0,
+        rowFragmentCount: 0,  // 低级卡魂次数
+        highFragmentCount: 0, // 高级卡魂次数
+        highDrawCardCount: 0, // 高级抽卡次数
         cardsCount: MIN_CARD_COUNT,
         resetDate: '1970-1-1',
         firstTime: {
@@ -1374,8 +1374,16 @@ var Player = (function(_super) {
             this.updateGift('rmTimerCount', 1);
         }
 
-        var consume = 20 * this.dailyGift.rmTimerCount;
-        return consume > 200 ? 200 : consume;
+        var consume = 0;
+        if (this.dailyGift.rmTimerCount <= 10) {
+            consume = 20;
+        } else if (this.dailyGift.rmTimerCount <= 20 && this.dailyGift.rmTimerCount > 10) {
+            consume = 30;
+        } else {
+            consume = 50;
+        }
+
+        return consume;
     };
 
     Player.prototype.incRmTimerCount = function() {

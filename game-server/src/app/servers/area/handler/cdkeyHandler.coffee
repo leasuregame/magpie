@@ -2,6 +2,8 @@ async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 entityUtil = require('../../../util/entityUtil')
+_ = require 'underscore'
+_string = require 'underscore.string'
 
 module.exports = (app) ->
   new Handler(app)
@@ -10,27 +12,38 @@ Handler = (@app) ->
 
 Handler::verifyCdkey = (msg, session, next) ->
   playerId = session.get('playerId')
+  areaId = session.get('areaId')
+  platform = session.get('platform')
   cdkey = msg.cdkey
 
   if not cdkey or not validCdkey(cdkey)
     return next(null, {code: 501, msg: '请输入有效的激活码'})
 
+  if not _string.startsWith(cdkey.toUpperCase(), platform.toUpperCase())
+    return next(null, {code: 501, msg: '激活码不能在该平台使用'})
+
   [keyPrefix, val] = cdkey.split('-')
   player = null
   cdkeyRow = null
+  cdkeyDao = @app.get('dao_share').cdkey
   async.waterfall [
     (cb) => 
-      @app.get('dao').cdkey.fetchOne where: code: cdkey, (err, res) ->
+      cdkeyDao.fetchOne where: code: cdkey, (err, res) ->
         if err and err.code is 404
           return cb({code: 501, msg: '激活码不存在'})
         else 
           cb(err, res)
     
     (row, cb) =>
+      console.log row
       if not row
         return cb({code: 501, msg: '激活码不存在'})
+
       if row.activate is 1
         return cb({code: 501, msg: '激活码已使用过'})
+
+      if _.isArray(row.area) and row.area.length > 0 and areaId not in row.area
+        return cb({code: 501, msg: '激活码不能在该区使用'})
 
       ed = new Date(row.endDate.toDateString())
       ed.setDate(ed.getDate()+1)
@@ -40,11 +53,11 @@ Handler::verifyCdkey = (msg, session, next) ->
       cb()
 
     (cb) =>
-      @app.get('dao').cdkey.isAvalifyPlayer playerId, keyPrefix, cb
+      cdkeyDao.isAvalifyPlayer playerId, keyPrefix, areaId, cb
     
     (valified, cb) ->
       if valified
-        return cb({code: 501, msg: '每个玩家只能使用一个激活码'})
+        return cb({code: 501, msg: '每个玩家同个区只能使用一个激活码'})
       cb()
           
     (cb) =>
@@ -55,9 +68,9 @@ Handler::verifyCdkey = (msg, session, next) ->
       if not data
         return cb({code: 501, msg: '激活码不存在'}, null, null)
 
-      @app.get('dao').cdkey.update {
-        data: activate: 1, playerId: playerId
-        where: code: cdkey
+      cdkeyDao.update {
+        data: activate: 1, playerId: playerId, areaId: areaId
+        where: code: cdkey,
       }, (err, updated) ->
         updatePlayer(@app, player, data, cb)
   ], (err, data, player, cards) ->

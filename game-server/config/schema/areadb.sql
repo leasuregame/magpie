@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` VARCHAR(2000) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
+  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
@@ -220,16 +220,6 @@ CREATE TABLE IF NOT EXISTS `tbOrder` (
   `status` INT(4),
   `created` DATETIME,
   PRIMARY KEY (`tradeNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-DROP TABLE IF EXISTS `cdkey`;
-CREATE TABLE IF NOT EXISTS `cdkey` (
-  `code` VARCHAR(128) NOT NULL COLLATE utf8_unicode_ci,
-  `playerId` INT(10) UNSIGNED,
-  `activate` SMALLINT(1) DEFAULT '0',
-  `startDate` DATE,
-  `endDate` DATE,
-  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `elixirOfRank`;

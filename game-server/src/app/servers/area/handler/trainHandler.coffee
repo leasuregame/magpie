@@ -189,13 +189,13 @@ Handler::luckyCard = (msg, session, next) ->
 
         next(null, card, consumeVal, fragment)
       , (err, cards, consumes, fragments) ->
-        firstTen = 0
-        if typeof player.firstTime.highTenLuckCard is 'undefined' or player.firstTime.highTenLuckCard
-          firstTen = 1
+        # firstTen = 0
+        # if typeof player.firstTime.highTenLuckCard is 'undefined' or player.firstTime.highTenLuckCard
+        #   firstTen = 1
 
-        if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
-          grainFiveStarCard cards, player
-          player.setFirstTime('highTenLuckCard', 0)
+        # if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
+        #   grainFiveStarCard cards, player
+        #   player.setFirstTime('highTenLuckCard', 0)
 
         # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
         frags = 0;
@@ -209,14 +209,14 @@ Handler::luckyCard = (msg, session, next) ->
 
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
-    for card in cards
-      tid = card.tableId + 5 - card.star
-      if card.star isnt 5 and tid not in lids
-        card.tableId = tid
-        card.star = 5
-        break
-
-    return
+    
+    cards4 = cards.filter (c) -> c.star < 5
+    idx = _.random(0, cards4.length-1)
+    
+    card = cards4[idx]
+    tid = card.tableId + 5 - card.star
+    card.tableId = tid
+    card.star = 5
 
   processCards = (cards) ->
     ### 抽奖次数成就 ###
@@ -246,11 +246,7 @@ Handler::luckyCard = (msg, session, next) ->
     ### 每天前5次魔石10连抽，必得一张5星卡 ###
 
     rates = 
-      1: 20
-      2: 30
-      3: 50
-      4: 70
-      5: 100
+      1: 100
 
     player.incGoldLuckyCard10()
     goldLuckyCard10 = player.dailyGift.goldLuckyCard10
@@ -264,9 +260,7 @@ Handler::luckyCard = (msg, session, next) ->
     ### 每天前3次单次魔石抽卡，比得一个卡魂 ###
 
     rates = 
-      1: 50
-      2: 70
-      3: 100
+      1: 100
 
     player.incGoldLuckyCardForFragment()
     goldLuckyCardForFragment = player.dailyGift.goldLuckyCardForFragment

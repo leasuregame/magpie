@@ -127,6 +127,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       uid = user.id + '*' + areaId
       session.set('areaId', areaId)
       session.set('userId', user.id)
+      session.set('platform', platform)
       session.bind(uid, cb)
     (cb) =>
       if player?

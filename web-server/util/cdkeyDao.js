@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('./shareDb');
 var async = require('async');
 
 exports.insert = function(rows, cb) {
@@ -24,10 +24,11 @@ exports.totalCount = function(options, cb) {
 };
 
 exports.search = function(text, cb) {
-  var sql = "select c.* from cdkey c join player p on p.id = c.playerId where p.name = ? \
-    union \
-    select * from cdkey where code = ? \
-  ";
+  // var sql = "select c.* from cdkey c join player p on p.id = c.playerId where p.name = ? \
+  //   union \
+  //   select * from cdkey where code = ? \
+  // ";
+  var sql = 'select * from cdkey where code = ?';
   var args = [text, text, text, text];
 
   if (new Date(text).toString() != 'Invalid Date') {

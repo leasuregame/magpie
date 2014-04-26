@@ -1,6 +1,7 @@
 playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
+msgQueue = require '../../../common/msgQueue'
 DAILY_LOTTERY_COUNT = table.getTableItem('daily_gift', 1).lottery_count
 
 
@@ -50,6 +51,14 @@ Handler::lottery = (msg, session, next) ->
       player.increase(resource.type, resource.value*times)
 
     player.save()
+
+    if isMaxReward resource.id
+      msg = {
+        msg: "#{player.name}幸运寻到最高宝藏#{resource.name}:#{resource.value*times}",
+        type: 0,
+        validDuration: 10 / 60
+      }
+      msgQueue.push(msg)
 
     next(null, {code: 200, msg: {
       resourceId: resource.id, 
@@ -161,6 +170,9 @@ Handler::getSignInGift = (msg, session, next) ->
     next(null, {
       code: 200
     })
+
+isMaxReward = (id) ->
+  return [2, 5, 8, 11, 14, 17, 19].indexOf(parseInt(id)) > -1
 
 randomReward = ->
   tData = table.getTable('treasure_hunt')

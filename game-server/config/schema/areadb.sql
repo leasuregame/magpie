@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `honor` INT(10) DEFAULT '0',
   `superHonor` INT(10) DEFAULT '0',
   `cd` VARCHAR(100) DEFAULT '{}',
+  `pill` INT(10),
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

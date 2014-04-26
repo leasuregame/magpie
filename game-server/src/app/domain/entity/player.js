@@ -256,7 +256,8 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'cd'
+        'cd',
+        'pill'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -374,7 +375,8 @@ var Player = (function(_super) {
         superHonor: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
-        }
+        },
+        pill: 0
     };
 
     Player.prototype.resetData = function() {

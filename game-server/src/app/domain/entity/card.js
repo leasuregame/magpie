@@ -182,7 +182,8 @@ var Card = (function(_super) {
         'elixirAtk',
         'passiveSkills',
         'useCardsCounts',
-        'psGroupCount'
+        'psGroupCount',
+        'pill'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -208,7 +209,8 @@ var Card = (function(_super) {
         },
         passiveSkills: [],
         useCardsCounts: 0,
-        psGroupCount: 3
+        psGroupCount: 3,
+        pill: 0
     };
 
     Card.prototype.init = function() {

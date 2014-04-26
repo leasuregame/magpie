@@ -1,4 +1,19 @@
 module.exports = {
+    // 卡牌熔炼得到的轮回丹数
+    CARD_TO_PILL_MAP: {
+        1: 20,
+        2: 40,
+        3: 200, 
+        4: 1000,
+        5: 8000
+    },
+    CARD_DISSOLVE_CRIT_RATE: 20,
+    CARD_DISSOLVE_CRIT_TYPE: {
+        50: 20, // 50%小暴击，收益加成20%，
+        30: 50, // 30%大暴击，收益加成50%，
+        20: 80  // 20%大暴击，收益加成80%
+    },
+
     // 战斗力兑换系数
     ABILIGY_EXCHANGE: {
         atk: 1, // 1点攻击力 = 1点战斗力

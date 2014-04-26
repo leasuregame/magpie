@@ -777,6 +777,13 @@ Handler::useElixir = (msg, session, next) ->
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
 
+    # 判断暴击
+    isCrit = utility.hitRate configData.elixir.useElixirCritRate
+    if isCrit
+      growRate = configData.elixir.growRate
+      zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)
+      elixir = parseInt elixir*(100+zf)/100
+
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
@@ -807,7 +814,8 @@ Handler::useElixir = (msg, session, next) ->
       result = {
         elixirHp: card.elixirHp,
         elixirAtk:card.elixirAtk,
-        ability: card.ability()
+        ability: card.ability(),
+        isCrit: isCrit
       }
 
       return next(null, {code: 200,msg:result})

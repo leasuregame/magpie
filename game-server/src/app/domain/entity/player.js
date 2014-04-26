@@ -258,7 +258,8 @@ var Player = (function(_super) {
         'superHonor',
         'cd',
         'plan',
-        'useCardCount'
+        'useCardCount',
+        'pill'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -391,7 +392,8 @@ var Player = (function(_super) {
             star4: 10,
             star5: 1,
             star6: 3
-        }
+        },
+        pill: 0
     };
 
     Player.prototype.updateUseCardCoun = function(star, val) {

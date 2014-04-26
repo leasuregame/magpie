@@ -237,7 +237,7 @@ Handler::luckyCard = (msg, session, next) ->
         card = table.getTableItem('cards', ent.tableId)
         msg = {
           #route: 'onSystemMessage',
-          msg: player.name + '*幸运的召唤到了5星卡*' + card.name + '*',
+          msg: player.name + "*幸运的召唤到了#{ent.star}星卡*#{card.name}*",
           type: 0,
           validDuration: 10 / 60
         }
@@ -985,10 +985,10 @@ Handler::exchangeCard = (msg, session, next) ->
       fragments: player.fragments
     }})
 
-    if card.star is 5
+    if card.star >= 5
       cardNmae = table.getTableItem('cards', card.tableId).name
       msg = {
-        msg: player.name + '*成功兑换到一张*' + cardNmae + '*的五星卡牌',
+        msg: player.name + '*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌',
         type: 0,
         validDuration: 10 / 60
       }

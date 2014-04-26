@@ -261,12 +261,18 @@ var Card = Entity.extend({
         var psAtkMultiple = 0;
 
         for (var key in this._passiveSkill) {
-            if (this._passiveSkill[key].name == "hp_improve") {
-                psHpMultiple += this._passiveSkill[key].value;
-            }
-
-            if (this._passiveSkill[key].name == "atk_improve") {
-                psAtkMultiple += this._passiveSkill[key].value;
+            var ps = this._passiveSkill[key];
+            if (ps.active) {
+                for (var id in ps.items) {
+                    var item = ps.items[id];
+                    if (item.name == "hp_improve") {
+                        psHpMultiple += item.value;
+                    }
+                    if (item.name == "atk_improve") {
+                        psAtkMultiple += item.value;
+                    }
+                }
+                break;
             }
         }
 
@@ -606,6 +612,7 @@ var Card = Entity.extend({
                 cc.log("passSkillActive success");
 
                 that.updateActivePassiveSkill(id);
+                that._calculateAddition();
                 that.set("ability", data.msg.ability);
                 cb();
 

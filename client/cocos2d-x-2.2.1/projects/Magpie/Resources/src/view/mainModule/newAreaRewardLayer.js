@@ -72,9 +72,9 @@ var NewAreaRewardLayer = cc.Layer.extend({
                     goodsSprite.setPosition(cc.p(x, y + 20));
                     scrollViewLayer.addChild(goodsSprite);
 
-                    var goodsLabel = cc.LabelTTF.create(rewards[key], "STHeitiTC-Medium", 16);
+                    var goodsLabel = cc.LabelTTF.create("+" + rewards[key], "STHeitiTC-Medium", 16);
                     goodsLabel.setAnchorPoint(cc.p(1, 0));
-                    goodsLabel.setPosition(cc.p(75, 8));
+                    goodsLabel.setPosition(cc.p(73, 8));
                     goodsSprite.addChild(goodsLabel);
                 }
                 x += 100;

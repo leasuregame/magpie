@@ -53,12 +53,12 @@ Handler::lottery = (msg, session, next) ->
     player.save()
 
     if isMaxReward resource.id
-      msg = {
+      msgContent = {
         msg: "#{player.name}幸运寻到最高宝藏#{resource.name}:#{resource.value*times}",
         type: 0,
         validDuration: 10 / 60
       }
-      msgQueue.push(msg)
+      msgQueue.push(msgContent)
 
     next(null, {code: 200, msg: {
       resourceId: resource.id, 

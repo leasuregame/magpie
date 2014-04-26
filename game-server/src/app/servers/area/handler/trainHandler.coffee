@@ -235,14 +235,14 @@ Handler::luckyCard = (msg, session, next) ->
 
       if level is HIGH_LUCKYCARD and ent.star >= 5 
         card = table.getTableItem('cards', ent.tableId)
-        msg = {
+        msgContent = {
           #route: 'onSystemMessage',
           msg: player.name + "*幸运的召唤到了#{ent.star}星卡*#{card.name}*",
           type: 0,
           validDuration: 10 / 60
         }
         #@app.get('messageService').pushMessage(msg)
-        msgQueue.push(msg)
+        msgQueue.push(msgContent)
 
   first5GoldLuckyCardBy10 = (player, cards) ->
     ### 每天前5次魔石10连抽，必得一张5星卡 ###
@@ -506,12 +506,12 @@ Handler::starUpgrade = (msg, session, next) ->
         if card.star >= 5
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
-          msg = {
+          msgContent = {
             msg: "#{player.name}*成功的将*#{cardNmae}*进阶为#{card.star}星",
             type: 0,
             validDuration: 10 / 60
           }
-          msgQueue.push(msg)
+          msgQueue.push(msgContent)
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
@@ -995,12 +995,12 @@ Handler::exchangeCard = (msg, session, next) ->
 
     if card.star >= 5
       cardNmae = table.getTableItem('cards', card.tableId).name
-      msg = {
+      msgContent = {
         msg: player.name + '*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌',
         type: 0,
         validDuration: 10 / 60
       }
-      msgQueue.push(msg)
+      msgQueue.push(msgContent)
 
 
 setExchangedCard = (player, tid) ->

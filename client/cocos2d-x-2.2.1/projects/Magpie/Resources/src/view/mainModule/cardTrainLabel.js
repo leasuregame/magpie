@@ -17,8 +17,8 @@ var TRAIN_CARD_HP = 0;
 var TRAIN_CARD_ATK = 1;
 
 var TRAIN_ZERO_COUNT = 0;
-var TRAIN_ONE_COUNT = 1;
-var TRAIN_TEN_COUNT = 10;
+var TRAIN_FIVE_COUNT = 5;
+var TRAIN_FIFTY_COUNT = 50;
 
 var CardTrainLabel = cc.Layer.extend({
     _cardTrainLabelFit: null,
@@ -173,29 +173,29 @@ var CardTrainLabel = cc.Layer.extend({
         );
         this._trainAtkItem.setPosition(cc.p(110, 25));
 
-        this._trainOneItem = cc.MenuItemImage.create(
+        this._trainFiveItem = cc.MenuItemImage.create(
             main_scene_image.button64,
             main_scene_image.button64,
             main_scene_image.button64s,
-            this._onClickTrainOne,
+            this._onClickTrainFive,
             this
         );
-        this._trainOneItem.setPosition(cc.p(-128, -35));
+        this._trainFiveItem.setPosition(cc.p(-128, -35));
 
-        this._trainTenItem = cc.MenuItemImage.create(
+        this._trainFiftyItem = cc.MenuItemImage.create(
             main_scene_image.button65,
             main_scene_image.button65,
             main_scene_image.button65s,
-            this._onClickTrainTen,
+            this._onClickTrainFifty,
             this
         );
-        this._trainTenItem.setPosition(cc.p(110, -35));
+        this._trainFiftyItem.setPosition(cc.p(110, -35));
 
         var helpMenu = cc.Menu.create(
             this._trainHpItem,
             this._trainAtkItem,
-            this._trainOneItem,
-            this._trainTenItem
+            this._trainFiveItem,
+            this._trainFiftyItem
         );
         helpMenu.setPosition(cc.p(0, 0));
         this._helpLabel.addChild(helpMenu);
@@ -586,26 +586,26 @@ var CardTrainLabel = cc.Layer.extend({
         this.update();
     },
 
-    _onClickTrainOne: function () {
-        cc.log("CardTrainLabel _onClickTrainOne");
+    _onClickTrainFive: function () {
+        cc.log("CardTrainLabel _onClickTrainFive");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._trainCount = TRAIN_ONE_COUNT;
-        this._trainOneItem.setEnabled(false);
-        this._trainTenItem.setEnabled(true);
+        this._trainCount = TRAIN_FIVE_COUNT;
+        this._trainFiveItem.setEnabled(false);
+        this._trainFiftyItem.setEnabled(true);
 
         this.update();
     },
 
-    _onClickTrainTen: function () {
-        cc.log("CardTrainLabel _onClickTrainTen");
+    _onClickTrainFifty: function () {
+        cc.log("CardTrainLabel _onClickTrainFifty");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._trainCount = TRAIN_TEN_COUNT;
-        this._trainOneItem.setEnabled(true);
-        this._trainTenItem.setEnabled(false);
+        this._trainCount = TRAIN_FIFTY_COUNT;
+        this._trainFiveItem.setEnabled(true);
+        this._trainFiftyItem.setEnabled(false);
 
         this.update();
     },

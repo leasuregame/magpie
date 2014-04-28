@@ -331,6 +331,7 @@ var Task = Entity.extend({
     }
 });
 
+Task.currentChapter = 0;
 
 Task.create = function () {
     var ret = new Task();

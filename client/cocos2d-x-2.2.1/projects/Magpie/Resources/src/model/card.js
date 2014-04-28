@@ -380,6 +380,12 @@ var Card = Entity.extend({
         return (cardGrow.cur_exp - this.getCardExp());
     },
 
+    getCardNextLvNeedExp: function () {
+        var cardGrow = outputTables.card_grow.rows[this._lv + 1];
+
+        return (cardGrow.cur_exp - this.getCardExp());
+    },
+
     canUpgrade: function () {
         cc.log("Card canUpgrade");
 

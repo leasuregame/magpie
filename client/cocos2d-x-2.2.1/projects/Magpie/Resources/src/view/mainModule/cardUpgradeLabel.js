@@ -139,7 +139,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(-180, -20));
         this._helpLabel.addChild(moneyIcon);
 
-        var expNeedIcon = cc.LabelTTF.create("满级还需经验:", "STHeitiTC-Medium", 22);
+        var expNeedIcon = cc.LabelTTF.create("升级还需经验:", "STHeitiTC-Medium", 22);
         expNeedIcon.setPosition(cc.p(78, 20));
         this._helpLabel.addChild(expNeedIcon);
 
@@ -281,7 +281,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._expLabel.setString("0");
             this._moneyLabel.setString("0");
             cc.log(this._leadCard.getCardFullLvNeedExp());
-            this._expNeedLabel.setString(this._leadCard.getCardFullLvNeedExp());
+            this._expNeedLabel.setString(this._leadCard.getCardNextLvNeedExp());
             this._cardCountLabel.setString("0");
 
             this._lvLabel.setString(this._leadCard.get("lv"));
@@ -318,7 +318,7 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             this._expLabel.setString(exp);
             this._moneyLabel.setString(this._money);
-            this._needExp = this._leadCard.getCardFullLvNeedExp();
+            this._needExp = this._leadCard.getCardNextLvNeedExp();
             this._expNeedLabel.setString(this._needExp);
             this._cardCountLabel.setString(cardCount);
 

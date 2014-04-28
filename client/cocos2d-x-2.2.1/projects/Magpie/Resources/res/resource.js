@@ -1296,6 +1296,9 @@ var main_scene_image = {
     click_building_sound: "res/sound/click_building_sound.wav",
     click_gold_sound: "res/sound/click_gold_sound.wav",
 
+    bee_png: "res/effect/uiEffect/bee.png",
+    bee_plist: "res/effect/uiEffect/bee.plist",
+
     // boss资源
     boss1_png: "res/effect/effect/boss1.png",
     boss1_plist: "res/effect/effect/boss1.plist",

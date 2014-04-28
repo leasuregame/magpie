@@ -786,10 +786,10 @@ Handler::useElixir = (msg, session, next) ->
       zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)
       typeMap = 30: 1, 50: 2, 100: 3
       critType =  typeMap[zf] or 0
-      elixir = parseInt elixir*(100+zf)/100
+      cardElixir = parseInt elixir*(100+zf)/100
 
-    card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
-    card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
+    card.increase('elixirHp', cardElixir) if type is ELIXIR_TYPE_HP
+    card.increase('elixirAtk', cardElixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
     
     _jobs = []

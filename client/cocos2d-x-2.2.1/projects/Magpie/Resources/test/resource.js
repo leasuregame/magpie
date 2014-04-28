@@ -1300,6 +1300,7 @@ var main_scene_image = {
     texiao30: test_scene_path + "ccb/" + "texiao30.ccbi",
     texiao31: test_scene_path + "ccb/" + "texiao31.ccbi",
     texiao32: test_scene_path + "ccb/" + "texiao32.ccbi",
+    texiao36: test_scene_path + "ccb/" + "texiao36.ccbi",
 
 };
 

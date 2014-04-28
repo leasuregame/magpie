@@ -369,7 +369,7 @@ genRankings = (ranking) ->
   _results[ranking] = STATUS_NORMAL
   if ranking > rankingConfig.top
     for j in [1..rankingConfig.add_count]
-      _results[ranking+j] = STATUS_DISPLAYE
+      _results[ranking+j] = STATUS_CHALLENGE
   _.extend(top, _results)
 
 filterPlayersInfo = (players, ranks, rankings) ->

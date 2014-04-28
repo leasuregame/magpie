@@ -73,6 +73,14 @@ Achievement.star5card = function(player) {
 	checkIsReached_alpha(player, 'star5card', 1);
 };
 
+Achievement.star6card = function(player) {
+	checkIsReached_alpha(player, 'star6card', 1);
+};
+
+Achievement.star7card = function(player) {
+	checkIsReached_alpha(player, 'star7card', 1);
+};
+
 Achievement.star5cardFullLevel = function(player) {
 	checkIsReached_alpha(player, 'star5cardFullLevel', 1);
 };

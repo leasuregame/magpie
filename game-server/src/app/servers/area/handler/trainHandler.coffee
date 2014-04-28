@@ -780,9 +780,12 @@ Handler::useElixir = (msg, session, next) ->
 
     # 判断暴击
     isCrit = utility.hitRate configData.elixir.useElixirCritRate
+    critType = 0
     if isCrit
       growRate = configData.elixir.growRate
       zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)
+      typeMap = 30: 1, 50: 2, 100: 3
+      critType =  typeMap[zf] or 0
       elixir = parseInt elixir*(100+zf)/100
 
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
@@ -816,7 +819,7 @@ Handler::useElixir = (msg, session, next) ->
         elixirHp: card.elixirHp,
         elixirAtk:card.elixirAtk,
         ability: card.ability(),
-        isCrit: isCrit
+        critType: critType
       }
 
       return next(null, {code: 200,msg:result})

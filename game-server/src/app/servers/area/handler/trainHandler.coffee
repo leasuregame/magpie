@@ -1,5 +1,4 @@
 playerManager = require('pomelo').app.get('playerManager')
-cardManager = require '../../../manager/cardManager'
 lottery = require '../../../manager/lottery'
 async = require 'async'
 dao = require('pomelo').app.get('dao')
@@ -210,7 +209,9 @@ Handler::luckyCard = (msg, session, next) ->
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
     
-    cards4 = cards.filter (c) -> c.star < 5
+    cards4 = cards.filter (c) -> 
+      _tid = c.tableId + 5 - c.star
+      c.star < 5 and _tid not in lids
     idx = _.random(0, cards4.length-1)
     
     card = cards4[idx]
@@ -233,14 +234,14 @@ Handler::luckyCard = (msg, session, next) ->
 
       if level is HIGH_LUCKYCARD and ent.star >= 5 
         card = table.getTableItem('cards', ent.tableId)
-        msg = {
+        msgContent = {
           #route: 'onSystemMessage',
-          msg: player.name + '*幸运的召唤到了5星卡*' + card.name + '*',
+          msg: player.name + "*幸运的召唤到了#{ent.star}星卡*#{card.name}*",
           type: 0,
           validDuration: 10 / 60
         }
         #@app.get('messageService').pushMessage(msg)
-        msgQueue.push(msg)
+        msgQueue.push(msgContent)
 
   first5GoldLuckyCardBy10 = (player, cards) ->
     ### 每天前5次魔石10连抽，必得一张5星卡 ###
@@ -377,7 +378,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       sp_need = sp_need - sp_left
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need)
+      player.decrease('skillPoint', sp_need)  
       cb(null, player, card)
 
     (player, card, cb) ->
@@ -503,13 +504,15 @@ Handler::starUpgrade = (msg, session, next) ->
         # 获得五星卡成就
         if card.star >= 5
           achieve.star5card(player)
+          achieve.star6card(player) if card.star is 6
+          achieve.star7card(player) if card.star is 7
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
-          msg = {
+          msgContent = {
             msg: "#{player.name}*成功的将*#{cardNmae}*进阶为#{card.star}星",
             type: 0,
             validDuration: 10 / 60
           }
-          msgQueue.push(msg)
+          msgQueue.push(msgContent)
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
@@ -775,6 +778,13 @@ Handler::useElixir = (msg, session, next) ->
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
 
+    # 判断暴击
+    isCrit = utility.hitRate configData.elixir.useElixirCritRate
+    if isCrit
+      growRate = configData.elixir.growRate
+      zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)
+      elixir = parseInt elixir*(100+zf)/100
+
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
@@ -805,7 +815,8 @@ Handler::useElixir = (msg, session, next) ->
       result = {
         elixirHp: card.elixirHp,
         elixirAtk:card.elixirAtk,
-        ability: card.ability()
+        ability: card.ability(),
+        isCrit: isCrit
       }
 
       return next(null, {code: 200,msg:result})
@@ -983,14 +994,14 @@ Handler::exchangeCard = (msg, session, next) ->
       fragments: player.fragments
     }})
 
-    if card.star is 5
+    if card.star >= 5
       cardNmae = table.getTableItem('cards', card.tableId).name
-      msg = {
-        msg: player.name + '*成功兑换到一张*' + cardNmae + '*的五星卡牌',
+      msgContent = {
+        msg: player.name + '*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌',
         type: 0,
         validDuration: 10 / 60
       }
-      msgQueue.push(msg)
+      msgQueue.push(msgContent)
 
 
 setExchangedCard = (player, tid) ->

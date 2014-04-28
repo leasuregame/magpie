@@ -179,7 +179,7 @@ products =
         return next(null, {code: 501, msg: '仙币不足'})
 
       if _.keys(player.cards).length + times > player.cardsCount
-        return next(null, {code: 501, msg: '卡牌容量不足'})
+        return next(null, {code: 501, msg: '卡库容量不足'})
 
       playerManager.addExpCardFor player, times, (err, cards) ->
         if err

@@ -886,9 +886,17 @@ var Player = (function(_super) {
         this.decrease('money', moneyConsume);
         targetCard.upgrade(upgraded_lv, exp_remain);
 
-        // 第一张满级五星卡
+        // 第一张满级5星卡
         if (targetCard.star == 5 && targetCard.lv == cardLvs.getItem(5).max_lv) {
             achieve.star5cardFullLevel(this);
+        }
+        // 第一张满级6星卡
+        if (targetCard.star == 6 && targetCard.lv == cardLvs.getItem(6).max_lv) {
+            achieve.star6cardFullLevel(this);
+        }
+        // 第一张满级7星卡
+        if (targetCard.star == 7 && targetCard.lv == cardLvs.getItem(7).max_lv) {
+            achieve.star7cardFullLevel(this);
         }
 
         return cb(null, {

@@ -32,10 +32,6 @@ Mysql.prototype.query = function(sql, args, cb) {
 };
 
 Mysql.prototype.queues = function(sqlList, cb) {
-    if (sqlList.length == 0) {
-        return cb(null, false);
-    } 
-
     var self = this;
     return this._pool.acquire(function(err, client) {
         if ( !! err) {

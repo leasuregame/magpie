@@ -12,7 +12,7 @@ module.exports = {
   	if (jobs.length == 0) {
   	  return cb(null, false)
     }
-    
+
     jobs = jobs.map(function(job) {
       return sqlHelper.generateSql(job.type, job.options);
     });

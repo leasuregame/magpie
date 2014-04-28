@@ -69,12 +69,20 @@ Achievement.vip = function(player) {
 	checkIsReached_alpha(player, 'vip', 1);
 };
 
-Achievement.star5card = function(player) {
-	checkIsReached_alpha(player, 'star5card', 1);
+Achievement.star5card = function(player, count) {
+	if (_.isNumber(count) || count > 0) {
+		checkIsReached(player, 'star5card', count);
+	} else {
+		checkIsReached_alpha(player, 'star5card', 1);
+	}	
 };
 
-Achievement.star6card = function(player) {
-	checkIsReached_alpha(player, 'star6card', 1);
+Achievement.star6card = function(player, count) {
+	if (_.isNumber(count) || count > 0) {
+		checkIsReached(player, 'star6card', count);
+	} else {
+		checkIsReached_alpha(player, 'star6card', 1);
+	}	
 };
 
 Achievement.star7card = function(player) {
@@ -154,6 +162,7 @@ var checkIsReached_alpha = function(player, method, incVal, useMax) {
 
 var checkIsReached = function(player, method, need, useMax) {
 	var achs = reachedAchievements(method, need);
+	
 	achs.forEach(function(ach) {
 		if ( isAchieved(player, ach.id) ) {
 			reachAchievement(player, ach.id);

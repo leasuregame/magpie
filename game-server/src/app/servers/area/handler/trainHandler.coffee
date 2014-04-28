@@ -1000,7 +1000,7 @@ Handler::exchangeCard = (msg, session, next) ->
     if card.star >= 5
       cardNmae = table.getTableItem('cards', card.tableId).name
       msgContent = {
-        msg: player.name + '*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌',
+        msg: player.name + "*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌",
         type: 0,
         validDuration: 10 / 60
       }

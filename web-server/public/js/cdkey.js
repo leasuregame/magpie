@@ -66,18 +66,4 @@ $(function() {
     })
   });
 
-
-  function initList() {
-    var inner = "";
-    inner += '<option value = "-1">所有</option>';
-    servers.forEach(function(area) {
-      inner += '<option value =' + area.id + '>' + area.id + '区 ' + area.name + '</option>';
-    });
-    $("#area").append(inner);
-  };
-
-  initServer(function() {
-    initList();
-  });
-
 });

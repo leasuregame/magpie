@@ -20,6 +20,7 @@ var CdkeyDao = (function(_super) {
     this.activate = attrs.activate;
     this.startDate = attrs.startDate;
     this.endDate = attrs.endDate;
+    this.areaId = attrs.areaId;
     
     if (attrs.area && typeof attrs.area == 'string') {
       this.area = JSON.parse(attrs.area);
@@ -31,11 +32,11 @@ var CdkeyDao = (function(_super) {
     activate: 0,
     area: []
   };
-  domain.FIELDS = ['code', 'playerId', 'activate', 'startDate', 'endDate', 'area'];
+  domain.FIELDS = ['code', 'playerId', 'activate', 'startDate', 'endDate', 'areaId', 'area'];
   CdkeyDao.domain = domain;
 
-  CdkeyDao.isAvalifyPlayer = function (playerId, prefix, cb) {
-    var sql = "select `code` from cdkey where playerId="+playerId+" and `code` like \'"+prefix+"-%\'";
+  CdkeyDao.isAvalifyPlayer = function (playerId, prefix, areaId, cb) {
+    var sql = "select `code` from cdkey where playerId="+playerId+" and `code` like \'"+prefix+"-%\'" + ' and areaId=' + areaId;
     this.dbClient.query(sql,function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when query cdkey]", sql);

@@ -54,7 +54,7 @@ Handler::lottery = (msg, session, next) ->
 
     if isMaxReward resource.id
       msgContent = {
-        msg: "#{player.name}幸运寻到最高宝藏#{resource.name}:#{resource.value*times}",
+        msg: "#{player.name}在寻宝中幸运获得最高奖励：#{resource.name} #{resource.value*times}",
         type: 0,
         validDuration: 10 / 60
       }

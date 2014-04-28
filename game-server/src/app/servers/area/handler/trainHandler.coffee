@@ -752,7 +752,7 @@ Handler::smeltElixir_is_discarded = (msg, session, next) ->
 
 Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  elixir = msg.elixir
+  cardElixir = elixir = msg.elixir
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
   elixirLimit = table.getTable('elixir_limit')

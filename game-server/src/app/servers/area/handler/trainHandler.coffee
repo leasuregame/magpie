@@ -756,7 +756,8 @@ Handler::useElixir = (msg, session, next) ->
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
   elixirLimit = table.getTable('elixir_limit')
-
+  critType = 0
+  
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -780,7 +781,6 @@ Handler::useElixir = (msg, session, next) ->
 
     # 判断暴击
     isCrit = utility.hitRate configData.elixir.useElixirCritRate
-    critType = 0
     if isCrit
       growRate = configData.elixir.growRate
       zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)

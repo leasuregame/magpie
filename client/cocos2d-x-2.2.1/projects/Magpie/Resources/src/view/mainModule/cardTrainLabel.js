@@ -358,7 +358,7 @@ var CardTrainLabel = cc.Layer.extend({
     _extract: function () {
         cc.log("CardTrainLabel _extract");
 
-        if(this._extractEffect != null) {
+        if (this._extractEffect != null) {
             this._extractEffect.removeFromParent();
             this._extractEffect = null;
         }
@@ -372,6 +372,24 @@ var CardTrainLabel = cc.Layer.extend({
         this._startTime = date.getTime();
         this._extractEffect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
         this.addChild(this._extractEffect, 10);
+    },
+
+    _playCritEffect: function (type) {
+        cc.log("CardTrainLabel _playCritEffect: " + type);
+
+        var url = ["uiEffect109", "uiEffect107", "uiEffect108"];
+
+        if (type == TYPE_CRIT_NONE) {
+            return;
+        }
+
+        var effect = cc.BuilderReader.load(main_scene_image[url[type - 1]], this);
+        effect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+            effect = null;
+        });
+        this.addChild(effect, 20);
     },
 
     ccbFnExtract: function () {
@@ -451,7 +469,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._effect = null;
         }
 
-        if(this._extractEffect != null) {
+        if (this._extractEffect != null) {
             this._extractEffect.removeFromParent();
             this._extractEffect = null;
         }
@@ -514,8 +532,7 @@ var CardTrainLabel = cc.Layer.extend({
         }
 
         var that = this;
-        this._leadCard.train(function (data) {
-            cc.log(data);
+        this._leadCard.train(function (type) {
 
             if (that._effect != null) {
                 that._effect.removeFromParent();
@@ -533,6 +550,7 @@ var CardTrainLabel = cc.Layer.extend({
             that.addChild(that._effect, 10);
             that._showTrain = true;
             that.update();
+            that._playCritEffect(type);
         }, this._trainCount, this._trainType);
     },
 

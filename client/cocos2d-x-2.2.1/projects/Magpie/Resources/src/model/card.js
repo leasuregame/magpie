@@ -27,6 +27,11 @@ var LOCK_TYPE_NAME = 1;
 var LOCK_TYPE_VALUE = 2;
 var LOCK_TYPE_BOTH = 3;
 
+var TYPE_CRIT_NONE = 0;
+var TYPE_CRIT_SMALL = 1;
+var TYPE_CRIT_MIDDLE = 2;
+var TYPE_CTIT_BIG = 3;
+
 var BOSS_CARD_TABLE_ID = {
     begin: 40000,
     end: 40002
@@ -770,7 +775,7 @@ var Card = Entity.extend({
 
                 gameData.player.add("elixir", -elixir);
 
-                cb();
+                cb(msg.critType);
 
                 lz.um.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {

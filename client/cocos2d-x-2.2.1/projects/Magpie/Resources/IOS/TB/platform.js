@@ -16,7 +16,7 @@ lz.platformConfig = {
     VERSION: "1.4.2",
     APP_ID: 131232,
     APP_KEY: "o$KiXv0SHUsB6Dbz$2Kivk9GeTs6ODzo",
-    GATE_SERVER_HOST: "115.29.12.178",
+    GATE_SERVER_HOST: "124.238.236.33",//"115.29.243.80",
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://115.29.12.178:9090/api/tb/update/",
     UPDATE_VERSION_URL: "http://115.29.12.178:9090/api/tb/version",

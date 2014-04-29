@@ -625,7 +625,8 @@ var CardUpgradeLabel = cc.Layer.extend({
             }, cardIdList);
         };
 
-        if (this._getExp > this._needExp) {
+        var maxLvNeedExp = this._leadCard.getCardFullLvNeedExp();
+        if (this._getExp > maxLvNeedExp) {
             this._showTip(next);
         } else {
             next();

@@ -386,9 +386,7 @@ var Card = Entity.extend({
     },
 
     getCardNextLvNeedExp: function () {
-        var cardGrow = outputTables.card_grow.rows[this._lv + 1];
-
-        return (cardGrow.cur_exp - this.getCardExp());
+        return (this._lv == this._maxLv) ? 0 : outputTables.card_grow.rows[this._lv + 1].cur_exp - this.getCardExp();
     },
 
     canUpgrade: function () {
@@ -664,7 +662,7 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {

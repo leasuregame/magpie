@@ -487,7 +487,7 @@ var CardListLayer = cc.Layer.extend({
     _initCardEvolutionMaster: function () {
         cc.log("CardListLayer _initCardEvolutionMaster");
 
-        this._tipLabel.setString("只有满级的卡牌才可以进行星级进阶");
+        //this._tipLabel.setString("只有满级的卡牌才可以进行星级进阶");
 
         this._initMaster();
 

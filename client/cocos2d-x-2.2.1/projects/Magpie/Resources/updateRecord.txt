@@ -11,7 +11,8 @@ res/main/button65s.png
 res/main/icon5.png
 res/main/icon360.png
 res/main/ccb/uiEffect14.ccb
-
+res/font/AchievementWord.fnt
+res/font/AchievementWord.png
 
 resYY/main/button48.png
 resYY/main/button48s.png
@@ -24,6 +25,8 @@ resYY/main/button65s.png
 resYY/main/icon5.png
 resYY/main/icon360.png
 resYY/main/ccb/uiEffect14.ccb
+resYY/font/AchievementWord.fnt
+resYY/font/AchievementWord.png
 
 新加资源：
 res/main/icon431.png

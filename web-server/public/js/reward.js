@@ -65,9 +65,7 @@ function submit() {
     var playerName = $("#playerName").val();
     var title = $('#title').val();
     var content = $("#content").val();
-    var mail = {};
-    mail['content'] = content;
-    mail['options'] = options;
+    
 
     //$('#actionConfirm').modal();
     if (Number.isNaN(areaId)) {
@@ -114,6 +112,10 @@ function submit() {
 
     showModal();
     $('#btnSendMsg').click(function() {
+        options = getData();
+        var mail = {};
+        mail['content'] = content;
+        mail['options'] = options;
         hideModal();
         doSubmit(options, areaId, playerName, mail);
     });

@@ -29,12 +29,12 @@ var addEvents = function(card) {
     });
 
     card.on('elixirHp.change', function(elixir) {
-        card.incs.elixir_hp = parseInt(elixir / elixirConfig.elixir * elixirConfig.hp);
+        card.incs.elixir_hp = parseInt((elixir+card.elixirHpCrit) / elixirConfig.elixir * elixirConfig.hp);
         card.recountHpAndAtk();
     });
 
     card.on('elixirAtk.change', function(elixir) {
-        card.incs.elixir_atk = parseInt(elixir / elixirConfig.elixir * elixirConfig.atk);
+        card.incs.elixir_atk = parseInt((elixir+card.elixirAtkCrit) / elixirConfig.elixir * elixirConfig.atk);
         card.recountHpAndAtk();
     });
 
@@ -65,8 +65,8 @@ var addEvents = function(card) {
 };
 
 var countElixirEffect = function(card) {
-    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.elixir) * elixirConfig.hp;
-    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.elixir) * elixirConfig.atk;
+    card.incs.elixir_hp = parseInt((card.elixirHp+card.elixirHpCrit) / elixirConfig.elixir) * elixirConfig.hp;
+    card.incs.elixir_atk = parseInt((card.elixirAtk+card.elixirAtkCrit) / elixirConfig.elixir) * elixirConfig.atk;
 
     card.recountHpAndAtk();
 };
@@ -179,7 +179,9 @@ var Card = (function(_super) {
         'factor',
         'skillPoint',
         'elixirHp',
+        'elixirHpCrit',
         'elixirAtk',
+        'elixirAtkCrit',
         'passiveSkills',
         'useCardsCounts',
         'psGroupCount'
@@ -193,7 +195,9 @@ var Card = (function(_super) {
         factor: 0,
         skillPoint: 0,
         elixirHp: 0,
+        elixirHpCrit: 0,
         elixirAtk: 0,
+        elixirAtkCrit: 0,
         init_hp: 0,
         init_atk: 0,
         hp: 0,
@@ -509,6 +513,8 @@ var Card = (function(_super) {
             skillPoint: this.skillPoint,
             elixirHp: this.elixirHp,
             elixirAtk: this.elixirAtk,
+            elixirHpCrit: this.elixirHpCrit,
+            elixirAtkCrit: this.elixirAtkCrit,
             passiveSkills: this.passiveSkills
         };
     };

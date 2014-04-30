@@ -752,11 +752,12 @@ Handler::smeltElixir_is_discarded = (msg, session, next) ->
 
 Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  cardElixir = elixir = msg.elixir
+  elixir = msg.elixir
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
   elixirLimit = table.getTable('elixir_limit')
   critType = 0
+  critElixir = 0
   
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
@@ -786,10 +787,16 @@ Handler::useElixir = (msg, session, next) ->
       zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)
       typeMap = 30: 1, 50: 2, 100: 3
       critType =  typeMap[zf] or 0
-      cardElixir = parseInt elixir*(100+zf)/100
+      critElixir = parseInt elixir*zf/100
 
-    card.increase('elixirHp', cardElixir) if type is ELIXIR_TYPE_HP
-    card.increase('elixirAtk', cardElixir) if type is ELIXIR_TYPE_ATK
+    if type is ELIXIR_TYPE_HP
+      card.increase('elixirHpCrit', critElixir)
+      card.increase('elixirHp', elixir) 
+      
+    if type is ELIXIR_TYPE_ATK
+      card.increase('elixirAtkCrit', critElixir)
+      card.increase('elixirAtk', elixir) 
+
     player.decrease('elixir', elixir)
     
     _jobs = []

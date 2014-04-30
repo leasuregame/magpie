@@ -1,4 +1,10 @@
-1.4.5版本
+更新记录表
+
+----------v1.4.6版本----------------------------------------------------------------------------------------------------
+
+----------v1.4.6版本----------------------------------------------------------------------------------------------------
+
+----------v1.4.5版本----------------------------------------------------------------------------------------------------
 替换更新：
 res/main/button48.png
 res/main/button48s.png
@@ -10,7 +16,7 @@ res/main/button65.png
 res/main/button65s.png
 res/main/icon5.png
 res/main/icon360.png
-res/main/ccb/uiEffect14.ccb
+res/ccb/uiEffect14.ccbi
 res/font/AchievementWord.fnt
 res/font/AchievementWord.png
 
@@ -24,7 +30,7 @@ resYY/main/button65.png
 resYY/main/button65s.png
 resYY/main/icon5.png
 resYY/main/icon360.png
-resYY/main/ccb/uiEffect14.ccb
+resYY/ccb/uiEffect14.ccbi
 resYY/font/AchievementWord.fnt
 resYY/font/AchievementWord.png
 
@@ -40,3 +46,4 @@ resYY/main/icon432.png
 resYY/main/ccb/uiEffect107.ccb
 resYY/main/ccb/uiEffect108.ccb
 resYY/main/ccb/uiEffect109.ccb
+----------v1.4.5版本----------------------------------------------------------------------------------------------------

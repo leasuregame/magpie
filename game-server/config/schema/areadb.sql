@@ -135,6 +135,8 @@ CREATE TABLE IF NOT EXISTS `card` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
+  `elixirHpCrit` INT(10) UNSIGNED DEFAULT '0',
+  `elixirAtkCrit` INT(10) UNSIGNED DEFAULT '0',
   `passiveSkills` VARCHAR(2500) COLLATE utf8_unicode_ci DEFAULT '',
   `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
   `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量

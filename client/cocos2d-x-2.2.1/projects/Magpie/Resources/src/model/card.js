@@ -88,6 +88,8 @@ var Card = Entity.extend({
     _skillInc: 0,           // 技能初始伤害
     _elixirHp: 0,           // 生命值仙丹
     _elixirAtk: 0,          // 攻击力仙丹
+    _elixirHpCrit: 0,       // 生命值暴击仙丹
+    _elixirAtkCrit: 0,      // 攻击力暴击仙丹
     _skillPoint: 0,         // 技能点
     _passiveSkill: {},      // 被动技能
 
@@ -142,6 +144,8 @@ var Card = Entity.extend({
             this.set("skillInc", data.skillInc);
             this.set("elixirHp", data.elixirHp);
             this.set("elixirAtk", data.elixirAtk);
+            this.set("elixirHpCrit", data.elixirHpCrit);
+            this.set("elixirAtkCrit", data.elixirAtkCrit);
             this.set("skillPoint", data.skillPoint);
 
             this._updatePassiveSkills(data.passiveSkills);
@@ -259,8 +263,8 @@ var Card = Entity.extend({
 
         var eachConsume = elixirTable.elixir;
 
-        var elixirHp = Math.floor(this._elixirHp / eachConsume) * elixirTable.hp;
-        var elixirAtk = Math.floor(this._elixirAtk / eachConsume) * elixirTable.atk;
+        var elixirHp = parseInt((this._elixirHp + this._elixirHpCrit) / eachConsume) * elixirTable.hp;
+        var elixirAtk = parseInt((this._elixirAtk + this._elixirAtkCrit) / eachConsume) * elixirTable.atk;
 
         var psHpMultiple = 0;
         var psAtkMultiple = 0;

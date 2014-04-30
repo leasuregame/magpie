@@ -24,7 +24,7 @@ var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
 var addEvents = function(card) {
-    card.on('add.passiveSkill', function() {
+    card.on('passiveSkills.change', function() {
         countPassiveSkills(card);
     });
 
@@ -256,7 +256,6 @@ var Card = (function(_super) {
 
         this.passiveSkills = pss;
         this.psGroupCount = pss.length;
-        this.emit('add.passiveSkill');
     };
 
     Card.prototype.activeGroup = function(gid) {

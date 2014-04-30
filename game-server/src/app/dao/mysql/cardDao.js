@@ -47,7 +47,7 @@ var CardDao = (function(_super) {
 				}, callback);
 			} */
 		], function(err, results) {
-			if (err !== null) {
+			if (err != null) {
 				return cb(err, null)
 			}
 

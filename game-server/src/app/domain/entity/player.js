@@ -352,6 +352,7 @@ var Player = (function(_super) {
         cardsCount: MIN_CARD_COUNT,
         resetDate: '1970-1-1',
         firstTime: {
+            star5card: 1,
             lowLuckyCard: 1,
             highLuckyCard: 1,
             highTenLuckCard: 1,
@@ -447,6 +448,9 @@ var Player = (function(_super) {
 
         // 记录登陆次数
         this.incLoginCount();
+
+        // 重新计算5星卡成就
+        this.recountStar5CardAchievement();
     };
 
     Player.prototype.dailyData = function() {
@@ -886,9 +890,17 @@ var Player = (function(_super) {
         this.decrease('money', moneyConsume);
         targetCard.upgrade(upgraded_lv, exp_remain);
 
-        // 第一张满级五星卡
+        // 第一张满级5星卡
         if (targetCard.star == 5 && targetCard.lv == cardLvs.getItem(5).max_lv) {
             achieve.star5cardFullLevel(this);
+        }
+        // 第一张满级6星卡
+        if (targetCard.star == 6 && targetCard.lv == cardLvs.getItem(6).max_lv) {
+            achieve.star6cardFullLevel(this);
+        }
+        // 第一张满级7星卡
+        if (targetCard.star == 7 && targetCard.lv == cardLvs.getItem(7).max_lv) {
+            achieve.star7cardFullLevel(this);
         }
 
         return cb(null, {
@@ -1462,6 +1474,21 @@ var Player = (function(_super) {
         }
         act.logined.count += 1;
         this.set('activities', act);
+    };
+
+    Player.prototype.recountStar5CardAchievement = function() {
+        if (this.firstTime.star5card) return;
+
+        var cards = _.values(this.cards);
+        var star5Num = cards.filter(function(c) {
+            return c.star >= 5;
+        }).length;
+        var star6Num = cards.filter(function(c) {
+            return c.star >= 6;
+        }).length;
+        console.log('message:', star5Num, star6Num);
+        if (star5Num > 0) achieve.star5card(this, star5Num);
+        if (star6Num > 0) achieve.star6card(this, star6Num);
     };
 
     Player.prototype.toJson = function() {

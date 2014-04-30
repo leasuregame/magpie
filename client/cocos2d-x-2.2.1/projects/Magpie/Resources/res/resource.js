@@ -746,6 +746,8 @@ var main_scene_image = {
     icon428: main_scene_path + "icon428.png",
     icon429: main_scene_path + "icon429.png",
     icon430: main_scene_path + "icon430.png",
+    icon431: main_scene_path + "icon431.png",
+    icon432: main_scene_path + "icon432.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -987,6 +989,9 @@ var main_scene_image = {
     uiEffect103: "res/ccb/uiEffect103.ccbi",
     uiEffect104: "res/ccb/uiEffect104.ccbi",
     uiEffect105: "res/ccb/uiEffect105.ccbi",
+    uiEffect107: "res/ccb/uiEffect107.ccbi",
+    uiEffect108: "res/ccb/uiEffect108.ccbi",
+    uiEffect109: "res/ccb/uiEffect109.ccbi",
 
 
     // 特效资源
@@ -1295,6 +1300,9 @@ var main_scene_image = {
     passive_skill_afresh: "res/sound/passive_skill_afresh.wav",
     click_building_sound: "res/sound/click_building_sound.wav",
     click_gold_sound: "res/sound/click_gold_sound.wav",
+
+    bee_png: "res/effect/uiEffect/bee.png",
+    bee_plist: "res/effect/uiEffect/bee.plist",
 
     // boss资源
     boss1_png: "res/effect/effect/boss1.png",

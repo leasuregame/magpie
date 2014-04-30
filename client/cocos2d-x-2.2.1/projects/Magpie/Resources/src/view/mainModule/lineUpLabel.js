@@ -12,7 +12,7 @@
  * */
 
 var MAX_LINEUP_LIST = 2;
-var LINE_UP_INDEX = 0;
+
 
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,

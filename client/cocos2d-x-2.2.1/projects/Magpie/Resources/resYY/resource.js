@@ -748,6 +748,8 @@ var main_scene_image = {
     icon428: main_scene_path + "icon428.png",
     icon429: main_scene_path + "icon429.png",
     icon430: main_scene_path + "icon430.png",
+    icon431: main_scene_path + "icon431.png",
+    icon432: main_scene_path + "icon432.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -990,7 +992,9 @@ var main_scene_image = {
     uiEffect104: "resYY/ccb/uiEffect104.ccbi",
     uiEffect105: "resYY/ccb/uiEffect105.ccbi",
     uiEffect106: "resYY/ccb/uiEffect106.ccbi",
-
+    uiEffect107: "resYY/ccb/uiEffect107.ccbi",
+    uiEffect108: "resYY/ccb/uiEffect108.ccbi",
+    uiEffect109: "resYY/ccb/uiEffect109.ccbi",
 
     // 特效资源
     p1: "resYY/effect/effect/p1.png",

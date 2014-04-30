@@ -73,7 +73,7 @@ Mysql.prototype.shutdown = function() {
 Mysql.prototype.insert = Mysql.prototype.query;
 Mysql.prototype.update = Mysql.prototype.query;
 Mysql.prototype.delete = Mysql.prototype.query;
-Mysql.prototype.queues = Mysql.prototype.query;
+Mysql.prototype.queues = Mysql.prototype.queues;
 
 module.exports = Mysql;
 

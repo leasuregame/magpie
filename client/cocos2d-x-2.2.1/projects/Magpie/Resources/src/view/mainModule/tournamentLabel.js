@@ -88,7 +88,6 @@ var TournamentLabel = cc.Node.extend({
         var functionItem = null;
 
         if (this._player.playerId != player.get("id")) {
-            if (this._player.type != CAN_DISPLAY) {
                 if (this._player.type == CAN_ADD_FRIEND) {
                     functionItem = cc.MenuItemImage.createWithIcon(
                         main_scene_image.button10,
@@ -118,7 +117,6 @@ var TournamentLabel = cc.Node.extend({
                     tipIcon.setPosition(cc.p(530, 24));
                     this.addChild(tipIcon);
                 }
-            }
 
         } else {
             ability = player.get("ability");

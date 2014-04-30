@@ -27,6 +27,11 @@ var LOCK_TYPE_NAME = 1;
 var LOCK_TYPE_VALUE = 2;
 var LOCK_TYPE_BOTH = 3;
 
+var TYPE_CRIT_NONE = 0;
+var TYPE_CRIT_SMALL = 1;
+var TYPE_CRIT_MIDDLE = 2;
+var TYPE_CTIT_BIG = 3;
+
 var BOSS_CARD_TABLE_ID = {
     begin: 40000,
     end: 40002
@@ -261,12 +266,18 @@ var Card = Entity.extend({
         var psAtkMultiple = 0;
 
         for (var key in this._passiveSkill) {
-            if (this._passiveSkill[key].name == "hp_improve") {
-                psHpMultiple += this._passiveSkill[key].value;
-            }
-
-            if (this._passiveSkill[key].name == "atk_improve") {
-                psAtkMultiple += this._passiveSkill[key].value;
+            var ps = this._passiveSkill[key];
+            if (ps.active) {
+                for (var id in ps.items) {
+                    var item = ps.items[id];
+                    if (item.name == "hp_improve") {
+                        psHpMultiple += item.value;
+                    }
+                    if (item.name == "atk_improve") {
+                        psAtkMultiple += item.value;
+                    }
+                }
+                break;
             }
         }
 
@@ -372,6 +383,10 @@ var Card = Entity.extend({
         var cardGrow = outputTables.card_grow.rows[this._maxLv];
 
         return (cardGrow.cur_exp - this.getCardExp());
+    },
+
+    getCardNextLvNeedExp: function () {
+        return (this._lv == this._maxLv) ? 0 : outputTables.card_grow.rows[this._lv + 1].cur_exp - this.getCardExp();
     },
 
     canUpgrade: function () {
@@ -606,6 +621,7 @@ var Card = Entity.extend({
                 cc.log("passSkillActive success");
 
                 that.updateActivePassiveSkill(id);
+                that._calculateAddition();
                 that.set("ability", data.msg.ability);
                 cb();
 
@@ -646,7 +662,7 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {
@@ -757,7 +773,7 @@ var Card = Entity.extend({
 
                 gameData.player.add("elixir", -elixir);
 
-                cb();
+                cb(msg.critType);
 
                 lz.um.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {

@@ -19,6 +19,8 @@ var CardDetails = LazyLayer.extend({
     _card: null,
     _menu: null,
     _cb: null,
+    _hpLabel: null,
+    _atkLabel: null,
 
     onEnter: function () {
         cc.log("CardDetails onEnter");
@@ -122,13 +124,13 @@ var CardDetails = LazyLayer.extend({
         lvLabel.setPosition(this._cardDetailsFit.lvLabelPoint);
         this.addChild(lvLabel);
 
-        var hpLabel = cc.LabelTTF.create(this._card.get("hp"), "STHeitiTC-Medium", 20);
-        hpLabel.setPosition(this._cardDetailsFit.hpLabelPoint);
-        this.addChild(hpLabel);
+        this._hpLabel = cc.LabelTTF.create(this._card.get("hp"), "STHeitiTC-Medium", 20);
+        this._hpLabel.setPosition(this._cardDetailsFit.hpLabelPoint);
+        this.addChild(this._hpLabel);
 
-        var atkLabel = cc.LabelTTF.create(this._card.get("atk"), "STHeitiTC-Medium", 20);
-        atkLabel.setPosition(this._cardDetailsFit.atkLabelPoint);
-        this.addChild(atkLabel);
+        this._atkLabel = cc.LabelTTF.create(this._card.get("atk"), "STHeitiTC-Medium", 20);
+        this._atkLabel.setPosition(this._cardDetailsFit.atkLabelPoint);
+        this.addChild(this._atkLabel);
 
         var description = lz.format(this._card.get("description"), 9);
         var len = description.length;
@@ -226,6 +228,9 @@ var CardDetails = LazyLayer.extend({
 
     _updatePassiveSkill: function () {
         cc.log("CardDetails _updatePassiveSkill");
+
+        this._atkLabel.setString(this._card.get("atk"));
+        this._hpLabel.setString(this._card.get("hp"));
 
         if (this._passiveSkillLayer) {
             this._passiveSkillLayer.removeFromParent();

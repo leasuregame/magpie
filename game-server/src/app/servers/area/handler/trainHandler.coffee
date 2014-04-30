@@ -58,6 +58,9 @@ Handler::extract = (msg, session, next) ->
       else 
         card.set('elixirHp', 0)
         card.set('elixirAtk', 0)
+        card.set('elixirHpCrit', 0)
+        card.set('elixirAtkCrit', 0)
+
         player.increase('elixir', extVal)
         player.decrease('gold', consume)
         return next(null, {code: 200, msg: {card: card.toJson(), elixir: player.elixir}})

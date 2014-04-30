@@ -48,13 +48,13 @@ resYY/font/AchievementWord.png
 新加资源：
 res/main/icon431.png
 res/main/icon432.png
-res/main/ccb/uiEffect107.ccb
-res/main/ccb/uiEffect108.ccb
-res/main/ccb/uiEffect109.ccb
+res/main/ccb/uiEffect107.ccbi
+res/main/ccb/uiEffect108.ccbi
+res/main/ccb/uiEffect109.ccbi
 
 resYY/main/icon431.png
 resYY/main/icon432.png
-resYY/main/ccb/uiEffect107.ccb
-resYY/main/ccb/uiEffect108.ccb
-resYY/main/ccb/uiEffect109.ccb
+resYY/main/ccb/uiEffect107.ccbi
+resYY/main/ccb/uiEffect108.ccbi
+resYY/main/ccb/uiEffect109.ccbi
 ----------v1.4.5版本----------------------------------------------------------------------------------------------------

@@ -827,7 +827,9 @@ Handler::useElixir = (msg, session, next) ->
 
       result = {
         elixirHp: card.elixirHp,
+        elixirHpCrit: card.elixirHpCrit,
         elixirAtk:card.elixirAtk,
+        elixirAtkCrit: card.elixirAtkCrit,
         ability: card.ability(),
         critType: critType
       }

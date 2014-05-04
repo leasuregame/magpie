@@ -3,8 +3,14 @@ var _ = require('underscore');
 
 exports.onlineUser = function(req, res) {
   var curDate = req.query.date;
-  console.log('curDate', curDate);
-  onlineUserDao.getRecords(curDate, function(err, items) {
+  var areaId = parseInt(req.query.areaId);
+
+  if (typeof areaId == 'undefined' || isNaN(areaId)) {
+    areaId = 1;
+  }
+
+  console.log('curDate', curDate, areaId);
+  onlineUserDao.getRecords(curDate, areaId, function(err, items) {
     if (err) {
       return res.status(500).send('服务器出错'+err);
     }

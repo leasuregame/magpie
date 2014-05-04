@@ -238,7 +238,11 @@ var CardTrainLabel = cc.Layer.extend({
         );
         helpItem.setPosition(this._cardTrainLabelFit.helpItemPoint);
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._trainItem, this._extractItem, helpItem);
+        var trainMenu = LzMenu.create(this._trainItem);
+        trainMenu.setPosition(cc.p(0, 0));
+        this.addChild(trainMenu);
+
+        var menu = cc.Menu.create(selectLeadCardItem, this._extractItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 

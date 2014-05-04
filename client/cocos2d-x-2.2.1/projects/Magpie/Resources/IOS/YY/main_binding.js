@@ -100,6 +100,7 @@ var appFiles = [
     'src/controls/waitLayer.js',
     'src/controls/dialog.js',
     'src/controls/slideLayer.js',
+    'src/controls/lzMenu.js',
 
     'loginScene.js',
     'loginBgLayer.js',

@@ -95,6 +95,7 @@
                 <file name="src/controls/waitLayer.js"/>
                 <file name="src/controls/dialog.js"/>
                 <file name="src/controls/slideLayer.js"/>
+                <file name="src/controls/lzMenu.js"/>
 
                 <file name="IOS/YY/loginScene.js"/>
                 <file name="IOS/YY/loginBgLayer.js"/>

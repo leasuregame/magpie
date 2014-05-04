@@ -114,6 +114,7 @@ function submit() {
     $('#btnSendMsg').click(function() {
         options = getData();
         var mail = {};
+        var content = $("#content").val();
         mail['content'] = content;
         mail['options'] = options;
         hideModal();
@@ -288,6 +289,10 @@ function getData() {
 
     if ($("#energy").val() != '') {
         data['energy'] = parseInt($("#energy").val());
+    }
+
+    if ($("#fragments").val() != '') {
+        data['fragments'] = parseInt($("#fragments").val());
     }
 
     return data;

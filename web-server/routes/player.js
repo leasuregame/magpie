@@ -6,7 +6,7 @@ exports.get = function(req, res) {
   var areaId = req.query.areaId;
   var sql = "select id from player where name = '" + name + "' and areaId = " + areaId;
 
-  db.query(sql, [], function(err, row) {
+  db(areaId).query(sql, [], function(err, row) {
     if (err) {
       res.status(500).send('error when select playerId, ' + err);
     }

@@ -300,8 +300,23 @@ CREATE TABLE IF NOT EXISTS `atkRecord` (
   `targetId` INT(10) UNSIGNED NOT NULL,
   `targetRank` INT(10),
   `createTime` DATETIME,
-  `created` DATETIME,
   PRIMARY KEY(`playerId`, `targetId`, `createTime`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `periodRank`;
+CREATE TABLE IF NOT EXISTS `periodRank` (
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `rank` INT(10),
+  `reward` VARCHAR(128),
+  `createTime` VARCHAR(20), -- 格式：2014-02-12 01:00
+  PRIMARY KEY(`playerId`, `targetId`, `createTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `rankDailyReward`;
+CREATE TABLE IF NOT EXISTS `rankDailyReward` (
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `day` DATE,
+  `reward` VARCHAR(128),
+  `got` BOOLEAN,
+  PRIMARY KEY(`playerId`, `day`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

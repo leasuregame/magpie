@@ -289,3 +289,19 @@ CREATE TABLE IF NOT EXISTS `bossFriendReward` (
   `created` DATETIME,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-----------------------------------------------------
+-- 竞技场每10分钟排名奖励相关表
+-----------------------------------------------------
+DROP TABLE IF EXISTS `atkRecord`;
+CREATE TABLE IF NOT EXISTS `atkRecord` (
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `playerRank` INT(10),
+  `targetId` INT(10) UNSIGNED NOT NULL,
+  `targetRank` INT(10),
+  `createTime` DATETIME,
+  `created` DATETIME,
+  PRIMARY KEY(`playerId`, `targetId`, `createTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+

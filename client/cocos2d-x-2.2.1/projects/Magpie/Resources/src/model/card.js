@@ -245,10 +245,13 @@ var Card = Entity.extend({
         var skillHarmGrow = skillTable["star" + this._star + "_grow"] || 0;
 
         if (!this._skillInc) {
-            this._skillInc = skillTable["star" + this._star + "_inc_max"] || 0;
+            var skillIncMin = skillTable["star" + this._star + "_inc_min"] || 0;
+            var skillIncMax = this._skillInc = skillTable["star" + this._star + "_inc_max"] || 0;
+            this._skillHarm = [skillIncMin + skillHarmGrow * (this._skillLv - 1), skillIncMax + skillHarmGrow * (this._skillLv - 1)];
+        } else {
+            this._skillHarm = this._skillInc + skillHarmGrow * (this._skillLv - 1);
         }
 
-        this._skillHarm = this._skillInc + skillHarmGrow * (this._skillLv - 1);
         this._skillRate = skillTable["rate" + this._star] || 0;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;

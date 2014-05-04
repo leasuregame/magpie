@@ -169,10 +169,19 @@ var CardDetails = LazyLayer.extend({
             this.addChild(skillHarmIcon);
 
             var skillRateLabel = cc.LabelTTF.create(this._card.get("skillRate") + "%", "STHeitiTC-Medium", 20);
+            skillRateLabel.setAnchorPoint(cc.p(0, 0.5));
             skillRateLabel.setPosition(this._cardDetailsFit.skillRateLabelPoint);
             this.addChild(skillRateLabel);
 
-            var skillHarmLabel = cc.LabelTTF.create(this._card.get("skillHarm") + "%", "STHeitiTC-Medium", 20);
+            var skillHarm = this._card.get("skillHarm");
+            var str = "";
+            if (skillHarm instanceof Array) {
+                str = skillHarm[0] + "% ~ " + skillHarm[1] + "%";
+            } else {
+                str = skillHarm + "%";
+            }
+            skillHarmLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
+            skillHarmLabel.setAnchorPoint(cc.p(0, 0.5));
             skillHarmLabel.setPosition(this._cardDetailsFit.skillHarmLabelPoint);
             this.addChild(skillHarmLabel);
 

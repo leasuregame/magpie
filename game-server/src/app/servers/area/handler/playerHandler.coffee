@@ -208,6 +208,54 @@ Handler::getLevelReward = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: {gold: data.gold, energy: data.energy}})
 
+Handler::buyPlan = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {
+        code: err.code or 501
+        msg: err.msg or err
+        }
+      )
+
+    if player.hasBuyPlan()
+      return next(null, {code: 501, msg: '不能重复购买'})
+
+    player.buyPlan()
+    player.save()
+    next(null, {code: 200})
+
+Handler::getPlanReward = (msg, session, next) -> 
+  playerId = session.get('playerId')
+  id = parseInt msg.id
+
+  if isNaN(id)
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {
+        code: err.code or 501
+        msg: err.msg or err
+        }
+      )
+
+    if not player.hasBuyPlan()
+      return next(null, {code: 501, msg: '请购买成长计划,方可领取'})
+
+    if player.hasPlanFlag(id)
+      return next(null, {code: 501, msg: '不能重复领取'})
+
+    reward = table.getTableItem('plan_reward', id)
+    if not reward
+      return next(null, {code: 501, msg: '找不到该奖励'})
+
+    player.increase('gold', reward.gold)
+    player.setPlanFlag(id)
+    player.save()
+    next(null, {code: 200, msg: gold: player.gold})
+
 canGetPower = (hour) ->
   canGetHours = []
   for h in configData.player.POWER_GIVE.hours

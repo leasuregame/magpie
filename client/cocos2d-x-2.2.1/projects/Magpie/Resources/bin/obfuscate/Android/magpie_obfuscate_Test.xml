@@ -24,7 +24,7 @@
                 <file name="jsb_deprecated.js"/>
             </sources>
             <sources dir="${basedir}/projects/Magpie/Res_android/">
-                <file name="src/resource.js"/>
+                <file name="res/resource.js"/>
 
                 <file name="src/table/table.js"/>
 
@@ -95,6 +95,7 @@
                 <file name="src/controls/waitLayer.js"/>
                 <file name="src/controls/dialog.js"/>
                 <file name="src/controls/slideLayer.js"/>
+                <file name="src/controls/lzMenu.js"/>
 
                 <file name="src/view/loginModule/loginScene.js"/>
                 <file name="src/view/loginModule/loginBgLayer.js"/>
@@ -124,6 +125,7 @@
                 <file name="src/view/mainModule/goldRewardLayer.js"/>
                 <file name="src/view/mainModule/signInLayer.js"/>
                 <file name="src/view/mainModule/invitationLayer.js"/>
+                <file name="src/view/mainModule/newAreaRewardLayer.js"/>
                 <file name="src/view/mainModule/activityLayer.js"/>
                 <file name="src/view/mainModule/amountLayer.js"/>
                 <file name="src/view/mainModule/battleMessageLayer.js"/>

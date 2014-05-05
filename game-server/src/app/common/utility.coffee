@@ -36,7 +36,10 @@ Utility =
     else # default
       return
 
-  randArrayItems: (arr, num) ->
+  ###
+  随机返回数组中指定数量的元素
+  ###
+  randArrayItems: (arr, num=1) ->
     newArr = []
     newArr.push i for i in arr
     

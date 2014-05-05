@@ -21,8 +21,8 @@ var MainMenuLayer = cc.Layer.extend({
     _layer: [
         [MainLayer],
         [InstancesLayer, TaskLayer, ExploreLayer, PassLayer],
-        [BossListLayer, BossLayer],
         [TournamentLayer],
+        [BossListLayer, BossLayer],
         [CardListLayer],
         [ShopLayer]
     ],
@@ -77,7 +77,7 @@ var MainMenuLayer = cc.Layer.extend({
         }
 
         this._bossMark = cc.BuilderReader.load(main_scene_image.uiEffect91, this);
-        this._bossMark.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
+        this._bossMark.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
         this.addChild(this._bossMark);
 
         return true;
@@ -118,18 +118,18 @@ var MainMenuLayer = cc.Layer.extend({
             this.addChild(this._instancesGuide);
         }
 
-        if (gameGuide.get("bossGuide") && !this._bossGuide) {
-            this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
-            this._bossGuide.setRotation(180);
-            this._bossGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
-            this.addChild(this._bossGuide);
-        }
-
         if (gameGuide.get("tournamentGuide") && !this._tournamentGuide) {
             this._tournamentGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
             this._tournamentGuide.setRotation(180);
-            this._tournamentGuide.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
+            this._tournamentGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
             this.addChild(this._tournamentGuide);
+        }
+
+        if (gameGuide.get("bossGuide") && !this._bossGuide) {
+            this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._bossGuide.setRotation(180);
+            this._bossGuide.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
+            this.addChild(this._bossGuide);
         }
     },
 
@@ -166,18 +166,18 @@ var MainMenuLayer = cc.Layer.extend({
             }
 
             if (index == 2) {
-                if (this._bossGuide) {
-                    this._bossGuide.removeFromParent();
-                    this._bossGuide = null;
-                    gameGuide.set("bossGuide", false);
-                }
-            }
-
-            if (index == 3) {
                 if (this._tournamentGuide) {
                     this._tournamentGuide.removeFromParent();
                     this._tournamentGuide = null;
                     gameGuide.set("tournamentGuide", false);
+                }
+            }
+
+            if (index == 3) {
+                if (this._bossGuide) {
+                    this._bossGuide.removeFromParent();
+                    this._bossGuide = null;
+                    gameGuide.set("bossGuide", false);
                 }
             }
 

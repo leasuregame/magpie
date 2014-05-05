@@ -76,30 +76,21 @@ var BossLayer = cc.Layer.extend({
         var point = this._bossLayerFit.bossNameLabelPoint;
 
         if (addition > 0) {
-            var rewardAdditionLabel = ColorLabelTTF.create(
-                {
-                    string: "（奖励加成",
-                    fontName: "STHeitiTC-Medium",
-                    fontSize: 22,
-                    isStroke: true
-                },
-                {
-                    string: addition + "%",
-                    fontName: "STHeitiTC-Medium",
-                    fontSize: 22,
-                    isStroke: true,
-                    color: cc.c3b(117, 255, 57)
-                },
-                {
-                    string: "）",
-                    fontName: "STHeitiTC-Medium",
-                    fontSize: 22,
-                    isStroke: true
-                }
-            );
+
+            var rewardAdditionLabel = cc.Node.create();
             rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
             rewardAdditionLabel.setPosition(cc.p(gameFit.GAME_MIDPOINT.x, point.y + 15));
             this.addChild(rewardAdditionLabel);
+
+            var additionIcon = cc.Sprite.create(main_scene_image.icon432);
+            additionIcon.setAnchorPoint(cc.p(0, 0.5));
+            additionIcon.setPosition(cc.p(0, 2));
+            rewardAdditionLabel.addChild(additionIcon);
+
+            var additionLabel = StrokeLabel.create(addition + "%", "STHeitiTC-Medium", 22);
+            additionLabel.setColor(cc.c3b(117, 255, 57));
+            additionLabel.setPosition(cc.p(132, 0));
+            rewardAdditionLabel.addChild(additionLabel);
         }
 
         var card = outputTables.cards.rows[bossTable.boss_id];
@@ -112,7 +103,13 @@ var BossLayer = cc.Layer.extend({
         }
 
         bossNameLabel.setPosition(point);
-        bossNameLabel.setColor(cc.c3b(252, 254, 143));
+
+        if(bossTable.type == 2) {
+            bossNameLabel.setColor(cc.c3b(255, 131, 242));
+        } else if(bossTable.type == 3) {
+            bossNameLabel.setColor(cc.c3b(252, 254, 143));
+        }
+
         bossNameLabel.setBgColor(cc.c3b(54, 7, 14));
         this.addChild(bossNameLabel);
 
@@ -287,7 +284,7 @@ var BossLayer = cc.Layer.extend({
         var boss = gameData.boss.getBoss(this._bossId);
         this._countLeftLabel.setString("剩余攻击次数: " + boss.countLeft + "次");
 
-        var isEnabled = boss.countLeft > 0 && boss.status != BOSS_STATUS_DIE;
+        var isEnabled = gameData.boss.isCanAttack(this._bossId);
         this._attackItem.setEnabled(isEnabled);
         this._addItem.setEnabled(isEnabled);
         this._subItem.setEnabled(isEnabled);

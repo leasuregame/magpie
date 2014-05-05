@@ -178,6 +178,7 @@ Handler::getActivityInfo = (msg, session, next) ->
         # rechargeFlag: flag
         hasLoginReward: hasLoginReward(@app, player.dailyGift.hasGotLoginReward)
         loginInfo: logined # 新服累计登陆次数
+        plan: player.plan
       }
     })
 

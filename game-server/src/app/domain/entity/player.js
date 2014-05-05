@@ -256,7 +256,8 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'cd'
+        'cd',
+        'plan'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -321,7 +322,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: { // 每日单次高级魔石抽卡次数，判断是否获得卡魂
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -375,7 +377,35 @@ var Player = (function(_super) {
         superHonor: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
+        },
+        plan: {
+            buy: false,
+            flag: 0
         }
+    };
+
+    Player.prototype.buyPlan = function() {
+        var plan = { buy: true, flag: 0 };
+        this.plan = plan;
+    };
+
+    Player.prototype.hasBuyPlan = function() {
+        return !!this.plan.buy;
+    };
+
+    Player.prototype.hasPlanFlag = function(id) {
+        var flag = this.plan.flag || 0;
+        return utility.hasMark(flag, id);
+    };
+
+    Player.prototype.setPlanFlag = function(id) {
+        var plan = utility.deepCopy(this.plan);
+        if (_.isUndefined(plan.flag)) {
+            plan.flag = 0;
+        }
+
+        plan.flag = utility.mark(plan.flag, id);
+        this.plan = plan;
     };
 
     Player.prototype.resetData = function() {
@@ -426,7 +456,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: {
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         };
 
         var pass = utility.deepCopy(this.pass);

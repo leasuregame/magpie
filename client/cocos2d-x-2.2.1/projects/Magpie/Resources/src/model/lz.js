@@ -460,8 +460,8 @@ lz.getTimeStr = function (args) {
 };
 
 /*
-* 获取倒计时
-* */
+ * 获取倒计时
+ * */
 lz.getCountdownStr = function (time) {
     var fmt = "hh:mm:ss";
     var o = {
@@ -477,6 +477,29 @@ lz.getCountdownStr = function (time) {
     }
 
     return fmt;
+};
+
+lz.getNumberStr = function (num) {
+    var Numbers = ["十", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+    var str = "";
+
+    if (num == 0) {
+        str = "零";
+    } else {
+        var decade = parseInt(num / 10);
+        var unit = num % 10;
+
+        if (decade > 0) {
+            str += (decade > 1) ? Numbers[decade] : "";
+            str += Numbers[0];
+        }
+
+        if (unit > 0) {
+            str += Numbers[unit];
+        }
+    }
+
+    return str;
 };
 
 lz.getMoneyStr = function (money) {

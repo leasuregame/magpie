@@ -322,7 +322,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: { // 每日单次高级魔石抽卡次数，判断是否获得卡魂
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -384,7 +385,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.buyPlan = function() {
-        var plan = { buy: false, flag: 0 };
+        var plan = { buy: true, flag: 0 };
         this.plan = plan;
     };
 
@@ -455,7 +456,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: {
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         };
 
         var pass = utility.deepCopy(this.pass);

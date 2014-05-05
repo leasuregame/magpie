@@ -37,7 +37,7 @@ var Payment = Entity.extend({
         ppAdapter.PPExchangeGoods(
             product.cash,
             this._lastOrder,
-            product.product_id,
+            product.name,
             player.get("id"),
             0
         );

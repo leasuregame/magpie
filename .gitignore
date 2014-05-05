@@ -18,6 +18,7 @@ client/cocos2d-x-2.2.1/projects/Magpie/proj.android/libs
 client/cocos2d-x-2.2.1/projects/Magpie/proj.android/bin
 client/cocos2d-x-2.2.1/projects/Magpie/proj.android/gen
 client/cocos2d-x-2.2.1/projects/MagpieTest
+client/cocos2d-x-2.2.1/projects/Magpie/proj.ios/lib/YY/SDK/libyygamesdk_universal.a
 fileLookup.plist
 table.json
 .idea

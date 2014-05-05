@@ -217,6 +217,19 @@ var Boss = Entity.extend({
         return this._bossList;
     },
 
+    isCanAttack: function (bossId) {
+        cc.log("Boss isCanAttack: " + bossId);
+        var boss = this.getBoss(bossId);
+
+        if (boss.timeLeft == 0) {
+            return false;
+        } else if (boss.status == BOSS_STATUS_DIE || boss.status == BOSS_STATUS_FLEE || boss.stattus == BOSS_STATUS_TIMEOUT) {
+            return false;
+        }
+
+        return true;
+    },
+
     attack: function (cb, bossId, inspireCount) {
         cc.log("Boss attack");
 
@@ -485,7 +498,15 @@ var Boss = Entity.extend({
     },
 
     removeCdNeedGold: function () {
-        return Math.min(200, this._rmTimerCount * 20);
+        var needGold = 0;
+        if(this._rmTimerCount <= 10) {
+            needGold = 20;
+        } else if(this._rmTimerCount <= 20) {
+            needGold = 30;
+        } else {
+            needGold = 50;
+        }
+        return needGold;
     },
 
     _cdChangeEvent: function () {

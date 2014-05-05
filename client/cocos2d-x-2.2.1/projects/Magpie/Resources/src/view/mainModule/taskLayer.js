@@ -55,7 +55,9 @@ var TaskLayer = cc.Layer.extend({
         this._locate = this._taskLayerFit.locatePoints;
         this.setTouchEnabled(true);
 
-        this._index = gameData.task.getChapter();
+        var task = gameData.task;
+        this._index = task.currentChapter || task.getChapter();
+        task.currentChapter = 0;
 
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,

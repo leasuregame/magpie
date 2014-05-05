@@ -287,8 +287,8 @@ var fit4Iphone4 = {
             "skillDescriptionLabelPoint": cc.p(100, 352),
             "skillRateIconPoint": cc.p(100, 272),
             "skillHarmIconPoint": cc.p(100, 312),
-            "skillRateLabelPoint": cc.p(240, 270),
-            "skillHarmLabelPoint": cc.p(240, 310),
+            "skillRateLabelPoint": cc.p(220, 270),
+            "skillHarmLabelPoint": cc.p(220, 310),
             "skillLvIconPoint": cc.p(500, 312),
             "skillLvLabelPoint": cc.p(605, 310),
             "tipLabelPoint": cc.p(250, 392),
@@ -830,6 +830,12 @@ var fit4Iphone4 = {
             "friendMessageIconPoint": cc.p(254, 912),
             "systemMessageIconPoint": cc.p(403, 912),
             "bgSpritePoint": cc.p(40, 106)
+        },
+        "newAreaRewardLayer": {
+            "tipLabelPoint": cc.p(360, 821),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 640),
+            "scrollViewSize": cc.size(640, 640),
+            "scrollViewPoint": cc.p(40, 130)
         },
         "newYearLayer": {
             "bgSpritePoint": cc.p(48, 108),

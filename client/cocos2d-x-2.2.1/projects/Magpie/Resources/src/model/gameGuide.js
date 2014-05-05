@@ -54,8 +54,28 @@ var CARD_LINEUP_LIMIT = [
     {
         "1": {
             "tableName": "card_1",
-            "tip": "援军卡组已开启，现在可上阵新的卡牌",
-            "name": "succorCardsGuide"
+            "tip": "第6个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card6Guide"
+        },
+        "2": {
+            "tableName": "card_2",
+            "tip": "第7个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card7Guide"
+        },
+        "3": {
+            "tableName": "card_3",
+            "tip": "第8个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card8Guide"
+        },
+        "4": {
+            "tableName": "card_4",
+            "tip": "第9个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card9Guide"
+        },
+        "5": {
+            "tableName": "card_5",
+            "tip": "第10个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card10Guide"
         }
     }
 ];
@@ -85,6 +105,23 @@ var gameGuide = {
     _lotteryGuide: false,
     _bossGuide: false,
     _succorCardsGuide: false,
+
+    init: function () {
+        cc.log("gameGuide init");
+
+        this._tournamentGuide = false;
+        this._passGuide = false;
+        this._instancesGuide = false;
+        this._treasureHuntGuide = false;
+        this._rankGuide = false;
+        this._card3Guide = false;
+        this._card4Guide = false;
+        this._card5Guide = false;
+        this._isFirstPassiveSkillAfresh = false;
+        this._lotteryGuide = false;
+        this._bossGuide = false;
+        this._succorCardsGuide = false;
+    },
 
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];

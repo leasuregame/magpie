@@ -38,3 +38,5 @@ shared/version.json
 gm/config/mysql.json
 shared/version.json
 game-server/config/area.json
+
+shared/whiteList.json

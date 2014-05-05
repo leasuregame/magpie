@@ -7,6 +7,8 @@ request = require 'request'
 qs = require 'querystring'
 async = require 'async'
 _string = require 'underscore.string'
+fs = require 'fs'
+path = require 'path'
 logger = require('pomelo-logger').getLogger(__filename)
 
 accountMap = {}
@@ -58,7 +60,11 @@ class Authorize
 
       
       checkDuplicatedLogin areaId, frontendId, user, sid, (err, user)->
-        cb(null, user.toJson())
+        console.log checkWhiteList(user)
+        if checkWhiteList(user)
+          cb(null, user.toJson())
+        else
+          cb({code: 501, msg: '服务器维护当中，请耐心等待！'})
 
   @TB: (args, cb) ->
     sessionId = args.sessionId
@@ -248,11 +254,31 @@ fetchUserInfoOrCreate = (account, id, data, done) ->
           logger.error('can not create user: ', id, account)
           done({code: 501, msg: '登录失败，请重新登录'})
         else 
-          done(null, u)
+          if checkWhiteList(u)
+            done(null, u)
+          else
+            done({code: 501, msg: '服务器维护当中，请耐心等待！'})          
+
     else if not err and user
       done(null, user)
     else 
       done({code: 501, msg: '登录失败，请重新登录'})
+
+
+checkWhiteList = (user) ->
+  sharedConf = app.get('sharedConf')
+  if !!sharedConf.useWhiteList
+    wpath = path.join app.getBase(), '..', 'shared', 'whiteList.json'
+    return false if !fs.existsSync(wpath)
+    try
+      list = JSON.parse fs.readFileSync(wpath)
+      console.log list, user.id, list.indexOf(user.id), list.indexOf(user.id) > -1
+      return list.indexOf(user.id) > -1
+    catch e
+      logger.error(e)
+      return false
+  else 
+    return true
 
 validToken = (token) ->
   cacheToeken = tokenMap.get(token)

@@ -252,6 +252,9 @@ class Manager
         
         cb(null, data)
 
+  @turnReward: (data, player, cb) ->
+    
+
 lineUpToObj = (lineUp) ->
   _results = {}
   if _.isString(lineUp) and lineUp isnt ''

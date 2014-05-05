@@ -283,6 +283,10 @@ var Player = (function(_super) {
             boss: {
                 count: 0,
                 found: false
+            },
+            turn: {
+                collected: 0,
+                num: 1,
             }
         },
         passLayer: 0,

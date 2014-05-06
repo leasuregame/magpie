@@ -388,6 +388,22 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.canGetTurnReward = function() {
+        return player.task.turn.collected == 15;
+    };
+
+    Player.prototype.nextTurn = function() {
+        var task = utility.deepCopy(this.task);
+        task.turn.collected = 0;
+        task.turn.num += 1;
+
+        if (task.turn.num > 5) {
+            task.turn.num = 1;
+        }
+
+        this.task = task;
+    };
+
     Player.prototype.buyPlan = function() {
         var plan = { buy: true, flag: 0 };
         this.plan = plan;

@@ -42,7 +42,7 @@ Handler::dailyReward = (msg, session, next) ->
       if err
         next(null, {code: 501, msg: '经验卡领取出错'})
       else
-        next(null, {code: 200, msg: card: cards[0]})
+        next(null, {code: 200, msg: card: cards[0], cardIds: cards.map (c) -> c.id})
 
 Handler::buyPlan = (msg, session, next) ->
   playerId = session.get('playerId')

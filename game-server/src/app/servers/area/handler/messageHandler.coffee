@@ -381,14 +381,14 @@ Handler::accept = (msg, session, next) ->
           friendExist = true
           cb(null, null)
         else if senderFriends.length >= res.friendsCount
-          dao.message.update {
-            where: id: msgId
-            data: status: configData.message.MESSAGESTATUS.REJECT
-          }, (err, res) ->
-            if err
-              cb(err)
-            else
-              cb({code: 501, msg: '对方好友已达上限'})
+          # dao.message.update {
+          #   where: id: msgId
+          #   data: status: configData.message.MESSAGESTATUS.REJECT
+          # }, (err, res) ->
+          #   if err
+          #     cb(err)
+          #   else
+          cb({code: 501, msg: '对方好友已达上限'})
         else
           dao.friend.create {
             data:

@@ -378,15 +378,16 @@ Handler::mysticalPass = (msg, session, next) ->
 
 countSpirit = (player, bl, type) ->
   totalSpirit = 0
-  _.each bl.cards, (v, k) ->
-    return if k <= 6
-    
-    if v.boss?
-      v.spirit = configData.spirit.SPIRIT[type].BOSS
-      totalSpirit += configData.spirit.SPIRIT[type].BOSS
-    else
-      v.spirit = configData.spirit.SPIRIT[type].OTHER
-      totalSpirit += configData.spirit.SPIRIT[type].OTHER
+  for card in bl.cards
+    for k, v of card
+      continue if k <= 6
+      
+      if v.boss?
+        v.spirit = configData.spirit.SPIRIT[type].BOSS
+        totalSpirit += configData.spirit.SPIRIT[type].BOSS
+      else
+        v.spirit = configData.spirit.SPIRIT[type].OTHER
+        totalSpirit += configData.spirit.SPIRIT[type].OTHER
 
   bl.rewards.totalSpirit = totalSpirit if bl.winner is 'own'
 

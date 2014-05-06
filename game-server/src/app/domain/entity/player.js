@@ -389,7 +389,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.canGetTurnReward = function() {
-        return player.task.turn.collected == 15;
+        return this.task.turn.collected == 15;
     };
 
     Player.prototype.nextTurn = function() {

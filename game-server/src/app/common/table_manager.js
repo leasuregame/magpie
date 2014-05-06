@@ -85,6 +85,12 @@ module.exports = {
         };
         return find ? this._data[find] : find;
       },
+      find: function(field, value) {
+        var filter = function(id, row) {
+          return row[field] == value;
+        };
+        return this.findOne(filter);
+      },
       map: function(fn) {
         var _res = [];
         for (var id in this._data) {

@@ -253,7 +253,26 @@ class Manager
         cb(null, data)
 
   @turnReward: (data, player, cb) ->
-    
+    if not player.task.turn
+      player.task.turn = collected: 0, num: 1
+
+    types = table.getTable('trun_reward_type')
+    task = utility.deepCopy(player.task)
+    if data.result is 'box'
+      id = types.find('reward_type', 'card')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id))
+    if data.result is 'fight'
+      id = types.find('reward_type', 'exp_card')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id))
+    if data.battle_log.rewards.totalSpirit > 0
+      id = types.find('reward_type', 'spirit')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id))
+    if data.battle_log.rewards.gold > 0
+      id = type.find('reward_type', 'gold')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id))
+
+    player.task = task;
+    cb(null, data)
 
 lineUpToObj = (lineUp) ->
   _results = {}

@@ -621,6 +621,18 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(620, 620),
             "scrollViewPoint": cc.p(40, 140)
         },
+        "growthPlanLayer": {
+            "bgLabelScaleY": 1,
+            "topIconPoint": cc.p(360, 740),
+            "go2PaymentItemPoint": cc.p(270, 615),
+            "buyItemPoint": cc.p(470, 615),
+            "buyTipLabelPoint": cc.p(540, 635),
+            "rewardBgLabelPoint": cc.p(360, 350),
+            "rewardBgLabelScaleY": 0.75,
+            "scrollViewLayerRect": cc.rect(0, 0, 600, 450),
+            "scrollViewSize": cc.size(600, 450),
+            "scrollViewPoint": cc.p(56, 124)
+        },
         "instancesLayer": {
             "headIconPoint": cc.p(40, 874),
             "taskLayerItemPoint": cc.p(111, 914),

@@ -28,6 +28,7 @@ var gameMark = {
     _tournament: false,
     _bossList: false,
     _newAreaReward: false,
+    _growthPlan: false,
 
     init: function () {
         cc.log("gameMark init");
@@ -51,6 +52,7 @@ var gameMark = {
         this._tournament = false;
         this._bossList = false;
         this._newAreaReward = false;
+        this._growthPlan = false;
     },
 
     getActivityMark: function () {
@@ -58,7 +60,8 @@ var gameMark = {
 
         if (!this._activity) {
             this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
-                this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() || this.getNewAreaReward();
+                this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() ||
+                this.getNewAreaReward() || this.getGrowthPlan();
         }
 
         return this._activity;
@@ -504,6 +507,35 @@ var gameMark = {
         cc.log("gameMark updateNewAreaReward");
 
         this._newAreaReward = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getGrowthPlan: function () {
+        cc.log("gameMark getGrowthPlan");
+
+        if (!this._growthPlan) {
+            var activity = gameData.activity;
+            if (gameData.player.get("vip") < 2 || !activity.get("isBuyPlan")) {
+                return false;
+            }
+
+            var table = outputTables.growth_plan.rows;
+            for (var id in table) {
+                if (activity.getStateById(TYPE_GROWTH_PLAN_REWARD, id) == NOT_GOT_REWARD) {
+                    this._growthPlan = true;
+                    break;
+                }
+            }
+        }
+
+        return this._growthPlan;
+    },
+
+    updateGrowPlan: function (mark) {
+        cc.log("gameMark updateGrowthPlan");
+
+        this._growthPlan = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }

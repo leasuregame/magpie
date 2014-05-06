@@ -131,6 +131,7 @@ var appFiles = [
     'src/view/mainModule/growthPlanLayer.js',
     'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/invitationLayer.js',
+    'src/view/mainModule/vipDailyRewardLayer.js',
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/amountLayer.js',
     'src/view/mainModule/battleMessageLayer.js',

@@ -29,6 +29,7 @@ var gameMark = {
     _bossList: false,
     _newAreaReward: false,
     _growthPlan: false,
+    _vipDailyReward: false,
 
     init: function () {
         cc.log("gameMark init");
@@ -53,6 +54,7 @@ var gameMark = {
         this._bossList = false;
         this._newAreaReward = false;
         this._growthPlan = false;
+        this._vipDailyReward = false;
     },
 
     getActivityMark: function () {
@@ -61,7 +63,7 @@ var gameMark = {
         if (!this._activity) {
             this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
                 this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() ||
-                this.getNewAreaReward() || this.getGrowthPlan();
+                this.getNewAreaReward() || this.getGrowthPlan() || this.getVipDailyReward();
         }
 
         return this._activity;
@@ -536,6 +538,26 @@ var gameMark = {
         cc.log("gameMark updateGrowthPlan");
 
         this._growthPlan = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getVipDailyReward: function() {
+        cc.log("gameMark getVipDailyReward");
+
+        if(!this._vipDailyReward) {
+            if(gameData.player.get("vip") > 0 && gameData.activity.get("vipLoginReward")) {
+                this._vipDailyReward = true;
+            }
+        }
+
+        return this._vipDailyReward;
+    },
+
+    updateVipDailyReward: function(mark) {
+        cc.log("gameMark updateVipDailyReward");
+
+        this._vipDailyReward = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }

@@ -12,7 +12,7 @@
  * */
 
 
-var titleIcons = ["icon261", "icon344", "icon433", "icon262", "icon263", "icon429", "icon265"];
+var titleIcons = ["icon261", "icon344", "icon433", "icon262", "icon263", "icon429", "icon442", "icon265"];
 
 var ActivityLayer = cc.Layer.extend({
     _activityLayerFit: null,
@@ -24,6 +24,7 @@ var ActivityLayer = cc.Layer.extend({
         PowerRewardLayer,
         GoldRewardLayer,
         NewAreaRewardLayer,
+        VipDailyRewardLayer,
         InvitationLayer
     ],
     _selectIcon: null,
@@ -162,6 +163,7 @@ var ActivityLayer = cc.Layer.extend({
         this._mark[3].setVisible(gameMark.getPowerRewardMark());
         this._mark[4].setVisible(gameMark.getGoldRewardMark());
         this._mark[5].setVisible(gameMark.getNewAreaReward());
+        this._mark[6].setVisible(gameMark.getVipDailyReward());
     }
 });
 

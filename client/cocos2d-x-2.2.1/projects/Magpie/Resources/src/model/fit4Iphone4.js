@@ -1442,6 +1442,13 @@ var fit4Iphone4 = {
             "closeItemPoint": cc.p(605, 760),
             "speakerNumPoint": cc.p(127, 711)
         },
+        "vipDailyRewardLayer": {
+            "bgLabelScaleY": 1,
+            "titleIconPoint": cc.p(40, 790),
+            "cardIconPoint": cc.p(520, 585),
+            "tipsIconPoint": cc.p(40, 545),
+            "rewardBgLabelPoint": cc.p(360, 255)
+        },
         "vipLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headLabelPoint": cc.p(40, 817),

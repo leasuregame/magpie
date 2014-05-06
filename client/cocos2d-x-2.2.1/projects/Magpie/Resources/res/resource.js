@@ -753,6 +753,11 @@ var main_scene_image = {
     icon435: main_scene_path + "icon435.png",
     icon436: main_scene_path + "icon436.png",
     icon437: main_scene_path + "icon437.png",
+    icon438: main_scene_path + "icon438.png",
+    icon439: main_scene_path + "icon439.png",
+    icon440: main_scene_path + "icon440.png",
+    icon441: main_scene_path + "icon441.png",
+    icon442: main_scene_path + "icon442.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",

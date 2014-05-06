@@ -11,7 +11,7 @@ var app = pomelo.createApp({
 app.set('env', process.argv[3] || 'development');
 //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
 app.set('mysql', require('../config/mysql')[process.argv[3] || 'development']['userdb']);
-app.set('dbClient', require('../app/dao/mysql/mysql').init(app));
+app.set('dbClient', new require('../app/dao/mysql/mysql')(app));
 var dao = require('../app/dao').init('mysql');
 app.set('dao', dao);
 

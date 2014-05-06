@@ -17,9 +17,46 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-###
-探索
-###
+Handler::getTurnReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+    (res, cb) ->
+      player = res
+      if not player.canGetTurnReward()
+        return cb({code: 501, msg: '还没有集齐一轮奖励哦'})
+
+      reward = table.getTableItem('turn_reward', player.task.turn.num)
+      if not reward
+        return cb({code: 501, msg: '找不到奖励'})
+
+      rd_val = _.random(reward.num_min, reward.num_max)
+      player.increase reward.type, rd_val
+
+      base_reward = getBaseRewardByLevel player.lv
+      if not base_reward
+        return cb({code: 501, msg: '找不到奖励'})
+
+      player.increase 'money', base_reward.money
+      player.addPower base_reward.powerValue
+      playerManager.addExpCardFor player, base_reward.exp_card, cb
+  ], (err, cards) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg})
+
+    player.nextTurn()
+    player.save()
+    next(null, {code: 200, msg: card: cards[0], cardIds: cards.map (c) -> c.id})
+
+getBaseRewardByLevel = (lv) ->
+  items = table.getTable('turn_reward_base').filter (id, row) -> row.lv <= lv
+  items.sort (x, y) -> x.lv < y.lv
+
+  items[0]
+
 Handler::explore = (msg, session, next) ->
 
   playerId = session.get('playerId') or msg.playerId

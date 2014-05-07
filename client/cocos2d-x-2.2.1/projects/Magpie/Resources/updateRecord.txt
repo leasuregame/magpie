@@ -1,6 +1,41 @@
 更新记录表
 
+----------v1.4.8版本----------------------------------------------------------------------------------------------------
+
+----------v1.4.8版本----------------------------------------------------------------------------------------------------
+
 ----------v1.4.7版本----------------------------------------------------------------------------------------------------
+替换更新：
+res/main/bg23.png
+
+resYY/main/bg23.png
+
+新加资源：
+res/main/button83.png
+res/main/button83s.png
+res/main/icon433.png
+res/main/icon434.png
+res/main/icon435.png
+res/main/icon436.png
+res/main/icon437.png
+res/main/icon438.png
+res/main/icon439.png
+res/main/icon440.png
+res/main/icon441.png
+res/main/icon442.png
+
+resYY/main/button83.png
+resYY/main/button83s.png
+resYY/main/icon433.png
+resYY/main/icon434.png
+resYY/main/icon435.png
+resYY/main/icon436.png
+resYY/main/icon437.png
+resYY/main/icon438.png
+resYY/main/icon439.png
+resYY/main/icon440.png
+resYY/main/icon441.png
+resYY/main/icon442.png
 
 ----------v1.4.7版本----------------------------------------------------------------------------------------------------
 

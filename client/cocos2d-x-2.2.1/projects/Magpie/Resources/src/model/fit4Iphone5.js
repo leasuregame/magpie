@@ -1418,7 +1418,8 @@ var fit4Iphone5 = {
             "horizontalIcon2Point": cc.p(322, 196),
             "verticalIcon1Point": cc.p(74, 544),
             "verticalIcon2Point": cc.p(569, 544),
-            "verticalIconScale": 1
+            "verticalIconScale": 1,
+            "helpItemPoint": cc.p(580, 1096)
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(320, 580),

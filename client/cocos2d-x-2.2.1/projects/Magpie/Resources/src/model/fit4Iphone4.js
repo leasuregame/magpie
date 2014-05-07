@@ -541,7 +541,9 @@ var fit4Iphone4 = {
             "rewardEffectPoint": cc.p(360, 800),
             "lvIconPoint": cc.p(124, 709),
             "playerLvLabelPoint": cc.p(75, 706),
-            "rewardEffectUrl": "animation_1"
+            "rewardEffectUrl": "animation_1",
+            "prePageItemPoint": cc.p(565, 250),
+            "nextPageItemPoint": cc.p(635, 250)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1415,7 +1417,8 @@ var fit4Iphone4 = {
             "horizontalIcon2Point": cc.p(362, 165),
             "verticalIcon1Point": cc.p(114, 464),
             "verticalIcon2Point": cc.p(609, 464),
-            "verticalIconScale": 0.835
+            "verticalIconScale": 0.835,
+            "helpItemPoint": cc.p(620, 920),
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(360, 492),

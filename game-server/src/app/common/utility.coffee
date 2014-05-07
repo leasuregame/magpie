@@ -25,10 +25,9 @@ Utility =
       _rates = []
       _r = 0
       for r in rates
-        _rates.push _r += r
+        _rates.push _r += parseFloat r
 
       rd = _.random(1, maxVal * 100)
-
       for r, i in _rates
         if rd <= r * 100
           return values[i]

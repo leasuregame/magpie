@@ -21,13 +21,14 @@ Handler::getTurnReward = (msg, session, next) ->
   playerId = session.get('playerId')
 
   player = null
+  data = {}
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res, cb) ->
       player = res
       if not player.canGetTurnReward()
-        return cb({code: 501, msg: '还没有集齐一轮奖励哦'})
+        return cb({code: 501, msg: '亲,还没有集齐一轮奖励哦'})
 
       reward = table.getTableItem('turn_reward', player.task.turn.num)
       if not reward
@@ -35,6 +36,7 @@ Handler::getTurnReward = (msg, session, next) ->
 
       rd_val = _.random(reward.num_min, reward.num_max)
       player.increase reward.type, rd_val
+      data[reward.type] = rd_val
 
       base_reward = getBaseRewardByLevel player.lv
       if not base_reward
@@ -42,18 +44,21 @@ Handler::getTurnReward = (msg, session, next) ->
 
       player.increase 'money', base_reward.money
       player.addPower base_reward.powerValue
+      data.money = base_reward.money
+      data.power = base_reward.powerValue
       playerManager.addExpCardFor player, base_reward.exp_card, cb
   ], (err, cards) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
+    data.cards = card: cards[0], ids: cards.map (c) -> c.id
     player.nextTurn()
     player.save()
-    next(null, {code: 200, msg: card: cards[0], cardIds: cards.map (c) -> c.id})
+    next(null, {code: 200, msg: reward: data})
 
 getBaseRewardByLevel = (lv) ->
   items = table.getTable('turn_reward_base').filter (id, row) -> row.lv <= lv
-  items.sort (x, y) -> x.lv < y.lv
+  items.sort (x, y) -> y.lv - x.lv
 
   items[0]
 

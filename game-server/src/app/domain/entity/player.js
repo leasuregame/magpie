@@ -1239,7 +1239,7 @@ var Player = (function(_super) {
             id: this.task.id,
             progress: this.task.progress,
             mark: this.task.mark,
-            turn: this.task.turn
+            collected: this.task.turn != null ? this.task.turn.collected : 0
         };
     };
 

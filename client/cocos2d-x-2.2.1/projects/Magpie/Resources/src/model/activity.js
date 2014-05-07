@@ -10,6 +10,7 @@
 var TYPE_GOLD_REWARD = "goldReward";
 var TYPE_RECHARGE_REWARD = "rechargeReward";
 var TYPE_LOGIN_COUNT_REWARD = "loginCountReward";
+var TYPE_GROWTH_PLAN_REWARD = "growthPlanPlan";
 
 var GOLD_RECEIVE = 1;
 var GOLD_NO_RECEIVE = 0;
@@ -25,6 +26,7 @@ var ALREADY_GOT_REWARD = 2;     //已经领取奖励
 var RECEIVE_LOGIN_REWARD = "login";
 var RECEIVE_GIFT_REWARD = "recharge";
 var RECEIVE_LOGIN_COUNT_REWARD = "loginCount";
+var RECEIVE_GROWTH_PLAN_REWARD = "growthPlan";
 
 var Activity = Entity.extend({
     _goldReward: {},
@@ -32,6 +34,9 @@ var Activity = Entity.extend({
     _rechargeReward: {},
     _goldRewardList: [],
     _loginCountReward: {},
+    _growthPlanReward: {},
+    _isBuyPlan: false,
+    _vipLoginReward: false,
 
     init: function () {
         cc.log("Activity init");
@@ -40,6 +45,9 @@ var Activity = Entity.extend({
         this._rechargeReward = {};
         this._hasLoginReward = false;
         this._loginCountReward = {};
+        this._growthPlanReward = {};
+        this._isBuyPlan = false;
+        this._vipLoginReward = false;
 
         var rows = outputTables.player_upgrade_reward.rows;
         var index = 0;
@@ -66,9 +74,16 @@ var Activity = Entity.extend({
         gameMark.updatePowerRewardMark(data.canGetPower);
 
         this.updateLevelRewardFlag(data.levelReward);
-        this.updateRechargeFlag(data.rechargeFlag);
+        this.updateRechargeFlag(data.rechargeFlag)
+
         if (data.loginInfo) {
             this.updateLoginCountFlag(data.loginInfo);
+        }
+
+        this.updateGrowthPlanFlag(data.plan);
+
+        if (data.vipLoginReward) {
+            this.set("vipLoginReward", data.vipLoginReward);
         }
     },
 
@@ -198,6 +213,35 @@ var Activity = Entity.extend({
 
         cc.log(this._loginCountReward);
 
+    },
+
+    updateGrowthPlanFlag: function (growthPlan) {
+        cc.log("Activity updateGrowthPlanFlag: ");
+        cc.log(growthPlan);
+
+        this._isBuyPlan = growthPlan.buy;
+        var flag = growthPlan.flag;
+
+        var table = outputTables.growth_plan.rows;
+        var lv = gameData.player.get("lv");
+
+        var that = this;
+        for (var id in table) {
+            if (!that._isBuyPlan) {
+                that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, NO_ATTAIN_REWARD);
+            } else {
+                var offset = (id - 1) % EACH_NUM_BIT;
+                if ((flag >> offset & 1) == 1) {
+                    that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, ALREADY_RECHARGE_REWARD);
+                } else {
+                    if (lv < table[id].lv) {
+                        that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, NO_ATTAIN_REWARD);
+                    } else {
+                        that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, NOT_GOT_REWARD);
+                    }
+                }
+            }
+        }
     },
 
     getPowerReward: function (cb) {
@@ -372,6 +416,99 @@ var Activity = Entity.extend({
         });
     },
 
+    buyPlan: function (cb) {
+        cc.log("Activity buyPlan");
+
+        var that = this;
+        lz.server.request("area.vipHandler.buyPlan", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyPlan success");
+
+                that.set("isBuyPlan", true);
+                gameData.player.set("gold", data.msg.gold);
+                gameMark.updateGrowPlan(false);
+
+                TipLayer.tip("购买成功");
+
+                cb();
+
+            } else {
+                cc.log("buyPlan fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    getPlanReward: function (id, cb) {
+        cc.log("Activity getPlanReward: " + id);
+
+        var that = this;
+        lz.server.request("area.vipHandler.getPlanReward", {
+            id: id
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("getPlanReward success");
+
+                that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, ALREADY_GOT_REWARD);
+                gameData.player.set("gold", data.msg.gold);
+                gameMark.updateGrowPlan(false);
+                cb();
+            } else {
+                cc.log("getPlanReward fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+
+    },
+
+    getVipDailyReward: function (cb) {
+        cc.log("Activity getVipDailyReward");
+
+        var that = this;
+        lz.server.request("area.vipHandler.dailyReward", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("getVipDailyReward success");
+
+                that.set("vipLoginReward", false);
+
+                var player = gameData.player;
+                var table = outputTables.vip_daily_reward.rows[player.get("vip")];
+                var rewards = {};
+
+                for (var key in table) {
+                    if (key != "id") {
+                        if (key == "exp_card") {
+                            var card = data.msg.card;
+                            var ids = data.msg.cardIds;
+                            var len = ids.length;
+                            for (var i = 0; i < len; i++) {
+                                card.id = ids[i];
+                                gameData.cardList.push(Card.create(card));
+                            }
+
+                        } else {
+                            player.add(key, table[key]);
+                        }
+                        rewards[key] = table[key];
+                    }
+                }
+
+                gameMark.updateVipDailyReward(false);
+                cb(rewards);
+
+            } else {
+                cc.log("getVipDailyReward fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
     _changeStateById: function (type, id, state) {
         if (type == TYPE_GOLD_REWARD) {
             this._goldReward[id] = state;
@@ -379,6 +516,8 @@ var Activity = Entity.extend({
             this._rechargeReward[id] = state;
         } else if (type == TYPE_LOGIN_COUNT_REWARD) {
             this._loginCountReward[id] = state;
+        } else if (type == TYPE_GROWTH_PLAN_REWARD) {
+            this._growthPlanReward[id] = state;
         } else {
             cc.log("类型出错！！！");
         }
@@ -391,6 +530,8 @@ var Activity = Entity.extend({
             return this._rechargeReward[id];
         } else if (type == TYPE_LOGIN_COUNT_REWARD) {
             return this._loginCountReward[id];
+        } else if (type == TYPE_GROWTH_PLAN_REWARD) {
+            return this._growthPlanReward[id];
         } else {
             cc.log("类型出错！！！");
             return null;

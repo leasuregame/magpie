@@ -624,6 +624,8 @@ changeGroupNameAndSort = (messages) ->
     items.sort (x, y) -> x.createTime < y.createTime
     if n is 'system'
       items.sort (x, y) -> x.status > y.status
+      console.log('system message: ', items.length)
+      console.log(items)
     else if n is 'friend'
       copyItems = _.clone(items)
       newItems = []

@@ -621,9 +621,9 @@ changeGroupNameAndSort = (messages) ->
       results[name] = results[name].concat(v)
 
   for n, items of results
-    items.sort (x, y) -> x.createTime < y.createTime
+    items.sort (x, y) -> y.createTime - x.createTime
     if n is 'system'
-      items.sort (x, y) -> x.status > y.status
+      items.sort (x, y) -> x.status - y.status
     else if n is 'friend'
       copyItems = _.clone(items)
       newItems = []

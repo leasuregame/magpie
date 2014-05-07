@@ -374,6 +374,11 @@ var Card = (function(_super) {
     Card.prototype.bornPassiveSkill = function() {
         var pss = _.clone(this.passiveSkills);
         var star = this.star;
+
+        if (pss.length == 0) {
+            pss = [{id: 1, items: []}, {id: 2, items: []}, {id: 3, items: []}];
+        }
+
         pss.forEach(function(group) {
             group = new PassiveSkillGroup(group).create(star).toJson();
         });

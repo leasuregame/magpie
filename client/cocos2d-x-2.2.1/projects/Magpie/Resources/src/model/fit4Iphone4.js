@@ -541,7 +541,9 @@ var fit4Iphone4 = {
             "rewardEffectPoint": cc.p(360, 800),
             "lvIconPoint": cc.p(124, 709),
             "playerLvLabelPoint": cc.p(75, 706),
-            "rewardEffectUrl": "animation_1"
+            "rewardEffectUrl": "animation_1",
+            "prePageItemPoint": cc.p(565, 250),
+            "nextPageItemPoint": cc.p(635, 250)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -620,6 +622,18 @@ var fit4Iphone4 = {
             "scrollViewLayerRect": cc.rect(0, 0, 620, 620),
             "scrollViewSize": cc.size(620, 620),
             "scrollViewPoint": cc.p(40, 140)
+        },
+        "growthPlanLayer": {
+            "bgLabelScaleY": 1,
+            "topIconPoint": cc.p(360, 740),
+            "go2PaymentItemPoint": cc.p(270, 615),
+            "buyItemPoint": cc.p(470, 615),
+            "buyTipLabelPoint": cc.p(540, 635),
+            "rewardBgLabelPoint": cc.p(360, 350),
+            "rewardBgLabelScaleY": 0.75,
+            "scrollViewLayerRect": cc.rect(0, 0, 600, 450),
+            "scrollViewSize": cc.size(600, 450),
+            "scrollViewPoint": cc.p(56, 124)
         },
         "instancesLayer": {
             "headIconPoint": cc.p(40, 874),
@@ -1403,7 +1417,8 @@ var fit4Iphone4 = {
             "horizontalIcon2Point": cc.p(362, 165),
             "verticalIcon1Point": cc.p(114, 464),
             "verticalIcon2Point": cc.p(609, 464),
-            "verticalIconScale": 0.835
+            "verticalIconScale": 0.835,
+            "helpItemPoint": cc.p(620, 920),
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(360, 492),
@@ -1429,6 +1444,13 @@ var fit4Iphone4 = {
             "scrollViewHeight": 470,
             "closeItemPoint": cc.p(605, 760),
             "speakerNumPoint": cc.p(127, 711)
+        },
+        "vipDailyRewardLayer": {
+            "bgLabelScaleY": 1,
+            "titleIconPoint": cc.p(40, 790),
+            "cardIconPoint": cc.p(520, 585),
+            "tipsIconPoint": cc.p(40, 545),
+            "rewardBgLabelPoint": cc.p(360, 255)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(40, 106),

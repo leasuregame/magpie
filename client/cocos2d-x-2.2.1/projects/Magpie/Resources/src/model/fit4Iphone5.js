@@ -620,6 +620,18 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(620, 780),
             "scrollViewPoint": cc.p(0, 140)
         },
+        "growthPlanLayer": {
+            "bgLabelScaleY": 1.23,
+            "topIconPoint": cc.p(320, 900),
+            "go2PaymentItemPoint": cc.p(230, 760),
+            "buyItemPoint": cc.p(430, 760),
+            "buyTipLabelPoint": cc.p(500, 780),
+            "rewardBgLabelPoint": cc.p(320, 420),
+            "rewardBgLabelScaleY": 0.95,
+            "scrollViewLayerRect": cc.rect(0, 0, 600, 560),
+            "scrollViewSize": cc.size(600, 560),
+            "scrollViewPoint": cc.p(16, 140)
+        },
         "instancesLayer": {
             "headIconPoint": cc.p(0, 1050),
             "taskLayerItemPoint": cc.p(71, 1090),
@@ -1406,7 +1418,8 @@ var fit4Iphone5 = {
             "horizontalIcon2Point": cc.p(322, 196),
             "verticalIcon1Point": cc.p(74, 544),
             "verticalIcon2Point": cc.p(569, 544),
-            "verticalIconScale": 1
+            "verticalIconScale": 1,
+            "helpItemPoint": cc.p(580, 1096)
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(320, 580),
@@ -1432,6 +1445,13 @@ var fit4Iphone5 = {
             "scrollViewHeight": 590,
             "closeItemPoint": cc.p(565, 918),
             "speakerNumPoint": cc.p(87, 861)
+        },
+        "vipDailyRewardLayer": {
+            "bgLabelScaleY": 1.23,
+            "titleIconPoint": cc.p(0, 900),
+            "cardIconPoint": cc.p(480, 695),
+            "tipsIconPoint": cc.p(0, 655),
+            "rewardBgLabelPoint": cc.p(320, 305)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(0, 106),

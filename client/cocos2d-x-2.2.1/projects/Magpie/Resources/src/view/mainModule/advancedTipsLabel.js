@@ -7,6 +7,7 @@ var TYPE_PASSIVE_SKILL_AFRESH_TIPS = 1;
 var TYPE_PASSIVE_SKILL_OPEN_TIPS = 2;
 var TYPE_REMOVE_CD_TIPS = 3;
 var TYPE_EXCHANGE_CARD_TIPS = 4;
+var TYPE_BUY_GROWTH_PLAN = 5;
 
 var spendFailTip = {
     gold: "魔石不足",
@@ -95,6 +96,9 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 break;
             case TYPE_EXCHANGE_CARD_TIPS:
                 this._initExchangeCardTips();
+                break;
+            case TYPE_BUY_GROWTH_PLAN:
+                this._initBuyGrowthPlanTips();
                 break;
         }
     },
@@ -204,6 +208,37 @@ var AdvancedTipsLabel = LazyLayer.extend({
         this._spend = {
             type: "fragment",
             num: needFragment
+        }
+    },
+
+    _initBuyGrowthPlanTips: function () {
+        cc.log("AdvancedTipsLabel _initBuyGrowthPlanTips");
+
+        var needGold = 1000;
+
+        var tipsLabel = ColorLabelTTF.create(
+            {
+                string: "是否确定花费" + needGold,
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            },
+            {
+                iconName: "gold",
+                scale: 0.7
+            },
+            {
+                string: "购买成长计划",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            }
+        );
+        tipsLabel.setPosition(cc.p(0, 30));
+        tipsLabel.setAnchorPoint(cc.p(0.5, 0));
+        this._frameLayer.addChild(tipsLabel);
+
+        this._spend = {
+            type: "gold",
+            num: needGold
         }
     },
 

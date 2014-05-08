@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
+  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci, -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `honor` INT(10) DEFAULT '0',
   `superHonor` INT(10) DEFAULT '0',
   `cd` VARCHAR(100) DEFAULT '{}',
+  `plan` VARCHAR(100) DEFAULT '{"buy": false, "flag": 0}',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -135,6 +136,8 @@ CREATE TABLE IF NOT EXISTS `card` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
+  `elixirHpCrit` INT(10) UNSIGNED DEFAULT '0',
+  `elixirAtkCrit` INT(10) UNSIGNED DEFAULT '0',
   `passiveSkills` VARCHAR(2500) COLLATE utf8_unicode_ci DEFAULT '',
   `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
   `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量

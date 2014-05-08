@@ -256,7 +256,8 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'cd'
+        'cd',
+        'plan'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -282,6 +283,10 @@ var Player = (function(_super) {
             boss: {
                 count: 0,
                 found: false
+            },
+            turn: {
+                collected: 0,
+                num: 1,
             }
         },
         passLayer: 0,
@@ -321,7 +326,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: { // 每日单次高级魔石抽卡次数，判断是否获得卡魂
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -375,7 +381,51 @@ var Player = (function(_super) {
         superHonor: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
+        },
+        plan: {
+            buy: false,
+            flag: 0
         }
+    };
+
+    Player.prototype.canGetTurnReward = function() {
+        return this.task.turn.collected == 15;
+    };
+
+    Player.prototype.nextTurn = function() {
+        var task = utility.deepCopy(this.task);
+        task.turn.collected = 0;
+        task.turn.num += 1;
+
+        if (task.turn.num > 5) {
+            task.turn.num = 1;
+        }
+
+        this.task = task;
+    };
+
+    Player.prototype.buyPlan = function() {
+        var plan = { buy: true, flag: 0 };
+        this.plan = plan;
+    };
+
+    Player.prototype.hasBuyPlan = function() {
+        return !!this.plan.buy;
+    };
+
+    Player.prototype.hasPlanFlag = function(id) {
+        var flag = this.plan.flag || 0;
+        return utility.hasMark(flag, id);
+    };
+
+    Player.prototype.setPlanFlag = function(id) {
+        var plan = utility.deepCopy(this.plan);
+        if (_.isUndefined(plan.flag)) {
+            plan.flag = 0;
+        }
+
+        plan.flag = utility.mark(plan.flag, id);
+        this.plan = plan;
     };
 
     Player.prototype.resetData = function() {
@@ -426,7 +476,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: {
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -1187,7 +1238,8 @@ var Player = (function(_super) {
         return {
             id: this.task.id,
             progress: this.task.progress,
-            mark: this.task.mark
+            mark: this.task.mark,
+            collected: this.task.turn != null ? this.task.turn.collected : 0
         };
     };
 

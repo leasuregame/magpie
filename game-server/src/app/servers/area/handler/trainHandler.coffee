@@ -58,6 +58,9 @@ Handler::extract = (msg, session, next) ->
       else 
         card.set('elixirHp', 0)
         card.set('elixirAtk', 0)
+        card.set('elixirHpCrit', 0)
+        card.set('elixirAtkCrit', 0)
+
         player.increase('elixir', extVal)
         player.decrease('gold', consume)
         return next(null, {code: 200, msg: {card: card.toJson(), elixir: player.elixir}})
@@ -448,8 +451,8 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.star is 7
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
 
-      if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
-        return cb({code: 501, msg: "未达到进阶等级"})
+      # if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
+      #   return cb({code: 501, msg: "未达到进阶等级"})
 
       starUpgradeData = table.getTableItem('star_upgrade', card.star)
       if not starUpgradeData
@@ -503,7 +506,7 @@ Handler::starUpgrade = (msg, session, next) ->
 
         # 获得五星卡成就
         if card.star >= 5
-          achieve.star5card(player)
+          achieve.star5card(player) if card.star is 5
           achieve.star6card(player) if card.star is 6
           achieve.star7card(player) if card.star is 7
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
@@ -756,7 +759,9 @@ Handler::useElixir = (msg, session, next) ->
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
   elixirLimit = table.getTable('elixir_limit')
-
+  critType = 0
+  critElixir = 0
+  
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -780,16 +785,21 @@ Handler::useElixir = (msg, session, next) ->
 
     # 判断暴击
     isCrit = utility.hitRate configData.elixir.useElixirCritRate
-    critType = 0
     if isCrit
       growRate = configData.elixir.growRate
       zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)
       typeMap = 30: 1, 50: 2, 100: 3
       critType =  typeMap[zf] or 0
-      elixir = parseInt elixir*(100+zf)/100
+      critElixir = parseInt elixir*zf/100
 
-    card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
-    card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
+    if type is ELIXIR_TYPE_HP
+      card.increase('elixirHpCrit', critElixir)
+      card.increase('elixirHp', elixir) 
+      
+    if type is ELIXIR_TYPE_ATK
+      card.increase('elixirAtkCrit', critElixir)
+      card.increase('elixirAtk', elixir) 
+
     player.decrease('elixir', elixir)
     
     _jobs = []
@@ -817,7 +827,9 @@ Handler::useElixir = (msg, session, next) ->
 
       result = {
         elixirHp: card.elixirHp,
+        elixirHpCrit: card.elixirHpCrit,
         elixirAtk:card.elixirAtk,
+        elixirAtkCrit: card.elixirAtkCrit,
         ability: card.ability(),
         critType: critType
       }
@@ -1000,7 +1012,7 @@ Handler::exchangeCard = (msg, session, next) ->
     if card.star >= 5
       cardNmae = table.getTableItem('cards', card.tableId).name
       msgContent = {
-        msg: player.name + '*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌',
+        msg: player.name + "*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌",
         type: 0,
         validDuration: 10 / 60
       }

@@ -205,7 +205,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var collectLabel = cc.Sprite.create(main_scene_image.icon443);
         collectLabel.setPosition(this._exploreLayerFit.collectLabelPoint);
-        this.addChild(collectLabel);
+        this.addChild(collectLabel, 2);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon444);
         goldIcon.setPosition(cc.p(50, 19));
@@ -224,10 +224,10 @@ var ExploreLayer = cc.Layer.extend({
         collectLabel.addChild(cardIcon);
 
         this._collectElement = {
-            goldIcon: goldIcon,
-            expCardIcon: expCardIcon,
-            spiritIcon: spiritIcon,
-            cardIcon: cardIcon
+            gold: goldIcon,
+            exp_card: expCardIcon,
+            spirit: spiritIcon,
+            card: cardIcon
         };
 
         // 读配置表
@@ -313,6 +313,7 @@ var ExploreLayer = cc.Layer.extend({
 
         this.update();
         this._updatePage();
+        this._updateCollect();
 
         return true;
     },
@@ -368,6 +369,10 @@ var ExploreLayer = cc.Layer.extend({
         }
 
         this._updatePage();
+
+        if (gameData.task.isCollectedAll()) {
+            this._showRewardEffect();
+        }
     },
 
     _updatePage: function () {
@@ -390,6 +395,36 @@ var ExploreLayer = cc.Layer.extend({
             storyLabel.setPosition(cc.p(0, -30 * i));
             this._descriptionLabel.addChild(storyLabel);
         }
+    },
+
+    _updateCollect: function () {
+        cc.log("ExploreLayer _updateCollect");
+
+        var table = outputTables.turn_reward_type.rows;
+        var task = gameData.task;
+
+        var key, reward;
+
+        var scaleToAction = cc.Sequence.create(
+            cc.FadeIn.create(0.2),
+            cc.ScaleTo.create(0.3, 1.2),
+            cc.ScaleTo.create(0.2, 1)
+        );
+
+        for (key in table) {
+            reward = table[key];
+
+            if (task.getCollectStateById(TYPE_NEW_COLLECT, reward.id)) {
+                var element = this._collectElement[reward["reward_type"]];
+                element.runAction(scaleToAction.clone());
+            }
+        }
+
+        for (key in table) {
+            reward = table[key];
+            this._collectElement[reward["reward_type"]].setVisible(task.getCollectStateById(TYPE_COLLECTED, reward.id));
+        }
+
     },
 
     _showRewardEffect: function () {
@@ -646,6 +681,7 @@ var ExploreLayer = cc.Layer.extend({
                         },
                         function () {
                             that.update(1);
+                            that._updateCollect();
 
                             if (!money || !exp) {
                                 next();
@@ -872,6 +908,22 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _onClickReward");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+
+        gameData.task.getTurnReward(function (reward) {
+            GiftBagLayer.pop({
+                reward: reward,
+                type: SHOW_GIFT_BAG_NO_CLOSE,
+                titleType: TYPE_EXPLORE_REWARD,
+                cb: function () {
+                    that._updateCollect();
+                    that._rewardEffect.removeFromParent();
+                    that._rewardEffect = null;
+                    lz.tipReward(reward);
+                }
+            });
+        });
     },
 
     /**

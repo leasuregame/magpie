@@ -30,9 +30,11 @@ res/main/icon444.png
 res/main/icon445.png
 res/main/icon446.png
 res/main/icon447.png
+res/main/icon448.png
 res/ccb/uiEffect110.ccbi
 res/ccb/uiEffect111.ccbi
 res/ccb/uiEffect112.ccbi
+res/ccb/uiEffect113.ccbi
 
 resYY/main/button83.png
 resYY/main/button83s.png
@@ -53,9 +55,11 @@ resYY/main/icon444.png
 resYY/main/icon445.png
 resYY/main/icon446.png
 resYY/main/icon447.png
+resYY/main/icon448.png
 resYY/ccb/uiEffect110.ccbi
 resYY/ccb/uiEffect111.ccbi
 resYY/ccb/uiEffect112.ccbi
+resYY/ccb/uiEffect113.ccbi
 
 ----------v1.4.7版本----------------------------------------------------------------------------------------------------
 

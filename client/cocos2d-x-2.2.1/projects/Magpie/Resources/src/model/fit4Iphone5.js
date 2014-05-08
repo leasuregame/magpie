@@ -540,7 +540,11 @@ var fit4Iphone5 = {
             "rewardEffectPoint": cc.p(320, 900),
             "lvIconPoint": cc.p(84, 837),
             "playerLvLabelPoint": cc.p(35, 834),
-            "rewardEffectUrl": "animation_2"
+            "rewardEffectUrl": "animation_2",
+            "prePageItemPoint": cc.p(525, 250),
+            "nextPageItemPoint": cc.p(595, 250),
+            "rewardItemPoint": cc.p(580, 990),
+            "collectLabelPoint": cc.p(320, 781)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),

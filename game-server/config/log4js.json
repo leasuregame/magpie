@@ -15,6 +15,7 @@
     "appender": {
       "type": "smtp",
       "recipients": "wuzhanghai@leasuregame.com",
+      "subject": "[Sina Error Message]",
       "sendInterval": 5,
       "transport": "SMTP",
       "SMTP": {
@@ -22,8 +23,8 @@
         "secureConnection": true,
         "port": 465,
         "auth": {
-          "user": "arthur.wu.34@gmail.com",
-          "pass": "wenjin34"
+          "user": "leasuregame@gmail.com",
+          "pass": "leasure123game"
         }
       }
     }

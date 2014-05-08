@@ -23,7 +23,8 @@
     "csv": "*",
     "pomelo-admin": "*",
     "ursa": "~0.8.0",
-    "dotenv": "*"
+    "dotenv": "*",
+    "nodemailer": "~0.6.3"
   },
   "devDependencies": {
     "underscore": "1.4.4",

@@ -60,8 +60,8 @@ Handler::getTurnReward = (msg, session, next) ->
     next(null, {code: 200, msg: reward: data})
 
 getBaseRewardByLevel = (lv) ->
-  items = table.getTable('turn_reward_base').filter (id, row) -> row.lv <= lv
-  items.sort (x, y) -> y.lv - x.lv
+  items = table.getTable('turn_reward_base').filter (id, row) -> row.lv > lv
+  items.sort (x, y) -> x.lv - y.lv
 
   items[0]
 

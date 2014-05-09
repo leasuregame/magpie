@@ -3,5 +3,7 @@
   "newYearActivity": {
     "startDate": "2014-1-28",
     "endDate": "2014-2-28"
-  }
+  },
+
+  "useWhiteList": false
 }

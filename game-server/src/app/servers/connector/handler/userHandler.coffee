@@ -110,17 +110,14 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (u, cb) =>
       user = u
       # check whether has create player in the login area
-      if _.contains user.roles, areaId
-        app.rpc.area.playerRemote.getPlayerByUserId session, {
-          areaId: areaId,
-          userId: user.id, 
-          serverId: app.getServerId()
-        }, (err, res) ->
-          if err
-            logger.error 'fail to get player by user id', err
-          player = res
-          cb()
-      else
+      app.rpc.area.playerRemote.getPlayerByUserId session, {
+        areaId: areaId,
+        userId: user.id, 
+        serverId: app.getServerId()
+      }, (err, res) ->
+        if err
+          logger.error 'fail to get player by user id', err
+        player = res
         cb()
 
     (cb) =>
@@ -142,7 +139,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
 
     ### 只有每个帐号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
     if user?.roles.length > 1 or player?.teachingStep >= 17
-      delete player.teachingStep
+      delete player.teachingStep if player?
 
     next(null, {code: 200, msg: {user: user, player: player}})
 

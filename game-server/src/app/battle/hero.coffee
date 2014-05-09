@@ -117,6 +117,7 @@ class Hero extends Module
     _dmg = parseInt(@atk * @skill.effectValue() * percent / 100)
     
     for enemy in enemys
+      continue if enemy.death()
       
       if enemy.isDodge(@)
         # 闪避

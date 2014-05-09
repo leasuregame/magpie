@@ -17,6 +17,7 @@ var ExploreLayer = cc.Layer.extend({
 
     _index: 0,
     _maxIndex: 0,
+    _pageIndex: 0,
     _sectionId: 0,
     _spiritNode: null,
     _spiritShadow: null,
@@ -24,9 +25,12 @@ var ExploreLayer = cc.Layer.extend({
     _turnRightSprite: null,
     _mapLabel: [],
     _exploreItem: null,
+    _prePageItem: null,
+    _nextPageItem: null,
     _scrollView: null,
     _element: {},
     _playerLvLabel: null,
+    _descriptionLabel: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -61,6 +65,8 @@ var ExploreLayer = cc.Layer.extend({
         if (this._sectionId == gameData.task.getSection()) {
             this._index = gameData.task.getPoints();
         }
+
+        this._pageIndex = this._getTaskId();
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg9);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -156,10 +162,31 @@ var ExploreLayer = cc.Layer.extend({
         this._exploreItem.setPosition(this._exploreLayerFit.exploreItemPoint);
         this._exploreItem.setOffset(cc.p(0, 5));
 
+        this._prePageItem = cc.MenuItemImage.create(
+            main_scene_image.button83,
+            main_scene_image.button83s,
+            this._onClickPrePage,
+            this
+        );
+        this._prePageItem.setPosition(this._exploreLayerFit.prePageItemPoint);
 
-        var menu = cc.Menu.create(backItem, this._exploreItem);
+
+        this._nextPageItem = cc.MenuItemImage.create(
+            main_scene_image.button83,
+            main_scene_image.button83s,
+            this._onClickNextPage,
+            this
+        );
+        this._nextPageItem.setRotation(180);
+        this._nextPageItem.setPosition(this._exploreLayerFit.nextPageItemPoint);
+
+        var menu = cc.Menu.create(backItem, this._exploreItem, this._prePageItem, this._nextPageItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
+
+        this._descriptionLabel = cc.Node.create();
+        this._descriptionLabel.setPosition(this._exploreLayerFit.descriptionLabelPoint);
+        this.addChild(this._descriptionLabel);
 
         // 读配置表
         var chapterTable = outputTables.task.rows;
@@ -195,10 +222,6 @@ var ExploreLayer = cc.Layer.extend({
             exploreMoneyLabel.setPosition(cc.p(425 + x, 408));
             scrollViewLayer.addChild(exploreMoneyLabel);
 
-            var descriptionLabel = cc.Node.create();
-            descriptionLabel.setPosition(this._exploreLayerFit.descriptionLabelPoint);
-            this.addChild(descriptionLabel);
-
             var powerProgress = Progress.create(null, main_scene_image.progress1, 0, 0);
             powerProgress.setPosition(cc.p(320 + x, 360));
             scrollViewLayer.addChild(powerProgress);
@@ -226,23 +249,13 @@ var ExploreLayer = cc.Layer.extend({
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 19);
-            var len = description.length;
-            for (var j = 0; j < len; ++j) {
-                var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 24);
-                storyLabel.setAnchorPoint(cc.p(0, 0));
-                storyLabel.setPosition(cc.p(0, -30 * j));
-                descriptionLabel.addChild(storyLabel);
-            }
-
             this._element[i] = {
                 powerLabel: powerLabel,
                 expLabel: expLabel,
                 progressLabel: progressLabel,
                 powerProgress: powerProgress,
                 expProgress: expProgress,
-                sectionProgress: sectionProgress,
-                descriptionLabel: descriptionLabel
+                sectionProgress: sectionProgress
             }
         }
 
@@ -257,6 +270,7 @@ var ExploreLayer = cc.Layer.extend({
         this._scrollView.setContentOffset(this._getScrollViewOffset());
 
         this.update();
+        this._updatePage();
 
         return true;
     },
@@ -302,10 +316,6 @@ var ExploreLayer = cc.Layer.extend({
         element.expProgress.setAllValue(exp, maxExp, time);
         element.sectionProgress.setAllValue(value, maxValue, time);
 
-        for (var i = 1; i <= TASK_POINTS_COUNT; ++i) {
-            this._element[i].descriptionLabel.setVisible(i == this._index);
-        }
-
         for (var i = 0; i < 3; ++i) {
             var point = this._mapLabel[i].getPosition();
 
@@ -313,6 +323,30 @@ var ExploreLayer = cc.Layer.extend({
                 point.x += 1920;
                 this._mapLabel[i].setPosition(point);
             }
+        }
+
+        this._updatePage();
+    },
+
+    _updatePage: function () {
+        cc.log("ExploreLayer _updatePage");
+
+        var sectionId = gameData.task.getSection();
+        var maxIndex = gameData.task.getPoints() + (sectionId - 1) * TASK_POINTS_COUNT;
+
+        this._prePageItem.setVisible(this._pageIndex > 1);
+        this._nextPageItem.setVisible(this._pageIndex < maxIndex);
+
+        this._descriptionLabel.removeAllChildren();
+
+        var chapterTable = outputTables.task.rows;
+        var description = lz.format(chapterTable[this._pageIndex].description, 19);
+        var len = description.length;
+        for (var i = 0; i < len; ++i) {
+            var storyLabel = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 24);
+            storyLabel.setAnchorPoint(cc.p(0, 0));
+            storyLabel.setPosition(cc.p(0, -30 * i));
+            this._descriptionLabel.addChild(storyLabel);
         }
     },
 
@@ -745,6 +779,24 @@ var ExploreLayer = cc.Layer.extend({
         gameData.task.currentChapter = Math.ceil(this._sectionId / TASK_SECTION_COUNT);
 
         MainScene.getInstance().switchLayer(InstancesLayer);
+    },
+
+    _onClickPrePage: function () {
+        cc.log("ExploreLayer _onClickPrePage");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._pageIndex--;
+        this._updatePage();
+    },
+
+    _onClickNextPage: function () {
+        cc.log("ExploreLayer _onClickNextPage");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._pageIndex++;
+        this._updatePage();
     },
 
     /**

@@ -381,14 +381,14 @@ Handler::accept = (msg, session, next) ->
           friendExist = true
           cb(null, null)
         else if senderFriends.length >= res.friendsCount
-          dao.message.update {
-            where: id: msgId
-            data: status: configData.message.MESSAGESTATUS.REJECT
-          }, (err, res) ->
-            if err
-              cb(err)
-            else
-              cb({code: 501, msg: '对方好友已达上限'})
+          # dao.message.update {
+          #   where: id: msgId
+          #   data: status: configData.message.MESSAGESTATUS.REJECT
+          # }, (err, res) ->
+          #   if err
+          #     cb(err)
+          #   else
+          cb({code: 501, msg: '对方好友已达上限'})
         else
           dao.friend.create {
             data:
@@ -621,9 +621,11 @@ changeGroupNameAndSort = (messages) ->
       results[name] = results[name].concat(v)
 
   for n, items of results
-    items.sort (x, y) -> x.createTime < y.createTime
+    items.sort (x, y) -> y.createTime - x.createTime
     if n is 'system'
-      items.sort (x, y) -> x.status > y.status
+      items.sort (x, y) -> x.status - y.status
+      console.log('system message: ', items.length)
+      console.log(items)
     else if n is 'friend'
       copyItems = _.clone(items)
       newItems = []

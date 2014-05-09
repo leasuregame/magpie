@@ -165,7 +165,6 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
-      console.log taskId, player.task, taskData
       if taskId is 500 and player.task.progress >= taskData.points
         ### 全部通关，do nothing ###
         

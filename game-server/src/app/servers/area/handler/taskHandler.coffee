@@ -162,7 +162,7 @@ Handler::updateMomoResult = (msg, session, next) ->
     task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
     player.set('task', task)
     player.save()
-    next(null, {code: 200})
+    next(null, {code: 200, msg: collected: player.task.turn.collected || 0})
 
 ###
 任务扫荡

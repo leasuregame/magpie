@@ -1420,7 +1420,7 @@ var fit4Iphone4 = {
             "verticalIcon1Point": cc.p(114, 464),
             "verticalIcon2Point": cc.p(609, 464),
             "verticalIconScale": 0.835,
-            "helpItemPoint": cc.p(620, 920),
+            "helpItemPoint": cc.p(620, 920)
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(360, 492),

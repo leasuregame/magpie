@@ -1,10 +1,26 @@
 var nameChanged = {
-    "boss": "BOSS属性配置表",
-    "BOSS属性配置表": "boss",
-    "boss_type_rate": "BOSS类型配置表",
-    "BOSS类型配置表": "boss_type_rate",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "new_card_id_map": "卡牌新旧配置表ID对应关系表",
+    "卡牌新旧配置表ID对应关系表": "new_card_id_map",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "boss_find_rate": "BOSS出现概率",
     "BOSS出现概率": "boss_find_rate",
+    "boss_type_rate": "BOSS类型配置表",
+    "BOSS类型配置表": "boss_type_rate",
+    "boss": "BOSS属性配置表",
+    "BOSS属性配置表": "boss",
     "boss_card": "Boss怪物卡牌配置表",
     "Boss怪物卡牌配置表": "boss_card",
     "boss_rank_reward": "伤害排行榜奖励配置表",
@@ -47,30 +63,14 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "achievement": "成就配置表",
-    "成就配置表": "achievement",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "new_card_id_map": "卡牌新旧配置表ID对应关系表",
-    "卡牌新旧配置表ID对应关系表": "new_card_id_map",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
+    "illegal_str": "非法字符串",
+    "非法字符串": "illegal_str",
     "first_name": "名",
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
-    "illegal_str": "非法字符串",
-    "非法字符串": "illegal_str",
     "elixir_ranking_reward": "竞技仙丹排行版奖励",
     "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
@@ -91,30 +91,16 @@ var nameChanged = {
     "精灵喊话配置表": "spiritSpeak",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
-    "skill_upgrade": "卡牌技能升级表",
-    "卡牌技能升级表": "skill_upgrade",
     "skill_type": "技能类型表",
     "技能类型表": "skill_type",
+    "skill_upgrade": "卡牌技能升级表",
+    "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
-    "first_recharge_box": "首次充值赠送礼包",
-    "首次充值赠送礼包": "first_recharge_box",
-    "growth_plan": "成长计划",
-    "成长计划": "growth_plan",
-    "recharge": "充值类型",
-    "充值类型": "recharge",
-    "vip_daily_reward": "vip每日登陆奖励",
-    "vip每日登陆奖励": "vip_daily_reward",
-    "vip_privilege": "vip特权",
-    "vip特权": "vip_privilege",
-    "vip": "vip等级配置表",
-    "vip等级配置表": "vip",
-    "vip_box": "vip礼包赠品",
-    "vip礼包赠品": "vip_box",
-    "spirit_pool": "灵气池配置表",
-    "灵气池配置表": "spirit_pool",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
+    "spirit_pool": "灵气池配置表",
+    "灵气池配置表": "spirit_pool",
     "chapter": "大章表",
     "大章表": "chapter",
     "chapter_title": "总章表",
@@ -144,996 +130,23 @@ var nameChanged = {
     "turn_reward_base": "每轮基础奖励",
     "每轮基础奖励": "turn_reward_base",
     "wipe_out": "任务扫荡产出表",
-    "任务扫荡产出表": "wipe_out"
+    "任务扫荡产出表": "wipe_out",
+    "first_recharge_box": "首次充值赠送礼包",
+    "首次充值赠送礼包": "first_recharge_box",
+    "growth_plan": "成长计划",
+    "成长计划": "growth_plan",
+    "recharge": "充值类型",
+    "充值类型": "recharge",
+    "vip": "vip等级配置表",
+    "vip等级配置表": "vip",
+    "vip_box": "vip礼包赠品",
+    "vip礼包赠品": "vip_box",
+    "vip_daily_reward": "vip每日登陆奖励",
+    "vip每日登陆奖励": "vip_daily_reward",
+    "vip_privilege": "vip特权",
+    "vip特权": "vip_privilege"
 };
 var outputTables = {
-    "boss": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "九阴罗刹",
-                "type": 1,
-                "boss_id": 40000,
-                "card_ids": "40003#40000#40003",
-                "formation": "2:40000,4:40003,6:40003",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "2": {
-                "id": 2,
-                "name": "赤炎星君",
-                "type": 2,
-                "boss_id": 40001,
-                "card_ids": "40004#40001#40004",
-                "formation": "2:40001,4:40004,6:40004",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "3": {
-                "id": 3,
-                "name": "金身冥王",
-                "type": 3,
-                "boss_id": 40002,
-                "card_ids": "40005#40002#40005",
-                "formation": "2:40002,4:40005,6:40005",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            }
-        }
-    },
-    "boss_type_rate": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rate": 55,
-                "name": "蓝卡",
-                "reward_inc": 0
-            },
-            "2": {
-                "id": 2,
-                "rate": 30,
-                "name": "紫卡",
-                "reward_inc": 50
-            },
-            "3": {
-                "id": 3,
-                "rate": 15,
-                "name": "金卡",
-                "reward_inc": 150
-            }
-        }
-    },
-    "boss_find_rate": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rate": 0
-            },
-            "2": {
-                "id": 2,
-                "rate": 0
-            },
-            "3": {
-                "id": 3,
-                "rate": 0
-            },
-            "4": {
-                "id": 4,
-                "rate": 0
-            },
-            "5": {
-                "id": 5,
-                "rate": 0
-            },
-            "6": {
-                "id": 6,
-                "rate": 0
-            },
-            "7": {
-                "id": 7,
-                "rate": 0
-            },
-            "8": {
-                "id": 8,
-                "rate": 0
-            },
-            "9": {
-                "id": 9,
-                "rate": 0
-            },
-            "10": {
-                "id": 10,
-                "rate": 0
-            },
-            "11": {
-                "id": 11,
-                "rate": 1
-            },
-            "12": {
-                "id": 12,
-                "rate": 1
-            },
-            "13": {
-                "id": 13,
-                "rate": 1
-            },
-            "14": {
-                "id": 14,
-                "rate": 1
-            },
-            "15": {
-                "id": 15,
-                "rate": 1
-            },
-            "16": {
-                "id": 16,
-                "rate": 5
-            },
-            "17": {
-                "id": 17,
-                "rate": 30
-            },
-            "18": {
-                "id": 18,
-                "rate": 40
-            },
-            "19": {
-                "id": 19,
-                "rate": 50
-            },
-            "20": {
-                "id": 20,
-                "rate": 100
-            }
-        }
-    },
-    "boss_card": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "40000": {
-                "id": 40000,
-                "card_id": "九阴罗刹",
-                "atk": 1000000,
-                "hp": 30000000,
-                "dodge_rate": 0,
-                "crit_rate": 30,
-                "hit_rate": 15
-            },
-            "40001": {
-                "id": 40001,
-                "card_id": "赤炎星君",
-                "atk": 1500000,
-                "hp": 30000000,
-                "dodge_rate": 0,
-                "crit_rate": 30,
-                "hit_rate": 15
-            },
-            "40002": {
-                "id": 40002,
-                "card_id": "金身冥王",
-                "atk": 2000000,
-                "hp": 30000000,
-                "dodge_rate": 0,
-                "crit_rate": 30,
-                "hit_rate": 15
-            },
-            "40003": {
-                "id": 40003,
-                "card_id": "小怪1号",
-                "atk": 5000,
-                "hp": 20000,
-                "dodge_rate": 0,
-                "crit_rate": 10,
-                "hit_rate": 15
-            },
-            "40004": {
-                "id": 40004,
-                "card_id": "小怪2号",
-                "atk": 5000,
-                "hp": 20000,
-                "dodge_rate": 0,
-                "crit_rate": 10,
-                "hit_rate": 15
-            },
-            "40005": {
-                "id": 40005,
-                "card_id": "小怪3号",
-                "atk": 5000,
-                "hp": 20000,
-                "dodge_rate": 0,
-                "crit_rate": 10,
-                "hit_rate": 15
-            }
-        }
-    },
-    "boss_rank_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "honor": 12000,
-                "money": 500000,
-                "energy": 8000
-            },
-            "2": {
-                "id": 2,
-                "honor": 10800,
-                "money": 450000,
-                "energy": 7000
-            },
-            "3": {
-                "id": 3,
-                "honor": 9600,
-                "money": 400000,
-                "energy": 6000
-            },
-            "4": {
-                "id": 4,
-                "honor": 8400,
-                "money": 350000,
-                "energy": 5000
-            },
-            "5": {
-                "id": 5,
-                "honor": 7200,
-                "money": 300000,
-                "energy": 4000
-            },
-            "6": {
-                "id": 6,
-                "honor": 5000
-            }
-        }
-    },
-    "login_count_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 10000,
-                "energy": 3000
-            },
-            "2": {
-                "id": 2,
-                "money": 15000,
-                "energy": 3100
-            },
-            "3": {
-                "id": 3,
-                "money": 20000,
-                "energy": 3200,
-                "gold": 100
-            },
-            "4": {
-                "id": 4,
-                "money": 25000,
-                "energy": 3300
-            },
-            "5": {
-                "id": 5,
-                "money": 30000,
-                "energy": 3400,
-                "fragments": 2
-            },
-            "6": {
-                "id": 6,
-                "money": 35000,
-                "energy": 3500
-            },
-            "7": {
-                "id": 7,
-                "money": 40000,
-                "energy": 3600,
-                "card_id": 965
-            },
-            "8": {
-                "id": 8,
-                "money": 45000,
-                "energy": 3700
-            },
-            "9": {
-                "id": 9,
-                "money": 50000,
-                "energy": 3800,
-                "gold": 150
-            },
-            "10": {
-                "id": 10,
-                "money": 55000,
-                "energy": 3900
-            },
-            "11": {
-                "id": 11,
-                "money": 60000,
-                "energy": 4000
-            },
-            "12": {
-                "id": 12,
-                "money": 65000,
-                "energy": 4100,
-                "fragments": 3
-            },
-            "13": {
-                "id": 13,
-                "money": 70000,
-                "energy": 4200
-            },
-            "14": {
-                "id": 14,
-                "money": 75000,
-                "energy": 4300
-            },
-            "15": {
-                "id": 15,
-                "money": 80000,
-                "energy": 4400
-            },
-            "16": {
-                "id": 16,
-                "money": 85000,
-                "energy": 4500,
-                "gold": 200
-            },
-            "17": {
-                "id": 17,
-                "money": 90000,
-                "energy": 4600
-            },
-            "18": {
-                "id": 18,
-                "money": 95000,
-                "energy": 4700
-            },
-            "19": {
-                "id": 19,
-                "money": 100000,
-                "energy": 4800
-            },
-            "20": {
-                "id": 20,
-                "money": 105000,
-                "energy": 4900
-            },
-            "21": {
-                "id": 21,
-                "money": 110000,
-                "energy": 5000,
-                "fragments": 5
-            },
-            "22": {
-                "id": 22,
-                "money": 115000,
-                "energy": 5100
-            },
-            "23": {
-                "id": 23,
-                "money": 120000,
-                "energy": 5200
-            },
-            "24": {
-                "id": 24,
-                "money": 125000,
-                "energy": 5300
-            },
-            "25": {
-                "id": 25,
-                "money": 130000,
-                "energy": 5400,
-                "gold": 250
-            },
-            "26": {
-                "id": 26,
-                "money": 135000,
-                "energy": 5500
-            },
-            "27": {
-                "id": 27,
-                "money": 140000,
-                "energy": 5600
-            },
-            "28": {
-                "id": 28,
-                "money": 145000,
-                "energy": 5700
-            },
-            "29": {
-                "id": 29,
-                "money": 150000,
-                "energy": 5800
-            },
-            "30": {
-                "id": 30,
-                "money": 155000,
-                "energy": 5900,
-                "gold": 300
-            }
-        }
-    },
-    "new_year_rechage": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "cash": 66,
-                "money": 20000,
-                "energy": 100,
-                "fragments": 2
-            },
-            "2": {
-                "id": 2,
-                "cash": 266,
-                "money": 50000,
-                "energy": 200,
-                "fragments": 3
-            },
-            "3": {
-                "id": 3,
-                "cash": 566,
-                "money": 80000,
-                "energy": 300,
-                "fragments": 5
-            },
-            "4": {
-                "id": 4,
-                "cash": 999,
-                "money": 100000,
-                "energy": 800,
-                "fragments": 8
-            },
-            "5": {
-                "id": 5,
-                "cash": 1888,
-                "money": 200000,
-                "energy": 1000,
-                "fragments": 12
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 20,
-                "energy": 500
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 50,
-                "energy": 1500
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 70,
-                "energy": 2500
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 90,
-                "energy": 3500
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100,
-                "energy": 4500
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150,
-                "energy": 5500
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200,
-                "energy": 6500
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260,
-                "energy": 7500
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300,
-                "energy": 8500
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500,
-                "energy": 9500
-            },
-            "11": {
-                "id": 11,
-                "lv": 15,
-                "gold": 25,
-                "energy": 1000
-            },
-            "12": {
-                "id": 12,
-                "lv": 25,
-                "gold": 55,
-                "energy": 2000
-            },
-            "13": {
-                "id": 13,
-                "lv": 35,
-                "gold": 75,
-                "energy": 3000
-            },
-            "14": {
-                "id": 14,
-                "lv": 45,
-                "gold": 95,
-                "energy": 4000
-            },
-            "15": {
-                "id": 15,
-                "lv": 55,
-                "gold": 120,
-                "energy": 5000
-            },
-            "16": {
-                "id": 16,
-                "lv": 65,
-                "gold": 180,
-                "energy": 6000
-            },
-            "17": {
-                "id": 17,
-                "lv": 75,
-                "gold": 230,
-                "energy": 7000
-            },
-            "18": {
-                "id": 18,
-                "lv": 85,
-                "gold": 280,
-                "energy": 8000
-            },
-            "19": {
-                "id": 19,
-                "lv": 95,
-                "gold": 400,
-                "energy": 9000
-            }
-        }
-    },
-    "cdkey": {
-        "colComment": {},
-        "rows": {
-            "TB1-": {
-                "id": "TB1-",
-                "gold": 100,
-                "money": 100000,
-                "energy": 5000,
-                "fragments": 5,
-                "card_ids": 144,
-                "card_lvs": 20,
-                "card_qtys": 1
-            },
-            "911-": {
-                "id": "911-",
-                "gold": 100,
-                "money": 100000,
-                "energy": 5000,
-                "fragments": 5,
-                "card_ids": 144,
-                "card_lvs": 20,
-                "card_qtys": 1
-            },
-            "PP1-": {
-                "id": "PP1-",
-                "gold": 100,
-                "money": 100000,
-                "energy": 5000,
-                "fragments": 5,
-                "card_ids": 144,
-                "card_lvs": 20,
-                "card_qtys": 1
-            }
-        }
-    },
-    "daily_gift": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lottery_count": 50,
-                "lottery_free_count": 0,
-                "power_buy_count": 1,
-                "challenge_count": 10,
-                "challenge_buy_count": 5,
-                "collect_count": 15,
-                "exp_card_count": 40
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[23,43,163,563,583,643,663,963]",
-                "star4": "[144,184,244,484,604,864,984]"
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "card_lineup_limit": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "card_1": 1,
-                "card_2": 1,
-                "card_3": 6,
-                "card_4": 15,
-                "card_5": 35
-            },
-            "1": {
-                "id": 1,
-                "card_1": 55,
-                "card_2": 65,
-                "card_3": 75,
-                "card_4": 80,
-                "card_5": 85
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "card3_position": 6,
-                "pass": 10,
-                "skill_upgrade": 10,
-                "card4_position": 15,
-                "ranking_list": 45,
-                "lottery": 18,
-                "card5_position": 35,
-                "boss": 40,
-                "pass_skillafresh": 20
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            },
-            "6": {
-                "id": 6,
-                "max_lv": 65
-            },
-            "7": {
-                "id": 7,
-                "max_lv": 70
-            }
-        }
-    },
-    "passive_skill_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "blue_attribute": 5,
-                "yellow_attribute": 8,
-                "full_attribute": 10
-            },
-            "2": {
-                "id": 2,
-                "blue_attribute": 5,
-                "yellow_attribute": 8,
-                "full_attribute": 10
-            },
-            "3": {
-                "id": 3,
-                "blue_attribute": 5,
-                "yellow_attribute": 8,
-                "full_attribute": 10
-            },
-            "4": {
-                "id": 4,
-                "blue_attribute": 5,
-                "yellow_attribute": 8,
-                "full_attribute": 10
-            },
-            "5": {
-                "id": 5,
-                "blue_attribute": 5,
-                "yellow_attribute": 8,
-                "full_attribute": 10
-            },
-            "6": {
-                "id": 6,
-                "blue_attribute": 5,
-                "yellow_attribute": 9,
-                "full_attribute": 11
-            },
-            "7": {
-                "id": 7,
-                "blue_attribute": 5,
-                "yellow_attribute": 10,
-                "full_attribute": 12
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 250000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 400000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 600000
-            },
-            "6": {
-                "id": 6,
-                "elixir_limit": 900000
-            },
-            "7": {
-                "id": 7,
-                "elixir_limit": 1200000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 99999999,
-                "energy": 99999999,
-                "card_count_min": 35,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 99999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 8000,
-                "energy": 300
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 30000,
-                "energy": 1000,
-                "elixir": 3000,
-                "lottery_free_count": 0,
-                "gold": 0,
-                "fragments": 0,
-                "spirit": 0,
-                "skillPoint": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 50000,
-                "energy": 2000,
-                "elixir": 5000,
-                "lottery_free_count": 5,
-                "fragments": 0,
-                "spirit": 0,
-                "skillPoint": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 100000,
-                "energy": 3000,
-                "elixir": 12000,
-                "lottery_free_count": 5,
-                "gold": 50,
-                "fragments": 0,
-                "spirit": 0,
-                "skillPoint": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 120000,
-                "energy": 5000,
-                "elixir": 15000,
-                "lottery_free_count": 8,
-                "gold": 100,
-                "fragments": 0,
-                "spirit": 0,
-                "skillPoint": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 200000,
-                "energy": 8000,
-                "elixir": 20000,
-                "lottery_free_count": 10,
-                "gold": 150,
-                "fragments": 10,
-                "spirit": 0,
-                "skillPoint": 0
-            }
-        }
-    },
-    "values": {
-        "colComment": {},
-        "rows": {
-            "reflashExcCardsMoney": {
-                "id": "reflashExcCardsMoney",
-                "value": 5000
-            },
-            "playSpeedLv1": {
-                "id": "playSpeedLv1",
-                "value": 1
-            },
-            "playSpeedLv2": {
-                "id": "playSpeedLv2",
-                "value": 10
-            },
-            "passBattleVip": {
-                "id": "passBattleVip",
-                "value": 2
-            },
-            "passBattleLv": {
-                "id": "passBattleLv",
-                "value": 10
-            },
-            "extractConsumeGold": {
-                "id": "extractConsumeGold",
-                "value": 200,
-                "desc": "提取仙丹或技能点消耗的元宝数量"
-            },
-            "greetingConsumeGold": {
-                "id": "greetingConsumeGold",
-                "value": 20,
-                "desc": "每次喊话话费的金额"
-            },
-            "elixirOfRankMoneyGap": {
-                "id": "elixirOfRankMoneyGap",
-                "value": 130500,
-                "desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
-            },
-            "damageOfRankHonorGap": {
-                "id": "damageOfRankHonorGap",
-                "value": 3000,
-                "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
-            }
-        }
-    },
     "achievement": {
         "colComment": {},
         "rows": {
@@ -1805,22 +818,6 @@ var outputTables = {
             }
         }
     },
-    "card_price": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "grow_per_lv": 0,
-                "star1": 100,
-                "star2": 500,
-                "star3": 5000,
-                "star4": 20000,
-                "star5": 200000,
-                "star6": 50000,
-                "star7": 100000
-            }
-        }
-    },
     "card_grow": {
         "colComment": {},
         "rows": {
@@ -2320,6 +1317,22 @@ var outputTables = {
                 "exp_need": 1060845,
                 "money_need": 9215725,
                 "cur_exp": 7576681
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 0,
+                "star1": 100,
+                "star2": 500,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000,
+                "star6": 50000,
+                "star7": 100000
             }
         }
     },
@@ -13343,6 +12356,7 @@ var outputTables = {
                 "money_need": 5000,
                 "rate_per_card": 10,
                 "max_num": 10,
+                "no_work_count": 0,
                 "super_honor": 0
             },
             "2": {
@@ -13352,6 +12366,7 @@ var outputTables = {
                 "money_need": 10000,
                 "rate_per_card": 8,
                 "max_num": 13,
+                "no_work_count": 0,
                 "super_honor": 0
             },
             "3": {
@@ -13361,6 +12376,7 @@ var outputTables = {
                 "money_need": 20000,
                 "rate_per_card": 7,
                 "max_num": 15,
+                "no_work_count": 0,
                 "super_honor": 0
             },
             "4": {
@@ -13392,6 +12408,993 @@ var outputTables = {
                 "max_num": 7,
                 "no_work_count": 3,
                 "super_honor": 40
+            }
+        }
+    },
+    "boss_find_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 0
+            },
+            "3": {
+                "id": 3,
+                "rate": 0
+            },
+            "4": {
+                "id": 4,
+                "rate": 0
+            },
+            "5": {
+                "id": 5,
+                "rate": 0
+            },
+            "6": {
+                "id": 6,
+                "rate": 0
+            },
+            "7": {
+                "id": 7,
+                "rate": 0
+            },
+            "8": {
+                "id": 8,
+                "rate": 0
+            },
+            "9": {
+                "id": 9,
+                "rate": 0
+            },
+            "10": {
+                "id": 10,
+                "rate": 0
+            },
+            "11": {
+                "id": 11,
+                "rate": 1
+            },
+            "12": {
+                "id": 12,
+                "rate": 1
+            },
+            "13": {
+                "id": 13,
+                "rate": 1
+            },
+            "14": {
+                "id": 14,
+                "rate": 1
+            },
+            "15": {
+                "id": 15,
+                "rate": 1
+            },
+            "16": {
+                "id": 16,
+                "rate": 5
+            },
+            "17": {
+                "id": 17,
+                "rate": 30
+            },
+            "18": {
+                "id": 18,
+                "rate": 40
+            },
+            "19": {
+                "id": 19,
+                "rate": 50
+            },
+            "20": {
+                "id": 20,
+                "rate": 100
+            }
+        }
+    },
+    "boss_type_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 55,
+                "name": "蓝卡",
+                "reward_inc": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 30,
+                "name": "紫卡",
+                "reward_inc": 50
+            },
+            "3": {
+                "id": 3,
+                "rate": 15,
+                "name": "金卡",
+                "reward_inc": 150
+            }
+        }
+    },
+    "boss": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "九阴罗刹",
+                "type": 1,
+                "boss_id": 40000,
+                "card_ids": "40003#40000#40003",
+                "formation": "2:40000,4:40003,6:40003",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "2": {
+                "id": 2,
+                "name": "赤炎星君",
+                "type": 2,
+                "boss_id": 40001,
+                "card_ids": "40004#40001#40004",
+                "formation": "2:40001,4:40004,6:40004",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "3": {
+                "id": 3,
+                "name": "金身冥王",
+                "type": 3,
+                "boss_id": 40002,
+                "card_ids": "40005#40002#40005",
+                "formation": "2:40002,4:40005,6:40005",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            }
+        }
+    },
+    "boss_card": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "40000": {
+                "id": 40000,
+                "card_id": "九阴罗刹",
+                "atk": 1000000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 15
+            },
+            "40001": {
+                "id": 40001,
+                "card_id": "赤炎星君",
+                "atk": 1500000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 15
+            },
+            "40002": {
+                "id": 40002,
+                "card_id": "金身冥王",
+                "atk": 2000000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 15
+            },
+            "40003": {
+                "id": 40003,
+                "card_id": "小怪1号",
+                "atk": 5000,
+                "hp": 20000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 15
+            },
+            "40004": {
+                "id": 40004,
+                "card_id": "小怪2号",
+                "atk": 5000,
+                "hp": 20000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 15
+            },
+            "40005": {
+                "id": 40005,
+                "card_id": "小怪3号",
+                "atk": 5000,
+                "hp": 20000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 15
+            }
+        }
+    },
+    "boss_rank_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "honor": 12000,
+                "money": 500000,
+                "energy": 8000
+            },
+            "2": {
+                "id": 2,
+                "honor": 10800,
+                "money": 450000,
+                "energy": 7000
+            },
+            "3": {
+                "id": 3,
+                "honor": 9600,
+                "money": 400000,
+                "energy": 6000
+            },
+            "4": {
+                "id": 4,
+                "honor": 8400,
+                "money": 350000,
+                "energy": 5000
+            },
+            "5": {
+                "id": 5,
+                "honor": 7200,
+                "money": 300000,
+                "energy": 4000
+            },
+            "6": {
+                "id": 6,
+                "honor": 5000
+            }
+        }
+    },
+    "login_count_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 10000,
+                "energy": 1000
+            },
+            "2": {
+                "id": 2,
+                "money": 15000,
+                "energy": 1100
+            },
+            "3": {
+                "id": 3,
+                "money": 20000,
+                "energy": 1200,
+                "gold": 100
+            },
+            "4": {
+                "id": 4,
+                "money": 25000,
+                "energy": 1300
+            },
+            "5": {
+                "id": 5,
+                "money": 30000,
+                "energy": 1400,
+                "fragments": 2
+            },
+            "6": {
+                "id": 6,
+                "money": 35000,
+                "energy": 1500
+            },
+            "7": {
+                "id": 7,
+                "money": 40000,
+                "energy": 1600,
+                "card_id": 965
+            },
+            "8": {
+                "id": 8,
+                "money": 45000,
+                "energy": 1700
+            },
+            "9": {
+                "id": 9,
+                "money": 50000,
+                "energy": 1800,
+                "gold": 150
+            },
+            "10": {
+                "id": 10,
+                "money": 55000,
+                "energy": 1900
+            },
+            "11": {
+                "id": 11,
+                "money": 60000,
+                "energy": 2000
+            },
+            "12": {
+                "id": 12,
+                "money": 65000,
+                "energy": 2100,
+                "fragments": 3
+            },
+            "13": {
+                "id": 13,
+                "money": 70000,
+                "energy": 2200
+            },
+            "14": {
+                "id": 14,
+                "money": 75000,
+                "energy": 2300
+            },
+            "15": {
+                "id": 15,
+                "money": 80000,
+                "energy": 2400
+            },
+            "16": {
+                "id": 16,
+                "money": 85000,
+                "energy": 2500,
+                "gold": 200
+            },
+            "17": {
+                "id": 17,
+                "money": 90000,
+                "energy": 2600
+            },
+            "18": {
+                "id": 18,
+                "money": 95000,
+                "energy": 2700
+            },
+            "19": {
+                "id": 19,
+                "money": 100000,
+                "energy": 2800
+            },
+            "20": {
+                "id": 20,
+                "money": 105000,
+                "energy": 2900
+            },
+            "21": {
+                "id": 21,
+                "money": 110000,
+                "energy": 3000,
+                "fragments": 5
+            },
+            "22": {
+                "id": 22,
+                "money": 115000,
+                "energy": 3100
+            },
+            "23": {
+                "id": 23,
+                "money": 120000,
+                "energy": 3200
+            },
+            "24": {
+                "id": 24,
+                "money": 125000,
+                "energy": 3300
+            },
+            "25": {
+                "id": 25,
+                "money": 130000,
+                "energy": 3400,
+                "gold": 250
+            },
+            "26": {
+                "id": 26,
+                "money": 135000,
+                "energy": 3500
+            },
+            "27": {
+                "id": 27,
+                "money": 140000,
+                "energy": 3600
+            },
+            "28": {
+                "id": 28,
+                "money": 145000,
+                "energy": 3700
+            },
+            "29": {
+                "id": 29,
+                "money": 150000,
+                "energy": 3800
+            },
+            "30": {
+                "id": 30,
+                "money": 155000,
+                "energy": 3900,
+                "gold": 300
+            }
+        }
+    },
+    "new_year_rechage": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "cash": 66,
+                "money": 20000,
+                "energy": 100,
+                "fragments": 2
+            },
+            "2": {
+                "id": 2,
+                "cash": 266,
+                "money": 50000,
+                "energy": 200,
+                "fragments": 3
+            },
+            "3": {
+                "id": 3,
+                "cash": 566,
+                "money": 80000,
+                "energy": 300,
+                "fragments": 5
+            },
+            "4": {
+                "id": 4,
+                "cash": 999,
+                "money": 100000,
+                "energy": 800,
+                "fragments": 8
+            },
+            "5": {
+                "id": 5,
+                "cash": 1888,
+                "money": 200000,
+                "energy": 1000,
+                "fragments": 12
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 20,
+                "energy": 1000
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 50,
+                "energy": 1200
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 70,
+                "energy": 1400
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 90,
+                "energy": 1600
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100,
+                "energy": 1800
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150,
+                "energy": 2000
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200,
+                "energy": 2200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260,
+                "energy": 2400
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300,
+                "energy": 2600
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500,
+                "energy": 2800
+            },
+            "11": {
+                "id": 11,
+                "lv": 15,
+                "gold": 25,
+                "energy": 1100
+            },
+            "12": {
+                "id": 12,
+                "lv": 25,
+                "gold": 55,
+                "energy": 1300
+            },
+            "13": {
+                "id": 13,
+                "lv": 35,
+                "gold": 75,
+                "energy": 1500
+            },
+            "14": {
+                "id": 14,
+                "lv": 45,
+                "gold": 95,
+                "energy": 1700
+            },
+            "15": {
+                "id": 15,
+                "lv": 55,
+                "gold": 120,
+                "energy": 1900
+            },
+            "16": {
+                "id": 16,
+                "lv": 65,
+                "gold": 180,
+                "energy": 2100
+            },
+            "17": {
+                "id": 17,
+                "lv": 75,
+                "gold": 230,
+                "energy": 2300
+            },
+            "18": {
+                "id": 18,
+                "lv": 85,
+                "gold": 280,
+                "energy": 2500
+            },
+            "19": {
+                "id": 19,
+                "lv": 95,
+                "gold": 400,
+                "energy": 2700
+            }
+        }
+    },
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 100000,
+                "energy": 5000,
+                "fragments": 5,
+                "card_ids": 144,
+                "card_lvs": 20,
+                "card_qtys": 1
+            },
+            "911-": {
+                "id": "911-",
+                "gold": 100,
+                "money": 100000,
+                "energy": 5000,
+                "fragments": 5,
+                "card_ids": 144,
+                "card_lvs": 20,
+                "card_qtys": 1
+            },
+            "PP1-": {
+                "id": "PP1-",
+                "gold": 100,
+                "money": 100000,
+                "energy": 5000,
+                "fragments": 5,
+                "card_ids": 144,
+                "card_lvs": 20,
+                "card_qtys": 1
+            }
+        }
+    },
+    "daily_gift": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lottery_count": 50,
+                "lottery_free_count": 0,
+                "power_buy_count": 1,
+                "challenge_count": 10,
+                "challenge_buy_count": 5,
+                "collect_count": 15,
+                "exp_card_count": 40
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[23,43,163,563,583,643,663,963]",
+                "star4": "[144,184,244,484,604,864,984]"
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "card_lineup_limit": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "card_1": 1,
+                "card_2": 1,
+                "card_3": 6,
+                "card_4": 15,
+                "card_5": 35
+            },
+            "1": {
+                "id": 1,
+                "card_1": 55,
+                "card_2": 65,
+                "card_3": 75,
+                "card_4": 80,
+                "card_5": 85
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "card3_position": 6,
+                "pass": 10,
+                "skill_upgrade": 10,
+                "card4_position": 15,
+                "ranking_list": 45,
+                "lottery": 18,
+                "card5_position": 35,
+                "boss": 40,
+                "pass_skillafresh": 20
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            },
+            "6": {
+                "id": 6,
+                "max_lv": 65
+            },
+            "7": {
+                "id": 7,
+                "max_lv": 70
+            }
+        }
+    },
+    "passive_skill_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "2": {
+                "id": 2,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "3": {
+                "id": 3,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "4": {
+                "id": 4,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "5": {
+                "id": 5,
+                "blue_attribute": 5,
+                "yellow_attribute": 8,
+                "full_attribute": 10
+            },
+            "6": {
+                "id": 6,
+                "blue_attribute": 5,
+                "yellow_attribute": 9,
+                "full_attribute": 11
+            },
+            "7": {
+                "id": 7,
+                "blue_attribute": 5,
+                "yellow_attribute": 10,
+                "full_attribute": 12
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 250000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 400000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 600000
+            },
+            "6": {
+                "id": 6,
+                "elixir_limit": 900000
+            },
+            "7": {
+                "id": 7,
+                "elixir_limit": 1200000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 99999999,
+                "energy": 99999999,
+                "card_count_min": 35,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 99999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 8000,
+                "energy": 300
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 30000,
+                "energy": 1000,
+                "elixir": 3000,
+                "lottery_free_count": 0,
+                "gold": 0,
+                "fragments": 0,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 50000,
+                "energy": 2000,
+                "elixir": 5000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 100000,
+                "energy": 3000,
+                "elixir": 12000,
+                "lottery_free_count": 5,
+                "gold": 50,
+                "fragments": 0,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 120000,
+                "energy": 5000,
+                "elixir": 15000,
+                "lottery_free_count": 8,
+                "gold": 100,
+                "fragments": 0,
+                "spirit": 0,
+                "skillPoint": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 200000,
+                "energy": 8000,
+                "elixir": 20000,
+                "lottery_free_count": 10,
+                "gold": 150,
+                "fragments": 10,
+                "spirit": 0,
+                "skillPoint": 0
+            }
+        }
+    },
+    "values": {
+        "colComment": {},
+        "rows": {
+            "reflashExcCardsMoney": {
+                "id": "reflashExcCardsMoney",
+                "value": 5000
+            },
+            "playSpeedLv1": {
+                "id": "playSpeedLv1",
+                "value": 1
+            },
+            "playSpeedLv2": {
+                "id": "playSpeedLv2",
+                "value": 10
+            },
+            "passBattleVip": {
+                "id": "passBattleVip",
+                "value": 2
+            },
+            "passBattleLv": {
+                "id": "passBattleLv",
+                "value": 10
+            },
+            "extractConsumeGold": {
+                "id": "extractConsumeGold",
+                "value": 200,
+                "desc": "提取仙丹或技能点消耗的元宝数量"
+            },
+            "greetingConsumeGold": {
+                "id": "greetingConsumeGold",
+                "value": 20,
+                "desc": "每次喊话话费的金额"
+            },
+            "elixirOfRankMoneyGap": {
+                "id": "elixirOfRankMoneyGap",
+                "value": 130500,
+                "desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
+            },
+            "damageOfRankHonorGap": {
+                "id": "damageOfRankHonorGap",
+                "value": 3000,
+                "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
             }
         }
     },
@@ -13577,6 +13580,3127 @@ var outputTables = {
                 "type_rate": 5,
                 "value_rate": 1,
                 "rate": 0.05
+            }
+        }
+    },
+    "illegal_str": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "illegal_str": "shit"
+            },
+            "2": {
+                "id": 2,
+                "illegal_str": "fuck"
+            },
+            "3": {
+                "id": 3,
+                "illegal_str": "F_U_C_K"
+            },
+            "4": {
+                "id": 4,
+                "illegal_str": "ｓｈｉｔ"
+            },
+            "5": {
+                "id": 5,
+                "illegal_str": "ｆｕｃｋ"
+            },
+            "6": {
+                "id": 6,
+                "illegal_str": "ｂｉｔｃｈ"
+            },
+            "7": {
+                "id": 7,
+                "illegal_str": "Fuckyou"
+            },
+            "8": {
+                "id": 8,
+                "illegal_str": "caonima"
+            },
+            "9": {
+                "id": 9,
+                "illegal_str": "rinima"
+            },
+            "10": {
+                "id": 10,
+                "illegal_str": "中华民国"
+            },
+            "11": {
+                "id": 11,
+                "illegal_str": "中华民國"
+            },
+            "12": {
+                "id": 12,
+                "illegal_str": "中華民国"
+            },
+            "13": {
+                "id": 13,
+                "illegal_str": "中華民國"
+            },
+            "14": {
+                "id": 14,
+                "illegal_str": "共產党"
+            },
+            "15": {
+                "id": 15,
+                "illegal_str": "共产產"
+            },
+            "16": {
+                "id": 16,
+                "illegal_str": "共產黨"
+            },
+            "17": {
+                "id": 17,
+                "illegal_str": "共产黨"
+            },
+            "18": {
+                "id": 18,
+                "illegal_str": "共産黨"
+            },
+            "19": {
+                "id": 19,
+                "illegal_str": "共産党"
+            },
+            "20": {
+                "id": 20,
+                "illegal_str": "共产党"
+            },
+            "21": {
+                "id": 21,
+                "illegal_str": "外挂"
+            },
+            "22": {
+                "id": 22,
+                "illegal_str": "外掛"
+            },
+            "23": {
+                "id": 23,
+                "illegal_str": "台湾国"
+            },
+            "24": {
+                "id": 24,
+                "illegal_str": "台湾國"
+            },
+            "25": {
+                "id": 25,
+                "illegal_str": "臺灣國"
+            },
+            "26": {
+                "id": 26,
+                "illegal_str": "台灣國"
+            },
+            "27": {
+                "id": 27,
+                "illegal_str": "台独"
+            },
+            "28": {
+                "id": 28,
+                "illegal_str": "西藏独立"
+            },
+            "29": {
+                "id": 29,
+                "illegal_str": "蒙古国"
+            },
+            "30": {
+                "id": 30,
+                "illegal_str": "蒙古國"
+            },
+            "31": {
+                "id": 31,
+                "illegal_str": "色情"
+            },
+            "32": {
+                "id": 32,
+                "illegal_str": "情色"
+            },
+            "33": {
+                "id": 33,
+                "illegal_str": "嫖娼"
+            },
+            "34": {
+                "id": 34,
+                "illegal_str": "卖淫"
+            },
+            "35": {
+                "id": 35,
+                "illegal_str": "淫秽"
+            },
+            "36": {
+                "id": 36,
+                "illegal_str": "援交"
+            },
+            "37": {
+                "id": 37,
+                "illegal_str": "援助交际"
+            },
+            "38": {
+                "id": 38,
+                "illegal_str": "你妈"
+            },
+            "39": {
+                "id": 39,
+                "illegal_str": "你娘"
+            },
+            "40": {
+                "id": 40,
+                "illegal_str": "他妈"
+            },
+            "41": {
+                "id": 41,
+                "illegal_str": "他娘"
+            },
+            "42": {
+                "id": 42,
+                "illegal_str": "妈的"
+            },
+            "43": {
+                "id": 43,
+                "illegal_str": "你全家"
+            },
+            "44": {
+                "id": 44,
+                "illegal_str": "我日"
+            },
+            "45": {
+                "id": 45,
+                "illegal_str": "我操"
+            },
+            "46": {
+                "id": 46,
+                "illegal_str": "我奸"
+            },
+            "47": {
+                "id": 47,
+                "illegal_str": "日你"
+            },
+            "48": {
+                "id": 48,
+                "illegal_str": "干你"
+            },
+            "49": {
+                "id": 49,
+                "illegal_str": "干死"
+            },
+            "50": {
+                "id": 50,
+                "illegal_str": "操你"
+            },
+            "51": {
+                "id": 51,
+                "illegal_str": "强奸"
+            },
+            "52": {
+                "id": 52,
+                "illegal_str": "奸你"
+            },
+            "53": {
+                "id": 53,
+                "illegal_str": "插你"
+            },
+            "54": {
+                "id": 54,
+                "illegal_str": "婊子"
+            },
+            "55": {
+                "id": 55,
+                "illegal_str": "妓"
+            },
+            "56": {
+                "id": 56,
+                "illegal_str": "傻B"
+            },
+            "57": {
+                "id": 57,
+                "illegal_str": "傻比"
+            },
+            "58": {
+                "id": 58,
+                "illegal_str": "傻逼"
+            },
+            "59": {
+                "id": 59,
+                "illegal_str": "骚逼"
+            },
+            "60": {
+                "id": 60,
+                "illegal_str": "妈B"
+            },
+            "61": {
+                "id": 61,
+                "illegal_str": "妈逼"
+            },
+            "62": {
+                "id": 62,
+                "illegal_str": "逼样"
+            },
+            "63": {
+                "id": 63,
+                "illegal_str": "妈比"
+            },
+            "64": {
+                "id": 64,
+                "illegal_str": "骚货"
+            },
+            "65": {
+                "id": 65,
+                "illegal_str": "祖宗"
+            },
+            "66": {
+                "id": 66,
+                "illegal_str": "狗日"
+            },
+            "67": {
+                "id": 67,
+                "illegal_str": "屁股"
+            },
+            "68": {
+                "id": 68,
+                "illegal_str": "屁眼"
+            },
+            "69": {
+                "id": 69,
+                "illegal_str": "鸡巴"
+            },
+            "70": {
+                "id": 70,
+                "illegal_str": "鸡8"
+            },
+            "71": {
+                "id": 71,
+                "illegal_str": "鸡奸"
+            },
+            "72": {
+                "id": 72,
+                "illegal_str": "阴茎"
+            },
+            "73": {
+                "id": 73,
+                "illegal_str": "阴毛"
+            },
+            "74": {
+                "id": 74,
+                "illegal_str": "阴唇"
+            },
+            "75": {
+                "id": 75,
+                "illegal_str": "阳具"
+            },
+            "76": {
+                "id": 76,
+                "illegal_str": "交配"
+            },
+            "77": {
+                "id": 77,
+                "illegal_str": "淫荡"
+            },
+            "78": {
+                "id": 78,
+                "illegal_str": "淫水"
+            },
+            "79": {
+                "id": 79,
+                "illegal_str": "贱货"
+            },
+            "80": {
+                "id": 80,
+                "illegal_str": "卖B"
+            },
+            "81": {
+                "id": 81,
+                "illegal_str": "卖比"
+            },
+            "82": {
+                "id": 82,
+                "illegal_str": "浪叫"
+            },
+            "83": {
+                "id": 83,
+                "illegal_str": "奶子"
+            },
+            "84": {
+                "id": 84,
+                "illegal_str": "乳头"
+            },
+            "85": {
+                "id": 85,
+                "illegal_str": "姘头"
+            },
+            "86": {
+                "id": 86,
+                "illegal_str": "射精"
+            },
+            "87": {
+                "id": 87,
+                "illegal_str": "你是鸡"
+            },
+            "88": {
+                "id": 88,
+                "illegal_str": "你是鸭"
+            },
+            "89": {
+                "id": 89,
+                "illegal_str": "烂货"
+            },
+            "90": {
+                "id": 90,
+                "illegal_str": "烂逼"
+            },
+            "91": {
+                "id": 91,
+                "illegal_str": "阴道"
+            },
+            "92": {
+                "id": 92,
+                "illegal_str": "吃屎"
+            },
+            "93": {
+                "id": 93,
+                "illegal_str": "阳萎"
+            },
+            "94": {
+                "id": 94,
+                "illegal_str": "妓院"
+            },
+            "95": {
+                "id": 95,
+                "illegal_str": "扒光"
+            },
+            "96": {
+                "id": 96,
+                "illegal_str": "淫"
+            },
+            "97": {
+                "id": 97,
+                "illegal_str": "外阴"
+            },
+            "98": {
+                "id": 98,
+                "illegal_str": "他妈的"
+            },
+            "99": {
+                "id": 99,
+                "illegal_str": "性爱"
+            },
+            "100": {
+                "id": 100,
+                "illegal_str": "操你妈"
+            },
+            "101": {
+                "id": 101,
+                "illegal_str": "干你娘"
+            },
+            "102": {
+                "id": 102,
+                "illegal_str": "性交"
+            },
+            "103": {
+                "id": 103,
+                "illegal_str": "乳房"
+            },
+            "104": {
+                "id": 104,
+                "illegal_str": "鸡吧"
+            },
+            "105": {
+                "id": 105,
+                "illegal_str": "鸡八"
+            },
+            "106": {
+                "id": 106,
+                "illegal_str": "他奶奶"
+            },
+            "107": {
+                "id": 107,
+                "illegal_str": "狗娘养的"
+            },
+            "108": {
+                "id": 108,
+                "illegal_str": "日你妈"
+            },
+            "109": {
+                "id": 109,
+                "illegal_str": "龟儿子"
+            },
+            "110": {
+                "id": 110,
+                "illegal_str": "做爱"
+            },
+            "111": {
+                "id": 111,
+                "illegal_str": "下三烂"
+            },
+            "112": {
+                "id": 112,
+                "illegal_str": "他马的"
+            },
+            "113": {
+                "id": 113,
+                "illegal_str": "他妈ㄉ王八蛋"
+            },
+            "114": {
+                "id": 114,
+                "illegal_str": "她奶奶的"
+            },
+            "115": {
+                "id": 115,
+                "illegal_str": "她马的"
+            },
+            "116": {
+                "id": 116,
+                "illegal_str": "她妈的"
+            },
+            "117": {
+                "id": 117,
+                "illegal_str": "你他马的"
+            },
+            "118": {
+                "id": 118,
+                "illegal_str": "你他妈的"
+            },
+            "119": {
+                "id": 119,
+                "illegal_str": "你它马的"
+            },
+            "120": {
+                "id": 120,
+                "illegal_str": "你它妈的"
+            },
+            "121": {
+                "id": 121,
+                "illegal_str": "你她马的"
+            },
+            "122": {
+                "id": 122,
+                "illegal_str": "你娘卡好"
+            },
+            "123": {
+                "id": 123,
+                "illegal_str": "你娘咧"
+            },
+            "124": {
+                "id": 124,
+                "illegal_str": "你马的"
+            },
+            "125": {
+                "id": 125,
+                "illegal_str": "你妈的"
+            },
+            "126": {
+                "id": 126,
+                "illegal_str": "妳她妈的"
+            },
+            "127": {
+                "id": 127,
+                "illegal_str": "妳老母的"
+            },
+            "128": {
+                "id": 128,
+                "illegal_str": "妳娘的"
+            },
+            "129": {
+                "id": 129,
+                "illegal_str": "妳马的"
+            },
+            "130": {
+                "id": 130,
+                "illegal_str": "妳妈的"
+            },
+            "131": {
+                "id": 131,
+                "illegal_str": "狗屁"
+            },
+            "132": {
+                "id": 132,
+                "illegal_str": "肥西"
+            },
+            "133": {
+                "id": 133,
+                "illegal_str": "姣西"
+            },
+            "134": {
+                "id": 134,
+                "illegal_str": "强奸你"
+            },
+            "135": {
+                "id": 135,
+                "illegal_str": "淫西"
+            },
+            "136": {
+                "id": 136,
+                "illegal_str": "淫妇"
+            },
+            "137": {
+                "id": 137,
+                "illegal_str": "几八"
+            },
+            "138": {
+                "id": 138,
+                "illegal_str": "几巴"
+            },
+            "139": {
+                "id": 139,
+                "illegal_str": "几叭"
+            },
+            "140": {
+                "id": 140,
+                "illegal_str": "几芭"
+            },
+            "141": {
+                "id": 141,
+                "illegal_str": "插死你"
+            },
+            "142": {
+                "id": 142,
+                "illegal_str": "妈的B"
+            },
+            "143": {
+                "id": 143,
+                "illegal_str": "妈个B"
+            },
+            "144": {
+                "id": 144,
+                "illegal_str": "干x娘"
+            },
+            "145": {
+                "id": 145,
+                "illegal_str": "干七八"
+            },
+            "146": {
+                "id": 146,
+                "illegal_str": "干死GM"
+            },
+            "147": {
+                "id": 147,
+                "illegal_str": "干死客服"
+            },
+            "148": {
+                "id": 148,
+                "illegal_str": "干死JS"
+            },
+            "149": {
+                "id": 149,
+                "illegal_str": "干死你"
+            },
+            "150": {
+                "id": 150,
+                "illegal_str": "干你老母"
+            },
+            "151": {
+                "id": 151,
+                "illegal_str": "干你良"
+            },
+            "152": {
+                "id": 152,
+                "illegal_str": "干妳老母"
+            },
+            "153": {
+                "id": 153,
+                "illegal_str": "干妳娘"
+            },
+            "154": {
+                "id": 154,
+                "illegal_str": "干妳马"
+            },
+            "155": {
+                "id": 155,
+                "illegal_str": "干妳妈"
+            },
+            "156": {
+                "id": 156,
+                "illegal_str": "干您娘"
+            },
+            "157": {
+                "id": 157,
+                "illegal_str": "干机掰"
+            },
+            "158": {
+                "id": 158,
+                "illegal_str": "贱B"
+            },
+            "159": {
+                "id": 159,
+                "illegal_str": "贱人"
+            },
+            "160": {
+                "id": 160,
+                "illegal_str": "驶你公"
+            },
+            "161": {
+                "id": 161,
+                "illegal_str": "驶你母"
+            },
+            "162": {
+                "id": 162,
+                "illegal_str": "驶你老母"
+            },
+            "163": {
+                "id": 163,
+                "illegal_str": "驶你老师"
+            },
+            "164": {
+                "id": 164,
+                "illegal_str": "驶你爸"
+            },
+            "165": {
+                "id": 165,
+                "illegal_str": "驶你娘"
+            },
+            "166": {
+                "id": 166,
+                "illegal_str": "操78"
+            },
+            "167": {
+                "id": 167,
+                "illegal_str": "操你全家"
+            },
+            "168": {
+                "id": 168,
+                "illegal_str": "操你老母"
+            },
+            "169": {
+                "id": 169,
+                "illegal_str": "操你老妈"
+            },
+            "170": {
+                "id": 170,
+                "illegal_str": "操你娘"
+            },
+            "171": {
+                "id": 171,
+                "illegal_str": "操你祖宗"
+            },
+            "172": {
+                "id": 172,
+                "illegal_str": "操妳"
+            },
+            "173": {
+                "id": 173,
+                "illegal_str": "操妳全家"
+            },
+            "174": {
+                "id": 174,
+                "illegal_str": "操妳娘"
+            },
+            "175": {
+                "id": 175,
+                "illegal_str": "操妳祖宗"
+            },
+            "176": {
+                "id": 176,
+                "illegal_str": "操妳妈"
+            },
+            "177": {
+                "id": 177,
+                "illegal_str": "操机掰"
+            },
+            "178": {
+                "id": 178,
+                "illegal_str": "机八"
+            },
+            "179": {
+                "id": 179,
+                "illegal_str": "机巴"
+            },
+            "180": {
+                "id": 180,
+                "illegal_str": "懆您妈"
+            },
+            "181": {
+                "id": 181,
+                "illegal_str": "懆您娘"
+            },
+            "182": {
+                "id": 182,
+                "illegal_str": "鸡掰"
+            },
+            "183": {
+                "id": 183,
+                "illegal_str": "赛你老母"
+            },
+            "184": {
+                "id": 184,
+                "illegal_str": "赛妳阿母"
+            },
+            "185": {
+                "id": 185,
+                "illegal_str": "鸡叭"
+            },
+            "186": {
+                "id": 186,
+                "illegal_str": "鸡芭"
+            },
+            "187": {
+                "id": 187,
+                "illegal_str": "懒八"
+            },
+            "188": {
+                "id": 188,
+                "illegal_str": "赣您娘"
+            },
+            "189": {
+                "id": 189,
+                "illegal_str": "灨你娘"
+            },
+            "190": {
+                "id": 190,
+                "illegal_str": "塞你老母"
+            },
+            "191": {
+                "id": 191,
+                "illegal_str": "塞你娘"
+            },
+            "192": {
+                "id": 192,
+                "illegal_str": "塞你爸"
+            },
+            "193": {
+                "id": 193,
+                "illegal_str": "塞你母"
+            },
+            "194": {
+                "id": 194,
+                "illegal_str": "塞你公"
+            },
+            "195": {
+                "id": 195,
+                "illegal_str": "塞你老师"
+            },
+            "196": {
+                "id": 196,
+                "illegal_str": "柯赐海"
+            },
+            "197": {
+                "id": 197,
+                "illegal_str": "连战"
+            },
+            "198": {
+                "id": 198,
+                "illegal_str": "李登辉"
+            },
+            "199": {
+                "id": 199,
+                "illegal_str": "宋楚瑜"
+            },
+            "200": {
+                "id": 200,
+                "illegal_str": "阿扁"
+            },
+            "201": {
+                "id": 201,
+                "illegal_str": "陈水扁"
+            },
+            "202": {
+                "id": 202,
+                "illegal_str": "陈随便"
+            },
+            "203": {
+                "id": 203,
+                "illegal_str": "口交"
+            },
+            "204": {
+                "id": 204,
+                "illegal_str": "邓小平"
+            },
+            "205": {
+                "id": 205,
+                "illegal_str": "草你妈"
+            },
+            "206": {
+                "id": 206,
+                "illegal_str": "日你娘"
+            },
+            "207": {
+                "id": 207,
+                "illegal_str": "草你娘"
+            },
+            "208": {
+                "id": 208,
+                "illegal_str": "你老母"
+            },
+            "209": {
+                "id": 209,
+                "illegal_str": "三去车仑工力"
+            },
+            "210": {
+                "id": 210,
+                "illegal_str": "小日本"
+            },
+            "211": {
+                "id": 211,
+                "illegal_str": "你大爷"
+            },
+            "212": {
+                "id": 212,
+                "illegal_str": "我草"
+            },
+            "213": {
+                "id": 213,
+                "illegal_str": "打炮"
+            },
+            "214": {
+                "id": 214,
+                "illegal_str": "我干"
+            },
+            "215": {
+                "id": 215,
+                "illegal_str": "二逼"
+            },
+            "216": {
+                "id": 216,
+                "illegal_str": "淫乱"
+            },
+            "217": {
+                "id": 217,
+                "illegal_str": "颜射"
+            },
+            "218": {
+                "id": 218,
+                "illegal_str": "肛交"
+            },
+            "219": {
+                "id": 219,
+                "illegal_str": "乳交"
+            },
+            "220": {
+                "id": 220,
+                "illegal_str": "群交"
+            },
+            "221": {
+                "id": 221,
+                "illegal_str": "射屏"
+            },
+            "222": {
+                "id": 222,
+                "illegal_str": "潮吹"
+            },
+            "223": {
+                "id": 223,
+                "illegal_str": "自慰"
+            },
+            "224": {
+                "id": 224,
+                "illegal_str": "手淫"
+            },
+            "225": {
+                "id": 225,
+                "illegal_str": "诱奸"
+            },
+            "226": {
+                "id": 226,
+                "illegal_str": "轮奸"
+            },
+            "227": {
+                "id": 227,
+                "illegal_str": "迷奸"
+            },
+            "228": {
+                "id": 228,
+                "illegal_str": "阴蒂"
+            },
+            "229": {
+                "id": 229,
+                "illegal_str": "阴户"
+            },
+            "230": {
+                "id": 230,
+                "illegal_str": "激情视频"
+            },
+            "231": {
+                "id": 231,
+                "illegal_str": "裸聊"
+            },
+            "232": {
+                "id": 232,
+                "illegal_str": "吴邦国"
+            },
+            "233": {
+                "id": 233,
+                "illegal_str": "李岚清"
+            },
+            "234": {
+                "id": 234,
+                "illegal_str": "荣毅仁"
+            },
+            "235": {
+                "id": 235,
+                "illegal_str": "罗干"
+            },
+            "236": {
+                "id": 236,
+                "illegal_str": "贾庆林"
+            },
+            "237": {
+                "id": 237,
+                "illegal_str": "黄菊"
+            },
+            "238": {
+                "id": 238,
+                "illegal_str": "吴官正"
+            },
+            "239": {
+                "id": 239,
+                "illegal_str": "毛主席"
+            },
+            "240": {
+                "id": 240,
+                "illegal_str": "周总理"
+            },
+            "241": {
+                "id": 241,
+                "illegal_str": "国务院"
+            },
+            "242": {
+                "id": 242,
+                "illegal_str": "国民党"
+            },
+            "243": {
+                "id": 243,
+                "illegal_str": "政治局"
+            },
+            "244": {
+                "id": 244,
+                "illegal_str": "主席"
+            },
+            "245": {
+                "id": 245,
+                "illegal_str": "总理"
+            },
+            "246": {
+                "id": 246,
+                "illegal_str": "孙中山"
+            },
+            "247": {
+                "id": 247,
+                "illegal_str": "金正日"
+            },
+            "248": {
+                "id": 248,
+                "illegal_str": "本拉登"
+            },
+            "249": {
+                "id": 249,
+                "illegal_str": "达赖"
+            },
+            "250": {
+                "id": 250,
+                "illegal_str": "求伯君"
+            },
+            "251": {
+                "id": 251,
+                "illegal_str": "雷军"
+            },
+            "252": {
+                "id": 252,
+                "illegal_str": "高宁宁"
+            },
+            "253": {
+                "id": 253,
+                "illegal_str": "党中央"
+            },
+            "254": {
+                "id": 254,
+                "illegal_str": "毛泽东"
+            },
+            "255": {
+                "id": 255,
+                "illegal_str": "江泽民"
+            },
+            "256": {
+                "id": 256,
+                "illegal_str": "胡锦涛"
+            },
+            "257": {
+                "id": 257,
+                "illegal_str": "温家宝"
+            },
+            "258": {
+                "id": 258,
+                "illegal_str": "中共"
+            },
+            "259": {
+                "id": 259,
+                "illegal_str": "中央"
+            },
+            "260": {
+                "id": 260,
+                "illegal_str": "毛润之"
+            },
+            "261": {
+                "id": 261,
+                "illegal_str": "赵紫阳"
+            },
+            "262": {
+                "id": 262,
+                "illegal_str": "朱德"
+            },
+            "263": {
+                "id": 263,
+                "illegal_str": "刘少奇"
+            },
+            "264": {
+                "id": 264,
+                "illegal_str": "周恩来"
+            },
+            "265": {
+                "id": 265,
+                "illegal_str": "李鹏"
+            },
+            "266": {
+                "id": 266,
+                "illegal_str": "朱镕基"
+            },
+            "267": {
+                "id": 267,
+                "illegal_str": "王乐泉"
+            },
+            "268": {
+                "id": 268,
+                "illegal_str": "王兆国"
+            },
+            "269": {
+                "id": 269,
+                "illegal_str": "回良玉"
+            },
+            "270": {
+                "id": 270,
+                "illegal_str": "刘淇"
+            },
+            "271": {
+                "id": 271,
+                "illegal_str": "刘云山"
+            },
+            "272": {
+                "id": 272,
+                "illegal_str": "吴仪"
+            },
+            "273": {
+                "id": 273,
+                "illegal_str": "张立昌"
+            },
+            "274": {
+                "id": 274,
+                "illegal_str": "张德江"
+            },
+            "275": {
+                "id": 275,
+                "illegal_str": "陈良宇"
+            },
+            "276": {
+                "id": 276,
+                "illegal_str": "周永康"
+            },
+            "277": {
+                "id": 277,
+                "illegal_str": "俞正声"
+            },
+            "278": {
+                "id": 278,
+                "illegal_str": "贺国强"
+            },
+            "279": {
+                "id": 279,
+                "illegal_str": "郭伯雄"
+            },
+            "280": {
+                "id": 280,
+                "illegal_str": "曹刚川"
+            },
+            "281": {
+                "id": 281,
+                "illegal_str": "曾庆红"
+            },
+            "282": {
+                "id": 282,
+                "illegal_str": "曾培炎"
+            },
+            "283": {
+                "id": 283,
+                "illegal_str": "李洪志"
+            },
+            "284": {
+                "id": 284,
+                "illegal_str": "法轮功"
+            },
+            "285": {
+                "id": 285,
+                "illegal_str": "法輪功"
+            },
+            "286": {
+                "id": 286,
+                "illegal_str": "法轮大法"
+            },
+            "287": {
+                "id": 287,
+                "illegal_str": "法.*功"
+            },
+            "288": {
+                "id": 288,
+                "illegal_str": "共匪"
+            },
+            "289": {
+                "id": 289,
+                "illegal_str": "打倒政府"
+            },
+            "290": {
+                "id": 290,
+                "illegal_str": "蒋中正"
+            },
+            "291": {
+                "id": 291,
+                "illegal_str": "蒋介石"
+            },
+            "292": {
+                "id": 292,
+                "illegal_str": "蒋经国"
+            },
+            "293": {
+                "id": 293,
+                "illegal_str": "江青"
+            },
+            "294": {
+                "id": 294,
+                "illegal_str": "三个代表"
+            },
+            "295": {
+                "id": 295,
+                "illegal_str": "与时俱进"
+            },
+            "296": {
+                "id": 296,
+                "illegal_str": "人民币"
+            },
+            "297": {
+                "id": 297,
+                "illegal_str": "三個代表"
+            },
+            "298": {
+                "id": 298,
+                "illegal_str": "與時俱進"
+            },
+            "299": {
+                "id": 299,
+                "illegal_str": "人民幣"
+            },
+            "300": {
+                "id": 300,
+                "illegal_str": "日死"
+            },
+            "301": {
+                "id": 301,
+                "illegal_str": "耶和华"
+            },
+            "302": {
+                "id": 302,
+                "illegal_str": "賣淫"
+            },
+            "303": {
+                "id": 303,
+                "illegal_str": "淫穢"
+            },
+            "304": {
+                "id": 304,
+                "illegal_str": "援助交際"
+            },
+            "305": {
+                "id": 305,
+                "illegal_str": "網愛"
+            },
+            "306": {
+                "id": 306,
+                "illegal_str": "你媽"
+            },
+            "307": {
+                "id": 307,
+                "illegal_str": "他媽"
+            },
+            "308": {
+                "id": 308,
+                "illegal_str": "媽的"
+            },
+            "309": {
+                "id": 309,
+                "illegal_str": "幹你"
+            },
+            "310": {
+                "id": 310,
+                "illegal_str": "幹死"
+            },
+            "311": {
+                "id": 311,
+                "illegal_str": "強姦"
+            },
+            "312": {
+                "id": 312,
+                "illegal_str": "騷逼"
+            },
+            "313": {
+                "id": 313,
+                "illegal_str": "媽B"
+            },
+            "314": {
+                "id": 314,
+                "illegal_str": "媽逼"
+            },
+            "315": {
+                "id": 315,
+                "illegal_str": "逼樣"
+            },
+            "316": {
+                "id": 316,
+                "illegal_str": "媽比"
+            },
+            "317": {
+                "id": 317,
+                "illegal_str": "騷貨"
+            },
+            "318": {
+                "id": 318,
+                "illegal_str": "雞巴"
+            },
+            "319": {
+                "id": 319,
+                "illegal_str": "雞8"
+            },
+            "320": {
+                "id": 320,
+                "illegal_str": "雞奸"
+            },
+            "321": {
+                "id": 321,
+                "illegal_str": "陰莖"
+            },
+            "322": {
+                "id": 322,
+                "illegal_str": "陰毛"
+            },
+            "323": {
+                "id": 323,
+                "illegal_str": "陰唇"
+            },
+            "324": {
+                "id": 324,
+                "illegal_str": "陽具"
+            },
+            "325": {
+                "id": 325,
+                "illegal_str": "淫蕩"
+            },
+            "326": {
+                "id": 326,
+                "illegal_str": "賤貨"
+            },
+            "327": {
+                "id": 327,
+                "illegal_str": "賣B"
+            },
+            "328": {
+                "id": 328,
+                "illegal_str": "賣比"
+            },
+            "329": {
+                "id": 329,
+                "illegal_str": "乳頭"
+            },
+            "330": {
+                "id": 330,
+                "illegal_str": "姘頭"
+            },
+            "331": {
+                "id": 331,
+                "illegal_str": "屄"
+            },
+            "332": {
+                "id": 332,
+                "illegal_str": "肏"
+            },
+            "333": {
+                "id": 333,
+                "illegal_str": "奸"
+            },
+            "334": {
+                "id": 334,
+                "illegal_str": "屌"
+            },
+            "335": {
+                "id": 335,
+                "illegal_str": "僕街"
+            },
+            "336": {
+                "id": 336,
+                "illegal_str": "白癡"
+            },
+            "337": {
+                "id": 337,
+                "illegal_str": "爹娘"
+            },
+            "338": {
+                "id": 338,
+                "illegal_str": "王八蛋"
+            },
+            "339": {
+                "id": 339,
+                "illegal_str": "E闶请"
+            },
+            "340": {
+                "id": 340,
+                "illegal_str": "你是鴨"
+            },
+            "341": {
+                "id": 341,
+                "illegal_str": "爛貨"
+            },
+            "342": {
+                "id": 342,
+                "illegal_str": "爛逼"
+            },
+            "343": {
+                "id": 343,
+                "illegal_str": "陰道"
+            },
+            "344": {
+                "id": 344,
+                "illegal_str": "陽萎"
+            },
+            "345": {
+                "id": 345,
+                "illegal_str": "外陰"
+            },
+            "346": {
+                "id": 346,
+                "illegal_str": "他媽的"
+            },
+            "347": {
+                "id": 347,
+                "illegal_str": "性愛"
+            },
+            "348": {
+                "id": 348,
+                "illegal_str": "操你媽"
+            },
+            "349": {
+                "id": 349,
+                "illegal_str": "幹你娘"
+            },
+            "350": {
+                "id": 350,
+                "illegal_str": "雞吧"
+            },
+            "351": {
+                "id": 351,
+                "illegal_str": "雞八"
+            },
+            "352": {
+                "id": 352,
+                "illegal_str": "狗娘養的"
+            },
+            "353": {
+                "id": 353,
+                "illegal_str": "日你媽"
+            },
+            "354": {
+                "id": 354,
+                "illegal_str": "龜兒子"
+            },
+            "355": {
+                "id": 355,
+                "illegal_str": "做愛"
+            },
+            "356": {
+                "id": 356,
+                "illegal_str": "下三爛"
+            },
+            "357": {
+                "id": 357,
+                "illegal_str": "他奶奶的"
+            },
+            "358": {
+                "id": 358,
+                "illegal_str": "他奶娘的"
+            },
+            "359": {
+                "id": 359,
+                "illegal_str": "他馬的"
+            },
+            "360": {
+                "id": 360,
+                "illegal_str": "他媽ㄉ王八蛋"
+            },
+            "361": {
+                "id": 361,
+                "illegal_str": "她馬的"
+            },
+            "362": {
+                "id": 362,
+                "illegal_str": "她媽的"
+            },
+            "363": {
+                "id": 363,
+                "illegal_str": "老母"
+            },
+            "364": {
+                "id": 364,
+                "illegal_str": "老味"
+            },
+            "365": {
+                "id": 365,
+                "illegal_str": "你他馬的"
+            },
+            "366": {
+                "id": 366,
+                "illegal_str": "你他媽的"
+            },
+            "367": {
+                "id": 367,
+                "illegal_str": "你它馬的"
+            },
+            "368": {
+                "id": 368,
+                "illegal_str": "你它媽的"
+            },
+            "369": {
+                "id": 369,
+                "illegal_str": "你她馬的"
+            },
+            "370": {
+                "id": 370,
+                "illegal_str": "你馬的"
+            },
+            "371": {
+                "id": 371,
+                "illegal_str": "你媽的"
+            },
+            "372": {
+                "id": 372,
+                "illegal_str": "妳她媽的"
+            },
+            "373": {
+                "id": 373,
+                "illegal_str": "妳馬的"
+            },
+            "374": {
+                "id": 374,
+                "illegal_str": "妳媽的"
+            },
+            "375": {
+                "id": 375,
+                "illegal_str": "強姦你"
+            },
+            "376": {
+                "id": 376,
+                "illegal_str": "淫婦"
+            },
+            "377": {
+                "id": 377,
+                "illegal_str": "幾八"
+            },
+            "378": {
+                "id": 378,
+                "illegal_str": "幾巴"
+            },
+            "379": {
+                "id": 379,
+                "illegal_str": "幾叭"
+            },
+            "380": {
+                "id": 380,
+                "illegal_str": "幾芭"
+            },
+            "381": {
+                "id": 381,
+                "illegal_str": "媽的B"
+            },
+            "382": {
+                "id": 382,
+                "illegal_str": "媽個B"
+            },
+            "383": {
+                "id": 383,
+                "illegal_str": "幹x娘"
+            },
+            "384": {
+                "id": 384,
+                "illegal_str": "幹七八"
+            },
+            "385": {
+                "id": 385,
+                "illegal_str": "幹死GM"
+            },
+            "386": {
+                "id": 386,
+                "illegal_str": "幹死客服"
+            },
+            "387": {
+                "id": 387,
+                "illegal_str": "幹死JS"
+            },
+            "388": {
+                "id": 388,
+                "illegal_str": "幹死你"
+            },
+            "389": {
+                "id": 389,
+                "illegal_str": "幹你老母"
+            },
+            "390": {
+                "id": 390,
+                "illegal_str": "幹你良"
+            },
+            "391": {
+                "id": 391,
+                "illegal_str": "幹妳老母"
+            },
+            "392": {
+                "id": 392,
+                "illegal_str": "幹妳娘"
+            },
+            "393": {
+                "id": 393,
+                "illegal_str": "幹妳馬"
+            },
+            "394": {
+                "id": 394,
+                "illegal_str": "幹妳媽"
+            },
+            "395": {
+                "id": 395,
+                "illegal_str": "幹您娘"
+            },
+            "396": {
+                "id": 396,
+                "illegal_str": "幹機掰"
+            },
+            "397": {
+                "id": 397,
+                "illegal_str": "賤B"
+            },
+            "398": {
+                "id": 398,
+                "illegal_str": "賤人"
+            },
+            "399": {
+                "id": 399,
+                "illegal_str": "駛你公"
+            },
+            "400": {
+                "id": 400,
+                "illegal_str": "駛你母"
+            },
+            "401": {
+                "id": 401,
+                "illegal_str": "駛你老母"
+            },
+            "402": {
+                "id": 402,
+                "illegal_str": "駛你老師"
+            },
+            "403": {
+                "id": 403,
+                "illegal_str": "駛你爸"
+            },
+            "404": {
+                "id": 404,
+                "illegal_str": "駛你娘"
+            },
+            "405": {
+                "id": 405,
+                "illegal_str": "操你老媽"
+            },
+            "406": {
+                "id": 406,
+                "illegal_str": "操妳媽"
+            },
+            "407": {
+                "id": 407,
+                "illegal_str": "操機掰"
+            },
+            "408": {
+                "id": 408,
+                "illegal_str": "機八"
+            },
+            "409": {
+                "id": 409,
+                "illegal_str": "機巴"
+            },
+            "410": {
+                "id": 410,
+                "illegal_str": "機機歪歪"
+            },
+            "411": {
+                "id": 411,
+                "illegal_str": "懆您媽"
+            },
+            "412": {
+                "id": 412,
+                "illegal_str": "雞掰"
+            },
+            "413": {
+                "id": 413,
+                "illegal_str": "賽你老母"
+            },
+            "414": {
+                "id": 414,
+                "illegal_str": "賽妳阿母"
+            },
+            "415": {
+                "id": 415,
+                "illegal_str": "雞叭"
+            },
+            "416": {
+                "id": 416,
+                "illegal_str": "雞芭"
+            },
+            "417": {
+                "id": 417,
+                "illegal_str": "懶八"
+            },
+            "418": {
+                "id": 418,
+                "illegal_str": "贛您娘"
+            },
+            "419": {
+                "id": 419,
+                "illegal_str": "幹拎娘"
+            },
+            "420": {
+                "id": 420,
+                "illegal_str": "幹你媽"
+            },
+            "421": {
+                "id": 421,
+                "illegal_str": "塞你老師"
+            },
+            "422": {
+                "id": 422,
+                "illegal_str": "柯賜海"
+            },
+            "423": {
+                "id": 423,
+                "illegal_str": "連戰"
+            },
+            "424": {
+                "id": 424,
+                "illegal_str": "李登輝"
+            },
+            "425": {
+                "id": 425,
+                "illegal_str": "陳水扁"
+            },
+            "426": {
+                "id": 426,
+                "illegal_str": "陳隨便"
+            },
+            "427": {
+                "id": 427,
+                "illegal_str": "米青"
+            },
+            "428": {
+                "id": 428,
+                "illegal_str": "鄧小平"
+            },
+            "429": {
+                "id": 429,
+                "illegal_str": "草你媽"
+            },
+            "430": {
+                "id": 430,
+                "illegal_str": "日?隳?"
+            },
+            "431": {
+                "id": 431,
+                "illegal_str": "你大爺"
+            },
+            "432": {
+                "id": 432,
+                "illegal_str": "淫亂"
+            },
+            "433": {
+                "id": 433,
+                "illegal_str": "顏射"
+            },
+            "434": {
+                "id": 434,
+                "illegal_str": "誘姦"
+            },
+            "435": {
+                "id": 435,
+                "illegal_str": "輪奸"
+            },
+            "436": {
+                "id": 436,
+                "illegal_str": "陰蒂"
+            },
+            "437": {
+                "id": 437,
+                "illegal_str": "陰戶"
+            },
+            "438": {
+                "id": 438,
+                "illegal_str": "激情視頻"
+            },
+            "439": {
+                "id": 439,
+                "illegal_str": "吳邦國"
+            },
+            "440": {
+                "id": 440,
+                "illegal_str": "李嵐清"
+            },
+            "441": {
+                "id": 441,
+                "illegal_str": "榮毅仁"
+            },
+            "442": {
+                "id": 442,
+                "illegal_str": "羅幹"
+            },
+            "443": {
+                "id": 443,
+                "illegal_str": "賈慶林"
+            },
+            "444": {
+                "id": 444,
+                "illegal_str": "黃菊"
+            },
+            "445": {
+                "id": 445,
+                "illegal_str": "吳官正"
+            },
+            "446": {
+                "id": 446,
+                "illegal_str": "李長春"
+            },
+            "447": {
+                "id": 447,
+                "illegal_str": "周總理"
+            },
+            "448": {
+                "id": 448,
+                "illegal_str": "國務院"
+            },
+            "449": {
+                "id": 449,
+                "illegal_str": "國民黨"
+            },
+            "450": {
+                "id": 450,
+                "illegal_str": "總理"
+            },
+            "451": {
+                "id": 451,
+                "illegal_str": "孫中山"
+            },
+            "452": {
+                "id": 452,
+                "illegal_str": "高寧寧"
+            },
+            "453": {
+                "id": 453,
+                "illegal_str": "黨中央"
+            },
+            "454": {
+                "id": 454,
+                "illegal_str": "毛澤東"
+            },
+            "455": {
+                "id": 455,
+                "illegal_str": "江澤民"
+            },
+            "456": {
+                "id": 456,
+                "illegal_str": "胡錦濤"
+            },
+            "457": {
+                "id": 457,
+                "illegal_str": "溫家寶"
+            },
+            "458": {
+                "id": 458,
+                "illegal_str": "毛潤之"
+            },
+            "459": {
+                "id": 459,
+                "illegal_str": "趙紫陽"
+            },
+            "460": {
+                "id": 460,
+                "illegal_str": "劉少奇"
+            },
+            "461": {
+                "id": 461,
+                "illegal_str": "周恩來"
+            },
+            "462": {
+                "id": 462,
+                "illegal_str": "李鵬"
+            },
+            "463": {
+                "id": 463,
+                "illegal_str": "朱鎔基"
+            },
+            "464": {
+                "id": 464,
+                "illegal_str": "王樂泉"
+            },
+            "465": {
+                "id": 465,
+                "illegal_str": "王兆國"
+            },
+            "466": {
+                "id": 466,
+                "illegal_str": "劉淇"
+            },
+            "467": {
+                "id": 467,
+                "illegal_str": "劉雲山"
+            },
+            "468": {
+                "id": 468,
+                "illegal_str": "吳儀"
+            },
+            "469": {
+                "id": 469,
+                "illegal_str": "張立昌"
+            },
+            "470": {
+                "id": 470,
+                "illegal_str": "張德江"
+            },
+            "471": {
+                "id": 471,
+                "illegal_str": "陳良宇"
+            },
+            "472": {
+                "id": 472,
+                "illegal_str": "俞正聲"
+            },
+            "473": {
+                "id": 473,
+                "illegal_str": "賀國強"
+            },
+            "474": {
+                "id": 474,
+                "illegal_str": "曹剛川"
+            },
+            "475": {
+                "id": 475,
+                "illegal_str": "曾慶紅"
+            },
+            "476": {
+                "id": 476,
+                "illegal_str": "蔣中正"
+            },
+            "477": {
+                "id": 477,
+                "illegal_str": "蔣介石"
+            },
+            "478": {
+                "id": 478,
+                "illegal_str": "蔣經國"
+            },
+            "479": {
+                "id": 479,
+                "illegal_str": "湛振阳"
+            },
+            "480": {
+                "id": 480,
+                "illegal_str": "安砥中"
+            },
+            "481": {
+                "id": 481,
+                "illegal_str": "邹涛"
+            },
+            "482": {
+                "id": 482,
+                "illegal_str": "求伯军"
+            },
+            "483": {
+                "id": 483,
+                "illegal_str": "湛振陽"
+            },
+            "484": {
+                "id": 484,
+                "illegal_str": "鄒濤"
+            },
+            "485": {
+                "id": 485,
+                "illegal_str": "雷軍"
+            },
+            "486": {
+                "id": 486,
+                "illegal_str": "求伯軍"
+            },
+            "487": {
+                "id": 487,
+                "illegal_str": "李克强"
+            },
+            "488": {
+                "id": 488,
+                "illegal_str": "王岐山"
+            },
+            "489": {
+                "id": 489,
+                "illegal_str": "刘延东"
+            },
+            "490": {
+                "id": 490,
+                "illegal_str": "梁光烈"
+            },
+            "491": {
+                "id": 491,
+                "illegal_str": "马凯"
+            },
+            "492": {
+                "id": 492,
+                "illegal_str": "孟建柱"
+            },
+            "493": {
+                "id": 493,
+                "illegal_str": "戴秉国"
+            },
+            "494": {
+                "id": 494,
+                "illegal_str": "徐才厚"
+            },
+            "495": {
+                "id": 495,
+                "illegal_str": "曹建明"
+            },
+            "496": {
+                "id": 496,
+                "illegal_str": "王胜俊"
+            },
+            "497": {
+                "id": 497,
+                "illegal_str": "劉延東"
+            },
+            "498": {
+                "id": 498,
+                "illegal_str": "馬凱"
+            },
+            "499": {
+                "id": 499,
+                "illegal_str": "戴秉國"
+            },
+            "500": {
+                "id": 500,
+                "illegal_str": "王勝俊"
+            },
+            "501": {
+                "id": 501,
+                "illegal_str": "達賴"
+            },
+            "502": {
+                "id": 502,
+                "illegal_str": "习近平"
+            },
+            "503": {
+                "id": 503,
+                "illegal_str": "李源潮"
+            },
+            "504": {
+                "id": 504,
+                "illegal_str": "张高丽"
+            },
+            "505": {
+                "id": 505,
+                "illegal_str": "薄熙来"
+            },
+            "506": {
+                "id": 506,
+                "illegal_str": "令计划"
+            },
+            "507": {
+                "id": 507,
+                "illegal_str": "王沪宁"
+            },
+            "508": {
+                "id": 508,
+                "illegal_str": "路甬祥"
+            },
+            "509": {
+                "id": 509,
+                "illegal_str": "乌云其木格"
+            },
+            "510": {
+                "id": 510,
+                "illegal_str": "韩启德"
+            },
+            "511": {
+                "id": 511,
+                "illegal_str": "华建敏"
+            },
+            "512": {
+                "id": 512,
+                "illegal_str": "陈至立"
+            },
+            "513": {
+                "id": 513,
+                "illegal_str": "周铁农"
+            },
+            "514": {
+                "id": 514,
+                "illegal_str": "李建国"
+            },
+            "515": {
+                "id": 515,
+                "illegal_str": "司马义·铁力瓦尔地"
+            },
+            "516": {
+                "id": 516,
+                "illegal_str": "蒋树声"
+            },
+            "517": {
+                "id": 517,
+                "illegal_str": "陈昌智"
+            },
+            "518": {
+                "id": 518,
+                "illegal_str": "严隽琪"
+            },
+            "519": {
+                "id": 519,
+                "illegal_str": "桑国卫"
+            },
+            "520": {
+                "id": 520,
+                "illegal_str": "杜青林"
+            },
+            "521": {
+                "id": 521,
+                "illegal_str": "阿沛·阿旺晋美"
+            },
+            "522": {
+                "id": 522,
+                "illegal_str": "帕巴拉·格列朗杰"
+            },
+            "523": {
+                "id": 523,
+                "illegal_str": "马万祺"
+            },
+            "524": {
+                "id": 524,
+                "illegal_str": "白立忱"
+            },
+            "525": {
+                "id": 525,
+                "illegal_str": "陈奎元"
+            },
+            "526": {
+                "id": 526,
+                "illegal_str": "阿不来提·阿不都热西提"
+            },
+            "527": {
+                "id": 527,
+                "illegal_str": "李兆焯"
+            },
+            "528": {
+                "id": 528,
+                "illegal_str": "黄孟复"
+            },
+            "529": {
+                "id": 529,
+                "illegal_str": "董建华"
+            },
+            "530": {
+                "id": 530,
+                "illegal_str": "张梅颖"
+            },
+            "531": {
+                "id": 531,
+                "illegal_str": "张榕明"
+            },
+            "532": {
+                "id": 532,
+                "illegal_str": "钱运录"
+            },
+            "533": {
+                "id": 533,
+                "illegal_str": "孙家正"
+            },
+            "534": {
+                "id": 534,
+                "illegal_str": "李金华"
+            },
+            "535": {
+                "id": 535,
+                "illegal_str": "郑万通"
+            },
+            "536": {
+                "id": 536,
+                "illegal_str": "邓朴方"
+            },
+            "537": {
+                "id": 537,
+                "illegal_str": "林文漪"
+            },
+            "538": {
+                "id": 538,
+                "illegal_str": "厉无畏"
+            },
+            "539": {
+                "id": 539,
+                "illegal_str": "罗富和"
+            },
+            "540": {
+                "id": 540,
+                "illegal_str": "陈宗兴"
+            },
+            "541": {
+                "id": 541,
+                "illegal_str": "王志珍"
+            },
+            "542": {
+                "id": 542,
+                "illegal_str": "于幼军"
+            },
+            "543": {
+                "id": 543,
+                "illegal_str": "卫留成"
+            },
+            "544": {
+                "id": 544,
+                "illegal_str": "马晓天"
+            },
+            "545": {
+                "id": 545,
+                "illegal_str": "王万宾"
+            },
+            "546": {
+                "id": 546,
+                "illegal_str": "王太华"
+            },
+            "547": {
+                "id": 547,
+                "illegal_str": "王正伟"
+            },
+            "548": {
+                "id": 548,
+                "illegal_str": "王东明"
+            },
+            "549": {
+                "id": 549,
+                "illegal_str": "王旭东"
+            },
+            "550": {
+                "id": 550,
+                "illegal_str": "王国生"
+            },
+            "551": {
+                "id": 551,
+                "illegal_str": "王金山"
+            },
+            "552": {
+                "id": 552,
+                "illegal_str": "王家瑞"
+            },
+            "553": {
+                "id": 553,
+                "illegal_str": "王鸿举"
+            },
+            "554": {
+                "id": 554,
+                "illegal_str": "王喜斌"
+            },
+            "555": {
+                "id": 555,
+                "illegal_str": "尹蔚民"
+            },
+            "556": {
+                "id": 556,
+                "illegal_str": "邓昌友"
+            },
+            "557": {
+                "id": 557,
+                "illegal_str": "艾斯海提·克里木拜"
+            },
+            "558": {
+                "id": 558,
+                "illegal_str": "石宗源"
+            },
+            "559": {
+                "id": 559,
+                "illegal_str": "卢展工"
+            },
+            "560": {
+                "id": 560,
+                "illegal_str": "田成平"
+            },
+            "561": {
+                "id": 561,
+                "illegal_str": "田修思"
+            },
+            "562": {
+                "id": 562,
+                "illegal_str": "白志健"
+            },
+            "563": {
+                "id": 563,
+                "illegal_str": "白恩培"
+            },
+            "564": {
+                "id": 564,
+                "illegal_str": "白景富"
+            },
+            "565": {
+                "id": 565,
+                "illegal_str": "吉炳轩"
+            },
+            "566": {
+                "id": 566,
+                "illegal_str": "吕祖善"
+            },
+            "567": {
+                "id": 567,
+                "illegal_str": "朱之鑫"
+            },
+            "568": {
+                "id": 568,
+                "illegal_str": "朱维群"
+            },
+            "569": {
+                "id": 569,
+                "illegal_str": "向巴平措"
+            },
+            "570": {
+                "id": 570,
+                "illegal_str": "刘冬冬"
+            },
+            "571": {
+                "id": 571,
+                "illegal_str": "刘永治"
+            },
+            "572": {
+                "id": 572,
+                "illegal_str": "刘成军"
+            },
+            "573": {
+                "id": 573,
+                "illegal_str": "刘志军"
+            },
+            "574": {
+                "id": 574,
+                "illegal_str": "刘奇葆"
+            },
+            "575": {
+                "id": 575,
+                "illegal_str": "刘明康"
+            },
+            "576": {
+                "id": 576,
+                "illegal_str": "刘晓江"
+            },
+            "577": {
+                "id": 577,
+                "illegal_str": "刘家义"
+            },
+            "578": {
+                "id": 578,
+                "illegal_str": "许其亮"
+            },
+            "579": {
+                "id": 579,
+                "illegal_str": "孙大发"
+            },
+            "580": {
+                "id": 580,
+                "illegal_str": "孙忠同"
+            },
+            "581": {
+                "id": 581,
+                "illegal_str": "孙春兰"
+            },
+            "582": {
+                "id": 582,
+                "illegal_str": "孙政才"
+            },
+            "583": {
+                "id": 583,
+                "illegal_str": "孙晓群"
+            },
+            "584": {
+                "id": 584,
+                "illegal_str": "李长才"
+            },
+            "585": {
+                "id": 585,
+                "illegal_str": "李长江"
+            },
+            "586": {
+                "id": 586,
+                "illegal_str": "李从军"
+            },
+            "587": {
+                "id": 587,
+                "illegal_str": "李成玉"
+            },
+            "588": {
+                "id": 588,
+                "illegal_str": "李世明"
+            },
+            "589": {
+                "id": 589,
+                "illegal_str": "李学勇"
+            },
+            "590": {
+                "id": 590,
+                "illegal_str": "李荣融"
+            },
+            "591": {
+                "id": 591,
+                "illegal_str": "李海峰"
+            },
+            "592": {
+                "id": 592,
+                "illegal_str": "李继耐"
+            },
+            "593": {
+                "id": 593,
+                "illegal_str": "李盛霖"
+            },
+            "594": {
+                "id": 594,
+                "illegal_str": "李景田"
+            },
+            "595": {
+                "id": 595,
+                "illegal_str": "李毅中"
+            },
+            "596": {
+                "id": 596,
+                "illegal_str": "杨元元"
+            },
+            "597": {
+                "id": 597,
+                "illegal_str": "杨传堂"
+            },
+            "598": {
+                "id": 598,
+                "illegal_str": "杨衍银"
+            },
+            "599": {
+                "id": 599,
+                "illegal_str": "杨洁篪"
+            },
+            "600": {
+                "id": 600,
+                "illegal_str": "杨崇汇"
+            },
+            "601": {
+                "id": 601,
+                "illegal_str": "吴双战"
+            },
+            "602": {
+                "id": 602,
+                "illegal_str": "吴胜利"
+            },
+            "603": {
+                "id": 603,
+                "illegal_str": "吴爱英"
+            },
+            "604": {
+                "id": 604,
+                "illegal_str": "吴新雄"
+            },
+            "605": {
+                "id": 605,
+                "illegal_str": "沈跃跃"
+            },
+            "606": {
+                "id": 606,
+                "illegal_str": "宋秀岩"
+            },
+            "607": {
+                "id": 607,
+                "illegal_str": "迟万春"
+            },
+            "608": {
+                "id": 608,
+                "illegal_str": "张又侠"
+            },
+            "609": {
+                "id": 609,
+                "illegal_str": "张云川"
+            },
+            "610": {
+                "id": 610,
+                "illegal_str": "张文岳"
+            },
+            "611": {
+                "id": 611,
+                "illegal_str": "张玉台"
+            },
+            "612": {
+                "id": 612,
+                "illegal_str": "张左己"
+            },
+            "613": {
+                "id": 613,
+                "illegal_str": "张庆伟"
+            },
+            "614": {
+                "id": 614,
+                "illegal_str": "张庆黎"
+            },
+            "615": {
+                "id": 615,
+                "illegal_str": "张宝顺"
+            },
+            "616": {
+                "id": 616,
+                "illegal_str": "张春贤"
+            },
+            "617": {
+                "id": 617,
+                "illegal_str": "张海阳"
+            },
+            "618": {
+                "id": 618,
+                "illegal_str": "陈国令"
+            },
+            "619": {
+                "id": 619,
+                "illegal_str": "陈建国"
+            },
+            "620": {
+                "id": 620,
+                "illegal_str": "陈炳德"
+            },
+            "621": {
+                "id": 621,
+                "illegal_str": "范长龙"
+            },
+            "622": {
+                "id": 622,
+                "illegal_str": "林树森"
+            },
+            "623": {
+                "id": 623,
+                "illegal_str": "尚福林"
+            },
+            "624": {
+                "id": 624,
+                "illegal_str": "罗保铭"
+            },
+            "625": {
+                "id": 625,
+                "illegal_str": "罗清泉"
+            },
+            "626": {
+                "id": 626,
+                "illegal_str": "周小川"
+            },
+            "627": {
+                "id": 627,
+                "illegal_str": "周生贤"
+            },
+            "628": {
+                "id": 628,
+                "illegal_str": "周伯华"
+            },
+            "629": {
+                "id": 629,
+                "illegal_str": "房峰辉"
+            },
+            "630": {
+                "id": 630,
+                "illegal_str": "孟学农"
+            },
+            "631": {
+                "id": 631,
+                "illegal_str": "赵乐际"
+            },
+            "632": {
+                "id": 632,
+                "illegal_str": "赵克石"
+            },
+            "633": {
+                "id": 633,
+                "illegal_str": "赵洪祝"
+            },
+            "634": {
+                "id": 634,
+                "illegal_str": "胡春华"
+            },
+            "635": {
+                "id": 635,
+                "illegal_str": "柳斌杰"
+            },
+            "636": {
+                "id": 636,
+                "illegal_str": "姜大明"
+            },
+            "637": {
+                "id": 637,
+                "illegal_str": "姜伟新"
+            },
+            "638": {
+                "id": 638,
+                "illegal_str": "姜异康"
+            },
+            "639": {
+                "id": 639,
+                "illegal_str": "秦光荣"
+            },
+            "640": {
+                "id": 640,
+                "illegal_str": "袁纯清"
+            },
+            "641": {
+                "id": 641,
+                "illegal_str": "耿惠昌"
+            },
+            "642": {
+                "id": 642,
+                "illegal_str": "聂卫国"
+            },
+            "643": {
+                "id": 643,
+                "illegal_str": "贾治邦"
+            },
+            "644": {
+                "id": 644,
+                "illegal_str": "徐光春"
+            },
+            "645": {
+                "id": 645,
+                "illegal_str": "徐守盛"
+            },
+            "646": {
+                "id": 646,
+                "illegal_str": "徐绍史"
+            },
+            "647": {
+                "id": 647,
+                "illegal_str": "郭金龙"
+            },
+            "648": {
+                "id": 648,
+                "illegal_str": "郭庚茂"
+            },
+            "649": {
+                "id": 649,
+                "illegal_str": "黄小晶"
+            },
+            "650": {
+                "id": 650,
+                "illegal_str": "黄华华"
+            },
+            "651": {
+                "id": 651,
+                "illegal_str": "黄晴宜"
+            },
+            "652": {
+                "id": 652,
+                "illegal_str": "黄献中"
+            },
+            "653": {
+                "id": 653,
+                "illegal_str": "盛光祖"
+            },
+            "654": {
+                "id": 654,
+                "illegal_str": "常万全"
+            },
+            "655": {
+                "id": 655,
+                "illegal_str": "符廷贵"
+            },
+            "656": {
+                "id": 656,
+                "illegal_str": "康日新"
+            },
+            "657": {
+                "id": 657,
+                "illegal_str": "章沁生"
+            },
+            "658": {
+                "id": 658,
+                "illegal_str": "梁保华"
+            },
+            "659": {
+                "id": 659,
+                "illegal_str": "彭小枫"
+            },
+            "660": {
+                "id": 660,
+                "illegal_str": "彭清华"
+            },
+            "661": {
+                "id": 661,
+                "illegal_str": "葛振峰"
+            },
+            "662": {
+                "id": 662,
+                "illegal_str": "董贵山"
+            },
+            "663": {
+                "id": 663,
+                "illegal_str": "蒋巨峰"
+            },
+            "664": {
+                "id": 664,
+                "illegal_str": "韩长赋"
+            },
+            "665": {
+                "id": 665,
+                "illegal_str": "喻林祥"
+            },
+            "666": {
+                "id": 666,
+                "illegal_str": "褃┦榔"
+            },
+            "667": {
+                "id": 667,
+                "illegal_str": "谢旭人"
+            },
+            "668": {
+                "id": 668,
+                "illegal_str": "靖志远"
+            },
+            "669": {
+                "id": 669,
+                "illegal_str": "廖锡龙"
+            },
+            "670": {
+                "id": 670,
+                "illegal_str": "戴相龙"
+            },
+            "671": {
+                "id": 671,
+                "illegal_str": "卢嘉锡"
+            },
+            "672": {
+                "id": 672,
+                "illegal_str": "孙起孟"
+            },
+            "673": {
+                "id": 673,
+                "illegal_str": "朱学范"
+            },
+            "674": {
+                "id": 674,
+                "illegal_str": "朱蕴山"
+            },
+            "675": {
+                "id": 675,
+                "illegal_str": "许广平"
+            },
+            "676": {
+                "id": 676,
+                "illegal_str": "许嘉璐"
+            },
+            "677": {
+                "id": 677,
+                "illegal_str": "许德珩"
+            },
+            "678": {
+                "id": 678,
+                "illegal_str": "严济慈"
+            },
+            "679": {
+                "id": 679,
+                "illegal_str": "何香凝"
+            },
+            "680": {
+                "id": 680,
+                "illegal_str": "中央委员会"
+            },
+            "681": {
+                "id": 681,
+                "illegal_str": "中央委员会总书记"
+            },
+            "682": {
+                "id": 682,
+                "illegal_str": "中央政治局常务委员会"
+            },
+            "683": {
+                "id": 683,
+                "illegal_str": "中央政治局委员"
+            },
+            "684": {
+                "id": 684,
+                "illegal_str": "中央书记处书记"
+            },
+            "685": {
+                "id": 685,
+                "illegal_str": "中央军事委员会"
+            },
+            "686": {
+                "id": 686,
+                "illegal_str": "国务委员"
+            },
+            "687": {
+                "id": 687,
+                "illegal_str": "中共中央委员"
+            },
+            "688": {
+                "id": 688,
+                "illegal_str": "中华人民共和国"
+            },
+            "689": {
+                "id": 689,
+                "illegal_str": "中華人民共和國"
+            },
+            "690": {
+                "id": 690,
+                "illegal_str": "宪法"
+            },
+            "691": {
+                "id": 691,
+                "illegal_str": "全国人大和地方各级人大"
+            },
+            "692": {
+                "id": 692,
+                "illegal_str": "全国人大"
+            },
+            "693": {
+                "id": 693,
+                "illegal_str": "政府"
+            },
+            "694": {
+                "id": 694,
+                "illegal_str": "人民法院"
+            },
+            "695": {
+                "id": 695,
+                "illegal_str": "人民检察院"
+            },
+            "696": {
+                "id": 696,
+                "illegal_str": "民族区域"
+            },
+            "697": {
+                "id": 697,
+                "illegal_str": "香港特区"
+            },
+            "698": {
+                "id": 698,
+                "illegal_str": "澳门特区"
+            },
+            "699": {
+                "id": 699,
+                "illegal_str": "中共中央"
+            },
+            "700": {
+                "id": 700,
+                "illegal_str": "中央军委"
+            },
+            "701": {
+                "id": 701,
+                "illegal_str": "中纪委"
+            },
+            "702": {
+                "id": 702,
+                "illegal_str": "中直机构"
+            },
+            "703": {
+                "id": 703,
+                "illegal_str": "党章"
+            },
+            "704": {
+                "id": 704,
+                "illegal_str": "简史"
+            },
+            "705": {
+                "id": 705,
+                "illegal_str": "党代会"
+            },
+            "706": {
+                "id": 706,
+                "illegal_str": "党史文献"
+            },
+            "707": {
+                "id": 707,
+                "illegal_str": "党史大事记"
+            },
+            "708": {
+                "id": 708,
+                "illegal_str": "中央全会"
+            },
+            "709": {
+                "id": 709,
+                "illegal_str": "中共各省"
+            },
+            "710": {
+                "id": 710,
+                "illegal_str": "中国国民党革命委员会"
+            },
+            "711": {
+                "id": 711,
+                "illegal_str": "民革"
+            },
+            "712": {
+                "id": 712,
+                "illegal_str": "中国民主同盟"
+            },
+            "713": {
+                "id": 713,
+                "illegal_str": "民盟"
+            },
+            "714": {
+                "id": 714,
+                "illegal_str": "中国民主建国会"
+            },
+            "715": {
+                "id": 715,
+                "illegal_str": "民建"
+            },
+            "716": {
+                "id": 716,
+                "illegal_str": "中国民主促进会"
+            },
+            "717": {
+                "id": 717,
+                "illegal_str": "民进"
+            },
+            "718": {
+                "id": 718,
+                "illegal_str": "中国农工民主党"
+            },
+            "719": {
+                "id": 719,
+                "illegal_str": "农工党"
+            },
+            "720": {
+                "id": 720,
+                "illegal_str": "中国致公党"
+            },
+            "721": {
+                "id": 721,
+                "illegal_str": "致公党"
+            },
+            "722": {
+                "id": 722,
+                "illegal_str": "九三学社"
+            },
+            "723": {
+                "id": 723,
+                "illegal_str": "台湾民主自治同盟"
+            },
+            "724": {
+                "id": 724,
+                "illegal_str": "台盟"
+            },
+            "725": {
+                "id": 725,
+                "illegal_str": "全国妇联"
+            },
+            "726": {
+                "id": 726,
+                "illegal_str": "国防部"
+            },
+            "727": {
+                "id": 727,
+                "illegal_str": "武装力量"
+            },
+            "728": {
+                "id": 728,
+                "illegal_str": "武装警察部队"
+            },
+            "729": {
+                "id": 729,
+                "illegal_str": "解放军驻香港部队"
+            },
+            "730": {
+                "id": 730,
+                "illegal_str": "解放军驻澳门部队"
+            },
+            "731": {
+                "id": 731,
+                "illegal_str": "民主政治"
+            },
+            "732": {
+                "id": 732,
+                "illegal_str": "台湾问题"
+            },
+            "733": {
+                "id": 733,
+                "illegal_str": "社会主义新农村"
+            },
+            "734": {
+                "id": 734,
+                "illegal_str": "中国的政党制度"
+            },
+            "735": {
+                "id": 735,
+                "illegal_str": "一号文件"
+            },
+            "736": {
+                "id": 736,
+                "illegal_str": "四位一体"
+            },
+            "737": {
+                "id": 737,
+                "illegal_str": "能源白皮书"
+            },
+            "738": {
+                "id": 738,
+                "illegal_str": "中央经济工作会议"
+            },
+            "739": {
+                "id": 739,
+                "illegal_str": "和谐"
+            },
+            "740": {
+                "id": 740,
+                "illegal_str": "西藏国"
+            },
+            "741": {
+                "id": 741,
+                "illegal_str": "台湾独立"
+            },
+            "742": {
+                "id": 742,
+                "illegal_str": "法理台独"
+            },
+            "743": {
+                "id": 743,
+                "illegal_str": "入联公投"
+            },
+            "744": {
+                "id": 744,
+                "illegal_str": "独台"
+            },
+            "745": {
+                "id": 745,
+                "illegal_str": "海峡两岸"
+            },
+            "746": {
+                "id": 746,
+                "illegal_str": "一国两制"
+            },
+            "747": {
+                "id": 747,
+                "illegal_str": "三反四反"
+            },
+            "748": {
+                "id": 748,
+                "illegal_str": "分裂台湾"
+            },
+            "749": {
+                "id": 749,
+                "illegal_str": "陈水扁代言人"
+            },
+            "750": {
+                "id": 750,
+                "illegal_str": "台湾政治局"
+            },
+            "751": {
+                "id": 751,
+                "illegal_str": "中央对台政策"
+            },
+            "752": {
+                "id": 752,
+                "illegal_str": "中台办"
+            },
+            "753": {
+                "id": 753,
+                "illegal_str": "国台办"
+            },
+            "754": {
+                "id": 754,
+                "illegal_str": "分裂活动"
+            },
+            "755": {
+                "id": 755,
+                "illegal_str": "脱离国家"
+            },
+            "756": {
+                "id": 756,
+                "illegal_str": "香港国"
+            },
+            "757": {
+                "id": 757,
+                "illegal_str": "澳门国"
+            },
+            "758": {
+                "id": 758,
+                "illegal_str": "新疆国"
+            },
+            "759": {
+                "id": 759,
+                "illegal_str": "藏独"
+            },
+            "760": {
+                "id": 760,
+                "illegal_str": "台湾分裂"
+            },
+            "761": {
+                "id": 761,
+                "illegal_str": "西藏分裂"
+            },
+            "762": {
+                "id": 762,
+                "illegal_str": "官方"
+            },
+            "763": {
+                "id": 763,
+                "illegal_str": "回民吃猪肉"
+            },
+            "764": {
+                "id": 764,
+                "illegal_str": "@+<embedpic"
+            },
+            "765": {
+                "id": 765,
+                "illegal_str": "@+<enter"
+            },
+            "766": {
+                "id": 766,
+                "illegal_str": "@+<colo(.)?rred"
+            },
+            "767": {
+                "id": 767,
+                "illegal_str": "@+<bclr"
+            },
+            "768": {
+                "id": 768,
+                "illegal_str": "@+<border"
+            },
+            "769": {
+                "id": 769,
+                "illegal_str": "@+<script"
+            },
+            "770": {
+                "id": 770,
+                "illegal_str": "@+<npc"
+            },
+            "771": {
+                "id": 771,
+                "illegal_str": "@+<space"
+            },
+            "772": {
+                "id": 772,
+                "illegal_str": "@+<offset"
+            },
+            "773": {
+                "id": 773,
+                "illegal_str": "@+<url"
+            },
+            "774": {
+                "id": 774,
+                "illegal_str": "@+<fT"
+            },
+            "775": {
+                "id": 775,
+                "illegal_str": "@+<RFix"
+            },
+            "776": {
+                "id": 776,
+                "illegal_str": "系统"
+            },
+            "777": {
+                "id": 777,
+                "illegal_str": "公告"
+            },
+            "778": {
+                "id": 778,
+                "illegal_str": "钓鱼岛"
+            },
+            "779": {
+                "id": 779,
+                "illegal_str": "尖阁列岛"
             }
         }
     },
@@ -24854,3127 +27978,6 @@ var outputTables = {
             }
         }
     },
-    "illegal_str": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "illegal_str": "shit"
-            },
-            "2": {
-                "id": 2,
-                "illegal_str": "fuck"
-            },
-            "3": {
-                "id": 3,
-                "illegal_str": "F_U_C_K"
-            },
-            "4": {
-                "id": 4,
-                "illegal_str": "ｓｈｉｔ"
-            },
-            "5": {
-                "id": 5,
-                "illegal_str": "ｆｕｃｋ"
-            },
-            "6": {
-                "id": 6,
-                "illegal_str": "ｂｉｔｃｈ"
-            },
-            "7": {
-                "id": 7,
-                "illegal_str": "Fuckyou"
-            },
-            "8": {
-                "id": 8,
-                "illegal_str": "caonima"
-            },
-            "9": {
-                "id": 9,
-                "illegal_str": "rinima"
-            },
-            "10": {
-                "id": 10,
-                "illegal_str": "中华民国"
-            },
-            "11": {
-                "id": 11,
-                "illegal_str": "中华民國"
-            },
-            "12": {
-                "id": 12,
-                "illegal_str": "中華民国"
-            },
-            "13": {
-                "id": 13,
-                "illegal_str": "中華民國"
-            },
-            "14": {
-                "id": 14,
-                "illegal_str": "共產党"
-            },
-            "15": {
-                "id": 15,
-                "illegal_str": "共产產"
-            },
-            "16": {
-                "id": 16,
-                "illegal_str": "共產黨"
-            },
-            "17": {
-                "id": 17,
-                "illegal_str": "共产黨"
-            },
-            "18": {
-                "id": 18,
-                "illegal_str": "共産黨"
-            },
-            "19": {
-                "id": 19,
-                "illegal_str": "共産党"
-            },
-            "20": {
-                "id": 20,
-                "illegal_str": "共产党"
-            },
-            "21": {
-                "id": 21,
-                "illegal_str": "外挂"
-            },
-            "22": {
-                "id": 22,
-                "illegal_str": "外掛"
-            },
-            "23": {
-                "id": 23,
-                "illegal_str": "台湾国"
-            },
-            "24": {
-                "id": 24,
-                "illegal_str": "台湾國"
-            },
-            "25": {
-                "id": 25,
-                "illegal_str": "臺灣國"
-            },
-            "26": {
-                "id": 26,
-                "illegal_str": "台灣國"
-            },
-            "27": {
-                "id": 27,
-                "illegal_str": "台独"
-            },
-            "28": {
-                "id": 28,
-                "illegal_str": "西藏独立"
-            },
-            "29": {
-                "id": 29,
-                "illegal_str": "蒙古国"
-            },
-            "30": {
-                "id": 30,
-                "illegal_str": "蒙古國"
-            },
-            "31": {
-                "id": 31,
-                "illegal_str": "色情"
-            },
-            "32": {
-                "id": 32,
-                "illegal_str": "情色"
-            },
-            "33": {
-                "id": 33,
-                "illegal_str": "嫖娼"
-            },
-            "34": {
-                "id": 34,
-                "illegal_str": "卖淫"
-            },
-            "35": {
-                "id": 35,
-                "illegal_str": "淫秽"
-            },
-            "36": {
-                "id": 36,
-                "illegal_str": "援交"
-            },
-            "37": {
-                "id": 37,
-                "illegal_str": "援助交际"
-            },
-            "38": {
-                "id": 38,
-                "illegal_str": "你妈"
-            },
-            "39": {
-                "id": 39,
-                "illegal_str": "你娘"
-            },
-            "40": {
-                "id": 40,
-                "illegal_str": "他妈"
-            },
-            "41": {
-                "id": 41,
-                "illegal_str": "他娘"
-            },
-            "42": {
-                "id": 42,
-                "illegal_str": "妈的"
-            },
-            "43": {
-                "id": 43,
-                "illegal_str": "你全家"
-            },
-            "44": {
-                "id": 44,
-                "illegal_str": "我日"
-            },
-            "45": {
-                "id": 45,
-                "illegal_str": "我操"
-            },
-            "46": {
-                "id": 46,
-                "illegal_str": "我奸"
-            },
-            "47": {
-                "id": 47,
-                "illegal_str": "日你"
-            },
-            "48": {
-                "id": 48,
-                "illegal_str": "干你"
-            },
-            "49": {
-                "id": 49,
-                "illegal_str": "干死"
-            },
-            "50": {
-                "id": 50,
-                "illegal_str": "操你"
-            },
-            "51": {
-                "id": 51,
-                "illegal_str": "强奸"
-            },
-            "52": {
-                "id": 52,
-                "illegal_str": "奸你"
-            },
-            "53": {
-                "id": 53,
-                "illegal_str": "插你"
-            },
-            "54": {
-                "id": 54,
-                "illegal_str": "婊子"
-            },
-            "55": {
-                "id": 55,
-                "illegal_str": "妓"
-            },
-            "56": {
-                "id": 56,
-                "illegal_str": "傻B"
-            },
-            "57": {
-                "id": 57,
-                "illegal_str": "傻比"
-            },
-            "58": {
-                "id": 58,
-                "illegal_str": "傻逼"
-            },
-            "59": {
-                "id": 59,
-                "illegal_str": "骚逼"
-            },
-            "60": {
-                "id": 60,
-                "illegal_str": "妈B"
-            },
-            "61": {
-                "id": 61,
-                "illegal_str": "妈逼"
-            },
-            "62": {
-                "id": 62,
-                "illegal_str": "逼样"
-            },
-            "63": {
-                "id": 63,
-                "illegal_str": "妈比"
-            },
-            "64": {
-                "id": 64,
-                "illegal_str": "骚货"
-            },
-            "65": {
-                "id": 65,
-                "illegal_str": "祖宗"
-            },
-            "66": {
-                "id": 66,
-                "illegal_str": "狗日"
-            },
-            "67": {
-                "id": 67,
-                "illegal_str": "屁股"
-            },
-            "68": {
-                "id": 68,
-                "illegal_str": "屁眼"
-            },
-            "69": {
-                "id": 69,
-                "illegal_str": "鸡巴"
-            },
-            "70": {
-                "id": 70,
-                "illegal_str": "鸡8"
-            },
-            "71": {
-                "id": 71,
-                "illegal_str": "鸡奸"
-            },
-            "72": {
-                "id": 72,
-                "illegal_str": "阴茎"
-            },
-            "73": {
-                "id": 73,
-                "illegal_str": "阴毛"
-            },
-            "74": {
-                "id": 74,
-                "illegal_str": "阴唇"
-            },
-            "75": {
-                "id": 75,
-                "illegal_str": "阳具"
-            },
-            "76": {
-                "id": 76,
-                "illegal_str": "交配"
-            },
-            "77": {
-                "id": 77,
-                "illegal_str": "淫荡"
-            },
-            "78": {
-                "id": 78,
-                "illegal_str": "淫水"
-            },
-            "79": {
-                "id": 79,
-                "illegal_str": "贱货"
-            },
-            "80": {
-                "id": 80,
-                "illegal_str": "卖B"
-            },
-            "81": {
-                "id": 81,
-                "illegal_str": "卖比"
-            },
-            "82": {
-                "id": 82,
-                "illegal_str": "浪叫"
-            },
-            "83": {
-                "id": 83,
-                "illegal_str": "奶子"
-            },
-            "84": {
-                "id": 84,
-                "illegal_str": "乳头"
-            },
-            "85": {
-                "id": 85,
-                "illegal_str": "姘头"
-            },
-            "86": {
-                "id": 86,
-                "illegal_str": "射精"
-            },
-            "87": {
-                "id": 87,
-                "illegal_str": "你是鸡"
-            },
-            "88": {
-                "id": 88,
-                "illegal_str": "你是鸭"
-            },
-            "89": {
-                "id": 89,
-                "illegal_str": "烂货"
-            },
-            "90": {
-                "id": 90,
-                "illegal_str": "烂逼"
-            },
-            "91": {
-                "id": 91,
-                "illegal_str": "阴道"
-            },
-            "92": {
-                "id": 92,
-                "illegal_str": "吃屎"
-            },
-            "93": {
-                "id": 93,
-                "illegal_str": "阳萎"
-            },
-            "94": {
-                "id": 94,
-                "illegal_str": "妓院"
-            },
-            "95": {
-                "id": 95,
-                "illegal_str": "扒光"
-            },
-            "96": {
-                "id": 96,
-                "illegal_str": "淫"
-            },
-            "97": {
-                "id": 97,
-                "illegal_str": "外阴"
-            },
-            "98": {
-                "id": 98,
-                "illegal_str": "他妈的"
-            },
-            "99": {
-                "id": 99,
-                "illegal_str": "性爱"
-            },
-            "100": {
-                "id": 100,
-                "illegal_str": "操你妈"
-            },
-            "101": {
-                "id": 101,
-                "illegal_str": "干你娘"
-            },
-            "102": {
-                "id": 102,
-                "illegal_str": "性交"
-            },
-            "103": {
-                "id": 103,
-                "illegal_str": "乳房"
-            },
-            "104": {
-                "id": 104,
-                "illegal_str": "鸡吧"
-            },
-            "105": {
-                "id": 105,
-                "illegal_str": "鸡八"
-            },
-            "106": {
-                "id": 106,
-                "illegal_str": "他奶奶"
-            },
-            "107": {
-                "id": 107,
-                "illegal_str": "狗娘养的"
-            },
-            "108": {
-                "id": 108,
-                "illegal_str": "日你妈"
-            },
-            "109": {
-                "id": 109,
-                "illegal_str": "龟儿子"
-            },
-            "110": {
-                "id": 110,
-                "illegal_str": "做爱"
-            },
-            "111": {
-                "id": 111,
-                "illegal_str": "下三烂"
-            },
-            "112": {
-                "id": 112,
-                "illegal_str": "他马的"
-            },
-            "113": {
-                "id": 113,
-                "illegal_str": "他妈ㄉ王八蛋"
-            },
-            "114": {
-                "id": 114,
-                "illegal_str": "她奶奶的"
-            },
-            "115": {
-                "id": 115,
-                "illegal_str": "她马的"
-            },
-            "116": {
-                "id": 116,
-                "illegal_str": "她妈的"
-            },
-            "117": {
-                "id": 117,
-                "illegal_str": "你他马的"
-            },
-            "118": {
-                "id": 118,
-                "illegal_str": "你他妈的"
-            },
-            "119": {
-                "id": 119,
-                "illegal_str": "你它马的"
-            },
-            "120": {
-                "id": 120,
-                "illegal_str": "你它妈的"
-            },
-            "121": {
-                "id": 121,
-                "illegal_str": "你她马的"
-            },
-            "122": {
-                "id": 122,
-                "illegal_str": "你娘卡好"
-            },
-            "123": {
-                "id": 123,
-                "illegal_str": "你娘咧"
-            },
-            "124": {
-                "id": 124,
-                "illegal_str": "你马的"
-            },
-            "125": {
-                "id": 125,
-                "illegal_str": "你妈的"
-            },
-            "126": {
-                "id": 126,
-                "illegal_str": "妳她妈的"
-            },
-            "127": {
-                "id": 127,
-                "illegal_str": "妳老母的"
-            },
-            "128": {
-                "id": 128,
-                "illegal_str": "妳娘的"
-            },
-            "129": {
-                "id": 129,
-                "illegal_str": "妳马的"
-            },
-            "130": {
-                "id": 130,
-                "illegal_str": "妳妈的"
-            },
-            "131": {
-                "id": 131,
-                "illegal_str": "狗屁"
-            },
-            "132": {
-                "id": 132,
-                "illegal_str": "肥西"
-            },
-            "133": {
-                "id": 133,
-                "illegal_str": "姣西"
-            },
-            "134": {
-                "id": 134,
-                "illegal_str": "强奸你"
-            },
-            "135": {
-                "id": 135,
-                "illegal_str": "淫西"
-            },
-            "136": {
-                "id": 136,
-                "illegal_str": "淫妇"
-            },
-            "137": {
-                "id": 137,
-                "illegal_str": "几八"
-            },
-            "138": {
-                "id": 138,
-                "illegal_str": "几巴"
-            },
-            "139": {
-                "id": 139,
-                "illegal_str": "几叭"
-            },
-            "140": {
-                "id": 140,
-                "illegal_str": "几芭"
-            },
-            "141": {
-                "id": 141,
-                "illegal_str": "插死你"
-            },
-            "142": {
-                "id": 142,
-                "illegal_str": "妈的B"
-            },
-            "143": {
-                "id": 143,
-                "illegal_str": "妈个B"
-            },
-            "144": {
-                "id": 144,
-                "illegal_str": "干x娘"
-            },
-            "145": {
-                "id": 145,
-                "illegal_str": "干七八"
-            },
-            "146": {
-                "id": 146,
-                "illegal_str": "干死GM"
-            },
-            "147": {
-                "id": 147,
-                "illegal_str": "干死客服"
-            },
-            "148": {
-                "id": 148,
-                "illegal_str": "干死JS"
-            },
-            "149": {
-                "id": 149,
-                "illegal_str": "干死你"
-            },
-            "150": {
-                "id": 150,
-                "illegal_str": "干你老母"
-            },
-            "151": {
-                "id": 151,
-                "illegal_str": "干你良"
-            },
-            "152": {
-                "id": 152,
-                "illegal_str": "干妳老母"
-            },
-            "153": {
-                "id": 153,
-                "illegal_str": "干妳娘"
-            },
-            "154": {
-                "id": 154,
-                "illegal_str": "干妳马"
-            },
-            "155": {
-                "id": 155,
-                "illegal_str": "干妳妈"
-            },
-            "156": {
-                "id": 156,
-                "illegal_str": "干您娘"
-            },
-            "157": {
-                "id": 157,
-                "illegal_str": "干机掰"
-            },
-            "158": {
-                "id": 158,
-                "illegal_str": "贱B"
-            },
-            "159": {
-                "id": 159,
-                "illegal_str": "贱人"
-            },
-            "160": {
-                "id": 160,
-                "illegal_str": "驶你公"
-            },
-            "161": {
-                "id": 161,
-                "illegal_str": "驶你母"
-            },
-            "162": {
-                "id": 162,
-                "illegal_str": "驶你老母"
-            },
-            "163": {
-                "id": 163,
-                "illegal_str": "驶你老师"
-            },
-            "164": {
-                "id": 164,
-                "illegal_str": "驶你爸"
-            },
-            "165": {
-                "id": 165,
-                "illegal_str": "驶你娘"
-            },
-            "166": {
-                "id": 166,
-                "illegal_str": "操78"
-            },
-            "167": {
-                "id": 167,
-                "illegal_str": "操你全家"
-            },
-            "168": {
-                "id": 168,
-                "illegal_str": "操你老母"
-            },
-            "169": {
-                "id": 169,
-                "illegal_str": "操你老妈"
-            },
-            "170": {
-                "id": 170,
-                "illegal_str": "操你娘"
-            },
-            "171": {
-                "id": 171,
-                "illegal_str": "操你祖宗"
-            },
-            "172": {
-                "id": 172,
-                "illegal_str": "操妳"
-            },
-            "173": {
-                "id": 173,
-                "illegal_str": "操妳全家"
-            },
-            "174": {
-                "id": 174,
-                "illegal_str": "操妳娘"
-            },
-            "175": {
-                "id": 175,
-                "illegal_str": "操妳祖宗"
-            },
-            "176": {
-                "id": 176,
-                "illegal_str": "操妳妈"
-            },
-            "177": {
-                "id": 177,
-                "illegal_str": "操机掰"
-            },
-            "178": {
-                "id": 178,
-                "illegal_str": "机八"
-            },
-            "179": {
-                "id": 179,
-                "illegal_str": "机巴"
-            },
-            "180": {
-                "id": 180,
-                "illegal_str": "懆您妈"
-            },
-            "181": {
-                "id": 181,
-                "illegal_str": "懆您娘"
-            },
-            "182": {
-                "id": 182,
-                "illegal_str": "鸡掰"
-            },
-            "183": {
-                "id": 183,
-                "illegal_str": "赛你老母"
-            },
-            "184": {
-                "id": 184,
-                "illegal_str": "赛妳阿母"
-            },
-            "185": {
-                "id": 185,
-                "illegal_str": "鸡叭"
-            },
-            "186": {
-                "id": 186,
-                "illegal_str": "鸡芭"
-            },
-            "187": {
-                "id": 187,
-                "illegal_str": "懒八"
-            },
-            "188": {
-                "id": 188,
-                "illegal_str": "赣您娘"
-            },
-            "189": {
-                "id": 189,
-                "illegal_str": "灨你娘"
-            },
-            "190": {
-                "id": 190,
-                "illegal_str": "塞你老母"
-            },
-            "191": {
-                "id": 191,
-                "illegal_str": "塞你娘"
-            },
-            "192": {
-                "id": 192,
-                "illegal_str": "塞你爸"
-            },
-            "193": {
-                "id": 193,
-                "illegal_str": "塞你母"
-            },
-            "194": {
-                "id": 194,
-                "illegal_str": "塞你公"
-            },
-            "195": {
-                "id": 195,
-                "illegal_str": "塞你老师"
-            },
-            "196": {
-                "id": 196,
-                "illegal_str": "柯赐海"
-            },
-            "197": {
-                "id": 197,
-                "illegal_str": "连战"
-            },
-            "198": {
-                "id": 198,
-                "illegal_str": "李登辉"
-            },
-            "199": {
-                "id": 199,
-                "illegal_str": "宋楚瑜"
-            },
-            "200": {
-                "id": 200,
-                "illegal_str": "阿扁"
-            },
-            "201": {
-                "id": 201,
-                "illegal_str": "陈水扁"
-            },
-            "202": {
-                "id": 202,
-                "illegal_str": "陈随便"
-            },
-            "203": {
-                "id": 203,
-                "illegal_str": "口交"
-            },
-            "204": {
-                "id": 204,
-                "illegal_str": "邓小平"
-            },
-            "205": {
-                "id": 205,
-                "illegal_str": "草你妈"
-            },
-            "206": {
-                "id": 206,
-                "illegal_str": "日你娘"
-            },
-            "207": {
-                "id": 207,
-                "illegal_str": "草你娘"
-            },
-            "208": {
-                "id": 208,
-                "illegal_str": "你老母"
-            },
-            "209": {
-                "id": 209,
-                "illegal_str": "三去车仑工力"
-            },
-            "210": {
-                "id": 210,
-                "illegal_str": "小日本"
-            },
-            "211": {
-                "id": 211,
-                "illegal_str": "你大爷"
-            },
-            "212": {
-                "id": 212,
-                "illegal_str": "我草"
-            },
-            "213": {
-                "id": 213,
-                "illegal_str": "打炮"
-            },
-            "214": {
-                "id": 214,
-                "illegal_str": "我干"
-            },
-            "215": {
-                "id": 215,
-                "illegal_str": "二逼"
-            },
-            "216": {
-                "id": 216,
-                "illegal_str": "淫乱"
-            },
-            "217": {
-                "id": 217,
-                "illegal_str": "颜射"
-            },
-            "218": {
-                "id": 218,
-                "illegal_str": "肛交"
-            },
-            "219": {
-                "id": 219,
-                "illegal_str": "乳交"
-            },
-            "220": {
-                "id": 220,
-                "illegal_str": "群交"
-            },
-            "221": {
-                "id": 221,
-                "illegal_str": "射屏"
-            },
-            "222": {
-                "id": 222,
-                "illegal_str": "潮吹"
-            },
-            "223": {
-                "id": 223,
-                "illegal_str": "自慰"
-            },
-            "224": {
-                "id": 224,
-                "illegal_str": "手淫"
-            },
-            "225": {
-                "id": 225,
-                "illegal_str": "诱奸"
-            },
-            "226": {
-                "id": 226,
-                "illegal_str": "轮奸"
-            },
-            "227": {
-                "id": 227,
-                "illegal_str": "迷奸"
-            },
-            "228": {
-                "id": 228,
-                "illegal_str": "阴蒂"
-            },
-            "229": {
-                "id": 229,
-                "illegal_str": "阴户"
-            },
-            "230": {
-                "id": 230,
-                "illegal_str": "激情视频"
-            },
-            "231": {
-                "id": 231,
-                "illegal_str": "裸聊"
-            },
-            "232": {
-                "id": 232,
-                "illegal_str": "吴邦国"
-            },
-            "233": {
-                "id": 233,
-                "illegal_str": "李岚清"
-            },
-            "234": {
-                "id": 234,
-                "illegal_str": "荣毅仁"
-            },
-            "235": {
-                "id": 235,
-                "illegal_str": "罗干"
-            },
-            "236": {
-                "id": 236,
-                "illegal_str": "贾庆林"
-            },
-            "237": {
-                "id": 237,
-                "illegal_str": "黄菊"
-            },
-            "238": {
-                "id": 238,
-                "illegal_str": "吴官正"
-            },
-            "239": {
-                "id": 239,
-                "illegal_str": "毛主席"
-            },
-            "240": {
-                "id": 240,
-                "illegal_str": "周总理"
-            },
-            "241": {
-                "id": 241,
-                "illegal_str": "国务院"
-            },
-            "242": {
-                "id": 242,
-                "illegal_str": "国民党"
-            },
-            "243": {
-                "id": 243,
-                "illegal_str": "政治局"
-            },
-            "244": {
-                "id": 244,
-                "illegal_str": "主席"
-            },
-            "245": {
-                "id": 245,
-                "illegal_str": "总理"
-            },
-            "246": {
-                "id": 246,
-                "illegal_str": "孙中山"
-            },
-            "247": {
-                "id": 247,
-                "illegal_str": "金正日"
-            },
-            "248": {
-                "id": 248,
-                "illegal_str": "本拉登"
-            },
-            "249": {
-                "id": 249,
-                "illegal_str": "达赖"
-            },
-            "250": {
-                "id": 250,
-                "illegal_str": "求伯君"
-            },
-            "251": {
-                "id": 251,
-                "illegal_str": "雷军"
-            },
-            "252": {
-                "id": 252,
-                "illegal_str": "高宁宁"
-            },
-            "253": {
-                "id": 253,
-                "illegal_str": "党中央"
-            },
-            "254": {
-                "id": 254,
-                "illegal_str": "毛泽东"
-            },
-            "255": {
-                "id": 255,
-                "illegal_str": "江泽民"
-            },
-            "256": {
-                "id": 256,
-                "illegal_str": "胡锦涛"
-            },
-            "257": {
-                "id": 257,
-                "illegal_str": "温家宝"
-            },
-            "258": {
-                "id": 258,
-                "illegal_str": "中共"
-            },
-            "259": {
-                "id": 259,
-                "illegal_str": "中央"
-            },
-            "260": {
-                "id": 260,
-                "illegal_str": "毛润之"
-            },
-            "261": {
-                "id": 261,
-                "illegal_str": "赵紫阳"
-            },
-            "262": {
-                "id": 262,
-                "illegal_str": "朱德"
-            },
-            "263": {
-                "id": 263,
-                "illegal_str": "刘少奇"
-            },
-            "264": {
-                "id": 264,
-                "illegal_str": "周恩来"
-            },
-            "265": {
-                "id": 265,
-                "illegal_str": "李鹏"
-            },
-            "266": {
-                "id": 266,
-                "illegal_str": "朱镕基"
-            },
-            "267": {
-                "id": 267,
-                "illegal_str": "王乐泉"
-            },
-            "268": {
-                "id": 268,
-                "illegal_str": "王兆国"
-            },
-            "269": {
-                "id": 269,
-                "illegal_str": "回良玉"
-            },
-            "270": {
-                "id": 270,
-                "illegal_str": "刘淇"
-            },
-            "271": {
-                "id": 271,
-                "illegal_str": "刘云山"
-            },
-            "272": {
-                "id": 272,
-                "illegal_str": "吴仪"
-            },
-            "273": {
-                "id": 273,
-                "illegal_str": "张立昌"
-            },
-            "274": {
-                "id": 274,
-                "illegal_str": "张德江"
-            },
-            "275": {
-                "id": 275,
-                "illegal_str": "陈良宇"
-            },
-            "276": {
-                "id": 276,
-                "illegal_str": "周永康"
-            },
-            "277": {
-                "id": 277,
-                "illegal_str": "俞正声"
-            },
-            "278": {
-                "id": 278,
-                "illegal_str": "贺国强"
-            },
-            "279": {
-                "id": 279,
-                "illegal_str": "郭伯雄"
-            },
-            "280": {
-                "id": 280,
-                "illegal_str": "曹刚川"
-            },
-            "281": {
-                "id": 281,
-                "illegal_str": "曾庆红"
-            },
-            "282": {
-                "id": 282,
-                "illegal_str": "曾培炎"
-            },
-            "283": {
-                "id": 283,
-                "illegal_str": "李洪志"
-            },
-            "284": {
-                "id": 284,
-                "illegal_str": "法轮功"
-            },
-            "285": {
-                "id": 285,
-                "illegal_str": "法輪功"
-            },
-            "286": {
-                "id": 286,
-                "illegal_str": "法轮大法"
-            },
-            "287": {
-                "id": 287,
-                "illegal_str": "法.*功"
-            },
-            "288": {
-                "id": 288,
-                "illegal_str": "共匪"
-            },
-            "289": {
-                "id": 289,
-                "illegal_str": "打倒政府"
-            },
-            "290": {
-                "id": 290,
-                "illegal_str": "蒋中正"
-            },
-            "291": {
-                "id": 291,
-                "illegal_str": "蒋介石"
-            },
-            "292": {
-                "id": 292,
-                "illegal_str": "蒋经国"
-            },
-            "293": {
-                "id": 293,
-                "illegal_str": "江青"
-            },
-            "294": {
-                "id": 294,
-                "illegal_str": "三个代表"
-            },
-            "295": {
-                "id": 295,
-                "illegal_str": "与时俱进"
-            },
-            "296": {
-                "id": 296,
-                "illegal_str": "人民币"
-            },
-            "297": {
-                "id": 297,
-                "illegal_str": "三個代表"
-            },
-            "298": {
-                "id": 298,
-                "illegal_str": "與時俱進"
-            },
-            "299": {
-                "id": 299,
-                "illegal_str": "人民幣"
-            },
-            "300": {
-                "id": 300,
-                "illegal_str": "日死"
-            },
-            "301": {
-                "id": 301,
-                "illegal_str": "耶和华"
-            },
-            "302": {
-                "id": 302,
-                "illegal_str": "賣淫"
-            },
-            "303": {
-                "id": 303,
-                "illegal_str": "淫穢"
-            },
-            "304": {
-                "id": 304,
-                "illegal_str": "援助交際"
-            },
-            "305": {
-                "id": 305,
-                "illegal_str": "網愛"
-            },
-            "306": {
-                "id": 306,
-                "illegal_str": "你媽"
-            },
-            "307": {
-                "id": 307,
-                "illegal_str": "他媽"
-            },
-            "308": {
-                "id": 308,
-                "illegal_str": "媽的"
-            },
-            "309": {
-                "id": 309,
-                "illegal_str": "幹你"
-            },
-            "310": {
-                "id": 310,
-                "illegal_str": "幹死"
-            },
-            "311": {
-                "id": 311,
-                "illegal_str": "強姦"
-            },
-            "312": {
-                "id": 312,
-                "illegal_str": "騷逼"
-            },
-            "313": {
-                "id": 313,
-                "illegal_str": "媽B"
-            },
-            "314": {
-                "id": 314,
-                "illegal_str": "媽逼"
-            },
-            "315": {
-                "id": 315,
-                "illegal_str": "逼樣"
-            },
-            "316": {
-                "id": 316,
-                "illegal_str": "媽比"
-            },
-            "317": {
-                "id": 317,
-                "illegal_str": "騷貨"
-            },
-            "318": {
-                "id": 318,
-                "illegal_str": "雞巴"
-            },
-            "319": {
-                "id": 319,
-                "illegal_str": "雞8"
-            },
-            "320": {
-                "id": 320,
-                "illegal_str": "雞奸"
-            },
-            "321": {
-                "id": 321,
-                "illegal_str": "陰莖"
-            },
-            "322": {
-                "id": 322,
-                "illegal_str": "陰毛"
-            },
-            "323": {
-                "id": 323,
-                "illegal_str": "陰唇"
-            },
-            "324": {
-                "id": 324,
-                "illegal_str": "陽具"
-            },
-            "325": {
-                "id": 325,
-                "illegal_str": "淫蕩"
-            },
-            "326": {
-                "id": 326,
-                "illegal_str": "賤貨"
-            },
-            "327": {
-                "id": 327,
-                "illegal_str": "賣B"
-            },
-            "328": {
-                "id": 328,
-                "illegal_str": "賣比"
-            },
-            "329": {
-                "id": 329,
-                "illegal_str": "乳頭"
-            },
-            "330": {
-                "id": 330,
-                "illegal_str": "姘頭"
-            },
-            "331": {
-                "id": 331,
-                "illegal_str": "屄"
-            },
-            "332": {
-                "id": 332,
-                "illegal_str": "肏"
-            },
-            "333": {
-                "id": 333,
-                "illegal_str": "奸"
-            },
-            "334": {
-                "id": 334,
-                "illegal_str": "屌"
-            },
-            "335": {
-                "id": 335,
-                "illegal_str": "僕街"
-            },
-            "336": {
-                "id": 336,
-                "illegal_str": "白癡"
-            },
-            "337": {
-                "id": 337,
-                "illegal_str": "爹娘"
-            },
-            "338": {
-                "id": 338,
-                "illegal_str": "王八蛋"
-            },
-            "339": {
-                "id": 339,
-                "illegal_str": "E闶请"
-            },
-            "340": {
-                "id": 340,
-                "illegal_str": "你是鴨"
-            },
-            "341": {
-                "id": 341,
-                "illegal_str": "爛貨"
-            },
-            "342": {
-                "id": 342,
-                "illegal_str": "爛逼"
-            },
-            "343": {
-                "id": 343,
-                "illegal_str": "陰道"
-            },
-            "344": {
-                "id": 344,
-                "illegal_str": "陽萎"
-            },
-            "345": {
-                "id": 345,
-                "illegal_str": "外陰"
-            },
-            "346": {
-                "id": 346,
-                "illegal_str": "他媽的"
-            },
-            "347": {
-                "id": 347,
-                "illegal_str": "性愛"
-            },
-            "348": {
-                "id": 348,
-                "illegal_str": "操你媽"
-            },
-            "349": {
-                "id": 349,
-                "illegal_str": "幹你娘"
-            },
-            "350": {
-                "id": 350,
-                "illegal_str": "雞吧"
-            },
-            "351": {
-                "id": 351,
-                "illegal_str": "雞八"
-            },
-            "352": {
-                "id": 352,
-                "illegal_str": "狗娘養的"
-            },
-            "353": {
-                "id": 353,
-                "illegal_str": "日你媽"
-            },
-            "354": {
-                "id": 354,
-                "illegal_str": "龜兒子"
-            },
-            "355": {
-                "id": 355,
-                "illegal_str": "做愛"
-            },
-            "356": {
-                "id": 356,
-                "illegal_str": "下三爛"
-            },
-            "357": {
-                "id": 357,
-                "illegal_str": "他奶奶的"
-            },
-            "358": {
-                "id": 358,
-                "illegal_str": "他奶娘的"
-            },
-            "359": {
-                "id": 359,
-                "illegal_str": "他馬的"
-            },
-            "360": {
-                "id": 360,
-                "illegal_str": "他媽ㄉ王八蛋"
-            },
-            "361": {
-                "id": 361,
-                "illegal_str": "她馬的"
-            },
-            "362": {
-                "id": 362,
-                "illegal_str": "她媽的"
-            },
-            "363": {
-                "id": 363,
-                "illegal_str": "老母"
-            },
-            "364": {
-                "id": 364,
-                "illegal_str": "老味"
-            },
-            "365": {
-                "id": 365,
-                "illegal_str": "你他馬的"
-            },
-            "366": {
-                "id": 366,
-                "illegal_str": "你他媽的"
-            },
-            "367": {
-                "id": 367,
-                "illegal_str": "你它馬的"
-            },
-            "368": {
-                "id": 368,
-                "illegal_str": "你它媽的"
-            },
-            "369": {
-                "id": 369,
-                "illegal_str": "你她馬的"
-            },
-            "370": {
-                "id": 370,
-                "illegal_str": "你馬的"
-            },
-            "371": {
-                "id": 371,
-                "illegal_str": "你媽的"
-            },
-            "372": {
-                "id": 372,
-                "illegal_str": "妳她媽的"
-            },
-            "373": {
-                "id": 373,
-                "illegal_str": "妳馬的"
-            },
-            "374": {
-                "id": 374,
-                "illegal_str": "妳媽的"
-            },
-            "375": {
-                "id": 375,
-                "illegal_str": "強姦你"
-            },
-            "376": {
-                "id": 376,
-                "illegal_str": "淫婦"
-            },
-            "377": {
-                "id": 377,
-                "illegal_str": "幾八"
-            },
-            "378": {
-                "id": 378,
-                "illegal_str": "幾巴"
-            },
-            "379": {
-                "id": 379,
-                "illegal_str": "幾叭"
-            },
-            "380": {
-                "id": 380,
-                "illegal_str": "幾芭"
-            },
-            "381": {
-                "id": 381,
-                "illegal_str": "媽的B"
-            },
-            "382": {
-                "id": 382,
-                "illegal_str": "媽個B"
-            },
-            "383": {
-                "id": 383,
-                "illegal_str": "幹x娘"
-            },
-            "384": {
-                "id": 384,
-                "illegal_str": "幹七八"
-            },
-            "385": {
-                "id": 385,
-                "illegal_str": "幹死GM"
-            },
-            "386": {
-                "id": 386,
-                "illegal_str": "幹死客服"
-            },
-            "387": {
-                "id": 387,
-                "illegal_str": "幹死JS"
-            },
-            "388": {
-                "id": 388,
-                "illegal_str": "幹死你"
-            },
-            "389": {
-                "id": 389,
-                "illegal_str": "幹你老母"
-            },
-            "390": {
-                "id": 390,
-                "illegal_str": "幹你良"
-            },
-            "391": {
-                "id": 391,
-                "illegal_str": "幹妳老母"
-            },
-            "392": {
-                "id": 392,
-                "illegal_str": "幹妳娘"
-            },
-            "393": {
-                "id": 393,
-                "illegal_str": "幹妳馬"
-            },
-            "394": {
-                "id": 394,
-                "illegal_str": "幹妳媽"
-            },
-            "395": {
-                "id": 395,
-                "illegal_str": "幹您娘"
-            },
-            "396": {
-                "id": 396,
-                "illegal_str": "幹機掰"
-            },
-            "397": {
-                "id": 397,
-                "illegal_str": "賤B"
-            },
-            "398": {
-                "id": 398,
-                "illegal_str": "賤人"
-            },
-            "399": {
-                "id": 399,
-                "illegal_str": "駛你公"
-            },
-            "400": {
-                "id": 400,
-                "illegal_str": "駛你母"
-            },
-            "401": {
-                "id": 401,
-                "illegal_str": "駛你老母"
-            },
-            "402": {
-                "id": 402,
-                "illegal_str": "駛你老師"
-            },
-            "403": {
-                "id": 403,
-                "illegal_str": "駛你爸"
-            },
-            "404": {
-                "id": 404,
-                "illegal_str": "駛你娘"
-            },
-            "405": {
-                "id": 405,
-                "illegal_str": "操你老媽"
-            },
-            "406": {
-                "id": 406,
-                "illegal_str": "操妳媽"
-            },
-            "407": {
-                "id": 407,
-                "illegal_str": "操機掰"
-            },
-            "408": {
-                "id": 408,
-                "illegal_str": "機八"
-            },
-            "409": {
-                "id": 409,
-                "illegal_str": "機巴"
-            },
-            "410": {
-                "id": 410,
-                "illegal_str": "機機歪歪"
-            },
-            "411": {
-                "id": 411,
-                "illegal_str": "懆您媽"
-            },
-            "412": {
-                "id": 412,
-                "illegal_str": "雞掰"
-            },
-            "413": {
-                "id": 413,
-                "illegal_str": "賽你老母"
-            },
-            "414": {
-                "id": 414,
-                "illegal_str": "賽妳阿母"
-            },
-            "415": {
-                "id": 415,
-                "illegal_str": "雞叭"
-            },
-            "416": {
-                "id": 416,
-                "illegal_str": "雞芭"
-            },
-            "417": {
-                "id": 417,
-                "illegal_str": "懶八"
-            },
-            "418": {
-                "id": 418,
-                "illegal_str": "贛您娘"
-            },
-            "419": {
-                "id": 419,
-                "illegal_str": "幹拎娘"
-            },
-            "420": {
-                "id": 420,
-                "illegal_str": "幹你媽"
-            },
-            "421": {
-                "id": 421,
-                "illegal_str": "塞你老師"
-            },
-            "422": {
-                "id": 422,
-                "illegal_str": "柯賜海"
-            },
-            "423": {
-                "id": 423,
-                "illegal_str": "連戰"
-            },
-            "424": {
-                "id": 424,
-                "illegal_str": "李登輝"
-            },
-            "425": {
-                "id": 425,
-                "illegal_str": "陳水扁"
-            },
-            "426": {
-                "id": 426,
-                "illegal_str": "陳隨便"
-            },
-            "427": {
-                "id": 427,
-                "illegal_str": "米青"
-            },
-            "428": {
-                "id": 428,
-                "illegal_str": "鄧小平"
-            },
-            "429": {
-                "id": 429,
-                "illegal_str": "草你媽"
-            },
-            "430": {
-                "id": 430,
-                "illegal_str": "日?隳?"
-            },
-            "431": {
-                "id": 431,
-                "illegal_str": "你大爺"
-            },
-            "432": {
-                "id": 432,
-                "illegal_str": "淫亂"
-            },
-            "433": {
-                "id": 433,
-                "illegal_str": "顏射"
-            },
-            "434": {
-                "id": 434,
-                "illegal_str": "誘姦"
-            },
-            "435": {
-                "id": 435,
-                "illegal_str": "輪奸"
-            },
-            "436": {
-                "id": 436,
-                "illegal_str": "陰蒂"
-            },
-            "437": {
-                "id": 437,
-                "illegal_str": "陰戶"
-            },
-            "438": {
-                "id": 438,
-                "illegal_str": "激情視頻"
-            },
-            "439": {
-                "id": 439,
-                "illegal_str": "吳邦國"
-            },
-            "440": {
-                "id": 440,
-                "illegal_str": "李嵐清"
-            },
-            "441": {
-                "id": 441,
-                "illegal_str": "榮毅仁"
-            },
-            "442": {
-                "id": 442,
-                "illegal_str": "羅幹"
-            },
-            "443": {
-                "id": 443,
-                "illegal_str": "賈慶林"
-            },
-            "444": {
-                "id": 444,
-                "illegal_str": "黃菊"
-            },
-            "445": {
-                "id": 445,
-                "illegal_str": "吳官正"
-            },
-            "446": {
-                "id": 446,
-                "illegal_str": "李長春"
-            },
-            "447": {
-                "id": 447,
-                "illegal_str": "周總理"
-            },
-            "448": {
-                "id": 448,
-                "illegal_str": "國務院"
-            },
-            "449": {
-                "id": 449,
-                "illegal_str": "國民黨"
-            },
-            "450": {
-                "id": 450,
-                "illegal_str": "總理"
-            },
-            "451": {
-                "id": 451,
-                "illegal_str": "孫中山"
-            },
-            "452": {
-                "id": 452,
-                "illegal_str": "高寧寧"
-            },
-            "453": {
-                "id": 453,
-                "illegal_str": "黨中央"
-            },
-            "454": {
-                "id": 454,
-                "illegal_str": "毛澤東"
-            },
-            "455": {
-                "id": 455,
-                "illegal_str": "江澤民"
-            },
-            "456": {
-                "id": 456,
-                "illegal_str": "胡錦濤"
-            },
-            "457": {
-                "id": 457,
-                "illegal_str": "溫家寶"
-            },
-            "458": {
-                "id": 458,
-                "illegal_str": "毛潤之"
-            },
-            "459": {
-                "id": 459,
-                "illegal_str": "趙紫陽"
-            },
-            "460": {
-                "id": 460,
-                "illegal_str": "劉少奇"
-            },
-            "461": {
-                "id": 461,
-                "illegal_str": "周恩來"
-            },
-            "462": {
-                "id": 462,
-                "illegal_str": "李鵬"
-            },
-            "463": {
-                "id": 463,
-                "illegal_str": "朱鎔基"
-            },
-            "464": {
-                "id": 464,
-                "illegal_str": "王樂泉"
-            },
-            "465": {
-                "id": 465,
-                "illegal_str": "王兆國"
-            },
-            "466": {
-                "id": 466,
-                "illegal_str": "劉淇"
-            },
-            "467": {
-                "id": 467,
-                "illegal_str": "劉雲山"
-            },
-            "468": {
-                "id": 468,
-                "illegal_str": "吳儀"
-            },
-            "469": {
-                "id": 469,
-                "illegal_str": "張立昌"
-            },
-            "470": {
-                "id": 470,
-                "illegal_str": "張德江"
-            },
-            "471": {
-                "id": 471,
-                "illegal_str": "陳良宇"
-            },
-            "472": {
-                "id": 472,
-                "illegal_str": "俞正聲"
-            },
-            "473": {
-                "id": 473,
-                "illegal_str": "賀國強"
-            },
-            "474": {
-                "id": 474,
-                "illegal_str": "曹剛川"
-            },
-            "475": {
-                "id": 475,
-                "illegal_str": "曾慶紅"
-            },
-            "476": {
-                "id": 476,
-                "illegal_str": "蔣中正"
-            },
-            "477": {
-                "id": 477,
-                "illegal_str": "蔣介石"
-            },
-            "478": {
-                "id": 478,
-                "illegal_str": "蔣經國"
-            },
-            "479": {
-                "id": 479,
-                "illegal_str": "湛振阳"
-            },
-            "480": {
-                "id": 480,
-                "illegal_str": "安砥中"
-            },
-            "481": {
-                "id": 481,
-                "illegal_str": "邹涛"
-            },
-            "482": {
-                "id": 482,
-                "illegal_str": "求伯军"
-            },
-            "483": {
-                "id": 483,
-                "illegal_str": "湛振陽"
-            },
-            "484": {
-                "id": 484,
-                "illegal_str": "鄒濤"
-            },
-            "485": {
-                "id": 485,
-                "illegal_str": "雷軍"
-            },
-            "486": {
-                "id": 486,
-                "illegal_str": "求伯軍"
-            },
-            "487": {
-                "id": 487,
-                "illegal_str": "李克强"
-            },
-            "488": {
-                "id": 488,
-                "illegal_str": "王岐山"
-            },
-            "489": {
-                "id": 489,
-                "illegal_str": "刘延东"
-            },
-            "490": {
-                "id": 490,
-                "illegal_str": "梁光烈"
-            },
-            "491": {
-                "id": 491,
-                "illegal_str": "马凯"
-            },
-            "492": {
-                "id": 492,
-                "illegal_str": "孟建柱"
-            },
-            "493": {
-                "id": 493,
-                "illegal_str": "戴秉国"
-            },
-            "494": {
-                "id": 494,
-                "illegal_str": "徐才厚"
-            },
-            "495": {
-                "id": 495,
-                "illegal_str": "曹建明"
-            },
-            "496": {
-                "id": 496,
-                "illegal_str": "王胜俊"
-            },
-            "497": {
-                "id": 497,
-                "illegal_str": "劉延東"
-            },
-            "498": {
-                "id": 498,
-                "illegal_str": "馬凱"
-            },
-            "499": {
-                "id": 499,
-                "illegal_str": "戴秉國"
-            },
-            "500": {
-                "id": 500,
-                "illegal_str": "王勝俊"
-            },
-            "501": {
-                "id": 501,
-                "illegal_str": "達賴"
-            },
-            "502": {
-                "id": 502,
-                "illegal_str": "习近平"
-            },
-            "503": {
-                "id": 503,
-                "illegal_str": "李源潮"
-            },
-            "504": {
-                "id": 504,
-                "illegal_str": "张高丽"
-            },
-            "505": {
-                "id": 505,
-                "illegal_str": "薄熙来"
-            },
-            "506": {
-                "id": 506,
-                "illegal_str": "令计划"
-            },
-            "507": {
-                "id": 507,
-                "illegal_str": "王沪宁"
-            },
-            "508": {
-                "id": 508,
-                "illegal_str": "路甬祥"
-            },
-            "509": {
-                "id": 509,
-                "illegal_str": "乌云其木格"
-            },
-            "510": {
-                "id": 510,
-                "illegal_str": "韩启德"
-            },
-            "511": {
-                "id": 511,
-                "illegal_str": "华建敏"
-            },
-            "512": {
-                "id": 512,
-                "illegal_str": "陈至立"
-            },
-            "513": {
-                "id": 513,
-                "illegal_str": "周铁农"
-            },
-            "514": {
-                "id": 514,
-                "illegal_str": "李建国"
-            },
-            "515": {
-                "id": 515,
-                "illegal_str": "司马义·铁力瓦尔地"
-            },
-            "516": {
-                "id": 516,
-                "illegal_str": "蒋树声"
-            },
-            "517": {
-                "id": 517,
-                "illegal_str": "陈昌智"
-            },
-            "518": {
-                "id": 518,
-                "illegal_str": "严隽琪"
-            },
-            "519": {
-                "id": 519,
-                "illegal_str": "桑国卫"
-            },
-            "520": {
-                "id": 520,
-                "illegal_str": "杜青林"
-            },
-            "521": {
-                "id": 521,
-                "illegal_str": "阿沛·阿旺晋美"
-            },
-            "522": {
-                "id": 522,
-                "illegal_str": "帕巴拉·格列朗杰"
-            },
-            "523": {
-                "id": 523,
-                "illegal_str": "马万祺"
-            },
-            "524": {
-                "id": 524,
-                "illegal_str": "白立忱"
-            },
-            "525": {
-                "id": 525,
-                "illegal_str": "陈奎元"
-            },
-            "526": {
-                "id": 526,
-                "illegal_str": "阿不来提·阿不都热西提"
-            },
-            "527": {
-                "id": 527,
-                "illegal_str": "李兆焯"
-            },
-            "528": {
-                "id": 528,
-                "illegal_str": "黄孟复"
-            },
-            "529": {
-                "id": 529,
-                "illegal_str": "董建华"
-            },
-            "530": {
-                "id": 530,
-                "illegal_str": "张梅颖"
-            },
-            "531": {
-                "id": 531,
-                "illegal_str": "张榕明"
-            },
-            "532": {
-                "id": 532,
-                "illegal_str": "钱运录"
-            },
-            "533": {
-                "id": 533,
-                "illegal_str": "孙家正"
-            },
-            "534": {
-                "id": 534,
-                "illegal_str": "李金华"
-            },
-            "535": {
-                "id": 535,
-                "illegal_str": "郑万通"
-            },
-            "536": {
-                "id": 536,
-                "illegal_str": "邓朴方"
-            },
-            "537": {
-                "id": 537,
-                "illegal_str": "林文漪"
-            },
-            "538": {
-                "id": 538,
-                "illegal_str": "厉无畏"
-            },
-            "539": {
-                "id": 539,
-                "illegal_str": "罗富和"
-            },
-            "540": {
-                "id": 540,
-                "illegal_str": "陈宗兴"
-            },
-            "541": {
-                "id": 541,
-                "illegal_str": "王志珍"
-            },
-            "542": {
-                "id": 542,
-                "illegal_str": "于幼军"
-            },
-            "543": {
-                "id": 543,
-                "illegal_str": "卫留成"
-            },
-            "544": {
-                "id": 544,
-                "illegal_str": "马晓天"
-            },
-            "545": {
-                "id": 545,
-                "illegal_str": "王万宾"
-            },
-            "546": {
-                "id": 546,
-                "illegal_str": "王太华"
-            },
-            "547": {
-                "id": 547,
-                "illegal_str": "王正伟"
-            },
-            "548": {
-                "id": 548,
-                "illegal_str": "王东明"
-            },
-            "549": {
-                "id": 549,
-                "illegal_str": "王旭东"
-            },
-            "550": {
-                "id": 550,
-                "illegal_str": "王国生"
-            },
-            "551": {
-                "id": 551,
-                "illegal_str": "王金山"
-            },
-            "552": {
-                "id": 552,
-                "illegal_str": "王家瑞"
-            },
-            "553": {
-                "id": 553,
-                "illegal_str": "王鸿举"
-            },
-            "554": {
-                "id": 554,
-                "illegal_str": "王喜斌"
-            },
-            "555": {
-                "id": 555,
-                "illegal_str": "尹蔚民"
-            },
-            "556": {
-                "id": 556,
-                "illegal_str": "邓昌友"
-            },
-            "557": {
-                "id": 557,
-                "illegal_str": "艾斯海提·克里木拜"
-            },
-            "558": {
-                "id": 558,
-                "illegal_str": "石宗源"
-            },
-            "559": {
-                "id": 559,
-                "illegal_str": "卢展工"
-            },
-            "560": {
-                "id": 560,
-                "illegal_str": "田成平"
-            },
-            "561": {
-                "id": 561,
-                "illegal_str": "田修思"
-            },
-            "562": {
-                "id": 562,
-                "illegal_str": "白志健"
-            },
-            "563": {
-                "id": 563,
-                "illegal_str": "白恩培"
-            },
-            "564": {
-                "id": 564,
-                "illegal_str": "白景富"
-            },
-            "565": {
-                "id": 565,
-                "illegal_str": "吉炳轩"
-            },
-            "566": {
-                "id": 566,
-                "illegal_str": "吕祖善"
-            },
-            "567": {
-                "id": 567,
-                "illegal_str": "朱之鑫"
-            },
-            "568": {
-                "id": 568,
-                "illegal_str": "朱维群"
-            },
-            "569": {
-                "id": 569,
-                "illegal_str": "向巴平措"
-            },
-            "570": {
-                "id": 570,
-                "illegal_str": "刘冬冬"
-            },
-            "571": {
-                "id": 571,
-                "illegal_str": "刘永治"
-            },
-            "572": {
-                "id": 572,
-                "illegal_str": "刘成军"
-            },
-            "573": {
-                "id": 573,
-                "illegal_str": "刘志军"
-            },
-            "574": {
-                "id": 574,
-                "illegal_str": "刘奇葆"
-            },
-            "575": {
-                "id": 575,
-                "illegal_str": "刘明康"
-            },
-            "576": {
-                "id": 576,
-                "illegal_str": "刘晓江"
-            },
-            "577": {
-                "id": 577,
-                "illegal_str": "刘家义"
-            },
-            "578": {
-                "id": 578,
-                "illegal_str": "许其亮"
-            },
-            "579": {
-                "id": 579,
-                "illegal_str": "孙大发"
-            },
-            "580": {
-                "id": 580,
-                "illegal_str": "孙忠同"
-            },
-            "581": {
-                "id": 581,
-                "illegal_str": "孙春兰"
-            },
-            "582": {
-                "id": 582,
-                "illegal_str": "孙政才"
-            },
-            "583": {
-                "id": 583,
-                "illegal_str": "孙晓群"
-            },
-            "584": {
-                "id": 584,
-                "illegal_str": "李长才"
-            },
-            "585": {
-                "id": 585,
-                "illegal_str": "李长江"
-            },
-            "586": {
-                "id": 586,
-                "illegal_str": "李从军"
-            },
-            "587": {
-                "id": 587,
-                "illegal_str": "李成玉"
-            },
-            "588": {
-                "id": 588,
-                "illegal_str": "李世明"
-            },
-            "589": {
-                "id": 589,
-                "illegal_str": "李学勇"
-            },
-            "590": {
-                "id": 590,
-                "illegal_str": "李荣融"
-            },
-            "591": {
-                "id": 591,
-                "illegal_str": "李海峰"
-            },
-            "592": {
-                "id": 592,
-                "illegal_str": "李继耐"
-            },
-            "593": {
-                "id": 593,
-                "illegal_str": "李盛霖"
-            },
-            "594": {
-                "id": 594,
-                "illegal_str": "李景田"
-            },
-            "595": {
-                "id": 595,
-                "illegal_str": "李毅中"
-            },
-            "596": {
-                "id": 596,
-                "illegal_str": "杨元元"
-            },
-            "597": {
-                "id": 597,
-                "illegal_str": "杨传堂"
-            },
-            "598": {
-                "id": 598,
-                "illegal_str": "杨衍银"
-            },
-            "599": {
-                "id": 599,
-                "illegal_str": "杨洁篪"
-            },
-            "600": {
-                "id": 600,
-                "illegal_str": "杨崇汇"
-            },
-            "601": {
-                "id": 601,
-                "illegal_str": "吴双战"
-            },
-            "602": {
-                "id": 602,
-                "illegal_str": "吴胜利"
-            },
-            "603": {
-                "id": 603,
-                "illegal_str": "吴爱英"
-            },
-            "604": {
-                "id": 604,
-                "illegal_str": "吴新雄"
-            },
-            "605": {
-                "id": 605,
-                "illegal_str": "沈跃跃"
-            },
-            "606": {
-                "id": 606,
-                "illegal_str": "宋秀岩"
-            },
-            "607": {
-                "id": 607,
-                "illegal_str": "迟万春"
-            },
-            "608": {
-                "id": 608,
-                "illegal_str": "张又侠"
-            },
-            "609": {
-                "id": 609,
-                "illegal_str": "张云川"
-            },
-            "610": {
-                "id": 610,
-                "illegal_str": "张文岳"
-            },
-            "611": {
-                "id": 611,
-                "illegal_str": "张玉台"
-            },
-            "612": {
-                "id": 612,
-                "illegal_str": "张左己"
-            },
-            "613": {
-                "id": 613,
-                "illegal_str": "张庆伟"
-            },
-            "614": {
-                "id": 614,
-                "illegal_str": "张庆黎"
-            },
-            "615": {
-                "id": 615,
-                "illegal_str": "张宝顺"
-            },
-            "616": {
-                "id": 616,
-                "illegal_str": "张春贤"
-            },
-            "617": {
-                "id": 617,
-                "illegal_str": "张海阳"
-            },
-            "618": {
-                "id": 618,
-                "illegal_str": "陈国令"
-            },
-            "619": {
-                "id": 619,
-                "illegal_str": "陈建国"
-            },
-            "620": {
-                "id": 620,
-                "illegal_str": "陈炳德"
-            },
-            "621": {
-                "id": 621,
-                "illegal_str": "范长龙"
-            },
-            "622": {
-                "id": 622,
-                "illegal_str": "林树森"
-            },
-            "623": {
-                "id": 623,
-                "illegal_str": "尚福林"
-            },
-            "624": {
-                "id": 624,
-                "illegal_str": "罗保铭"
-            },
-            "625": {
-                "id": 625,
-                "illegal_str": "罗清泉"
-            },
-            "626": {
-                "id": 626,
-                "illegal_str": "周小川"
-            },
-            "627": {
-                "id": 627,
-                "illegal_str": "周生贤"
-            },
-            "628": {
-                "id": 628,
-                "illegal_str": "周伯华"
-            },
-            "629": {
-                "id": 629,
-                "illegal_str": "房峰辉"
-            },
-            "630": {
-                "id": 630,
-                "illegal_str": "孟学农"
-            },
-            "631": {
-                "id": 631,
-                "illegal_str": "赵乐际"
-            },
-            "632": {
-                "id": 632,
-                "illegal_str": "赵克石"
-            },
-            "633": {
-                "id": 633,
-                "illegal_str": "赵洪祝"
-            },
-            "634": {
-                "id": 634,
-                "illegal_str": "胡春华"
-            },
-            "635": {
-                "id": 635,
-                "illegal_str": "柳斌杰"
-            },
-            "636": {
-                "id": 636,
-                "illegal_str": "姜大明"
-            },
-            "637": {
-                "id": 637,
-                "illegal_str": "姜伟新"
-            },
-            "638": {
-                "id": 638,
-                "illegal_str": "姜异康"
-            },
-            "639": {
-                "id": 639,
-                "illegal_str": "秦光荣"
-            },
-            "640": {
-                "id": 640,
-                "illegal_str": "袁纯清"
-            },
-            "641": {
-                "id": 641,
-                "illegal_str": "耿惠昌"
-            },
-            "642": {
-                "id": 642,
-                "illegal_str": "聂卫国"
-            },
-            "643": {
-                "id": 643,
-                "illegal_str": "贾治邦"
-            },
-            "644": {
-                "id": 644,
-                "illegal_str": "徐光春"
-            },
-            "645": {
-                "id": 645,
-                "illegal_str": "徐守盛"
-            },
-            "646": {
-                "id": 646,
-                "illegal_str": "徐绍史"
-            },
-            "647": {
-                "id": 647,
-                "illegal_str": "郭金龙"
-            },
-            "648": {
-                "id": 648,
-                "illegal_str": "郭庚茂"
-            },
-            "649": {
-                "id": 649,
-                "illegal_str": "黄小晶"
-            },
-            "650": {
-                "id": 650,
-                "illegal_str": "黄华华"
-            },
-            "651": {
-                "id": 651,
-                "illegal_str": "黄晴宜"
-            },
-            "652": {
-                "id": 652,
-                "illegal_str": "黄献中"
-            },
-            "653": {
-                "id": 653,
-                "illegal_str": "盛光祖"
-            },
-            "654": {
-                "id": 654,
-                "illegal_str": "常万全"
-            },
-            "655": {
-                "id": 655,
-                "illegal_str": "符廷贵"
-            },
-            "656": {
-                "id": 656,
-                "illegal_str": "康日新"
-            },
-            "657": {
-                "id": 657,
-                "illegal_str": "章沁生"
-            },
-            "658": {
-                "id": 658,
-                "illegal_str": "梁保华"
-            },
-            "659": {
-                "id": 659,
-                "illegal_str": "彭小枫"
-            },
-            "660": {
-                "id": 660,
-                "illegal_str": "彭清华"
-            },
-            "661": {
-                "id": 661,
-                "illegal_str": "葛振峰"
-            },
-            "662": {
-                "id": 662,
-                "illegal_str": "董贵山"
-            },
-            "663": {
-                "id": 663,
-                "illegal_str": "蒋巨峰"
-            },
-            "664": {
-                "id": 664,
-                "illegal_str": "韩长赋"
-            },
-            "665": {
-                "id": 665,
-                "illegal_str": "喻林祥"
-            },
-            "666": {
-                "id": 666,
-                "illegal_str": "褃┦榔"
-            },
-            "667": {
-                "id": 667,
-                "illegal_str": "谢旭人"
-            },
-            "668": {
-                "id": 668,
-                "illegal_str": "靖志远"
-            },
-            "669": {
-                "id": 669,
-                "illegal_str": "廖锡龙"
-            },
-            "670": {
-                "id": 670,
-                "illegal_str": "戴相龙"
-            },
-            "671": {
-                "id": 671,
-                "illegal_str": "卢嘉锡"
-            },
-            "672": {
-                "id": 672,
-                "illegal_str": "孙起孟"
-            },
-            "673": {
-                "id": 673,
-                "illegal_str": "朱学范"
-            },
-            "674": {
-                "id": 674,
-                "illegal_str": "朱蕴山"
-            },
-            "675": {
-                "id": 675,
-                "illegal_str": "许广平"
-            },
-            "676": {
-                "id": 676,
-                "illegal_str": "许嘉璐"
-            },
-            "677": {
-                "id": 677,
-                "illegal_str": "许德珩"
-            },
-            "678": {
-                "id": 678,
-                "illegal_str": "严济慈"
-            },
-            "679": {
-                "id": 679,
-                "illegal_str": "何香凝"
-            },
-            "680": {
-                "id": 680,
-                "illegal_str": "中央委员会"
-            },
-            "681": {
-                "id": 681,
-                "illegal_str": "中央委员会总书记"
-            },
-            "682": {
-                "id": 682,
-                "illegal_str": "中央政治局常务委员会"
-            },
-            "683": {
-                "id": 683,
-                "illegal_str": "中央政治局委员"
-            },
-            "684": {
-                "id": 684,
-                "illegal_str": "中央书记处书记"
-            },
-            "685": {
-                "id": 685,
-                "illegal_str": "中央军事委员会"
-            },
-            "686": {
-                "id": 686,
-                "illegal_str": "国务委员"
-            },
-            "687": {
-                "id": 687,
-                "illegal_str": "中共中央委员"
-            },
-            "688": {
-                "id": 688,
-                "illegal_str": "中华人民共和国"
-            },
-            "689": {
-                "id": 689,
-                "illegal_str": "中華人民共和國"
-            },
-            "690": {
-                "id": 690,
-                "illegal_str": "宪法"
-            },
-            "691": {
-                "id": 691,
-                "illegal_str": "全国人大和地方各级人大"
-            },
-            "692": {
-                "id": 692,
-                "illegal_str": "全国人大"
-            },
-            "693": {
-                "id": 693,
-                "illegal_str": "政府"
-            },
-            "694": {
-                "id": 694,
-                "illegal_str": "人民法院"
-            },
-            "695": {
-                "id": 695,
-                "illegal_str": "人民检察院"
-            },
-            "696": {
-                "id": 696,
-                "illegal_str": "民族区域"
-            },
-            "697": {
-                "id": 697,
-                "illegal_str": "香港特区"
-            },
-            "698": {
-                "id": 698,
-                "illegal_str": "澳门特区"
-            },
-            "699": {
-                "id": 699,
-                "illegal_str": "中共中央"
-            },
-            "700": {
-                "id": 700,
-                "illegal_str": "中央军委"
-            },
-            "701": {
-                "id": 701,
-                "illegal_str": "中纪委"
-            },
-            "702": {
-                "id": 702,
-                "illegal_str": "中直机构"
-            },
-            "703": {
-                "id": 703,
-                "illegal_str": "党章"
-            },
-            "704": {
-                "id": 704,
-                "illegal_str": "简史"
-            },
-            "705": {
-                "id": 705,
-                "illegal_str": "党代会"
-            },
-            "706": {
-                "id": 706,
-                "illegal_str": "党史文献"
-            },
-            "707": {
-                "id": 707,
-                "illegal_str": "党史大事记"
-            },
-            "708": {
-                "id": 708,
-                "illegal_str": "中央全会"
-            },
-            "709": {
-                "id": 709,
-                "illegal_str": "中共各省"
-            },
-            "710": {
-                "id": 710,
-                "illegal_str": "中国国民党革命委员会"
-            },
-            "711": {
-                "id": 711,
-                "illegal_str": "民革"
-            },
-            "712": {
-                "id": 712,
-                "illegal_str": "中国民主同盟"
-            },
-            "713": {
-                "id": 713,
-                "illegal_str": "民盟"
-            },
-            "714": {
-                "id": 714,
-                "illegal_str": "中国民主建国会"
-            },
-            "715": {
-                "id": 715,
-                "illegal_str": "民建"
-            },
-            "716": {
-                "id": 716,
-                "illegal_str": "中国民主促进会"
-            },
-            "717": {
-                "id": 717,
-                "illegal_str": "民进"
-            },
-            "718": {
-                "id": 718,
-                "illegal_str": "中国农工民主党"
-            },
-            "719": {
-                "id": 719,
-                "illegal_str": "农工党"
-            },
-            "720": {
-                "id": 720,
-                "illegal_str": "中国致公党"
-            },
-            "721": {
-                "id": 721,
-                "illegal_str": "致公党"
-            },
-            "722": {
-                "id": 722,
-                "illegal_str": "九三学社"
-            },
-            "723": {
-                "id": 723,
-                "illegal_str": "台湾民主自治同盟"
-            },
-            "724": {
-                "id": 724,
-                "illegal_str": "台盟"
-            },
-            "725": {
-                "id": 725,
-                "illegal_str": "全国妇联"
-            },
-            "726": {
-                "id": 726,
-                "illegal_str": "国防部"
-            },
-            "727": {
-                "id": 727,
-                "illegal_str": "武装力量"
-            },
-            "728": {
-                "id": 728,
-                "illegal_str": "武装警察部队"
-            },
-            "729": {
-                "id": 729,
-                "illegal_str": "解放军驻香港部队"
-            },
-            "730": {
-                "id": 730,
-                "illegal_str": "解放军驻澳门部队"
-            },
-            "731": {
-                "id": 731,
-                "illegal_str": "民主政治"
-            },
-            "732": {
-                "id": 732,
-                "illegal_str": "台湾问题"
-            },
-            "733": {
-                "id": 733,
-                "illegal_str": "社会主义新农村"
-            },
-            "734": {
-                "id": 734,
-                "illegal_str": "中国的政党制度"
-            },
-            "735": {
-                "id": 735,
-                "illegal_str": "一号文件"
-            },
-            "736": {
-                "id": 736,
-                "illegal_str": "四位一体"
-            },
-            "737": {
-                "id": 737,
-                "illegal_str": "能源白皮书"
-            },
-            "738": {
-                "id": 738,
-                "illegal_str": "中央经济工作会议"
-            },
-            "739": {
-                "id": 739,
-                "illegal_str": "和谐"
-            },
-            "740": {
-                "id": 740,
-                "illegal_str": "西藏国"
-            },
-            "741": {
-                "id": 741,
-                "illegal_str": "台湾独立"
-            },
-            "742": {
-                "id": 742,
-                "illegal_str": "法理台独"
-            },
-            "743": {
-                "id": 743,
-                "illegal_str": "入联公投"
-            },
-            "744": {
-                "id": 744,
-                "illegal_str": "独台"
-            },
-            "745": {
-                "id": 745,
-                "illegal_str": "海峡两岸"
-            },
-            "746": {
-                "id": 746,
-                "illegal_str": "一国两制"
-            },
-            "747": {
-                "id": 747,
-                "illegal_str": "三反四反"
-            },
-            "748": {
-                "id": 748,
-                "illegal_str": "分裂台湾"
-            },
-            "749": {
-                "id": 749,
-                "illegal_str": "陈水扁代言人"
-            },
-            "750": {
-                "id": 750,
-                "illegal_str": "台湾政治局"
-            },
-            "751": {
-                "id": 751,
-                "illegal_str": "中央对台政策"
-            },
-            "752": {
-                "id": 752,
-                "illegal_str": "中台办"
-            },
-            "753": {
-                "id": 753,
-                "illegal_str": "国台办"
-            },
-            "754": {
-                "id": 754,
-                "illegal_str": "分裂活动"
-            },
-            "755": {
-                "id": 755,
-                "illegal_str": "脱离国家"
-            },
-            "756": {
-                "id": 756,
-                "illegal_str": "香港国"
-            },
-            "757": {
-                "id": 757,
-                "illegal_str": "澳门国"
-            },
-            "758": {
-                "id": 758,
-                "illegal_str": "新疆国"
-            },
-            "759": {
-                "id": 759,
-                "illegal_str": "藏独"
-            },
-            "760": {
-                "id": 760,
-                "illegal_str": "台湾分裂"
-            },
-            "761": {
-                "id": 761,
-                "illegal_str": "西藏分裂"
-            },
-            "762": {
-                "id": 762,
-                "illegal_str": "官方"
-            },
-            "763": {
-                "id": 763,
-                "illegal_str": "回民吃猪肉"
-            },
-            "764": {
-                "id": 764,
-                "illegal_str": "@+<embedpic"
-            },
-            "765": {
-                "id": 765,
-                "illegal_str": "@+<enter"
-            },
-            "766": {
-                "id": 766,
-                "illegal_str": "@+<colo(.)?rred"
-            },
-            "767": {
-                "id": 767,
-                "illegal_str": "@+<bclr"
-            },
-            "768": {
-                "id": 768,
-                "illegal_str": "@+<border"
-            },
-            "769": {
-                "id": 769,
-                "illegal_str": "@+<script"
-            },
-            "770": {
-                "id": 770,
-                "illegal_str": "@+<npc"
-            },
-            "771": {
-                "id": 771,
-                "illegal_str": "@+<space"
-            },
-            "772": {
-                "id": 772,
-                "illegal_str": "@+<offset"
-            },
-            "773": {
-                "id": 773,
-                "illegal_str": "@+<url"
-            },
-            "774": {
-                "id": 774,
-                "illegal_str": "@+<fT"
-            },
-            "775": {
-                "id": 775,
-                "illegal_str": "@+<RFix"
-            },
-            "776": {
-                "id": 776,
-                "illegal_str": "系统"
-            },
-            "777": {
-                "id": 777,
-                "illegal_str": "公告"
-            },
-            "778": {
-                "id": 778,
-                "illegal_str": "钓鱼岛"
-            },
-            "779": {
-                "id": 779,
-                "illegal_str": "尖阁列岛"
-            }
-        }
-    },
     "elixir_ranking_reward": {
         "colComment": {},
         "rows": {
@@ -29951,6 +29954,31 @@ var outputTables = {
             }
         }
     },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            }
+        }
+    },
     "skill_upgrade": {
         "colComment": {},
         "rows": {
@@ -29993,31 +30021,6 @@ var outputTables = {
                 "star5": 500000,
                 "star6": 1000000,
                 "star7": 2100000
-            }
-        }
-    },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
             }
         }
     },
@@ -30301,691 +30304,6 @@ var outputTables = {
             }
         }
     },
-    "first_recharge_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 8000,
-                "money": 80000,
-                "elixir": 10000,
-                "skillPoint": 10000,
-                "spirit": 1000,
-                "power": 100,
-                "card_id": 764,
-                "card_lv": 20
-            }
-        }
-    },
-    "growth_plan": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 25,
-                "gold": 100
-            },
-            "2": {
-                "id": 2,
-                "lv": 30,
-                "gold": 150
-            },
-            "3": {
-                "id": 3,
-                "lv": 35,
-                "gold": 200
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 250
-            },
-            "5": {
-                "id": 5,
-                "lv": 45,
-                "gold": 300
-            },
-            "6": {
-                "id": 6,
-                "lv": 50,
-                "gold": 350
-            },
-            "7": {
-                "id": 7,
-                "lv": 55,
-                "gold": 400
-            },
-            "8": {
-                "id": 8,
-                "lv": 60,
-                "gold": 450
-            },
-            "9": {
-                "id": 9,
-                "lv": 65,
-                "gold": 500
-            },
-            "10": {
-                "id": 10,
-                "lv": 70,
-                "gold": 550
-            },
-            "11": {
-                "id": 11,
-                "lv": 75,
-                "gold": 630
-            }
-        }
-    },
-    "recharge": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "60魔石",
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.pay6",
-                "times": 2
-            },
-            "2": {
-                "id": 2,
-                "name": "300魔石",
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.pay30",
-                "times": 2
-            },
-            "3": {
-                "id": 3,
-                "name": "680魔石",
-                "cash": 68,
-                "gold": 76,
-                "product_id": "com.leasuregame.magpie.pay68",
-                "times": 2
-            },
-            "4": {
-                "id": 4,
-                "name": "1280魔石",
-                "cash": 128,
-                "gold": 146,
-                "product_id": "com.leasuregame.magpie.pay128",
-                "times": 2
-            },
-            "5": {
-                "id": 5,
-                "name": "1980魔石",
-                "cash": 198,
-                "gold": 232,
-                "product_id": "com.leasuregame.magpie.pay198",
-                "times": 2
-            },
-            "6": {
-                "id": 6,
-                "name": "3280魔石",
-                "cash": 328,
-                "gold": 403,
-                "product_id": "com.leasuregame.magpie.pay328",
-                "times": 2
-            },
-            "7": {
-                "id": 7,
-                "name": "6480魔石",
-                "cash": 648,
-                "gold": 842,
-                "product_id": "com.leasuregame.magpie.pay648",
-                "times": 3
-            },
-            "8": {
-                "id": 8,
-                "name": "周卡",
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.week.card",
-                "daily_gold": 60,
-                "valid_days": 7,
-                "times": 1
-            },
-            "9": {
-                "id": 9,
-                "name": "月卡",
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.month.card",
-                "daily_gold": 100,
-                "valid_days": 30,
-                "times": 1
-            }
-        }
-    },
-    "vip_daily_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 10000,
-                "elixir": 3000,
-                "energy": 500,
-                "exp_card": 20
-            },
-            "2": {
-                "id": 2,
-                "money": 30000,
-                "elixir": 4000,
-                "energy": 800,
-                "exp_card": 25
-            },
-            "3": {
-                "id": 3,
-                "money": 50000,
-                "elixir": 5000,
-                "energy": 1100,
-                "exp_card": 30
-            },
-            "4": {
-                "id": 4,
-                "money": 70000,
-                "elixir": 6000,
-                "energy": 1400,
-                "exp_card": 35
-            },
-            "5": {
-                "id": 5,
-                "money": 90000,
-                "elixir": 7000,
-                "energy": 1700,
-                "exp_card": 40
-            },
-            "6": {
-                "id": 6,
-                "money": 110000,
-                "elixir": 8000,
-                "energy": 2000,
-                "exp_card": 45
-            },
-            "7": {
-                "id": 7,
-                "money": 130000,
-                "elixir": 9000,
-                "energy": 2300,
-                "exp_card": 50
-            },
-            "8": {
-                "id": 8,
-                "money": 150000,
-                "elixir": 10000,
-                "energy": 2600,
-                "exp_card": 55
-            },
-            "9": {
-                "id": 9,
-                "money": 170000,
-                "elixir": 11000,
-                "energy": 2900,
-                "exp_card": 60
-            },
-            "10": {
-                "id": 10,
-                "money": 190000,
-                "elixir": 12000,
-                "energy": 3200,
-                "exp_card": 65
-            },
-            "11": {
-                "id": 11,
-                "money": 210000,
-                "elixir": 13000,
-                "energy": 3500,
-                "exp_card": 70
-            },
-            "12": {
-                "id": 12,
-                "money": 230000,
-                "elixir": 14000,
-                "energy": 3800,
-                "exp_card": 75
-            }
-        }
-    },
-    "vip_privilege": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "lottery_free_count": 0,
-                "exp_card_count": 0,
-                "buy_power_count": 0,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
-            },
-            "1": {
-                "id": 1,
-                "lottery_free_count": 1,
-                "exp_card_count": 40,
-                "buy_power_count": 1,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
-            },
-            "2": {
-                "id": 2,
-                "lottery_free_count": 2,
-                "exp_card_count": 80,
-                "buy_power_count": 2,
-                "give_bless_count": 1,
-                "receive_bless_count": 1,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "friend_count": 0
-            },
-            "3": {
-                "id": 3,
-                "lottery_free_count": 3,
-                "exp_card_count": 120,
-                "buy_power_count": 3,
-                "give_bless_count": 2,
-                "receive_bless_count": 2,
-                "spirit_collect_count": 1,
-                "challenge_buy_count": 5,
-                "friend_count": 0
-            },
-            "4": {
-                "id": 4,
-                "lottery_free_count": 4,
-                "exp_card_count": 160,
-                "buy_power_count": 4,
-                "give_bless_count": 3,
-                "receive_bless_count": 3,
-                "spirit_collect_count": 2,
-                "challenge_buy_count": 10,
-                "friend_count": 5
-            },
-            "5": {
-                "id": 5,
-                "lottery_free_count": 5,
-                "exp_card_count": 200,
-                "buy_power_count": 5,
-                "give_bless_count": 4,
-                "receive_bless_count": 4,
-                "spirit_collect_count": 3,
-                "challenge_buy_count": 15,
-                "friend_count": 10
-            },
-            "6": {
-                "id": 6,
-                "lottery_free_count": 6,
-                "exp_card_count": 240,
-                "buy_power_count": 6,
-                "give_bless_count": 5,
-                "receive_bless_count": 5,
-                "spirit_collect_count": 4,
-                "challenge_buy_count": 20,
-                "friend_count": 15
-            },
-            "7": {
-                "id": 7,
-                "lottery_free_count": 7,
-                "exp_card_count": 280,
-                "buy_power_count": 7,
-                "give_bless_count": 6,
-                "receive_bless_count": 6,
-                "spirit_collect_count": 5,
-                "challenge_buy_count": 25,
-                "friend_count": 20
-            },
-            "8": {
-                "id": 8,
-                "lottery_free_count": 8,
-                "exp_card_count": 320,
-                "buy_power_count": 8,
-                "give_bless_count": 7,
-                "receive_bless_count": 7,
-                "spirit_collect_count": 6,
-                "challenge_buy_count": 30,
-                "friend_count": 25
-            },
-            "9": {
-                "id": 9,
-                "lottery_free_count": 9,
-                "exp_card_count": 360,
-                "buy_power_count": 9,
-                "give_bless_count": 8,
-                "receive_bless_count": 8,
-                "spirit_collect_count": 7,
-                "challenge_buy_count": 35,
-                "friend_count": 30
-            },
-            "10": {
-                "id": 10,
-                "lottery_free_count": 10,
-                "exp_card_count": 400,
-                "buy_power_count": 10,
-                "give_bless_count": 9,
-                "receive_bless_count": 9,
-                "spirit_collect_count": 8,
-                "challenge_buy_count": 40,
-                "friend_count": 35
-            },
-            "11": {
-                "id": 11,
-                "lottery_free_count": 11,
-                "exp_card_count": 440,
-                "buy_power_count": 11,
-                "give_bless_count": 10,
-                "receive_bless_count": 10,
-                "spirit_collect_count": 9,
-                "challenge_buy_count": 45,
-                "friend_count": 40
-            },
-            "12": {
-                "id": 12,
-                "lottery_free_count": 12,
-                "exp_card_count": 480,
-                "buy_power_count": 12,
-                "give_bless_count": 11,
-                "receive_bless_count": 11,
-                "spirit_collect_count": 10,
-                "challenge_buy_count": 50,
-                "friend_count": 45
-            }
-        }
-    },
-    "vip": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "name": "Vip1",
-                "cash": 6,
-                "total_cash": 6
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "name": "Vip2",
-                "cash": 50,
-                "total_cash": 56
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "name": "Vip3",
-                "cash": 100,
-                "total_cash": 156
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "name": "Vip4",
-                "cash": 200,
-                "total_cash": 356
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "name": "Vip5",
-                "cash": 500,
-                "total_cash": 856
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "name": "Vip6",
-                "cash": 1000,
-                "total_cash": 1856
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "name": "Vip7",
-                "cash": 2000,
-                "total_cash": 3856
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "name": "Vip8",
-                "cash": 5000,
-                "total_cash": 8856
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "name": "Vip9",
-                "cash": 8000,
-                "total_cash": 16856
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "name": "Vip10",
-                "cash": 10000,
-                "total_cash": 26856
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "name": "Vip11",
-                "cash": 20000,
-                "total_cash": 46856
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "name": "Vip12",
-                "cash": 50000,
-                "total_cash": 96856
-            }
-        }
-    },
-    "vip_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 5000,
-                "money": 100000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "fragments": 2,
-                "exp_card": 0,
-                "price": 18,
-                "true_price": 66
-            },
-            "2": {
-                "id": 2,
-                "energy": 6000,
-                "money": 150000,
-                "skillPoint": 10000,
-                "elixir": 0,
-                "fragments": 3,
-                "exp_card": 0,
-                "price": 58,
-                "true_price": 195
-            },
-            "3": {
-                "id": 3,
-                "energy": 7000,
-                "money": 200000,
-                "skillPoint": 20000,
-                "elixir": 20000,
-                "fragments": 4,
-                "exp_card": 40,
-                "price": 88,
-                "true_price": 246
-            },
-            "4": {
-                "id": 4,
-                "energy": 8000,
-                "money": 250000,
-                "skillPoint": 30000,
-                "elixir": 40000,
-                "fragments": 5,
-                "exp_card": 50,
-                "price": 188,
-                "true_price": 569
-            },
-            "5": {
-                "id": 5,
-                "energy": 9000,
-                "money": 300000,
-                "skillPoint": 40000,
-                "elixir": 60000,
-                "fragments": 6,
-                "exp_card": 60,
-                "price": 288,
-                "true_price": 726
-            },
-            "6": {
-                "id": 6,
-                "energy": 10000,
-                "money": 350000,
-                "skillPoint": 50000,
-                "elixir": 80000,
-                "fragments": 7,
-                "exp_card": 70,
-                "price": 388,
-                "true_price": 1080
-            },
-            "7": {
-                "id": 7,
-                "energy": 11000,
-                "money": 400000,
-                "skillPoint": 60000,
-                "elixir": 100000,
-                "fragments": 8,
-                "exp_card": 80,
-                "price": 488,
-                "true_price": 1368
-            },
-            "8": {
-                "id": 8,
-                "energy": 12000,
-                "money": 450000,
-                "skillPoint": 70000,
-                "elixir": 120000,
-                "fragments": 9,
-                "exp_card": 90,
-                "price": 588,
-                "true_price": 1989
-            },
-            "9": {
-                "id": 9,
-                "energy": 13000,
-                "money": 500000,
-                "skillPoint": 80000,
-                "elixir": 140000,
-                "fragments": 10,
-                "exp_card": 100,
-                "price": 688,
-                "true_price": 2366
-            },
-            "10": {
-                "id": 10,
-                "energy": 14000,
-                "money": 550000,
-                "skillPoint": 90000,
-                "elixir": 160000,
-                "fragments": 11,
-                "exp_card": 110,
-                "price": 788,
-                "true_price": 2899
-            },
-            "11": {
-                "id": 11,
-                "energy": 15000,
-                "money": 600000,
-                "skillPoint": 100000,
-                "elixir": 180000,
-                "fragments": 12,
-                "exp_card": 120,
-                "price": 888,
-                "true_price": 3288
-            },
-            "12": {
-                "id": 12,
-                "energy": 16000,
-                "money": 650000,
-                "skillPoint": 110000,
-                "elixir": 200000,
-                "fragments": 13,
-                "exp_card": 130,
-                "price": 999,
-                "true_price": 3986
-            }
-        }
-    },
-    "spirit_pool": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 225,
-                "spirit_obtain": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 450,
-                "spirit_obtain": 12
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 825,
-                "spirit_obtain": 14
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 1200,
-                "spirit_obtain": 16
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 1575,
-                "spirit_obtain": 18
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 1950,
-                "spirit_obtain": 20
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 2325,
-                "spirit_obtain": 22
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 2700,
-                "spirit_obtain": 24
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 3075,
-                "spirit_obtain": 26
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 3500,
-                "spirit_obtain": 28
-            }
-        }
-    },
     "spirit": {
         "colComment": {},
         "rows": {
@@ -31078,6 +30396,71 @@ var outputTables = {
                 "atk_inc": 50,
                 "spirit_atk_pct": 100,
                 "rate": 50
+            }
+        }
+    },
+    "spirit_pool": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp_need": 225,
+                "spirit_obtain": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "exp_need": 450,
+                "spirit_obtain": 12
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "exp_need": 825,
+                "spirit_obtain": 14
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "exp_need": 1200,
+                "spirit_obtain": 16
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "exp_need": 1575,
+                "spirit_obtain": 18
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "exp_need": 1950,
+                "spirit_obtain": 20
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "exp_need": 2325,
+                "spirit_obtain": 22
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "exp_need": 2700,
+                "spirit_obtain": 24
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "exp_need": 3075,
+                "spirit_obtain": 26
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "exp_need": 3500,
+                "spirit_obtain": 28
             }
         }
     },
@@ -51988,8 +51371,8 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "type": "gold",
-                "num_min": 100,
-                "num_max": 200
+                "num_min": 50,
+                "num_max": 100
             },
             "3": {
                 "id": 3,
@@ -52337,6 +51720,626 @@ var outputTables = {
             "50": {
                 "id": 50,
                 "money_obtain": 8450
+            }
+        }
+    },
+    "first_recharge_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 8000,
+                "money": 80000,
+                "elixir": 10000,
+                "skillPoint": 10000,
+                "spirit": 1000,
+                "power": 100,
+                "card_id": 764,
+                "card_lv": 20
+            }
+        }
+    },
+    "growth_plan": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 25,
+                "gold": 100
+            },
+            "2": {
+                "id": 2,
+                "lv": 30,
+                "gold": 150
+            },
+            "3": {
+                "id": 3,
+                "lv": 35,
+                "gold": 200
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 250
+            },
+            "5": {
+                "id": 5,
+                "lv": 45,
+                "gold": 300
+            },
+            "6": {
+                "id": 6,
+                "lv": 50,
+                "gold": 350
+            },
+            "7": {
+                "id": 7,
+                "lv": 55,
+                "gold": 400
+            },
+            "8": {
+                "id": 8,
+                "lv": 60,
+                "gold": 450
+            },
+            "9": {
+                "id": 9,
+                "lv": 65,
+                "gold": 500
+            },
+            "10": {
+                "id": 10,
+                "lv": 70,
+                "gold": 550
+            },
+            "11": {
+                "id": 11,
+                "lv": 75,
+                "gold": 630
+            }
+        }
+    },
+    "recharge": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "60魔石",
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.pay6",
+                "times": 2
+            },
+            "2": {
+                "id": 2,
+                "name": "300魔石",
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.pay30",
+                "times": 2
+            },
+            "3": {
+                "id": 3,
+                "name": "680魔石",
+                "cash": 68,
+                "gold": 76,
+                "product_id": "com.leasuregame.magpie.pay68",
+                "times": 2
+            },
+            "4": {
+                "id": 4,
+                "name": "1280魔石",
+                "cash": 128,
+                "gold": 146,
+                "product_id": "com.leasuregame.magpie.pay128",
+                "times": 2
+            },
+            "5": {
+                "id": 5,
+                "name": "1980魔石",
+                "cash": 198,
+                "gold": 232,
+                "product_id": "com.leasuregame.magpie.pay198",
+                "times": 2
+            },
+            "6": {
+                "id": 6,
+                "name": "3280魔石",
+                "cash": 328,
+                "gold": 403,
+                "product_id": "com.leasuregame.magpie.pay328",
+                "times": 2
+            },
+            "7": {
+                "id": 7,
+                "name": "6480魔石",
+                "cash": 648,
+                "gold": 842,
+                "product_id": "com.leasuregame.magpie.pay648",
+                "times": 3
+            },
+            "8": {
+                "id": 8,
+                "name": "周卡",
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.week.card",
+                "daily_gold": 60,
+                "valid_days": 7,
+                "times": 1
+            },
+            "9": {
+                "id": 9,
+                "name": "月卡",
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.month.card",
+                "daily_gold": 100,
+                "valid_days": 30,
+                "times": 1
+            }
+        }
+    },
+    "vip": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "name": "Vip1",
+                "cash": 6,
+                "total_cash": 6
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "name": "Vip2",
+                "cash": 50,
+                "total_cash": 56
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "name": "Vip3",
+                "cash": 100,
+                "total_cash": 156
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "name": "Vip4",
+                "cash": 200,
+                "total_cash": 356
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "name": "Vip5",
+                "cash": 500,
+                "total_cash": 856
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "name": "Vip6",
+                "cash": 1000,
+                "total_cash": 1856
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "name": "Vip7",
+                "cash": 2000,
+                "total_cash": 3856
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "name": "Vip8",
+                "cash": 5000,
+                "total_cash": 8856
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "name": "Vip9",
+                "cash": 8000,
+                "total_cash": 16856
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "name": "Vip10",
+                "cash": 10000,
+                "total_cash": 26856
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "name": "Vip11",
+                "cash": 20000,
+                "total_cash": 46856
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "name": "Vip12",
+                "cash": 50000,
+                "total_cash": 96856
+            }
+        }
+    },
+    "vip_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 5000,
+                "money": 100000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "fragments": 2,
+                "exp_card": 0,
+                "price": 18,
+                "true_price": 66
+            },
+            "2": {
+                "id": 2,
+                "energy": 6000,
+                "money": 150000,
+                "skillPoint": 10000,
+                "elixir": 0,
+                "fragments": 3,
+                "exp_card": 0,
+                "price": 58,
+                "true_price": 195
+            },
+            "3": {
+                "id": 3,
+                "energy": 7000,
+                "money": 200000,
+                "skillPoint": 20000,
+                "elixir": 20000,
+                "fragments": 4,
+                "exp_card": 40,
+                "price": 88,
+                "true_price": 246
+            },
+            "4": {
+                "id": 4,
+                "energy": 8000,
+                "money": 250000,
+                "skillPoint": 30000,
+                "elixir": 40000,
+                "fragments": 5,
+                "exp_card": 50,
+                "price": 188,
+                "true_price": 569
+            },
+            "5": {
+                "id": 5,
+                "energy": 9000,
+                "money": 300000,
+                "skillPoint": 40000,
+                "elixir": 60000,
+                "fragments": 6,
+                "exp_card": 60,
+                "price": 288,
+                "true_price": 726
+            },
+            "6": {
+                "id": 6,
+                "energy": 10000,
+                "money": 350000,
+                "skillPoint": 50000,
+                "elixir": 80000,
+                "fragments": 7,
+                "exp_card": 70,
+                "price": 388,
+                "true_price": 1080
+            },
+            "7": {
+                "id": 7,
+                "energy": 11000,
+                "money": 400000,
+                "skillPoint": 60000,
+                "elixir": 100000,
+                "fragments": 8,
+                "exp_card": 80,
+                "price": 488,
+                "true_price": 1368
+            },
+            "8": {
+                "id": 8,
+                "energy": 12000,
+                "money": 450000,
+                "skillPoint": 70000,
+                "elixir": 120000,
+                "fragments": 9,
+                "exp_card": 90,
+                "price": 588,
+                "true_price": 1989
+            },
+            "9": {
+                "id": 9,
+                "energy": 13000,
+                "money": 500000,
+                "skillPoint": 80000,
+                "elixir": 140000,
+                "fragments": 10,
+                "exp_card": 100,
+                "price": 688,
+                "true_price": 2366
+            },
+            "10": {
+                "id": 10,
+                "energy": 14000,
+                "money": 550000,
+                "skillPoint": 90000,
+                "elixir": 160000,
+                "fragments": 11,
+                "exp_card": 110,
+                "price": 788,
+                "true_price": 2899
+            },
+            "11": {
+                "id": 11,
+                "energy": 15000,
+                "money": 600000,
+                "skillPoint": 100000,
+                "elixir": 180000,
+                "fragments": 12,
+                "exp_card": 120,
+                "price": 888,
+                "true_price": 3288
+            },
+            "12": {
+                "id": 12,
+                "energy": 16000,
+                "money": 650000,
+                "skillPoint": 110000,
+                "elixir": 200000,
+                "fragments": 13,
+                "exp_card": 130,
+                "price": 999,
+                "true_price": 3986
+            }
+        }
+    },
+    "vip_daily_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 10000,
+                "elixir": 3000,
+                "energy": 500,
+                "exp_card": 20
+            },
+            "2": {
+                "id": 2,
+                "money": 30000,
+                "elixir": 4000,
+                "energy": 800,
+                "exp_card": 25
+            },
+            "3": {
+                "id": 3,
+                "money": 50000,
+                "elixir": 5000,
+                "energy": 1100,
+                "exp_card": 30
+            },
+            "4": {
+                "id": 4,
+                "money": 70000,
+                "elixir": 6000,
+                "energy": 1400,
+                "exp_card": 35
+            },
+            "5": {
+                "id": 5,
+                "money": 90000,
+                "elixir": 7000,
+                "energy": 1700,
+                "exp_card": 40
+            },
+            "6": {
+                "id": 6,
+                "money": 110000,
+                "elixir": 8000,
+                "energy": 2000,
+                "exp_card": 45
+            },
+            "7": {
+                "id": 7,
+                "money": 130000,
+                "elixir": 9000,
+                "energy": 2300,
+                "exp_card": 50
+            },
+            "8": {
+                "id": 8,
+                "money": 150000,
+                "elixir": 10000,
+                "energy": 2600,
+                "exp_card": 55
+            },
+            "9": {
+                "id": 9,
+                "money": 170000,
+                "elixir": 11000,
+                "energy": 2900,
+                "exp_card": 60
+            },
+            "10": {
+                "id": 10,
+                "money": 190000,
+                "elixir": 12000,
+                "energy": 3200,
+                "exp_card": 65
+            },
+            "11": {
+                "id": 11,
+                "money": 210000,
+                "elixir": 13000,
+                "energy": 3500,
+                "exp_card": 70
+            },
+            "12": {
+                "id": 12,
+                "money": 230000,
+                "elixir": 14000,
+                "energy": 3800,
+                "exp_card": 75
+            }
+        }
+    },
+    "vip_privilege": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lottery_free_count": 0,
+                "exp_card_count": 0,
+                "buy_power_count": 0,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "1": {
+                "id": 1,
+                "lottery_free_count": 1,
+                "exp_card_count": 40,
+                "buy_power_count": 1,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "2": {
+                "id": 2,
+                "lottery_free_count": 2,
+                "exp_card_count": 80,
+                "buy_power_count": 2,
+                "give_bless_count": 1,
+                "receive_bless_count": 1,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "friend_count": 0
+            },
+            "3": {
+                "id": 3,
+                "lottery_free_count": 3,
+                "exp_card_count": 120,
+                "buy_power_count": 3,
+                "give_bless_count": 2,
+                "receive_bless_count": 2,
+                "spirit_collect_count": 1,
+                "challenge_buy_count": 5,
+                "friend_count": 0
+            },
+            "4": {
+                "id": 4,
+                "lottery_free_count": 4,
+                "exp_card_count": 160,
+                "buy_power_count": 4,
+                "give_bless_count": 3,
+                "receive_bless_count": 3,
+                "spirit_collect_count": 2,
+                "challenge_buy_count": 10,
+                "friend_count": 5
+            },
+            "5": {
+                "id": 5,
+                "lottery_free_count": 5,
+                "exp_card_count": 200,
+                "buy_power_count": 5,
+                "give_bless_count": 4,
+                "receive_bless_count": 4,
+                "spirit_collect_count": 3,
+                "challenge_buy_count": 15,
+                "friend_count": 10
+            },
+            "6": {
+                "id": 6,
+                "lottery_free_count": 6,
+                "exp_card_count": 240,
+                "buy_power_count": 6,
+                "give_bless_count": 5,
+                "receive_bless_count": 5,
+                "spirit_collect_count": 4,
+                "challenge_buy_count": 20,
+                "friend_count": 15
+            },
+            "7": {
+                "id": 7,
+                "lottery_free_count": 7,
+                "exp_card_count": 280,
+                "buy_power_count": 7,
+                "give_bless_count": 6,
+                "receive_bless_count": 6,
+                "spirit_collect_count": 5,
+                "challenge_buy_count": 25,
+                "friend_count": 20
+            },
+            "8": {
+                "id": 8,
+                "lottery_free_count": 8,
+                "exp_card_count": 320,
+                "buy_power_count": 8,
+                "give_bless_count": 7,
+                "receive_bless_count": 7,
+                "spirit_collect_count": 6,
+                "challenge_buy_count": 30,
+                "friend_count": 25
+            },
+            "9": {
+                "id": 9,
+                "lottery_free_count": 9,
+                "exp_card_count": 360,
+                "buy_power_count": 9,
+                "give_bless_count": 8,
+                "receive_bless_count": 8,
+                "spirit_collect_count": 7,
+                "challenge_buy_count": 35,
+                "friend_count": 30
+            },
+            "10": {
+                "id": 10,
+                "lottery_free_count": 10,
+                "exp_card_count": 400,
+                "buy_power_count": 10,
+                "give_bless_count": 9,
+                "receive_bless_count": 9,
+                "spirit_collect_count": 8,
+                "challenge_buy_count": 40,
+                "friend_count": 35
+            },
+            "11": {
+                "id": 11,
+                "lottery_free_count": 11,
+                "exp_card_count": 440,
+                "buy_power_count": 11,
+                "give_bless_count": 10,
+                "receive_bless_count": 10,
+                "spirit_collect_count": 9,
+                "challenge_buy_count": 45,
+                "friend_count": 40
+            },
+            "12": {
+                "id": 12,
+                "lottery_free_count": 12,
+                "exp_card_count": 480,
+                "buy_power_count": 12,
+                "give_bless_count": 11,
+                "receive_bless_count": 11,
+                "spirit_collect_count": 10,
+                "challenge_buy_count": 50,
+                "friend_count": 45
             }
         }
     }

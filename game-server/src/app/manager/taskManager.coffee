@@ -165,9 +165,9 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
-      if taskId is 500 and player.task.progress is taskData.points
+      if taskId is 500 and player.task.progress >= taskData.points
         ### 全部通关，do nothing ###
-        return cb(null, data)
+        
       else
         if taskId < 4
           ### 十步之遥 成就奖励 ###
@@ -265,7 +265,7 @@ class Manager
     if data.result is 'box'
       id = types.find('reward_type', 'card')
       task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
-    if data.result is 'fight'
+    if data.result is 'fight' and data.battle_log.winner is 'own'
       id = types.find('reward_type', 'exp_card')
       task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
     if data.battle_log?.rewards.totalSpirit > 0

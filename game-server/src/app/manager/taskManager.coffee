@@ -265,7 +265,7 @@ class Manager
     if data.result is 'box'
       id = types.find('reward_type', 'card')
       task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
-    if data.result is 'fight'
+    if data.result is 'fight' and data.battle_log.winner is 'own'
       id = types.find('reward_type', 'exp_card')
       task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
     if data.battle_log?.rewards.totalSpirit > 0

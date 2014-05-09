@@ -170,7 +170,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickNextPage,
             this
         );
-        this._nextPageItem.setRotation(180);
+        this._nextPageItem.setScaleX(-1);
         this._nextPageItem.setPosition(this._exploreLayerFit.nextPageItemPoint);
 
         this._rewardTipsItem = cc.MenuItemImage.create(
@@ -313,6 +313,7 @@ var ExploreLayer = cc.Layer.extend({
 
         this.update();
         this._updatePage();
+        gameData.task.resetNewCollect();
         this._updateCollect();
 
         return true;
@@ -377,8 +378,17 @@ var ExploreLayer = cc.Layer.extend({
         var sectionId = gameData.task.getSection();
         var maxIndex = gameData.task.getPoints() + (sectionId - 1) * TASK_POINTS_COUNT;
 
-        this._prePageItem.setVisible(this._pageIndex > 1);
-        this._nextPageItem.setVisible(this._pageIndex < maxIndex);
+        if (this._pageIndex < 1) {
+            TipLayer.tip("没有上一页了");
+            this._pageIndex = 1;
+            return;
+        }
+
+        if (this._pageIndex > maxIndex) {
+            TipLayer.tip("下一页未开启");
+            this._pageIndex = maxIndex;
+            return;
+        }
 
         this._descriptionLabel.removeAllChildren();
 
@@ -429,7 +439,7 @@ var ExploreLayer = cc.Layer.extend({
             this._showRewardEffect();
         }
 
-        if(!isCollectedAll) {
+        if (!isCollectedAll) {
             if (this._rewardEffect) {
                 this._rewardEffect.removeFromParent();
                 this._rewardEffect = null;

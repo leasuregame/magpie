@@ -542,8 +542,8 @@ var fit4Iphone4 = {
             "lvIconPoint": cc.p(124, 709),
             "playerLvLabelPoint": cc.p(75, 706),
             "rewardEffectUrl": "animation_1",
-            "prePageItemPoint": cc.p(565, 250),
-            "nextPageItemPoint": cc.p(635, 250),
+            "prePageItemPoint": cc.p(565, 246),
+            "nextPageItemPoint": cc.p(635, 246),
             "rewardItemPoint": cc.p(620, 820),
             "collectLabelPoint": cc.p(360, 656)
         },

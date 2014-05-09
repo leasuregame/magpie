@@ -178,7 +178,7 @@ var ExploreLayer = cc.Layer.extend({
             main_scene_image.button84d,
             function () {
                 gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-                TipLayer.tip("还没达成奖励");
+                TipLayer.tip("凑齐4种奖励方可领取");
             },
             this
         );
@@ -369,10 +369,6 @@ var ExploreLayer = cc.Layer.extend({
         }
 
         this._updatePage();
-
-        if (gameData.task.isCollectedAll()) {
-            this._showRewardEffect();
-        }
     },
 
     _updatePage: function () {
@@ -425,17 +421,25 @@ var ExploreLayer = cc.Layer.extend({
             this._collectElement[reward["reward_type"]].setVisible(task.getCollectStateById(TYPE_COLLECTED, reward.id));
         }
 
+        var isCollectedAll = task.isCollectedAll();
+
+        this._rewardTipsItem.setVisible(!isCollectedAll);
+
+        if (isCollectedAll && !this._rewardEffect) {
+            this._showRewardEffect();
+        }
+
+        if(!isCollectedAll) {
+            if (this._rewardEffect) {
+                this._rewardEffect.removeFromParent();
+                this._rewardEffect = null;
+            }
+        }
+
     },
 
     _showRewardEffect: function () {
         cc.log("ExploreLayer _showRewardEffect");
-
-        if (this._rewardEffect) {
-            this._rewardEffect.removeFromParent();
-            this._rewardEffect = null;
-        }
-
-        this._rewardTipsItem.setVisible(false);
 
         this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect111, this);
         this._rewardEffect.setPosition(this._exploreLayerFit.rewardItemPoint);
@@ -918,8 +922,6 @@ var ExploreLayer = cc.Layer.extend({
                 titleType: TYPE_EXPLORE_REWARD,
                 cb: function () {
                     that._updateCollect();
-                    that._rewardEffect.removeFromParent();
-                    that._rewardEffect = null;
                     lz.tipReward(reward);
                 }
             });

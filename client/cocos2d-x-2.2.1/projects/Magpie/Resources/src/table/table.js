@@ -908,19 +908,19 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "rate": 70,
+                "rate": 55,
                 "name": "蓝卡",
                 "reward_inc": 0
             },
             "2": {
                 "id": 2,
-                "rate": 20,
+                "rate": 30,
                 "name": "紫卡",
                 "reward_inc": 50
             },
             "3": {
                 "id": 3,
-                "rate": 10,
+                "rate": 15,
                 "name": "金卡",
                 "reward_inc": 150
             }
@@ -29588,11 +29588,11 @@ var outputTables = {
                 "order": 4,
                 "method": "money",
                 "name": "一小袋仙币",
-                "disc": "1000仙币，额外赠送1000仙币。",
+                "disc": "15000仙币，额外赠送5000仙币。",
                 "consume_type": "gold",
                 "consume": 10,
                 "obtain_type": "money",
-                "obtain": 2000,
+                "obtain": 20000,
                 "isVisible": 1
             },
             "4": {
@@ -29600,11 +29600,11 @@ var outputTables = {
                 "order": 5,
                 "method": "money",
                 "name": "一袋仙币",
-                "disc": "5000仙币，额外赠送10000仙币。",
+                "disc": "75000仙币，额外赠送45000仙币。",
                 "consume_type": "gold",
                 "consume": 50,
                 "obtain_type": "money",
-                "obtain": 15000,
+                "obtain": 120000,
                 "isVisible": 1
             },
             "5": {
@@ -29612,11 +29612,11 @@ var outputTables = {
                 "order": 6,
                 "method": "money",
                 "name": "一大袋仙币",
-                "disc": "10000仙币，额外赠送35000仙币。",
+                "disc": "150000仙币，额外赠送100000仙币。",
                 "consume_type": "gold",
                 "consume": 100,
                 "obtain_type": "money",
-                "obtain": 45000,
+                "obtain": 250000,
                 "isVisible": 1
             },
             "6": {

@@ -543,7 +543,9 @@ var fit4Iphone4 = {
             "playerLvLabelPoint": cc.p(75, 706),
             "rewardEffectUrl": "animation_1",
             "prePageItemPoint": cc.p(565, 250),
-            "nextPageItemPoint": cc.p(635, 250)
+            "nextPageItemPoint": cc.p(635, 250),
+            "rewardItemPoint": cc.p(620, 820),
+            "collectLabelPoint": cc.p(360, 656)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),

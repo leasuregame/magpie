@@ -365,7 +365,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>120</real>
+								<real>40</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -394,7 +394,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>128</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -587,7 +587,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-120</real>
+								<real>-40</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -616,7 +616,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>128</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1143,9 +1143,9 @@
 						<key>displayName</key>
 						<string>cardFrame</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>ccbCardFrame1</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>2</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1261,9 +1261,9 @@
 						<key>displayName</key>
 						<string>cardHalf</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>ccbCardHalf1</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>2</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1377,9 +1377,9 @@
 						<key>displayName</key>
 						<string>cardIcon</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>ccbCardIcon1</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>2</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1862,7 +1862,7 @@
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>ccbNameLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1989,6 +1989,8 @@
 						<string></string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2246,7 +2248,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2339,8 +2341,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>ccbFnStartSetStar</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 				</array>
@@ -2356,7 +2358,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -2390,7 +2392,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>6</real>
+			<real>5.3333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

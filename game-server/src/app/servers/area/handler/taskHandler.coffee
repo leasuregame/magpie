@@ -156,6 +156,11 @@ Handler::updateMomoResult = (msg, session, next) ->
     player.clearMonoGift()
 
     player.increase 'gold', gold
+    types = table.getTable('turn_reward_type')
+    id = types.find('reward_type', 'gold')
+    task = utility.deepCopy(player.task)
+    task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
+    player.set('task', task)
     player.save()
     next(null, {code: 200})
 

@@ -360,6 +360,7 @@ var Task = Entity.extend({
                 cc.log("obtainGold success.");
 
                 gameData.player.add("gold", gold);
+                that._updateCollect(data.msg.collected);
 
                 lz.um.event("event_momo", gold);
             } else {

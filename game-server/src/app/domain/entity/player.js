@@ -257,7 +257,8 @@ var Player = (function(_super) {
         'honor',
         'superHonor',
         'cd',
-        'plan'
+        'plan',
+        'useCardCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -385,7 +386,18 @@ var Player = (function(_super) {
         plan: {
             buy: false,
             flag: 0
+        },
+        useCardCount: {
+            star4: 10,
+            star5: 1,
+            star6: 3
         }
+    };
+
+    Player.prototype.updateUseCardCoun = function(star, val) {
+        var ucc = utility.deepCopy(this.useCardCount);
+        ucc['star'+star] = val;
+        this.useCardCount = ucc;
     };
 
     Player.prototype.canGetTurnReward = function() {

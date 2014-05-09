@@ -16,11 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9960</WindowHeight>
+  <WindowHeight>11560</WindowHeight>
   <WindowWidth>25600</WindowWidth>
   <WindowTopX>6940</WindowTopX>
   <WindowTopY>40</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -187,16 +186,12 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-<<<<<<< HEAD
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-=======
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>4</ActiveCol>
->>>>>>> d9d2a65... 修改探索额外奖励基础值
+     <ActiveRow>19</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -258,16 +253,11 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-<<<<<<< HEAD
-     <RangeSelection>R3C1:R7C4</RangeSelection>
-=======
      <ActiveCol>2</ActiveCol>
->>>>>>> d9d2a65... 修改探索额外奖励基础值
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

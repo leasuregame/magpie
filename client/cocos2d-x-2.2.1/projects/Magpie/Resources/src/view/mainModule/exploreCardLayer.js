@@ -45,15 +45,13 @@ var ExploreCardLayer = LazyLayer.extend({
         var star = this._card.get("star");
         var index = star > 2 ? star - 2 : 1;
 
-        this["ccbCardFrame1"].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
-        this["ccbCardHalf1"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
-        this["ccbCardIcon1"].setTexture(lz.getTexture(this._card.getCardIcon()));
-
-        this.addChild(this._ccbNode);
+        controller.ccbCardFull.setTexture(lz.getTexture(main_scene_image[url + "_full" + index]));
 
         this._ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
             this._canClick = true;
         });
+
+        this.addChild(this._ccbNode);
 
         return true;
     },
@@ -74,7 +72,7 @@ var ExploreCardLayer = LazyLayer.extend({
 
         if (this._index < star) {
             var starNode = cc.BuilderReader.load(main_scene_image.uiEffect31, this);
-            starNode.setPosition(cc.p(this._index * offset - offset * (star - 1) / 2, -200));
+            starNode.setPosition(cc.p(this._index * offset - offset * (star - 1) / 2, -350));
             this._ccbNode.addChild(starNode);
 
             starNode.animationManager.setCompletedAnimationCallback(this, function () {

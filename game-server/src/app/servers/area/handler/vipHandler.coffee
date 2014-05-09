@@ -64,7 +64,7 @@ Handler::buyPlan = (msg, session, next) ->
     player.buyPlan()
     player.decrease('gold', 1000)
     player.save()
-    next(null, {code: 200, msg: gold: player.gold})
+    next(null, {code: 200, msg: gold: player.gold, plan: player.plan})
 
 Handler::getPlanReward = (msg, session, next) -> 
   playerId = session.get('playerId')

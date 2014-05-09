@@ -498,6 +498,7 @@ Handler::starUpgrade = (msg, session, next) ->
 
         card.increase('star')
         card.increase('tableId')
+        card.set('useCardsCounts', 0)
         card.resetSkillLv()      
 
         # 获得so lucky成就

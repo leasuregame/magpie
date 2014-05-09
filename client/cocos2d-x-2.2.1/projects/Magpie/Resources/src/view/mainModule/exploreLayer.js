@@ -31,6 +31,9 @@ var ExploreLayer = cc.Layer.extend({
     _element: {},
     _playerLvLabel: null,
     _descriptionLabel: null,
+    _rewardTipsItem: null,
+    _rewardEffect: null,
+    _collectElement: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -73,11 +76,6 @@ var ExploreLayer = cc.Layer.extend({
         bgSprite.setPosition(this._exploreLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._exploreLayerFit.headIconPoint);
-        this.addChild(headIcon, 1);
-
         var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
         var sid = (sectionId - 1) % 5 < 3 ? 1 : 0;
@@ -93,6 +91,11 @@ var ExploreLayer = cc.Layer.extend({
             this._mapLabel[i].setScaleY(this._exploreLayerFit.mapLabelScaleY);
             this.addChild(this._mapLabel[i]);
         }
+
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(this._exploreLayerFit.headIconPoint);
+        this.addChild(headIcon);
 
         var lvIcon = cc.Sprite.create(main_scene_image.icon335);
         lvIcon.setPosition(this._exploreLayerFit.lvIconPoint);
@@ -123,16 +126,6 @@ var ExploreLayer = cc.Layer.extend({
         titleLabel.setColor(cc.c3b(255, 239, 131));
         titleLabel.setPosition(this._exploreLayerFit.titleLabelPoint);
         this.addChild(titleLabel, 1);
-
-        this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
-        this._spiritShadow.setPosition(this._exploreLayerFit.spiritShadowPoint);
-        this.addChild(this._spiritShadow);
-
-        this._spiritNode = SpiritSideNode.create();
-        this._spiritNode.setPosition(this._exploreLayerFit.spiritNodePoint);
-        this.addChild(this._spiritNode);
-
-        this._spiritNode.speak();
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
@@ -180,13 +173,62 @@ var ExploreLayer = cc.Layer.extend({
         this._nextPageItem.setRotation(180);
         this._nextPageItem.setPosition(this._exploreLayerFit.nextPageItemPoint);
 
-        var menu = cc.Menu.create(backItem, this._exploreItem, this._prePageItem, this._nextPageItem);
+        this._rewardTipsItem = cc.MenuItemImage.create(
+            main_scene_image.button84d,
+            main_scene_image.button84d,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+                TipLayer.tip("还没达成奖励");
+            },
+            this
+        );
+
+        this._rewardTipsItem.setPosition(this._exploreLayerFit.rewardItemPoint);
+
+        var menu = cc.Menu.create(backItem, this._exploreItem, this._prePageItem, this._nextPageItem, this._rewardTipsItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
+        this.addChild(menu);
+
+        this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
+        this._spiritShadow.setPosition(this._exploreLayerFit.spiritShadowPoint);
+        this.addChild(this._spiritShadow);
+
+        this._spiritNode = SpiritSideNode.create();
+        this._spiritNode.setPosition(this._exploreLayerFit.spiritNodePoint);
+        this.addChild(this._spiritNode);
+
+        this._spiritNode.speak();
 
         this._descriptionLabel = cc.Node.create();
         this._descriptionLabel.setPosition(this._exploreLayerFit.descriptionLabelPoint);
         this.addChild(this._descriptionLabel);
+
+        var collectLabel = cc.Sprite.create(main_scene_image.icon443);
+        collectLabel.setPosition(this._exploreLayerFit.collectLabelPoint);
+        this.addChild(collectLabel, 2);
+
+        var goldIcon = cc.Sprite.create(main_scene_image.icon444);
+        goldIcon.setPosition(cc.p(50, 19));
+        collectLabel.addChild(goldIcon);
+
+        var expCardIcon = cc.Sprite.create(main_scene_image.icon445);
+        expCardIcon.setPosition(cc.p(120, 19));
+        collectLabel.addChild(expCardIcon);
+
+        var spiritIcon = cc.Sprite.create(main_scene_image.icon446);
+        spiritIcon.setPosition(cc.p(190, 19));
+        collectLabel.addChild(spiritIcon);
+
+        var cardIcon = cc.Sprite.create(main_scene_image.icon447);
+        cardIcon.setPosition(cc.p(260, 19));
+        collectLabel.addChild(cardIcon);
+
+        this._collectElement = {
+            gold: goldIcon,
+            exp_card: expCardIcon,
+            spirit: spiritIcon,
+            card: cardIcon
+        };
 
         // 读配置表
         var chapterTable = outputTables.task.rows;
@@ -271,6 +313,7 @@ var ExploreLayer = cc.Layer.extend({
 
         this.update();
         this._updatePage();
+        this._updateCollect();
 
         return true;
     },
@@ -326,6 +369,10 @@ var ExploreLayer = cc.Layer.extend({
         }
 
         this._updatePage();
+
+        if (gameData.task.isCollectedAll()) {
+            this._showRewardEffect();
+        }
     },
 
     _updatePage: function () {
@@ -348,6 +395,63 @@ var ExploreLayer = cc.Layer.extend({
             storyLabel.setPosition(cc.p(0, -30 * i));
             this._descriptionLabel.addChild(storyLabel);
         }
+    },
+
+    _updateCollect: function () {
+        cc.log("ExploreLayer _updateCollect");
+
+        var table = outputTables.turn_reward_type.rows;
+        var task = gameData.task;
+
+        var key, reward;
+
+        var scaleToAction = cc.Sequence.create(
+            cc.FadeIn.create(0.2),
+            cc.ScaleTo.create(0.3, 1.2),
+            cc.ScaleTo.create(0.2, 1)
+        );
+
+        for (key in table) {
+            reward = table[key];
+
+            if (task.getCollectStateById(TYPE_NEW_COLLECT, reward.id)) {
+                var element = this._collectElement[reward["reward_type"]];
+                element.runAction(scaleToAction.clone());
+            }
+        }
+
+        for (key in table) {
+            reward = table[key];
+            this._collectElement[reward["reward_type"]].setVisible(task.getCollectStateById(TYPE_COLLECTED, reward.id));
+        }
+
+    },
+
+    _showRewardEffect: function () {
+        cc.log("ExploreLayer _showRewardEffect");
+
+        if (this._rewardEffect) {
+            this._rewardEffect.removeFromParent();
+            this._rewardEffect = null;
+        }
+
+        this._rewardTipsItem.setVisible(false);
+
+        this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect111, this);
+        this._rewardEffect.setPosition(this._exploreLayerFit.rewardItemPoint);
+        this.addChild(this._rewardEffect);
+
+        var rewardItem = cc.MenuItemImage.create(
+            main_scene_image.button84,
+            main_scene_image.button84,
+            this._onClickReward,
+            this
+        );
+        rewardItem.setPosition(cc.p(0, 0));
+
+        var menu = cc.Menu.create(rewardItem);
+        menu.setPosition(cc.p(0, 0));
+        this._rewardEffect.controller.ccbMenu.addChild(menu);
     },
 
     _getScrollViewOffset: function () {
@@ -554,7 +658,7 @@ var ExploreLayer = cc.Layer.extend({
                                 that.ccbFnOpenBox = function () {
                                     cc.log("ExploreLayer ccbFnOpenBox");
 
-                                    LotteryCardLayer.pop({
+                                    ExploreCardLayer.pop({
                                         cb: next,
                                         card: card
                                     });
@@ -577,6 +681,7 @@ var ExploreLayer = cc.Layer.extend({
                         },
                         function () {
                             that.update(1);
+                            that._updateCollect();
 
                             if (!money || !exp) {
                                 next();
@@ -797,6 +902,28 @@ var ExploreLayer = cc.Layer.extend({
 
         this._pageIndex++;
         this._updatePage();
+    },
+
+    _onClickReward: function () {
+        cc.log("ExploreLayer _onClickReward");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+
+        gameData.task.getTurnReward(function (reward) {
+            GiftBagLayer.pop({
+                reward: reward,
+                type: SHOW_GIFT_BAG_NO_CLOSE,
+                titleType: TYPE_EXPLORE_REWARD,
+                cb: function () {
+                    that._updateCollect();
+                    that._rewardEffect.removeFromParent();
+                    that._rewardEffect = null;
+                    lz.tipReward(reward);
+                }
+            });
+        });
     },
 
     /**

@@ -152,6 +152,7 @@
                 <file name="src/view/mainModule/elixirRankLayer.js"/>
                 <file name="src/view/mainModule/evolutionLayer.js"/>
                 <file name="src/view/mainModule/exchangeLayer.js"/>
+                <file name="src/view/mainModule/exploreCardLayer.js"/>
                 <file name="src/view/mainModule/exploreLayer.js"/>
                 <file name="src/view/mainModule/extractTipLabel.js"/>
                 <file name="src/view/mainModule/friendLayer.js"/>

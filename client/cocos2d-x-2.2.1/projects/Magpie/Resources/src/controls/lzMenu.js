@@ -5,7 +5,7 @@
 var UPDATE_TOUCH_INTERVAL = 0.4;
 
 var LzMenu = cc.Menu.extend({
-    _selectedItem: null,
+    _selectedChild: null,
     _touchBeganPoint: null,
 
     onEnter: function () {
@@ -23,43 +23,13 @@ var LzMenu = cc.Menu.extend({
         var pArray = [];
         if (args) {
             for (var i = 0; i < args.length; i++) {
-                if (args[i])
+                if (args[i]) {
                     pArray.push(args[i]);
+                }
             }
         }
 
         return this.initWithArray(pArray);
-    },
-
-    /**
-     * initializes a cc.Menu with a Array of cc.MenuItem objects
-     */
-    initWithArray: function (arrayOfItems) {
-        if (this.init()) {
-            this.setTouchPriority(cc.MENU_HANDLER_PRIORITY);
-            this.setTouchMode(cc.TOUCH_ONE_BY_ONE);
-            this.setTouchEnabled(true);
-
-            // menu in the center of the screen
-            var winSize = cc.Director.getInstance().getWinSize();
-            this.ignoreAnchorPointForPosition(true);
-            this.setAnchorPoint(cc.p(0.5, 0.5));
-            this.setContentSize(winSize);
-            this.setPosition(winSize.width / 2, winSize.height / 2);
-
-            if (arrayOfItems) {
-                for (var i = 0; i < arrayOfItems.length; i++)
-                    this.addChild(arrayOfItems[i], i);
-            }
-
-            this._selectedItem = null;
-
-            // enable cascade color and opacity on menus
-            this.setCascadeColorEnabled(true);
-            this.setCascadeOpacityEnabled(true);
-            return true;
-        }
-        return false;
     },
 
     /**
@@ -145,12 +115,12 @@ var LzMenu = cc.Menu.extend({
             if (child instanceof cc.MenuItem) {
                 if (child.isSelected()) {
 
-                    if (this._selectedItem && this._selectedItem != child) {
-                        this._selectedItem = null;
+                    if (this._selectedChild && this._selectedChild != child) {
+                        this._selectedChild = null;
                         break;
                     }
 
-                    this._selectedItem = child;
+                    this._selectedChild = child;
                     child.activate();
                     return;
                 }
@@ -168,7 +138,9 @@ var LzMenu = cc.Menu.extend({
 
         for (var i = 0; i < len; ++i) {
             var child = children[i];
-            child.unselected();
+            if (child.isSelected()) {
+                child.unselected();
+            }
         }
     }
 });

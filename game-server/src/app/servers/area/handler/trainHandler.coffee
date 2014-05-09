@@ -484,21 +484,21 @@ Handler::starUpgrade = (msg, session, next) ->
 
       addRate = card_count * starUpgradeData.rate_per_card
       totalRate = _.min([addRate + rate, 100])
-
+      
       is_upgrade = !!utility.hitRate(totalRate)
       if card.star >= 4 
-        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeData.no_work_count or 0)
-        card.increase('useCardsCounts' , card_count)
+        useCardCount = player.useCardCount['star'+card.star] or 0
+        is_upgrade = false if (useCardCount+card_count) <= (starUpgradeData.no_work_count or 0)
       
       player.decrease('money', money_consume)
       player.decrease('superHonor', starUpgradeData.super_honor) if starUpgradeData.super_honor > 0
       if is_upgrade
         ### 成功进阶，对应星级初始概率置为0 ###
         player.setInitRate(card.star, 0)
+        player.updateUseCardCoun(card.star, 0)
 
         card.increase('star')
         card.increase('tableId')
-        card.set('useCardsCounts', 0)
         card.resetSkillLv()      
 
         # 获得so lucky成就

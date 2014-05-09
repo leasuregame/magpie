@@ -5,6 +5,7 @@
 var UPDATE_TOUCH_INTERVAL = 0.4;
 
 var LzMenu = cc.Menu.extend({
+    _isActivate: false,
     _selectedChild: null,
     _touchBeganPoint: null,
 
@@ -40,6 +41,7 @@ var LzMenu = cc.Menu.extend({
     onTouchBegan: function (touch, e) {
         cc.log("LzMenu onTouchBegan");
 
+        this._isActivate = false;
         this._touchBeganPoint = touch.getLocation();
 
         this.schedule(this._activate, UPDATE_TOUCH_INTERVAL);
@@ -54,6 +56,15 @@ var LzMenu = cc.Menu.extend({
      */
     onTouchEnded: function (touch, e) {
         cc.log("LzMenu onTouchEnded");
+
+        if (this._isActivate && this._selectedChild) {
+            this._selectedChild.retain();
+
+            this.removeChild(this._selectedChild, false);
+            this.addChild(this._selectedChild);
+
+            this._selectedChild.release();
+        }
 
         this._resetChildren();
         this.unschedule(this._activate);
@@ -121,6 +132,8 @@ var LzMenu = cc.Menu.extend({
                     }
 
                     this._selectedChild = child;
+                    this._isActivate = true;
+
                     child.activate();
                     return;
                 }
@@ -132,6 +145,10 @@ var LzMenu = cc.Menu.extend({
 
     _resetChildren: function () {
         cc.log("LzMenu _resetChildren");
+
+        if (this._isActivate) {
+            this._isActivate = false;
+        }
 
         var children = this.getChildren();
         var len = children.length;

@@ -260,7 +260,10 @@ fetchUserInfoOrCreate = (account, id, data, done) ->
             done({code: 501, msg: '服务器维护当中，请耐心等待！'})          
 
     else if not err and user
-      done(null, user)
+      if checkWhiteList(user)
+        done(null, user)
+      else
+        done({code: 501, msg: '服务器维护当中，请耐心等待！'})
     else 
       done({code: 501, msg: '登录失败，请重新登录'})
 

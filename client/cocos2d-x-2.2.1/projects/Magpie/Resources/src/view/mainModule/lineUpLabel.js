@@ -12,7 +12,7 @@
  * */
 
 var MAX_LINEUP_LIST = 2;
-var LINE_UP_INDEX = 0;
+
 
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,
@@ -114,6 +114,11 @@ var LineUpLabel = cc.Layer.extend({
         this._scrollView.setContentOffset(this._getScrollViewOffset());
         this.addChild(this._scrollView);
 
+        var table = outputTables.card_lineup_limit.rows[1];
+        if (gameData.player.get("lv") < table["card_1"]) {
+            this._scrollView.setTouchEnabled(false);
+        }
+
         return true;
     },
 
@@ -181,8 +186,9 @@ var LineUpLabel = cc.Layer.extend({
             this.addChild(this._card3Guide, 10);
         }
 
-        if (gameGuide.get("succorCardsGuide")) {
-            for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 5; i++) {
+            var key = "card" + (6 + i) + "Guide";
+            if (gameGuide.get(key)) {
                 if (!this._succorCardsGuide[i]) {
                     this._succorCardsGuide[i] = cc.BuilderReader.load(main_scene_image.uiEffect43);
                     this._succorCardsGuide[i].setPosition(cc.p(79 + 122 * i, 0));
@@ -204,6 +210,13 @@ var LineUpLabel = cc.Layer.extend({
 
         this._index = (this._index + 1) % len;
         this._isClick = true;
+
+        var table = outputTables.card_lineup_limit.rows[this._index];
+        if (gameData.player.get("lv") < table["card_1"]) {
+            TipLayer.tip(table["card_1"] + " 级开启");
+            this._index = (this._index + 1) % len;
+            return;
+        }
 
         this.update();
     },
@@ -236,9 +249,10 @@ var LineUpLabel = cc.Layer.extend({
                 if (this._succorCardsGuide[i]) {
                     this._succorCardsGuide[i].removeFromParent();
                     this._succorCardsGuide[i] = null;
+                    var key = "card" + (6 + i) + "Guide";
+                    gameGuide.set(key, false);
                 }
             }
-            gameGuide.set("succorCardsGuide", false);
         }
 
         MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP, {index: this._index}));

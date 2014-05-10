@@ -110,17 +110,14 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (u, cb) =>
       user = u
       # check whether has create player in the login area
-      if _.contains user.roles, areaId
-        app.rpc.area.playerRemote.getPlayerByUserId session, {
-          areaId: areaId,
-          userId: user.id, 
-          serverId: app.getServerId()
-        }, (err, res) ->
-          if err
-            logger.error 'fail to get player by user id', err
-          player = res
-          cb()
-      else
+      app.rpc.area.playerRemote.getPlayerByUserId session, {
+        areaId: areaId,
+        userId: user.id, 
+        serverId: app.getServerId()
+      }, (err, res) ->
+        if err
+          logger.warn 'fail to get player by user id', err
+        player = res
         cb()
 
     (cb) =>
@@ -137,12 +134,12 @@ doLogin  = (type, app, msg, session, platform, next) ->
       session.pushAll cb
   ], (err) ->
     if err
-      logger.error 'fail to login: ', err, err.stack
+      logger.warn 'fail to login: ', err, err.stack
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
     ### 只有每个帐号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
     if user?.roles.length > 1 or player?.teachingStep >= 17
-      delete player.teachingStep
+      delete player.teachingStep if player?
 
     next(null, {code: 200, msg: {user: user, player: player}})
 
@@ -151,7 +148,7 @@ onUserLeave = (app, session, reason) ->
     return
   app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
-      logger.error 'user leave error' + err
+      logger.warn 'user leave error' + err
 
 authParams = (type, msg, app) ->
   keyMap = 

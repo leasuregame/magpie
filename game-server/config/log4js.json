@@ -1,6 +1,5 @@
 {
-  "appenders": [
-  {
+  "appenders": [{
     "type": "file",
     "filename": "${opts:base}/logs/node-log-${opts:serverId}.log",
     "maxLogSize": 1048576,
@@ -8,11 +7,28 @@
       "type": "basic"
     },
     "backups": 5
-  }, 
-  {
+  }, {
     "type": "console"
-  }, 
-  {
+  }, {
+    "type": "logLevelFilter",
+    "level": "ERROR",
+    "appender": {
+      "type": "smtp",
+      "recipients": "wuzhanghai@leasuregame.com",
+      "subject": "[Sina Error Message]",
+      "sendInterval": 5,
+      "transport": "SMTP",
+      "SMTP": {
+        "host": "smtp.gmail.com",
+        "secureConnection": true,
+        "port": 465,
+        "auth": {
+          "user": "leasuregame@gmail.com",
+          "pass": "leasure123game"
+        }
+      }
+    }
+  }, {
     "type": "file",
     "filename": "${opts:base}/logs/con-log-${opts:serverId}.log",
     "pattern": "connector",
@@ -22,8 +38,7 @@
     },
     "backups": 5,
     "category": "con-log"
-  }, 
-  {
+  }, {
     "type": "file",
     "filename": "${opts:base}/logs/rpc-log-${opts:serverId}.log",
     "maxLogSize": 1048576,
@@ -32,8 +47,7 @@
     },
     "backups": 5,
     "category": "rpc-log"
-  }, 
-  {
+  }, {
     "type": "file",
     "filename": "${opts:base}/logs/forward-log-${opts:serverId}.log",
     "maxLogSize": 1048576,
@@ -42,8 +56,7 @@
     },
     "backups": 5,
     "category": "forward-log"
-  }, 
-  {
+  }, {
     "type": "file",
     "filename": "${opts:base}/logs/crash.log",
     "maxLogSize": 1048576,

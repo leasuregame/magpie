@@ -82,9 +82,6 @@ var TreasureHuntLayer = cc.Layer.extend({
             this
         );
         backItem.setPosition(this._treasureHuntLayerFit.backItemPoint);
-        var menu = cc.Menu.create(backItem);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(this._treasureHuntLayerFit.headLabelPoint);
@@ -131,8 +128,8 @@ var TreasureHuntLayer = cc.Layer.extend({
 
             var valueLabel = cc.LabelTTF.create("+" + table[i].value, "STHeitiTC-Medium", 16);
             valueLabel.setAnchorPoint(cc.p(1, 0));
-            valueLabel.setPosition(cc.p(point.x + 33, point.y - 35));
-            this.addChild(valueLabel, 2);
+            valueLabel.setPosition(cc.p(84, 8));
+            iconSprite.addChild(valueLabel, 2);
         }
 
         var treasureHuntBg = cc.Sprite.create(main_scene_image.icon253);
@@ -148,7 +145,16 @@ var TreasureHuntLayer = cc.Layer.extend({
         );
         this._treasureHuntItem.setPosition(this._treasureHuntLayerFit.treasureHuntItemPoint);
 
-        var menu = cc.Menu.create(this._treasureHuntItem);
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+
+        helpItem.setPosition(this._treasureHuntLayerFit.helpItemPoint);
+
+        var menu = cc.Menu.create(backItem, this._treasureHuntItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -322,6 +328,14 @@ var TreasureHuntLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
+    },
+
+    _onClickHelp: function () {
+        cc.log("TreasureHuntLayer _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["treasureHunt"]);
     }
 });
 

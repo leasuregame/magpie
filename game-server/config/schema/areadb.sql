@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
+  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci, -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
@@ -48,6 +48,8 @@ CREATE TABLE IF NOT EXISTS `player` (
   `honor` INT(10) DEFAULT '0',
   `superHonor` INT(10) DEFAULT '0',
   `cd` VARCHAR(100) DEFAULT '{}',
+  `plan` VARCHAR(100) DEFAULT '{"buy": false, "flag": 0}',
+  `useCardCount` VARCHAR(100) DEFAULT '{"star4": 10, "star5": 1, "star6": 3}',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

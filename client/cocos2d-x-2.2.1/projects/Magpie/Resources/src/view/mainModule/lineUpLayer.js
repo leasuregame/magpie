@@ -208,6 +208,12 @@ var LineUpLayer = LazyLayer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            var table = outputTables.card_lineup_limit.rows[index];
+            if (gameData.player.get("lv") < table["card_1"]) {
+                TipLayer.tip(table["card_1"] + " 级开启");
+                return;
+            }
+
             that._index = index;
             that.update();
         }

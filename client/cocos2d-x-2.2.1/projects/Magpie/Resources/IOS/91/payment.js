@@ -33,7 +33,7 @@ var Payment = Entity.extend({
         ndAdapter.NDUniPayAsyn(
             product.id + "-" + user.get("area") + "-" + player.get("uid") + "-" + Date.now(),
             product.id,
-            product.product_id,
+            product.name,
             (product.cash + product.gold / 10).toFixed(2),
             product.cash.toFixed(2),
             1,

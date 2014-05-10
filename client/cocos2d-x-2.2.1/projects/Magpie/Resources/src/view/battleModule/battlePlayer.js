@@ -13,7 +13,7 @@
 
 
 var MAIN_PLAY_SPEED = 1;
-var BATTLE_PLAY_SPEEDS = [1, 1.3, 2.0, 2.7];
+var BATTLE_PLAY_SPEEDS = [1, 1.5, 2.0, 2.7];
 
 var BattlePlayer = Entity.extend({
     _battleScene: null,

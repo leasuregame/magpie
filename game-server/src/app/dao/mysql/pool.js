@@ -2,10 +2,12 @@ var createMysqlPool, _poolModule;
 
 _poolModule = require('generic-pool');
 
-createMysqlPool = function (app) {
-    var mysqlConfig;
+createMysqlPool = function (app, configKey) {
+    var mysqlConfig,
+        configKey = configKey || 'mysql';
 
-    mysqlConfig = app.get('mysql');
+    mysqlConfig = app.get(configKey);
+    console.log('-a-a-a-', configKey, mysqlConfig);
     return _poolModule.Pool({
         name: 'mysql',
         create: function (callback) {

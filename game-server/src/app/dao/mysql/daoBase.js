@@ -1,6 +1,5 @@
 var sqlHelper = require('./sqlHelper');
 var app = require('pomelo').app;
-var dbClient = app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
 var _ = require('underscore');
 var utility = require('../../common/utility');
@@ -44,6 +43,7 @@ var addSyncEvent = function(syncKey, entity, cb) {
 var DaoBase = (function() {
   function DaoBase() {}
 
+  DaoBase.dbClient = app.get('dbClient');
   DaoBase.table = '';
   DaoBase.domain = null;
   DaoBase.syncKey = '';
@@ -89,7 +89,7 @@ var DaoBase = (function() {
 
     options.data = data;
     var stm = sqlHelper.generateSql(ACTION.INSERT, options);
-    return dbClient.query(stm.sql, stm.args, function(err, res) {
+    return this.dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when create " + _this.table + "]", stm);
         logger.error(err.stack);
@@ -125,7 +125,7 @@ var DaoBase = (function() {
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
     //console.log('fetchMnay: ', stm);
-    return dbClient.query(stm.sql, stm.args, function(err, res) {
+    return this.dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch " + _this.table + "]", stm);
         logger.error(err.stack);
@@ -153,7 +153,7 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.UPDATE, options);
-    return dbClient.query(stm.sql, stm.args, function(err, res) {
+    return this.dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when update " + _this.table + "s]", err.stack);
         return cb({
@@ -174,7 +174,7 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.DELETE, options);
-    return dbClient.query(stm.sql, stm.args, function(err, res) {
+    return this.dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when delete " + _this.table + "s]", err.stack);
         return cb({
@@ -193,7 +193,7 @@ var DaoBase = (function() {
 
   DaoBase.query = function(sql, args, cb) {
     var _this = this;
-    return dbClient.query(sql, args, function(err, res) {
+    return this.dbClient.query(sql, args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when query " + _this.table + "s]", err.stack);
         return cb({
@@ -217,7 +217,7 @@ var DaoBase = (function() {
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.EXISTS, options);
 
-    return dbClient.query(stm.sql, stm.args, function(err, res) {
+    return this.dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when query " + _this.table + "s]", err.stack);
         return cb({

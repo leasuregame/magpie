@@ -6,13 +6,20 @@ fs = require('fs');
 
 Factory = module.exports = {};
 
-Factory.init = function(type) {
-  autoLoad(type);
+Factory.init = function(type, db) {
+  autoLoad(type, db);
   return Factory;
 };
 
-autoLoad = function(type) {
-  return fs.readdirSync(__dirname + '/' + type).forEach(function(filename) {
+autoLoad = function(type, db) {
+  if (!db) {
+    db = '';
+  } else {
+    db = 'dbs/'+ db;
+  }
+
+  var dir = path.join(__dirname, type, db);
+  return fs.readdirSync(dir).forEach(function(filename) {
     var load, name;
 
     if (!/Dao\.js/.test(filename)) {
@@ -20,7 +27,7 @@ autoLoad = function(type) {
     }
     name = path.basename(filename, '.js');
     load = function() {
-      return require("./" + type + "/" + name);
+      return require(dir + "/" + name);
     };
     return Factory.__defineGetter__(name.slice(0, -3), load);
   });

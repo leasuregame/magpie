@@ -23,5 +23,12 @@ module.exports = {
   exchange: {
     atk: 5,
     hp: 10
+  },
+
+  useElixirCritRate: 20,
+  growRate: {
+    50: 30,
+    30: 50,
+    20: 100
   }
 }

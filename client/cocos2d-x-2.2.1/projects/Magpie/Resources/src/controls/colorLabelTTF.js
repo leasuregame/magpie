@@ -113,11 +113,14 @@ var ColorLabelTTF = cc.Node.extend({
     _createIcon: function (iconName, scale, spacing, offset) {
         cc.log("IconLabel createIcon");
 
-        if (!colorLabelIcons[iconName]) {
+        var url = iconName;
+        if (colorLabelIcons[iconName]) {
+            url = colorLabelIcons[iconName];
+        } else if (!main_scene_image[iconName]) {
             return;
         }
 
-        var icon = cc.Sprite.create(main_scene_image[colorLabelIcons[iconName]]);
+        var icon = cc.Sprite.create(main_scene_image[url]);
         icon.setAnchorPoint(cc.p(0, 0.5));
         icon.setScale(scale);
         icon.setPosition(cc.p(this._size.width + spacing + offset.x, offset.y));

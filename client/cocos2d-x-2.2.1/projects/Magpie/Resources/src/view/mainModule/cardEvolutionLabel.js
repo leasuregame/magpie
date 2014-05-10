@@ -167,7 +167,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         this._tipLabel.setPosition(this._cardEvolutionLayerFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
-        var tipLabel1 = cc.LabelTTF.create("满级卡牌消耗素材卡和精元进行升星", "STHeitiTC-Medium", 22);
+        var tipLabel1 = cc.LabelTTF.create("卡牌消耗素材卡和精元进行升星", "STHeitiTC-Medium", 22);
         tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
 
@@ -288,6 +288,11 @@ var CardEvolutionLabel = cc.Layer.extend({
         if (this._newCard) {
             this._newCard.removeFromParent();
             this._newCard = null;
+        }
+
+        for (var i = 0; i < MAX_CARD_STAR; i++) {
+            this._newStarIcon[i].setVisible(false);
+            this._oldStarIcon[i].setVisible(false);
         }
 
         if (this._leadCard == null) {

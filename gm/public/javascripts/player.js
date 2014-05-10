@@ -32,6 +32,8 @@ function setPlayerData() {
     $("#spiritPoolCount").val(JSON.parse(player.spiritPool).collectCount);
     $("#taskId").val(JSON.parse(player.task).id);
     $("#layer").val(player.passLayer);
+    $('#honor').val(player.honor);
+    $('#superHonor').val(player.superHonor);
 };
 
 $(document).ready(function(){
@@ -132,7 +134,8 @@ function updatePlayerData() {
     data.passLayer = layer;
 
     data.name = player.name;
-   // data.name = player.name;
+    data.honor = parseInt($('#honor').val())
+    data.superHonor = parseInt($('#superHonor').val());
     console.log(data);
     $.ajax({
         url:"/playerData?player=" + JSON.stringify(data) + "&area=" + JSON.stringify(area),

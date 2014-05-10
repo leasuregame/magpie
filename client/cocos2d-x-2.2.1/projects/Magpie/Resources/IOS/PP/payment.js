@@ -37,7 +37,7 @@ var Payment = Entity.extend({
         ppAdapter.PPExchangeGoods(
             product.cash,
             this._lastOrder,
-            product.product_id,
+            product.name,
             player.get("id"),
             0
         );
@@ -72,7 +72,6 @@ var Payment = Entity.extend({
 
         if (productId >= 8) {
             gameData.player.resetGoldCards(9 - productId);
-            this._cb();
 
             lz.server.request("area.cardHandler.buyGoldCard", {
                 orderNo: this._lastOrder,
@@ -85,7 +84,11 @@ var Payment = Entity.extend({
                     cc.log("buyGoldCard fail");
                 }
             }, true);
+        } else {
+            gameData.player.updateFirstPayment(productId);
         }
+
+        this._cb();
     }
 });
 

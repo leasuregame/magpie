@@ -79,6 +79,7 @@ var User = Entity.extend({
                 lz.server.request("connector.userHandler.loginYY", {
                     signid: yyUser.sid,
                     account: yyUser.account,
+                    userName: yyUser.userName,
                     time: yyUser.time,
                     appid: lz.platformConfig.APP_ID,
                     areaId: that._area,

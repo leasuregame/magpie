@@ -1,9 +1,13 @@
 dispatcher = require '../../../common/dispatcher'
-areasInfo = require '../../../../config/area'
 async = require 'async'
 _ = require 'underscore'
 fs = require 'fs'
 path = require 'path'
+
+try
+	areasInfo = require '../../../../config/area'
+catch e
+	areasInfo = []
 
 status = ['NEW', 'NORMAL', 'BUSY', 'MAINTENANCE']
 SERVER_STATUS = 
@@ -14,8 +18,11 @@ SERVER_STATUS =
 
 watchAreasInfo = ->
 	filepath = path.join(__dirname, '..', '..', '..', '..', 'config', 'area.json')
+	if not fs.existsSync(filepath)
+		fs.writeFileSync(filepath, '[]', 'utf8')
+
 	fs.watchFile filepath, (curr, prev) -> 
-		areasInfo = JSON.parse fs.readFileSync(filepath)
+		areasInfo = JSON.parse fs.readFileSync(filepath, 'utf8')
 watchAreasInfo()
 
 module.exports = (app) ->
@@ -57,10 +64,10 @@ randomStatus = ->
 	SERVER_STATUS[status[_.random(0, status.length-1)]]
 
 filterServers = (areas, os, platform, version) ->
-	if os is 'ALL' and platform is 'ALL'
+	if os.toUpperCase() is 'ALL' and platform.toUpperCase() is 'ALL'
 		items = areas
 	else
-		items = areas.filter (area) -> os in area.os and platform in area.platform
+		items = areas.filter (area) -> os.toUpperCase() in area.os and platform.toUpperCase() in area.platform
 	
 	if version
 		versionSpecifyItems = items.filter (i) -> version in i.version

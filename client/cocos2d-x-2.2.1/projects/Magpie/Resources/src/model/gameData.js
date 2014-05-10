@@ -70,6 +70,7 @@ var gameData = {
         gameCombo.reset();
 
         gameMark.init();
+        gameGuide.init();
 
         this.player.init(player, function () {
             cc.log("replace to MainScene");

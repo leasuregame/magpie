@@ -801,6 +801,11 @@ var ExploreLayer = cc.Layer.extend({
                                     passEffect.removeFromParent();
                                     that._index += 1;
 
+                                    if(that._pageIndex == that._getTaskId() - 1) {
+                                        that._pageIndex++;
+                                        that._updatePage();
+                                    }
+
                                     next();
                                 });
                             } else {
@@ -809,6 +814,7 @@ var ExploreLayer = cc.Layer.extend({
                         },
                         function () {
                             if (that._index > that._maxIndex) {
+                                that._sectionId = gameData.task.getSection();
                                 that._unlock();
                                 that._onClickBack();
                                 next();

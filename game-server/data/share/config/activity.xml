@@ -1,0 +1,582 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>arthur wu</Author>
+  <LastAuthor>arthur wu</LastAuthor>
+  <Created>2014-03-28T10:06:38Z</Created>
+  <LastSaved>2014-05-09T07:53:22Z</LastSaved>
+  <Company>le zhi of zhuhai</Company>
+  <Version>14.0</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer>
+ </CustomDocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>14000</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>4000</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="玩家升级阶段奖励配置表">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="21" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">玩家等级</Data></Cell>
+    <Cell><Data ss:Type="String">奖励魔石</Data></Cell>
+    <Cell><Data ss:Type="String">奖励活力值</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">lv</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="String">energy</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">1000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1100</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1200</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">25</Data></Cell>
+    <Cell><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1300</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1400</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">35</Data></Cell>
+    <Cell><Data ss:Type="Number">75</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1500</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">90</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1600</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">45</Data></Cell>
+    <Cell><Data ss:Type="Number">95</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1700</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1800</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">55</Data></Cell>
+    <Cell><Data ss:Type="Number">120</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1900</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">60</Data></Cell>
+    <Cell><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">65</Data></Cell>
+    <Cell><Data ss:Type="Number">180</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2100</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">70</Data></Cell>
+    <Cell><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2200</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">75</Data></Cell>
+    <Cell><Data ss:Type="Number">230</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2300</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">80</Data></Cell>
+    <Cell><Data ss:Type="Number">260</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2400</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">85</Data></Cell>
+    <Cell><Data ss:Type="Number">280</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2500</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">90</Data></Cell>
+    <Cell><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2600</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">95</Data></Cell>
+    <Cell><Data ss:Type="Number">400</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2700</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2800</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="新年充值奖励">
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">累计充值金额</Data></Cell>
+    <Cell><Data ss:Type="String">仙币</Data></Cell>
+    <Cell><Data ss:Type="String">活力点</Data></Cell>
+    <Cell><Data ss:Type="String">卡魂</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">cash</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
+    <Cell><Data ss:Type="String">energy</Data></Cell>
+    <Cell><Data ss:Type="String">fragments</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">66</Data></Cell>
+    <Cell><Data ss:Type="Number">20000</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">266</Data></Cell>
+    <Cell><Data ss:Type="Number">50000</Data></Cell>
+    <Cell><Data ss:Type="Number">200</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">566</Data></Cell>
+    <Cell><Data ss:Type="Number">80000</Data></Cell>
+    <Cell><Data ss:Type="Number">300</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">999</Data></Cell>
+    <Cell><Data ss:Type="Number">100000</Data></Cell>
+    <Cell><Data ss:Type="Number">800</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">1888</Data></Cell>
+    <Cell><Data ss:Type="Number">200000</Data></Cell>
+    <Cell><Data ss:Type="Number">1000</Data></Cell>
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="开服累计登陆奖励配置表">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="32" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">累计登陆次数</Data></Cell>
+    <Cell><Data ss:Type="String">仙币</Data></Cell>
+    <Cell><Data ss:Type="String">活力点</Data></Cell>
+    <Cell><Data ss:Type="String">卡魂</Data></Cell>
+    <Cell><Data ss:Type="String">魔石</Data></Cell>
+    <Cell><Data ss:Type="String">卡牌奖励</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
+    <Cell><Data ss:Type="String">energy</Data></Cell>
+    <Cell><Data ss:Type="String">fragments</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="String">card_id</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">15000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1100</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">20000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1200</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">25000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1300</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">30000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1400</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">35000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1500</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">40000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1600</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">965</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">45000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1700</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">50000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1800</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">55000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">1900</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">60000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2000</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">65000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2100</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">70000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2200</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">75000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2300</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">80000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2400</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">85000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2500</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">90000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2600</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">95000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2700</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">100000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2800</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">105000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">2900</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">21</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">110000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">115000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3100</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">23</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">120000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3200</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">24</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">125000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3300</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">130000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3400</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">250</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">26</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">135000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3500</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">27</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">140000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3600</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">28</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">145000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3700</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">29</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">150000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3800</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">155000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+100"><Data ss:Type="Number">3900</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>21</ActiveRow>
+     <ActiveCol>9</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="export">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:AutoFitWidth="0" ss:Width="188"/>
+   <Column ss:AutoFitWidth="0" ss:Width="186"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell><Data ss:Type="String">export_name</Data></Cell>
+    <Cell><Data ss:Type="String">merge_to</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">玩家升级阶段奖励配置表</Data></Cell>
+    <Cell><Data ss:Type="String">player_upgrade_reward</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">新年充值奖励</Data></Cell>
+    <Cell><Data ss:Type="String">new_year_rechage</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">开服累计登陆奖励配置表</Data></Cell>
+    <Cell><Data ss:Type="String">login_count_reward</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

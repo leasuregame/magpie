@@ -369,7 +369,7 @@ genRankings = (ranking) ->
   _results[ranking] = STATUS_NORMAL
   if ranking > rankingConfig.top
     for j in [1..rankingConfig.add_count]
-      _results[ranking+j] = STATUS_DISPLAYE
+      _results[ranking+j] = STATUS_CHALLENGE
   _.extend(top, _results)
 
 filterPlayersInfo = (players, ranks, rankings) ->
@@ -379,7 +379,7 @@ filterPlayersInfo = (players, ranks, rankings) ->
       name: p.name
       ability: p.ability
       ranking: ranks[p.id]
-      cards: if p.cards? then (p.cards.sort (x, y) -> x.star < y.star).map (c) -> c.tableId else []
+      cards: if p.cards? then (p.cards.sort (x, y) -> y.star - x.star).map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]
     }
     

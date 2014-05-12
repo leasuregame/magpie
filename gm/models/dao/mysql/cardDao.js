@@ -38,10 +38,10 @@ var CardDao = (function (_super) {
                 _this.fetchOne(options, callback);
             }
         ], function (err, results) {
-            if (err !== null) {
+            console.log(err, results);
+            if (err != null) {
                 return cb(err, null)
             }
-
             var card = results[0];
             return cb(null, card);
         });

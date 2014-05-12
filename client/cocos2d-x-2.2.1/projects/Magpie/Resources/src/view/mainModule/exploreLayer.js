@@ -17,6 +17,7 @@ var ExploreLayer = cc.Layer.extend({
 
     _index: 0,
     _maxIndex: 0,
+    _pageIndex: 0,
     _sectionId: 0,
     _spiritNode: null,
     _spiritShadow: null,
@@ -24,9 +25,15 @@ var ExploreLayer = cc.Layer.extend({
     _turnRightSprite: null,
     _mapLabel: [],
     _exploreItem: null,
+    _prePageItem: null,
+    _nextPageItem: null,
     _scrollView: null,
     _element: {},
     _playerLvLabel: null,
+    _descriptionLabel: null,
+    _rewardTipsItem: null,
+    _rewardEffect: null,
+    _collectElement: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -62,15 +69,12 @@ var ExploreLayer = cc.Layer.extend({
             this._index = gameData.task.getPoints();
         }
 
+        this._pageIndex = this._getTaskId();
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg9);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._exploreLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
-
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._exploreLayerFit.headIconPoint);
-        this.addChild(headIcon, 1);
 
         var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
@@ -87,6 +91,11 @@ var ExploreLayer = cc.Layer.extend({
             this._mapLabel[i].setScaleY(this._exploreLayerFit.mapLabelScaleY);
             this.addChild(this._mapLabel[i]);
         }
+
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(this._exploreLayerFit.headIconPoint);
+        this.addChild(headIcon);
 
         var lvIcon = cc.Sprite.create(main_scene_image.icon335);
         lvIcon.setPosition(this._exploreLayerFit.lvIconPoint);
@@ -118,16 +127,6 @@ var ExploreLayer = cc.Layer.extend({
         titleLabel.setPosition(this._exploreLayerFit.titleLabelPoint);
         this.addChild(titleLabel, 1);
 
-        this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
-        this._spiritShadow.setPosition(this._exploreLayerFit.spiritShadowPoint);
-        this.addChild(this._spiritShadow);
-
-        this._spiritNode = SpiritSideNode.create();
-        this._spiritNode.setPosition(this._exploreLayerFit.spiritNodePoint);
-        this.addChild(this._spiritNode);
-
-        this._spiritNode.speak();
-
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
         this._turnLeftSprite.setPosition(this._exploreLayerFit.turnLeftSpritePoint);
@@ -156,10 +155,80 @@ var ExploreLayer = cc.Layer.extend({
         this._exploreItem.setPosition(this._exploreLayerFit.exploreItemPoint);
         this._exploreItem.setOffset(cc.p(0, 5));
 
+        this._prePageItem = cc.MenuItemImage.create(
+            main_scene_image.button83,
+            main_scene_image.button83s,
+            this._onClickPrePage,
+            this
+        );
+        this._prePageItem.setPosition(this._exploreLayerFit.prePageItemPoint);
 
-        var menu = cc.Menu.create(backItem, this._exploreItem);
+
+        this._nextPageItem = cc.MenuItemImage.create(
+            main_scene_image.button83,
+            main_scene_image.button83s,
+            this._onClickNextPage,
+            this
+        );
+        this._nextPageItem.setRotation(180);
+        this._nextPageItem.setPosition(this._exploreLayerFit.nextPageItemPoint);
+
+        this._rewardTipsItem = cc.MenuItemImage.create(
+            main_scene_image.button84d,
+            main_scene_image.button84d,
+            function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+                TipLayer.tip("还没达成奖励");
+            },
+            this
+        );
+
+        this._rewardTipsItem.setPosition(this._exploreLayerFit.rewardItemPoint);
+
+        var menu = cc.Menu.create(backItem, this._exploreItem, this._prePageItem, this._nextPageItem, this._rewardTipsItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
+        this.addChild(menu);
+
+        this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
+        this._spiritShadow.setPosition(this._exploreLayerFit.spiritShadowPoint);
+        this.addChild(this._spiritShadow);
+
+        this._spiritNode = SpiritSideNode.create();
+        this._spiritNode.setPosition(this._exploreLayerFit.spiritNodePoint);
+        this.addChild(this._spiritNode);
+
+        this._spiritNode.speak();
+
+        this._descriptionLabel = cc.Node.create();
+        this._descriptionLabel.setPosition(this._exploreLayerFit.descriptionLabelPoint);
+        this.addChild(this._descriptionLabel);
+
+        var collectLabel = cc.Sprite.create(main_scene_image.icon443);
+        collectLabel.setPosition(this._exploreLayerFit.collectLabelPoint);
+        this.addChild(collectLabel, 2);
+
+        var goldIcon = cc.Sprite.create(main_scene_image.icon444);
+        goldIcon.setPosition(cc.p(50, 19));
+        collectLabel.addChild(goldIcon);
+
+        var expCardIcon = cc.Sprite.create(main_scene_image.icon445);
+        expCardIcon.setPosition(cc.p(120, 19));
+        collectLabel.addChild(expCardIcon);
+
+        var spiritIcon = cc.Sprite.create(main_scene_image.icon446);
+        spiritIcon.setPosition(cc.p(190, 19));
+        collectLabel.addChild(spiritIcon);
+
+        var cardIcon = cc.Sprite.create(main_scene_image.icon447);
+        cardIcon.setPosition(cc.p(260, 19));
+        collectLabel.addChild(cardIcon);
+
+        this._collectElement = {
+            gold: goldIcon,
+            exp_card: expCardIcon,
+            spirit: spiritIcon,
+            card: cardIcon
+        };
 
         // 读配置表
         var chapterTable = outputTables.task.rows;
@@ -195,10 +264,6 @@ var ExploreLayer = cc.Layer.extend({
             exploreMoneyLabel.setPosition(cc.p(425 + x, 408));
             scrollViewLayer.addChild(exploreMoneyLabel);
 
-            var descriptionLabel = cc.Node.create();
-            descriptionLabel.setPosition(this._exploreLayerFit.descriptionLabelPoint);
-            this.addChild(descriptionLabel);
-
             var powerProgress = Progress.create(null, main_scene_image.progress1, 0, 0);
             powerProgress.setPosition(cc.p(320 + x, 360));
             scrollViewLayer.addChild(powerProgress);
@@ -226,23 +291,13 @@ var ExploreLayer = cc.Layer.extend({
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 19);
-            var len = description.length;
-            for (var j = 0; j < len; ++j) {
-                var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 24);
-                storyLabel.setAnchorPoint(cc.p(0, 0));
-                storyLabel.setPosition(cc.p(0, -30 * j));
-                descriptionLabel.addChild(storyLabel);
-            }
-
             this._element[i] = {
                 powerLabel: powerLabel,
                 expLabel: expLabel,
                 progressLabel: progressLabel,
                 powerProgress: powerProgress,
                 expProgress: expProgress,
-                sectionProgress: sectionProgress,
-                descriptionLabel: descriptionLabel
+                sectionProgress: sectionProgress
             }
         }
 
@@ -257,6 +312,8 @@ var ExploreLayer = cc.Layer.extend({
         this._scrollView.setContentOffset(this._getScrollViewOffset());
 
         this.update();
+        this._updatePage();
+        this._updateCollect();
 
         return true;
     },
@@ -302,10 +359,6 @@ var ExploreLayer = cc.Layer.extend({
         element.expProgress.setAllValue(exp, maxExp, time);
         element.sectionProgress.setAllValue(value, maxValue, time);
 
-        for (var i = 1; i <= TASK_POINTS_COUNT; ++i) {
-            this._element[i].descriptionLabel.setVisible(i == this._index);
-        }
-
         for (var i = 0; i < 3; ++i) {
             var point = this._mapLabel[i].getPosition();
 
@@ -314,6 +367,91 @@ var ExploreLayer = cc.Layer.extend({
                 this._mapLabel[i].setPosition(point);
             }
         }
+
+        this._updatePage();
+
+        if (gameData.task.isCollectedAll()) {
+            this._showRewardEffect();
+        }
+    },
+
+    _updatePage: function () {
+        cc.log("ExploreLayer _updatePage");
+
+        var sectionId = gameData.task.getSection();
+        var maxIndex = gameData.task.getPoints() + (sectionId - 1) * TASK_POINTS_COUNT;
+
+        this._prePageItem.setVisible(this._pageIndex > 1);
+        this._nextPageItem.setVisible(this._pageIndex < maxIndex);
+
+        this._descriptionLabel.removeAllChildren();
+
+        var chapterTable = outputTables.task.rows;
+        var description = lz.format(chapterTable[this._pageIndex].description, 19);
+        var len = description.length;
+        for (var i = 0; i < len; ++i) {
+            var storyLabel = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 24);
+            storyLabel.setAnchorPoint(cc.p(0, 0));
+            storyLabel.setPosition(cc.p(0, -30 * i));
+            this._descriptionLabel.addChild(storyLabel);
+        }
+    },
+
+    _updateCollect: function () {
+        cc.log("ExploreLayer _updateCollect");
+
+        var table = outputTables.turn_reward_type.rows;
+        var task = gameData.task;
+
+        var key, reward;
+
+        var scaleToAction = cc.Sequence.create(
+            cc.FadeIn.create(0.2),
+            cc.ScaleTo.create(0.3, 1.2),
+            cc.ScaleTo.create(0.2, 1)
+        );
+
+        for (key in table) {
+            reward = table[key];
+
+            if (task.getCollectStateById(TYPE_NEW_COLLECT, reward.id)) {
+                var element = this._collectElement[reward["reward_type"]];
+                element.runAction(scaleToAction.clone());
+            }
+        }
+
+        for (key in table) {
+            reward = table[key];
+            this._collectElement[reward["reward_type"]].setVisible(task.getCollectStateById(TYPE_COLLECTED, reward.id));
+        }
+
+    },
+
+    _showRewardEffect: function () {
+        cc.log("ExploreLayer _showRewardEffect");
+
+        if (this._rewardEffect) {
+            this._rewardEffect.removeFromParent();
+            this._rewardEffect = null;
+        }
+
+        this._rewardTipsItem.setVisible(false);
+
+        this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect111, this);
+        this._rewardEffect.setPosition(this._exploreLayerFit.rewardItemPoint);
+        this.addChild(this._rewardEffect);
+
+        var rewardItem = cc.MenuItemImage.create(
+            main_scene_image.button84,
+            main_scene_image.button84,
+            this._onClickReward,
+            this
+        );
+        rewardItem.setPosition(cc.p(0, 0));
+
+        var menu = cc.Menu.create(rewardItem);
+        menu.setPosition(cc.p(0, 0));
+        this._rewardEffect.controller.ccbMenu.addChild(menu);
     },
 
     _getScrollViewOffset: function () {
@@ -520,7 +658,7 @@ var ExploreLayer = cc.Layer.extend({
                                 that.ccbFnOpenBox = function () {
                                     cc.log("ExploreLayer ccbFnOpenBox");
 
-                                    LotteryCardLayer.pop({
+                                    ExploreCardLayer.pop({
                                         cb: next,
                                         card: card
                                     });
@@ -543,6 +681,7 @@ var ExploreLayer = cc.Layer.extend({
                         },
                         function () {
                             that.update(1);
+                            that._updateCollect();
 
                             if (!money || !exp) {
                                 next();
@@ -616,8 +755,16 @@ var ExploreLayer = cc.Layer.extend({
 
                             rewardEffect.animationManager.setCompletedAnimationCallback(that, function () {
                                 rewardEffect.removeFromParent();
-                                next();
                             });
+
+                            var animationManager = rewardEffect.animationManager;
+                            var delay = animationManager.getSequenceDuration(
+                                animationManager.getRunningSequenceName()
+                            );
+
+                            that.scheduleOnce(function () {
+                                next();
+                            }, delay - 1);
                         },
                         function () {
                             if (findBoss) {
@@ -732,7 +879,51 @@ var ExploreLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        cc.log("############################");
+        cc.log(this._sectionId);
+        gameData.task.currentChapter = Math.ceil(this._sectionId / TASK_SECTION_COUNT);
+
         MainScene.getInstance().switchLayer(InstancesLayer);
+    },
+
+    _onClickPrePage: function () {
+        cc.log("ExploreLayer _onClickPrePage");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._pageIndex--;
+        this._updatePage();
+    },
+
+    _onClickNextPage: function () {
+        cc.log("ExploreLayer _onClickNextPage");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._pageIndex++;
+        this._updatePage();
+    },
+
+    _onClickReward: function () {
+        cc.log("ExploreLayer _onClickReward");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+
+        gameData.task.getTurnReward(function (reward) {
+            GiftBagLayer.pop({
+                reward: reward,
+                type: SHOW_GIFT_BAG_NO_CLOSE,
+                titleType: TYPE_EXPLORE_REWARD,
+                cb: function () {
+                    that._updateCollect();
+                    that._rewardEffect.removeFromParent();
+                    that._rewardEffect = null;
+                    lz.tipReward(reward);
+                }
+            });
+        });
     },
 
     /**

@@ -4856,8 +4856,8 @@ var BattleLayer = cc.Layer.extend({
         var lv = gameData.player.get("lv");
 
         if (vip < 1) { // 普通玩家
-            if (lv < 10) {
-                TipLayer.tip("vip1或10级开启2倍速");
+            if (lv < 5) {
+                TipLayer.tip("vip1或5级开启2倍速");
             } else if (this._playSpeed == 3) {
                 TipLayer.tip("vip2开启3倍速");
             } else {

@@ -1,3 +1,6 @@
+// load .env value to process.env
+require('dotenv').load();
+
 var pomelo = require('pomelo');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
@@ -5,6 +8,7 @@ var ServerStateService = require('./app/service/serverStateService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var cdFilter = require('./app/servers/area/filter/cdFilter');
+var sensitiveWordFilter = require('./app/servers/area/filter/sensitiveWordFilter');
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
@@ -107,9 +111,15 @@ app.configure('production|development', 'area', function() {
     app: app
   });
   areaUtil.checkFlagFile(app);
+  
   app.before(cdFilter());
+  // app.before(sensitiveWordFilter());
 
   appUtil.loadDatabaseInfo(app, 'areadb');
+  appUtil.loadShareDatabaseInfo(app);
+
+  var dao_share = require('./app/dao').init('mysql', 'share');
+  app.set('dao_share', dao_share);
 
   app.load(counter);
   app.load(verifier);
@@ -135,5 +145,5 @@ app.configure('production|development', 'notice', function() {
 app.start();
 
 process.on('uncaughtException', function(err) {
-  console.error(' Caught exception: ' + err.stack);
+  console.error(' Uncaught exception: ' + err.stack);
 });

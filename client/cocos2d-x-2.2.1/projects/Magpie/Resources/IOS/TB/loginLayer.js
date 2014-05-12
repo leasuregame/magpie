@@ -33,7 +33,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._super();
 
-        lz.um.beginLogPageView("同步推登录界面");
+        lz.um.beginLogPageView("TB登录界面");
     },
 
     onExit: function () {
@@ -42,7 +42,7 @@ var LoginLayer = cc.Layer.extend({
         this._super();
         this.unscheduleAllCallbacks();
 
-        lz.um.endLogPageView("同步推登录界面");
+        lz.um.endLogPageView("TB登录界面");
     },
 
     init: function () {
@@ -94,7 +94,7 @@ var LoginLayer = cc.Layer.extend({
         var server = lz.server;
         var user = gameData.user;
 
-        var areaId = user.get("area") || server.getRecommendArea();
+        var areaId = server.getRecommendArea();
         user.set("area", areaId);
         this._areaList = server.get("areaList");
         var len = this._areaList.length;
@@ -103,25 +103,30 @@ var LoginLayer = cc.Layer.extend({
             var area = this._areaList[i];
 
             if (areaId == area.id) {
-                this.updateSelectAreaName(i);
+                this.resetAreaName(i);
             }
         }
+    },
+
+    resetAreaName: function (id) {
+        cc.log("LoginLayer resetAreaName");
+
+        var area = this._areaList[id];
+        this._selectAreaName.setString(area.name);
+        this._selectAreaName.setColor(cc.c3b(255, 225, 62));
     },
 
     updateSelectAreaName: function (id) {
         cc.log("LoginLayer updateSelectAreaName");
 
-        var area = this._areaList[id];
-        this._selectAreaName.setString(area.name);
-        this._selectAreaName.setColor(area.color);
-
+        this.resetAreaName(id);
         this._loginFrame.setVisible(true);
     },
 
     updateAccountLabel: function () {
         var str = "当前未登录";
 
-        if (tbAdapter && tbAdapter.TBIsLogined()) {
+        if (lz.platformIsLogin && lz.platformIsLogin()) {
             str = tbAdapter.TBNickName();
         }
 
@@ -159,9 +164,7 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (tbAdapter && tbAdapter.TBLogin) {
-            tbAdapter.TBLogin(0);
-        }
+        tbAdapter.TBLogin(0);
     }
 });
 

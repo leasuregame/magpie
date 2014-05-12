@@ -8,8 +8,17 @@ build-ios:
 build-ios-appstore:
 	sh ./bin/build_ios.sh appstore
 
+build-ios-pp:
+	sh ./bin/build_ios.sh pp
+
+build-ios-91:
+	sh ./bin/build_ios.sh 91
+
 build-ios-tb:
 	sh ./bin/build_ios.sh tb
+
+build-ios-yy:
+	sh ./bin/build_ios.sh yy
 
 build-android:
 	sh ./bin/build_android.sh

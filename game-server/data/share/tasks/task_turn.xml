@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>arthur wu</Author>
+  <LastAuthor>arthur wu</LastAuthor>
+  <Created>2014-05-05T09:20:18Z</Created>
+  <LastSaved>2014-05-09T03:44:32Z</LastSaved>
+  <Company>le zhi of zhuhai</Company>
+  <Version>14.0</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11560</WindowHeight>
+  <WindowWidth>25600</WindowWidth>
+  <WindowTopX>6940</WindowTopX>
+  <WindowTopY>40</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Vertical="Center"/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Vertical="Bottom"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="每轮基础奖励">
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="19" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">等级</Data></Cell>
+    <Cell><Data ss:Type="String">仙币</Data></Cell>
+    <Cell><Data ss:Type="String">经验卡</Data></Cell>
+    <Cell><Data ss:Type="String">体力点</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">lv</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
+    <Cell><Data ss:Type="String">exp_card</Data></Cell>
+    <Cell><Data ss:Type="String">powerValue</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">10000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">15000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">20000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">25000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">30000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">35000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">40000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">45000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">65</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">50000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">55000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">75</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">60000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">21</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">65000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">85</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">70000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">23</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">90</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">75000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">24</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">95</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">80000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+5000"><Data ss:Type="Number">85000</Data></Cell>
+    <Cell ss:StyleID="s62" ss:Formula="=R[-1]C+1"><Data ss:Type="Number">26</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="每轮奖励">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">轮次</Data></Cell>
+    <Cell><Data ss:Type="String">奖励类型</Data></Cell>
+    <Cell><Data ss:Type="String">数量下限</Data></Cell>
+    <Cell><Data ss:Type="String">数量上限</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">type</Data></Cell>
+    <Cell><Data ss:Type="String">num_min</Data></Cell>
+    <Cell><Data ss:Type="String">num_max</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">fragments</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">elixir</Data></Cell>
+    <Cell><Data ss:Type="Number">20000</Data></Cell>
+    <Cell><Data ss:Type="Number">30000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">superHonor</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">energy</Data></Cell>
+    <Cell><Data ss:Type="Number">5000</Data></Cell>
+    <Cell><Data ss:Type="Number">7000</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="探索获得奖励类型">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">奖励类型</Data></Cell>
+    <Cell><Data ss:Type="String">说明</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">reward_type</Data></Cell>
+    <Cell><Data ss:Type="String">desc</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">card</Data></Cell>
+    <Cell><Data ss:Type="String">神仙卡</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">exp_card</Data></Cell>
+    <Cell><Data ss:Type="String">经验元灵</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">spirit</Data></Cell>
+    <Cell><Data ss:Type="String">灵气</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="String">魔石</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>26</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="export">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Width="140" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell><Data ss:Type="String">merge_to</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">每轮基础奖励</Data></Cell>
+    <Cell><Data ss:Type="String">turn_reward_base</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">每轮奖励</Data></Cell>
+    <Cell><Data ss:Type="String">turn_reward</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">探索获得奖励类型</Data></Cell>
+    <Cell><Data ss:Type="String">turn_reward_type</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

@@ -256,7 +256,9 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'cd'
+        'cd',
+        'plan',
+        'useCardCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -282,6 +284,10 @@ var Player = (function(_super) {
             boss: {
                 count: 0,
                 found: false
+            },
+            turn: {
+                collected: 0,
+                num: 1,
             }
         },
         passLayer: 0,
@@ -314,14 +320,15 @@ var Player = (function(_super) {
             kneelCountLeft: KNEELCOUNT_DEFAULT,
             kneelList: [],
             rmTimerCount: 1,
-            goldLuckyCard10: {
+            goldLuckyCard10: { // 每日高级魔石10连抽次数
                 count: 0,
                 got: false
             },
-            goldLuckyCardForFragment: {
+            goldLuckyCardForFragment: { // 每日单次高级魔石抽卡次数，判断是否获得卡魂
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -346,12 +353,13 @@ var Player = (function(_super) {
         rank: null,
         friends: [],
         friendsCount: DEFAULT_FRIENDS_COUNT,
-        rowFragmentCount: 0,
-        highFragmentCount: 0,
-        highDrawCardCount: 0,
+        rowFragmentCount: 0,  // 低级卡魂次数
+        highFragmentCount: 0, // 高级卡魂次数
+        highDrawCardCount: 0, // 高级抽卡次数
         cardsCount: MIN_CARD_COUNT,
         resetDate: '1970-1-1',
         firstTime: {
+            star5card: 1,
             lowLuckyCard: 1,
             highLuckyCard: 1,
             highTenLuckCard: 1,
@@ -374,7 +382,62 @@ var Player = (function(_super) {
         superHonor: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
+        },
+        plan: {
+            buy: false,
+            flag: 0
+        },
+        useCardCount: {
+            star4: 10,
+            star5: 1,
+            star6: 3
         }
+    };
+
+    Player.prototype.updateUseCardCoun = function(star, val) {
+        var ucc = utility.deepCopy(this.useCardCount);
+        ucc['star'+star] = val;
+        this.useCardCount = ucc;
+    };
+
+    Player.prototype.canGetTurnReward = function() {
+        return this.task.turn.collected == 15;
+    };
+
+    Player.prototype.nextTurn = function() {
+        var task = utility.deepCopy(this.task);
+        task.turn.collected = 0;
+        task.turn.num += 1;
+
+        if (task.turn.num > 5) {
+            task.turn.num = 1;
+        }
+
+        this.task = task;
+    };
+
+    Player.prototype.buyPlan = function() {
+        var plan = { buy: true, flag: 0 };
+        this.plan = plan;
+    };
+
+    Player.prototype.hasBuyPlan = function() {
+        return !!this.plan.buy;
+    };
+
+    Player.prototype.hasPlanFlag = function(id) {
+        var flag = this.plan.flag || 0;
+        return utility.hasMark(flag, id);
+    };
+
+    Player.prototype.setPlanFlag = function(id) {
+        var plan = utility.deepCopy(this.plan);
+        if (_.isUndefined(plan.flag)) {
+            plan.flag = 0;
+        }
+
+        plan.flag = utility.mark(plan.flag, id);
+        this.plan = plan;
     };
 
     Player.prototype.resetData = function() {
@@ -425,7 +488,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: {
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -444,6 +508,12 @@ var Player = (function(_super) {
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
+
+        // 记录登陆次数
+        this.incLoginCount();
+
+        // 重新计算5星卡成就
+        this.recountStar5CardAchievement();
     };
 
     Player.prototype.dailyData = function() {
@@ -883,9 +953,17 @@ var Player = (function(_super) {
         this.decrease('money', moneyConsume);
         targetCard.upgrade(upgraded_lv, exp_remain);
 
-        // 第一张满级五星卡
+        // 第一张满级5星卡
         if (targetCard.star == 5 && targetCard.lv == cardLvs.getItem(5).max_lv) {
             achieve.star5cardFullLevel(this);
+        }
+        // 第一张满级6星卡
+        if (targetCard.star == 6 && targetCard.lv == cardLvs.getItem(6).max_lv) {
+            achieve.star6cardFullLevel(this);
+        }
+        // 第一张满级7星卡
+        if (targetCard.star == 7 && targetCard.lv == cardLvs.getItem(7).max_lv) {
+            achieve.star7cardFullLevel(this);
         }
 
         return cb(null, {
@@ -1172,7 +1250,8 @@ var Player = (function(_super) {
         return {
             id: this.task.id,
             progress: this.task.progress,
-            mark: this.task.mark
+            mark: this.task.mark,
+            collected: this.task.turn != null ? this.task.turn.collected : 0
         };
     };
 
@@ -1371,8 +1450,16 @@ var Player = (function(_super) {
             this.updateGift('rmTimerCount', 1);
         }
 
-        var consume = 20 * this.dailyGift.rmTimerCount;
-        return consume > 200 ? 200 : consume;
+        var consume = 0;
+        if (this.dailyGift.rmTimerCount <= 10) {
+            consume = 20;
+        } else if (this.dailyGift.rmTimerCount <= 20 && this.dailyGift.rmTimerCount > 10) {
+            consume = 30;
+        } else {
+            consume = 50;
+        }
+
+        return consume;
     };
 
     Player.prototype.incRmTimerCount = function() {
@@ -1386,7 +1473,7 @@ var Player = (function(_super) {
 
     Player.prototype.kneelCountLeft = function() {
         if (typeof this.dailyGift.kneelCountLeft == 'undefined') {
-            this.updateGift('kneelCountLfet', KNEELCOUNT_DEFAULT);
+            this.updateGift('kneelCountLeft', KNEELCOUNT_DEFAULT);
         }
         return this.dailyGift.kneelCountLeft;
     };
@@ -1415,6 +1502,57 @@ var Player = (function(_super) {
         delete dailyGift.kneelList;
         delete dailyGift.rmTimerCount;
         return dailyGift;
+    };
+
+    Player.prototype.hasLoginCountReward = function(count) {
+        loginedCount = this.activities.logined != null ? this.activities.logined.got : 0;
+        return utility.hasMark(loginedCount, count);
+    };
+
+    Player.prototype.canGetLoginCountReward = function(count) {
+        loginedCount = this.activities.logined != null ? this.activities.logined.count : 1;
+        return loginedCount >= count;
+    };
+
+    Player.prototype.setLoginCountReward = function(count) {
+        var act = utility.deepCopy(this.activities);
+
+        if (typeof act.logined == 'undefined') {
+            act.logined = {
+                count: 1, 
+                got: 0
+            };
+        }
+
+        act.logined.got = utility.mark(act.logined.got, count);
+        this.set('activities', act);
+    };
+
+    Player.prototype.incLoginCount = function() {
+        var act = utility.deepCopy(this.activities);
+        if (typeof act.logined == 'undefined') {
+            act.logined = {
+                count: 0, 
+                got: 0
+            };
+        }
+        act.logined.count += 1;
+        this.set('activities', act);
+    };
+
+    Player.prototype.recountStar5CardAchievement = function() {
+        if (this.firstTime.star5card) return;
+
+        var cards = _.values(this.cards);
+        var star5Num = cards.filter(function(c) {
+            return c.star >= 5;
+        }).length;
+        var star6Num = cards.filter(function(c) {
+            return c.star >= 6;
+        }).length;
+        console.log('message:', star5Num, star6Num);
+        if (star5Num > 0) achieve.star5card(this, star5Num);
+        if (star6Num > 0) achieve.star6card(this, star6Num);
     };
 
     Player.prototype.toJson = function() {

@@ -88,7 +88,7 @@ var Server = Entity.extend({
             this._areaList[i].statusName = status.statusName;
             this._areaList[i].color = status.color;
             this._areaList[i].canLogin = status.canLogin;
-            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name;
+            this._areaList[i].desc = this._areaList[i].index + "区  " + this._areaList[i].name;
             this._areaList[i].url = status.url;
         }
     },
@@ -166,12 +166,20 @@ var Server = Entity.extend({
         }
 
         var success = false;
+        var version = lz.platformConfig.VERSION;
+        if (typeof(cc.AssetsManager) != "undefined") {
+            version = cc.AssetsManager.getInstance().getVersion();
+        }
 
         var that = this;
 
         lz.pomelo.request(
             "gate.gateHandler.queryEntry",
-            {},
+            {
+                os: lz.platformConfig.OS,
+                platform: lz.platformConfig.PLATFORM,
+                version: version
+            },
             function (data) {
                 cc.log("pomelo websocket callback data:");
                 cc.log(data);
@@ -350,8 +358,8 @@ var Server = Entity.extend({
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        if (typeof(tbAdapter) != "undefined" && tbAdapter.TBLogout) {
-            tbAdapter.TBLogout(0);
+        if (lz.platformLogout) {
+            lz.platformLogout();
         }
 
         Dialog.pop("异地登录", function () {
@@ -365,12 +373,10 @@ var Server = Entity.extend({
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
-        if (typeof(tbAdapter) != "undefined" && tbAdapter.TBIsLogined) {
-            if (!tbAdapter.TBIsLogined()) {
-                MainScene.destroy();
-                cc.Director.getInstance().replaceScene(LoginScene.create());
-                return;
-            }
+        if (lz.platformIsLogin && !lz.platformIsLogin()) {
+            MainScene.destroy();
+            cc.Director.getInstance().replaceScene(LoginScene.create());
+            return;
         }
 
         gameData.user.login(function (type) {
@@ -418,12 +424,18 @@ var Server = Entity.extend({
     getRecommendArea: function () {
         cc.log("Server getRecommendArea");
 
+        var areaId = gameData.user.get("area");
+
         if (this._areaList) {
             var len = this._areaList.length;
 
-            if (len > 0) {
-                return this._areaList[len - 1].id;
+            for (var i = 0; i < len; ++i) {
+                if (areaId == this._areaList[i].id) {
+                    return areaId;
+                }
             }
+
+            return this._areaList[len - 1].id;
         }
 
         return 0;

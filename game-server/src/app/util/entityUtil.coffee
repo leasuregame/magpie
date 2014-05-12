@@ -55,13 +55,15 @@ module.exports =
       if player.lv is 9
         level9Box = 
           money: 50000
-          skillPoint: 20000
+          skillPoint: 50000
           energy: 5000
-          powerValue: 200
+          powerValue: 100
+          gold: 200
         player.increase('money', level9Box.money)
         player.increase('skillPoint', level9Box.skillPoint)
         player.increase('energy', level9Box.energy)
         player.addPower(level9Box.powerValue)        
+        player.increase('gold', level9Box.gold)
 
     if isUpgrade
       player.increase('money', rewards.money)
@@ -105,6 +107,12 @@ module.exports =
       player.addPower(data.power)
     if typeof data.exp_card != 'undefined' and data.exp_card > 0
       playerManager.addExpCardFor player, data.exp_card, cb
+
+    if typeof data.card_id != 'undefined' and data.card_id > 0
+      this.createCard {
+        playerId: player.id
+        tableId: data.card_id
+      }, (err, card) -> cb(null, [card])
     else 
       cb(null, [])
 

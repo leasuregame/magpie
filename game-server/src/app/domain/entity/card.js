@@ -24,17 +24,17 @@ var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
 var addEvents = function(card) {
-    card.on('add.passiveSkill', function() {
+    card.on('passiveSkills.change', function() {
         countPassiveSkills(card);
     });
 
     card.on('elixirHp.change', function(elixir) {
-        card.incs.elixir_hp = parseInt(elixir / elixirConfig.elixir * elixirConfig.hp);
+        card.incs.elixir_hp = parseInt((elixir + card.elixirHpCrit) / elixirConfig.elixir * elixirConfig.hp);
         card.recountHpAndAtk();
     });
 
     card.on('elixirAtk.change', function(elixir) {
-        card.incs.elixir_atk = parseInt(elixir / elixirConfig.elixir * elixirConfig.atk);
+        card.incs.elixir_atk = parseInt((elixir + card.elixirAtkCrit) / elixirConfig.elixir * elixirConfig.atk);
         card.recountHpAndAtk();
     });
 
@@ -65,8 +65,8 @@ var addEvents = function(card) {
 };
 
 var countElixirEffect = function(card) {
-    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.elixir) * elixirConfig.hp;
-    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.elixir) * elixirConfig.atk;
+    card.incs.elixir_hp = parseInt((card.elixirHp + card.elixirHpCrit) / elixirConfig.elixir) * elixirConfig.hp;
+    card.incs.elixir_atk = parseInt((card.elixirAtk + card.elixirAtkCrit) / elixirConfig.elixir) * elixirConfig.atk;
 
     card.recountHpAndAtk();
 };
@@ -179,7 +179,9 @@ var Card = (function(_super) {
         'factor',
         'skillPoint',
         'elixirHp',
+        'elixirHpCrit',
         'elixirAtk',
+        'elixirAtkCrit',
         'passiveSkills',
         'useCardsCounts',
         'psGroupCount'
@@ -193,7 +195,9 @@ var Card = (function(_super) {
         factor: 0,
         skillPoint: 0,
         elixirHp: 0,
+        elixirHpCrit: 0,
         elixirAtk: 0,
+        elixirAtkCrit: 0,
         init_hp: 0,
         init_atk: 0,
         hp: 0,
@@ -256,7 +260,6 @@ var Card = (function(_super) {
 
         this.passiveSkills = pss;
         this.psGroupCount = pss.length;
-        this.emit('add.passiveSkill');
     };
 
     Card.prototype.activeGroup = function(gid) {
@@ -326,8 +329,8 @@ var Card = (function(_super) {
                 var items = group[0].items;
 
                 var sum = items.filter(function(ps) {
-                        return should_inc_ps.indexOf(ps.name) > -1;
-                    })
+                    return should_inc_ps.indexOf(ps.name) > -1;
+                })
                     .map(function(ps) {
                         return ps.value * ae[ps.name];
                     })
@@ -371,6 +374,23 @@ var Card = (function(_super) {
     Card.prototype.bornPassiveSkill = function() {
         var pss = _.clone(this.passiveSkills);
         var star = this.star;
+
+        if (pss.length == 0) {
+            pss = [{
+                id: 1,
+                items: [],
+                active: true
+            }, {
+                id: 2,
+                items: [],
+                active: false
+            }, {
+                id: 3,
+                items: [],
+                active: false
+            }];
+        }
+
         pss.forEach(function(group) {
             group = new PassiveSkillGroup(group).create(star).toJson();
         });
@@ -455,7 +475,7 @@ var Card = (function(_super) {
             return item.lv < curLv && item.lv > 0;
         }).map(function(item) {
             return item.money_need;
-        }).reduce(function(x, y){
+        }).reduce(function(x, y) {
             return x + y;
         }, 0);
 
@@ -510,6 +530,8 @@ var Card = (function(_super) {
             skillPoint: this.skillPoint,
             elixirHp: this.elixirHp,
             elixirAtk: this.elixirAtk,
+            elixirHpCrit: this.elixirHpCrit,
+            elixirAtkCrit: this.elixirAtkCrit,
             passiveSkills: this.passiveSkills
         };
     };

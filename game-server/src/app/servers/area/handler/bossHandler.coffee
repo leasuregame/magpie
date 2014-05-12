@@ -304,7 +304,6 @@ Handler::bossList = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})
 
-    console.log 'boss count: ', results.length
     next(null, {
       code: 200,
       msg: sortBossList(results.map((r) -> r.toJson()), playerId)
@@ -344,7 +343,7 @@ Handler::attack = (msg, session, next) ->
         return cb({code: 501, msg: '不能攻击陌生人的Boss哦'})
 
       if boss.timeLeft() <= 0 or boss.countLeft() is 0 or boss.isDisappear() or boss.isDeath()
-        return cb({code: 501, msg: 'Boss已结束'})
+        return cb({code: 501, msg: 'Boss已逃跑'})
 
       if boss.playerId isnt playerId and boss.status is configData.bossStatus.STATUS.SLEEP
         return cb({code: 501, msg: 'Boss未苏醒'})
@@ -405,7 +404,7 @@ countDamageRewards = (rank) ->
     honor: honor
 
 checkBossStatus = (items, cb) ->
-  timeOutItems = items.filter((i) -> i.timeLeft() <= 0)
+  timeOutItems = items.filter (i) -> i.timeLeft() <= 0 and i.status isnt configData.bossStatus.STATUS.TIMEOUT
   ids = timeOutItems.map (i) -> i.id
 
   if ids.length is 0
@@ -425,7 +424,7 @@ countDamage = (bl) ->
   ds = []
   bl.steps.forEach (s) ->
     return if not _.isUndefined(s.go)
-    s.d.forEach (el, idx) -> ds.push Math.abs(s.e[idx]) if parseInt(el) > 6
+    s.d.forEach (el, idx) -> ds.push Math.abs(s.e[idx]) if Math.abs(el) > 6
 
   # 删除死亡的boss卡牌
   for cards, i in bl.cards

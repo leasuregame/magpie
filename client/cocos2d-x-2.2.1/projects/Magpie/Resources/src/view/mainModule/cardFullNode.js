@@ -14,6 +14,7 @@
 
 var CardFullNode = cc.Node.extend({
     _card: null,
+    _cardSprite: null,
 
     init: function (card) {
         cc.log("CardFullNode init");
@@ -22,13 +23,12 @@ var CardFullNode = cc.Node.extend({
 
         this._card = card;
 
-        var urlList = this._card.getCardFullUrl();
-        var len = urlList.length;
+        var url = this._card.get("url");
+        var star = this._card.get("star");
+        var index = star > 2 ? Math.min(star - 2, 3) : 1;
 
-        for (var i = 0; i < len; ++i) {
-            var cardFullSprite = cc.Sprite.create(urlList[i]);
-            this.addChild(cardFullSprite);
-        }
+        this._cardSprite = cc.Sprite.create(main_scene_image[url + "_full" + index]);
+        this.addChild(this._cardSprite);
 
         return true;
     },

@@ -28,6 +28,11 @@ var giftBagGoods = {
         url: "icon145"
     },
 
+    fragment: {
+        name: "卡魂",
+        url: "icon145"
+    },
+
     exp_card: {
         name: "经验元灵",
         url: "icon146"
@@ -71,9 +76,14 @@ var GET_GIFT_BAG_NO_CLOSE = 5;
 
 var TYPE_GIFT_REWARD = 1;
 var TYPE_LOOK_REWARD = 2;
+var TYPE_EXPLORE_REWARD = 3;
 
 var GiftBagLayer = LazyLayer.extend({
     _giftBagLayerFit: null,
+
+    _frameLayer: null,
+    _effect: null,
+
 
     init: function (data) {
         cc.log("GiftBagLayer init: " + data);
@@ -92,22 +102,33 @@ var GiftBagLayer = LazyLayer.extend({
         bgLayer.setPosition(cc.p(0, 0));
         this.addChild(bgLayer);
 
+        this._effect = cc.BuilderReader.load(main_scene_image.uiEffect113, this);
+        this._effect.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(this._effect);
+
+        var point = gameFit.GAME_MIDPOINT;
+        this._frameLayer = cc.Layer.create();
+        this._frameLayer.setPosition(cc.p(-1 * point.x, -1 * point.y));
+        this._effect.controller.ccbLabel.addChild(this._frameLayer);
+
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg21);
         bgSprite.setPosition(this._giftBagLayerFit.bgSprite2Point);
-        this.addChild(bgSprite);
+        this._frameLayer.addChild(bgSprite);
 
         var topBgIcon = cc.Sprite.create(main_scene_image.icon332);
         topBgIcon.setPosition(this._giftBagLayerFit.topBgIconPoint);
-        this.addChild(topBgIcon);
+        this._frameLayer.addChild(topBgIcon);
 
         var url = "icon333";
         if (titleType == TYPE_LOOK_REWARD) {
             url = "icon388";
+        } else if(titleType == TYPE_EXPLORE_REWARD) {
+            url = "icon448";
         }
 
         var titleIcon = cc.Sprite.create(main_scene_image[url]);
         titleIcon.setPosition(this._giftBagLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
+        this._frameLayer.addChild(titleIcon);
 
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -190,7 +211,7 @@ var GiftBagLayer = LazyLayer.extend({
 
         var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem, closeItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this._frameLayer.addChild(menu);
 
         if (reward && Object.keys(reward).length > 0) {
             this._addRankScrollView(reward);
@@ -203,7 +224,7 @@ var GiftBagLayer = LazyLayer.extend({
                 tipLabel.setColor(cc.c3b(255, 255, 255));
                 tipLabel.setBgColor(cc.c3b(133, 60, 31));
                 tipLabel.setPosition(cc.p(point.x, point.y - i * 40));
-                this.addChild(tipLabel);
+                this._frameLayer.addChild(tipLabel);
             }
         }
 
@@ -299,7 +320,7 @@ var GiftBagLayer = LazyLayer.extend({
         scrollView.setPosition(this._giftBagLayerFit.scrollViewPoint2);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
-        this.addChild(scrollView);
+        this._frameLayer.addChild(scrollView);
 
         scrollView.setContentSize(cc.size(500, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());

@@ -231,7 +231,8 @@ var Message = Entity.extend({
                         power: msg.powerValue,
                         skillPoint: msg.skillPoint,
                         elixir: msg.elixir,
-                        energy: msg.energy
+                        energy: msg.energy,
+                        fragment: msg.fragments
                     });
 
                     gameData.spirit.add("exp", msg.spirit);

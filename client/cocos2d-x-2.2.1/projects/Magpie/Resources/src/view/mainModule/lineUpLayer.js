@@ -53,7 +53,7 @@ var LineUpLayer = LazyLayer.extend({
 
         this._locate = this._lineUpLayerFit.locatePoints;
         this._touchRect = this._lineUpLayerFit.touchRect;
-        this._index = 0;
+        this._index = LINE_UP_INDEX;
         this._lineUpItem = [];
         this._lineUp = [];
 
@@ -207,6 +207,12 @@ var LineUpLayer = LazyLayer.extend({
             cc.log("LineUpLayer _onClickLineUp: " + index);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var table = outputTables.card_lineup_limit.rows[index];
+            if (gameData.player.get("lv") < table["card_1"]) {
+                TipLayer.tip(table["card_1"] + " 级开启");
+                return;
+            }
 
             that._index = index;
             that.update();

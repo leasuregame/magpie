@@ -46,7 +46,7 @@
         engineDir: '../../../../Cocos2d-html5-v2.2.1/cocos2d/',
         //SingleEngineFile:'',
         appFiles: [
-            'src/resource.js',
+            'res/resource.js',
 
             'src/table/table.js',
 
@@ -118,10 +118,10 @@
             'src/controls/waitLayer.js',
             'src/controls/dialog.js',
             'src/controls/slideLayer.js',
+            'src/controls/lzMenu.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginBgLayer.js',
-            // 'TB/loginLayer.js',
             'IOS/AppStore/loginLayer.js',
             'src/view/loginModule/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
@@ -145,8 +145,11 @@
             'src/view/mainModule/powerRewardLayer.js',
             'src/view/mainModule/goldCardsLayer.js',
             'src/view/mainModule/goldRewardLayer.js',
+            'src/view/mainModule/growthPlanLayer.js',
             'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/invitationLayer.js',
+            'src/view/mainModule/newAreaRewardLayer.js',
+            'src/view/mainModule/vipDailyRewardLayer.js',
             'src/view/mainModule/activityLayer.js',
             'src/view/mainModule/amountLayer.js',
             'src/view/mainModule/battleMessageLayer.js',
@@ -171,6 +174,7 @@
             'src/view/mainModule/elixirRankLayer.js',
             'src/view/mainModule/evolutionLayer.js',
             'src/view/mainModule/exchangeLayer.js',
+            'src/view/mainModule/exploreCardLayer.js',
             'src/view/mainModule/exploreLayer.js',
             'src/view/mainModule/extractTipLabel.js',
             'src/view/mainModule/friendLayer.js',

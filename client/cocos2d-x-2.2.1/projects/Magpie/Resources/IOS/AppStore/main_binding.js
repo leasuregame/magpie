@@ -29,7 +29,7 @@
 require('jsb.js');
 
 var appFiles = [
-    'src/resource.js',
+    'res/resource.js',
 
     'src/table/table.js',
 
@@ -127,8 +127,11 @@ var appFiles = [
     'src/view/mainModule/powerRewardLayer.js',
     'src/view/mainModule/goldCardsLayer.js',
     'src/view/mainModule/goldRewardLayer.js',
+    'src/view/mainModule/growthPlanLayer.js',
+    'src/view/mainModule/vipDailyRewardLayer.js',
     'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/invitationLayer.js',
+    'src/view/mainModule/newAreaRewardLayer.js',
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/amountLayer.js',
     'src/view/mainModule/battleMessageLayer.js',
@@ -153,6 +156,7 @@ var appFiles = [
     'src/view/mainModule/elixirRankLayer.js',
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exchangeLayer.js',
+    'src/view/mainModule/exploreCardLayer.js',
     'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/extractTipLabel.js',
     'src/view/mainModule/friendLayer.js',

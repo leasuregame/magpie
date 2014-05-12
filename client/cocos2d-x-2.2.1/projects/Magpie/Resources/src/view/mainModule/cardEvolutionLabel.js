@@ -167,7 +167,7 @@ var CardEvolutionLabel = cc.Layer.extend({
         this._tipLabel.setPosition(this._cardEvolutionLayerFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
-        var tipLabel1 = cc.LabelTTF.create("满级卡牌消耗素材卡和精元进行升星", "STHeitiTC-Medium", 22);
+        var tipLabel1 = cc.LabelTTF.create("卡牌消耗素材卡和精元进行升星", "STHeitiTC-Medium", 22);
         tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
 
@@ -184,9 +184,9 @@ var CardEvolutionLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(-160, 20));
         this._helpLabel.addChild(moneyIcon);
 
-        var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
-        cardCountIcon.setPosition(cc.p(120, 20));
-        this._helpLabel.addChild(cardCountIcon);
+        this._cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
+        this._cardCountIcon.setPosition(cc.p(120, 20));
+        this._helpLabel.addChild(this._cardCountIcon);
 
         var superHonorIcon = ColorLabelTTF.create(
             {
@@ -209,7 +209,7 @@ var CardEvolutionLabel = cc.Layer.extend({
 
         this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._cardCountLabel.setPosition(cc.p(180, 18));
+        this._cardCountLabel.setPosition(cc.p(200, 18));
         this._helpLabel.addChild(this._cardCountLabel);
 
         this._superHonorLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 22);
@@ -290,6 +290,11 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._newCard = null;
         }
 
+        for (var i = 0; i < MAX_CARD_STAR; i++) {
+            this._newStarIcon[i].setVisible(false);
+            this._oldStarIcon[i].setVisible(false);
+        }
+
         if (this._leadCard == null) {
             this._retinueCard = [];
 
@@ -342,6 +347,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             var needSuperHonor = this._leadCard.getEvolutionNeedSuperHonor();
             var player = gameData.player;
 
+            this._cardCountIcon.setString(outputTables.star_upgrade.rows[star].source_card_star + "星从卡数量:");
             this._evolutionRateLabel.setString(player.getEvolutionRate(star) + "%");
             this._cardCountLabel.setString("0");
             this._moneyLabel.setString(needMoney);

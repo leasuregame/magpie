@@ -1,6 +1,102 @@
 extends adminLayout
 
+block head
+  script(type='text/javascript', src='/js/serverAPI.js')
+  script(type='text/javascript', src='/js/async.js')
+  script(type='text/javascript', src='/js/lib/build/build.js')
+  script.
+    require('boot');
+
+  script(type="text/javascript", src="/js/highcharts.js")
+  script.
+    $(function () {
+      function initAreasList() {
+          var inner = "";
+          servers.forEach(function(area) {
+              inner += '<option value =' + area.id + '>' + area.name + '</option>';
+          });
+          $("#area_id").append(inner).prop("selectedIndex", 0);
+      };
+
+      initServer(function() {
+          initAreasList();
+      });
+
+      function updateOnlineUserChart(query_date, areaId) {
+        if (!query_date) {
+          query_date = new Date().toDateString();
+        }
+
+        if (!areaId) {
+          areaId = 1;
+        }
+
+        $.get('/admin/stats/onlineuser?date=' + query_date + '&areaId=' + areaId, function(result) {
+          items = result.items;
+          Highcharts.setOptions({global:{useUTC : false}});
+          $('#chart_div').highcharts({
+              chart: {
+                  type: 'spline'
+              },
+              title: {
+                  text: '用户在线人数分布图'
+              },
+              subtitle: {
+                  text: ''
+              },
+              xAxis: {
+                  labels: {
+                    formatter: function() {
+                      return  Highcharts.dateFormat('%H:%M', this.value);
+                    }
+                  }
+              },
+              yAxis: {
+                  title: {
+                      text: '在线人数'
+                  },
+                  min: 0
+              },
+              tooltip: {
+                  formatter: function() {
+                      return '<b>'+ this.series.name + new Date(this.x).toLocaleTimeString() + '</b><br/>'+
+                      '数量：'+this.y+'（个）';
+                  }
+              },
+              
+              series: [{
+                  name: new Date(result.curDate).toLocaleDateString(),
+                  data: items
+              }]
+          });
+        });
+      }
+
+      updateOnlineUserChart();
+
+      var valueChange = function() {
+        var q_data = $('#cur_date_for_onlineuser').val();
+        var areaId = $('#area_id').val();
+        updateOnlineUserChart(q_data, areaId);
+      }
+
+      $('#cur_date_for_onlineuser').change(valueChange);
+      $('#area_id').change(valueChange);
+    });
+
 block content
+  div.row
+    div.col-sm-3.col-sm-offset-6
+      div(style="padding: 10px 5px 5px 0; text-align: right")
+        label 区服：
+        select(type='text', id="area_id")
+    div.col-sm-3
+      div(style="padding: 10px 5px 5px 0; text-align: right")
+        label 更改日期：
+        input(type='date' id='cur_date_for_onlineuser')
+  div.well      
+    div(id='chart_div')
+
   div.jumbotron
     h1 版本用户分布 
       small 用户总数：#{userNum}
@@ -16,7 +112,7 @@ block content
 
   div.jumbotron
     h1 游戏 Web API
-      small.pull-right 115.29.175.156:9090
+      small.pull-right 
     small [ ]中得字符为参数。[platform]为平台参数（app或tb）
     small
       a(href='http://www.ksyun.com/product/ks3', target='blank') 去更新下载包

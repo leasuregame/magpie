@@ -19,6 +19,8 @@ var CardDetails = LazyLayer.extend({
     _card: null,
     _menu: null,
     _cb: null,
+    _hpLabel: null,
+    _atkLabel: null,
 
     onEnter: function () {
         cc.log("CardDetails onEnter");
@@ -122,13 +124,13 @@ var CardDetails = LazyLayer.extend({
         lvLabel.setPosition(this._cardDetailsFit.lvLabelPoint);
         this.addChild(lvLabel);
 
-        var hpLabel = cc.LabelTTF.create(this._card.get("hp"), "STHeitiTC-Medium", 20);
-        hpLabel.setPosition(this._cardDetailsFit.hpLabelPoint);
-        this.addChild(hpLabel);
+        this._hpLabel = cc.LabelTTF.create(this._card.get("hp"), "STHeitiTC-Medium", 20);
+        this._hpLabel.setPosition(this._cardDetailsFit.hpLabelPoint);
+        this.addChild(this._hpLabel);
 
-        var atkLabel = cc.LabelTTF.create(this._card.get("atk"), "STHeitiTC-Medium", 20);
-        atkLabel.setPosition(this._cardDetailsFit.atkLabelPoint);
-        this.addChild(atkLabel);
+        this._atkLabel = cc.LabelTTF.create(this._card.get("atk"), "STHeitiTC-Medium", 20);
+        this._atkLabel.setPosition(this._cardDetailsFit.atkLabelPoint);
+        this.addChild(this._atkLabel);
 
         var description = lz.format(this._card.get("description"), 9);
         var len = description.length;
@@ -167,10 +169,19 @@ var CardDetails = LazyLayer.extend({
             this.addChild(skillHarmIcon);
 
             var skillRateLabel = cc.LabelTTF.create(this._card.get("skillRate") + "%", "STHeitiTC-Medium", 20);
+            skillRateLabel.setAnchorPoint(cc.p(0, 0.5));
             skillRateLabel.setPosition(this._cardDetailsFit.skillRateLabelPoint);
             this.addChild(skillRateLabel);
 
-            var skillHarmLabel = cc.LabelTTF.create(this._card.get("skillHarm") + "%", "STHeitiTC-Medium", 20);
+            var skillHarm = this._card.get("skillHarm");
+            var str = "";
+            if (skillHarm instanceof Array) {
+                str = skillHarm[0] + "% ~ " + skillHarm[1] + "%";
+            } else {
+                str = skillHarm + "%";
+            }
+            skillHarmLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
+            skillHarmLabel.setAnchorPoint(cc.p(0, 0.5));
             skillHarmLabel.setPosition(this._cardDetailsFit.skillHarmLabelPoint);
             this.addChild(skillHarmLabel);
 
@@ -227,6 +238,9 @@ var CardDetails = LazyLayer.extend({
     _updatePassiveSkill: function () {
         cc.log("CardDetails _updatePassiveSkill");
 
+        this._atkLabel.setString(this._card.get("atk"));
+        this._hpLabel.setString(this._card.get("hp"));
+
         if (this._passiveSkillLayer) {
             this._passiveSkillLayer.removeFromParent();
             this._passiveSkillLayer = null;
@@ -268,7 +282,7 @@ var CardDetails = LazyLayer.extend({
                 }
             }
 
-            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect106, this);
+            this._updatePassiveSkillEffect = cc.BuilderReader.load(main_scene_image.uiEffect105, this);
             this._updatePassiveSkillEffect.setAnchorPoint(cc.p(0, 0.5));
             this._updatePassiveSkillEffect.setPosition(this._cardDetailsFit.updatePassiveSKillItemPoint);
             this._updatePassiveSkillEffect.controller.ccbMenu.setTouchPriority(CARD_DETAILS_LAYER_HANDLER_PRIORITY);
@@ -326,12 +340,14 @@ var CardDetails = LazyLayer.extend({
             }
         };
 
-        PassiveSkillLabel.pop(
+        var res = PassiveSkillLabel.create(
             {
                 card: this._card,
                 cb: cb
             }
         );
+
+        this.addChild(res, 10);
     },
 
     _onClickClose: function () {

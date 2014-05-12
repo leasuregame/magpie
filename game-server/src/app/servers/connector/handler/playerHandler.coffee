@@ -30,7 +30,6 @@ Handler::createPlayer = (msg, session, next) ->
     if err and err.code is 404
       return next(null, {code: 501, msg: "玩家已存在"})
 
-    console.log err
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
@@ -49,7 +48,7 @@ afterCreatePlayer = (app, session, userId, areaId, player, next) ->
         roles = _.clone(user.roles)
       else
         roles = []
-      roles.push areaId
+      roles.push areaId if areaId not in roles
       user.roles = roles
       user.lastLoginArea = areaId
       user.save()

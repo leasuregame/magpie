@@ -318,6 +318,11 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
+
+        // YY数据收集
+        if (typeof(yyAdapter) != "undefined" && yyAdapter.YYUpdateUserRole) {
+            yyAdapter.YYUpdateUserRole(this._name, this._lv);
+        }
     },
 
     isFullLv: function () {
@@ -463,6 +468,8 @@ var Player = Entity.extend({
                             var card = Card.create(cards[i]);
                             gameData.cardList.push(card);
                         }
+                    } else if (key == "fragments") {
+                        that.add("fragment", msg[key]);
                     } else {
                         that.add(key, msg[key]);
                     }
@@ -595,6 +602,12 @@ var Player = Entity.extend({
         var offset = (id - 1) % EACH_NUM_BIT;
         var mark = this._recharge;
         return !((mark >> offset & 1) == 1);
+    },
+
+    updateFirstPayment: function(id) {
+        cc.log("Player updateFirstPayment: " + id);
+
+        this._recharge = this._recharge | (1 << (id - 1));
     },
 
     getEvolutionRate: function (star) {

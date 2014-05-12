@@ -7,14 +7,26 @@ path = require 'path'
 util = require 'util'
 versionHandler = require '../../../../../shared/version_helper'
 request = require 'request'
+appUtil = require '../../../util/appUtil'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
 PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/
 EMPTY_SPACE_REG = /\s+/g
 
-APP_STORE_TYPE = 'app'
-TONG_BU_TYPE = 'tongbu'
+PLATFORM = 
+  APPSTORE: 'AppStore'
+  TONGBU: 'TB'
+  PP: 'PP'
+  YY: 'YY'
+  91: 'S91'
+  UC: 'UC'
+
+add_account_prefix = (account) ->
+  'app-'+account
+
+del_account_prefix = (account) ->
+  account.slice(4)
 
 module.exports = (app) ->
   new Handler(app)
@@ -38,7 +50,7 @@ Handler::register = (msg, session, next) ->
     return next(null, {code: 501, msg: '密码只能由6-20位的数字或字母组成'})
 
   @app.rpc.auth.authRemote.register session, {
-    account: msg.account
+    account: add_account_prefix(msg.account)
     password: msg.password
   }, (err, user) ->
     if err
@@ -47,17 +59,36 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  doLogin(APP_STORE_TYPE, @app, msg, session, 'app', next)
+  msg.account = add_account_prefix(msg.account)
+
+  doLogin PLATFORM.APPSTORE, @app, msg, session, 'app', (err, res) ->
+    if not err and res.code is 200
+      res.msg.user.account = del_account_prefix(res.msg.user.account)
+      next(null, res)
+    else
+      next(err, res)
 
 Handler::loginTB = (msg, session, next) ->
-  doLogin(TONG_BU_TYPE, @app, msg, session, null, next)
+  doLogin(PLATFORM.TONGBU, @app, msg, session, 'tb', next)
 
-doLogin  = (type, app, msg, session, platform, next) ->  
-  #console.log '-login-1-', 'sid=', session.id, msg,  msg.nickName
+Handler::loginPP = (msg, session, next) ->
+  doLogin(PLATFORM.PP, @app, msg, session, 'pp', next)
+
+Handler::loginYY = (msg, session, next) ->
+  doLogin(PLATFORM.YY, @app, msg, session, 'yy', next)
+
+Handler::login91 = (msg, session, next) ->
+  doLogin(PLATFORM['91'], @app, msg, session, '91', next)
+
+doLogin  = (type, app, msg, session, platform, next) ->
   areaId = msg.areaId
   user = null
   player = null
   uid = null
+
+  if _.isUndefined(areaId) or _.isNull(areaId)
+    return next(null, {code: 501, msg: '请选择一个区登陆'})
+
   async.waterfall [
     (cb) ->
       checkIsOpenServer app, cb
@@ -67,9 +98,9 @@ doLogin  = (type, app, msg, session, platform, next) ->
       checkVersion(app, msg, platform, cb)
 
     (cb) =>
-      [args, method] = authParams(type, msg, app)
+      args = authParams(type, msg, app)
       args.sid = session.id
-      app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
+      app.rpc.auth.authRemote.authorize session, args, type, (err, u, isValid) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -80,23 +111,21 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (u, cb) =>
       user = u
       # check whether has create player in the login area
-      if _.contains user.roles, areaId
-        app.rpc.area.playerRemote.getPlayerByUserId session, {
-          areaId: areaId,
-          userId: user.id, 
-          serverId: app.getServerId()
-        }, (err, res) ->
-          if err
-            logger.error 'fail to get player by user id', err
-          player = res
-          cb()
-      else
+      app.rpc.area.playerRemote.getPlayerByUserId session, {
+        areaId: areaId,
+        userId: user.id, 
+        serverId: app.getServerId()
+      }, (err, res) ->
+        if err
+          logger.warn 'fail to get player by user id', err
+        player = res
         cb()
 
     (cb) =>
       uid = user.id + '*' + areaId
       session.set('areaId', areaId)
       session.set('userId', user.id)
+      session.set('platform', platform)
       session.bind(uid, cb)
     (cb) =>
       if player?
@@ -106,12 +135,12 @@ doLogin  = (type, app, msg, session, platform, next) ->
       session.pushAll cb
   ], (err) ->
     if err
-      logger.error 'fail to login: ', err, err.stack
+      appUtil.errHandler(err)
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
     ### 只有每个帐号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
     if user?.roles.length > 1 or player?.teachingStep >= 17
-      delete player.teachingStep
+      delete player.teachingStep if player?
 
     next(null, {code: 200, msg: {user: user, player: player}})
 
@@ -120,19 +149,22 @@ onUserLeave = (app, session, reason) ->
     return
   app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
-      logger.error 'user leave error' + err
+      appUtil.errHandler(err)
 
 authParams = (type, msg, app) ->
   keyMap = 
-    app: keys: ['account', 'password', 'areaId'], method: 'auth'
-    tongbu: keys: ['nickName', 'userId', 'sessionId', 'areaId'], method: 'checkSession'
+    AppStore: ['account', 'password', 'areaId']
+    TB: ['nickName', 'userId', 'sessionId', 'areaId']
+    PP: ['token', 'areaId']
+    YY: ['signid', 'account', 'time', 'appid', 'serverid', 'areaId', 'userName']
+    S91: ['sessionid', 'uin', 'appid', 'areaId']
   
   args  = {}
-  for k in keyMap[type]?.keys
+  for k in keyMap[type]
     args[k] = msg[k] if msg[k]?
 
   args.frontendId = app.getServerId()
-  [args, keyMap[type]?.method]
+  args
 
 getVersionData = (app, platform) ->
   if not platform
@@ -163,6 +195,9 @@ versionCompare = (stra, strb) ->
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
   vData = getVersionData(app, platform)
+  if not vData
+    return cb({501, msg: "找不到#{platform}的版本信息"})
+
   if versionCompare(version, vData.version) >= 0
     cb()
   else
@@ -190,10 +225,9 @@ getUpdateSize = (version, vData, cb) ->
     filename = vData.lastFilename
 
   key = vData.version+filename
-  console.log update_file_size
+
   if update_file_size[key]
     return cb({code: 600, msg: "您的版本需要更新(#{update_file_size[key]})"})
-  console.log update_file_size  
 
   request.get versionHandler.make_bucket_get_url('GET', 'magpie', filename), (err, res) ->
     try

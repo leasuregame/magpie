@@ -1,5 +1,9 @@
 extends adminLayout
 
+block head
+  script.
+    var whiteList = '#{whiteList}';
+
 block content
   div(id='editor') #{areas}
   div(class='row', style="margin-top: 20px")

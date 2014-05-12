@@ -7,6 +7,7 @@ path = require 'path'
 util = require 'util'
 versionHandler = require '../../../../../shared/version_helper'
 request = require 'request'
+appUtil = require '../../../util/appUtil'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -134,7 +135,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       session.pushAll cb
   ], (err) ->
     if err
-      logger.warn 'fail to login: ', err, err.stack
+      appUtil.errHandler(err)
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
     ### 只有每个帐号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
@@ -148,7 +149,7 @@ onUserLeave = (app, session, reason) ->
     return
   app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
-      logger.warn 'user leave error' + err
+      appUtil.errHandler(err)
 
 authParams = (type, msg, app) ->
   keyMap = 

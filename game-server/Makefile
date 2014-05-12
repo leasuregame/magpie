@@ -83,7 +83,6 @@ restartserver: build
 
 newdb:
 	sh ./bin/initMysql.sh yy_db_area_1
-	sh ./bin/initMysql.sh yy_db_area_2
 
 inittables: 
 	mysql -uroot -p1easure114E -e "drop database if exists $(db);create database $(db);use $(db);source ./config/schema/init.sql;GRANT ALL PRIVILEGES ON $(db).* to dev@localhost IDENTIFIED BY '1';" 

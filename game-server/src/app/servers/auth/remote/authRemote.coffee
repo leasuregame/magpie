@@ -105,7 +105,7 @@ class Authorize
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
       if err
-        logger.error(err)
+        logger.error('tb login error:', err)
         return cb(err)
 
       cb(null, user?.toJson())
@@ -144,7 +144,7 @@ class Authorize
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
       if err
-        logger.error(err)
+        logger.error('pp login error: ', err)
         return cb(err)
       cb(null, user?.toJson())
 

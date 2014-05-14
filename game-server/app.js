@@ -113,7 +113,7 @@ app.configure('production|development', 'area', function() {
   areaUtil.checkFlagFile(app);
   
   app.before(cdFilter());
-  app.before(sensitiveWordFilter());
+  // app.before(sensitiveWordFilter());
 
   appUtil.loadDatabaseInfo(app, 'areadb');
   appUtil.loadShareDatabaseInfo(app);
@@ -145,5 +145,5 @@ app.configure('production|development', 'notice', function() {
 app.start();
 
 process.on('uncaughtException', function(err) {
-  console.error(' Caught exception: ' + err.stack);
+  console.error(' Uncaught exception: ' + err.stack);
 });

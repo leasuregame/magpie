@@ -257,7 +257,8 @@ var Player = (function(_super) {
         'honor',
         'superHonor',
         'cd',
-        'plan'
+        'plan',
+        'useCardCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -385,7 +386,18 @@ var Player = (function(_super) {
         plan: {
             buy: false,
             flag: 0
+        },
+        useCardCount: {
+            star4: 10,
+            star5: 1,
+            star6: 3
         }
+    };
+
+    Player.prototype.updateUseCardCoun = function(star, val) {
+        var ucc = utility.deepCopy(this.useCardCount);
+        ucc['star'+star] = val;
+        this.useCardCount = ucc;
     };
 
     Player.prototype.canGetTurnReward = function() {
@@ -477,7 +489,7 @@ var Player = (function(_super) {
                 count: 0,
                 got: false
             },
-            vipReward: 0
+            vipReward: 0 // vip登陆奖励是否已领取标记 1：已领取 0：未领取
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -510,7 +522,8 @@ var Player = (function(_super) {
             pass: this.pass,
             task: this.task,
             spiritPool: this.spiritPool,
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+            goldCards: this.getGoldCard()
         };
     };
 
@@ -1102,6 +1115,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.clearMysticalPass = function() {
+        if (this.pass.mystical.diff == 5) {
+            return;
+        }
+
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
         pass.mystical.diff += 1;
@@ -1318,7 +1335,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        var lr = utility.deepCopy(this.levelRewardMark.value);
+
+        var lr = _.clone(this.levelRewardMark.value);
         this.set('levelReward', lr);
     };
 

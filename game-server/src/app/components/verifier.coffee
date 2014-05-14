@@ -249,6 +249,7 @@ successMsg = (app, player, isFirstRechage) ->
       goldCards: player.getGoldCard(),
       recharge: player.firstTime.recharge or 0,
       firstRechargeBox: 1 if isFirstRechage
+      vipLoginReward: !player.dailyGift.vipReward if player.isVip()
     }
   }, (err, res) ->
     if err

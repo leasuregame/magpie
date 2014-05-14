@@ -1,12 +1,10 @@
 var nameChanged = {
-	"achievement": "成就配置表",
-	"成就配置表": "achievement",
-	"boss_find_rate": "BOSS出现概率",
-	"BOSS出现概率": "boss_find_rate",
-	"boss_type_rate": "BOSS类型配置表",
-	"BOSS类型配置表": "boss_type_rate",
 	"boss": "BOSS属性配置表",
 	"BOSS属性配置表": "boss",
+	"boss_type_rate": "BOSS类型配置表",
+	"BOSS类型配置表": "boss_type_rate",
+	"boss_find_rate": "BOSS出现概率",
+	"BOSS出现概率": "boss_find_rate",
 	"boss_card": "Boss怪物卡牌配置表",
 	"Boss怪物卡牌配置表": "boss_card",
 	"boss_rank_reward": "伤害排行榜奖励配置表",
@@ -25,6 +23,8 @@ var nameChanged = {
 	"卡牌新旧配置表ID对应关系表": "new_card_id_map",
 	"star_upgrade": "卡牌进阶配置表",
 	"卡牌进阶配置表": "star_upgrade",
+	"achievement": "成就配置表",
+	"成就配置表": "achievement",
 	"login_count_reward": "开服累计登陆奖励配置表",
 	"开服累计登陆奖励配置表": "login_count_reward",
 	"new_year_rechage": "新年充值奖励",
@@ -81,14 +81,6 @@ var nameChanged = {
 	"排名奖励": "ranking_reward",
 	"ranking_reward_factor": "竞技排名奖励加成系数",
 	"竞技排名奖励加成系数": "ranking_reward_factor",
-	"product": "道具配置表",
-	"道具配置表": "product",
-	"passFailSpiritSpeak": "爬塔失败喊话配置表",
-	"爬塔失败喊话配置表": "passFailSpiritSpeak",
-	"passWinSpiritSpeak": "爬塔胜利喊话配置表",
-	"爬塔胜利喊话配置表": "passWinSpiritSpeak",
-	"spiritSpeak": "精灵喊话配置表",
-	"精灵喊话配置表": "spiritSpeak",
 	"scope": "卡牌范围表",
 	"卡牌范围表": "scope",
 	"skill_type": "技能类型表",
@@ -97,6 +89,14 @@ var nameChanged = {
 	"卡牌技能升级表": "skill_upgrade",
 	"skills": "技能配置表",
 	"技能配置表": "skills",
+	"product": "道具配置表",
+	"道具配置表": "product",
+	"passFailSpiritSpeak": "爬塔失败喊话配置表",
+	"爬塔失败喊话配置表": "passFailSpiritSpeak",
+	"passWinSpiritSpeak": "爬塔胜利喊话配置表",
+	"爬塔胜利喊话配置表": "passWinSpiritSpeak",
+	"spiritSpeak": "精灵喊话配置表",
+	"精灵喊话配置表": "spiritSpeak",
 	"spirit": "元神配置表",
 	"元神配置表": "spirit",
 	"spirit_pool": "灵气池配置表",
@@ -147,674 +147,64 @@ var nameChanged = {
 	"任务奖励表": "task"
 };
 var outputTables = {
-	"achievement": {
+	"boss": {
 		"colComment": {},
 		"rows": {
 			"1": {
 				"id": 1,
-				"method": "levelTo",
-				"need": 50,
-				"name": "升级达人",
-				"desc": "角色等级达到50级",
-				"gold": 50,
-				"energy": 100
+				"name": "九阴罗刹",
+				"type": 1,
+				"boss_id": 40000,
+				"card_ids": "40003#40000#40003",
+				"formation": "2:40000,4:40003,6:40003",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
 			},
 			"2": {
 				"id": 2,
-				"method": "levelTo",
-				"need": 90,
-				"name": "疯狂升级",
-				"desc": "角色等级达到90级",
-				"gold": 100,
-				"energy": 1000
+				"name": "赤炎星君",
+				"type": 2,
+				"boss_id": 40001,
+				"card_ids": "40004#40001#40004",
+				"formation": "2:40001,4:40004,6:40004",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
 			},
 			"3": {
 				"id": 3,
-				"method": "passTo",
-				"need": 50,
-				"name": "一半！",
-				"desc": "天道闯过50层",
-				"gold": 50,
-				"energy": 100
-			},
-			"4": {
-				"id": 4,
-				"method": "passTo",
-				"need": 100,
-				"name": "通关！",
-				"desc": "天道闯过100层",
-				"gold": 200,
-				"energy": 1000
-			},
-			"5": {
-				"id": 5,
-				"method": "winCount",
-				"need": 50,
-				"name": "小试牛刀",
-				"desc": "竞技获胜次数达到50场",
-				"gold": 50,
-				"energy": 100
-			},
-			"6": {
-				"id": 6,
-				"method": "winCount",
-				"need": 5000,
-				"name": "已经超神了",
-				"desc": "竞技获胜次数达到5000场",
-				"gold": 100,
-				"energy": 1000
-			},
-			"7": {
-				"id": 7,
-				"method": "winningStreak",
-				"need": 50,
-				"name": "所向披靡",
-				"desc": "竞技最高连胜达到50次",
-				"gold": 100,
-				"energy": 1000
-			},
-			"8": {
-				"id": 8,
-				"method": "rankingToOne",
-				"need": 1,
-				"name": "寂寞",
-				"desc": "竞技排名达到第1",
-				"gold": 100,
-				"energy": 1000
-			},
-			"9": {
-				"id": 9,
-				"method": "v587",
-				"need": 1,
-				"name": "霸气外射！",
-				"desc": "竞技场中以1敌5，战胜对方",
-				"gold": 50,
-				"energy": 500
-			},
-			"10": {
-				"id": 10,
-				"method": "friends",
-				"need": 20,
-				"name": "我们约会吧",
-				"desc": "拥有20个好友",
-				"gold": 50,
-				"energy": 500
-			},
-			"11": {
-				"id": 11,
-				"method": "gaveBless",
-				"need": 500,
-				"name": "无私奉献",
-				"desc": "为好友送出祝福达到500次",
-				"gold": 50,
-				"energy": 500
-			},
-			"12": {
-				"id": 12,
-				"method": "receivedBless",
-				"need": 100,
-				"name": "爱是相互的",
-				"desc": "收到好友祝福次数达到100次",
-				"gold": 300,
-				"energy": 2000
-			},
-			"13": {
-				"id": 13,
-				"method": "star5card",
-				"need": 1,
-				"name": "质的飞跃",
-				"desc": "获得1张5星卡",
-				"gold": 50,
-				"energy": 100
-			},
-			"14": {
-				"id": 14,
-				"method": "star5cardFullLevel",
-				"need": 1,
-				"name": "这就是实力",
-				"desc": "将1张5星卡强化到满级",
-				"gold": 50,
-				"energy": 500
-			},
-			"15": {
-				"id": 15,
-				"method": "star5card",
-				"need": 5,
-				"name": "你就是神！",
-				"desc": "获得5张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"16": {
-				"id": 16,
-				"method": "psTo10",
-				"need": 1,
-				"name": "但求最好",
-				"desc": "拥有1个10%的被动属性",
-				"gold": 100,
-				"energy": 100
-			},
-			"17": {
-				"id": 17,
-				"method": "elixirTo",
-				"need": 10000000,
-				"name": "一大波仙丹",
-				"desc": "累计获得1000万仙丹",
-				"gold": 50,
-				"energy": 500
-			},
-			"18": {
-				"id": 18,
-				"method": "energyTo",
-				"need": 10000000,
-				"name": "活力无限",
-				"desc": "累计获得1000万活力点",
-				"gold": 100,
-				"energy": 1000
-			},
-			"19": {
-				"id": 19,
-				"method": "luckyCardCount",
-				"need": 99999,
-				"name": "抽卡狂魔",
-				"desc": "抽卡总次数达到99999",
-				"gold": 100,
-				"energy": 500
-			},
-			"20": {
-				"id": 20,
-				"method": "highLuckyCardCount",
-				"need": 88888,
-				"name": "钱就是个屁",
-				"desc": "高级抽卡总次数达到88888",
-				"gold": 100,
-				"energy": 1000
-			},
-			"21": {
-				"id": 21,
-				"method": "soLucky",
-				"need": 1,
-				"name": "买彩票去吧",
-				"desc": "用1张素材卡成功进阶该卡牌",
-				"gold": 100,
-				"energy": 500
-			},
-			"22": {
-				"id": 22,
-				"method": "powerConsume",
-				"need": 10000000,
-				"name": "孜孜不倦",
-				"desc": "累计消耗体力1000万",
-				"gold": 100,
-				"energy": 500
-			},
-			"24": {
-				"id": 24,
-				"method": "moneyConsume",
-				"need": 90000000,
-				"name": "不差钱",
-				"desc": "累计消耗仙币9000万",
-				"gold": 100,
-				"energy": 500
-			},
-			"25": {
-				"id": 25,
-				"method": "goldConsume",
-				"need": 10000000,
-				"name": "挥金如土",
-				"desc": "累计消耗魔石1000万",
-				"gold": 100,
-				"energy": 500
-			},
-			"26": {
-				"id": 26,
-				"method": "taskPoinTo",
-				"need": 10,
-				"name": "十步之遥",
-				"desc": "修炼里探索总进度达到10",
-				"gold": 20,
-				"energy": 500
-			},
-			"27": {
-				"id": 27,
-				"method": "taskChapterPassTo",
-				"need": 1,
-				"name": "鬼门关之旅",
-				"desc": "通关鬼门关",
-				"gold": 20,
-				"energy": 500
-			},
-			"28": {
-				"id": 28,
-				"method": "passFirstWin",
-				"need": 1,
-				"name": "天道首胜",
-				"desc": "在天道中获得第一场胜利",
-				"gold": 20,
-				"energy": 500
-			},
-			"29": {
-				"id": 29,
-				"method": "taskPartPassTo",
-				"need": 1,
-				"name": "苦寒地狱",
-				"desc": "通关苦寒地狱篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"30": {
-				"id": 30,
-				"method": "taskPartPassTo",
-				"need": 2,
-				"name": "凄凉人间",
-				"desc": "通关凄凉人间篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"31": {
-				"id": 31,
-				"method": "taskPartPassTo",
-				"need": 3,
-				"name": "南天之门",
-				"desc": "通关南天之门篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"32": {
-				"id": 32,
-				"method": "taskPartPassTo",
-				"need": 4,
-				"name": "西天取经",
-				"desc": "通关西天取经篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"33": {
-				"id": 33,
-				"method": "taskPartPassTo",
-				"need": 5,
-				"name": "莲花加持",
-				"desc": "通关莲花加持篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"34": {
-				"id": 34,
-				"method": "taskPartPassTo",
-				"need": 6,
-				"name": "千年之修",
-				"desc": "通关千年之修篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"35": {
-				"id": 35,
-				"method": "taskPartPassTo",
-				"need": 7,
-				"name": "斩妖除魔",
-				"desc": "通关斩妖除魔篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"36": {
-				"id": 36,
-				"method": "taskPartPassTo",
-				"need": 8,
-				"name": "降龙伏虎",
-				"desc": "通关降龙伏虎篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"37": {
-				"id": 37,
-				"method": "taskPartPassTo",
-				"need": 9,
-				"name": "普度众生",
-				"desc": "通关普度众生篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"38": {
-				"id": 38,
-				"method": "taskPartPassTo",
-				"need": 10,
-				"name": "尊者之身",
-				"desc": "通关尊者之身篇章",
-				"gold": 20,
-				"energy": 500
-			},
-			"39": {
-				"id": 39,
-				"method": "vipTo",
-				"need": 1,
-				"name": "尊者VIP1",
-				"desc": "成为VIP1玩家",
-				"gold": 50,
-				"energy": 500
-			},
-			"40": {
-				"id": 40,
-				"method": "vipTo",
-				"need": 2,
-				"name": "尊者VIP2",
-				"desc": "成为VIP2玩家",
-				"gold": 100,
-				"energy": 550
-			},
-			"41": {
-				"id": 41,
-				"method": "vipTo",
-				"need": 3,
-				"name": "尊者VIP3",
-				"desc": "成为VIP3玩家",
-				"gold": 150,
-				"energy": 650
-			},
-			"42": {
-				"id": 42,
-				"method": "vipTo",
-				"need": 4,
-				"name": "尊者VIP4",
-				"desc": "成为VIP4玩家",
-				"gold": 200,
-				"energy": 750
-			},
-			"43": {
-				"id": 43,
-				"method": "vipTo",
-				"need": 5,
-				"name": "尊者VIP5",
-				"desc": "成为VIP5玩家",
-				"gold": 250,
-				"energy": 850
-			},
-			"44": {
-				"id": 44,
-				"method": "vipTo",
-				"need": 6,
-				"name": "尊者VIP6",
-				"desc": "成为VIP6玩家",
-				"gold": 300,
-				"energy": 950
-			},
-			"45": {
-				"id": 45,
-				"method": "vipTo",
-				"need": 7,
-				"name": "尊者VIP7",
-				"desc": "成为VIP7玩家",
-				"gold": 350,
-				"energy": 1050
-			},
-			"46": {
-				"id": 46,
-				"method": "vipTo",
-				"need": 8,
-				"name": "尊者VIP8",
-				"desc": "成为VIP8玩家",
-				"gold": 400,
-				"energy": 1150
-			},
-			"47": {
-				"id": 47,
-				"method": "vipTo",
-				"need": 9,
-				"name": "尊者VIP9",
-				"desc": "成为VIP9玩家",
-				"gold": 450,
-				"energy": 1250
-			},
-			"48": {
-				"id": 48,
-				"method": "vipTo",
-				"need": 10,
-				"name": "尊者VIP10",
-				"desc": "成为VIP10玩家",
-				"gold": 500,
-				"energy": 1350
-			},
-			"49": {
-				"id": 49,
-				"method": "vipTo",
-				"need": 11,
-				"name": "尊者VIP11",
-				"desc": "成为VIP11玩家",
-				"gold": 550,
-				"energy": 1450
-			},
-			"50": {
-				"id": 50,
-				"method": "vipTo",
-				"need": 12,
-				"name": "尊者VIP12",
-				"desc": "成为VIP12玩家",
-				"gold": 600,
-				"energy": 5000
-			},
-			"51": {
-				"id": 51,
-				"method": "passPhaseTo",
-				"need": 1,
-				"name": "降魔大王",
-				"desc": "通关天道里第1阶魔道",
-				"gold": 50,
-				"energy": 500
-			},
-			"52": {
-				"id": 52,
-				"method": "passPhaseTo",
-				"need": 2,
-				"name": "降魔使者",
-				"desc": "通关天道里第2阶魔道",
-				"gold": 100,
-				"energy": 1000
-			},
-			"53": {
-				"id": 53,
-				"method": "passPhaseTo",
-				"need": 3,
-				"name": "降魔罗汉",
-				"desc": "通关天道里第3阶魔道",
-				"gold": 150,
-				"energy": 1500
-			},
-			"54": {
-				"id": 54,
-				"method": "passPhaseTo",
-				"need": 4,
-				"name": "降魔神君",
-				"desc": "通关天道里第4阶魔道",
-				"gold": 200,
-				"energy": 2000
-			},
-			"55": {
-				"id": 55,
-				"method": "passPhaseTo",
-				"need": 5,
-				"name": "降魔圣者",
-				"desc": "通关天道里第5阶魔道",
-				"gold": 250,
-				"energy": 2500
-			},
-			"56": {
-				"id": 56,
-				"method": "star5card",
-				"need": 2,
-				"name": "进一步飞跃",
-				"desc": "获得2张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"57": {
-				"id": 57,
-				"method": "star5card",
-				"need": 3,
-				"name": "继续飞跃",
-				"desc": "获得3张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"58": {
-				"id": 58,
-				"method": "star5card",
-				"need": 4,
-				"name": "飞跃中",
-				"desc": "获得4张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"59": {
-				"id": 59,
-				"method": "star5card",
-				"need": 6,
-				"name": "疯狂！",
-				"desc": "获得6张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"60": {
-				"id": 60,
-				"method": "star5card",
-				"need": 7,
-				"name": "无下限",
-				"desc": "获得7张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"61": {
-				"id": 61,
-				"method": "star5card",
-				"need": 8,
-				"name": "不求回报",
-				"desc": "获得8张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"62": {
-				"id": 62,
-				"method": "star5card",
-				"need": 9,
-				"name": "九九归一",
-				"desc": "获得9张5星卡",
-				"gold": 100,
-				"energy": 1000
-			},
-			"63": {
-				"id": 63,
-				"method": "star5card",
-				"need": 10,
-				"name": "十全十美",
-				"desc": "获得10张5星卡",
-				"gold": 800,
-				"energy": 5000
-			},
-			"64": {
-				"id": 64,
-				"method": "star6card",
-				"need": 1,
-				"name": "6星之旅",
-				"desc": "获得1张6星卡",
-				"gold": 200,
-				"energy": 2000
-			},
-			"65": {
-				"id": 65,
-				"method": "star6card",
-				"need": 2,
-				"name": "更高品质",
-				"desc": "获得2张6星卡",
-				"gold": 200,
-				"energy": 2000
-			},
-			"66": {
-				"id": 66,
-				"method": "star6card",
-				"need": 3,
-				"name": "与众不同",
-				"desc": "获得3张6星卡",
-				"gold": 200,
-				"energy": 2000
-			},
-			"67": {
-				"id": 67,
-				"method": "star6card",
-				"need": 4,
-				"name": "4张了哟",
-				"desc": "获得4张6星卡",
-				"gold": 200,
-				"energy": 2000
-			},
-			"68": {
-				"id": 68,
-				"method": "star6card",
-				"need": 5,
-				"name": "挑战极限",
-				"desc": "获得5张6星卡",
-				"gold": 1000,
-				"energy": 5000
-			},
-			"69": {
-				"id": 69,
-				"method": "star7card",
-				"need": 1,
-				"name": "7星之旅",
-				"desc": "获得1张7星卡",
-				"gold": 300,
-				"energy": 3000
-			},
-			"70": {
-				"id": 70,
-				"method": "star7card",
-				"need": 2,
-				"name": "高富帅",
-				"desc": "获得2张7星卡",
-				"gold": 300,
-				"energy": 3000
-			},
-			"71": {
-				"id": 71,
-				"method": "star7card",
-				"need": 3,
-				"name": "三围暴涨",
-				"desc": "获得3张7星卡",
-				"gold": 300,
-				"energy": 3000
-			},
-			"72": {
-				"id": 72,
-				"method": "star7card",
-				"need": 4,
-				"name": "说不出的猛",
-				"desc": "获得4张7星卡",
-				"gold": 300,
-				"energy": 3000
-			},
-			"73": {
-				"id": 73,
-				"method": "star7card",
-				"need": 5,
-				"name": "羡慕嫉妒恨",
-				"desc": "获得5张七星卡",
-				"gold": 2000,
-				"energy": 10000
-			},
-			"74": {
-				"id": 74,
-				"method": "star6cardFullLevel",
-				"need": 1,
-				"name": "6星的力量",
-				"desc": "将1张6星卡强化到满级",
-				"gold": 300,
-				"energy": 5000
-			},
-			"75": {
-				"id": 75,
-				"method": "star7cardFullLevel",
-				"need": 1,
-				"name": "7星的力量",
-				"desc": "将1张7星卡强化到满级",
-				"gold": 500,
-				"energy": 5000
+				"name": "金身冥王",
+				"type": 3,
+				"boss_id": 40002,
+				"card_ids": "40005#40002#40005",
+				"formation": "2:40002,4:40005,6:40005",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
+			}
+		}
+	},
+	"boss_type_rate": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"rate": 55,
+				"name": "蓝卡",
+				"reward_inc": 0
+			},
+			"2": {
+				"id": 2,
+				"rate": 30,
+				"name": "紫卡",
+				"reward_inc": 50
+			},
+			"3": {
+				"id": 3,
+				"rate": 15,
+				"name": "金卡",
+				"reward_inc": 150
 			}
 		}
 	},
@@ -900,67 +290,6 @@ var outputTables = {
 			"20": {
 				"id": 20,
 				"rate": 100
-			}
-		}
-	},
-	"boss_type_rate": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"rate": 55,
-				"name": "蓝卡",
-				"reward_inc": 0
-			},
-			"2": {
-				"id": 2,
-				"rate": 30,
-				"name": "紫卡",
-				"reward_inc": 50
-			},
-			"3": {
-				"id": 3,
-				"rate": 15,
-				"name": "金卡",
-				"reward_inc": 150
-			}
-		}
-	},
-	"boss": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"name": "九阴罗刹",
-				"type": 1,
-				"boss_id": 40000,
-				"card_ids": "40003#40000#40003",
-				"formation": "2:40000,4:40003,6:40003",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			},
-			"2": {
-				"id": 2,
-				"name": "赤炎星君",
-				"type": 2,
-				"boss_id": 40001,
-				"card_ids": "40004#40001#40004",
-				"formation": "2:40001,4:40004,6:40004",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			},
-			"3": {
-				"id": 3,
-				"name": "金身冥王",
-				"type": 3,
-				"boss_id": 40002,
-				"card_ids": "40005#40002#40005",
-				"formation": "2:40002,4:40005,6:40005",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
 			}
 		}
 	},
@@ -12659,6 +11988,677 @@ var outputTables = {
 				"max_num": 7,
 				"no_work_count": 3,
 				"super_honor": 40
+			}
+		}
+	},
+	"achievement": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"method": "levelTo",
+				"need": 50,
+				"name": "升级达人",
+				"desc": "角色等级达到50级",
+				"gold": 50,
+				"energy": 100
+			},
+			"2": {
+				"id": 2,
+				"method": "levelTo",
+				"need": 90,
+				"name": "疯狂升级",
+				"desc": "角色等级达到90级",
+				"gold": 100,
+				"energy": 1000
+			},
+			"3": {
+				"id": 3,
+				"method": "passTo",
+				"need": 50,
+				"name": "一半！",
+				"desc": "天道闯过50层",
+				"gold": 50,
+				"energy": 100
+			},
+			"4": {
+				"id": 4,
+				"method": "passTo",
+				"need": 100,
+				"name": "通关！",
+				"desc": "天道闯过100层",
+				"gold": 200,
+				"energy": 1000
+			},
+			"5": {
+				"id": 5,
+				"method": "winCount",
+				"need": 50,
+				"name": "小试牛刀",
+				"desc": "竞技获胜次数达到50场",
+				"gold": 50,
+				"energy": 100
+			},
+			"6": {
+				"id": 6,
+				"method": "winCount",
+				"need": 5000,
+				"name": "已经超神了",
+				"desc": "竞技获胜次数达到5000场",
+				"gold": 100,
+				"energy": 1000
+			},
+			"7": {
+				"id": 7,
+				"method": "winningStreak",
+				"need": 50,
+				"name": "所向披靡",
+				"desc": "竞技最高连胜达到50次",
+				"gold": 100,
+				"energy": 1000
+			},
+			"8": {
+				"id": 8,
+				"method": "rankingToOne",
+				"need": 1,
+				"name": "寂寞",
+				"desc": "竞技排名达到第1",
+				"gold": 100,
+				"energy": 1000
+			},
+			"9": {
+				"id": 9,
+				"method": "v587",
+				"need": 1,
+				"name": "霸气外射！",
+				"desc": "竞技场中以1敌5，战胜对方",
+				"gold": 50,
+				"energy": 500
+			},
+			"10": {
+				"id": 10,
+				"method": "friends",
+				"need": 20,
+				"name": "我们约会吧",
+				"desc": "拥有20个好友",
+				"gold": 50,
+				"energy": 500
+			},
+			"11": {
+				"id": 11,
+				"method": "gaveBless",
+				"need": 500,
+				"name": "无私奉献",
+				"desc": "为好友送出祝福达到500次",
+				"gold": 50,
+				"energy": 500
+			},
+			"12": {
+				"id": 12,
+				"method": "receivedBless",
+				"need": 100,
+				"name": "爱是相互的",
+				"desc": "收到好友祝福次数达到100次",
+				"gold": 300,
+				"energy": 2000
+			},
+			"13": {
+				"id": 13,
+				"method": "star5card",
+				"need": 1,
+				"name": "质的飞跃",
+				"desc": "获得1张5星卡",
+				"gold": 50,
+				"energy": 100
+			},
+			"14": {
+				"id": 14,
+				"method": "star5cardFullLevel",
+				"need": 1,
+				"name": "这就是实力",
+				"desc": "将1张5星卡强化到满级",
+				"gold": 50,
+				"energy": 500
+			},
+			"15": {
+				"id": 15,
+				"method": "star5card",
+				"need": 5,
+				"name": "你就是神！",
+				"desc": "获得5张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"16": {
+				"id": 16,
+				"method": "psTo10",
+				"need": 1,
+				"name": "但求最好",
+				"desc": "拥有1个10%的被动属性",
+				"gold": 100,
+				"energy": 100
+			},
+			"17": {
+				"id": 17,
+				"method": "elixirTo",
+				"need": 10000000,
+				"name": "一大波仙丹",
+				"desc": "累计获得1000万仙丹",
+				"gold": 50,
+				"energy": 500
+			},
+			"18": {
+				"id": 18,
+				"method": "energyTo",
+				"need": 10000000,
+				"name": "活力无限",
+				"desc": "累计获得1000万活力点",
+				"gold": 100,
+				"energy": 1000
+			},
+			"19": {
+				"id": 19,
+				"method": "luckyCardCount",
+				"need": 99999,
+				"name": "抽卡狂魔",
+				"desc": "抽卡总次数达到99999",
+				"gold": 100,
+				"energy": 500
+			},
+			"20": {
+				"id": 20,
+				"method": "highLuckyCardCount",
+				"need": 88888,
+				"name": "钱就是个屁",
+				"desc": "高级抽卡总次数达到88888",
+				"gold": 100,
+				"energy": 1000
+			},
+			"21": {
+				"id": 21,
+				"method": "soLucky",
+				"need": 1,
+				"name": "买彩票去吧",
+				"desc": "用1张素材卡成功进阶该卡牌",
+				"gold": 100,
+				"energy": 500
+			},
+			"22": {
+				"id": 22,
+				"method": "powerConsume",
+				"need": 10000000,
+				"name": "孜孜不倦",
+				"desc": "累计消耗体力1000万",
+				"gold": 100,
+				"energy": 500
+			},
+			"24": {
+				"id": 24,
+				"method": "moneyConsume",
+				"need": 90000000,
+				"name": "不差钱",
+				"desc": "累计消耗仙币9000万",
+				"gold": 100,
+				"energy": 500
+			},
+			"25": {
+				"id": 25,
+				"method": "goldConsume",
+				"need": 10000000,
+				"name": "挥金如土",
+				"desc": "累计消耗魔石1000万",
+				"gold": 100,
+				"energy": 500
+			},
+			"26": {
+				"id": 26,
+				"method": "taskPoinTo",
+				"need": 10,
+				"name": "十步之遥",
+				"desc": "修炼里探索总进度达到10",
+				"gold": 20,
+				"energy": 500
+			},
+			"27": {
+				"id": 27,
+				"method": "taskChapterPassTo",
+				"need": 1,
+				"name": "鬼门关之旅",
+				"desc": "通关鬼门关",
+				"gold": 20,
+				"energy": 500
+			},
+			"28": {
+				"id": 28,
+				"method": "passFirstWin",
+				"need": 1,
+				"name": "天道首胜",
+				"desc": "在天道中获得第一场胜利",
+				"gold": 20,
+				"energy": 500
+			},
+			"29": {
+				"id": 29,
+				"method": "taskPartPassTo",
+				"need": 1,
+				"name": "苦寒地狱",
+				"desc": "通关苦寒地狱篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"30": {
+				"id": 30,
+				"method": "taskPartPassTo",
+				"need": 2,
+				"name": "凄凉人间",
+				"desc": "通关凄凉人间篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"31": {
+				"id": 31,
+				"method": "taskPartPassTo",
+				"need": 3,
+				"name": "南天之门",
+				"desc": "通关南天之门篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"32": {
+				"id": 32,
+				"method": "taskPartPassTo",
+				"need": 4,
+				"name": "西天取经",
+				"desc": "通关西天取经篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"33": {
+				"id": 33,
+				"method": "taskPartPassTo",
+				"need": 5,
+				"name": "莲花加持",
+				"desc": "通关莲花加持篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"34": {
+				"id": 34,
+				"method": "taskPartPassTo",
+				"need": 6,
+				"name": "千年之修",
+				"desc": "通关千年之修篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"35": {
+				"id": 35,
+				"method": "taskPartPassTo",
+				"need": 7,
+				"name": "斩妖除魔",
+				"desc": "通关斩妖除魔篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"36": {
+				"id": 36,
+				"method": "taskPartPassTo",
+				"need": 8,
+				"name": "降龙伏虎",
+				"desc": "通关降龙伏虎篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"37": {
+				"id": 37,
+				"method": "taskPartPassTo",
+				"need": 9,
+				"name": "普度众生",
+				"desc": "通关普度众生篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"38": {
+				"id": 38,
+				"method": "taskPartPassTo",
+				"need": 10,
+				"name": "尊者之身",
+				"desc": "通关尊者之身篇章",
+				"gold": 20,
+				"energy": 500
+			},
+			"39": {
+				"id": 39,
+				"method": "vipTo",
+				"need": 1,
+				"name": "尊者VIP1",
+				"desc": "成为VIP1玩家",
+				"gold": 50,
+				"energy": 500
+			},
+			"40": {
+				"id": 40,
+				"method": "vipTo",
+				"need": 2,
+				"name": "尊者VIP2",
+				"desc": "成为VIP2玩家",
+				"gold": 100,
+				"energy": 550
+			},
+			"41": {
+				"id": 41,
+				"method": "vipTo",
+				"need": 3,
+				"name": "尊者VIP3",
+				"desc": "成为VIP3玩家",
+				"gold": 150,
+				"energy": 650
+			},
+			"42": {
+				"id": 42,
+				"method": "vipTo",
+				"need": 4,
+				"name": "尊者VIP4",
+				"desc": "成为VIP4玩家",
+				"gold": 200,
+				"energy": 750
+			},
+			"43": {
+				"id": 43,
+				"method": "vipTo",
+				"need": 5,
+				"name": "尊者VIP5",
+				"desc": "成为VIP5玩家",
+				"gold": 250,
+				"energy": 850
+			},
+			"44": {
+				"id": 44,
+				"method": "vipTo",
+				"need": 6,
+				"name": "尊者VIP6",
+				"desc": "成为VIP6玩家",
+				"gold": 300,
+				"energy": 950
+			},
+			"45": {
+				"id": 45,
+				"method": "vipTo",
+				"need": 7,
+				"name": "尊者VIP7",
+				"desc": "成为VIP7玩家",
+				"gold": 350,
+				"energy": 1050
+			},
+			"46": {
+				"id": 46,
+				"method": "vipTo",
+				"need": 8,
+				"name": "尊者VIP8",
+				"desc": "成为VIP8玩家",
+				"gold": 400,
+				"energy": 1150
+			},
+			"47": {
+				"id": 47,
+				"method": "vipTo",
+				"need": 9,
+				"name": "尊者VIP9",
+				"desc": "成为VIP9玩家",
+				"gold": 450,
+				"energy": 1250
+			},
+			"48": {
+				"id": 48,
+				"method": "vipTo",
+				"need": 10,
+				"name": "尊者VIP10",
+				"desc": "成为VIP10玩家",
+				"gold": 500,
+				"energy": 1350
+			},
+			"49": {
+				"id": 49,
+				"method": "vipTo",
+				"need": 11,
+				"name": "尊者VIP11",
+				"desc": "成为VIP11玩家",
+				"gold": 550,
+				"energy": 1450
+			},
+			"50": {
+				"id": 50,
+				"method": "vipTo",
+				"need": 12,
+				"name": "尊者VIP12",
+				"desc": "成为VIP12玩家",
+				"gold": 600,
+				"energy": 5000
+			},
+			"51": {
+				"id": 51,
+				"method": "passPhaseTo",
+				"need": 1,
+				"name": "降魔大王",
+				"desc": "通关天道里第1阶魔道",
+				"gold": 50,
+				"energy": 500
+			},
+			"52": {
+				"id": 52,
+				"method": "passPhaseTo",
+				"need": 2,
+				"name": "降魔使者",
+				"desc": "通关天道里第2阶魔道",
+				"gold": 100,
+				"energy": 1000
+			},
+			"53": {
+				"id": 53,
+				"method": "passPhaseTo",
+				"need": 3,
+				"name": "降魔罗汉",
+				"desc": "通关天道里第3阶魔道",
+				"gold": 150,
+				"energy": 1500
+			},
+			"54": {
+				"id": 54,
+				"method": "passPhaseTo",
+				"need": 4,
+				"name": "降魔神君",
+				"desc": "通关天道里第4阶魔道",
+				"gold": 200,
+				"energy": 2000
+			},
+			"55": {
+				"id": 55,
+				"method": "passPhaseTo",
+				"need": 5,
+				"name": "降魔圣者",
+				"desc": "通关天道里第5阶魔道",
+				"gold": 250,
+				"energy": 2500
+			},
+			"56": {
+				"id": 56,
+				"method": "star5card",
+				"need": 2,
+				"name": "进一步飞跃",
+				"desc": "获得2张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"57": {
+				"id": 57,
+				"method": "star5card",
+				"need": 3,
+				"name": "继续飞跃",
+				"desc": "获得3张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"58": {
+				"id": 58,
+				"method": "star5card",
+				"need": 4,
+				"name": "飞跃中",
+				"desc": "获得4张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"59": {
+				"id": 59,
+				"method": "star5card",
+				"need": 6,
+				"name": "疯狂！",
+				"desc": "获得6张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"60": {
+				"id": 60,
+				"method": "star5card",
+				"need": 7,
+				"name": "无下限",
+				"desc": "获得7张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"61": {
+				"id": 61,
+				"method": "star5card",
+				"need": 8,
+				"name": "不求回报",
+				"desc": "获得8张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"62": {
+				"id": 62,
+				"method": "star5card",
+				"need": 9,
+				"name": "九九归一",
+				"desc": "获得9张5星卡",
+				"gold": 100,
+				"energy": 1000
+			},
+			"63": {
+				"id": 63,
+				"method": "star5card",
+				"need": 10,
+				"name": "十全十美",
+				"desc": "获得10张5星卡",
+				"gold": 800,
+				"energy": 5000
+			},
+			"64": {
+				"id": 64,
+				"method": "star6card",
+				"need": 1,
+				"name": "6星之旅",
+				"desc": "获得1张6星卡",
+				"gold": 200,
+				"energy": 2000
+			},
+			"65": {
+				"id": 65,
+				"method": "star6card",
+				"need": 2,
+				"name": "更高品质",
+				"desc": "获得2张6星卡",
+				"gold": 200,
+				"energy": 2000
+			},
+			"66": {
+				"id": 66,
+				"method": "star6card",
+				"need": 3,
+				"name": "与众不同",
+				"desc": "获得3张6星卡",
+				"gold": 200,
+				"energy": 2000
+			},
+			"67": {
+				"id": 67,
+				"method": "star6card",
+				"need": 4,
+				"name": "4张了哟",
+				"desc": "获得4张6星卡",
+				"gold": 200,
+				"energy": 2000
+			},
+			"68": {
+				"id": 68,
+				"method": "star6card",
+				"need": 5,
+				"name": "挑战极限",
+				"desc": "获得5张6星卡",
+				"gold": 1000,
+				"energy": 5000
+			},
+			"69": {
+				"id": 69,
+				"method": "star7card",
+				"need": 1,
+				"name": "7星之旅",
+				"desc": "获得1张7星卡",
+				"gold": 300,
+				"energy": 3000
+			},
+			"70": {
+				"id": 70,
+				"method": "star7card",
+				"need": 2,
+				"name": "高富帅",
+				"desc": "获得2张7星卡",
+				"gold": 300,
+				"energy": 3000
+			},
+			"71": {
+				"id": 71,
+				"method": "star7card",
+				"need": 3,
+				"name": "三围暴涨",
+				"desc": "获得3张7星卡",
+				"gold": 300,
+				"energy": 3000
+			},
+			"72": {
+				"id": 72,
+				"method": "star7card",
+				"need": 4,
+				"name": "说不出的猛",
+				"desc": "获得4张7星卡",
+				"gold": 300,
+				"energy": 3000
+			},
+			"73": {
+				"id": 73,
+				"method": "star7card",
+				"need": 5,
+				"name": "羡慕嫉妒恨",
+				"desc": "获得5张七星卡",
+				"gold": 2000,
+				"energy": 10000
+			},
+			"74": {
+				"id": 74,
+				"method": "star6cardFullLevel",
+				"need": 1,
+				"name": "6星的力量",
+				"desc": "将1张6星卡强化到满级",
+				"gold": 300,
+				"energy": 5000
+			},
+			"75": {
+				"id": 75,
+				"method": "star7cardFullLevel",
+				"need": 1,
+				"name": "7星的力量",
+				"desc": "将1张7星卡强化到满级",
+				"gold": 500,
+				"energy": 5000
 			}
 		}
 	},
@@ -29559,354 +29559,6 @@ var outputTables = {
 			}
 		}
 	},
-	"product": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"order": 1,
-				"method": "expCard",
-				"name": "经验元灵",
-				"disc": "经验元灵1张，含1200点卡牌经验。",
-				"consume_type": "money",
-				"consume": 7500,
-				"obtain_type": "card",
-				"obtain": 1,
-				"isVisible": 1
-			},
-			"2": {
-				"id": 2,
-				"order": 2,
-				"method": "power",
-				"name": "体力",
-				"disc": "50点体力。首次购买仅20魔石。",
-				"consume_type": "gold",
-				"consume": 20,
-				"obtain_type": "power",
-				"obtain": 50,
-				"isVisible": 1
-			},
-			"3": {
-				"id": 3,
-				"order": 4,
-				"method": "money",
-				"name": "一小袋仙币",
-				"disc": "15000仙币，额外赠送5000仙币。",
-				"consume_type": "gold",
-				"consume": 10,
-				"obtain_type": "money",
-				"obtain": 20000,
-				"isVisible": 1
-			},
-			"4": {
-				"id": 4,
-				"order": 5,
-				"method": "money",
-				"name": "一袋仙币",
-				"disc": "75000仙币，额外赠送45000仙币。",
-				"consume_type": "gold",
-				"consume": 50,
-				"obtain_type": "money",
-				"obtain": 120000,
-				"isVisible": 1
-			},
-			"5": {
-				"id": 5,
-				"order": 6,
-				"method": "money",
-				"name": "一大袋仙币",
-				"disc": "150000仙币，额外赠送100000仙币。",
-				"consume_type": "gold",
-				"consume": 100,
-				"obtain_type": "money",
-				"obtain": 250000,
-				"isVisible": 1
-			},
-			"6": {
-				"id": 6,
-				"order": 7,
-				"method": "challengeCount",
-				"name": "有奖竞技次数",
-				"consume_type": "gold",
-				"consume": 10,
-				"obtain_type": "challengeCount",
-				"obtain": 1,
-				"isVisible": 0
-			},
-			"7": {
-				"id": 7,
-				"order": 8,
-				"method": "cardCount",
-				"name": "卡库位置",
-				"consume_type": "gold",
-				"consume": 5,
-				"obtain_type": "cardCount",
-				"obtain": 1,
-				"isVisible": 0
-			},
-			"8": {
-				"id": 8,
-				"order": 3,
-				"method": "speaker",
-				"name": "喇叭",
-				"disc": "用于世界聊天，一次性买10个以上打8折。",
-				"consume_type": "gold",
-				"consume": 10,
-				"obtain_type": "speaker",
-				"obtain": 1,
-				"isVisible": 1,
-				"discount_num": 10,
-				"discount": 8
-			}
-		}
-	},
-	"passFailSpiritSpeak": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"text": "总结下，为啥我们没打过？"
-			},
-			"2": {
-				"id": 2,
-				"text": "没事，反正又不是只有我们打不过。"
-			},
-			"3": {
-				"id": 3,
-				"text": "我们是不是该提升下能力再来打？"
-			},
-			"4": {
-				"id": 4,
-				"text": "胜败乃常事，不要气馁。"
-			},
-			"5": {
-				"id": 5,
-				"text": "注意休息，实在打不过就改天吧。"
-			}
-		}
-	},
-	"passWinSpiritSpeak": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"text": "OK，下一层，让我们继续。"
-			},
-			"2": {
-				"id": 2,
-				"text": "你是最猛的，没有之一。"
-			},
-			"3": {
-				"id": 3,
-				"text": "无压力，让我们继续下一层。"
-			},
-			"4": {
-				"id": 4,
-				"text": "这太简单了，我简直感受不到挑战的存在。"
-			},
-			"5": {
-				"id": 5,
-				"text": "老天，来点真正的挑战吧。"
-			},
-			"6": {
-				"id": 6,
-				"text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-			},
-			"7": {
-				"id": 7,
-				"text": "胜利总是来的这么突然，唉……"
-			},
-			"8": {
-				"id": 8,
-				"text": "求败，求败，但求一败啊……"
-			},
-			"9": {
-				"id": 9,
-				"text": "没难度，没挑战，无压力。"
-			},
-			"10": {
-				"id": 10,
-				"text": "注意保持姿势，不要停，继续。"
-			}
-		}
-	},
-	"spiritSpeak": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"text": "我是小精灵，我不是元神，也不是宠物……"
-			},
-			"2": {
-				"id": 2,
-				"text": "我到底是公的还是母的啊，费解。"
-			},
-			"3": {
-				"id": 3,
-				"text": "每一天，我都觉得，我自豪，我傲娇。"
-			},
-			"4": {
-				"id": 4,
-				"text": "嗨，吃饭了没。"
-			},
-			"5": {
-				"id": 5,
-				"text": "嗨，我真的猜不透你耶……"
-			},
-			"6": {
-				"id": 6,
-				"text": "人活得其实是一个心态，所以凡事随缘吧。"
-			},
-			"7": {
-				"id": 7,
-				"text": "作为仙界超级精灵，我对自己的长相极度自信。"
-			},
-			"8": {
-				"id": 8,
-				"text": "有时候想想，活着也真累，唉……"
-			},
-			"9": {
-				"id": 9,
-				"text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-			},
-			"10": {
-				"id": 10,
-				"text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-			},
-			"11": {
-				"id": 11,
-				"text": "作为仙界超级精灵，我是有理想的小兽兽。"
-			},
-			"12": {
-				"id": 12,
-				"text": "尽量不要熬夜，嗨，很伤身体的。"
-			},
-			"13": {
-				"id": 13,
-				"text": "我喜欢吃山西臊子面，超赞的味道。"
-			},
-			"14": {
-				"id": 14,
-				"text": "嗨，今天心情好么，祝你游戏愉快唷。"
-			},
-			"15": {
-				"id": 15,
-				"text": "我今天很郁闷。"
-			},
-			"16": {
-				"id": 16,
-				"text": "每次看到你出现，我都觉得很幸福。"
-			},
-			"17": {
-				"id": 17,
-				"text": "每次45度仰望星空，我都不禁陷入沉思……"
-			},
-			"18": {
-				"id": 18,
-				"text": "上班时间记得多看电影，这样可以调节心情。"
-			},
-			"19": {
-				"id": 19,
-				"text": "不要太在意钱，钱就是个蛋。"
-			},
-			"20": {
-				"id": 20,
-				"text": "如果遇到相爱之人，要珍惜之。"
-			},
-			"21": {
-				"id": 21,
-				"text": "嗨，你是干啥的啊，当官的么？"
-			},
-			"22": {
-				"id": 22,
-				"text": "嫦娥其实长的很丑，我亲眼见过。"
-			},
-			"23": {
-				"id": 23,
-				"text": "爱情是个什么东东，你能告诉我么。"
-			},
-			"24": {
-				"id": 24,
-				"text": "昨天我看到苍空井老师了，好激动。"
-			},
-			"25": {
-				"id": 25,
-				"text": "超级讨厌玉帝，讨厌死了。"
-			},
-			"26": {
-				"id": 26,
-				"text": "寂寞不是苦，是心灵的一种福音。"
-			},
-			"27": {
-				"id": 27,
-				"text": "我今天好像感冒了，咳咳……"
-			},
-			"28": {
-				"id": 28,
-				"text": "人间好玩么，很想去看一看。"
-			},
-			"29": {
-				"id": 29,
-				"text": "上天其实是没有好生之德的。"
-			},
-			"30": {
-				"id": 30,
-				"text": "最近仙界妖气好重啊，得多加小心。"
-			},
-			"31": {
-				"id": 31,
-				"text": "我刚看到玉帝王母在野战，好猛。"
-			},
-			"32": {
-				"id": 32,
-				"text": "这些日子，我总是空虚寂寞冷……"
-			},
-			"33": {
-				"id": 33,
-				"text": "为什么神仙就没有恋爱自由呢？"
-			},
-			"34": {
-				"id": 34,
-				"text": "我喜欢听民族风，接地气，你觉得呢？"
-			},
-			"35": {
-				"id": 35,
-				"text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-			},
-			"36": {
-				"id": 36,
-				"text": "工作只是生活的一部分，但不是全部。"
-			},
-			"37": {
-				"id": 37,
-				"text": "你玩这游戏花钱了没，可别被坑了。"
-			},
-			"38": {
-				"id": 38,
-				"text": "生命的真谛在于心灵的自由，好难哦。"
-			},
-			"39": {
-				"id": 39,
-				"text": "从来都没有真正的民主，仙界也是。"
-			},
-			"40": {
-				"id": 40,
-				"text": "昨晚天庭停电了。"
-			},
-			"41": {
-				"id": 41,
-				"text": "王母的蟠桃有敌敌畏，最好别吃。"
-			},
-			"42": {
-				"id": 42,
-				"text": "不知道为什么，今天我很想喝酒。"
-			},
-			"43": {
-				"id": 43,
-				"text": "上天从来都不是公平的，怎么可能公平呢？"
-			}
-		}
-	},
 	"scope": {
 		"colComment": {},
 		"rows": {
@@ -30301,6 +29953,354 @@ var outputTables = {
 				"star7_inc_max": 23,
 				"star7_grow": 3,
 				"rate7": 50
+			}
+		}
+	},
+	"product": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"order": 1,
+				"method": "expCard",
+				"name": "经验元灵",
+				"disc": "经验元灵1张，含1200点卡牌经验。",
+				"consume_type": "money",
+				"consume": 7500,
+				"obtain_type": "card",
+				"obtain": 1,
+				"isVisible": 1
+			},
+			"2": {
+				"id": 2,
+				"order": 2,
+				"method": "power",
+				"name": "体力",
+				"disc": "50点体力。首次购买仅20魔石。",
+				"consume_type": "gold",
+				"consume": 20,
+				"obtain_type": "power",
+				"obtain": 50,
+				"isVisible": 1
+			},
+			"3": {
+				"id": 3,
+				"order": 4,
+				"method": "money",
+				"name": "一小袋仙币",
+				"disc": "15000仙币，额外赠送5000仙币。",
+				"consume_type": "gold",
+				"consume": 10,
+				"obtain_type": "money",
+				"obtain": 20000,
+				"isVisible": 1
+			},
+			"4": {
+				"id": 4,
+				"order": 5,
+				"method": "money",
+				"name": "一袋仙币",
+				"disc": "75000仙币，额外赠送45000仙币。",
+				"consume_type": "gold",
+				"consume": 50,
+				"obtain_type": "money",
+				"obtain": 120000,
+				"isVisible": 1
+			},
+			"5": {
+				"id": 5,
+				"order": 6,
+				"method": "money",
+				"name": "一大袋仙币",
+				"disc": "150000仙币，额外赠送100000仙币。",
+				"consume_type": "gold",
+				"consume": 100,
+				"obtain_type": "money",
+				"obtain": 250000,
+				"isVisible": 1
+			},
+			"6": {
+				"id": 6,
+				"order": 7,
+				"method": "challengeCount",
+				"name": "有奖竞技次数",
+				"consume_type": "gold",
+				"consume": 10,
+				"obtain_type": "challengeCount",
+				"obtain": 1,
+				"isVisible": 0
+			},
+			"7": {
+				"id": 7,
+				"order": 8,
+				"method": "cardCount",
+				"name": "卡库位置",
+				"consume_type": "gold",
+				"consume": 5,
+				"obtain_type": "cardCount",
+				"obtain": 1,
+				"isVisible": 0
+			},
+			"8": {
+				"id": 8,
+				"order": 3,
+				"method": "speaker",
+				"name": "喇叭",
+				"disc": "用于世界聊天，一次性买10个以上打8折。",
+				"consume_type": "gold",
+				"consume": 10,
+				"obtain_type": "speaker",
+				"obtain": 1,
+				"isVisible": 1,
+				"discount_num": 10,
+				"discount": 8
+			}
+		}
+	},
+	"passFailSpiritSpeak": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"text": "总结下，为啥我们没打过？"
+			},
+			"2": {
+				"id": 2,
+				"text": "没事，反正又不是只有我们打不过。"
+			},
+			"3": {
+				"id": 3,
+				"text": "我们是不是该提升下能力再来打？"
+			},
+			"4": {
+				"id": 4,
+				"text": "胜败乃常事，不要气馁。"
+			},
+			"5": {
+				"id": 5,
+				"text": "注意休息，实在打不过就改天吧。"
+			}
+		}
+	},
+	"passWinSpiritSpeak": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"text": "OK，下一层，让我们继续。"
+			},
+			"2": {
+				"id": 2,
+				"text": "你是最猛的，没有之一。"
+			},
+			"3": {
+				"id": 3,
+				"text": "无压力，让我们继续下一层。"
+			},
+			"4": {
+				"id": 4,
+				"text": "这太简单了，我简直感受不到挑战的存在。"
+			},
+			"5": {
+				"id": 5,
+				"text": "老天，来点真正的挑战吧。"
+			},
+			"6": {
+				"id": 6,
+				"text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+			},
+			"7": {
+				"id": 7,
+				"text": "胜利总是来的这么突然，唉……"
+			},
+			"8": {
+				"id": 8,
+				"text": "求败，求败，但求一败啊……"
+			},
+			"9": {
+				"id": 9,
+				"text": "没难度，没挑战，无压力。"
+			},
+			"10": {
+				"id": 10,
+				"text": "注意保持姿势，不要停，继续。"
+			}
+		}
+	},
+	"spiritSpeak": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"text": "我是小精灵，我不是元神，也不是宠物……"
+			},
+			"2": {
+				"id": 2,
+				"text": "我到底是公的还是母的啊，费解。"
+			},
+			"3": {
+				"id": 3,
+				"text": "每一天，我都觉得，我自豪，我傲娇。"
+			},
+			"4": {
+				"id": 4,
+				"text": "嗨，吃饭了没。"
+			},
+			"5": {
+				"id": 5,
+				"text": "嗨，我真的猜不透你耶……"
+			},
+			"6": {
+				"id": 6,
+				"text": "人活得其实是一个心态，所以凡事随缘吧。"
+			},
+			"7": {
+				"id": 7,
+				"text": "作为仙界超级精灵，我对自己的长相极度自信。"
+			},
+			"8": {
+				"id": 8,
+				"text": "有时候想想，活着也真累，唉……"
+			},
+			"9": {
+				"id": 9,
+				"text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+			},
+			"10": {
+				"id": 10,
+				"text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+			},
+			"11": {
+				"id": 11,
+				"text": "作为仙界超级精灵，我是有理想的小兽兽。"
+			},
+			"12": {
+				"id": 12,
+				"text": "尽量不要熬夜，嗨，很伤身体的。"
+			},
+			"13": {
+				"id": 13,
+				"text": "我喜欢吃山西臊子面，超赞的味道。"
+			},
+			"14": {
+				"id": 14,
+				"text": "嗨，今天心情好么，祝你游戏愉快唷。"
+			},
+			"15": {
+				"id": 15,
+				"text": "我今天很郁闷。"
+			},
+			"16": {
+				"id": 16,
+				"text": "每次看到你出现，我都觉得很幸福。"
+			},
+			"17": {
+				"id": 17,
+				"text": "每次45度仰望星空，我都不禁陷入沉思……"
+			},
+			"18": {
+				"id": 18,
+				"text": "上班时间记得多看电影，这样可以调节心情。"
+			},
+			"19": {
+				"id": 19,
+				"text": "不要太在意钱，钱就是个蛋。"
+			},
+			"20": {
+				"id": 20,
+				"text": "如果遇到相爱之人，要珍惜之。"
+			},
+			"21": {
+				"id": 21,
+				"text": "嗨，你是干啥的啊，当官的么？"
+			},
+			"22": {
+				"id": 22,
+				"text": "嫦娥其实长的很丑，我亲眼见过。"
+			},
+			"23": {
+				"id": 23,
+				"text": "爱情是个什么东东，你能告诉我么。"
+			},
+			"24": {
+				"id": 24,
+				"text": "昨天我看到苍空井老师了，好激动。"
+			},
+			"25": {
+				"id": 25,
+				"text": "超级讨厌玉帝，讨厌死了。"
+			},
+			"26": {
+				"id": 26,
+				"text": "寂寞不是苦，是心灵的一种福音。"
+			},
+			"27": {
+				"id": 27,
+				"text": "我今天好像感冒了，咳咳……"
+			},
+			"28": {
+				"id": 28,
+				"text": "人间好玩么，很想去看一看。"
+			},
+			"29": {
+				"id": 29,
+				"text": "上天其实是没有好生之德的。"
+			},
+			"30": {
+				"id": 30,
+				"text": "最近仙界妖气好重啊，得多加小心。"
+			},
+			"31": {
+				"id": 31,
+				"text": "我刚看到玉帝王母在野战，好猛。"
+			},
+			"32": {
+				"id": 32,
+				"text": "这些日子，我总是空虚寂寞冷……"
+			},
+			"33": {
+				"id": 33,
+				"text": "为什么神仙就没有恋爱自由呢？"
+			},
+			"34": {
+				"id": 34,
+				"text": "我喜欢听民族风，接地气，你觉得呢？"
+			},
+			"35": {
+				"id": 35,
+				"text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+			},
+			"36": {
+				"id": 36,
+				"text": "工作只是生活的一部分，但不是全部。"
+			},
+			"37": {
+				"id": 37,
+				"text": "你玩这游戏花钱了没，可别被坑了。"
+			},
+			"38": {
+				"id": 38,
+				"text": "生命的真谛在于心灵的自由，好难哦。"
+			},
+			"39": {
+				"id": 39,
+				"text": "从来都没有真正的民主，仙界也是。"
+			},
+			"40": {
+				"id": 40,
+				"text": "昨晚天庭停电了。"
+			},
+			"41": {
+				"id": 41,
+				"text": "王母的蟠桃有敌敌畏，最好别吃。"
+			},
+			"42": {
+				"id": 42,
+				"text": "不知道为什么，今天我很想喝酒。"
+			},
+			"43": {
+				"id": 43,
+				"text": "上天从来都不是公平的，怎么可能公平呢？"
 			}
 		}
 	},
@@ -46382,78 +46382,78 @@ var outputTables = {
 				"id": 2,
 				"lv": 2,
 				"name": "Vip2",
-				"cash": 50,
-				"total_cash": 56
+				"cash": 10,
+				"total_cash": 16
 			},
 			"3": {
 				"id": 3,
 				"lv": 3,
 				"name": "Vip3",
-				"cash": 100,
-				"total_cash": 156
+				"cash": 14,
+				"total_cash": 30
 			},
 			"4": {
 				"id": 4,
 				"lv": 4,
 				"name": "Vip4",
-				"cash": 200,
-				"total_cash": 356
+				"cash": 30,
+				"total_cash": 60
 			},
 			"5": {
 				"id": 5,
 				"lv": 5,
 				"name": "Vip5",
-				"cash": 500,
-				"total_cash": 856
+				"cash": 50,
+				"total_cash": 110
 			},
 			"6": {
 				"id": 6,
 				"lv": 6,
 				"name": "Vip6",
-				"cash": 1000,
-				"total_cash": 1856
+				"cash": 90,
+				"total_cash": 200
 			},
 			"7": {
 				"id": 7,
 				"lv": 7,
 				"name": "Vip7",
-				"cash": 2000,
-				"total_cash": 3856
+				"cash": 130,
+				"total_cash": 330
 			},
 			"8": {
 				"id": 8,
 				"lv": 8,
 				"name": "Vip8",
-				"cash": 5000,
-				"total_cash": 8856
+				"cash": 300,
+				"total_cash": 630
 			},
 			"9": {
 				"id": 9,
 				"lv": 9,
 				"name": "Vip9",
-				"cash": 8000,
-				"total_cash": 16856
+				"cash": 600,
+				"total_cash": 1230
 			},
 			"10": {
 				"id": 10,
 				"lv": 10,
 				"name": "Vip10",
-				"cash": 10000,
-				"total_cash": 26856
+				"cash": 1200,
+				"total_cash": 2430
 			},
 			"11": {
 				"id": 11,
 				"lv": 11,
 				"name": "Vip11",
-				"cash": 20000,
-				"total_cash": 46856
+				"cash": 2400,
+				"total_cash": 4830
 			},
 			"12": {
 				"id": 12,
 				"lv": 12,
 				"name": "Vip12",
-				"cash": 50000,
-				"total_cash": 96856
+				"cash": 4800,
+				"total_cash": 9630
 			}
 		}
 	},

@@ -212,7 +212,6 @@ var Activity = Entity.extend({
         }
 
         cc.log(this._loginCountReward);
-
     },
 
     updateGrowthPlanFlag: function (growthPlan) {
@@ -428,6 +427,7 @@ var Activity = Entity.extend({
 
                 that.set("isBuyPlan", true);
                 gameData.player.set("gold", data.msg.gold);
+                that.updateGrowthPlanFlag(data.msg.plan);
                 gameMark.updateGrowPlan(false);
 
                 TipLayer.tip("购买成功");
@@ -499,9 +499,8 @@ var Activity = Entity.extend({
                     }
                 }
 
-                gameMark.updateVipDailyReward(false);
                 cb(rewards);
-
+                gameMark.updateVipDailyReward(false);
             } else {
                 cc.log("getVipDailyReward fail");
                 TipLayer.tip(data.msg);

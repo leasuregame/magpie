@@ -316,6 +316,9 @@ var GreetingLabel = LazyLayer.extend({
             return;
         }
 
+
+        text = lz.replaceStr(text);
+
         gameData.greeting.sendMsg(function () {
             that._msgEditBox.setText("");
             that._speakerNumLabel.setString(gameData.player.get("speaker"));

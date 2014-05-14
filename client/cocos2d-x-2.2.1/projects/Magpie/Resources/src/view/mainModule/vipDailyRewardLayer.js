@@ -120,8 +120,8 @@ var VipDailyRewardLayer = cc.Layer.extend({
 
         var that = this;
         gameData.activity.getVipDailyReward(function (reward) {
-            that._getRewardItem.setEnabled(false);
             lz.tipReward(reward);
+            that._getRewardItem.setEnabled(false);
         });
     }
 

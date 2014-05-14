@@ -522,7 +522,8 @@ var Player = (function(_super) {
             pass: this.pass,
             task: this.task,
             spiritPool: this.spiritPool,
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+            goldCards: this.getGoldCard()
         };
     };
 

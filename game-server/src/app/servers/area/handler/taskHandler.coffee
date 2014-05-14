@@ -408,10 +408,11 @@ checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
+  return if not mpc
 
-  if mpc and player.passLayer < mpc.layer_from
+  if player.passLayer < mpc.layer_from
     return
-  else if mpc and player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
+  else if player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
     player.triggerMysticalPass()
   else if utility.hitRate(mpc.rate)
     player.triggerMysticalPass()

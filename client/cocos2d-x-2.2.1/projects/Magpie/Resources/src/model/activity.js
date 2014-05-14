@@ -362,7 +362,7 @@ var Activity = Entity.extend({
 
                 that._changeStateById(TYPE_LOGIN_COUNT_REWARD, day, ALREADY_GOT_REWARD);
 
-                gameMark.updateNewAreaReward(false);
+                gameMark.updateNewAreaRewardMark(false);
 
                 cb(reward);
 
@@ -428,7 +428,7 @@ var Activity = Entity.extend({
                 that.set("isBuyPlan", true);
                 gameData.player.set("gold", data.msg.gold);
                 that.updateGrowthPlanFlag(data.msg.plan);
-                gameMark.updateGrowPlan(false);
+                gameMark.updateGrowPlanMark(false);
 
                 TipLayer.tip("购买成功");
 
@@ -455,7 +455,7 @@ var Activity = Entity.extend({
 
                 that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, ALREADY_GOT_REWARD);
                 gameData.player.set("gold", data.msg.gold);
-                gameMark.updateGrowPlan(false);
+                gameMark.updateGrowPlanMark(false);
                 cb();
             } else {
                 cc.log("getPlanReward fail");
@@ -500,7 +500,7 @@ var Activity = Entity.extend({
                 }
 
                 cb(rewards);
-                gameMark.updateVipDailyReward(false);
+                gameMark.updateVipDailyRewardMark(false);
             } else {
                 cc.log("getVipDailyReward fail");
                 TipLayer.tip(data.msg);
@@ -534,6 +534,69 @@ var Activity = Entity.extend({
         } else {
             cc.log("类型出错！！！");
             return null;
+        }
+    },
+
+    ActivityIsShowHandler: {
+        NewAreaRewardLayer: function () {
+            var table = outputTables.login_count_reward.rows;
+            for (var id in table) {
+                if(gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, id) != ALREADY_GOT_REWARD) {
+                    return true;
+                }
+            }
+            return false;
+        },
+        SignInLayer: function () {
+            return true;
+        },
+        GoldCardsLayer: function () {
+            return true;
+        },
+        GrowthPlanLayer: function () {
+            return true;
+        },
+        PowerRewardLayer: function () {
+            return true;
+        },
+        VipDailyRewardLayer: function () {
+            return true;
+        },
+        GoldRewardLayer: function () {
+            return true;
+        },
+        InvitationLayer: function () {
+            if(lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore") {
+                return false;
+            }
+            return true;
+        }
+    },
+
+    ActivityIsMarkHandler: {
+        NewAreaRewardLayer: function () {
+           return gameMark.getNewAreaRewardMark();
+        },
+        SignInLayer: function () {
+            return gameMark.getSignInMark();
+        },
+        GoldCardsLayer: function () {
+            return gameMark.getGoldCardsMark();
+        },
+        GrowthPlanLayer: function () {
+            return gameMark.getGrowthPlanMark();
+        },
+        PowerRewardLayer: function () {
+            return gameMark.getPowerRewardMark();
+        },
+        VipDailyRewardLayer: function () {
+            return gameMark.getVipDailyRewardMark();
+        },
+        GoldRewardLayer: function () {
+            return gameMark.getGoldRewardMark();
+        },
+        InvitationLayer: function () {
+            return false;
         }
     }
 });

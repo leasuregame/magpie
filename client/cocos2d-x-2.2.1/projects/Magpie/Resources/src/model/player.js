@@ -241,6 +241,10 @@ var Player = Entity.extend({
                 expCardBuyCount: msg.dailyGift.expCardCount
             });
 
+            if(msg.goldCards) {
+                this.set("goldCards", msg.goldCards);
+            }
+
             MainScene.getInstance().updateMark();
         });
     },
@@ -335,6 +339,7 @@ var Player = Entity.extend({
         this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
         gameData.lineUp.update();
         gameMark.updateGoldRewardMark(false);
+        gameMark.updateGrowPlanMark(false);
     },
 
     _energyChangeEvent: function () {
@@ -362,7 +367,7 @@ var Player = Entity.extend({
             if (this._power < this._maxPower) {
                 var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
 
-                lz.NotificationHelp.push("哥，在干啥呢，体力回复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+                lz.NotificationHelp.push("哥，在干啥呢，体力恢复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
             }
         }
     },

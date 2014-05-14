@@ -489,7 +489,7 @@ var Player = (function(_super) {
                 count: 0,
                 got: false
             },
-            vipReward: 0
+            vipReward: 0 // vip登陆奖励是否已领取标记 1：已领取 0：未领取
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -1334,7 +1334,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        var lr = utility.deepCopy(this.levelRewardMark.value);
+
+        var lr = _.clone(this.levelRewardMark.value);
         this.set('levelReward', lr);
     };
 

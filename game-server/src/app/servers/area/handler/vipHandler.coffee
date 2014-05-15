@@ -97,7 +97,7 @@ Handler::getPlanReward = (msg, session, next) ->
     player.increase('gold', reward.gold)
     player.setPlanFlag(id)
     player.save()
-    next(null, {code: 200, msg: gold: player.gold})
+    next(null, {code: 200, msg: gold: player.gold, plan: player.plan})
 
 Handler::buyVipBox = (msg, session, next) ->
   playerId = session.get('playerId')

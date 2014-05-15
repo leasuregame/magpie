@@ -20,7 +20,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8120</WindowHeight>
+  <WindowHeight>10700</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
@@ -37,11 +37,10 @@
    <Protection/>
   </Style>
   <Style ss:ID="s62">
-   <Alignment ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
   </Style>
   <Style ss:ID="s63">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="16"
-    ss:Color="#000000"/>
+   <Alignment ss:Vertical="Bottom"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="vip等级配置表">
@@ -50,101 +49,101 @@
    <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="120"/>
    <Column ss:AutoFitWidth="0" ss:Width="110"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">vip等级</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">vip名称</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">所需充值金额</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">总金额</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">vip等级</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">vip名称</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">所需充值金额</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">总金额</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">lv</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">cash</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">total_cash</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">lv</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">cash</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">total_cash</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Vip1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Vip2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">16</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">Vip3</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">14</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">30</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">Vip4</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">60</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">Vip5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">110</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">Vip6</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">90</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">90</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">200</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">Vip7</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">130</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">130</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">330</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">Vip8</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">300</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">630</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="String">Vip9</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">600</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">600</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">1230</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">Vip10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">1200</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1200</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">2430</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell><Data ss:Type="String">Vip11</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">2400</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">2400</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">4830</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="String">Vip12</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">4800</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">4800</Data></Cell>
     <Cell ss:Formula="=R[-1]C+RC[-1]"><Data ss:Type="Number">9630</Data></Cell>
    </Row>
   </Table>
@@ -159,8 +158,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -172,8 +171,8 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:AutoFitWidth="0" ss:Width="116"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

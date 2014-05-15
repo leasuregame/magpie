@@ -524,8 +524,8 @@ var Player = (function(_super) {
             spiritPool: this.spiritPool,
             friendsCount: this.friendsCount,
             goldCards: this.getGoldCard(),
-            vipLoginReward: player.isVip() ? !player.dailyGift.vipReward : false,
-            loginInfo: player.activities.logined || {count: 0, got: 0}
+            vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
+            loginInfo: this.activities.logined || {count: 0, got: 0}
         };
     };
 

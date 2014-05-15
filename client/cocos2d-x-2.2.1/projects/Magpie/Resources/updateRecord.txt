@@ -40,6 +40,8 @@ resYY/main/button83.png
 resYY/main/button83s.png
 resYY/main/button84.png
 resYY/main/button84d.png
+resYY/main/button85.png
+resYY/main/button85s.png
 resYY/main/icon433.png
 resYY/main/icon434.png
 resYY/main/icon435.png

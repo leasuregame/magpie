@@ -142,5 +142,5 @@ app.configure('production|development', 'notice', function() {
 app.start();
 
 process.on('uncaughtException', function(err) {
-  console.error(' Caught exception: ' + err.stack);
+  console.error(' Uncaught exception: ' + err.stack);
 });

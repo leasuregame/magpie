@@ -489,7 +489,7 @@ var Player = (function(_super) {
                 count: 0,
                 got: false
             },
-            vipReward: 0
+            vipReward: 0 // vip登陆奖励是否已领取标记 1：已领取 0：未领取
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -522,7 +522,10 @@ var Player = (function(_super) {
             pass: this.pass,
             task: this.task,
             spiritPool: this.spiritPool,
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+            goldCards: this.getGoldCard(),
+            vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
+            loginInfo: this.activities.logined || {count: 0, got: 0}
         };
     };
 
@@ -1114,6 +1117,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.clearMysticalPass = function() {
+        if (this.pass.mystical.diff == 5) {
+            return;
+        }
+
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
         pass.mystical.diff += 1;
@@ -1330,7 +1337,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        var lr = utility.deepCopy(this.levelRewardMark.value);
+
+        var lr = _.clone(this.levelRewardMark.value);
         this.set('levelReward', lr);
     };
 

@@ -7,7 +7,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 util = module.exports
 
 util.errHandler = (err) ->
-  if err.code is 501
+  if err.code in [501, 600]
     logger.warn(JSON.stringify(err))
   else
     logger.error(JSON.stringify(err))    

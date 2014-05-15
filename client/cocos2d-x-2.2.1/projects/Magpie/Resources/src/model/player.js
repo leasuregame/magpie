@@ -205,7 +205,6 @@ var Player = Entity.extend({
 
                     that.set("evolutionRate", msg.initRate);
 
-                    lz.um.event("event_order_list");
                 } else {
                     cc.log("Player sync fail");
 
@@ -219,6 +218,7 @@ var Player = Entity.extend({
     setListener: function () {
         cc.log("Player setListener");
 
+        var that = this;
         lz.server.on("onResetData", function (data) {
             cc.log("***** on reset data:");
             cc.log(data);
@@ -241,9 +241,12 @@ var Player = Entity.extend({
                 expCardBuyCount: msg.dailyGift.expCardCount
             });
 
-            if(msg.goldCards) {
-                this.set("goldCards", msg.goldCards);
+            if (msg.goldCards) {
+                that.set("goldCards", msg.goldCards);
             }
+
+            gameData.activity.set("vipLoginReward", msg.vipLoginReward);
+            gameData.activity.updateLoginCountFlag(msg.loginInfo);
 
             MainScene.getInstance().updateMark();
         });
@@ -338,6 +341,7 @@ var Player = Entity.extend({
 
         this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
         gameData.lineUp.update();
+        gameData.activity.updateGrowthPlanFlag();
         gameMark.updateGoldRewardMark(false);
         gameMark.updateGrowPlanMark(false);
     },
@@ -609,7 +613,7 @@ var Player = Entity.extend({
         return !((mark >> offset & 1) == 1);
     },
 
-    updateFirstPayment: function(id) {
+    updateFirstPayment: function (id) {
         cc.log("Player updateFirstPayment: " + id);
 
         this._recharge = this._recharge | (1 << (id - 1));

@@ -163,10 +163,24 @@ var VipPrivilegeLayer = LazyLayer.extend({
             vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
             scrollViewLayer.addChild(vipPrivilegeIcon);
 
-            vipPrivilegeLabel = cc.LabelTTF.create(
-                "累计充值" + vipTable[tmpVip].total_cash + "元即可享受该级特权",
-                "STHeitiTC-Medium",
-                20
+            vipPrivilegeLabel = ColorLabelTTF.create(
+                {
+                    string: "累计充值",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: vipTable[tmpVip].total_cash,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "元即可享受该级特权",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                }
             );
             vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
             vipPrivilegeLabel.setPosition(cc.p(70, offsetY));

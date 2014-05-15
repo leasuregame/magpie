@@ -74,7 +74,7 @@ executeVerify = (app, queue) ->
           logger.error('faild to verify app store receipt.', err)
           return done()
 
-        #console.log 'verify result: ', reqUrl, body
+        #logger.info 'verify result: ', reqUrl, body
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
           return updatePlayer(app, item, body, done)
@@ -98,11 +98,13 @@ executeVerify = (app, queue) ->
       logger.error('faild to verify app store reciept.', err)
 
 updatePlayer = (app, buyRecord, receiptResult, done) ->
-  products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
+  products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id or item.product_id is buyRecord.productId
   if products and products.length > 0
     product = products[0]
   else
-    throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
+    logger.error('verify result: ', receiptResult)
+    logger.error('buy record: ', buyRecord)
+    throw new Error('can not find product info by product id ', receiptResult.receipt.product_id)
     return done()
 
   isFirstRechage = false
@@ -249,6 +251,7 @@ successMsg = (app, player, isFirstRechage) ->
       goldCards: player.getGoldCard(),
       recharge: player.firstTime.recharge or 0,
       firstRechargeBox: 1 if isFirstRechage
+      vipLoginReward: !player.dailyGift.vipReward if player.isVip()
     }
   }, (err, res) ->
     if err

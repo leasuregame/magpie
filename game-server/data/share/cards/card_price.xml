@@ -19,7 +19,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8120</WindowHeight>
+  <WindowHeight>9720</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
@@ -30,20 +30,17 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s62">
    <Alignment ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s67">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+  <Style ss:ID="s63">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="卡牌价格配置表">
@@ -79,8 +76,8 @@
     <Cell><Data ss:Type="Number">5000</Data></Cell>
     <Cell><Data ss:Type="Number">20000</Data></Cell>
     <Cell><Data ss:Type="Number">200000</Data></Cell>
-    <Cell><Data ss:Type="Number">50000</Data></Cell>
-    <Cell><Data ss:Type="Number">100000</Data></Cell>
+    <Cell><Data ss:Type="Number">500000</Data></Cell>
+    <Cell><Data ss:Type="Number">1000000</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -94,8 +91,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -107,16 +104,16 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:AutoFitWidth="0" ss:Width="124"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s66"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">卡牌价格配置表</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">card_price</Data></Cell>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">卡牌价格配置表</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">card_price</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

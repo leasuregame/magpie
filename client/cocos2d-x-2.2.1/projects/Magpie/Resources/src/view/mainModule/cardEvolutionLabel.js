@@ -351,7 +351,7 @@ var CardEvolutionLabel = cc.Layer.extend({
             this._evolutionRateLabel.setString(player.getEvolutionRate(star) + "%");
             this._cardCountLabel.setString("0");
             this._moneyLabel.setString(needMoney);
-            this._superHonorLabel.setString(needSuperHonor + "/" + player.get("superHonor"));
+            this._superHonorLabel.setString(player.get("superHonor") + "/" + needSuperHonor);
 
             if (needMoney > player.get("money")) {
                 this._moneyLabel.setColor(cc.c3b(255, 40, 40));

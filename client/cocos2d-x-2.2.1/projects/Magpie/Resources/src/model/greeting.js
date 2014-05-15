@@ -49,8 +49,6 @@ var Greeting = Entity.extend({
     sendMsg: function (cb, msg) {
         cc.log("Greeting send: " + msg);
 
-        msg = lz.replaceStr(msg);
-
         lz.server.request(
             "area.greetingHandler.send",
             {content: msg},

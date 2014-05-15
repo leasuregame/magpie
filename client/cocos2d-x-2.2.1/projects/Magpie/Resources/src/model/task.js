@@ -182,6 +182,12 @@ var Task = Entity.extend({
         return true;
     },
 
+    resetNewCollect: function () {
+        cc.log("Task resetNewCollect");
+
+        this._newCollect = this._collected;
+    },
+
     /*
      * 根据id和任务进度请求服务器执行任务
      * @ param {function} cb 回调函数
@@ -360,6 +366,7 @@ var Task = Entity.extend({
                 cc.log("obtainGold success.");
 
                 gameData.player.add("gold", gold);
+                that._updateCollect(data.msg.collected);
 
                 lz.um.event("event_momo", gold);
             } else {

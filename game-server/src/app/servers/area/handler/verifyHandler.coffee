@@ -54,7 +54,8 @@ Handler::appStore = (msg, session, next) ->
         dao.buyRecord.create data: {
           playerId: playerId
           receiptData: receipt
-          amount: product?.cash
+          amount: product?.cash or 0
+          productId: product?.product_id or ''
         }, cb
       else 
         cb(null, record)

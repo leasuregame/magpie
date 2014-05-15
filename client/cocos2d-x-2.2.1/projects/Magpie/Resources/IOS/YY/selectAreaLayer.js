@@ -69,8 +69,8 @@ var SelectAreaLayer = cc.Layer.extend({
             var y = scrollViewHeight - (len - 1 - i) * 63 - 31;
 
             var areaItem = cc.MenuItemImage.create(
-                main_scene_image.button83,
-                main_scene_image.button83s,
+                main_scene_image.button85,
+                main_scene_image.button85s,
                 this._onClickArea(i),
                 this
             );

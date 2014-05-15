@@ -182,7 +182,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     fontSize: 20
                 }
             );
-            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0));
             vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
             scrollViewLayer.addChild(vipPrivilegeLabel);
 

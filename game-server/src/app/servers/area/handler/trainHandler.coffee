@@ -654,9 +654,9 @@ Handler::passSkillAfresh  = (msg, session, next) ->
   debugLog = (text='', args...) ->
     return if not isLog
     d = new Date()
-    logger.error(d.toLocaleDateString() + ' ' + d.toLocaleTimeString(), '[passive skill afresh]', text, args?.toString())
+    logger.error(d.toLocaleDateString() + ' ' + d.toLocaleTimeString(), '[passive skill afresh]', text, JSON.stringify(args))
 
-  debugLog 'before', 'playerid=', playerId, 'cardId=', cardId, 'psIds=', psIds, 'groupId=', groupId, 'type=', type
+  debugLog 'before', 'playerid=' + playerId, 'cardId=' + cardId, 'psIds=' + JSON.stringify(psIds), 'groupId=' + groupId, 'type=' + type
 
   if _.isUndefined(groupId) or not checkPsIds(psIds)
     return next(null, {code: 501, msg: '参数错误'})

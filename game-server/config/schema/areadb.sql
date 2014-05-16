@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `cd` VARCHAR(100) DEFAULT '{}',
   `plan` VARCHAR(100) DEFAULT '{"buy": false, "flag": 0}',
   `useCardCount` VARCHAR(100) DEFAULT '{"star4": 10, "star5": 1, "star6": 3}',
-  `pill` INT(10),
+  `pill` INT(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

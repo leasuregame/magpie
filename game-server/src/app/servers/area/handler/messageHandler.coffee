@@ -6,7 +6,9 @@ async = require 'async'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 utility = require '../../../common/utility'
+eUtil = require '../../../util/entityUtil'
 table = require '../../../manager/table'
+
 
 resData = table.getTableItem('resource_limit', 1)
 MAX_POWER_VALUE = resData.power_value
@@ -121,6 +123,17 @@ Handler::handleSysMsg = (msg, session, next) ->
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')
+    # todo add exp card with entityUtil
+    eUtil.createCards(
+      tableId : card.tableId
+      playerId : playerId
+      lv : card.lv
+    , card.qty, (err, cards) ->
+      if err
+        logger.error 'faild to create card. ' + err
+        return
+      obj.addCards cards
+    ) for card in data.cards if _.has(data, 'cards')
 
   async.waterfall [
     (cb)->

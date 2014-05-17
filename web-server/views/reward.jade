@@ -1,87 +1,137 @@
 extends adminLayout
-
 block head
-  script(type='text/javascript', src='/js/serverAPI.js')
-  script(type='text/javascript', src='/js/async.js')
-  script(type='text/javascript', src='/js/lib/build/build.js')
-  script.
-    require('boot');
-
+    script(type='text/javascript', src='/js/serverAPI.js')
+    script(type='text/javascript', src='/js/async.js')
+    script(type='text/javascript', src='/js/lib/build/build.js')
+    script.
+        require('boot');
 block content
-  h1.text-center 奖励发放
-  hr
-  form.form-horizontal(role='form', action='#')
-    div.form-group
-      label.col-sm-2.control-label 服务器
-      div.col-sm-10
-        select.form-control(type='text', id="area" name='area' required)
-    div.form-group
-      label.col-sm-2.control-label 玩家
-      div.col-sm-10
-        input.form-control(type='text', id='playerName' name='playerName')
-    div.form-group
-      label.col-sm-2.control-label 标题
-      div.col-sm-10
-        input.form-control(type='text', id='title' name='title')
-    fieldset
-      legend 奖励选项，至少选填一种
-      div.form-group
-        label.col-sm-2.control-label 魔石
-        div.col-sm-10
-          input.form-control.reward(type='number', id='gold' name='gold')
-      div.form-group
-        label.col-sm-2.control-label 仙币
-        div.col-sm-10
-          input.form-control.reward(type='number', id='money' name='money')
-      div.form-group
-        label.col-sm-2.control-label 体力点
-        div.col-sm-10
-          input.form-control.reward(type='number', id='power' name='power')
-      div.form-group
-        label.col-sm-2.control-label 灵气
-        div.col-sm-10
-          input.form-control.reward(type='number', id='spirit' name='spirit')
-      div.form-group
-        label.col-sm-2.control-label 技能点
-        div.col-sm-10
-          input.form-control.reward(type='number', id='skillPoint' name='skillPoint')
-      div.form-group
-        label.col-sm-2.control-label 仙丹
-        div.col-sm-10
-          input.form-control.reward(type='number', id='elixir' name='elixir')
-      div.form-group
-        label.col-sm-2.control-label 活力点
-        div.col-sm-10
-          input.form-control.reward(type='number', id='energy' name='energy')
-      div.form-group
-        label.col-sm-2.control-label 卡魂
-        div.col-sm-10
-          input.form-control.reward(type='number', id='fragments' name='fragments')
+    h1.text-center 奖励发放
     hr
-    div.form-group
-      label.col-sm-2.control-label 内容
-      div.col-sm-10
-        textarea.form-control(rows=3, id='content' required, disabled)
-    
-    div.form-group
-      div.col-sm-10.col-sm-offset-2
-        button.btn.btn-primary.btn-lg(id='btnOk', data-loading-text="Loading...") &nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;
-    div.form-group(id='msg-block')
-      div.col-sm-10.col-sm-offset-2
-        div.alert.alert-dismissable.hide
-          button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
-          span(id='alertContent') 
+    form.form-horizontal(role='form', action='#')
+        div.form-group
+            label.col-sm-3.control-label 服务器
+            div.col-sm-7
+                select.form-control(type='text', id="area" name='area' required)
+        div.form-group
+            label.col-sm-3.control-label 玩家
+            div.col-sm-7
+                input.form-control(type='text', id='playerName' name='playerName')
+        div.form-group
+            label.col-sm-3.control-label 标题
+            div.col-sm-7
+                input.form-control(type='text', id='title' name='title')
+        hr
+        div(id='rewardBox')
+            div.form-group(style='margin:0')
+                div.col-sm-2.control-label(style='padding: 16px 20px;')
+                    button.btn.btn-primary(id='btnResetReward') 清空奖励
+                div.alert(style='margin:0')
+                    span(style='font-size:24px;margin-right:8px;padding-top:4px;font-weight:bolder') 奖励选项，请选填一项
+                    span.alert.alert-danger.hide(id='rewardAlert' style='padding:8px 15px;position:relative;top:-3px;')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='1000')
+                label.col-sm-1.control-label.name 魔石
+                div.col-sm-7
+                    input.form-control.baseReward(id='gold' name='gold')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='1000000')
+                label.col-sm-1.control-label.name 仙币
+                div.col-sm-7
+                    input.form-control.baseReward(id='money' name='money')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='200')
+                label.col-sm-1.control-label.name 体力点
+                div.col-sm-7
+                    input.form-control.baseReward(id='powerValue' name='powerValue')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='1000')
+                label.col-sm-1.control-label.name 灵气
+                div.col-sm-7
+                    input.form-control.baseReward(id='spirit' name='spirit')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='100000')
+                label.col-sm-1.control-label.name 技能点
+                div.col-sm-7
+                    input.form-control.baseReward(id='skillPoint' name='skillPoint')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='20000')
+                label.col-sm-1.control-label.name 仙丹
+                div.col-sm-7
+                    input.form-control.baseReward(id='elixir' name='elixir')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='10000')
+                label.col-sm-1.control-label.name 活力点
+                div.col-sm-7
+                    input.form-control.baseReward(id='energy' name='energy')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='30')
+                label.col-sm-1.control-label.name 卡魂
+                div.col-sm-7
+                    input.form-control.baseReward(id='fragments' name='fragments')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='10')
+                label.col-sm-1.control-label.name 精元
+                div.col-sm-7
+                    input.form-control.baseReward--(id='superHonor' name='superHonor')
+            div.form-group.rewardTag
+                label.col-sm-2.control-label.limitTag(limit='50')
+                label.col-sm-1.control-label.name 喇叭
+                div.col-sm-7
+                    input.form-control.baseReward--(id='speaker' name='speaker')
+            hr
+            div(id='cardGroup')
+                div.form-group
+                    label.col-sm-3.control-label
+                    label.col-sm-2.control-label(style='text-align:center') 卡牌
+                    label.col-sm-1.control-label(style='text-align:center') 星级
+                    label.col-sm-2.control-label(style='text-align:center') 等级
+                    label.col-sm-2.control-label(style='text-align:center') 数量
+                div.form-group.cardTag
+                    label.col-sm-3.control-label
+                        button.btn.btn-danger.btnRemoveCard
+                            span.glyphicon.glyphicon-minus
+                    label.col-sm-2.control-label
+                        select.form-control.cardReward.cName(name='tableId')
+                            option(value='30000') 经验元灵
+                    label.col-sm-1.control-label
+                        select.form-control.cardReward.cStar(name='star')
+                            option(value='0') 1
+                    label.col-sm-2.control-label
+                        hidden.cardLimit(value='30')
+                        input.form-control.cardReward.cLv(name='lv')
+                    label.col-sm-2.control-label
+                        hidden.cardLimit(value='50')
+                        input.form-control.cardReward.cQty(name='qty')
+            div.form-group
+                label.col-sm-3.control-label.name
+                label.col-sm-7.control-label.name(style='text-align:center')
+                    button.col-sm-7.col-sm-offset-2.btn.btn-primary(id='btnAddCard')
+                        span.glyphicon.glyphicon-plus
 
-  div.modal.fade(id='actionConfirm', tabindex='-1' role='dialog', aria-labelledby='actionConfirmModalLable', aria-hidden='true')
-    div.modal-dialog
-      div.modal-content
-        div.modal-header
-          button.close(type='button', data-dismiss='modal' aria-hidden='true') &times;
-          h4.modal-title(id='actionConfirmModalLable') 确定要提交此信息吗？
-        div.modal-body(id='modalContent')
-
-        div.modal-footer
-          button.btn.btn-default(type='button', data-dismiss='modal') 取消
-          button.btn.btn-primary(type='button', id='btnSendMsg') 确定
-
-  script(type='text/javascript', src='/js/reward.js')
+        hr
+        div.form-group
+            label.col-sm-3.control-label 内容
+            div.col-sm-7
+                textarea.form-control(rows=3, id='content' required, disabled)
+        div.form-group.text-right
+            div.col-sm-7.col-sm-offset-3
+                button.btn.btn-success.btn-lg(id='btnOk', data-loading-text="Loading...") &nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;
+        div.form-group(id='msg-block')
+            div.col-sm-7.col-sm-offset-3
+                div.alert.alert-dismissable.hide(id='resAlert')
+                    button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+                    span
+    div.modal.fade(id='actionConfirm', tabindex='-1' role='dialog', aria-labelledby='actionConfirmModalLable', aria-hidden='true')
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    button.close(type='button', data-dismiss='modal' aria-hidden='true') &times;
+                    h4.modal-title(id='actionConfirmModalLable') 确定要提交此信息吗？
+                div.modal-body(id='modalContent')
+                div.modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') 取消
+                    button.btn.btn-primary(type='button', id='btnSendMsg') 确定
+    script(type='text/javascript', src='/js/reward.js')
+    script(id='cardOptTemp' type='text/javascript')
+        // todo 加入模板

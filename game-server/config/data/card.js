@@ -1,17 +1,13 @@
 module.exports = {
     // 卡牌熔炼得到的轮回丹数
     CARD_TO_PILL_MAP: {
-        1: 20,
-        2: 40,
-        3: 200, 
-        4: 1000,
-        5: 8000
-    },
-    CARD_DISSOLVE_CRIT_RATE: 20,
-    CARD_DISSOLVE_CRIT_TYPE: {
-        50: 20, // 50%小暴击，收益加成20%，
-        30: 50, // 30%大暴击，收益加成50%，
-        20: 80  // 20%大暴击，收益加成80%
+        1: { pill: 20, money: 50 },
+        2: { pill: 40, money: 250},
+        3: { pill: 200, money: 2500},
+        4: { pill: 1000, money: 10000},
+        5: { pill: 8000, money: 100000},
+        6: { pill: 30000, money: 250000},
+        7: { pill: 50000, money: 500000}
     },
 
     // 战斗力兑换系数

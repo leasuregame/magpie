@@ -211,6 +211,8 @@ var Player = (function(_super) {
         this.created = utility.dateFormat(new Date(this.created), 'yyyy-MM-dd h:mm:ss');
     };
 
+    Player.tableName = 'player';
+
     Player.FIELDS = [
         'id',
         'uniqueId',

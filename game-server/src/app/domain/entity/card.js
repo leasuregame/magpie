@@ -167,6 +167,8 @@ var Card = (function(_super) {
         addEvents(this);
     }
 
+    Card.tableName = 'card';
+
     Card.FIELDS = [
         'id',
         'createTime',
@@ -185,7 +187,8 @@ var Card = (function(_super) {
         'passiveSkills',
         'useCardsCounts',
         'psGroupCount',
-        'pill'
+        'pill',
+        'potentialLv'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -214,7 +217,8 @@ var Card = (function(_super) {
         passiveSkills: [],
         useCardsCounts: 0,
         psGroupCount: 3,
-        pill: 0
+        pill: 0,
+        potentialLv: 0
     };
 
     Card.prototype.init = function() {

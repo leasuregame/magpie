@@ -98,7 +98,7 @@ executeVerify = (app, queue) ->
       logger.error('faild to verify app store reciept.', err)
 
 updatePlayer = (app, buyRecord, receiptResult, done) ->
-  products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id or item.product_id is buyRecord.productId
+  products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
   if products and products.length > 0
     product = products[0]
   else

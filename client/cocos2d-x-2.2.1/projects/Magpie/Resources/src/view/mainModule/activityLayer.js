@@ -12,15 +12,18 @@
  * */
 
 
-var titleIcons = ["icon261", "icon344", "icon262", "icon263", "icon265"];
+var titleIcons = ["icon429", "icon261", "icon344", "icon433", "icon262", "icon442", "icon263", "icon265"];
 
 var ActivityLayer = cc.Layer.extend({
     _activityLayerFit: null,
 
     _layer: [
+        NewAreaRewardLayer,
         SignInLayer,
         GoldCardsLayer,
+        GrowthPlanLayer,
         PowerRewardLayer,
+        VipDailyRewardLayer,
         GoldRewardLayer,
         InvitationLayer
     ],
@@ -84,7 +87,7 @@ var ActivityLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
 
-            if (i == len - 1 && lz.platformConfig.PLATFORM != "TB") {
+            if (i == len - 1 && (lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore")) {
                 continue;
             }
 
@@ -154,11 +157,13 @@ var ActivityLayer = cc.Layer.extend({
     updateMark: function () {
         cc.log("ActivityLayer updateMark");
 
-        this._mark[0].setVisible(gameMark.getSignInMark());
-        this._mark[1].setVisible(gameMark.getGoldCardsMark());
-        this._mark[2].setVisible(gameMark.getPowerRewardMark());
-        this._mark[3].setVisible(gameMark.getGoldRewardMark());
-        // this._mark[4].setVisible(gameMark.getRechargeMark());
+        this._mark[0].setVisible(gameMark.getNewAreaReward());
+        this._mark[1].setVisible(gameMark.getSignInMark());
+        this._mark[2].setVisible(gameMark.getGoldCardsMark());
+        this._mark[3].setVisible(gameMark.getGrowthPlan());
+        this._mark[4].setVisible(gameMark.getPowerRewardMark());
+        this._mark[5].setVisible(gameMark.getVipDailyReward());
+        this._mark[6].setVisible(gameMark.getGoldRewardMark());
     }
 });
 

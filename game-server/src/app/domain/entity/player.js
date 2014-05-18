@@ -256,7 +256,9 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'cd'
+        'cd',
+        'plan',
+        'useCardCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -282,6 +284,10 @@ var Player = (function(_super) {
             boss: {
                 count: 0,
                 found: false
+            },
+            turn: {
+                collected: 0,
+                num: 1,
             }
         },
         passLayer: 0,
@@ -321,7 +327,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: { // 每日单次高级魔石抽卡次数，判断是否获得卡魂
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -375,7 +382,62 @@ var Player = (function(_super) {
         superHonor: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
+        },
+        plan: {
+            buy: false,
+            flag: 0
+        },
+        useCardCount: {
+            star4: 10,
+            star5: 1,
+            star6: 3
         }
+    };
+
+    Player.prototype.updateUseCardCoun = function(star, val) {
+        var ucc = utility.deepCopy(this.useCardCount);
+        ucc['star'+star] = val;
+        this.useCardCount = ucc;
+    };
+
+    Player.prototype.canGetTurnReward = function() {
+        return this.task.turn.collected == 15;
+    };
+
+    Player.prototype.nextTurn = function() {
+        var task = utility.deepCopy(this.task);
+        task.turn.collected = 0;
+        task.turn.num += 1;
+
+        if (task.turn.num > 5) {
+            task.turn.num = 1;
+        }
+
+        this.task = task;
+    };
+
+    Player.prototype.buyPlan = function() {
+        var plan = { buy: true, flag: 0 };
+        this.plan = plan;
+    };
+
+    Player.prototype.hasBuyPlan = function() {
+        return !!this.plan.buy;
+    };
+
+    Player.prototype.hasPlanFlag = function(id) {
+        var flag = this.plan.flag || 0;
+        return utility.hasMark(flag, id);
+    };
+
+    Player.prototype.setPlanFlag = function(id) {
+        var plan = utility.deepCopy(this.plan);
+        if (_.isUndefined(plan.flag)) {
+            plan.flag = 0;
+        }
+
+        plan.flag = utility.mark(plan.flag, id);
+        this.plan = plan;
     };
 
     Player.prototype.resetData = function() {
@@ -426,7 +488,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: {
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0 // vip登陆奖励是否已领取标记 1：已领取 0：未领取
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -459,7 +522,10 @@ var Player = (function(_super) {
             pass: this.pass,
             task: this.task,
             spiritPool: this.spiritPool,
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+            goldCards: this.getGoldCard(),
+            vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
+            loginInfo: this.activities.logined || {count: 0, got: 0}
         };
     };
 
@@ -1053,8 +1119,12 @@ var Player = (function(_super) {
     Player.prototype.clearMysticalPass = function() {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
-        pass.mystical.diff += 1;
-        pass.mystical.isTrigger = false;
+
+        if (this.pass.mystical.diff < 5) {
+            pass.mystical.diff += 1;
+            pass.mystical.isTrigger = false;
+        }
+        
         this.set('pass', pass);
     };
 
@@ -1187,7 +1257,8 @@ var Player = (function(_super) {
         return {
             id: this.task.id,
             progress: this.task.progress,
-            mark: this.task.mark
+            mark: this.task.mark,
+            collected: this.task.turn != null ? this.task.turn.collected : 0
         };
     };
 
@@ -1266,7 +1337,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        var lr = utility.deepCopy(this.levelRewardMark.value);
+
+        var lr = _.clone(this.levelRewardMark.value);
         this.set('levelReward', lr);
     };
 

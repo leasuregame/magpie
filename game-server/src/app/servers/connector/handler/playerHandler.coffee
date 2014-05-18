@@ -48,7 +48,7 @@ afterCreatePlayer = (app, session, userId, areaId, player, next) ->
         roles = _.clone(user.roles)
       else
         roles = []
-      roles.push areaId
+      roles.push areaId if areaId not in roles
       user.roles = roles
       user.lastLoginArea = areaId
       user.save()

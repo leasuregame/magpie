@@ -2,6 +2,7 @@ var fs = require('fs'),
     path = require('path');
 
 var AREA_PATH = path.join(__dirname, '..', '..', 'game-server', 'config', 'area.json');
+var WHITELIST_PATH = path.join(__dirname, '..', '..', 'shared', 'whiteList.json');
 
 exports.editor = function(req, res) {
   if (!fs.existsSync(AREA_PATH)) {
@@ -11,9 +12,12 @@ exports.editor = function(req, res) {
     });
   } else {
     var areas = fs.readFileSync(AREA_PATH, 'utf8');
+    var whiteList = fs.readFileSync(WHITELIST_PATH, 'utf8');
+
     console.log('areas: ', areas);
     res.render('areaEditor', {
       areas: areas,
+      whiteList: JSON.stringify(whiteList),
       menu: 'area'
     });
   }

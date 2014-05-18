@@ -177,6 +177,8 @@ var UpdateLayer = cc.Layer.extend({
         );
 
         lz.scheduleOnce(function () {
+            cc.Director.getInstance().purgeCachedData();
+
             var path = cc.FileUtils.getInstance().fullPathForFilename("game.jsc");
 
             cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
@@ -188,7 +190,7 @@ var UpdateLayer = cc.Layer.extend({
                 cc.log("require(\"game.jsc\")");
                 cc.log("+++++++++++++++++++++++++++++++++++++++++++++");
 
-                require("game.jsc");
+                require(path);
             } else {
                 cc.log("require(\"main_binding.js\")");
                 cc.log("+++++++++++++++++++++++++++++++++++++++++++++");

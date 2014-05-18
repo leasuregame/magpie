@@ -620,22 +620,9 @@ Handler.prototype.accept = function(msg, session, next) {
           friendExist = true;
           return cb(null, null);
         } else if (senderFriends.length >= res.friendsCount) {
-          return dao.message.update({
-            where: {
-              id: msgId
-            },
-            data: {
-              status: configData.message.MESSAGESTATUS.REJECT
-            }
-          }, function(err, res) {
-            if (err) {
-              return cb(err);
-            } else {
-              return cb({
-                code: 501,
-                msg: '对方好友已达上限'
-              });
-            }
+          return cb({
+            code: 501,
+            msg: '对方好友已达上限'
           });
         } else {
           return dao.friend.create({

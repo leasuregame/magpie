@@ -200,8 +200,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>6</real>
+							<real>6</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -355,8 +355,26 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>1.5</real>
-										<real>1.5</real>
+										<real>4</real>
+										<real>4</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>scale</string>
+									<key>time</key>
+									<real>0.73333334922790527</real>
+									<key>type</key>
+									<integer>4</integer>
+									<key>value</key>
+									<array>
+										<real>3</real>
+										<real>3</real>
 									</array>
 								</dict>
 								<dict>
@@ -373,8 +391,26 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>0.80000001192092896</real>
-										<real>0.80000001192092896</real>
+										<real>6</real>
+										<real>6</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>scale</string>
+									<key>time</key>
+									<real>0.86666667461395264</real>
+									<key>type</key>
+									<integer>4</integer>
+									<key>value</key>
+									<array>
+										<real>10</real>
+										<real>10</real>
 									</array>
 								</dict>
 							</array>
@@ -392,7 +428,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>up185</string>
+				<string>up117</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -413,8 +449,8 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>3</real>
+							<real>3</real>
 						</array>
 						<key>name</key>
 						<string>scale</string>
@@ -422,8 +458,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>10</real>
+							<real>10</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -444,7 +480,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/uiEffect/up185.png</string>
+							<string>res/effect/uiEffect/up117.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -455,7 +491,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>200</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -464,8 +500,8 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>115</integer>
-							<integer>243</integer>
+							<integer>145</integer>
+							<integer>248</integer>
 							<integer>255</integer>
 						</array>
 					</dict>
@@ -664,8 +700,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
-							<real>3</real>
+							<real>5</real>
+							<real>5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -697,7 +733,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -795,7 +831,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1627,7 +1663,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.63333332538604736</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1637,7 +1673,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.1666666716337204</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_effect1700_1.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

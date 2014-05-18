@@ -294,6 +294,13 @@ var BossListLayer = cc.Layer.extend({
             scrollViewLayer.addChild(msgBgIcon);
 
             var bossNameLabel = cc.LabelTTF.create(bossCard.get("name"), "STHeitiTC-Medium", 24);
+
+            if(bossTable.type == 2) {
+                bossNameLabel.setColor(cc.c3b(255, 131, 242));
+            } else if(bossTable.type == 3) {
+                bossNameLabel.setColor(cc.c3b(252, 254, 143));
+            }
+
             bossNameLabel.setAnchorPoint(cc.p(0, 0.5));
             bossNameLabel.setPosition(cc.p(197, y + 32));
             scrollViewLayer.addChild(bossNameLabel);
@@ -303,10 +310,8 @@ var BossListLayer = cc.Layer.extend({
             if (addition > 0) {
                 var rewardAdditionLabel = ColorLabelTTF.create(
                     {
-                        string: "奖励加成",
-                        fontName: "STHeitiTC-Medium",
-                        fontSize: 18,
-                        isStroke: true
+                        iconName: "icon431",
+                        offset: cc.p(0, 3)
                     },
                     {
                         string: addition + "%",
@@ -317,7 +322,7 @@ var BossListLayer = cc.Layer.extend({
                     }
                 );
                 rewardAdditionLabel.setAnchorPoint(cc.p(0, 0));
-                rewardAdditionLabel.setPosition(cc.p(330, y + 32));
+                rewardAdditionLabel.setPosition(cc.p(332, y + 32));
                 scrollViewLayer.addChild(rewardAdditionLabel);
             }
 

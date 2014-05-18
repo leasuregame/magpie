@@ -15,6 +15,7 @@
 var MAX_LINE_UP_SIZE = 6;
 var MAX_LINE_UP_CARD = 5;
 var SPIRIT_ID = -1;
+var LINE_UP_INDEX = 0;
 
 var LineUp = Entity.extend({
     _lineUpList: null,
@@ -23,6 +24,7 @@ var LineUp = Entity.extend({
     init: function (data) {
         cc.log("LineUp init");
 
+        LINE_UP_INDEX = 0;
         this._lineUpList = [];
         this._maxLineUp = Object.keys(outputTables.card_lineup_limit.rows).length;
 

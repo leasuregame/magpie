@@ -15,7 +15,7 @@
     "appender": {
       "type": "smtp",
       "recipients": "wuzhanghai@leasuregame.com",
-      "subject": "[Sina Error Message]",
+      "subject": "[Aliyun Game Server Error]",
       "sendInterval": 5,
       "transport": "SMTP",
       "SMTP": {

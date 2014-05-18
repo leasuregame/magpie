@@ -36,7 +36,10 @@ Handler::getTurnReward = (msg, session, next) ->
 
       rd_val = _.random(reward.num_min, reward.num_max)
       player.increase reward.type, rd_val
-      data[reward.type] = rd_val
+      if reward.type == 'fragments'
+        data['fragment'] = rd_val
+      else 
+        data[reward.type] = rd_val
 
       base_reward = getBaseRewardByLevel player.lv
       if not base_reward
@@ -51,14 +54,14 @@ Handler::getTurnReward = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
-    data.cards = card: cards[0], ids: cards.map (c) -> c.id
+    data.exp_card = card: cards[0], ids: cards.map (c) -> c.id
     player.nextTurn()
     player.save()
     next(null, {code: 200, msg: reward: data})
 
 getBaseRewardByLevel = (lv) ->
-  items = table.getTable('turn_reward_base').filter (id, row) -> row.lv <= lv
-  items.sort (x, y) -> y.lv - x.lv
+  items = table.getTable('turn_reward_base').filter (id, row) -> row.lv > lv
+  items.sort (x, y) -> x.lv - y.lv
 
   items[0]
 
@@ -153,8 +156,13 @@ Handler::updateMomoResult = (msg, session, next) ->
     player.clearMonoGift()
 
     player.increase 'gold', gold
+    types = table.getTable('turn_reward_type')
+    id = types.find('reward_type', 'gold')
+    task = utility.deepCopy(player.task)
+    task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
+    player.set('task', task)
     player.save()
-    next(null, {code: 200})
+    next(null, {code: 200, msg: collected: player.task.turn.collected || 0})
 
 ###
 任务扫荡
@@ -336,6 +344,7 @@ Handler::mysticalPass = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+
       if player.pass.mystical.diff is 5 and player.pass.mystical.isClear
         return cb({code: 501, msg: '魔道已通关'})
 
@@ -403,10 +412,11 @@ checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
+  return if not mpc
 
-  if mpc and player.passLayer < mpc.layer_from
+  if player.passLayer < mpc.layer_from
     return
-  else if mpc and player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
+  else if player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
     player.triggerMysticalPass()
   else if utility.hitRate(mpc.rate)
     player.triggerMysticalPass()

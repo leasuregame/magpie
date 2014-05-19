@@ -16,7 +16,7 @@ Handler = (@app) ->
 Handler::usePill = (msg, session, next) ->
   playerId = session.get('playerId')
   cardId = msg.cardId
-  pill = msg.pill or 0
+  pill = msg.pill
 
   if not cardId or not _.isNumber(cardId) or not _.isNumber(pill)
     return next(null, {code: 501, msg: '参数错误'})
@@ -37,22 +37,25 @@ Handler::usePill = (msg, session, next) ->
       if card.star < 4
         return cb({code: 501, msg: '4星以下卡牌不能吞噬轮回丹'})
 
-      reward = table.getTableItem('card_pill_use', card.star)
+      if not card.canUsePill()
+        return cb({code: 501, msg: '卡牌潜能级别已达最高'})
+
+      reward = table.getTableItem('card_pill_use', card.potentialLv+1)
       if not reward
         return cb({code: 501, msg: '找不到配置信息'})
 
+      #console.log '-s-', reward, player.pill
       if player.pill < reward.pill
         return cb({code: 501, msg: '轮回丹不足'})
 
       card.increase 'pill', reward.pill
-      card.increase 'potentialLv'
       player.decrease 'pill', pill
-      updateEntities ['update', player, card], cb
+      updateEntities ['update', 'player', player], ['update', 'card', card], cb
   ], (err) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    next(null, {code: 200, msg: ability: card.ability()})
+    next(null, {code: 200, msg: pill: player.pill, ability: card.ability()})
 
 ###
   卡牌熔炼
@@ -71,7 +74,6 @@ Handler::dissolveCard = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
     (res, cb) ->
       player = res
-      console.log '-a-', player
       if player.lv < 20
         return cb({code: 501, msg: '20级开启'})
 
@@ -88,7 +90,6 @@ Handler::dissolveCard = (msg, session, next) ->
       updateEntities ['update', 'player', player], ['delete', 'card', cards], cb
   ], (err) ->
     if err
-      console.log err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     next(null, {code: 200, msg: pill: player.pill, money: player.money})
@@ -98,10 +99,10 @@ updateEntities = (groups..., cb) ->
   groups.forEach (group) ->
     if _.isArray(group) and group.length >= 2
       type = group[0]
-      table = group[1]
+      tableName = group[1]
       entities = group.slice(2)
       entities.forEach (ent) -> 
-        action = type: type, options: {table: table}
+        action = type: type, options: {table: tableName}
 
         switch type
           when 'update' 
@@ -125,12 +126,13 @@ updateEntities = (groups..., cb) ->
             action.options = {}
 
         jobs.push action
-  console.log JSON.stringify jobs
+
+  console.log '-jobs-', JSON.stringify(jobs)
   job.multJobs jobs, cb
 
 canDissoleve = (cards) ->
   cards.filter (c) ->
-    c.tableId is 3000
+    c.tableId is 30000
   .length is 0
 
 doDissolveCard = (cards) ->

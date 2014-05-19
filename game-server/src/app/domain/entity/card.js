@@ -59,6 +59,26 @@ var addEvents = function(card) {
         countPassiveSkills(card);
     });
 
+    card.on('pill.change', function(pill) {
+        if (card.star < 4) {
+            return;
+        }
+
+        var plv = 0;
+        items = table.getTable('card_pill_use').map(function(row){
+            return row.pill;
+        })
+        .sort(function(x, y) { return x - y;})
+        .forEach(function(val) {
+            if (pill > val) {
+                plv += 1;
+                pill -= val;
+            }
+        });
+
+        card.potentialLv = plv;
+    });
+
     // card.on('skillPoint.change', function() {
     //     checkSkillLv(card);
     // });
@@ -157,7 +177,6 @@ var Card = (function(_super) {
             if (cardData.star >= 3) {
                 this.skill = table.getTableItem('skills', cardData.skill_id);
             }
-            this.cardData = cardData;
         }
 
 
@@ -223,6 +242,10 @@ var Card = (function(_super) {
 
     Card.prototype.init = function() {
         this.passiveSkills = this.passiveSkills || [];
+    };
+
+    Card.prototype.canUsePill = function(){
+        return this.potentialLv < this.star;
     };
 
     Card.prototype.getPsGroup = function(gid) {
@@ -291,24 +314,6 @@ var Card = (function(_super) {
 
         this.hp = hp;
         this.atk = atk;
-    };
-
-    Card.prototype.activeGroupEffect = function() {
-        var _property = {};
-        _property[GROUP_EFFECT_ATK] = 'atk';
-        _property[GROUP_EFFECT_HP] = 'hp';
-
-        var type = parseInt(this.cardData.effetc_type);
-        var effect_val = 20;
-        if (type == GROUP_EFFECT_HP) {
-            effect_val = 25;
-        }
-        var aval = parseInt(this[_property[type]] * effect_val / 100);
-        this.increase(_property[type] + 'Addition', aval);
-
-        this.increase(_property[type], aval);
-        this.incs['group_' + _property[type]] = aval;
-        return this;
     };
 
     Card.prototype.ability = function() {

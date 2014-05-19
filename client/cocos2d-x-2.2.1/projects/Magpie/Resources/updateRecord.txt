@@ -1,6 +1,22 @@
 更新记录表
 
 ----------v1.4.8版本----------------------------------------------------------------------------------------------------
+新加资源：
+res/main/icon449.png
+res/main/icon450.png
+res/main/icon451.png
+res/main/icon452.png
+res/main/icon453.png
+res/main/icon454.png
+res/main/icon455.png
+
+resYY/main/icon449.png
+resYY/main/icon450.png
+resYY/main/icon451.png
+resYY/main/icon452.png
+resYY/main/icon453.png
+resYY/main/icon454.png
+resYY/main/icon455.png
 
 ----------v1.4.8版本----------------------------------------------------------------------------------------------------
 

@@ -62,7 +62,7 @@ var FriendMessageLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 127 - 20;
+        var scrollViewHeight = len * 127;
         if (scrollViewHeight < this._friendMessageLayerFit.scrollViewHeight) {
             scrollViewHeight = this._friendMessageLayerFit.scrollViewHeight;
         }
@@ -71,21 +71,38 @@ var FriendMessageLayer = cc.Layer.extend({
         var that = this;
         for (var i = 0; i < len; ++i) {
             (function (i) {
-                var y = scrollViewHeight - 107 - 127 * i;
+                var y = scrollViewHeight - 127 - 127 * i;
 
                 var id = that._friendMessageList[i].id;
                 var type = that._friendMessageList[i].type;
                 var status = that._friendMessageList[i].status;
 
-                var msgBgSprite = cc.Sprite.create(main_scene_image.icon127);
-                msgBgSprite.setAnchorPoint(cc.p(0, 0));
-                msgBgSprite.setPosition(cc.p(0, y));
-                scrollViewLayer.addChild(msgBgSprite);
+                var msgBgLabel = cc.Sprite.create(main_scene_image.icon449);
+                msgBgLabel.setAnchorPoint(cc.p(0, 0));
+                msgBgLabel.setPosition(cc.p(0, y));
+                scrollViewLayer.addChild(msgBgLabel);
+
+                var friendIcon = cc.Sprite.create(main_scene_image.icon451);
+                friendIcon.setAnchorPoint(cc.p(0, 0.5));
+                friendIcon.setPosition(cc.p(10, 57));
+                msgBgLabel.addChild(friendIcon);
+
+                var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+                nameIcon.setContentSize(cc.size(180, 30));
+                nameIcon.setAnchorPoint(cc.p(0, 0.5));
+                nameIcon.setPosition(cc.p(115, 85));
+                msgBgLabel.addChild(nameIcon);
+
+                var nameLabel = cc.LabelTTF.create("哈哈哈哈哈哈", "STHeitiTC-Medium", 22);
+                nameLabel.setAnchorPoint(cc.p(0, 0.5));
+                nameLabel.setPosition(cc.p(130, 85));
+                msgBgLabel.addChild(nameLabel);
 
                 var msgLabel = cc.LabelTTF.create(that._friendMessageList[i].content, "STHeitiTC-Medium", 22);
                 msgLabel.setAnchorPoint(cc.p(0, 0.5));
-                msgLabel.setPosition(cc.p(20, y + 60));
-                scrollViewLayer.addChild(msgLabel);
+                msgLabel.setPosition(cc.p(120, 35));
+                msgLabel.setColor(cc.c3b(138, 85, 23));
+                msgBgLabel.addChild(msgLabel);
 
                 var timeLabel = cc.LabelTTF.create(
                     lz.getTimeStr({
@@ -97,6 +114,7 @@ var FriendMessageLayer = cc.Layer.extend({
                 );
                 timeLabel.setAnchorPoint(cc.p(1, 0));
                 timeLabel.setPosition(cc.p(580, y + 13));
+                timeLabel.setColor(cc.c3b(138, 85, 23));
                 scrollViewLayer.addChild(timeLabel);
 
                 if (type == ADD_FRIEND_MESSAGE) {
@@ -119,7 +137,7 @@ var FriendMessageLayer = cc.Layer.extend({
                             that._onClickAccept(id),
                             that
                         );
-                        acceptItem.setPosition(cc.p(375, y + 62));
+                        acceptItem.setPosition(cc.p(380, y + 62));
                         menu.addChild(acceptItem);
 
                         var rejectItem = cc.MenuItemImage.createWithIcon(
@@ -129,7 +147,7 @@ var FriendMessageLayer = cc.Layer.extend({
                             that._onClickReject(id),
                             that
                         );
-                        rejectItem.setPosition(cc.p(520, y + 62));
+                        rejectItem.setPosition(cc.p(525, y + 62));
                         menu.addChild(rejectItem);
 
                         that._scrollViewElement[id] = {
@@ -154,7 +172,7 @@ var FriendMessageLayer = cc.Layer.extend({
                             that._onClickAddFriend(name),
                             that
                         );
-                        addFriendItem.setPosition(cc.p(375, y + 62));
+                        addFriendItem.setPosition(cc.p(380, y + 62));
                         menu.addChild(addFriendItem);
                     }
 
@@ -165,7 +183,7 @@ var FriendMessageLayer = cc.Layer.extend({
                         that._onClickRead(i),
                         that
                     );
-                    readItem.setPosition(cc.p(520, y + 62));
+                    readItem.setPosition(cc.p(525, y + 62));
 
                     if (status == UNHANDLED_STATUS && !that._markEffect[i]) {
                         that._markEffect[i] = cc.BuilderReader.load(main_scene_image.uiEffect34, that);

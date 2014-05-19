@@ -198,6 +198,7 @@
                 <file name="src/view/mainModule/starLabel.js"/>
                 <file name="src/view/mainModule/strengthenLayer.js"/>
                 <file name="src/view/mainModule/summonLayer.js"/>
+                <file name="src/view/mainModule/systemMessageLabel.js"/>
                 <file name="src/view/mainModule/systemMessageLayer.js"/>
                 <file name="src/view/mainModule/taskLayer.js"/>
                 <file name="src/view/mainModule/tenLotteryCardLayer.js"/>

@@ -203,6 +203,7 @@ var appFiles = [
     'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/summonLayer.js',
+    'src/view/mainModule/systemMessageLabel.js',
     'src/view/mainModule/systemMessageLayer.js',
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tenLotteryCardLayer.js',

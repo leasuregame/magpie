@@ -225,17 +225,26 @@ var Message = Entity.extend({
 
                     message.status = HANDLED_STATUS;
 
-                    gameData.player.adds({
-                        gold: msg.gold,
-                        money: msg.money,
-                        power: msg.powerValue,
-                        skillPoint: msg.skillPoint,
-                        elixir: msg.elixir,
-                        energy: msg.energy,
-                        fragment: msg.fragments
-                    });
+                    for(var key in msg) {
+                        var k = lz.getKeyStr(key);
+                        if(k) {
+                            gameData.player.add(k, msg[key]);
+                        } else {
+                            if(key == "spirit") {
+                                gameData.spirit.add("exp", msg[key]);
+                            } else if(key == "cardArray") {
+                                var cards = msg[key];
+                                var len = cards.length;
+                                for(var i = 0;i < len;i++) {
+                                    var card = Card.create(cards[i]);
+                                    gameData.cardList.push(card);
+                                }
 
-                    gameData.spirit.add("exp", msg.spirit);
+                            } else {
+                                cc.log("未知资源：" + key);
+                            }
+                        }
+                    }
 
                     lz.tipReward(msg);
 

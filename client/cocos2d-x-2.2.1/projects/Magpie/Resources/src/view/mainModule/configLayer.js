@@ -80,10 +80,10 @@ var ConfigLayer = cc.Layer.extend({
         itemMenu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(itemMenu, 2);
 
-        var scrollViewHeight = 7 * 120;
+        var scrollViewHeight = 6 * 120;
 
         if (lz.platformShowCenter) {
-            scrollViewHeight = 8 * 120;
+            scrollViewHeight = 7 * 120;
         }
 
         var y = scrollViewHeight - 60;
@@ -223,22 +223,6 @@ var ConfigLayer = cc.Layer.extend({
         this._framesSelect.setPosition(point);
         scrollViewLayer.addChild(this._framesSelect, 2);
         y -= 120;
-
-        var QQGroup = cc.MenuItemImage.create(
-            main_scene_image.icon127,
-            main_scene_image.icon127,
-            null,
-            this
-        );
-        QQGroup.setAnchorPoint(cc.p(0, 0.5));
-        QQGroup.setPosition(cc.p(15, y));
-        itemMenu.addChild(QQGroup);
-        y -= 120;
-
-        var QQGroupTitle = StrokeLabel.create("Q群： 264272502", "STHeitiTC-Medium", 30);
-        QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
-        QQGroupTitle.setPosition(cc.p(40, 55));
-        QQGroup.addChild(QQGroupTitle);
 
         var noticeItem = cc.MenuItemImage.create(
             main_scene_image.icon127,

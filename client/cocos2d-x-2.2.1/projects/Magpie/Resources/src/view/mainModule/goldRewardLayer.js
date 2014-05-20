@@ -76,50 +76,50 @@ var GoldRewardLayer = cc.Layer.extend({
         this.addChild(this._scrollView);
 
         var playerLv = gameData.player.get('lv');
+        var currentId = -1;
 
         for (var i = 0; i < len; ++i) {
 
             var y = scrollViewHeight - 135 - i * 135;
             var bgSprite = cc.Sprite.create(main_scene_image.button15);
             bgSprite.setAnchorPoint(cc.p(0, 0));
-            bgSprite.setPosition(cc.p(0, y));
+            bgSprite.setPosition(cc.p(20, y));
             bgSprite.setContentSize(cc.size(600, 135));
             scrollViewLayer.addChild(bgSprite);
 
             var iconSprite = cc.Sprite.create(main_scene_image.icon272);
             iconSprite.setAnchorPoint(cc.p(0, 0));
-            iconSprite.setPosition(cc.p(20, y + 20));
+            iconSprite.setPosition(cc.p(40, y + 20));
             scrollViewLayer.addChild(iconSprite);
 
             var text = cc.LabelTTF.create('角色等级' + goldRewards[i].lv + '级', "STHeitiTC-Medium", 20);
             text.setAnchorPoint(cc.p(0, 0));
-            text.setPosition(cc.p(140, y + 80));
+            text.setPosition(cc.p(160, y + 80));
             text.setColor(cc.c3b(97, 11, 9));
             scrollViewLayer.addChild(text);
 
             var goldIcon = cc.Sprite.create(main_scene_image[gameGoodsIcon["gold"]]);
             goldIcon.setAnchorPoint(cc.p(0, 0));
-            goldIcon.setPosition(cc.p(140, y + 25));
+            goldIcon.setPosition(cc.p(160, y + 25));
             scrollViewLayer.addChild(goldIcon);
 
             var goldText = cc.LabelTTF.create(goldRewards[i].gold, "STHeitiTC-Medium", 30);
             goldText.setAnchorPoint(cc.p(0, 0));
-            goldText.setPosition(cc.p(200, y + 32));
+            goldText.setPosition(cc.p(220, y + 32));
             goldText.setColor(cc.c3b(97, 11, 9));
             scrollViewLayer.addChild(goldText);
 
 
             var energyIcon = cc.Sprite.create(main_scene_image[gameGoodsIcon["energy"]]);
-            energyIcon.setAnchorPoint(cc.p(0,0));
-            energyIcon.setPosition(cc.p(280, y + 25));
+            energyIcon.setAnchorPoint(cc.p(0, 0));
+            energyIcon.setPosition(cc.p(300, y + 25));
             scrollViewLayer.addChild(energyIcon);
 
             var energyText = cc.LabelTTF.create(goldRewards[i].energy, "STHeitiTC-Medium", 30);
             energyText.setAnchorPoint(cc.p(0, 0));
-            energyText.setPosition(cc.p(340, y + 32));
+            energyText.setPosition(cc.p(360, y + 32));
             energyText.setColor(cc.c3b(97, 11, 9));
             scrollViewLayer.addChild(energyText);
-
 
             var type = gameData.activity.getStateById(TYPE_GOLD_REWARD, goldRewards[i].id);
             var btnGetReward = cc.MenuItemImage.createWithIcon(
@@ -131,14 +131,18 @@ var GoldRewardLayer = cc.Layer.extend({
                 this
             );
             btnGetReward.setEnabled(playerLv >= goldRewards[i].lv);
-            btnGetReward.setPosition(cc.p(500, y + 68));
+            btnGetReward.setPosition(cc.p(520, y + 68));
             var menu = cc.Menu.create(btnGetReward);
             menu.setPosition(cc.p(0, 0));
             scrollViewLayer.addChild(menu);
             btnGetReward.setVisible(type != GOLD_RECEIVE);
 
+            if (currentId == -1 && playerLv >= goldRewards[i].lv && type != GOLD_RECEIVE) {
+                currentId = i;
+            }
+
             var hasBeenGainIcon = cc.Sprite.create(main_scene_image.icon138);
-            hasBeenGainIcon.setPosition(cc.p(500, y + 68));
+            hasBeenGainIcon.setPosition(cc.p(520, y + 68));
             scrollViewLayer.addChild(hasBeenGainIcon, 1);
             hasBeenGainIcon.setVisible(type == GOLD_RECEIVE);
 
@@ -149,7 +153,19 @@ var GoldRewardLayer = cc.Layer.extend({
         }
 
         this._scrollView.setContentSize(cc.size(600, scrollViewHeight));
-        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+
+        var size = this._goldRewardLayerFit.scrollViewSize;
+        var offsetY;
+
+        if (currentId > 0) {
+            offsetY = -1 * (len - currentId) * 135 + size.height;
+            offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
+        } else {
+            offsetY = this._scrollView.minContainerOffset().y;
+        }
+
+        this._scrollView.setContentOffset(cc.p(0, offsetY));
+
     },
 
     _onClickGetReward: function (id) {

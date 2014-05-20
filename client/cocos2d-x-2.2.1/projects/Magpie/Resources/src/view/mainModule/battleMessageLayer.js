@@ -12,6 +12,14 @@
  * */
 
 
+var winResultTips = [
+    "被你连环鞭尸啦",
+    "连根脚毛都没碰到",
+    "真是有眼不识泰山啊",
+    "被你的实力深深的折服",
+    "也不看看对手是谁呀"
+];
+
 var BattleMessageLayer = cc.Layer.extend({
     _battleMessageLayerFit: null,
 
@@ -61,27 +69,104 @@ var BattleMessageLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 127 - 20;
+        var messages = [];
+
+        for (var i = 0; i < 10; i++) {
+            messages[i] = {
+                defier: "哈哈哈哈哈哈",
+                isWin: (i % 2) ? true : false,
+                rank: parseInt(Math.random() * 1000)
+            }
+        }
+
+        len = messages.length;
+
+        var scrollViewHeight = len * 127;
         if (scrollViewHeight < this._battleMessageLayerFit.scrollViewHeight) {
             scrollViewHeight = this._battleMessageLayerFit.scrollViewHeight;
         }
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 107 - 127 * i;
+            var y = scrollViewHeight - 127 - 127 * i;
+            var message = messages[i];
 
-            var msgBgSprite = cc.Sprite.create(main_scene_image.icon127);
-            msgBgSprite.setAnchorPoint(cc.p(0, 0));
-            msgBgSprite.setPosition(cc.p(0, y));
-            scrollViewLayer.addChild(msgBgSprite);
+            var msgBgLabel = cc.Sprite.create(main_scene_image.icon449);
+            msgBgLabel.setAnchorPoint(cc.p(0, 0));
+            msgBgLabel.setPosition(cc.p(0, y));
+            scrollViewLayer.addChild(msgBgLabel);
 
-            var msgLabel = cc.LabelTTF.create(battleMessageList[i].content, "STHeitiTC-Medium", 22);
-            msgLabel.setAnchorPoint(cc.p(0, 0.5));
-            msgLabel.setPosition(cc.p(20, y + 60));
-            scrollViewLayer.addChild(msgLabel);
+            var battleIcon = cc.Sprite.create(main_scene_image.icon450);
+            battleIcon.setAnchorPoint(cc.p(0, 0.5));
+            battleIcon.setPosition(cc.p(10, 57));
+            msgBgLabel.addChild(battleIcon);
+
+            var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+            nameIcon.setContentSize(cc.size(200, 30));
+            nameIcon.setAnchorPoint(cc.p(0, 0.5));
+            nameIcon.setPosition(cc.p(115, 85));
+            msgBgLabel.addChild(nameIcon);
+
+            var nameLabel = cc.LabelTTF.create(message.defier, "STHeitiTC-Medium", 22);
+            nameLabel.setAnchorPoint(cc.p(0, 0.5));
+            nameLabel.setPosition(cc.p(130, 85));
+            msgBgLabel.addChild(nameLabel);
+
+            var desc = "";
+            var url = "icon453";
+
+            if (!message.isWin) {
+                url = "icon454";
+                desc = "在竞技场战胜了你";
+            } else {
+                desc = "在竞技场挑战了你";
+            }
+
+            var descLabel1 = cc.LabelTTF.create(desc, "STHeitiTC-Medium", 22);
+            descLabel1.setAnchorPoint(cc.p(0, 0.5));
+            descLabel1.setPosition(cc.p(120, 52));
+            descLabel1.setColor(cc.c3b(138, 85, 23));
+            msgBgLabel.addChild(descLabel1);
+
+            var descLabel2 = null;
+
+            if (message.isWin) {
+                var id = parseInt(Math.random() * winResultTips.length);
+                descLabel2 = cc.LabelTTF.create(winResultTips[id], "STHeitiTC-Medium", 22);
+                descLabel2.setColor(cc.c3b(36, 117, 20));
+                descLabel2.setAnchorPoint(cc.p(0, 0.5));
+                descLabel2.setPosition(cc.p(120, 22));
+            } else {
+                if (message.rank) {
+                    descLabel2 = ColorLabelTTF.create(
+                        {
+                            string: "你的排名降至",
+                            fontName: "STHeitiTC-Medium",
+                            fontSize: 22,
+                            color: cc.c3b(123, 61, 56)
+                        },
+                        {
+                            string: message.rank,
+                            fontName: "STHeitiTC-Medium",
+                            fontSize: 22,
+                            color: cc.c3b(255, 29, 29)
+                        }
+
+                    );
+                }
+                descLabel2.setAnchorPoint(cc.p(0, 0));
+                descLabel2.setPosition(cc.p(120, 22));
+            }
+
+            msgBgLabel.addChild(descLabel2);
+
+            var resultIcon = cc.Sprite.create(main_scene_image[url]);
+            resultIcon.setVisible(cc.p(0, 0.5));
+            resultIcon.setPosition(cc.p(350, 82));
+            msgBgLabel.addChild(resultIcon);
 
             var timeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({
-                    time: battleMessageList[i].createTime,
+                    time: battleMessageList[0].createTime,
                     fmt: "yyyy.MM.dd hh:mm"
                 }),
                 "STHeitiTC-Medium",
@@ -89,13 +174,14 @@ var BattleMessageLayer = cc.Layer.extend({
             );
             timeLabel.setAnchorPoint(cc.p(1, 0));
             timeLabel.setPosition(cc.p(580, y + 13));
+            timeLabel.setColor(cc.c3b(138, 85, 23));
             scrollViewLayer.addChild(timeLabel);
 
             var playbackItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.icon135,
-                this._onClickPlayback(battleMessageList[i].options.battleLogId),
+                this._onClickPlayback(battleMessageList[0].options.battleLogId),
                 this
             );
             playbackItem.setPosition(cc.p(520, y + 62));

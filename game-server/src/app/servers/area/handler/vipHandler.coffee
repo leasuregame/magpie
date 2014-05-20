@@ -183,6 +183,7 @@ openVipBox = (player, boxInfo, next) ->
   vb = _.clone(player.vipBox)
   vb.push boxInfo.id
   player.vipBox = vb
+  player.decrease 'gold', boxInfo.price
   player.save()
   
   if _.has boxInfo, 'exp_card'

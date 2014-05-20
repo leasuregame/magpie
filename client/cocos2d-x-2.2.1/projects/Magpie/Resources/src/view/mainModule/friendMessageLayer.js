@@ -74,6 +74,7 @@ var FriendMessageLayer = cc.Layer.extend({
                 var y = scrollViewHeight - 127 - 127 * i;
 
                 var id = that._friendMessageList[i].id;
+                var message = that._friendMessageList[i];
                 var type = that._friendMessageList[i].type;
                 var status = that._friendMessageList[i].status;
 
@@ -93,12 +94,12 @@ var FriendMessageLayer = cc.Layer.extend({
                 nameIcon.setPosition(cc.p(115, 85));
                 msgBgLabel.addChild(nameIcon);
 
-                var nameLabel = cc.LabelTTF.create("哈哈哈哈哈哈", "STHeitiTC-Medium", 22);
+                var nameLabel = cc.LabelTTF.create(message.senderName, "STHeitiTC-Medium", 22);
                 nameLabel.setAnchorPoint(cc.p(0, 0.5));
                 nameLabel.setPosition(cc.p(130, 85));
                 msgBgLabel.addChild(nameLabel);
 
-                var msgLabel = cc.LabelTTF.create(that._friendMessageList[i].content, "STHeitiTC-Medium", 22);
+                var msgLabel = cc.LabelTTF.create(message.content, "STHeitiTC-Medium", 22);
                 msgLabel.setAnchorPoint(cc.p(0, 0.5));
                 msgLabel.setPosition(cc.p(120, 35));
                 msgLabel.setColor(cc.c3b(138, 85, 23));

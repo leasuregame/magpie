@@ -52,7 +52,6 @@ var addEvents = function(card) {
                 if (cardData.star >= 3) {
                     card.skill = table.getTableItem('skills', cardData.skill_id);
                 }
-                card.cardData = cardData;
             }
         }
         countHpAtk(card);
@@ -70,13 +69,18 @@ var addEvents = function(card) {
         })
         .sort(function(x, y) { return x - y;})
         .forEach(function(val) {
-            if (pill > val) {
+            if (pill >= val) {
                 plv += 1;
                 pill -= val;
             }
         });
 
         card.potentialLv = plv;
+    });
+
+    card.on('potentialLv.change', function(lv) {
+        countHpAtk(card);
+        countPassiveSkills(card);
     });
 
     // card.on('skillPoint.change', function() {
@@ -126,6 +130,9 @@ var countHpAtk = function(card) {
 
         var _hp = parseInt(cardData.hp * factor),
             _atk = parseInt(cardData.atk * factor);
+
+        _hp = parseInt(_hp*(100+10*card.potentialLv)/100);
+        _atk = parseInt(_atk*(100+10*card.potentialLv)/100);
         card.set({
             init_hp: _hp,
             hp: _hp,

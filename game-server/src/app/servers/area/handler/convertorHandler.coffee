@@ -16,12 +16,12 @@ Handler = (@app) ->
 Handler::usePill = (msg, session, next) ->
   playerId = session.get('playerId')
   cardId = msg.cardId
-  pill = msg.pill
 
-  if not cardId or not _.isNumber(cardId) or not _.isNumber(pill)
+  if not cardId or not _.isNumber(cardId)
     return next(null, {code: 501, msg: '参数错误'})
 
   player = null
+  card = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
@@ -44,12 +44,11 @@ Handler::usePill = (msg, session, next) ->
       if not reward
         return cb({code: 501, msg: '找不到配置信息'})
 
-      #console.log '-s-', reward, player.pill
       if player.pill < reward.pill
         return cb({code: 501, msg: '轮回丹不足'})
 
       card.increase 'pill', reward.pill
-      player.decrease 'pill', pill
+      player.decrease 'pill', reward.pill
       updateEntities ['update', 'player', player], ['update', 'card', card], cb
   ], (err) ->
     if err

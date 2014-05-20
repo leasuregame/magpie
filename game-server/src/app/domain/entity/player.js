@@ -1121,14 +1121,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.clearMysticalPass = function() {
-        if (this.pass.mystical.diff == 5) {
-            return;
-        }
-
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
-        pass.mystical.diff += 1;
-        pass.mystical.isTrigger = false;
+
+        if (this.pass.mystical.diff < 5) {
+            pass.mystical.diff += 1;
+            pass.mystical.isTrigger = false;
+        }
+        
         this.set('pass', pass);
     };
 

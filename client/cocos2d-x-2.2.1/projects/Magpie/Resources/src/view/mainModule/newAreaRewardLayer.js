@@ -33,6 +33,8 @@ var NewAreaRewardLayer = cc.Layer.extend({
         var activity = gameData.activity;
         var index = 0;
 
+        var currentId = -1;
+
         for (var id in table) {
             var y = scrollViewHeight - 153 - index * 153;
             var bgSprite = cc.Sprite.create(main_scene_image.button19);
@@ -94,6 +96,10 @@ var NewAreaRewardLayer = cc.Layer.extend({
             btnGetReward.setEnabled(state == NOT_GOT_REWARD);
             btnGetReward.setVisible(!(state == ALREADY_GOT_REWARD));
 
+            if (state == NOT_GOT_REWARD && currentId == -1) {
+                currentId = index;
+            }
+
             var menu = cc.Menu.create(btnGetReward);
             menu.setPosition(cc.p(0, 0));
             scrollViewLayer.addChild(menu);
@@ -116,8 +122,20 @@ var NewAreaRewardLayer = cc.Layer.extend({
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        scrollView.setContentOffset(scrollView.minContainerOffset());
+
         this.addChild(scrollView);
+
+        var size = this._newAreaRewardLayerFit.scrollViewSize;
+        var offsetY;
+
+        if (currentId > 0) {
+            offsetY = -1 * (len - currentId) * 153 + size.height;
+            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
+        } else {
+            offsetY = scrollView.minContainerOffset().y;
+        }
+
+        scrollView.setContentOffset(cc.p(0, offsetY));
 
         return true;
     },

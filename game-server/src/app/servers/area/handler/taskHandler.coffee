@@ -97,7 +97,8 @@ Handler::explore = (msg, session, next) ->
         , (err, battleLog) ->
           data.battle_log = battleLog
 
-          if not player.task.hasWin
+          if utility.hitRate(configData.taskRate.obtain_spirit_rate)
+          #if not player.task.hasWin
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.rewards.totalSpirit if battleLog.winner is 'own'      
 

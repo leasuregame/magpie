@@ -154,7 +154,7 @@ Handler::challenge = (msg, session, next) ->
         firstTime: firstTime if firstTime
       }})
 
-      saveBattleLog(bl, playerName)
+      saveBattleLog(bl, playerName, ranking, target.rank.ranking)
 
 Handler::fight = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -383,11 +383,12 @@ filterPlayersInfo = (players, ranks, rankings) ->
       type: rankings[ranks[p.id]]
     }
     
-saveBattleLog = (bl, playerName) ->
+saveBattleLog = (bl, playerName, oldRank, curRank) ->
   playerId = bl.ownId
   targetId = bl.enemyId
 
-  if bl.winner is 'own'
+  isWin = bl.winner is 'own'
+  if isWin
     result = '你输了'
   else
     result = '你赢了'
@@ -407,7 +408,13 @@ saveBattleLog = (bl, playerName) ->
       content: "#{playerName}挑战了你，" + result 
       type: configData.message.MESSAGETYPE.BATTLENOTICE
       status: configData.message.MESSAGESTATUS.NOTICE
-      options: {battleLogId: res.id}
+      options: {
+        battleLogId: res.id
+        isWin: isWin
+        oldRank: oldRank
+        curRank: curRank
+        challenger: playerName
+      }
     }, (err, message) ->
       if err
         logger.error '[fail to create message]' + err

@@ -49,7 +49,7 @@ Handler::messageList = (msg, session, next) ->
     (cb) ->
       dao.message.fetchMany {
         where: " receiver = #{playerId} and 
-          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.ADDFRIEND}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
+          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
           status <> #{configData.message.MESSAGESTATUS.ASKING} "
         orderby: ' createTime DESC '
       }, cb
@@ -74,8 +74,7 @@ Handler::messageList = (msg, session, next) ->
     unhandledMessage = results[3]
 
     messages = mergeMessages(friendMessages, systemMessages, blMessages, unhandledMessage)
-    messages = messages.map (m) -> 
-      if m.type is configData.message.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
+    messages = messages.map (m) -> m.toJson?()
     messages = _.groupBy messages, (item) -> item.type
     msgs = changeGroupNameAndSort(messages)
     next(null, {code: 200, msg: msgs})

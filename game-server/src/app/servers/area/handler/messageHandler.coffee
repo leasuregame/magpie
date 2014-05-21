@@ -113,28 +113,33 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, msg.playerId, {
       route: 'onMessage'
       msg: res.toJson()
-    }, '邮件发送成功', next
+    }, '邮件发送成功', (err, data) ->
+      data.msg = {msgId: res.id, tip: data.msg} if not err
+      next(err, data)
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
-  player = null
-  incValues = (obj, data) ->
+  
+  incValues = (obj, options, done) ->
+    data = options.rewards or options
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')
     # todo add exp card with entityUtil
-    eUtil.createCards(
-      tableId : card.tableId
-      playerId : playerId
-      lv : card.lv
-    , card.qty, (err, cards) ->
-      if err
-        logger.error 'faild to create card. ' + err
-        return
-      obj.addCards cards
-    ) for card in data.cards if _.has(data, 'cards')
+    if _.has(data, 'cardArray') and data.cardArray.length > 0
+      data.cardArray.forEach (c) -> c.playerId = obj.id
+      eUtil.createCards data.cardArray, (err, cards) ->
+        if err
+          done(err)
+        else
+          obj.addCards cards
+          data.cardArray = cards.map (c) -> c.toJson()
+          done(null, data)
+    else
+      done(null, data)
 
+  player = null
   async.waterfall [
     (cb)->
       dao.message.fetchOne where: id: msgId, (err, message) ->
@@ -184,14 +189,13 @@ Handler::handleSysMsg = (msg, session, next) ->
           cb(err, res.options)
 
     (options, cb) ->
-      incValues(player, options)
-      player.save()
-      cb(null, options)
+      incValues(player, options, cb)
 
   ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})
 
+    player.save()
     next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->

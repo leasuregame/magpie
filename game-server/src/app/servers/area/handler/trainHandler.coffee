@@ -798,11 +798,11 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '3星以下的卡牌不能使用仙丹'})
 
     limit = elixirLimit.getItem(card.star)
-    if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
+    if card.totalElixir() >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌可吞噬仙丹数量已满"})
 
-    if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
-      return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
+    if (card.totalElixir() + elixir) > limit.elixir_limit
+      return next(null, {code: 501, msg: "使用的仙丹已超卡牌上限"})
 
     # 判断暴击
     isCrit = utility.hitRate configData.elixir.useElixirCritRate

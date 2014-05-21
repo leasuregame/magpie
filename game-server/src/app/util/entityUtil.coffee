@@ -13,7 +13,7 @@ MAX_PLAYER_LV = table.getTableItem('lv_limit', 1).player_lv_limit
 module.exports = 
   createCard: (data, done) ->
     unless data.star
-      data.star = data.tableId%5 or 5
+      data.star = cardStar(data.tableId)
 
     if data.star >= 3
       data.passiveSkills = initPassiveSkillGroup(data.star)
@@ -241,6 +241,8 @@ updateFriendCount = (player) ->
 
 initPassiveSkill = (star) ->
   count = star - 2
+  count = 3 if count > 3
+  
   results = []
   for i in [0...count]
     index = _.random(configData.card.PASSIVESKILL.TYPE.length-1)

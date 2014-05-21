@@ -1,0 +1,6 @@
+查看内存使用情况：df -h
+查看文件内存:du -sh 文件名
+查看所有node进程 ps -ef|grep node
+停止所有node进程 pkill -9 -f node
+合并代码冲突时 git checkout -f
+删除和关键字有关的文件：rm -rf 关键字*

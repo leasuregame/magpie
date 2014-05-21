@@ -8,8 +8,12 @@
 
 var pomelo = window.pomelo;
 var areas;
-var ALL = -1;
+var AREAID_ALL = -1;
 var cardTmp = '';
+var cards = {};
+var CARD_OPT_REPLACE_MARK = '<option>replace</option>';
+var cardOptDom = '';
+var cardLvLimit = {};
 /**
  * 奖励选项输入错误提示
  * @type {{RW_WRONG_TYPE: string, RW_EMPTY: string}}
@@ -19,14 +23,28 @@ var formErrTips = {
     RW_EMPTY : "请选填一项奖励",
     RW_NEGATIVE : "请勿输入负数"
 }
-
 /**
- * 奖励类型,记录在input 的 reType 属性中,无此属性表示该奖励属于player自带属性
- * @type {{CARD: string}}
+ * 提示框ID
+ * @type {{baseRW: string, cardRW: string}}
  */
-var rewardType = {
-    CARD : "card"
+var formTipAlertId = {
+    baseRW : '#baseRewardAlert',
+    cardRW : '#cardRewardAlert'
 }
+var baseRewardNames = {
+    gold : '魔石',
+    money : '仙币',
+    powerValue : '体力点',
+    spirit : '灵气',
+    skillPoint : '技能点',
+    elixir : '仙丹',
+    energy : '活力点',
+    fragments : '卡魂',
+    superHonor : '精元',
+    speaker : '喇叭',
+    honor : '荣誉点'
+}
+
 
 // init
 /**
@@ -39,7 +57,28 @@ function initAreasList() {
         inner += '<option value =' + area.id + '>' + area.name + '</option>';
     });
     $("#area").append(inner).prop("selectedIndex", 0);
-};
+}
+
+/**
+ * 初始化选卡选项
+ */
+function initCardOpt() {
+    window.webAPI.getActorCards(function (data){
+        cards = data;
+        var tableIds = [];
+        var names = [];
+        for(var key in cards) {
+            var tmpCard = cards[key];
+            tableIds.push(key);
+            names.push(key + '__' + tmpCard.star  + '☆__' + tmpCard.name);
+        }
+        cardOptDom = window.wsUtil.buildSelOpts(names, tableIds);
+        // 加入到初始卡牌选项中
+        $('.cardReward.cName').html(cardOptDom);
+        // 加入到模板中
+        cardTmp = $('#cardOptTemp').text().replace(CARD_OPT_REPLACE_MARK, cardOptDom);
+    });
+}
 
 /**
  * 初始化各奖励上限提示
@@ -51,7 +90,12 @@ function initRewardLimit() {
         var $this = $(this);
         $this.text(txtTemp + $this.attr('limit'));
     });
-};
+
+    // card lv reward
+    window.webAPI.getCardLvLimit(function(data){
+        cardLvLimit = data;
+    })
+}
 
 // UI actions
 /**
@@ -60,16 +104,17 @@ function initRewardLimit() {
 function removeErrors() {
     $('.has-error').removeClass('has-error');
     $('.help-block').remove();
-    $('#rewardAlert').addClass('hide');
+    $('.alert-danger').addClass('hide');
     $('.limitTag').removeAttr('style');
 }
 
 /**
  * 弹出奖励选项错误提示
+ * @param id 提示框ID
  * @param tips 需显示提示
  */
-function showRewardAlert(tips) {
-    $('#rewardAlert').text(tips).removeClass('hide');
+function showErrorAlert(id, tips) {
+    $(id).text(tips).removeClass('hide');
 }
 
 /**
@@ -77,10 +122,6 @@ function showRewardAlert(tips) {
  */
 function addCardOpt() {
     $('#cardGroup').append(cardTmp);
-}
-
-function rmCardOpt($cardOpt) {
-    $cardOpt.remove();
 }
 
 /**
@@ -93,14 +134,38 @@ function highLightLimit($limitTag) {
 
 /**
  * 弹出确认提交弹窗
- * @param content 消息内容
+ * @param msg @returns {{areaId: Number, playerId: string, content: string, validDate: string, options: {title: string, sender: string, rewards: {}}}} 包含页面所有信息
  */
-function showModal(content) {
-    var cnt = '<p><strong>服务器：</strong>' + $('#area').find('option:selected').text() + '</p>'
-    cnt += '<p><strong>消息内容：</strong>' + content + '</p>';
+function showModal(msg) {
 
-    $('#modalContent').html(cnt);
-    $('#actionConfirm').modal();
+    // todo
+    var modalForm = $('#actionConfirm');
+    var contentArea = modalForm.find('.modal-content');
+    contentArea.find('.area .text').text($('#area').find('option:selected').text());
+    contentArea.find('.receiver .text').text(msg.playerId);
+    contentArea.find('.author .text').text(msg.options.sender);
+    contentArea.find('.title .text').text(msg.options.title);
+    contentArea.find('.content .text').text(msg.content);
+    contentArea.find('.expDate .text').text(msg.validDate);
+
+    // 生成奖励文本
+    var rewardDom = '';
+    $.each(msg.options.rewards, function (key, val) {
+        if(key == 'cards') {
+            rewardDom += '<br>卡牌 : <br>';
+            $.each(val, function (idx, val) {
+                var card = cards[val.tableId + ""];
+                rewardDom += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + '<br>';
+            })
+        } else {
+            rewardDom += baseRewardNames[key] + ' x ' + val + ' <br>';
+        }
+    });
+
+
+    contentArea.find('.reward .text').html(rewardDom);
+
+    modalForm.modal();
 }
 
 /**
@@ -122,7 +187,6 @@ function getRewardOptData() {
     $('.baseReward').each(function() {
         var $this = $(this);
         if($this.val().length > 0) {
-
             data[$this.attr('name')] = $this.val() * 1;
         }
     });
@@ -135,7 +199,7 @@ function getRewardOptData() {
 
         if(qty > 0) {
             var card = {
-                tableId : $this.find('.cName').val() * 1 + $this.find('.cStar').val() * 1,
+                tableId : $this.find('.cName').val() * 1,
                 qty : $this.find('.cQty').val() * 1,
                 lv : $this.find('.cLv').val() * 1
             };
@@ -146,71 +210,92 @@ function getRewardOptData() {
         data['cards'] = cards;
     }
 
-//    console.log("Base Reward OptData", data);
-
     return data;
 
-};
+}
 
 /**
  * 校验输入合法性,弹出确认弹窗
  */
 function submit() {
+
+    /**
+     * 对必填text选项的校验
+     * @param $input
+     * @returns {boolean}
+     */
+    function validateText ($input) {
+        var rst = true;
+        if ($input.val() == '') {
+            $input.closest('.form-group').addClass('has-error');
+            var txt = $input.closest('.form-group').find('.control-label').text();
+            $input.parent().append('<span class="help-block">请填入' + txt + '</span>');
+            $input.focus();
+            rst = false;
+        }
+        return rst;
+    }
+
     removeErrors();
 
-    var options = getRewardOptData();
     var areaId = parseInt($("#area").val());
     var playerName = $("#playerName").val();
-    var title = $('#title').val();
-    var content = $("#content").val();
+    var $title = $('#title');
+    var $content = $("#content");
+    var $author = $("#author");
+    var $expDate = $('#expDate');
+
 
     // 校验输入合法性
-    if (Number.isNaN(areaId)) {
+    if (isNaN(areaId)) {
         $('#area').closest('.form-group').addClass('has-error');
         $('#area').parent().append('<span class="help-block">请选择服务器</span>');
         return;
     }
-    if ((Number.isNaN(areaId) || areaId == ALL) && playerName != '') {
+    if ((isNaN(areaId) || areaId == AREAID_ALL) && playerName != '') {
         $('#area').closest('.form-group').addClass('has-error');
         $('#area').parent().append('<span class="help-block">必须指定玩家所在的具体服务器</span>');
         return;
     }
-    if (title == '') {
-        $('#title').closest('.form-group').addClass('has-error');
-        $('#title').parent().append('<span class="help-block">请输入标题</span>');
+    if (!validateText($expDate) || !validateText($author) || !validateText($title) || !validateText($content)) {
         return;
     }
+    // 校验奖励输入合法性
+    var options = getRewardOptData();
     if (Object.keys(options).length == 0) {
         $('#rewardBox').addClass('has-error');
-        showRewardAlert(formErrTips.RW_EMPTY);
-        return;
-    }
-    if (content == '') {
-        $('#content').closest('.form-group').addClass('has-error');
-        $('#content').parent().append('<span class="help-block">奖励消息内容不能为空</span>');
+        showErrorAlert(formTipAlertId.baseRW, formErrTips.RW_EMPTY);
         return;
     }
 
-    showModal(content);
+    var reqData = {
+        areaId : areaId,
+        playerId : playerName,
+        content : $content.val(),
+        validDate  : $expDate.val(),
+        options : {
+            title : $title.val(),
+            sender : $author.val(),
+            rewards : options
+        }
+    }
+
+    showModal(reqData);
     // 注册"确认弹窗"中的提交按钮的事件
     $('#btnSendMsg').click(function() {
-        var mail = {
-            content : content,
-            options : options
-        }
         hideModal();
-        doSubmit(options, areaId, playerName, mail);
+        doSubmit(areaId, playerName, reqData);
     });
-};
+
+}
 
 /**
  * 根据不同选项发送对应请求
- * @param options
  * @param areaId
  * @param playerName
  * @param mail
  */
-function doSubmit(options, areaId, playerName, mail) {
+function doSubmit(areaId, playerName, mail) {
     if (areaId == ALL) { //全部服务器
         var len = servers.length;
         var id = 0;
@@ -299,7 +384,7 @@ function doSubmit(options, areaId, playerName, mail) {
             });
         }
     }
-};
+}
 
 // handle request
 /**
@@ -364,7 +449,7 @@ function dealAll(id, mail, cb) {
         }
         cb(null);
     });
-};
+}
 
 /**
  * 向游戏服务器发送发放奖励的请求
@@ -378,116 +463,122 @@ function sendMail(mail, cb) {
         console.log(data);
         cb(data.code);
     });
-};
+}
 
-/**
- * 断开与pomelo服务器的连接
- */
 function disconnect() {
     pomelo.disconnect();
     console.log("disconnect success");
-};
+}
 
 // events
 
 /**
- * 将生成最后选择结果展示
+ * 选项改变后应触发的事件
  */
-function updateFinalMsg() {
-    var title = $('#title').val();
-
-    var items = $.map($('.baseReward'), function(el, i){
-        if ($(el).val() !== '')
-            return $(el).parent().prev().text() + ':' + $(el).val();
-        else
-            return '';
-    });
-
-    // todo
-
-    var textArr = items.filter(function(i) {return i != '';});
-    $('#content').val(title + ', ' + textArr.join(', '));
-}
-
-/**
- * 输入奖励后的校验与处理
- */
-function eventAfterRewardChanged() {
-
-    var $this = $(this);
-    var thisVal = $this.val();
+var evtAfterChanged = function () {
 
     /**
      * 使数值合理化
-     * @param $inputObj $(.reward)
      * @param val 当前输入
+     * @param limitVal 上限值
+     * @param $limitTag 应高亮的控件
      * @returns {num} 合理化后的输入
      */
-    function makeValAdaptLimit($inputObj, val) {
-
-        var $lTag = $inputObj.parent().prev().prev();
-        var limit = $lTag.attr('limit');
+    function makeValAdaptLimit(val, limitVal, $limitTag) {
         if(val < 0) {
             val = 0;
-            showRewardAlert(formErrTips.RW_NEGATIVE);
-        } else if(val > limit * 1) {
-            val = limit * 1;
-            highLightLimit($lTag);
+            showErrorAlert(formErrTips.RW_NEGATIVE);
+        } else if(val > limitVal * 1) {
+            val = limitVal * 1;
+            highLightLimit($limitTag);
         }
         return val;
     }
 
-    // 限制只可输入数字
-    if (thisVal.length > 0 && !(thisVal * 1)) {
-        thisVal = "";
-        showRewardAlert(formErrTips.RW_WRONG_TYPE);
-    } else {
-        removeErrors();
+    /**
+     * 对只输入数字类型的input进行处理
+     * @param $input $(input)
+     * @param alertId input对应提示框ID
+     * @param getLimitTag 获得记录input对应上限值的控件的函数,以$input为参数
+     */
+    function handleNumInput ($input, alertId, getLimitTag) {
+        var inputVal = $input.val();
+
+        // 限制只可输入数字
+        if (inputVal.length > 0 && !(inputVal * 1)) {
+            inputVal = "";
+            showErrorAlert(alertId, formErrTips.RW_WRONG_TYPE);
+        } else {
+            removeErrors();
+        }
+
+        var $limitTag = getLimitTag($input);
+        inputVal = makeValAdaptLimit(inputVal, $limitTag.attr('limit'), $limitTag);
+        $input.val(inputVal);
     }
 
-    // 限制只可输入一个
-    if (thisVal.length == 0) {
-        $('.baseReward').attr('disabled', false);
-    } else {
-        $('.baseReward').not($this).attr('disabled', true).val('');
-    }
+    var ret = {
+        baseReward : function () {
+            handleNumInput($(this), formTipAlertId.baseRW, function($input){
+                return $input.parent().prev().prev();
+            });
+        },
 
-    thisVal = makeValAdaptLimit($this, thisVal);
-    $this.val(thisVal);
-}
+        cardReward : function () {
+            var $input = $(this);
+
+            // 不同类型input使用不同规则
+            if($input.is('select')) {
+                switch ($input.attr('name')) {
+                    case 'tableId':
+                        // 更改等级上限
+                        var val = $input.val();
+                        var card = cards[val + ''];
+                        var lvLimit = cardLvLimit[card.star + ''].max_lv;
+                        $input.closest('.cardTag').find('.cardLimit').attr('limit', lvLimit);
+                        break;
+                    default:
+                        break;
+                }
+            } else if ($input.is('input')) {
+                handleNumInput($input, formTipAlertId.cardRW, function($input){
+                    return $input.prev();
+                });
+            }
+        }
+    };
+
+    return ret;
+}();
 
 $(document).ready(function() {
     initServer(initAreasList);
+    initCardOpt();
     initRewardLimit();
 
-    // todo unlock options
-    $('#cardGroup').find('select,input,button').attr('disabled', true);
-    $('.baseReward--').attr('disabled', true);
-
-    // todo init Card Type Options
-
-    cardTmp = $('#cardOptTemp').text();
-
+    $('.baseReward').change(evtAfterChanged.baseReward);
+    $("#btnResetReward").click(function(e) {
+        e.preventDefault();
+        removeErrors();
+        $('.baseReward').val('').attr('disabled', false);
+        $('#cardGroup .cardTag').remove();
+        addCardOpt();
+    });
     $("#btnOk").click(function(e) {
         e.preventDefault();
         submit();
     });
+
+    //** 卡牌奖励相关控件事件绑定 ************************************
+    $('#cardGroup').delegate('.btn', 'click', function () {
+        removeErrors();
+    }).delegate('.btnRemoveCard','click', function(){
+        $(this).closest('.cardTag').remove();
+    }).delegate('.cardReward', 'change', evtAfterChanged.cardReward);
+
     $("#btnAddCard").click(function (e) {
         e.preventDefault();
-//        addCardOpt();
+        addCardOpt();
     });
-
-    $('#rewardBox').delegate('.btnRemoveCard','click', function(e){
-        rmCardOpt($(this).closest('cardTag'));
-        e.preventDefault();
-    })
-
-    $("#btnResetReward").click(function(e) {
-        e.preventDefault();
-        removeErrors();
-        $('.reward').val('').attr('disabled', false);
-    })
-
-    $('#title').change(updateFinalMsg);
-    $('.baseReward,.cardReward').change(eventAfterRewardChanged).change(updateFinalMsg);
+    //********************************************************************
 });

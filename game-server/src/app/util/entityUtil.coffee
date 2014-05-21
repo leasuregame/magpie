@@ -3,6 +3,7 @@ playerManager = require('pomelo').app.get('playerManager')
 table = require('../manager/table')
 configData = require '../../config/data'
 utility = require '../common/utility'
+job = require '../dao/job'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
@@ -115,6 +116,42 @@ module.exports =
       }, (err, card) -> cb(null, [card])
     else 
       cb(null, [])
+
+  updateEntities: (group..., cb) ->
+    jobs = []
+    groups.forEach (group) ->
+      if _.isArray(group) and group.length >= 2
+        type = group[0]
+        tableName = group[1]
+        entities = group.slice(2)
+        entities.forEach (ent) -> 
+          action = type: type, options: {table: tableName}
+
+          switch type
+            when 'update' 
+              data = ent.getSaveData()
+              if not _.isEmpty(data)
+                action.options.where = id: ent.id
+                action.options.data = data
+            when 'delete'
+              if _.isArray(ent) and ent.length > 0
+                ids = ent.map (e) -> e.id or e
+                action.options.where = " id in (#{ids.toString()}) "
+              else if _.has(ent, 'id')
+                action.options.where = id: ent.id
+              else if _.isString(ent)
+                action.options.where = ent
+              else
+                action.options.where = ''
+            when 'insert'
+              action.options.data = ent
+            else
+              action.options = {}
+
+          jobs.push action
+
+    console.log '-jobs-', JSON.stringify(jobs)
+    job.multJobs jobs, cb
 
 setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
   player.increase att, val for att, val of data when att in attrs and val > 0

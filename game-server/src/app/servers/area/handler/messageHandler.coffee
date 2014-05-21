@@ -82,6 +82,7 @@ Handler::messageList = (msg, session, next) ->
 Handler::sysMsg = (msg, session, next) ->
   content = msg.content
   options = msg.options or {}
+  validDate = msg.validDate
   receiver = msg.playerId or SYSTEM
 
   async.waterfall [

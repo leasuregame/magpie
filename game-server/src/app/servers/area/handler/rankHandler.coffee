@@ -413,7 +413,7 @@ saveBattleLog = (bl, playerName, oldRank, curRank) ->
         isWin: isWin
         oldRank: oldRank
         curRank: curRank
-        challenger: playerName
+        defier: playerName
       }
     }, (err, message) ->
       if err

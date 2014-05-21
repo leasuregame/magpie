@@ -54,7 +54,13 @@ Handler::usePill = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    next(null, {code: 200, msg: pill: player.pill, ability: card.ability()})
+    next(null, {
+      code: 200
+      msg: 
+        playerPill: player.pill
+        potentialLv: card.potentialLv
+        ability: card.ability()
+    })
 
 ###
   卡牌熔炼

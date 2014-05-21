@@ -55,7 +55,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
             this._onClickCancel,
             this
         );
-        cancelItem.setPosition(cc.p(-120, -60));
+        cancelItem.setPosition(cc.p(120, -60));
 
         var continueItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -64,7 +64,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
             this._onClickContinue,
             this
         );
-        continueItem.setPosition(cc.p(120, -60));
+        continueItem.setPosition(cc.p(-120, -60));
 
         var menu = cc.Menu.create(cancelItem, continueItem);
         menu.setPosition(cc.p(0, 0));
@@ -106,7 +106,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
     _initCardTips: function () {
         cc.log("AdvancedTipsLabel _initCardTips");
 
-        var tipLabel = cc.LabelTTF.create("所选中卡牌中有4或5星卡，确定继续么", "STHeitiTC-Medium", 25);
+        var tipLabel = cc.LabelTTF.create("所选中卡牌中有4星以上卡牌，确定继续么", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         this._frameLayer.addChild(tipLabel);
     },

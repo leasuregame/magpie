@@ -371,6 +371,15 @@ var fit4Iphone5 = {
             "buyCountItemPoint": cc.p(575, 151),
             "tipLayerPoint": cc.p(90, 1014)
         },
+         "cardSmeltLayer": {
+            "smelterPoint": cc.p(325, 610),
+            "helpBgSpritePoint": cc.p(320, 307),
+            "tipLabelPoint": cc.p(320, 307),
+            "helpLabelPoint": cc.p(320, 307),
+            "selectRetinueCardItemPoint": cc.p(420, 197),
+            "smeltItemPoint": cc.p(220, 197),
+            "helpItemPoint": cc.p(50, 810)
+        },
         "cardTrainLabel": {
             "cardItemBgSpritePoint": cc.p(324, 613),
             "elixirIconPoint": cc.p(470, 820),
@@ -1157,6 +1166,14 @@ var fit4Iphone5 = {
             "helpItemPoint": cc.p(50, 810),
             "extractEffectUrl": "animation_2"
         },
+         "smeltLayer": {
+             "bgSpriteRect1": cc.rect(0, 0, 640, 995),
+            "bgSpritePoint": cc.p(0, 106),
+            "bgSpriteRect2": cc.rect(0, 0, 640, 845),
+            "playerHeaderLabelPoint": cc.p(0, 968),
+            "cardSmeltLayerItemPoint": cc.p(70, 897),
+            "usePillLayerItemPoint": cc.p(214, 897)
+        },
         "speakerLayer": {
             "msgBgLabelPoint": cc.p(340, 1010),
             "speakerIconPoint": cc.p(100, 1010),
@@ -1225,7 +1242,6 @@ var fit4Iphone5 = {
             "cardTrainItemOffset": cc.p(0, -2),
             "cardEvolutionItemPoint": cc.p(364, 897),
             "cardEvolutionItemOffset": cc.p(0, -2)
-
         },
         "summonLayer": {
             "headIconPoint": cc.p(0, 1048),

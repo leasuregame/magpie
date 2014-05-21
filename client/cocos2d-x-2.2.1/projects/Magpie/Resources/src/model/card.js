@@ -396,6 +396,17 @@ var Card = Entity.extend({
         return (this._lv == this._maxLv) ? 0 : outputTables.card_grow.rows[this._lv + 1].cur_exp - this.getCardExp();
     },
 
+    // 可获得觉醒玉
+    getCardPill: function() {
+        cc.log("Card getCardPill");
+        return 1000;
+    },
+
+    getSmeltMoney: function() {
+        cc.log("Card getSmeltMoney");
+        return 1000;
+    },
+
     canUpgrade: function () {
         cc.log("Card canUpgrade");
 
@@ -852,6 +863,10 @@ var Card = Entity.extend({
         }
 
         return price;
+    },
+
+    isExpCard: function() {
+        return this._tableId == 30000;
     },
 
     isLeadCard: function () {

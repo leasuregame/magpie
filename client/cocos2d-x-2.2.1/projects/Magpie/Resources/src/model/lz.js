@@ -207,7 +207,8 @@ var gameGoodsIcon = {
     "exp": "icon318",
     "speaker": "icon375",
     "honor": "icon405",
-    "superHonor": "icon406"
+    "superHonor": "icon406",
+    "pill": "icon459"
 };
 
 lz.getGoodsIconByKey = function (key) {
@@ -318,6 +319,11 @@ var gameGoodsName = {
         name: "精元",
         color: cc.c3b(255, 239, 131),
         icon: gameGoodsIcon["superHonor"]
+    },
+    "pill": {
+        name: "觉醒玉",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["pill"]
     }
 };
 

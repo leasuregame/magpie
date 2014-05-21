@@ -22,6 +22,7 @@ var SELECT_TYPE_CARD_TRAIN_MASTER = 6;
 var SELECT_TYPE_CARD_UPGRADE_RETINUE = 7;
 var SELECT_TYPE_CARD_EVOLUTION_RETINUE = 8;
 var SELECT_TYPE_SELL = 9;
+var SELECT_TYPE_CARD_SMELT_RETINUE = 10;
 
 var SORT_TYPE_DROP = 0;
 var SORT_TYPE_LITER = 1;
@@ -149,6 +150,24 @@ var CardListLayer = cc.Layer.extend({
         this._onSelectAllLowItem.setPosition(this._cardListLayerFit.onSelectAllLowItemPoint);
         this._onSelectAllLowItem.setVisible(false);
 
+        this._onSelectAllExpCardItem = cc.MenuItemImage.create(
+            main_scene_image.button86,
+            main_scene_image.button86,
+            this._onClickSelectAllExpCard,
+            this
+        );
+        this._onSelectAllExpCardItem.setPosition(this._cardListLayerFit.onSelectAllLowItemPoint);
+        this._onSelectAllExpCardItem.setVisible(false);
+
+        this._filterItem = cc.MenuItemImage.create(
+            main_scene_image.button87,
+            main_scene_image.button87s,
+            this._onClickFilter,
+            this
+        );
+        this._filterItem.setPosition(this._cardListLayerFit.onSelectAllLowItemPoint);
+        this._filterItem.setVisible(false);
+
         var buyCountItem = cc.MenuItemImage.create(
             main_scene_image.button16,
             main_scene_image.button16s,
@@ -158,7 +177,7 @@ var CardListLayer = cc.Layer.extend({
         buyCountItem.setScale(1.2);
         buyCountItem.setPosition(this._cardListLayerFit.buyCountItemPoint);
 
-        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem, buyCountItem);
+        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem, this._onSelectAllExpCardItem, this._filterItem, buyCountItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -512,7 +531,7 @@ var CardListLayer = cc.Layer.extend({
         var cardList = gameData.cardList.get("cardList");
 
         for (var key in cardList) {
-            if (cardList[key].get("star") < 2) {
+            if (!cardList[key].canUpgradeSkill()) {
                 this._excludeList.push(key);
             }
         }
@@ -625,7 +644,8 @@ var CardListLayer = cc.Layer.extend({
 
         this._initRetinue();
 
-        this._onSelectAllLowItem.setVisible(true);
+        //this._onSelectAllLowItem.setVisible(true);
+        this._onSelectAllExpCardItem.setVisible(true);
 
         var tipLabel = cc.Sprite.create(main_scene_image.icon58);
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -742,7 +762,8 @@ var CardListLayer = cc.Layer.extend({
 
         this._sortType = SORT_TYPE_LITER;
 
-        this._onSelectAllLowItem.setVisible(true);
+        // this._onSelectAllLowItem.setVisible(true);
+        this._filterItem.setVisible(true);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon23);
         titleLabel.setPosition(this._cardListLayerFit.titleLabelPoint);
@@ -812,6 +833,52 @@ var CardListLayer = cc.Layer.extend({
         this._selectCallback();
     },
 
+    _initCardSmeltRetinue: function () {
+        cc.log("CardListLayer _initCardSmeltRetinue");
+
+        this._initRetinue();
+
+        this._filterItem.setVisible(true);
+
+        var cardList = gameData.cardList.get("cardList");
+
+        for (var key in cardList) {
+            if (cardList[key].isExpCard()) {
+                this._excludeList.push(key);
+            }
+        }
+
+        var tipLabel = cc.Sprite.create(main_scene_image.icon461);
+        tipLabel.setAnchorPoint(cc.p(0, 0.5));
+        tipLabel.setPosition(this._cardListLayerFit.tipLabelPoint);
+        this._otherLabel.addChild(tipLabel);
+
+        var countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
+        countLabel.setPosition(this._cardListLayerFit.countLabelPoint);
+        this.addChild(countLabel);
+
+        var pillLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
+        pillLabel.setPosition(this._cardListLayerFit.expLabelPoint);
+        this.addChild(pillLabel);
+
+        this._selectCallback = function () {
+            cc.log("CardListLayer _initCardUpgradeRetinue update");
+
+            var selectList = this._getSelectCardList();
+            var len = selectList.length;
+            var pill = 0;
+
+            for (var i = 0; i < len; ++i) {
+                pill += selectList[i].getCardPill();
+            }
+
+            countLabel.setString(len);
+            pillLabel.setString(pill);
+        };
+
+        this._selectCallback();
+    },
+
     _clearOtherLayer: function () {
         cc.log("CardListLayer _clearOtherLayer");
 
@@ -853,6 +920,9 @@ var CardListLayer = cc.Layer.extend({
                     break;
                 case SELECT_TYPE_SELL :
                     this._initSell();
+                    break;
+                case SELECT_TYPE_CARD_SMELT_RETINUE:
+                    this._initCardSmeltRetinue();
                     break;
                 default :
                     this._initDefault();
@@ -903,7 +973,7 @@ var CardListLayer = cc.Layer.extend({
             var isShowTip = false;
             for (var i = 0; i < len; i++) {
                 var star = selectCardList[i].get("star");
-                if (star == 4 || star == 5) {
+                if (star >= 4) {
                     isShowTip = true;
                 }
             }
@@ -987,7 +1057,7 @@ var CardListLayer = cc.Layer.extend({
         var isShowTip = false;
         for (var i = 0; i < len; ++i) {
             var star = selectCardList[i].get("star");
-            if (star == 4 || star == 5) {
+            if (star >= 4) {
                 isShowTip = true;
             }
             cardIdList.push(selectCardList[i].get("id"));
@@ -1109,6 +1179,64 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
         }
+    },
+
+    _onClickSelectAllExpCard: function () {
+        cc.log("CardListLayer _onClickSelectAllExpCard");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._isSelectAllLow = !this._isSelectAllLow;
+
+        this._selectAllLowHookIcon.setVisible(this._isSelectAllLow);
+
+        var cardList = gameData.cardList;
+
+        for (var key in this._cardLabel) {
+            if (cardList.getCardByIndex(key).isExpCard()) {
+                if (this._cardLabel[key].isEnabled()) {
+                    if (this._isSelectAllLow) {
+                        if (!this._cardLabel[key].isSelect()) {
+                            this._cardLabel[key].select();
+                        }
+                    } else {
+                        if (this._cardLabel[key].isSelect()) {
+                            this._cardLabel[key].select();
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    _onClickFilter: function () {
+        cc.log("CardListLayer _onClickFilter");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var cardList = gameData.cardList;
+        var that = this;
+
+        var cb = function (starFlag) {
+            for (var key in that._cardLabel) {
+                var star = cardList.getCardByIndex(key).get("star");
+                if (that._cardLabel[key].isEnabled()) {
+                    if ((starFlag >> star & 1) == 1) {
+                        if (!that._cardLabel[key].isSelect()) {
+                            that._cardLabel[key].select();
+                        }
+                    } else {
+                        if (that._cardLabel[key].isSelect()) {
+                            that._cardLabel[key].select();
+                        }
+                    }
+                }
+            }
+        };
+
+        FilterStarLabel.pop({
+            cb: cb
+        });
     }
 });
 

@@ -323,6 +323,13 @@ var main_scene_image = {
     button84d: main_scene_path + "button84d.png",
     button85: main_scene_path + "button85.png",
     button85s: main_scene_path + "button85s.png",
+    button86: main_scene_path + "button86.png",
+    button87: main_scene_path + "button87.png",
+    button87s: main_scene_path + "button87s.png",
+    button88: main_scene_path + "button88.png",
+    button88s: main_scene_path + "button88s.png",
+    button89: main_scene_path + "button89.png",
+    button89s: main_scene_path + "button89s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -777,6 +784,13 @@ var main_scene_image = {
     icon453: main_scene_path + "icon453.png",
     icon454: main_scene_path + "icon454.png",
     icon455: main_scene_path + "icon455.png",
+    icon456: main_scene_path + "icon456.png",
+    icon457: main_scene_path + "icon457.png",
+    icon458: main_scene_path + "icon458.png",
+    icon459: main_scene_path + "icon459.png",
+    icon460: main_scene_path + "icon460.png",
+    icon461: main_scene_path + "icon461.png",
+    icon462: main_scene_path + "icon462.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -1026,6 +1040,7 @@ var main_scene_image = {
     uiEffect111: "resYY/ccb/uiEffect111.ccbi",
     uiEffect112: "resYY/ccb/uiEffect112.ccbi",
     uiEffect113: "resYY/ccb/uiEffect113.ccbi",
+    uiEffect114: "resYY/ccb/uiEffect114.ccbi",
 
     // 特效资源
     p1: "resYY/effect/effect/p1.png",

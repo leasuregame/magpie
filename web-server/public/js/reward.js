@@ -296,7 +296,7 @@ function submit() {
  * @param mail
  */
 function doSubmit(areaId, playerName, mail) {
-    if (areaId == ALL) { //全部服务器
+    if (areaId == AREAID_ALL) { //全部服务器
         var len = servers.length;
         var id = 0;
 
@@ -536,6 +536,7 @@ var evtAfterChanged = function () {
                         var card = cards[val + ''];
                         var lvLimit = cardLvLimit[card.star + ''].max_lv;
                         $input.closest('.cardTag').find('.cardLimit').attr('limit', lvLimit);
+                        $input.closest('.cardTag').find('input').change();
                         break;
                     default:
                         break;

@@ -59,51 +59,7 @@ var SystemMessageLayer = cc.Layer.extend({
         }
 
 
-        this._messages = [];
-        for (var i = 0; i < 10; i++) {
-            this._messages[i] = {
-                id: systemMessageList[0].id,
-                status: (i % 2) ? UNHANDLED_STATUS : HANDLED_STATUS,
-                title: "新服奖励",
-                sender: "小仙YY",
-                content: "普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。" +
-                    "普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。" +
-                    "普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。普天同庆，新服开启，小仙有礼啦。",
-                rewards: {gold: 100, energy: 10000, elixir: 10000, money: 100000, fragment: 20,
-                    cardArray: [
-                        {
-                            tableId: 965,
-                            lv: 1,
-                            skillLv: 1
-                        },
-                        {
-                            tableId: 964,
-                            lv: 1,
-                            skillLv: 1
-                        },
-                        {
-                            tableId: 963,
-                            lv: 1,
-                            skillLv: 1
-                        },
-                        {
-                            tableId: 962,
-                            lv: 1,
-                            skillLv: 1
-                        },
-                        {
-                            tableId: 961,
-                            lv: 1,
-                            skillLv: 1
-                        }
-                    ]
-
-                }
-            }
-        }
-
-        len = this._messages.length;
-
+        this._messages = systemMessageList;
         var scrollViewLayer = MarkLayer.create(this._systemMessageLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));

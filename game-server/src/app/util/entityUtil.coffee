@@ -25,26 +25,24 @@ module.exports =
       done(null, card)
 
   ###
-  cards   an array of card like [card, card...]
-  done   a callback execute after created one card
-  ###
-  createCards: (cards, done) ->
-    @createCard card, done for card in cards
-
-  ###
-  card   a card object
-  qty   quality of cards
+  cards  a array contains one or more card's info
   done   a callback execute after created all cards
   ###
-  createCards: (card, qty, done) ->
-    self = this;
-    async.times(
-      qty
-    , (n, cb) =>
-        @createCard card, (err, card) ->
-          cb err, card
-    , done
-    )
+  createCards: (cards, done) ->
+    async.map cards, (card, doneEach) =>
+      qty = card.qty
+      delete card.qty
+      async.times qty, (n, doneTimes) => 
+        @createCard card, doneTimes
+      , doneEach
+    , (err, res) ->
+      if err
+        done(err)
+      else 
+        items = res.reduce(
+          (x, y) -> x.concat(y)
+        , [])
+        done(err, items)
 
   resetSkillIncForCard: (card) ->
     genSkillInc(card) if card.star >= 3

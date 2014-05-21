@@ -1,4 +1,4 @@
-var db = require('../util/db');
+var db = require('../dao/db/db');
 
 exports.get = function(req, res) {
   console.log(req.query, req.params, req.body);

@@ -1,5 +1,5 @@
 var shortid = require('shortid');
-var cdkeyDao = require('../util/cdkeyDao');
+var cdkeyDao = require('../dao/cdkeyDao');
 var util = require('util');
 
 var PAGE_COUNT = 20

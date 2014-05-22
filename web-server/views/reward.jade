@@ -143,7 +143,7 @@ block content
                     div.col-sm-2
                         input.form-control.baseReward(id='speaker' name='speaker')
             hr
-            div(id='cardGroup')
+            div(id='cardBox')
                 div.form-group
                     label.col-sm-3.control-label
                         button.btn.btn-primary(id='btnAddCard')
@@ -208,9 +208,7 @@ block content
                 div.modal-footer
                     button.btn.btn-default(type='button', data-dismiss='modal') 取消
                     button.btn.btn-primary(type='button', id='btnSendMsg') 确定
-    script(type='text/javascript', src='/js/webServerHandle.js')
-    script(type='text/javascript', src='/js/reward.js')
-    script(id='cardOptTemp' type='text/javascript')
+    div.hide(id='cardOptTemp')
         div.form-group.cardTag
             label.col-sm-3.control-label
                 a.btn.btn-danger.btnRemoveCard(href='javascript:void(0);')
@@ -224,3 +222,5 @@ block content
             label.col-sm-2.control-label
                 hidden.cardLimit(limit='50')
                 input.form-control.cardReward.cQty(name='qty')
+    script(type='text/javascript', src='/js/webServerHandle.js')
+    script(type='text/javascript', src='/js/reward.js')

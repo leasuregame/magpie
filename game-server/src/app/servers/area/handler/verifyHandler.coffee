@@ -19,9 +19,7 @@ Handler = (@app) ->
 # 返回的验证信息：
 # https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html#//apple_ref/doc/uid/TP40010573-CH106-SW1
 Handler::appStore = (msg, session, next) ->
-  # #for test
-  # return vitualBuy(@app, msg, session, next) if msg.id?
-
+  
   playerId = session.get('playerId')
   receipt = msg.receipt
   productId = msg.productId
@@ -54,13 +52,15 @@ Handler::appStore = (msg, session, next) ->
         dao.buyRecord.create data: {
           playerId: playerId
           receiptData: receipt
-          amount: product?.cash
+          amount: product?.cash or 0
+          productId: product?.product_id or ''
         }, cb
       else 
         cb(null, record)
 
     (record, cb) =>
       @app.get('verifyQueue').push(record) if record
+
       if productId not in Object.keys(GOLDCARDMAP_REVERT)
         return cb(null, record)
 

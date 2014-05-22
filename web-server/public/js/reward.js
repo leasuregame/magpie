@@ -9,6 +9,7 @@
 var pomelo = window.pomelo;
 var areas;
 var AREAID_ALL = -1;
+var OPTIONS_MAX_LENGTH = 1024;
 var cardTmp = '';
 var cards = {};
 var CARD_OPT_REPLACE_MARK = '<option>replace</option>';
@@ -21,7 +22,9 @@ var cardLvLimit = {};
 var formErrTips = {
     RW_WRONG_TYPE : "请输入数字",
     RW_EMPTY : "请选填一项奖励",
-    RW_NEGATIVE : "请勿输入负数"
+    RW_NEGATIVE : "请勿输入负数",
+    RW_OVERFLOW : "输入超出上限,已转为最大值",
+    RW_CARDS_TOO_MANY : "输入超出上限,已转为最大值"
 }
 /**
  * 提示框ID
@@ -75,8 +78,7 @@ function initCardOpt() {
         cardOptDom = window.wsUtil.buildSelOpts(names, tableIds);
         // 加入到初始卡牌选项中
         $('.cardReward.cName').html(cardOptDom);
-        // 加入到模板中
-        cardTmp = $('#cardOptTemp').text().replace(CARD_OPT_REPLACE_MARK, cardOptDom);
+        cardTmp = $('#cardOptTemp').html();
     });
 }
 
@@ -105,7 +107,7 @@ function removeErrors() {
     $('.has-error').removeClass('has-error');
     $('.help-block').remove();
     $('.alert-danger').addClass('hide');
-    $('.limitTag').removeAttr('style');
+    $('.limitTag, .form-control').removeAttr('style');
 }
 
 /**
@@ -121,15 +123,26 @@ function showErrorAlert(id, tips) {
  * 新增一行卡牌选项
  */
 function addCardOpt() {
-    $('#cardGroup').append(cardTmp);
+    $('#cardBox').append(cardTmp);
 }
 
 /**
- * 高亮传入奖励上限提示
- * @param $limitTag
+ * 高亮传入控件
+ * @param $tag
  */
-function highLightLimit($limitTag) {
-    $limitTag.css('color', '#a94442');
+function highLightTag($tag) {
+
+    if($tag instanceof Array) {
+        for(var i in $tag) {
+            highLightTag($tag[i]);
+        }
+    } else {
+        $tag.css({
+            'color' : '#a94442',
+            'border-color' : '#a94442'
+        });
+
+    }
 }
 
 /**
@@ -152,7 +165,7 @@ function showModal(msg) {
     var rewardDom = '';
     $.each(msg.options.rewards, function (key, val) {
         if(key == 'cards') {
-            rewardDom += '<br>卡牌 : <br>';
+            rewardDom += '<br>卡牌 : ' + val.length + '张<br>';
             $.each(val, function (idx, val) {
                 var card = cards[val.tableId + ""];
                 rewardDom += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + '<br>';
@@ -161,7 +174,6 @@ function showModal(msg) {
             rewardDom += baseRewardNames[key] + ' x ' + val + ' <br>';
         }
     });
-
 
     contentArea.find('.reward .text').html(rewardDom);
 
@@ -195,9 +207,10 @@ function getRewardOptData() {
     var cards = []
     $('.cardTag').each(function() {
         var $this = $(this);
-        var qty = $this.find('.cQty').val();
+        var lv = $this.find('.cLv').val() * 1;
+        var qty = $this.find('.cQty').val() * 1;
 
-        if(qty > 0) {
+        if(qty > 0 && lv > 0) {
             var card = {
                 tableId : $this.find('.cName').val() * 1,
                 qty : $this.find('.cQty').val() * 1,
@@ -267,7 +280,10 @@ function submit() {
         showErrorAlert(formTipAlertId.baseRW, formErrTips.RW_EMPTY);
         return;
     }
-
+    if (JSON.stringify(options).length >= OPTIONS_MAX_LENGTH) {
+        $('#cardBox').addClass('has-error');
+        showErrorAlert(formTipAlertId.cardRW, formErrTips.RW_CARDS_TOO_MANY);
+    }
     var reqData = {
         areaId : areaId,
         playerId : playerName,
@@ -481,16 +497,18 @@ var evtAfterChanged = function () {
      * 使数值合理化
      * @param val 当前输入
      * @param limitVal 上限值
-     * @param $limitTag 应高亮的控件
+     * @param $highLightTag 应高亮的控件
+     * @param alertId 提示框ID
      * @returns {num} 合理化后的输入
      */
-    function makeValAdaptLimit(val, limitVal, $limitTag) {
+    function makeValAdaptLimit(val, limitVal, $highLightTag, alertId) {
         if(val < 0) {
             val = 0;
-            showErrorAlert(formErrTips.RW_NEGATIVE);
+            showErrorAlert(alertId, formErrTips.RW_NEGATIVE);
         } else if(val > limitVal * 1) {
             val = limitVal * 1;
-            highLightLimit($limitTag);
+            highLightTag($highLightTag);
+            showErrorAlert(alertId, formErrTips.RW_OVERFLOW);
         }
         return val;
     }
@@ -513,7 +531,7 @@ var evtAfterChanged = function () {
         }
 
         var $limitTag = getLimitTag($input);
-        inputVal = makeValAdaptLimit(inputVal, $limitTag.attr('limit'), $limitTag);
+        inputVal = makeValAdaptLimit(inputVal, $limitTag.attr('limit'), [$limitTag, $input], alertId);
         $input.val(inputVal);
     }
 
@@ -562,7 +580,7 @@ $(document).ready(function() {
         e.preventDefault();
         removeErrors();
         $('.baseReward').val('').attr('disabled', false);
-        $('#cardGroup .cardTag').remove();
+        $('#cardBox .cardTag').remove();
         addCardOpt();
     });
     $("#btnOk").click(function(e) {
@@ -571,7 +589,7 @@ $(document).ready(function() {
     });
 
     //** 卡牌奖励相关控件事件绑定 ************************************
-    $('#cardGroup').delegate('.btn', 'click', function () {
+    $('#cardBox').delegate('.btn', 'click', function () {
         removeErrors();
     }).delegate('.btnRemoveCard','click', function(){
         $(this).closest('.cardTag').remove();

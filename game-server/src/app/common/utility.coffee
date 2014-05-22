@@ -76,6 +76,9 @@ Utility =
     child
 
   deepCopy: (obj) ->
+    if _.isArray(obj) 
+      throw new Error('invalid paramenter type: obj can not be Array')
+
     newObj = {}
     for key of obj
       if _.isObject(obj[key]) and not _.isArray(obj[key])

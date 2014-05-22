@@ -2,8 +2,15 @@ path = require('path')
 fs = require('fs')
 sync = require('pomelo-sync-plugin')
 Mysql = require('../dao/mysql/mysql')
+logger = require('pomelo-logger').getLogger(__filename)
 
 util = module.exports
+
+util.errHandler = (err) ->
+  if err.code in [501, 600]
+    logger.warn(JSON.stringify(err))
+  else
+    logger.error(JSON.stringify(err))    
 
 util.loadShareConfig = (app) ->
   confPath = path.join app.getBase(), '..', 'shared', 'conf.json'

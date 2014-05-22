@@ -12,6 +12,8 @@ achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 _s = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
+fs = require 'fs'
+path = require 'path'
 
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
@@ -484,17 +486,18 @@ Handler::starUpgrade = (msg, session, next) ->
 
       addRate = card_count * starUpgradeData.rate_per_card
       totalRate = _.min([addRate + rate, 100])
-
+      
       is_upgrade = !!utility.hitRate(totalRate)
-      if card.star >= 4 
-        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeData.no_work_count or 0)
-        card.increase('useCardsCounts' , card_count)
+      # if card.star >= 4 
+      #   useCardCount = player.useCardCount['star'+card.star] or 0
+      #   is_upgrade = false if (useCardCount+card_count) <= (starUpgradeData.no_work_count or 0)
       
       player.decrease('money', money_consume)
       player.decrease('superHonor', starUpgradeData.super_honor) if starUpgradeData.super_honor > 0
       if is_upgrade
         ### 成功进阶，对应星级初始概率置为0 ###
         player.setInitRate(card.star, 0)
+        player.updateUseCardCoun(card.star, 0)
 
         card.increase('star')
         card.increase('tableId')
@@ -639,6 +642,22 @@ Handler::passSkillAfresh  = (msg, session, next) ->
   type = if msg.type? then msg.type else configData.passSkill.TYPE.MONEY
   _pros = 1: 'money', 2: 'gold'
 
+  fpath = path.join(__dirname, '../../../../config/pids.json')
+  if (!fs.existsSync(fpath)) 
+    console.log 'not found pids.json', fpath
+    pids = []
+  else 
+    pids = JSON.parse(fs.readFileSync(fpath, 'utf8'))
+
+  isLog = playerId in pids
+
+  debugLog = (text='', args...) ->
+    return if not isLog
+    d = new Date()
+    logger.error(d.toLocaleDateString() + ' ' + d.toLocaleTimeString(), '[passive skill afresh]', text, JSON.stringify(args))
+
+  debugLog 'before', 'playerid=' + playerId, 'cardId=' + cardId, 'psIds=' + JSON.stringify(psIds), 'groupId=' + groupId, 'type=' + type
+
   if _.isUndefined(groupId) or not checkPsIds(psIds)
     return next(null, {code: 501, msg: '参数错误'})
 
@@ -688,6 +707,8 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       ability: card.ability(),
       passiveSkill: card.passiveSkills.filter((p) -> p.id is groupId)[0]
     }
+
+    debugLog 'after', 'result=', JSON.stringify result
 
     next(null, {code: 200, msg: result})
 

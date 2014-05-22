@@ -20,15 +20,21 @@ var POWER_NO_ENOUGH = 0;
 var CARD_FULL = 1;
 var CAN_EXPLORE = 2;
 
+var TYPE_COLLECTED = 1;
+var TYPE_NEW_COLLECT = 2;
+
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
     _maxProgress: 0,          // 最大层数
     _powerNeed: 0,
     _mark: [],
+    _collected: 0,
+    _newCollect: 0,
 
     init: function (data) {
         cc.log("Task init");
+        cc.log(data);
 
         this._mark = [];
 
@@ -36,6 +42,7 @@ var Task = Entity.extend({
         this.on("idChange", this._idChangeEvent);
 
         this.update(data);
+        this.set("collected", data.collected);
 
         cc.log(this);
 
@@ -143,6 +150,44 @@ var Task = Entity.extend({
         return true;
     },
 
+    _updateCollect: function (collect) {
+        cc.log("Task _updateCollect: " + collect);
+
+        this._newCollect = this._collected ^ collect;
+        this._collected = collect;
+    },
+
+    getCollectStateById: function (type, id) {
+        cc.log("Task getCollectStateById");
+
+        var collect = (type == TYPE_COLLECTED) ? this.get("collected") : this.get("newCollect");
+        var offset = (id - 1) % EACH_NUM_BIT;
+
+        return (collect >> offset & 1) == 1;
+    },
+
+    isCollectedAll: function () {
+        cc.log("Task isCollectedAll");
+
+        var table = outputTables.turn_reward_type.rows;
+        var collect = this.get("collected");
+
+        for (var id in table) {
+            var offset = (id - 1) % EACH_NUM_BIT;
+            if ((collect >> offset & 1) != 1) {
+                return false;
+            }
+        }
+
+        return true;
+    },
+
+    resetNewCollect: function () {
+        cc.log("Task resetNewCollect");
+
+        this._newCollect = this._collected;
+    },
+
     /*
      * 根据id和任务进度请求服务器执行任务
      * @ param {function} cb 回调函数
@@ -181,6 +226,7 @@ var Task = Entity.extend({
                 }
 
                 that.update(msg.task);
+                that._updateCollect(msg.task.collected);
 
                 if (msg.find_boss) {
                     cbData.findBoss = msg.find_boss;
@@ -320,10 +366,56 @@ var Task = Entity.extend({
                 cc.log("obtainGold success.");
 
                 gameData.player.add("gold", gold);
+                that._updateCollect(data.msg.collected);
 
                 lz.um.event("event_momo", gold);
             } else {
                 cc.log("obtainGold fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    getTurnReward: function (cb) {
+        cc.log("Task getTurnReward");
+
+        var that = this;
+        lz.server.request("area.taskHandler.getTurnReward", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("getTurnReward success");
+
+                var reward = data.msg.reward;
+                var cbData = {};
+
+                for (var key in reward) {
+                    if (key == "exp_card") {
+                        var ids = reward["exp_card"].ids;
+                        var card = reward["exp_card"].card;
+                        var len = ids.length;
+
+                        for (var i = 0; i < len; i++) {
+                            card.id = ids[i];
+                            gameData.cardList.push(Card.create(card));
+                        }
+
+                        cbData[key] = len;
+
+                    } else {
+                        gameData.player.add(key, reward[key]);
+                        cbData[key] = reward[key];
+                    }
+                }
+
+                that.set("collected", 0);
+                that.set("newCollect", 0);
+
+                cb(cbData);
+
+            } else {
+                cc.log("getTurnReward fail");
 
                 TipLayer.tip(data.msg);
             }

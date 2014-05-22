@@ -114,6 +114,9 @@ var Card = Entity.extend({
 
     _url: "",               // 图片资源路径
 
+    _pill: 0,               // 当前觉醒玉数量
+    _potentialLv: 0,        // 当前觉醒等级
+
     _newCardMark: false,
 
     init: function (data) {
@@ -502,6 +505,7 @@ var Card = Entity.extend({
                 cc.log("upgradeSkill success");
 
                 var msg = data.msg;
+                that.add("skillPoint", msg.skillPoint);
 
                 that.update({
                     skillLv: msg.skillLv,
@@ -509,7 +513,6 @@ var Card = Entity.extend({
                 });
 
                 gameData.player.add("skillPoint", -msg.skillPoint);
-                that.add("skillPoint", msg.skillPoint);
 
                 cb();
 
@@ -603,8 +606,9 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
-                that.set("ability", msg.ability);
                 that._updatePassiveSkill(msg.passiveSkill);
+                that.update();
+                that.set("ability", msg.ability);
 
                 if (type == USE_MONEY) {
                     gameData.player.add("money", -5000);
@@ -848,6 +852,18 @@ var Card = Entity.extend({
             }
 
         });
+    },
+
+    canUsePill: function() {
+        cc.log("Card canUsePill");
+
+        return this._star >= 4;
+    },
+
+    getUpgradeNeedPill: function() {
+        cc.log("Card getUpgradeNeedPill");
+
+        return 1000;
     },
 
     getSellCardMoney: function () {

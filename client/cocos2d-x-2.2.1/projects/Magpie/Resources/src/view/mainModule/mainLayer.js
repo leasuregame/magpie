@@ -124,7 +124,7 @@ var MainLayer = cc.Layer.extend({
         var treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
             main_scene_image.button2s,
-            main_scene_image.icon6,
+            main_scene_image.icon464,
             this._onClickLayer(2),
             this
         );

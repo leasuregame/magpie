@@ -23,7 +23,11 @@ res/main/icon459.png
 res/main/icon460.png
 res/main/icon461.png
 res/main/icon462.png
+res/main/icon463.png
+res/main/icon464.png
 res/ccb/uiEffect114.ccbi
+res/ccb/uiEffect115.ccbi
+res/ccb/uiEffect116.ccbi
 res/effect/uiEffect/up250.png
 res/effect/uiEffect/up251.png
 res/effect/uiEffect/up252.png
@@ -31,6 +35,12 @@ res/effect/uiEffect/up253.png
 res/effect/uiEffect/up254.png
 res/effect/uiEffect/up255.png
 res/effect/uiEffect/up256.png
+res/effect/uiEffect/up257.png
+res/effect/uiEffect/up258.png
+res/effect/uiEffect/up259.png
+res/effect/uiEffect/up260.png
+res/effect/uiEffect/up261.png
+res/effect/uiEffect/up262.png
 
 resYY/main/button86.png
 resYY/main/button87.png
@@ -53,7 +63,11 @@ resYY/main/icon459.png
 resYY/main/icon460.png
 resYY/main/icon461.png
 resYY/main/icon462.png
+resYY/main/icon463.png
+resYY/main/icon464.png
 resYY/ccb/uiEffect114.ccbi
+resYY/ccb/uiEffect115.ccbi
+resYY/ccb/uiEffect116.ccbi
 resYY/effect/uiEffect/up250.png
 resYY/effect/uiEffect/up251.png
 resYY/effect/uiEffect/up252.png
@@ -61,6 +75,12 @@ resYY/effect/uiEffect/up253.png
 resYY/effect/uiEffect/up254.png
 resYY/effect/uiEffect/up255.png
 resYY/effect/uiEffect/up256.png
+resYY/effect/uiEffect/up257.png
+resYY/effect/uiEffect/up258.png
+resYY/effect/uiEffect/up259.png
+resYY/effect/uiEffect/up260.png
+resYY/effect/uiEffect/up261.png
+resYY/effect/uiEffect/up262.png
 
 ----------v1.4.8版本----------------------------------------------------------------------------------------------------
 

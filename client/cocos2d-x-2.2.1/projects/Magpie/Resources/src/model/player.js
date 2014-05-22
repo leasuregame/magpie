@@ -64,6 +64,7 @@ var Player = Entity.extend({
 
     _honor: 0,              // 荣誉
     _superHonor: 0,         // 精元
+    _pill: 0,               // 觉醒玉
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
@@ -139,6 +140,7 @@ var Player = Entity.extend({
         this.set("vip", data.vip);
         this.set("honor", data.honor);
         this.set("superHonor", data.superHonor);
+        this.set("pill", data.pill);
 
         if (data.speaker) {
             this.set("speaker", data.speaker);

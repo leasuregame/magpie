@@ -23,6 +23,7 @@ var SELECT_TYPE_CARD_UPGRADE_RETINUE = 7;
 var SELECT_TYPE_CARD_EVOLUTION_RETINUE = 8;
 var SELECT_TYPE_SELL = 9;
 var SELECT_TYPE_CARD_SMELT_RETINUE = 10;
+var SELECT_TYPE_CARD_USE_PILL_MASTER = 11;
 
 var SORT_TYPE_DROP = 0;
 var SORT_TYPE_LITER = 1;
@@ -879,6 +880,26 @@ var CardListLayer = cc.Layer.extend({
         this._selectCallback();
     },
 
+    _initCardUsePillMaster: function() {
+        cc.log("CardListLayer _initCardUsePillMaster");
+
+        this._tipLabel.setString("4星以下卡牌无法觉醒");
+
+        this._initMaster();
+
+        var cardList = gameData.cardList.get("cardList");
+
+        for (var key in cardList) {
+            if (!cardList[key].canUsePill()) {
+                this._excludeList.push(key);
+            }
+        }
+
+        if (this._otherData.leadCard && this._otherData.leadCard.canUsePill()) {
+            this._cardLabel[this._otherData.leadCard.get("id")].select();
+        }
+    },
+
     _clearOtherLayer: function () {
         cc.log("CardListLayer _clearOtherLayer");
 
@@ -923,6 +944,9 @@ var CardListLayer = cc.Layer.extend({
                     break;
                 case SELECT_TYPE_CARD_SMELT_RETINUE:
                     this._initCardSmeltRetinue();
+                    break;
+                case SELECT_TYPE_CARD_USE_PILL_MASTER:
+                    this._initCardUsePillMaster();
                     break;
                 default :
                     this._initDefault();

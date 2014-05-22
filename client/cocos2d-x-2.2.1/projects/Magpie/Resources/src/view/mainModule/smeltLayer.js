@@ -26,7 +26,7 @@ var SmeltLayer = cc.Layer.extend({
         bgSprite.setPosition(this._smeltLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        this._cardSmeltLayerItem = cc.MenuItemImage.createWithIcon(
+        this._cardSmeltLabelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button22,
             main_scene_image.button22s,
             main_scene_image.button22d,
@@ -34,10 +34,10 @@ var SmeltLayer = cc.Layer.extend({
             this._onClickCardSmeltLayer,
             this
         );
-        this._cardSmeltLayerItem.setPosition(this._smeltLayerFit.cardSmeltLayerItemPoint);
-        this._cardSmeltLayerItem.setOffset(cc.p(0, -5));
+        this._cardSmeltLabelItem.setPosition(this._smeltLayerFit.cardSmeltLayerItemPoint);
+        this._cardSmeltLabelItem.setOffset(cc.p(0, -5));
 
-        this._usePillLayerItem = cc.MenuItemImage.createWithIcon(
+        this._usePillLabelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
             main_scene_image.button23s,
             main_scene_image.button23d,
@@ -45,19 +45,19 @@ var SmeltLayer = cc.Layer.extend({
             this._onClickUsePillLayer,
             this
         );
-        this._usePillLayerItem.setPosition(this._smeltLayerFit.usePillLayerItemPoint);
-        this._usePillLayerItem.setOffset(cc.p(-6, -5));
+        this._usePillLabelItem.setPosition(this._smeltLayerFit.usePillLayerItemPoint);
+        this._usePillLabelItem.setOffset(cc.p(-6, -5));
 
         var menu = cc.Menu.create(
-            this._cardSmeltLayerItem,
-            this._usePillLayerItem
+            this._cardSmeltLabelItem,
+            this._usePillLabelItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
-        this._cardSmeltLayerItem.setEnabled(false);
-        this._usePillLayerItem.setEnabled(true);
-        this.switchLayer(CardSmeltLayer);
+        this._cardSmeltLabelItem.setEnabled(false);
+        this._usePillLabelItem.setEnabled(true);
+        this.switchLayer(CardSmeltLabel);
 
         return true;
     },
@@ -67,10 +67,10 @@ var SmeltLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._cardSmeltLayerItem.setEnabled(false);
-        this._usePillLayerItem.setEnabled(true);
+        this._cardSmeltLabelItem.setEnabled(false);
+        this._usePillLabelItem.setEnabled(true);
 
-        this.switchLayer(CardSmeltLayer);
+        this.switchLayer(CardSmeltLabel);
     },
 
     _onClickUsePillLayer: function () {
@@ -78,10 +78,10 @@ var SmeltLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._cardSmeltLayerItem.setEnabled(true);
-        this._usePillLayerItem.setEnabled(false);
+        this._cardSmeltLabelItem.setEnabled(true);
+        this._usePillLabelItem.setEnabled(false);
 
-        this.switchLayer(ExchangeLayer);
+        this.switchLayer(UsePillLabel);
     },
 
     backToThisLayer: function () {

@@ -371,8 +371,11 @@ var fit4Iphone5 = {
             "buyCountItemPoint": cc.p(575, 151),
             "tipLayerPoint": cc.p(90, 1014)
         },
-         "cardSmeltLayer": {
+        "cardSmeltLabel": {
             "smelterPoint": cc.p(325, 610),
+            "pillIconPoint": cc.p(435, 820),
+            "pillIconLabelPoint": cc.p(495, 820),
+            "pillLabelPoint": cc.p(545, 818),
             "helpBgSpritePoint": cc.p(320, 307),
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
@@ -1166,8 +1169,8 @@ var fit4Iphone5 = {
             "helpItemPoint": cc.p(50, 810),
             "extractEffectUrl": "animation_2"
         },
-         "smeltLayer": {
-             "bgSpriteRect1": cc.rect(0, 0, 640, 995),
+        "smeltLayer": {
+            "bgSpriteRect1": cc.rect(0, 0, 640, 995),
             "bgSpritePoint": cc.p(0, 106),
             "bgSpriteRect2": cc.rect(0, 0, 640, 845),
             "playerHeaderLabelPoint": cc.p(0, 968),
@@ -1440,6 +1443,19 @@ var fit4Iphone5 = {
             "verticalIcon2Point": cc.p(569, 544),
             "verticalIconScale": 1,
             "helpItemPoint": cc.p(580, 1096)
+        },
+        "usePillLabel": {
+            "awakenEffectPoint": cc.p(325, 610),
+            "pillIconPoint": cc.p(435, 820),
+            "pillIconLabelPoint": cc.p(495, 820),
+            "pillLabelPoint": cc.p(545, 818),
+            "resLabelPoint": cc.p(320, 430),
+            "helpBgSpritePoint": cc.p(320, 307),
+            "tipLabelPoint": cc.p(320, 307),
+            "helpLabelPoint": cc.p(320, 307),
+            "leadCardHalfNodePoint": cc.p(324, 720),
+            "awakenItemPoint": cc.p(320, 197),
+            "helpItemPoint": cc.p(50, 810)
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(320, 580),

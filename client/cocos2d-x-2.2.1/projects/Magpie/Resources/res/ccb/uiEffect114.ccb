@@ -1739,7 +1739,7 @@
 								<key>displayName</key>
 								<string>CCMenuItemImage</string>
 								<key>memberVarAssignmentName</key>
-								<string>ccbFnOpenBox</string>
+								<string>ccbBoxItem</string>
 								<key>memberVarAssignmentType</key>
 								<integer>2</integer>
 								<key>properties</key>
@@ -1849,6 +1849,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

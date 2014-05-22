@@ -371,8 +371,11 @@ var fit4Iphone4 = {
             "buyCountItemPoint": cc.p(615, 141),
             "tipLayerPoint": cc.p(130, 838)
         },
-        "cardSmeltLayer": {
+        "cardSmeltLabel": {
             "smelterPoint": cc.p(364, 485),
+            "pillIconPoint": cc.p(475, 692),
+            "pillIconLabelPoint": cc.p(535, 692),
+            "pillLabelPoint": cc.p(585, 690),
             "helpBgSpritePoint": cc.p(360, 292),
             "tipLabelPoint": cc.p(360, 292),
             "helpLabelPoint": cc.p(360, 292),
@@ -1462,6 +1465,19 @@ var fit4Iphone4 = {
             "scrollViewHeight": 470,
             "closeItemPoint": cc.p(605, 760),
             "speakerNumPoint": cc.p(127, 711)
+        },
+        "usePillLabel": {
+            "awakenEffectPoint": cc.p(364, 485),
+            "pillIconPoint": cc.p(475, 692),
+            "pillIconLabelPoint": cc.p(535, 692),
+            "pillLabelPoint": cc.p(585, 690),
+            "helpBgSpritePoint": cc.p(360, 292),
+            "tipLabelPoint": cc.p(360, 292),
+            "helpLabelPoint": cc.p(360, 292),
+            "resLabelPoint": cc.p(360, 430),
+            "leadCardHalfNodePoint": cc.p(364, 595),
+            "awakenItemPoint": cc.p(360, 182),
+            "helpItemPoint": cc.p(80, 670)
         },
         "vipDailyRewardLayer": {
             "bgLabelScaleY": 1,

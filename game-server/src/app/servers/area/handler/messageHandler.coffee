@@ -35,6 +35,7 @@ Handler::messageList = (msg, session, next) ->
           receiver: -1
           type: configData.message.MESSAGETYPE.SYSTEM
           msgId: null
+          validDate__date_le: utility.dateFormat new Date(), 'yyyy-MM-dd' # 小于等于
         }
       }, cb
 
@@ -353,6 +354,7 @@ Handler::addFriend = (msg, session, next) ->
         dao.message.create data: {
           type: configData.message.MESSAGETYPE.ADDFRIEND
           sender: playerId
+          options: {playerName: playerName}
           receiver: friend.id
           content: "#{playerName}发来请求"
           status: configData.message.MESSAGESTATUS.ASKING

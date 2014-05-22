@@ -938,6 +938,7 @@ var ExploreLayer = cc.Layer.extend({
                 titleType: TYPE_EXPLORE_REWARD,
                 cb: function () {
                     that._updateCollect();
+                    that.update();
                     lz.tipReward(reward);
                 }
             });

@@ -15,8 +15,10 @@
 var SystemMessageLayer = cc.Layer.extend({
     _systemMessageLayerFit: null,
 
+    _messages: [],
     _scrollView: null,
     _scrollViewElement: {},
+    _handlerIcons: [],
 
     onEnter: function () {
         cc.log("SystemMessageLayer onEnter");
@@ -56,67 +58,86 @@ var SystemMessageLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
+
+        this._messages = systemMessageList;
         var scrollViewLayer = MarkLayer.create(this._systemMessageLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 127 - 20;
+        var scrollViewHeight = len * 127;
         if (scrollViewHeight < this._systemMessageLayerFit.scrollViewHeight) {
             scrollViewHeight = this._systemMessageLayerFit.scrollViewHeight;
         }
 
-        this._scrollViewElement = {};
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 107 - 127 * i;
+            var y = scrollViewHeight - 127 - 127 * i;
+            var message = this._messages[i];
 
-            var id = systemMessageList[i].id;
-            var status = systemMessageList[i].status;
+            var msgBgLabel = cc.Sprite.create(main_scene_image.icon449);
+            msgBgLabel.setAnchorPoint(cc.p(0, 0));
+            msgBgLabel.setPosition(cc.p(0, y));
+            scrollViewLayer.addChild(msgBgLabel);
 
-            var hasBeenReceiveIcon = cc.Sprite.create(main_scene_image.icon138);
-            hasBeenReceiveIcon.setPosition(cc.p(530, y + 60));
-            scrollViewLayer.addChild(hasBeenReceiveIcon, 1);
-            hasBeenReceiveIcon.setVisible(status == HANDLED_STATUS);
+            var systemIcon = cc.Sprite.create(main_scene_image.icon452);
+            systemIcon.setAnchorPoint(cc.p(0, 0.5));
+            systemIcon.setPosition(cc.p(10, 57));
+            msgBgLabel.addChild(systemIcon);
 
-            var msgBgSprite = cc.Sprite.create(main_scene_image.icon127);
-            msgBgSprite.setAnchorPoint(cc.p(0, 0));
-            msgBgSprite.setPosition(cc.p(0, y));
-            scrollViewLayer.addChild(msgBgSprite);
+            var titleIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+            titleIcon.setContentSize(cc.size(200, 30));
+            titleIcon.setAnchorPoint(cc.p(0, 0.5));
+            titleIcon.setPosition(cc.p(115, 85));
+            msgBgLabel.addChild(titleIcon);
 
-            var msgLabel = cc.LabelTTF.create(systemMessageList[i].content, "STHeitiTC-Medium", 22);
-            msgLabel.setAnchorPoint(cc.p(0, 0.5));
-            msgLabel.setPosition(cc.p(20, y + 60));
-            scrollViewLayer.addChild(msgLabel);
+            var titleLabel = cc.LabelTTF.create(message.title, "STHeitiTC-Medium", 22);
+            titleLabel.setAnchorPoint(cc.p(0, 0.5));
+            titleLabel.setPosition(cc.p(130, 85));
+            msgBgLabel.addChild(titleLabel);
+
+            var senderLabel = cc.LabelTTF.create("发件人：", "STHeitiTC-Medium", 22);
+            senderLabel.setAnchorPoint(cc.p(0, 0.5));
+            senderLabel.setPosition(cc.p(120, 52));
+            senderLabel.setColor(cc.c3b(138, 85, 23));
+            msgBgLabel.addChild(senderLabel);
+
+            var nameLabel = cc.LabelTTF.create(message.sender, "STHeitiTC-Medium", 22);
+            nameLabel.setAnchorPoint(cc.p(0, 0.5));
+            nameLabel.setPosition(cc.p(205, 52));
+            nameLabel.setColor(cc.c3b(123, 61, 56));
+            msgBgLabel.addChild(nameLabel);
 
             var timeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({
-                    time: systemMessageList[i].createTime,
-                    fmt: "yyyy.MM.dd hh:mm"
+                    time: systemMessageList[0].createTime,
+                    fmt: "dd-MM-yyyy hh:mm:ss"
                 }),
                 "STHeitiTC-Medium",
-                16
+                20
             );
-            timeLabel.setAnchorPoint(cc.p(1, 0));
-            timeLabel.setPosition(cc.p(580, y + 13));
-            scrollViewLayer.addChild(timeLabel);
+            timeLabel.setAnchorPoint(cc.p(0, 0.5));
+            timeLabel.setPosition(cc.p(120, 22));
+            timeLabel.setColor(cc.c3b(138, 85, 23));
+            msgBgLabel.addChild(timeLabel);
 
-            var receiveItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button10,
-                main_scene_image.button10s,
-                main_scene_image.icon123,
-                this._onClickReceive(id),
+            var readItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.icon134,
+                this._onClickRead(i),
                 this
             );
-            receiveItem.setPosition(cc.p(520, y + 62));
-            menu.addChild(receiveItem);
+            readItem.setPosition(cc.p(520, y + 52));
+            menu.addChild(readItem);
 
-            receiveItem.setVisible(status == UNHANDLED_STATUS);
+            var handlerIcon = cc.Sprite.create(main_scene_image.icon455);
+            handlerIcon.setAnchorPoint(cc.p(1, 1));
+            handlerIcon.setPosition(cc.p(604, y + 112));
+            handlerIcon.setVisible(message.status == HANDLED_STATUS);
+            scrollViewLayer.addChild(handlerIcon, 1);
 
-            this._scrollViewElement[id] = {
-                hasBeenReceiveIcon: hasBeenReceiveIcon,
-                receiveItem: receiveItem
-            };
+            this._handlerIcons[i] = handlerIcon;
         }
 
         this._scrollView = cc.ScrollView.create(this._systemMessageLayerFit.scrollViewSize, scrollViewLayer);
@@ -129,21 +150,23 @@ var SystemMessageLayer = cc.Layer.extend({
         this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
     },
 
-    _onClickReceive: function (id) {
+    _onClickRead: function (id) {
+        var that = this;
+
         return function () {
-            cc.log("SystemMessageLayer onClickPlayback: " + id);
+            cc.log("SystemMessageLayer _onClickRead: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            var element = this._scrollViewElement[id];
+            var cb = function () {
+                that._handlerIcons[id].setVisible(true);
+            };
 
-            gameData.message.receive(function () {
-                element.receiveItem.setVisible(false);
-                element.hasBeenReceiveIcon.setVisible(true);
+            SystemMessageLabel.pop({
+                message: that._messages[id],
+                cb: cb
+            });
 
-                gameMark.updateSystemMessageMark(false);
-
-            }, id);
         }
     }
 });

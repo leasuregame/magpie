@@ -80,7 +80,7 @@ var Friend = Entity.extend({
             cc.log(data);
 
             that._onBless(data.msg);
-            gameMark.updateFriendMark(true);
+            gameMark.updateFriendMark(false);
         });
 
         lz.server.on("onFriendAction", function (data) {
@@ -117,7 +117,7 @@ var Friend = Entity.extend({
 
         var friend = this.getFriend(msg.sender);
 
-        if (friend) {
+        if (friend && this.get("receiveCount") > 0) {
             friend.canReceive = true;
             friend.msgId = msg.id;
         }

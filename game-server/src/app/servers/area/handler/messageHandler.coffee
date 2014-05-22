@@ -6,7 +6,9 @@ async = require 'async'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 utility = require '../../../common/utility'
+eUtil = require '../../../util/entityUtil'
 table = require '../../../manager/table'
+
 
 resData = table.getTableItem('resource_limit', 1)
 MAX_POWER_VALUE = resData.power_value
@@ -81,10 +83,13 @@ Handler::messageList = (msg, session, next) ->
 
 Handler::sysMsg = (msg, session, next) ->
   content = msg.content
-  options = msg.options or {}
+  options = msg.options
+  validDate = msg.validDate
   receiver = msg.playerId or SYSTEM
 
   async.waterfall [
+    (cb) ->
+      checkSystemOptions(options, cb)
     (cb) ->
       if receiver isnt SYSTEM
         playerManager.getPlayerInfo pid: receiver, (err, res) ->
@@ -110,17 +115,47 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, msg.playerId, {
       route: 'onMessage'
       msg: res.toJson()
-    }, '邮件发送成功', next
+    }, '邮件发送成功', (err, data) ->
+      data.msg = {msgId: res.id, tip: data.msg} if not err
+      next(err, data)
+
+checkSystemOptions = (options, cb) ->
+  isObject = _.isObject(options)
+  hasRightProperties = _.has(options, 'title') and _.has(options, 'sender') and _.has(options, 'rewards')
+  isAcceptLength = JSON.stringify(options).length <= 1024 if isObject
+
+  rewardTypes = ['gold', 'money', 'spirit', 'skillPoint', 'energy', 'fragments', 'elixir', 'superHonor', 'powerValue', 'cardArray']
+  wrongKeys = _.keys(options.rewards).filter (k) -> k not in rewardTypes
+  hasRightRewards = wrongKeys.length == 0 if isObject and hasRightProperties
+  
+  if isObject and hasRightProperties and hasRightRewards and isAcceptLength
+    cb()
+  else 
+    cb({code: 501, msg: '消息奖励内容格式不正确'})
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
-  player = null
-  incValues = (obj, data) ->
+  
+  incValues = (obj, options, done) ->
+    data = options.rewards or options
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')
+    # todo add exp card with entityUtil
+    if _.has(data, 'cardArray') and data.cardArray.length > 0
+      data.cardArray.forEach (c) -> c.playerId = obj.id
+      eUtil.createCards data.cardArray, (err, cards) ->
+        if err
+          done(err)
+        else
+          obj.addCards cards
+          data.cardArray = cards.map (c) -> c.toJson()
+          done(null, data)
+    else
+      done(null, data)
 
+  player = null
   async.waterfall [
     (cb)->
       dao.message.fetchOne where: id: msgId, (err, message) ->
@@ -170,14 +205,13 @@ Handler::handleSysMsg = (msg, session, next) ->
           cb(err, res.options)
 
     (options, cb) ->
-      incValues(player, options)
-      player.save()
-      cb(null, options)
+      incValues(player, options, cb)
 
   ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})
 
+    player.save()
     next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->

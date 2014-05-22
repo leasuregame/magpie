@@ -273,9 +273,17 @@ var CardDetails = LazyLayer.extend({
                 passiveSkillValueLabel.setPosition(cc.p(x + 120, this._cardDetailsFit.passiveSkillValueLabelPointY));
                 this._passiveSkillLayer.addChild(passiveSkillValueLabel);
 
-                if (value >= 8.0) {
+                var table = outputTables.passive_skill_config.rows[this._card.get("star")];
+
+                if (value == table.full_attribute) {
+                    passiveSkillValueLabel.setString("+ " + value + "% (满)");
+                } else {
+                    passiveSkillValueLabel.setString("+ " + value + "%");
+                }
+
+                if (value >= table.yellow_attribute) {
                     passiveSkillValueLabel.setColor(cc.c3b(255, 248, 69));
-                } else if (value >= 5.0) {
+                } else if (value >= table.blue_attribute) {
                     passiveSkillValueLabel.setColor(cc.c3b(105, 218, 255));
                 } else {
                     passiveSkillValueLabel.setColor(cc.c3b(118, 238, 60));

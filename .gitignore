@@ -43,3 +43,4 @@ game-server/config/area.json
 
 shared/whiteList.json
 
+*.map

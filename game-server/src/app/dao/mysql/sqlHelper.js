@@ -147,6 +147,8 @@ var Statement = {
             for (var key in params) {
                 if (params[key] == null) {
                     where_str += ''+key + ' is ? and '
+                } else if (/\w+__\w+/.test(key)) {
+                    where_str += parseOperation(key);
                 } else {
                     where_str += ''+key + ' = ? and ';
                 }                
@@ -160,6 +162,33 @@ var Statement = {
             args: args
         };
     }
+};
+
+var parseOperation = function(key) {
+    var name, func, ops, _ref;
+
+    _ref = key.split('__'), name = _ref[0], ops = _ref[1];
+    if (/\w+_\w+/.test(ops)) {
+        _ref = ops.split('_');
+        func = _ref[0];
+        ops = _ref[1];
+    }
+
+    return (func ? func + '(' : '') + name + (func ? ') ' : ' ') + operation(ops) + ' ? and ';
+};
+
+var operation = function(type) {
+    var ops; 
+
+    switch(type) {
+        case 'gt': ops = '>'; break;
+        case 'lt': ops = '<'; break;
+        case 'ge': ops = '>='; break;
+        case 'le': ops = '<='; break;
+        default: 
+            ops = '=';
+    }
+    return ops;
 };
 
 var FUNCTION_MAPPING = {

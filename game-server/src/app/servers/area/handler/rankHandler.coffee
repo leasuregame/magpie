@@ -410,7 +410,7 @@ saveBattleLog = (bl, playerName, oldRank, curRank) ->
       status: configData.message.MESSAGESTATUS.NOTICE
       options: {
         battleLogId: res.id
-        isWin: isWin
+        isWin: !isWin
         oldRank: oldRank
         curRank: curRank
         defier: playerName

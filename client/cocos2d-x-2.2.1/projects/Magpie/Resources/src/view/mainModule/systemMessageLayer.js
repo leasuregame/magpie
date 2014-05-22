@@ -110,7 +110,7 @@ var SystemMessageLayer = cc.Layer.extend({
 
             var timeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({
-                    time: systemMessageList[0].createTime,
+                    time: message.createTime,
                     fmt: "dd-MM-yyyy hh:mm:ss"
                 }),
                 "STHeitiTC-Medium",

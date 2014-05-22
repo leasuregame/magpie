@@ -25,6 +25,7 @@ Handler = (@app) ->
 Handler::messageList = (msg, session, next) ->
   playerId = session.get('playerId')
 
+  today = utility.dateFormat new Date(), 'yyyy-MM-dd'
   async.parallel [
     (cb) ->
       dao.message.fetchMany {
@@ -35,7 +36,7 @@ Handler::messageList = (msg, session, next) ->
           receiver: -1
           type: configData.message.MESSAGETYPE.SYSTEM
           msgId: null
-          validDate__date_le: utility.dateFormat new Date(), 'yyyy-MM-dd' # 小于等于
+          validDate__date_ge: today # 小于等于
         }
       }, cb
 
@@ -53,7 +54,7 @@ Handler::messageList = (msg, session, next) ->
       dao.message.fetchMany {
         where: " receiver = #{playerId} and 
           type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
-          status <> #{configData.message.MESSAGESTATUS.ASKING} "
+          status <> #{configData.message.MESSAGESTATUS.ASKING} and DATE(validDate) >= '#{today}'"
         orderby: ' createTime DESC '
       }, cb
 
@@ -108,6 +109,7 @@ Handler::sysMsg = (msg, session, next) ->
         content: content
         type: configData.message.MESSAGETYPE.SYSTEM
         status: configData.message.MESSAGESTATUS.UNHANDLED
+        validDate: validDate
       }, cb
   ], (err, res) =>
     if err
@@ -201,6 +203,7 @@ Handler::handleSysMsg = (msg, session, next) ->
         data.status = configData.message.MESSAGESTATUS.HANDLED
         data.msgId = message.id
         data.receiver = playerId
+        data.validDate = utility.dateFormat(data.validDate, 'yyy-MM-dd HH:mm:ss')
 
         dao.message.create {
           data:data

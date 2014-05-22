@@ -29,8 +29,10 @@ module.exports =
   done   a callback execute after created all cards
   ###
   createCards: (cards, done) ->
+    cards = [cards] if not _.isArray(cards)
+
     async.map cards, (card, doneEach) =>
-      qty = card.qty
+      qty = card.qty or 1
       delete card.qty
       async.times qty, (n, doneTimes) => 
         @createCard card, doneTimes

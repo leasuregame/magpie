@@ -87,7 +87,11 @@ Handler::sysMsg = (msg, session, next) ->
   content = msg.content
   options = msg.options
   validDate = msg.validDate
-  receiver = msg.playerId or SYSTEM
+
+  if msg.playerId and _.isNumber(msg.playerId) and msg.playerId > 0
+    receiver = msg.playerId
+  else
+    receiver = SYSTEM
 
   async.waterfall [
     (cb) ->
@@ -115,7 +119,7 @@ Handler::sysMsg = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sendMessage @app, msg.playerId, {
+    sendMessage @app, (if receiver is -1 then null else receiver), {
       route: 'onMessage'
       msg: res.toJson()
     }, '邮件发送成功', (err, data) ->

@@ -83,11 +83,13 @@ Handler::messageList = (msg, session, next) ->
 
 Handler::sysMsg = (msg, session, next) ->
   content = msg.content
-  options = msg.options or {}
+  options = msg.options
   validDate = msg.validDate
   receiver = msg.playerId or SYSTEM
 
   async.waterfall [
+    (cb) ->
+      checkSystemOptions(options, cb)
     (cb) ->
       if receiver isnt SYSTEM
         playerManager.getPlayerInfo pid: receiver, (err, res) ->
@@ -116,6 +118,20 @@ Handler::sysMsg = (msg, session, next) ->
     }, '邮件发送成功', (err, data) ->
       data.msg = {msgId: res.id, tip: data.msg} if not err
       next(err, data)
+
+checkSystemOptions = (options, cb) ->
+  isObject = _.isObject(options)
+  hasRightProperties = _.has(options, 'title') and _.has(options, 'sender') and _.has(options, 'rewards')
+  isAcceptLength = JSON.stringify(options).length <= 1024 if isObject
+
+  rewardTypes = ['gold', 'money', 'spirit', 'skillPoint', 'energy', 'fragments', 'elixir', 'superHonor', 'powerValue', 'cardArray']
+  wrongKeys = _.keys(options.rewards).filter (k) -> k not in rewardTypes
+  hasRightRewards = wrongKeys.length == 0 if isObject and hasRightProperties
+  
+  if isObject and hasRightProperties and hasRightRewards and isAcceptLength
+    cb()
+  else 
+    cb({code: 501, msg: '消息奖励内容格式不正确'})
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')

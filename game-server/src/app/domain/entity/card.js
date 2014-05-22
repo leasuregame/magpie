@@ -554,7 +554,9 @@ var Card = (function(_super) {
             elixirAtk: this.elixirAtk,
             elixirHpCrit: this.elixirHpCrit,
             elixirAtkCrit: this.elixirAtkCrit,
-            passiveSkills: this.passiveSkills
+            passiveSkills: this.passiveSkills,
+            pill: this.pill,
+            potentialLv: this.potentialLv
         };
     };
 

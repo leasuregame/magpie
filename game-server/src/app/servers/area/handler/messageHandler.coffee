@@ -124,7 +124,9 @@ checkSystemOptions = (options, cb) ->
   hasRightProperties = _.has(options, 'title') and _.has(options, 'sender') and _.has(options, 'rewards')
   isAcceptLength = JSON.stringify(options).length <= 1024 if isObject
 
-  rewardTypes = ['gold', 'money', 'spirit', 'skillPoint', 'energy', 'fragments', 'elixir', 'superHonor', 'powerValue', 'cardArray']
+  rewardTypes = ['gold', 'money', 'spirit', 'skillPoint', 'energy',
+    'fragments', 'elixir', 'superHonor', 'powerValue', 'cardArray'
+    'speaker', 'spirit']
   wrongKeys = _.keys(options.rewards).filter (k) -> k not in rewardTypes
   hasRightRewards = wrongKeys.length == 0 if isObject and hasRightProperties
   

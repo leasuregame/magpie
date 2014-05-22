@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `cd` VARCHAR(100) DEFAULT '{}',
   `plan` VARCHAR(100) DEFAULT '{"buy": false, "flag": 0}',
   `useCardCount` VARCHAR(100) DEFAULT '{"star4": 10, "star5": 1, "star6": 3}',
+  `pill` INT(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -113,10 +114,11 @@ CREATE TABLE IF NOT EXISTS `message` (
   `sender` BIGINT(20),
   `receiver` BIGINT(20),
   `type` SMALLINT(2) UNSIGNED DEFAULT '0',
-  `options` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
+  `options` VARCHAR(1024) COLLATE utf8_unicode_ci DEFAULT '',
   `content` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
   `status` SMALLINT(2) UNSIGNED DEFAULT '0',
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `validDate` DATETIME,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -142,6 +144,8 @@ CREATE TABLE IF NOT EXISTS `card` (
   `passiveSkills` VARCHAR(2500) COLLATE utf8_unicode_ci DEFAULT '',
   `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
   `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量
+  `potentialLv` INT(2) DEFAULT '0', -- 潜能等级
+  `pill` INT(10) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

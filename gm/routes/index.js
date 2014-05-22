@@ -125,6 +125,9 @@ var routes = function(app) {
 
     });
 
+    /*
+    注册其他模块路由
+     */
     player(app);
     card(app);
     rank(app);

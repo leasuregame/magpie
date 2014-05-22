@@ -103,6 +103,8 @@ updateElixir = (player, elixir) ->
 
 
 updateAll = (player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
+  player.rank = challenger
+  target.rank = defender
   
   jobs = [
     {

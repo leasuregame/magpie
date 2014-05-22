@@ -38,7 +38,10 @@ describe("Area Server", function() {
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
-                        expect(data.msg).toEqual('邮件发送成功');
+                        expect(data.msg).toEqual({
+                            msgId: 1,
+                            tip: '邮件发送成功'
+                        });
                     });
                 });
             });
@@ -78,9 +81,18 @@ describe("Area Server", function() {
                                     sender: -1,
                                     receiver: -1,
                                     options: JSON.stringify({
-                                        gold: 100,
-                                        money: 100,
-                                        powerValue: 120
+                                        title: '测试奖励',
+                                        sender: '测试小精灵',
+                                        rewards: {
+                                            gold: 100,
+                                            money: 100,
+                                            powerValue: 120,
+                                            spirit: 1,
+                                            cardArray: [
+                                                {tableId: 27, lv: 25, qty: 2},
+                                                {tableId: 746, lv: 12, qty: 2}
+                                            ]
+                                        }
                                     }),
                                     type: 4, // message
                                     status: 4 // unhandled
@@ -110,9 +122,12 @@ describe("Area Server", function() {
                         }, function(data) {
                             console.log(data);
                             expect(data.code).toEqual(200);
-                            expect(data.msg).toEqual(
-                                 { gold : 100, money : 100, powerValue : 120 } 
-                            );
+                            expect(data.msg).toEqual({
+                                gold: 100,
+                                money: 100,
+                                powerValue: 120,
+                                spirit: 1
+                            });
                         });
                     });
                 });

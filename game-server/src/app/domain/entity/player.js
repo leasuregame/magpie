@@ -211,6 +211,8 @@ var Player = (function(_super) {
         this.created = utility.dateFormat(new Date(this.created), 'yyyy-MM-dd h:mm:ss');
     };
 
+    Player.tableName = 'player';
+
     Player.FIELDS = [
         'id',
         'uniqueId',
@@ -258,7 +260,8 @@ var Player = (function(_super) {
         'superHonor',
         'cd',
         'plan',
-        'useCardCount'
+        'useCardCount',
+        'pill'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -391,7 +394,8 @@ var Player = (function(_super) {
             star4: 10,
             star5: 1,
             star6: 3
-        }
+        },
+        pill: 0
     };
 
     Player.prototype.updateUseCardCoun = function(star, val) {
@@ -1117,14 +1121,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.clearMysticalPass = function() {
-        if (this.pass.mystical.diff == 5) {
-            return;
-        }
-
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
-        pass.mystical.diff += 1;
-        pass.mystical.isTrigger = false;
+
+        if (this.pass.mystical.diff < 5) {
+            pass.mystical.diff += 1;
+            pass.mystical.isTrigger = false;
+        }
+        
         this.set('pass', pass);
     };
 

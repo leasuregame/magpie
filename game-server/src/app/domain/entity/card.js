@@ -512,6 +512,10 @@ var Card = (function(_super) {
         return res < 0 ? 0 : res;
     };
 
+    Card.prototype.totalElixir = function(){
+        return this.elixirHp + this.elixirHpCrit + this.elixirAtk + this.elixirAtkCrit;
+    };
+
     Card.prototype.toJson = function() {
         return {
             id: this.id,

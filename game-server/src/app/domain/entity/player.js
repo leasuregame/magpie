@@ -1617,7 +1617,8 @@ var Player = (function(_super) {
                 kneelList: this.dailyGift.kneelList || [],
                 rmTimerCount: this.dailyGift.rmTimerCount || 1,
                 canReceive: this.hasFriendReward || false,
-            }
+            },
+            pill: this.pill
         };
     };
 

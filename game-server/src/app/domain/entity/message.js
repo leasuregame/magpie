@@ -20,7 +20,8 @@ var Message = (function(_super) {
         'status',
         'options',
         'content',
-        'createTime'
+        'createTime',
+        'validDate'
     ];
     Message.DEFAULT_VALUES = {
         type: '',

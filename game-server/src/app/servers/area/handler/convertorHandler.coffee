@@ -57,7 +57,7 @@ Handler::usePill = (msg, session, next) ->
     next(null, {
       code: 200
       msg: 
-        playerPill: player.pill
+        pill: player.pill
         potentialLv: card.potentialLv
         ability: card.ability()
     })
@@ -74,6 +74,8 @@ Handler::dissolveCard = (msg, session, next) ->
     return next(null, {code: 501, msg: '参数错误'})
   
   player = null
+  pill = 0
+  money = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
@@ -97,7 +99,7 @@ Handler::dissolveCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    next(null, {code: 200, msg: pill: player.pill, money: player.money})
+    next(null, {code: 200, msg: pill: pill, money: money})
 
 updateEntities = (groups..., cb) ->
   jobs = []

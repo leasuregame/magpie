@@ -57,7 +57,8 @@ Handler::usePill = (msg, session, next) ->
     next(null, {
       code: 200
       msg: 
-        pill: player.pill
+        playerPill: player.pill
+        pill: card.pill
         potentialLv: card.potentialLv
         ability: card.ability()
     })

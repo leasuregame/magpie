@@ -1549,7 +1549,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.recountStar5CardAchievement = function() {
-        //if (this.firstTime.star5card) return;
+        if (this.firstTime.star5card) return;
 
         var cards = _.values(this.cards);
         var star5Num = cards.filter(function(c) {

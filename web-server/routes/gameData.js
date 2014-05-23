@@ -39,20 +39,6 @@ exports.getActorCards = function (req, res) {
 };
 
 /**
- * 根据条件筛选出用户名
- * @param req
- * @param res
- */
-exports.getPlayerNames = function (req, res) {
-    var where = {
-        lv : req.query.lv,
-        vip : req.query.vip,
-        amount : req.query.amount,
-        payTime : req.query.amount
-    }
-}
-
-/**
  * 获取角色卡等级上限
  * @param req
  * @param res

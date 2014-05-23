@@ -62,6 +62,7 @@ executeVerify = (app, queue) ->
 
   return if items.length is 0
 
+  useSanbox = app.get('useSanbox') or false
   async.each items, (item, done) ->    
     tryCount = 0
     postReceipt = (reqUrl, receiptData) ->
@@ -86,7 +87,7 @@ executeVerify = (app, queue) ->
           queue.del(item.id)
           updateBuyRecord(app, item.id, {status: body.status}, ()->)
 
-        if body.status is 21007 and tryCount == 0
+        if body.status is 21007 and tryCount == 0 and useSanbox
           tryCount += 1
           return postReceipt(SANBOX_URL, receiptData)
 

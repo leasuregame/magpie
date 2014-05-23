@@ -1558,9 +1558,13 @@ var Player = (function(_super) {
         var star6Num = cards.filter(function(c) {
             return c.star >= 6;
         }).length;
-        console.log('message:', star5Num, star6Num);
+        var star7Num = cards.filter(function(c) {
+            return c.star == 7;
+        }).length;
+
         if (star5Num > 0) achieve.star5card(this, star5Num);
         if (star6Num > 0) achieve.star6card(this, star6Num);
+        if (star7Num > 0) achieve.star7card(this, star7Num);
     };
 
     Player.prototype.toJson = function() {

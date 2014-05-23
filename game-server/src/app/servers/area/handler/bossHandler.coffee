@@ -328,9 +328,10 @@ checkBossStatus = (items, cb) ->
 
 sortBossList = (items, playerId) ->
   group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
-  
-  mine = (group.mine?.sort (x, y) -> x.status - y.status > 0) or []
-  friend = (group.friend?.sort (x, y) -> x.status - y.status > 0) or []
+
+  mine = (group.mine?.sort (x, y) -> x.status - y.status) or []
+  friend = (group.friend?.sort (x, y) -> x.status - y.status) or []
+
   mine.concat friend
 
 Handler::attack = (msg, session, next) ->

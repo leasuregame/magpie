@@ -218,6 +218,14 @@ Handler::handleSysMsg = (msg, session, next) ->
     (options, cb) ->
       incValues(player, options, cb)
 
+    (data, cb) ->
+      if _.isArray(data.cardArray) and data.cardArray.length > 0
+        data.cardArray.forEach (c) ->
+          achieve.star5card(player) if c.star is 5
+          achieve.star6card(player) if c.star is 6
+          achieve.star7card(player) if c.star is 7
+
+      cb(null, data)
   ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})

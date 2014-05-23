@@ -7,8 +7,10 @@ var UsePillLabel = cc.Layer.extend({
 
     _awakenEffect: null,
     _leadCard: null,
+    _effect: null,
+    _showUpgrade: false,
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("UsePillLabel onEnter");
 
         this._super();
@@ -23,6 +25,8 @@ var UsePillLabel = cc.Layer.extend({
         this._usePillLabelFit = gameFit.mainScene.usePillLabel;
 
         this._leadCard = null;
+        this._effect= null;
+        this._showUpgrade = false;
 
         this._awakenEffect = cc.BuilderReader.load(main_scene_image.uiEffect115, this);
         this._awakenEffect.setPosition(this._usePillLabelFit.awakenEffectPoint);
@@ -58,10 +62,10 @@ var UsePillLabel = cc.Layer.extend({
         needPillLabel.setPosition(cc.p(-44, 0));
         this._helpLabel.addChild(needPillLabel);
 
-        this._pillLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._pillLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._pillLabel.setPosition(cc.p(44, -2));
-        this._helpLabel.addChild(this._pillLabel);
+        this._needPillLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._needPillLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._needPillLabel.setPosition(cc.p(44, -2));
+        this._helpLabel.addChild(this._needPillLabel);
 
         this._resLabel = cc.Node.create();
         this._resLabel.setPosition(this._usePillLabelFit.resLabelPoint);
@@ -115,7 +119,7 @@ var UsePillLabel = cc.Layer.extend({
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
-            main_scene_image.icon460,
+            main_scene_image.icon463,
             this._onClickAwaken,
             this
         );
@@ -140,7 +144,7 @@ var UsePillLabel = cc.Layer.extend({
         return true;
     },
 
-    update: function() {
+    update: function () {
         cc.log("UsePillLabel update");
 
         var pill = gameData.player.get("pill");
@@ -165,23 +169,79 @@ var UsePillLabel = cc.Layer.extend({
 
             this._nameLabel.setString(this._leadCard.get("name"));
 
+            var upgradeNeedPill = this._leadCard.getUpgradeNeedPill();
+
+            if (upgradeNeedPill > pill) {
+                this._needPillLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._needPillLabel.setColor(cc.c3b(255, 255, 255));
+            }
+
+            this._needPillLabel.setString(upgradeNeedPill);
+
+            this._awakenLvLabel.setString(this._leadCard.get("potentialLv"));
+            this._awakenAdditionLabel.setString(this._leadCard.getPotentialLvAddition() + "%");
+
+            if (this._showUpgrade) {
+                this._showUpgrade = false;
+
+                var moveByAction = cc.Sequence.create(
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(5, 0)),
+                    cc.MoveBy.create(0.1, cc.p(-5, 0))
+                );
+                var scaleToAction = cc.Sequence.create(
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1),
+                    cc.ScaleTo.create(0.1, 1.5),
+                    cc.ScaleTo.create(0.1, 1)
+
+                );
+                var spawnAction = cc.Spawn.create(moveByAction, scaleToAction);
+
+                this._awakenLvLabel.runAction(spawnAction.clone());
+                this._awakenAdditionLabel.runAction(spawnAction.clone());
+            }
+
+            if (this._leadCard.canUpgradePotentialLv()) {
+                this._arrowLabel1.setVisible(true);
+                this._arrowLabel2.setVisible(true);
+
+                this._nextAwakenLvLabel.setString(this._leadCard.get("potentialLv") + 1);
+                this._nextAwakenAdditionLabel.setString(this._leadCard.getNextPotentialLvAddition() + "%");
+            } else {
+                this._arrowLabel1.setVisible(false);
+                this._arrowLabel2.setVisible(false);
+
+                this._nextSkillLvLabel.setString("已满级");
+                this._nextSkillHarmLabel.setString("已满级");
+            }
+
             this._resLabel.setVisible(true);
             this._tipLabel.setVisible(false);
             this._helpLabel.setVisible(true);
+
+            this._awakenItem.setEnabled(this._leadCard.canUpgradePotentialLv());
         }
 
     },
 
-    ccbFnCallback: function() {
+    ccbFnCallback: function () {
         cc.log("UsePillLabel ccbFnCallback");
 
         this._onClickSelectLeadCard();
     },
 
-    _onClickSelectLeadCard: function() {
+    _onClickSelectLeadCard: function () {
         cc.log("UsePillLabel _onClickSelectLeadCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._effect != null) {
+            this._effect.removeFromParent();
+            this._effect = null;
+        }
 
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_USE_PILL_MASTER, function (data) {
@@ -202,10 +262,46 @@ var UsePillLabel = cc.Layer.extend({
         this.getParent().switchToCardListLayer(cardListLayer);
     },
 
-    _onClickAwaken: function() {
+    _onClickAwaken: function () {
         cc.log("UsePillLabel _onClickAwaken");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var card = this._leadCard;
+
+        if (!card.canUpgradePotentialLv()) {
+            TipLayer.tip("已达到满级");
+            return;
+        }
+
+        if (card.get("star") <= card.get("potentialLv")) {
+            TipLayer.tip("升星开启下一级");
+            return;
+        }
+
+        if (gameData.player.get("pill") < card.getUpgradeNeedPill()) {
+            TipLayer.tip("觉醒玉不足");
+            return;
+        }
+
+        var that = this;
+        this._leadCard.usePill(function () {
+            if (that._effect != null) {
+                that._effect.removeFromParent();
+                that._effect = null;
+            }
+
+            that._effect = cc.BuilderReader.load(main_scene_image.uiEffect116, this);
+            that._effect.setPosition(that._usePillLabelFit.leadCardHalfNodePoint);
+            that._effect.animationManager.setCompletedAnimationCallback(this, function () {
+                that._effect.removeFromParent();
+                that._effect = null;
+            });
+            that.addChild(that._effect, 10);
+            that._showUpgrade = true;
+            that.update();
+        });
+
     }
 
 });

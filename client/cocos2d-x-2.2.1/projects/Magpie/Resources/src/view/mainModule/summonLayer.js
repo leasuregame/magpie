@@ -55,15 +55,28 @@ var SummonLayer = cc.Layer.extend({
         this._exchangeLayerItem.setPosition(this._summonLayerFit.exChangeLayerItemPoint);
         this._exchangeLayerItem.setOffset(cc.p(-6, -5));
 
+        this._treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button23,
+            main_scene_image.button23s,
+            main_scene_image.button23d,
+            main_scene_image.icon456,
+            this._onClickTreasureHuntLayer,
+            this
+        );
+        this._treasureHuntLayerItem.setOffset(cc.p(-6, -5));
+        this._treasureHuntLayerItem.setPosition(this._summonLayerFit.treasureHuntLayerItemPoint);
+
         var menu = cc.Menu.create(
             this._lotteryLayerItem,
-            this._exchangeLayerItem
+            this._exchangeLayerItem,
+            this._treasureHuntLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         this._lotteryLayerItem.setEnabled(false);
         this._exchangeLayerItem.setEnabled(true);
+        this._treasureHuntLayerItem.setEnabled(true);
         this.switchLayer(LotteryLayer);
 
         return true;
@@ -76,6 +89,7 @@ var SummonLayer = cc.Layer.extend({
 
         this._lotteryLayerItem.setEnabled(false);
         this._exchangeLayerItem.setEnabled(true);
+        this._treasureHuntLayerItem.setEnabled(true);
 
         this.switchLayer(LotteryLayer);
     },
@@ -87,10 +101,22 @@ var SummonLayer = cc.Layer.extend({
 
         this._lotteryLayerItem.setEnabled(true);
         this._exchangeLayerItem.setEnabled(false);
+        this._treasureHuntLayerItem.setEnabled(true);
 
         this.switchLayer(ExchangeLayer);
     },
 
+    _onClickTreasureHuntLayer: function() {
+        cc.log("SummonLayer _onClickTreasureHuntLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._lotteryLayerItem.setEnabled(true);
+        this._exchangeLayerItem.setEnabled(true);
+        this._treasureHuntLayerItem.setEnabled(false);
+
+        this.switchLayer(TreasureHuntLayer);
+    },
 
     switchLayer: function (runLayer) {
         cc.log("SummonLayer switchMenu");

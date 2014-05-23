@@ -12,6 +12,7 @@ var CardSmeltLabel = cc.Layer.extend({
     _pillLabel: null,
     _moneyLabel: null,
     _smeltItem: null,
+    _getGoods: null,
 
     onEnter: function () {
         cc.log("CardSmeltLabel onEnter");
@@ -67,19 +68,19 @@ var CardSmeltLabel = cc.Layer.extend({
         gotPillIcon.setPosition(cc.p(-150, -15));
         this._helpLabel.addChild(gotPillIcon);
 
-        this._pillLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._pillLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._pillLabel.setPosition(cc.p(-130, -15));
-        this._helpLabel.addChild(this._pillLabel);
+        this._gotPillLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._gotPillLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._gotPillLabel.setPosition(cc.p(-130, -15));
+        this._helpLabel.addChild(this._gotPillLabel);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
         moneyIcon.setPosition(cc.p(70, -15));
         this._helpLabel.addChild(moneyIcon);
 
-        this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._moneyLabel.setPosition(cc.p(90, -15));
-        this._helpLabel.addChild(this._moneyLabel);
+        this._gotMoneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._gotMoneyLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._gotMoneyLabel.setPosition(cc.p(95, -15));
+        this._helpLabel.addChild(this._gotMoneyLabel);
 
         this._smeltItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -125,8 +126,7 @@ var CardSmeltLabel = cc.Layer.extend({
     update: function () {
         cc.log("CardSmeltLabel update");
 
-        var pill = gameData.player.get("pill");
-        this._pillLabel.setString(pill);
+        this._pillLabel.setString(gameData.player.get("pill"));
 
         if (this._retinueCard) {
             this._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
@@ -144,8 +144,8 @@ var CardSmeltLabel = cc.Layer.extend({
                 money += card.getSmeltMoney();
             }
 
-            this._pillLabel.setString(pill);
-            this._moneyLabel.setString(money);
+            this._gotPillLabel.setString(pill);
+            this._gotMoneyLabel.setString(money);
 
         } else {
             this._tipLabel.setVisible(true);
@@ -162,6 +162,10 @@ var CardSmeltLabel = cc.Layer.extend({
     ccbFnCallback: function () {
         cc.log("CardSmeltLabel ccbFnCallback");
 
+        if(this._getGoods) {
+            lz.tipReward(this._getGoods);
+            this._getGoods = null;
+        }
         this.ccbBoxItem.setEnabled(true);
         this._retinueCard = null;
         this.update();
@@ -170,9 +174,18 @@ var CardSmeltLabel = cc.Layer.extend({
     _onClickSmelt: function () {
         cc.log("CardSmeltLabel _onClickSmelt");
 
-        this._smeltItem.setEnabled(false);
+        var cardIdList = [];
+        var len = this._retinueCard.length;
+        for (var i = 0; i < len; ++i) {
+            cardIdList.push(this._retinueCard[i].get("id"));
+        }
 
-        this._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+        var that = this;
+        gameData.cardList.dissolveCard(cardIdList, function(data){
+            that._getGoods = data;
+            that._smeltItem.setEnabled(false);
+            that._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+        });
     },
 
     _onClickSelectRetinueCard: function () {

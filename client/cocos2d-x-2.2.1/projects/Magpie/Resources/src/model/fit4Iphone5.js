@@ -1249,7 +1249,8 @@ var fit4Iphone5 = {
         "summonLayer": {
             "headIconPoint": cc.p(0, 1048),
             "lotteryLayerItemPoint": cc.p(71, 1087),
-            "exChangeLayerItemPoint": cc.p(214, 1087)
+            "exChangeLayerItemPoint": cc.p(214, 1087),
+            "treasureHuntLayerItemPoint": cc.p(363, 1087)
         },
         "systemMessageLayer": {
             "scrollViewHeight": 880,

@@ -150,6 +150,8 @@ var Card = Entity.extend({
             this.set("elixirHpCrit", data.elixirHpCrit);
             this.set("elixirAtkCrit", data.elixirAtkCrit);
             this.set("skillPoint", data.skillPoint);
+            this.set("pill", data.pill);
+            this.set("potentialLv", data.potentialLv);
 
             this._updatePassiveSkills(data.passiveSkills);
         }
@@ -264,13 +266,25 @@ var Card = Entity.extend({
     _calculateAddition: function () {
         cc.log("Card _calculateAddition");
 
-        // 读取仙丹配置表
-        var elixirTable = outputTables.elixir.rows[1];
+        this._atk = this._hp = 0;
 
-        var eachConsume = elixirTable.elixir;
+        this._calculatePotentialLvAddition();
+        this._calculatePassiveSkillAddition();
+        this._calculateElixirAddition();
+    },
 
-        var elixirHp = parseInt((this._elixirHp + this._elixirHpCrit) / eachConsume) * elixirTable.hp;
-        var elixirAtk = parseInt((this._elixirAtk + this._elixirAtkCrit) / eachConsume) * elixirTable.atk;
+    _calculatePotentialLvAddition: function () {
+        cc.log("Card _calculatePotentialLvAddition");
+
+        this._initHp = parseInt(this._initHp * (100 + this._potentialLv * 10) / 100);
+        this._initAtk = parseInt(this._initAtk * (100 + this._potentialLv * 10) / 100);
+
+        this._hp += this._initHp;
+        this._atk += this._initAtk;
+    },
+
+    _calculatePassiveSkillAddition: function () {
+        cc.log("Card _calculatePassiveSkillAddition");
 
         var psHpMultiple = 0;
         var psAtkMultiple = 0;
@@ -294,8 +308,23 @@ var Card = Entity.extend({
         var psHp = Math.floor(this._initHp * psHpMultiple / 100);
         var psAtk = Math.floor(this._initAtk * psAtkMultiple / 100);
 
-        this._hp = this._initHp + elixirHp + psHp;
-        this._atk = this._initAtk + elixirAtk + psAtk;
+        this._hp += psHp;
+        this._atk += psAtk;
+    },
+
+    _calculateElixirAddition: function () {
+        cc.log("Card _calculateElixirAddition");
+
+        // 读取仙丹配置表
+        var elixirTable = outputTables.elixir.rows[1];
+
+        var eachConsume = elixirTable.elixir;
+
+        var elixirHp = parseInt((this._elixirHp + this._elixirHpCrit) / eachConsume) * elixirTable.hp;
+        var elixirAtk = parseInt((this._elixirAtk + this._elixirAtkCrit) / eachConsume) * elixirTable.atk;
+
+        this._hp += elixirHp;
+        this._atk += elixirAtk;
     },
 
     _abilityChangeEvent: function () {
@@ -400,14 +429,14 @@ var Card = Entity.extend({
     },
 
     // 可获得觉醒玉
-    getCardPill: function() {
+    getCardPill: function () {
         cc.log("Card getCardPill");
-        return 1000;
+        return outputTables.card_pill_dissolve.rows[this._star].pill;
     },
 
-    getSmeltMoney: function() {
+    getSmeltMoney: function () {
         cc.log("Card getSmeltMoney");
-        return 1000;
+        return outputTables.card_pill_dissolve.rows[this._star].money;
     },
 
     canUpgrade: function () {
@@ -854,16 +883,69 @@ var Card = Entity.extend({
         });
     },
 
-    canUsePill: function() {
+    usePill: function (cb) {
+        cc.log("Card usePill");
+
+        var that = this;
+        lz.server.request("area.convertorHandler.usePill", {
+            cardId: this._id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("usePill success");
+
+                var msg = data.msg;
+                gameData.player.set("pill", msg.playerPill);
+
+                that.update({
+                    "pill": msg.pill,
+                    "potentialLv": msg.potentialLv,
+                    "ability": msg.ability
+                });
+
+                cb();
+
+            } else {
+                cc.log("usePill fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+
+    },
+
+    canUsePill: function () {
         cc.log("Card canUsePill");
 
         return this._star >= 4;
     },
 
-    getUpgradeNeedPill: function() {
+    canUpgradePotentialLv: function () {
+        cc.log("Card canUpgradePotentialLv");
+
+        return this._potentialLv < 7;
+    },
+
+    getUpgradeNeedPill: function () {
         cc.log("Card getUpgradeNeedPill");
 
-        return 1000;
+        if (this.canUpgradePotentialLv()) {
+            return outputTables.card_pill_use.rows[this._potentialLv + 1].pill;
+        }
+
+        return 0;
+    },
+
+    getPotentialLvAddition: function () {
+        cc.log("Card getPotentialLvAddition");
+
+        return this._potentialLv * 10;
+    },
+
+    getNextPotentialLvAddition: function () {
+        cc.log("Card getNextPotentialLvAddition");
+
+        return (this._potentialLv + 1) * 10;
     },
 
     getSellCardMoney: function () {
@@ -881,7 +963,7 @@ var Card = Entity.extend({
         return price;
     },
 
-    isExpCard: function() {
+    isExpCard: function () {
         return this._tableId == 30000;
     },
 

@@ -10,6 +10,7 @@
 var gameMark = {
 
     _activity: false,
+    _summon: false,
     _achievement: false,
     _cardLibrary: false,
     _friend: false,
@@ -35,6 +36,7 @@ var gameMark = {
         cc.log("gameMark init");
 
         this._activity = false;
+        this._summon = false;
         this._achievement = false;
         this._cardLibrary = false;
         this._friend = false;
@@ -74,6 +76,19 @@ var gameMark = {
 
         this._activity = mark;
         MainScene.getInstance().updateMark();
+    },
+
+    getSummonMark: function() {
+        cc.log("gameMark getSummonMark");
+
+        if(!this._summon) {
+
+        }
+
+    },
+
+    updateSummonMark: function() {
+
     },
 
     getCardLibraryMark: function () {

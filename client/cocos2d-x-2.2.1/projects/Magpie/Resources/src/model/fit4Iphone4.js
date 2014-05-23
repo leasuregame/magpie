@@ -1247,7 +1247,8 @@ var fit4Iphone4 = {
         "summonLayer": {
             "headIconPoint": cc.p(40, 872),
             "lotteryLayerItemPoint": cc.p(111, 911),
-            "exChangeLayerItemPoint": cc.p(254, 911)
+            "exChangeLayerItemPoint": cc.p(254, 911),
+            "treasureHuntLayerItemPoint": cc.p(403, 911)
         },
         "systemMessageLayer": {
             "scrollViewHeight": 742,

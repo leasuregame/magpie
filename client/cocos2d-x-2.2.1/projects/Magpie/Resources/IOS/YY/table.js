@@ -1,20 +1,6 @@
 var nameChanged = {
 	"achievement": "成就配置表",
 	"成就配置表": "achievement",
-	"card_grow": "卡牌升级表",
-	"卡牌升级表": "card_grow",
-	"card_price": "卡牌价格配置表",
-	"卡牌价格配置表": "card_price",
-	"cards": "神仙卡牌配置表",
-	"神仙卡牌配置表": "cards",
-	"elixir": "仙丹配置表",
-	"仙丹配置表": "elixir",
-	"factors": "基础属性成长表",
-	"基础属性成长表": "factors",
-	"new_card_id_map": "卡牌新旧配置表ID对应关系表",
-	"卡牌新旧配置表ID对应关系表": "new_card_id_map",
-	"star_upgrade": "卡牌进阶配置表",
-	"卡牌进阶配置表": "star_upgrade",
 	"boss_find_rate": "BOSS出现概率",
 	"BOSS出现概率": "boss_find_rate",
 	"boss_type_rate": "BOSS类型配置表",
@@ -25,6 +11,26 @@ var nameChanged = {
 	"Boss怪物卡牌配置表": "boss_card",
 	"boss_rank_reward": "伤害排行榜奖励配置表",
 	"伤害排行榜奖励配置表": "boss_rank_reward",
+	"card_grow": "卡牌升级表",
+	"卡牌升级表": "card_grow",
+	"card_pill_dissolve": "卡牌熔炼配置表",
+	"卡牌熔炼配置表": "card_pill_dissolve",
+	"card_pill_use": "卡牌潜能升级配置表",
+	"卡牌潜能升级配置表": "card_pill_use",
+	"card_price": "卡牌价格配置表",
+	"卡牌价格配置表": "card_price",
+	"cards": "神仙卡牌配置表",
+	"神仙卡牌配置表": "cards",
+	"elixir": "仙丹配置表",
+	"仙丹配置表": "elixir",
+	"factors": "基础属性成长表",
+	"基础属性成长表": "factors",
+	"new_card_id_map": "卡牌新旧配置表ID对应关系表",
+	"卡牌新旧配置表ID对应关系表": "new_card_id_map",
+	"star_upgrade_rate": "高星级卡牌进阶概率配置表",
+	"高星级卡牌进阶概率配置表": "star_upgrade_rate",
+	"star_upgrade": "卡牌进阶配置表",
+	"卡牌进阶配置表": "star_upgrade",
 	"login_count_reward": "开服累计登陆奖励配置表",
 	"开服累计登陆奖励配置表": "login_count_reward",
 	"new_year_rechage": "新年充值奖励",
@@ -81,14 +87,6 @@ var nameChanged = {
 	"排名奖励": "ranking_reward",
 	"ranking_reward_factor": "竞技排名奖励加成系数",
 	"竞技排名奖励加成系数": "ranking_reward_factor",
-	"product": "道具配置表",
-	"道具配置表": "product",
-	"passFailSpiritSpeak": "爬塔失败喊话配置表",
-	"爬塔失败喊话配置表": "passFailSpiritSpeak",
-	"passWinSpiritSpeak": "爬塔胜利喊话配置表",
-	"爬塔胜利喊话配置表": "passWinSpiritSpeak",
-	"spiritSpeak": "精灵喊话配置表",
-	"精灵喊话配置表": "spiritSpeak",
 	"scope": "卡牌范围表",
 	"卡牌范围表": "scope",
 	"skill_type": "技能类型表",
@@ -97,6 +95,14 @@ var nameChanged = {
 	"卡牌技能升级表": "skill_upgrade",
 	"skills": "技能配置表",
 	"技能配置表": "skills",
+	"product": "道具配置表",
+	"道具配置表": "product",
+	"passFailSpiritSpeak": "爬塔失败喊话配置表",
+	"爬塔失败喊话配置表": "passFailSpiritSpeak",
+	"passWinSpiritSpeak": "爬塔胜利喊话配置表",
+	"爬塔胜利喊话配置表": "passWinSpiritSpeak",
+	"spiritSpeak": "精灵喊话配置表",
+	"精灵喊话配置表": "spiritSpeak",
 	"spirit": "元神配置表",
 	"元神配置表": "spirit",
 	"spirit_pool": "灵气池配置表",
@@ -818,6 +824,257 @@ var outputTables = {
 			}
 		}
 	},
+	"boss_find_rate": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"rate": 0
+			},
+			"2": {
+				"id": 2,
+				"rate": 0
+			},
+			"3": {
+				"id": 3,
+				"rate": 0
+			},
+			"4": {
+				"id": 4,
+				"rate": 0
+			},
+			"5": {
+				"id": 5,
+				"rate": 0
+			},
+			"6": {
+				"id": 6,
+				"rate": 0
+			},
+			"7": {
+				"id": 7,
+				"rate": 0
+			},
+			"8": {
+				"id": 8,
+				"rate": 0
+			},
+			"9": {
+				"id": 9,
+				"rate": 0
+			},
+			"10": {
+				"id": 10,
+				"rate": 0
+			},
+			"11": {
+				"id": 11,
+				"rate": 1
+			},
+			"12": {
+				"id": 12,
+				"rate": 1
+			},
+			"13": {
+				"id": 13,
+				"rate": 1
+			},
+			"14": {
+				"id": 14,
+				"rate": 1
+			},
+			"15": {
+				"id": 15,
+				"rate": 1
+			},
+			"16": {
+				"id": 16,
+				"rate": 5
+			},
+			"17": {
+				"id": 17,
+				"rate": 30
+			},
+			"18": {
+				"id": 18,
+				"rate": 40
+			},
+			"19": {
+				"id": 19,
+				"rate": 50
+			},
+			"20": {
+				"id": 20,
+				"rate": 100
+			}
+		}
+	},
+	"boss_type_rate": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"rate": 55,
+				"name": "蓝卡",
+				"reward_inc": 0
+			},
+			"2": {
+				"id": 2,
+				"rate": 30,
+				"name": "紫卡",
+				"reward_inc": 50
+			},
+			"3": {
+				"id": 3,
+				"rate": 15,
+				"name": "金卡",
+				"reward_inc": 150
+			}
+		}
+	},
+	"boss": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"name": "九阴罗刹",
+				"type": 1,
+				"boss_id": 40000,
+				"card_ids": "40003#40000#40003",
+				"formation": "2:40000,4:40003,6:40003",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
+			},
+			"2": {
+				"id": 2,
+				"name": "赤炎星君",
+				"type": 2,
+				"boss_id": 40001,
+				"card_ids": "40004#40001#40004",
+				"formation": "2:40001,4:40004,6:40004",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
+			},
+			"3": {
+				"id": 3,
+				"name": "金身冥王",
+				"type": 3,
+				"boss_id": 40002,
+				"card_ids": "40005#40002#40005",
+				"formation": "2:40002,4:40005,6:40005",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
+			}
+		}
+	},
+	"boss_card": {
+		"colComment": {
+			"card_id": {
+				"table": "怪物卡牌配置表",
+				"key_index": "name",
+				"value_index": "id",
+				"withPound": false
+			}
+		},
+		"rows": {
+			"40000": {
+				"id": 40000,
+				"card_id": "九阴罗刹",
+				"atk": 1000000,
+				"hp": 30000000,
+				"dodge_rate": 0,
+				"crit_rate": 30,
+				"hit_rate": 15
+			},
+			"40001": {
+				"id": 40001,
+				"card_id": "赤炎星君",
+				"atk": 1500000,
+				"hp": 30000000,
+				"dodge_rate": 0,
+				"crit_rate": 30,
+				"hit_rate": 15
+			},
+			"40002": {
+				"id": 40002,
+				"card_id": "金身冥王",
+				"atk": 2000000,
+				"hp": 30000000,
+				"dodge_rate": 0,
+				"crit_rate": 30,
+				"hit_rate": 15
+			},
+			"40003": {
+				"id": 40003,
+				"card_id": "小怪1号",
+				"atk": 5000,
+				"hp": 20000,
+				"dodge_rate": 0,
+				"crit_rate": 10,
+				"hit_rate": 15
+			},
+			"40004": {
+				"id": 40004,
+				"card_id": "小怪2号",
+				"atk": 5000,
+				"hp": 20000,
+				"dodge_rate": 0,
+				"crit_rate": 10,
+				"hit_rate": 15
+			},
+			"40005": {
+				"id": 40005,
+				"card_id": "小怪3号",
+				"atk": 5000,
+				"hp": 20000,
+				"dodge_rate": 0,
+				"crit_rate": 10,
+				"hit_rate": 15
+			}
+		}
+	},
+	"boss_rank_reward": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"honor": 12000,
+				"money": 500000,
+				"energy": 8000
+			},
+			"2": {
+				"id": 2,
+				"honor": 10800,
+				"money": 450000,
+				"energy": 7000
+			},
+			"3": {
+				"id": 3,
+				"honor": 9600,
+				"money": 400000,
+				"energy": 6000
+			},
+			"4": {
+				"id": 4,
+				"honor": 8400,
+				"money": 350000,
+				"energy": 5000
+			},
+			"5": {
+				"id": 5,
+				"honor": 7200,
+				"money": 300000,
+				"energy": 4000
+			},
+			"6": {
+				"id": 6,
+				"honor": 5000
+			}
+		}
+	},
 	"card_grow": {
 		"colComment": {},
 		"rows": {
@@ -1317,6 +1574,79 @@ var outputTables = {
 				"exp_need": 1060845,
 				"money_need": 9215725,
 				"cur_exp": 7576681
+			}
+		}
+	},
+	"card_pill_dissolve": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"pill": 20,
+				"money": 50
+			},
+			"2": {
+				"id": 2,
+				"pill": 40,
+				"money": 250
+			},
+			"3": {
+				"id": 3,
+				"pill": 200,
+				"money": 2500
+			},
+			"4": {
+				"id": 4,
+				"pill": 1000,
+				"money": 10000
+			},
+			"5": {
+				"id": 5,
+				"pill": 8000,
+				"money": 100000
+			},
+			"6": {
+				"id": 6,
+				"pill": 30000,
+				"money": 250000
+			},
+			"7": {
+				"id": 7,
+				"pill": 50000,
+				"money": 500000
+			}
+		}
+	},
+	"card_pill_use": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"pill": 8000
+			},
+			"2": {
+				"id": 2,
+				"pill": 10000
+			},
+			"3": {
+				"id": 3,
+				"pill": 12000
+			},
+			"4": {
+				"id": 4,
+				"pill": 14000
+			},
+			"5": {
+				"id": 5,
+				"pill": 16000
+			},
+			"6": {
+				"id": 6,
+				"pill": 18000
+			},
+			"7": {
+				"id": 7,
+				"pill": 20000
 			}
 		}
 	},
@@ -12346,6 +12676,311 @@ var outputTables = {
 			}
 		}
 	},
+	"star_upgrade_rate": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"rate": 0.3,
+				"factor": 0.3
+			},
+			"2": {
+				"id": 2,
+				"rate": 1,
+				"factor": 0.305
+			},
+			"3": {
+				"id": 3,
+				"rate": 1,
+				"factor": 0.31
+			},
+			"4": {
+				"id": 4,
+				"rate": 1,
+				"factor": 0.315
+			},
+			"5": {
+				"id": 5,
+				"rate": 2,
+				"factor": 0.32
+			},
+			"6": {
+				"id": 6,
+				"rate": 2,
+				"factor": 0.325
+			},
+			"7": {
+				"id": 7,
+				"rate": 2,
+				"factor": 0.33
+			},
+			"8": {
+				"id": 8,
+				"rate": 3,
+				"factor": 0.335
+			},
+			"9": {
+				"id": 9,
+				"rate": 3,
+				"factor": 0.34
+			},
+			"10": {
+				"id": 10,
+				"rate": 3,
+				"factor": 0.34500000000000003
+			},
+			"11": {
+				"id": 11,
+				"rate": 4,
+				"factor": 0.35000000000000003
+			},
+			"12": {
+				"id": 12,
+				"rate": 4,
+				"factor": 0.35500000000000004
+			},
+			"13": {
+				"id": 13,
+				"rate": 5,
+				"factor": 0.36000000000000004
+			},
+			"14": {
+				"id": 14,
+				"rate": 5,
+				"factor": 0.36500000000000005
+			},
+			"15": {
+				"id": 15,
+				"rate": 6,
+				"factor": 0.37000000000000005
+			},
+			"16": {
+				"id": 16,
+				"rate": 6,
+				"factor": 0.37500000000000006
+			},
+			"17": {
+				"id": 17,
+				"rate": 6,
+				"factor": 0.38000000000000006
+			},
+			"18": {
+				"id": 18,
+				"rate": 7,
+				"factor": 0.38500000000000006
+			},
+			"19": {
+				"id": 19,
+				"rate": 7,
+				"factor": 0.39000000000000007
+			},
+			"20": {
+				"id": 20,
+				"rate": 8,
+				"factor": 0.3980000000000001
+			},
+			"21": {
+				"id": 21,
+				"rate": 9,
+				"factor": 0.4060000000000001
+			},
+			"22": {
+				"id": 22,
+				"rate": 9,
+				"factor": 0.4140000000000001
+			},
+			"23": {
+				"id": 23,
+				"rate": 10,
+				"factor": 0.4220000000000001
+			},
+			"24": {
+				"id": 24,
+				"rate": 10,
+				"factor": 0.4300000000000001
+			},
+			"25": {
+				"id": 25,
+				"rate": 11,
+				"factor": 0.4380000000000001
+			},
+			"26": {
+				"id": 26,
+				"rate": 12,
+				"factor": 0.4460000000000001
+			},
+			"27": {
+				"id": 27,
+				"rate": 12,
+				"factor": 0.4540000000000001
+			},
+			"28": {
+				"id": 28,
+				"rate": 13,
+				"factor": 0.46200000000000013
+			},
+			"29": {
+				"id": 29,
+				"rate": 14,
+				"factor": 0.47000000000000014
+			},
+			"30": {
+				"id": 30,
+				"rate": 14,
+				"factor": 0.47800000000000015
+			},
+			"31": {
+				"id": 31,
+				"rate": 15,
+				"factor": 0.48600000000000015
+			},
+			"32": {
+				"id": 32,
+				"rate": 16,
+				"factor": 0.49400000000000016
+			},
+			"33": {
+				"id": 33,
+				"rate": 17,
+				"factor": 0.5020000000000001
+			},
+			"34": {
+				"id": 34,
+				"rate": 17,
+				"factor": 0.5100000000000001
+			},
+			"35": {
+				"id": 35,
+				"rate": 18,
+				"factor": 0.5180000000000001
+			},
+			"36": {
+				"id": 36,
+				"rate": 19,
+				"factor": 0.5260000000000001
+			},
+			"37": {
+				"id": 37,
+				"rate": 20,
+				"factor": 0.5340000000000001
+			},
+			"38": {
+				"id": 38,
+				"rate": 21,
+				"factor": 0.5420000000000001
+			},
+			"39": {
+				"id": 39,
+				"rate": 21,
+				"factor": 0.5500000000000002
+			},
+			"40": {
+				"id": 40,
+				"rate": 22,
+				"factor": 0.5600000000000002
+			},
+			"41": {
+				"id": 41,
+				"rate": 23,
+				"factor": 0.5700000000000002
+			},
+			"42": {
+				"id": 42,
+				"rate": 24,
+				"factor": 0.5800000000000002
+			},
+			"43": {
+				"id": 43,
+				"rate": 25,
+				"factor": 0.5900000000000002
+			},
+			"44": {
+				"id": 44,
+				"rate": 26,
+				"factor": 0.6000000000000002
+			},
+			"45": {
+				"id": 45,
+				"rate": 27,
+				"factor": 0.6100000000000002
+			},
+			"46": {
+				"id": 46,
+				"rate": 29,
+				"factor": 0.6200000000000002
+			},
+			"47": {
+				"id": 47,
+				"rate": 30,
+				"factor": 0.6300000000000002
+			},
+			"48": {
+				"id": 48,
+				"rate": 31,
+				"factor": 0.6400000000000002
+			},
+			"49": {
+				"id": 49,
+				"rate": 32,
+				"factor": 0.6580000000000003
+			},
+			"50": {
+				"id": 50,
+				"rate": 34,
+				"factor": 0.6760000000000003
+			},
+			"51": {
+				"id": 51,
+				"rate": 35,
+				"factor": 0.6940000000000003
+			},
+			"52": {
+				"id": 52,
+				"rate": 37,
+				"factor": 0.7120000000000003
+			},
+			"53": {
+				"id": 53,
+				"rate": 39,
+				"factor": 0.7300000000000003
+			},
+			"54": {
+				"id": 54,
+				"rate": 40,
+				"factor": 0.7480000000000003
+			},
+			"55": {
+				"id": 55,
+				"rate": 42,
+				"factor": 0.7660000000000003
+			},
+			"56": {
+				"id": 56,
+				"rate": 44,
+				"factor": 0.7840000000000004
+			},
+			"57": {
+				"id": 57,
+				"rate": 46,
+				"factor": 0.8020000000000004
+			},
+			"58": {
+				"id": 58,
+				"rate": 48,
+				"factor": 0.8200000000000004
+			},
+			"59": {
+				"id": 59,
+				"rate": 49,
+				"factor": 0.8380000000000004
+			},
+			"60": {
+				"id": 60,
+				"rate": 51,
+				"factor": 0.8560000000000004
+			}
+		}
+	},
 	"star_upgrade": {
 		"colComment": {},
 		"rows": {
@@ -12386,7 +13021,7 @@ var outputTables = {
 				"money_need": 50000,
 				"rate_per_card": 6,
 				"max_num": 17,
-				"no_work_count": 10,
+				"no_work_count": 0,
 				"super_honor": 2
 			},
 			"5": {
@@ -12396,7 +13031,7 @@ var outputTables = {
 				"money_need": 100000,
 				"rate_per_card": 35,
 				"max_num": 3,
-				"no_work_count": 1,
+				"no_work_count": 0,
 				"super_honor": 15
 			},
 			"6": {
@@ -12406,259 +13041,8 @@ var outputTables = {
 				"money_need": 200000,
 				"rate_per_card": 15,
 				"max_num": 7,
-				"no_work_count": 3,
+				"no_work_count": 0,
 				"super_honor": 40
-			}
-		}
-	},
-	"boss_find_rate": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"rate": 0
-			},
-			"2": {
-				"id": 2,
-				"rate": 0
-			},
-			"3": {
-				"id": 3,
-				"rate": 0
-			},
-			"4": {
-				"id": 4,
-				"rate": 0
-			},
-			"5": {
-				"id": 5,
-				"rate": 0
-			},
-			"6": {
-				"id": 6,
-				"rate": 0
-			},
-			"7": {
-				"id": 7,
-				"rate": 0
-			},
-			"8": {
-				"id": 8,
-				"rate": 0
-			},
-			"9": {
-				"id": 9,
-				"rate": 0
-			},
-			"10": {
-				"id": 10,
-				"rate": 0
-			},
-			"11": {
-				"id": 11,
-				"rate": 1
-			},
-			"12": {
-				"id": 12,
-				"rate": 1
-			},
-			"13": {
-				"id": 13,
-				"rate": 1
-			},
-			"14": {
-				"id": 14,
-				"rate": 1
-			},
-			"15": {
-				"id": 15,
-				"rate": 1
-			},
-			"16": {
-				"id": 16,
-				"rate": 5
-			},
-			"17": {
-				"id": 17,
-				"rate": 30
-			},
-			"18": {
-				"id": 18,
-				"rate": 40
-			},
-			"19": {
-				"id": 19,
-				"rate": 50
-			},
-			"20": {
-				"id": 20,
-				"rate": 100
-			}
-		}
-	},
-	"boss_type_rate": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"rate": 55,
-				"name": "蓝卡",
-				"reward_inc": 0
-			},
-			"2": {
-				"id": 2,
-				"rate": 30,
-				"name": "紫卡",
-				"reward_inc": 50
-			},
-			"3": {
-				"id": 3,
-				"rate": 15,
-				"name": "金卡",
-				"reward_inc": 150
-			}
-		}
-	},
-	"boss": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"name": "九阴罗刹",
-				"type": 1,
-				"boss_id": 40000,
-				"card_ids": "40003#40000#40003",
-				"formation": "2:40000,4:40003,6:40003",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			},
-			"2": {
-				"id": 2,
-				"name": "赤炎星君",
-				"type": 2,
-				"boss_id": 40001,
-				"card_ids": "40004#40001#40004",
-				"formation": "2:40001,4:40004,6:40004",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			},
-			"3": {
-				"id": 3,
-				"name": "金身冥王",
-				"type": 3,
-				"boss_id": 40002,
-				"card_ids": "40005#40002#40005",
-				"formation": "2:40002,4:40005,6:40005",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			}
-		}
-	},
-	"boss_card": {
-		"colComment": {
-			"card_id": {
-				"table": "怪物卡牌配置表",
-				"key_index": "name",
-				"value_index": "id",
-				"withPound": false
-			}
-		},
-		"rows": {
-			"40000": {
-				"id": 40000,
-				"card_id": "九阴罗刹",
-				"atk": 1000000,
-				"hp": 30000000,
-				"dodge_rate": 0,
-				"crit_rate": 30,
-				"hit_rate": 15
-			},
-			"40001": {
-				"id": 40001,
-				"card_id": "赤炎星君",
-				"atk": 1500000,
-				"hp": 30000000,
-				"dodge_rate": 0,
-				"crit_rate": 30,
-				"hit_rate": 15
-			},
-			"40002": {
-				"id": 40002,
-				"card_id": "金身冥王",
-				"atk": 2000000,
-				"hp": 30000000,
-				"dodge_rate": 0,
-				"crit_rate": 30,
-				"hit_rate": 15
-			},
-			"40003": {
-				"id": 40003,
-				"card_id": "小怪1号",
-				"atk": 5000,
-				"hp": 20000,
-				"dodge_rate": 0,
-				"crit_rate": 10,
-				"hit_rate": 15
-			},
-			"40004": {
-				"id": 40004,
-				"card_id": "小怪2号",
-				"atk": 5000,
-				"hp": 20000,
-				"dodge_rate": 0,
-				"crit_rate": 10,
-				"hit_rate": 15
-			},
-			"40005": {
-				"id": 40005,
-				"card_id": "小怪3号",
-				"atk": 5000,
-				"hp": 20000,
-				"dodge_rate": 0,
-				"crit_rate": 10,
-				"hit_rate": 15
-			}
-		}
-	},
-	"boss_rank_reward": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"honor": 12000,
-				"money": 500000,
-				"energy": 8000
-			},
-			"2": {
-				"id": 2,
-				"honor": 10800,
-				"money": 450000,
-				"energy": 7000
-			},
-			"3": {
-				"id": 3,
-				"honor": 9600,
-				"money": 400000,
-				"energy": 6000
-			},
-			"4": {
-				"id": 4,
-				"honor": 8400,
-				"money": 350000,
-				"energy": 5000
-			},
-			"5": {
-				"id": 5,
-				"honor": 7200,
-				"money": 300000,
-				"energy": 4000
-			},
-			"6": {
-				"id": 6,
-				"honor": 5000
 			}
 		}
 	},
@@ -29559,354 +29943,6 @@ var outputTables = {
 			}
 		}
 	},
-	"product": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"order": 1,
-				"method": "expCard",
-				"name": "经验元灵",
-				"disc": "经验元灵1张，含1200点卡牌经验。",
-				"consume_type": "money",
-				"consume": 7500,
-				"obtain_type": "card",
-				"obtain": 1,
-				"isVisible": 1
-			},
-			"2": {
-				"id": 2,
-				"order": 2,
-				"method": "power",
-				"name": "体力",
-				"disc": "50点体力。首次购买仅20魔石。",
-				"consume_type": "gold",
-				"consume": 20,
-				"obtain_type": "power",
-				"obtain": 50,
-				"isVisible": 1
-			},
-			"3": {
-				"id": 3,
-				"order": 4,
-				"method": "money",
-				"name": "一小袋仙币",
-				"disc": "15000仙币，额外赠送5000仙币。",
-				"consume_type": "gold",
-				"consume": 10,
-				"obtain_type": "money",
-				"obtain": 20000,
-				"isVisible": 1
-			},
-			"4": {
-				"id": 4,
-				"order": 5,
-				"method": "money",
-				"name": "一袋仙币",
-				"disc": "75000仙币，额外赠送45000仙币。",
-				"consume_type": "gold",
-				"consume": 50,
-				"obtain_type": "money",
-				"obtain": 120000,
-				"isVisible": 1
-			},
-			"5": {
-				"id": 5,
-				"order": 6,
-				"method": "money",
-				"name": "一大袋仙币",
-				"disc": "150000仙币，额外赠送100000仙币。",
-				"consume_type": "gold",
-				"consume": 100,
-				"obtain_type": "money",
-				"obtain": 250000,
-				"isVisible": 1
-			},
-			"6": {
-				"id": 6,
-				"order": 7,
-				"method": "challengeCount",
-				"name": "有奖竞技次数",
-				"consume_type": "gold",
-				"consume": 10,
-				"obtain_type": "challengeCount",
-				"obtain": 1,
-				"isVisible": 0
-			},
-			"7": {
-				"id": 7,
-				"order": 8,
-				"method": "cardCount",
-				"name": "卡库位置",
-				"consume_type": "gold",
-				"consume": 5,
-				"obtain_type": "cardCount",
-				"obtain": 1,
-				"isVisible": 0
-			},
-			"8": {
-				"id": 8,
-				"order": 3,
-				"method": "speaker",
-				"name": "喇叭",
-				"disc": "用于世界聊天，一次性买10个以上打8折。",
-				"consume_type": "gold",
-				"consume": 10,
-				"obtain_type": "speaker",
-				"obtain": 1,
-				"isVisible": 1,
-				"discount_num": 10,
-				"discount": 8
-			}
-		}
-	},
-	"passFailSpiritSpeak": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"text": "总结下，为啥我们没打过？"
-			},
-			"2": {
-				"id": 2,
-				"text": "没事，反正又不是只有我们打不过。"
-			},
-			"3": {
-				"id": 3,
-				"text": "我们是不是该提升下能力再来打？"
-			},
-			"4": {
-				"id": 4,
-				"text": "胜败乃常事，不要气馁。"
-			},
-			"5": {
-				"id": 5,
-				"text": "注意休息，实在打不过就改天吧。"
-			}
-		}
-	},
-	"passWinSpiritSpeak": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"text": "OK，下一层，让我们继续。"
-			},
-			"2": {
-				"id": 2,
-				"text": "你是最猛的，没有之一。"
-			},
-			"3": {
-				"id": 3,
-				"text": "无压力，让我们继续下一层。"
-			},
-			"4": {
-				"id": 4,
-				"text": "这太简单了，我简直感受不到挑战的存在。"
-			},
-			"5": {
-				"id": 5,
-				"text": "老天，来点真正的挑战吧。"
-			},
-			"6": {
-				"id": 6,
-				"text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
-			},
-			"7": {
-				"id": 7,
-				"text": "胜利总是来的这么突然，唉……"
-			},
-			"8": {
-				"id": 8,
-				"text": "求败，求败，但求一败啊……"
-			},
-			"9": {
-				"id": 9,
-				"text": "没难度，没挑战，无压力。"
-			},
-			"10": {
-				"id": 10,
-				"text": "注意保持姿势，不要停，继续。"
-			}
-		}
-	},
-	"spiritSpeak": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"text": "我是小精灵，我不是元神，也不是宠物……"
-			},
-			"2": {
-				"id": 2,
-				"text": "我到底是公的还是母的啊，费解。"
-			},
-			"3": {
-				"id": 3,
-				"text": "每一天，我都觉得，我自豪，我傲娇。"
-			},
-			"4": {
-				"id": 4,
-				"text": "嗨，吃饭了没。"
-			},
-			"5": {
-				"id": 5,
-				"text": "嗨，我真的猜不透你耶……"
-			},
-			"6": {
-				"id": 6,
-				"text": "人活得其实是一个心态，所以凡事随缘吧。"
-			},
-			"7": {
-				"id": 7,
-				"text": "作为仙界超级精灵，我对自己的长相极度自信。"
-			},
-			"8": {
-				"id": 8,
-				"text": "有时候想想，活着也真累，唉……"
-			},
-			"9": {
-				"id": 9,
-				"text": "据可靠消息，房价要暴跌了，最近记得别买房。"
-			},
-			"10": {
-				"id": 10,
-				"text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
-			},
-			"11": {
-				"id": 11,
-				"text": "作为仙界超级精灵，我是有理想的小兽兽。"
-			},
-			"12": {
-				"id": 12,
-				"text": "尽量不要熬夜，嗨，很伤身体的。"
-			},
-			"13": {
-				"id": 13,
-				"text": "我喜欢吃山西臊子面，超赞的味道。"
-			},
-			"14": {
-				"id": 14,
-				"text": "嗨，今天心情好么，祝你游戏愉快唷。"
-			},
-			"15": {
-				"id": 15,
-				"text": "我今天很郁闷。"
-			},
-			"16": {
-				"id": 16,
-				"text": "每次看到你出现，我都觉得很幸福。"
-			},
-			"17": {
-				"id": 17,
-				"text": "每次45度仰望星空，我都不禁陷入沉思……"
-			},
-			"18": {
-				"id": 18,
-				"text": "上班时间记得多看电影，这样可以调节心情。"
-			},
-			"19": {
-				"id": 19,
-				"text": "不要太在意钱，钱就是个蛋。"
-			},
-			"20": {
-				"id": 20,
-				"text": "如果遇到相爱之人，要珍惜之。"
-			},
-			"21": {
-				"id": 21,
-				"text": "嗨，你是干啥的啊，当官的么？"
-			},
-			"22": {
-				"id": 22,
-				"text": "嫦娥其实长的很丑，我亲眼见过。"
-			},
-			"23": {
-				"id": 23,
-				"text": "爱情是个什么东东，你能告诉我么。"
-			},
-			"24": {
-				"id": 24,
-				"text": "昨天我看到苍空井老师了，好激动。"
-			},
-			"25": {
-				"id": 25,
-				"text": "超级讨厌玉帝，讨厌死了。"
-			},
-			"26": {
-				"id": 26,
-				"text": "寂寞不是苦，是心灵的一种福音。"
-			},
-			"27": {
-				"id": 27,
-				"text": "我今天好像感冒了，咳咳……"
-			},
-			"28": {
-				"id": 28,
-				"text": "人间好玩么，很想去看一看。"
-			},
-			"29": {
-				"id": 29,
-				"text": "上天其实是没有好生之德的。"
-			},
-			"30": {
-				"id": 30,
-				"text": "最近仙界妖气好重啊，得多加小心。"
-			},
-			"31": {
-				"id": 31,
-				"text": "我刚看到玉帝王母在野战，好猛。"
-			},
-			"32": {
-				"id": 32,
-				"text": "这些日子，我总是空虚寂寞冷……"
-			},
-			"33": {
-				"id": 33,
-				"text": "为什么神仙就没有恋爱自由呢？"
-			},
-			"34": {
-				"id": 34,
-				"text": "我喜欢听民族风，接地气，你觉得呢？"
-			},
-			"35": {
-				"id": 35,
-				"text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
-			},
-			"36": {
-				"id": 36,
-				"text": "工作只是生活的一部分，但不是全部。"
-			},
-			"37": {
-				"id": 37,
-				"text": "你玩这游戏花钱了没，可别被坑了。"
-			},
-			"38": {
-				"id": 38,
-				"text": "生命的真谛在于心灵的自由，好难哦。"
-			},
-			"39": {
-				"id": 39,
-				"text": "从来都没有真正的民主，仙界也是。"
-			},
-			"40": {
-				"id": 40,
-				"text": "昨晚天庭停电了。"
-			},
-			"41": {
-				"id": 41,
-				"text": "王母的蟠桃有敌敌畏，最好别吃。"
-			},
-			"42": {
-				"id": 42,
-				"text": "不知道为什么，今天我很想喝酒。"
-			},
-			"43": {
-				"id": 43,
-				"text": "上天从来都不是公平的，怎么可能公平呢？"
-			}
-		}
-	},
 	"scope": {
 		"colComment": {},
 		"rows": {
@@ -30301,6 +30337,354 @@ var outputTables = {
 				"star7_inc_max": 23,
 				"star7_grow": 3,
 				"rate7": 50
+			}
+		}
+	},
+	"product": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"order": 1,
+				"method": "expCard",
+				"name": "经验元灵",
+				"disc": "经验元灵1张，含1200点卡牌经验。",
+				"consume_type": "money",
+				"consume": 7500,
+				"obtain_type": "card",
+				"obtain": 1,
+				"isVisible": 1
+			},
+			"2": {
+				"id": 2,
+				"order": 2,
+				"method": "power",
+				"name": "体力",
+				"disc": "50点体力。首次购买仅20魔石。",
+				"consume_type": "gold",
+				"consume": 20,
+				"obtain_type": "power",
+				"obtain": 50,
+				"isVisible": 1
+			},
+			"3": {
+				"id": 3,
+				"order": 4,
+				"method": "money",
+				"name": "一小袋仙币",
+				"disc": "15000仙币，额外赠送5000仙币。",
+				"consume_type": "gold",
+				"consume": 10,
+				"obtain_type": "money",
+				"obtain": 20000,
+				"isVisible": 1
+			},
+			"4": {
+				"id": 4,
+				"order": 5,
+				"method": "money",
+				"name": "一袋仙币",
+				"disc": "75000仙币，额外赠送45000仙币。",
+				"consume_type": "gold",
+				"consume": 50,
+				"obtain_type": "money",
+				"obtain": 120000,
+				"isVisible": 1
+			},
+			"5": {
+				"id": 5,
+				"order": 6,
+				"method": "money",
+				"name": "一大袋仙币",
+				"disc": "150000仙币，额外赠送100000仙币。",
+				"consume_type": "gold",
+				"consume": 100,
+				"obtain_type": "money",
+				"obtain": 250000,
+				"isVisible": 1
+			},
+			"6": {
+				"id": 6,
+				"order": 7,
+				"method": "challengeCount",
+				"name": "有奖竞技次数",
+				"consume_type": "gold",
+				"consume": 10,
+				"obtain_type": "challengeCount",
+				"obtain": 1,
+				"isVisible": 0
+			},
+			"7": {
+				"id": 7,
+				"order": 8,
+				"method": "cardCount",
+				"name": "卡库位置",
+				"consume_type": "gold",
+				"consume": 5,
+				"obtain_type": "cardCount",
+				"obtain": 1,
+				"isVisible": 0
+			},
+			"8": {
+				"id": 8,
+				"order": 3,
+				"method": "speaker",
+				"name": "喇叭",
+				"disc": "用于世界聊天，一次性买10个以上打8折。",
+				"consume_type": "gold",
+				"consume": 10,
+				"obtain_type": "speaker",
+				"obtain": 1,
+				"isVisible": 1,
+				"discount_num": 10,
+				"discount": 8
+			}
+		}
+	},
+	"passFailSpiritSpeak": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"text": "总结下，为啥我们没打过？"
+			},
+			"2": {
+				"id": 2,
+				"text": "没事，反正又不是只有我们打不过。"
+			},
+			"3": {
+				"id": 3,
+				"text": "我们是不是该提升下能力再来打？"
+			},
+			"4": {
+				"id": 4,
+				"text": "胜败乃常事，不要气馁。"
+			},
+			"5": {
+				"id": 5,
+				"text": "注意休息，实在打不过就改天吧。"
+			}
+		}
+	},
+	"passWinSpiritSpeak": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"text": "OK，下一层，让我们继续。"
+			},
+			"2": {
+				"id": 2,
+				"text": "你是最猛的，没有之一。"
+			},
+			"3": {
+				"id": 3,
+				"text": "无压力，让我们继续下一层。"
+			},
+			"4": {
+				"id": 4,
+				"text": "这太简单了，我简直感受不到挑战的存在。"
+			},
+			"5": {
+				"id": 5,
+				"text": "老天，来点真正的挑战吧。"
+			},
+			"6": {
+				"id": 6,
+				"text": "据说通关后可以看到嫦娥洗澡，让我们继续。"
+			},
+			"7": {
+				"id": 7,
+				"text": "胜利总是来的这么突然，唉……"
+			},
+			"8": {
+				"id": 8,
+				"text": "求败，求败，但求一败啊……"
+			},
+			"9": {
+				"id": 9,
+				"text": "没难度，没挑战，无压力。"
+			},
+			"10": {
+				"id": 10,
+				"text": "注意保持姿势，不要停，继续。"
+			}
+		}
+	},
+	"spiritSpeak": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"text": "我是小精灵，我不是元神，也不是宠物……"
+			},
+			"2": {
+				"id": 2,
+				"text": "我到底是公的还是母的啊，费解。"
+			},
+			"3": {
+				"id": 3,
+				"text": "每一天，我都觉得，我自豪，我傲娇。"
+			},
+			"4": {
+				"id": 4,
+				"text": "嗨，吃饭了没。"
+			},
+			"5": {
+				"id": 5,
+				"text": "嗨，我真的猜不透你耶……"
+			},
+			"6": {
+				"id": 6,
+				"text": "人活得其实是一个心态，所以凡事随缘吧。"
+			},
+			"7": {
+				"id": 7,
+				"text": "作为仙界超级精灵，我对自己的长相极度自信。"
+			},
+			"8": {
+				"id": 8,
+				"text": "有时候想想，活着也真累，唉……"
+			},
+			"9": {
+				"id": 9,
+				"text": "据可靠消息，房价要暴跌了，最近记得别买房。"
+			},
+			"10": {
+				"id": 10,
+				"text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+			},
+			"11": {
+				"id": 11,
+				"text": "作为仙界超级精灵，我是有理想的小兽兽。"
+			},
+			"12": {
+				"id": 12,
+				"text": "尽量不要熬夜，嗨，很伤身体的。"
+			},
+			"13": {
+				"id": 13,
+				"text": "我喜欢吃山西臊子面，超赞的味道。"
+			},
+			"14": {
+				"id": 14,
+				"text": "嗨，今天心情好么，祝你游戏愉快唷。"
+			},
+			"15": {
+				"id": 15,
+				"text": "我今天很郁闷。"
+			},
+			"16": {
+				"id": 16,
+				"text": "每次看到你出现，我都觉得很幸福。"
+			},
+			"17": {
+				"id": 17,
+				"text": "每次45度仰望星空，我都不禁陷入沉思……"
+			},
+			"18": {
+				"id": 18,
+				"text": "上班时间记得多看电影，这样可以调节心情。"
+			},
+			"19": {
+				"id": 19,
+				"text": "不要太在意钱，钱就是个蛋。"
+			},
+			"20": {
+				"id": 20,
+				"text": "如果遇到相爱之人，要珍惜之。"
+			},
+			"21": {
+				"id": 21,
+				"text": "嗨，你是干啥的啊，当官的么？"
+			},
+			"22": {
+				"id": 22,
+				"text": "嫦娥其实长的很丑，我亲眼见过。"
+			},
+			"23": {
+				"id": 23,
+				"text": "爱情是个什么东东，你能告诉我么。"
+			},
+			"24": {
+				"id": 24,
+				"text": "昨天我看到苍空井老师了，好激动。"
+			},
+			"25": {
+				"id": 25,
+				"text": "超级讨厌玉帝，讨厌死了。"
+			},
+			"26": {
+				"id": 26,
+				"text": "寂寞不是苦，是心灵的一种福音。"
+			},
+			"27": {
+				"id": 27,
+				"text": "我今天好像感冒了，咳咳……"
+			},
+			"28": {
+				"id": 28,
+				"text": "人间好玩么，很想去看一看。"
+			},
+			"29": {
+				"id": 29,
+				"text": "上天其实是没有好生之德的。"
+			},
+			"30": {
+				"id": 30,
+				"text": "最近仙界妖气好重啊，得多加小心。"
+			},
+			"31": {
+				"id": 31,
+				"text": "我刚看到玉帝王母在野战，好猛。"
+			},
+			"32": {
+				"id": 32,
+				"text": "这些日子，我总是空虚寂寞冷……"
+			},
+			"33": {
+				"id": 33,
+				"text": "为什么神仙就没有恋爱自由呢？"
+			},
+			"34": {
+				"id": 34,
+				"text": "我喜欢听民族风，接地气，你觉得呢？"
+			},
+			"35": {
+				"id": 35,
+				"text": "最近总是感觉到一股浓重的杀气，凡事要小心。"
+			},
+			"36": {
+				"id": 36,
+				"text": "工作只是生活的一部分，但不是全部。"
+			},
+			"37": {
+				"id": 37,
+				"text": "你玩这游戏花钱了没，可别被坑了。"
+			},
+			"38": {
+				"id": 38,
+				"text": "生命的真谛在于心灵的自由，好难哦。"
+			},
+			"39": {
+				"id": 39,
+				"text": "从来都没有真正的民主，仙界也是。"
+			},
+			"40": {
+				"id": 40,
+				"text": "昨晚天庭停电了。"
+			},
+			"41": {
+				"id": 41,
+				"text": "王母的蟠桃有敌敌畏，最好别吃。"
+			},
+			"42": {
+				"id": 42,
+				"text": "不知道为什么，今天我很想喝酒。"
+			},
+			"43": {
+				"id": 43,
+				"text": "上天从来都不是公平的，怎么可能公平呢？"
 			}
 		}
 	},

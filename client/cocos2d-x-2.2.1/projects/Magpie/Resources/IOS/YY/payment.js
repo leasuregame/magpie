@@ -150,16 +150,6 @@ var Payment = Entity.extend({
                 receipt: paymentData.receipt
             });
 
-            var table = outputTables.recharge.rows;
-            for (var key in table) {
-                if (table[key].product_id == paymentData.product) {
-                    // YY数据收集
-                    yyAdapter.YYGameConsumeOnServer("s" + gameData.user.get("area"), table[key].cash);
-
-                    break;
-                }
-            }
-
             Dialog.pop("充值已成功，请稍候");
             this._closeWaitLayer();
         } else if (state == PAYMENT_FAILED) {

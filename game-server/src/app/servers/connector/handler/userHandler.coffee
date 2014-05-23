@@ -93,10 +93,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (cb) ->
       checkIsOpenServer app, cb
 
-    (cb) ->
-      ### 检查是否最新版本 ###
-      checkVersion(app, msg, platform, cb)
-
     (cb) =>
       args = authParams(type, msg, app)
       args.sid = session.id
@@ -104,6 +100,14 @@ doLogin  = (type, app, msg, session, platform, next) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
+          cb(err)
+        else 
+          cb(null, u)
+
+    (u, cb) ->
+      ### 检查是否最新版本 ###
+      checkVersion app, msg, platform, (err) ->
+        if err
           cb(err)
         else 
           cb(null, u)

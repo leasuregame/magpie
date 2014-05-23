@@ -73,7 +73,7 @@ exports.doLogin = function(req, res, next) {
       title: '管理后台-- 请先登录',
       error: ermsg.join("\n")
     };
-    res.render('/login', json);
+    res.render('login', json);
     return;
   }
   var userid = req.body.username;
@@ -84,7 +84,7 @@ exports.doLogin = function(req, res, next) {
         title: '管理后台-- 请先登录',
         error: err
       };
-      res.render('/login', json);
+      res.render('login', json);
     } else {
       req.session.user_id = user.user_id;
       req.session.user = user;

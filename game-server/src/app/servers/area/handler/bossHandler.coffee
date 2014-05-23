@@ -309,6 +309,23 @@ Handler::bossList = (msg, session, next) ->
       msg: sortBossList(results.map((r) -> r.toJson()), playerId)
     })
 
+checkBossStatus = (items, cb) ->
+  timeOutItems = items.filter (i) -> i.timeLeft() <= 0 and i.status isnt configData.bossStatus.STATUS.TIMEOUT
+  ids = timeOutItems.map (i) -> i.id
+
+  if ids.length is 0
+    return cb(null, items)
+
+  dao.boss.update {
+    where: ' id in ('+ids.toString()+') '
+    data: status: configData.bossStatus.STATUS.TIMEOUT
+  }, (err, res) ->
+    if err
+      cb(err)
+    else
+      timeOutItems.forEach (i) -> i.status = configData.bossStatus.STATUS.TIMEOUT
+      cb(null, items)
+
 sortBossList = (items, playerId) ->
   group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
   
@@ -402,23 +419,6 @@ countDamageRewards = (rank) ->
     honor = parseInt (honor5-gap)*(1-Math.ceil((rank-5)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
     honor = configData.bossStatus.REWARD_COUNT.MIN if honor < configData.bossStatus.REWARD_COUNT.MIN
     honor: honor
-
-checkBossStatus = (items, cb) ->
-  timeOutItems = items.filter (i) -> i.timeLeft() <= 0 and i.status isnt configData.bossStatus.STATUS.TIMEOUT
-  ids = timeOutItems.map (i) -> i.id
-
-  if ids.length is 0
-    return cb(null, items)
-
-  dao.boss.update {
-    where: ' id in ('+ids.toString()+') '
-    data: status: configData.bossStatus.STATUS.TIMEOUT
-  }, (err, res) ->
-    if err
-      cb(err)
-    else
-      timeOutItems.forEach (i) -> i.status = configData.bossStatus.STATUS.TIMEOUT
-      cb(null, items)
 
 countDamage = (bl) ->
   ds = []

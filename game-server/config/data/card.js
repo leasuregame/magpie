@@ -1,4 +1,15 @@
 module.exports = {
+    // 卡牌熔炼得到的轮回丹数
+    CARD_TO_PILL_MAP: {
+        1: { pill: 20, money: 50 },
+        2: { pill: 40, money: 250},
+        3: { pill: 200, money: 2500},
+        4: { pill: 1000, money: 10000},
+        5: { pill: 8000, money: 100000},
+        6: { pill: 30000, money: 250000},
+        7: { pill: 50000, money: 500000}
+    },
+
     // 战斗力兑换系数
     ABILIGY_EXCHANGE: {
         atk: 1, // 1点攻击力 = 1点战斗力

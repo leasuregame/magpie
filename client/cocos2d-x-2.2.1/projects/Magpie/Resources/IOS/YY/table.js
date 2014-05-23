@@ -1,16 +1,6 @@
 var nameChanged = {
 	"achievement": "成就配置表",
 	"成就配置表": "achievement",
-	"boss_find_rate": "BOSS出现概率",
-	"BOSS出现概率": "boss_find_rate",
-	"boss_type_rate": "BOSS类型配置表",
-	"BOSS类型配置表": "boss_type_rate",
-	"boss": "BOSS属性配置表",
-	"BOSS属性配置表": "boss",
-	"boss_card": "Boss怪物卡牌配置表",
-	"Boss怪物卡牌配置表": "boss_card",
-	"boss_rank_reward": "伤害排行榜奖励配置表",
-	"伤害排行榜奖励配置表": "boss_rank_reward",
 	"card_grow": "卡牌升级表",
 	"卡牌升级表": "card_grow",
 	"card_price": "卡牌价格配置表",
@@ -25,6 +15,16 @@ var nameChanged = {
 	"卡牌新旧配置表ID对应关系表": "new_card_id_map",
 	"star_upgrade": "卡牌进阶配置表",
 	"卡牌进阶配置表": "star_upgrade",
+	"boss_find_rate": "BOSS出现概率",
+	"BOSS出现概率": "boss_find_rate",
+	"boss_type_rate": "BOSS类型配置表",
+	"BOSS类型配置表": "boss_type_rate",
+	"boss": "BOSS属性配置表",
+	"BOSS属性配置表": "boss",
+	"boss_card": "Boss怪物卡牌配置表",
+	"Boss怪物卡牌配置表": "boss_card",
+	"boss_rank_reward": "伤害排行榜奖励配置表",
+	"伤害排行榜奖励配置表": "boss_rank_reward",
 	"login_count_reward": "开服累计登陆奖励配置表",
 	"开服累计登陆奖励配置表": "login_count_reward",
 	"new_year_rechage": "新年充值奖励",
@@ -818,257 +818,6 @@ var outputTables = {
 			}
 		}
 	},
-	"boss_find_rate": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"rate": 0
-			},
-			"2": {
-				"id": 2,
-				"rate": 0
-			},
-			"3": {
-				"id": 3,
-				"rate": 0
-			},
-			"4": {
-				"id": 4,
-				"rate": 0
-			},
-			"5": {
-				"id": 5,
-				"rate": 0
-			},
-			"6": {
-				"id": 6,
-				"rate": 0
-			},
-			"7": {
-				"id": 7,
-				"rate": 0
-			},
-			"8": {
-				"id": 8,
-				"rate": 0
-			},
-			"9": {
-				"id": 9,
-				"rate": 0
-			},
-			"10": {
-				"id": 10,
-				"rate": 0
-			},
-			"11": {
-				"id": 11,
-				"rate": 1
-			},
-			"12": {
-				"id": 12,
-				"rate": 1
-			},
-			"13": {
-				"id": 13,
-				"rate": 1
-			},
-			"14": {
-				"id": 14,
-				"rate": 1
-			},
-			"15": {
-				"id": 15,
-				"rate": 1
-			},
-			"16": {
-				"id": 16,
-				"rate": 5
-			},
-			"17": {
-				"id": 17,
-				"rate": 30
-			},
-			"18": {
-				"id": 18,
-				"rate": 40
-			},
-			"19": {
-				"id": 19,
-				"rate": 50
-			},
-			"20": {
-				"id": 20,
-				"rate": 100
-			}
-		}
-	},
-	"boss_type_rate": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"rate": 55,
-				"name": "蓝卡",
-				"reward_inc": 0
-			},
-			"2": {
-				"id": 2,
-				"rate": 30,
-				"name": "紫卡",
-				"reward_inc": 50
-			},
-			"3": {
-				"id": 3,
-				"rate": 15,
-				"name": "金卡",
-				"reward_inc": 150
-			}
-		}
-	},
-	"boss": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"name": "九阴罗刹",
-				"type": 1,
-				"boss_id": 40000,
-				"card_ids": "40003#40000#40003",
-				"formation": "2:40000,4:40003,6:40003",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			},
-			"2": {
-				"id": 2,
-				"name": "赤炎星君",
-				"type": 2,
-				"boss_id": 40001,
-				"card_ids": "40004#40001#40004",
-				"formation": "2:40001,4:40004,6:40004",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			},
-			"3": {
-				"id": 3,
-				"name": "金身冥王",
-				"type": 3,
-				"boss_id": 40002,
-				"card_ids": "40005#40002#40005",
-				"formation": "2:40002,4:40005,6:40005",
-				"live_time": 12,
-				"disappear_time": 2,
-				"atk_count": 10
-			}
-		}
-	},
-	"boss_card": {
-		"colComment": {
-			"card_id": {
-				"table": "怪物卡牌配置表",
-				"key_index": "name",
-				"value_index": "id",
-				"withPound": false
-			}
-		},
-		"rows": {
-			"40000": {
-				"id": 40000,
-				"card_id": "九阴罗刹",
-				"atk": 1000000,
-				"hp": 30000000,
-				"dodge_rate": 0,
-				"crit_rate": 30,
-				"hit_rate": 15
-			},
-			"40001": {
-				"id": 40001,
-				"card_id": "赤炎星君",
-				"atk": 1500000,
-				"hp": 30000000,
-				"dodge_rate": 0,
-				"crit_rate": 30,
-				"hit_rate": 15
-			},
-			"40002": {
-				"id": 40002,
-				"card_id": "金身冥王",
-				"atk": 2000000,
-				"hp": 30000000,
-				"dodge_rate": 0,
-				"crit_rate": 30,
-				"hit_rate": 15
-			},
-			"40003": {
-				"id": 40003,
-				"card_id": "小怪1号",
-				"atk": 5000,
-				"hp": 20000,
-				"dodge_rate": 0,
-				"crit_rate": 10,
-				"hit_rate": 15
-			},
-			"40004": {
-				"id": 40004,
-				"card_id": "小怪2号",
-				"atk": 5000,
-				"hp": 20000,
-				"dodge_rate": 0,
-				"crit_rate": 10,
-				"hit_rate": 15
-			},
-			"40005": {
-				"id": 40005,
-				"card_id": "小怪3号",
-				"atk": 5000,
-				"hp": 20000,
-				"dodge_rate": 0,
-				"crit_rate": 10,
-				"hit_rate": 15
-			}
-		}
-	},
-	"boss_rank_reward": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"honor": 12000,
-				"money": 500000,
-				"energy": 8000
-			},
-			"2": {
-				"id": 2,
-				"honor": 10800,
-				"money": 450000,
-				"energy": 7000
-			},
-			"3": {
-				"id": 3,
-				"honor": 9600,
-				"money": 400000,
-				"energy": 6000
-			},
-			"4": {
-				"id": 4,
-				"honor": 8400,
-				"money": 350000,
-				"energy": 5000
-			},
-			"5": {
-				"id": 5,
-				"honor": 7200,
-				"money": 300000,
-				"energy": 4000
-			},
-			"6": {
-				"id": 6,
-				"honor": 5000
-			}
-		}
-	},
 	"card_grow": {
 		"colComment": {},
 		"rows": {
@@ -1582,8 +1331,8 @@ var outputTables = {
 				"star3": 5000,
 				"star4": 20000,
 				"star5": 200000,
-				"star6": 50000,
-				"star7": 100000
+				"star6": 500000,
+				"star7": 1000000
 			}
 		}
 	},
@@ -12659,6 +12408,257 @@ var outputTables = {
 				"max_num": 7,
 				"no_work_count": 3,
 				"super_honor": 40
+			}
+		}
+	},
+	"boss_find_rate": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"rate": 0
+			},
+			"2": {
+				"id": 2,
+				"rate": 0
+			},
+			"3": {
+				"id": 3,
+				"rate": 0
+			},
+			"4": {
+				"id": 4,
+				"rate": 0
+			},
+			"5": {
+				"id": 5,
+				"rate": 0
+			},
+			"6": {
+				"id": 6,
+				"rate": 0
+			},
+			"7": {
+				"id": 7,
+				"rate": 0
+			},
+			"8": {
+				"id": 8,
+				"rate": 0
+			},
+			"9": {
+				"id": 9,
+				"rate": 0
+			},
+			"10": {
+				"id": 10,
+				"rate": 0
+			},
+			"11": {
+				"id": 11,
+				"rate": 1
+			},
+			"12": {
+				"id": 12,
+				"rate": 1
+			},
+			"13": {
+				"id": 13,
+				"rate": 1
+			},
+			"14": {
+				"id": 14,
+				"rate": 1
+			},
+			"15": {
+				"id": 15,
+				"rate": 1
+			},
+			"16": {
+				"id": 16,
+				"rate": 5
+			},
+			"17": {
+				"id": 17,
+				"rate": 30
+			},
+			"18": {
+				"id": 18,
+				"rate": 40
+			},
+			"19": {
+				"id": 19,
+				"rate": 50
+			},
+			"20": {
+				"id": 20,
+				"rate": 100
+			}
+		}
+	},
+	"boss_type_rate": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"rate": 55,
+				"name": "蓝卡",
+				"reward_inc": 0
+			},
+			"2": {
+				"id": 2,
+				"rate": 30,
+				"name": "紫卡",
+				"reward_inc": 50
+			},
+			"3": {
+				"id": 3,
+				"rate": 15,
+				"name": "金卡",
+				"reward_inc": 150
+			}
+		}
+	},
+	"boss": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"name": "九阴罗刹",
+				"type": 1,
+				"boss_id": 40000,
+				"card_ids": "40003#40000#40003",
+				"formation": "2:40000,4:40003,6:40003",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
+			},
+			"2": {
+				"id": 2,
+				"name": "赤炎星君",
+				"type": 2,
+				"boss_id": 40001,
+				"card_ids": "40004#40001#40004",
+				"formation": "2:40001,4:40004,6:40004",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
+			},
+			"3": {
+				"id": 3,
+				"name": "金身冥王",
+				"type": 3,
+				"boss_id": 40002,
+				"card_ids": "40005#40002#40005",
+				"formation": "2:40002,4:40005,6:40005",
+				"live_time": 12,
+				"disappear_time": 2,
+				"atk_count": 10
+			}
+		}
+	},
+	"boss_card": {
+		"colComment": {
+			"card_id": {
+				"table": "怪物卡牌配置表",
+				"key_index": "name",
+				"value_index": "id",
+				"withPound": false
+			}
+		},
+		"rows": {
+			"40000": {
+				"id": 40000,
+				"card_id": "九阴罗刹",
+				"atk": 1000000,
+				"hp": 30000000,
+				"dodge_rate": 0,
+				"crit_rate": 30,
+				"hit_rate": 15
+			},
+			"40001": {
+				"id": 40001,
+				"card_id": "赤炎星君",
+				"atk": 1500000,
+				"hp": 30000000,
+				"dodge_rate": 0,
+				"crit_rate": 30,
+				"hit_rate": 15
+			},
+			"40002": {
+				"id": 40002,
+				"card_id": "金身冥王",
+				"atk": 2000000,
+				"hp": 30000000,
+				"dodge_rate": 0,
+				"crit_rate": 30,
+				"hit_rate": 15
+			},
+			"40003": {
+				"id": 40003,
+				"card_id": "小怪1号",
+				"atk": 5000,
+				"hp": 20000,
+				"dodge_rate": 0,
+				"crit_rate": 10,
+				"hit_rate": 15
+			},
+			"40004": {
+				"id": 40004,
+				"card_id": "小怪2号",
+				"atk": 5000,
+				"hp": 20000,
+				"dodge_rate": 0,
+				"crit_rate": 10,
+				"hit_rate": 15
+			},
+			"40005": {
+				"id": 40005,
+				"card_id": "小怪3号",
+				"atk": 5000,
+				"hp": 20000,
+				"dodge_rate": 0,
+				"crit_rate": 10,
+				"hit_rate": 15
+			}
+		}
+	},
+	"boss_rank_reward": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"honor": 12000,
+				"money": 500000,
+				"energy": 8000
+			},
+			"2": {
+				"id": 2,
+				"honor": 10800,
+				"money": 450000,
+				"energy": 7000
+			},
+			"3": {
+				"id": 3,
+				"honor": 9600,
+				"money": 400000,
+				"energy": 6000
+			},
+			"4": {
+				"id": 4,
+				"honor": 8400,
+				"money": 350000,
+				"energy": 5000
+			},
+			"5": {
+				"id": 5,
+				"honor": 7200,
+				"money": 300000,
+				"energy": 4000
+			},
+			"6": {
+				"id": 6,
+				"honor": 5000
 			}
 		}
 	},
@@ -46382,78 +46382,78 @@ var outputTables = {
 				"id": 2,
 				"lv": 2,
 				"name": "Vip2",
-				"cash": 50,
-				"total_cash": 56
+				"cash": 10,
+				"total_cash": 16
 			},
 			"3": {
 				"id": 3,
 				"lv": 3,
 				"name": "Vip3",
-				"cash": 100,
-				"total_cash": 156
+				"cash": 14,
+				"total_cash": 30
 			},
 			"4": {
 				"id": 4,
 				"lv": 4,
 				"name": "Vip4",
-				"cash": 200,
-				"total_cash": 356
+				"cash": 30,
+				"total_cash": 60
 			},
 			"5": {
 				"id": 5,
 				"lv": 5,
 				"name": "Vip5",
-				"cash": 500,
-				"total_cash": 856
+				"cash": 50,
+				"total_cash": 110
 			},
 			"6": {
 				"id": 6,
 				"lv": 6,
 				"name": "Vip6",
-				"cash": 1000,
-				"total_cash": 1856
+				"cash": 90,
+				"total_cash": 200
 			},
 			"7": {
 				"id": 7,
 				"lv": 7,
 				"name": "Vip7",
-				"cash": 2000,
-				"total_cash": 3856
+				"cash": 130,
+				"total_cash": 330
 			},
 			"8": {
 				"id": 8,
 				"lv": 8,
 				"name": "Vip8",
-				"cash": 5000,
-				"total_cash": 8856
+				"cash": 300,
+				"total_cash": 630
 			},
 			"9": {
 				"id": 9,
 				"lv": 9,
 				"name": "Vip9",
-				"cash": 8000,
-				"total_cash": 16856
+				"cash": 600,
+				"total_cash": 1230
 			},
 			"10": {
 				"id": 10,
 				"lv": 10,
 				"name": "Vip10",
-				"cash": 10000,
-				"total_cash": 26856
+				"cash": 1200,
+				"total_cash": 2430
 			},
 			"11": {
 				"id": 11,
 				"lv": 11,
 				"name": "Vip11",
-				"cash": 20000,
-				"total_cash": 46856
+				"cash": 2400,
+				"total_cash": 4830
 			},
 			"12": {
 				"id": 12,
 				"lv": 12,
 				"name": "Vip12",
-				"cash": 50000,
-				"total_cash": 96856
+				"cash": 4800,
+				"total_cash": 9630
 			}
 		}
 	},

@@ -52,13 +52,14 @@ var Shop = Entity.extend({
 
         lz.server.on("onVerifyResult", function (data) {
             cc.log("***** on verify result:");
-            cc.log(data);
+            cc.log(JSON.stringify(data));
 
             var msg = data.msg;
 
             cc.log(msg.gold);
             cc.log(msg.cash);
             cc.log(msg.goldCards);
+            cc.log(msg.vipLoginReward);
 
             var player = gameData.player;
 
@@ -76,6 +77,11 @@ var Shop = Entity.extend({
 
             if (msg.firstRechargeBox) {
                 player.set("firstRechargeBox", msg.firstRechargeBox);
+            }
+
+            if (msg.vipLoginReward) {
+                gameData.activity.set("vipLoginReward", msg.vipLoginReward);
+                gameMark.updateVipDailyRewardMark(false);
             }
 
             var nowVip = msg.vip;

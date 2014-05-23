@@ -50,6 +50,9 @@ var FriendMessageLayer = cc.Layer.extend({
         cc.log("FriendMessageLayer update");
 
         this._friendMessageList = gameData.message.get("friendMessage");
+        
+        cc.log(this._friendMessageList);
+
         this._markEffect = [];
         var len = this._friendMessageList.length;
 
@@ -93,7 +96,7 @@ var FriendMessageLayer = cc.Layer.extend({
                 nameIcon.setAnchorPoint(cc.p(0, 0.5));
                 nameIcon.setPosition(cc.p(115, 85));
                 msgBgLabel.addChild(nameIcon);
-
+                
                 var nameLabel = cc.LabelTTF.create(message.senderName, "STHeitiTC-Medium", 22);
                 nameLabel.setAnchorPoint(cc.p(0, 0.5));
                 nameLabel.setPosition(cc.p(130, 85));

@@ -487,10 +487,10 @@ Handler::starUpgrade = (msg, session, next) ->
       addRate = card_count * starUpgradeData.rate_per_card
       totalRate = _.min([addRate + rate, 100])
       
+      if card.star >= 4
+        totalRate = table.getTableItem('star_upgrade_rate', totalRate)?.rate or totalRate
+
       is_upgrade = !!utility.hitRate(totalRate)
-      if card.star >= 4 
-        useCardCount = player.useCardCount['star'+card.star] or 0
-        is_upgrade = false if (useCardCount+card_count) <= (starUpgradeData.no_work_count or 0)
       
       player.decrease('money', money_consume)
       player.decrease('superHonor', starUpgradeData.super_honor) if starUpgradeData.super_honor > 0
@@ -798,11 +798,11 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '3星以下的卡牌不能使用仙丹'})
 
     limit = elixirLimit.getItem(card.star)
-    if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
+    if card.totalElixir() >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌可吞噬仙丹数量已满"})
 
-    if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
-      return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
+    if (card.totalElixir() + elixir) > limit.elixir_limit
+      return next(null, {code: 501, msg: "使用的仙丹已超卡牌上限"})
 
     # 判断暴击
     isCrit = utility.hitRate configData.elixir.useElixirCritRate

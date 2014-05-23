@@ -65,6 +65,11 @@ var giftBagGoods = {
     superHonor: {
         name: "精元",
         url: "icon411"
+    },
+
+    spirit: {
+        name: "灵气",
+        url: "icon111"
     }
 };
 

@@ -97,6 +97,12 @@ var SystemMessageLabel = LazyLayer.extend({
                     cardItem.setAnchorPoint(cc.p(0, 0));
                     cardItem.setPosition(cc.p(x, y));
                     cardMenu.addChild(cardItem);
+
+                    var numLabel = cc.LabelTTF.create(cards[i].qty, "STHeitiTC-Medium", 16);
+                    numLabel.setAnchorPoint(cc.p(1, 0));
+                    numLabel.setPosition(cc.p(85, 8));
+                    cardItem.addChild(numLabel);
+
                     index++;
                 }
             } else {
@@ -125,7 +131,7 @@ var SystemMessageLabel = LazyLayer.extend({
             this
         );
         OKItem.setPosition(cc.p(0, -315));
-        OKItem.setVisible(message.status == HANDLED_STATUS);
+        OKItem.setVisible(message.status == HANDLED_STATUS || !index);
 
         var getRewardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
@@ -135,7 +141,7 @@ var SystemMessageLabel = LazyLayer.extend({
             this
         );
         getRewardItem.setPosition(cc.p(0, -315));
-        getRewardItem.setVisible(message.status == UNHANDLED_STATUS);
+        getRewardItem.setVisible(message.status == UNHANDLED_STATUS && index > 0);
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button37,

@@ -69,18 +69,6 @@ var BattleMessageLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var messages = [];
-
-        for (var i = 0; i < 10; i++) {
-            messages[i] = {
-                defier: "哈哈哈哈哈哈",
-                isWin: (i % 2) ? true : false,
-                rank: parseInt(Math.random() * 1000)
-            }
-        }
-
-        len = messages.length;
-
         var scrollViewHeight = len * 127;
         if (scrollViewHeight < this._battleMessageLayerFit.scrollViewHeight) {
             scrollViewHeight = this._battleMessageLayerFit.scrollViewHeight;
@@ -88,7 +76,7 @@ var BattleMessageLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 127 - 127 * i;
-            var message = messages[i];
+            var message = battleMessageList[i];
 
             var msgBgLabel = cc.Sprite.create(main_scene_image.icon449);
             msgBgLabel.setAnchorPoint(cc.p(0, 0));
@@ -166,7 +154,7 @@ var BattleMessageLayer = cc.Layer.extend({
 
             var timeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({
-                    time: battleMessageList[0].createTime,
+                    time: message.createTime,
                     fmt: "yyyy.MM.dd hh:mm"
                 }),
                 "STHeitiTC-Medium",
@@ -181,7 +169,7 @@ var BattleMessageLayer = cc.Layer.extend({
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.icon135,
-                this._onClickPlayback(battleMessageList[0].options.battleLogId),
+                this._onClickPlayback(message.battleLogId),
                 this
             );
             playbackItem.setPosition(cc.p(520, y + 62));

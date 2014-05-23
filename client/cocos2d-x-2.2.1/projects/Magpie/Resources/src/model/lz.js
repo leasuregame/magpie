@@ -402,7 +402,9 @@ lz.getRewardString = function (data) {
 
                             for (var i = 0; i < len; i++) {
                                 var card = Card.create(cards[i]);
-                                TipLayer.tipNoBg(card.get("name") + ": +1");
+                                var num = cards[i].qty || 1;
+
+                                TipLayer.tipNoBg(card.get("name") + ": +" + num);
                             }
                         } else {
                             TipLayer.tipNoBg(str.name + ": +" + reward[key]);

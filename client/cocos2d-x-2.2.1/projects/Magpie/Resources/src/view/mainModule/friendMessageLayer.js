@@ -73,6 +73,7 @@ var FriendMessageLayer = cc.Layer.extend({
             (function (i) {
                 var y = scrollViewHeight - 127 - 127 * i;
 
+                var message = that._friendMessageList[i];
                 var id = that._friendMessageList[i].id;
                 var type = that._friendMessageList[i].type;
                 var status = that._friendMessageList[i].status;
@@ -93,12 +94,12 @@ var FriendMessageLayer = cc.Layer.extend({
                 nameIcon.setPosition(cc.p(115, 85));
                 msgBgLabel.addChild(nameIcon);
 
-                var nameLabel = cc.LabelTTF.create("哈哈哈哈哈哈", "STHeitiTC-Medium", 22);
+                var nameLabel = cc.LabelTTF.create(message.senderName, "STHeitiTC-Medium", 22);
                 nameLabel.setAnchorPoint(cc.p(0, 0.5));
                 nameLabel.setPosition(cc.p(130, 85));
                 msgBgLabel.addChild(nameLabel);
 
-                var msgLabel = cc.LabelTTF.create(that._friendMessageList[i].content, "STHeitiTC-Medium", 22);
+                var msgLabel = cc.LabelTTF.create(message.content, "STHeitiTC-Medium", 22);
                 msgLabel.setAnchorPoint(cc.p(0, 0.5));
                 msgLabel.setPosition(cc.p(120, 35));
                 msgLabel.setColor(cc.c3b(138, 85, 23));
@@ -106,7 +107,7 @@ var FriendMessageLayer = cc.Layer.extend({
 
                 var timeLabel = cc.LabelTTF.create(
                     lz.getTimeStr({
-                        time: that._friendMessageList[i].createTime,
+                        time: message.createTime,
                         fmt: "yyyy.MM.dd hh:mm"
                     }),
                     "STHeitiTC-Medium",
@@ -162,7 +163,7 @@ var FriendMessageLayer = cc.Layer.extend({
                         hasBeenAcceptIcon.setVisible(false);
                     }
                 } else if (type == LEAVE_MESSAGE) {
-                    var name = that._friendMessageList[i].senderName;
+                    var name = message.senderName;
 
                     if (!gameData.friend.getFriend(name)) {
                         var addFriendItem = cc.MenuItemImage.createWithIcon(

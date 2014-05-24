@@ -21,9 +21,13 @@ var SystemMessageLabel = LazyLayer.extend({
         bgLayer.setPosition(cc.p(0, 0));
         this.addChild(bgLayer);
 
+        var point = gameFit.GAME_MIDPOINT;
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect113, this);
+        effect.setPosition(point);
+        this.addChild(effect);
+
         var frameLayer = cc.Node.create();
-        frameLayer.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(frameLayer);
+        effect.controller.ccbLabel.addChild(frameLayer);
 
         var bgLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgLabel.setContentSize(cc.size(550, 730));

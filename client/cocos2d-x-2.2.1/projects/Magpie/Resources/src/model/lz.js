@@ -397,19 +397,7 @@ lz.getRewardString = function (data) {
                         TipLayer.tipWithIcon(str.icon, " +" + reward[key], isDouble || false);
                     } else {
                         if (key != "cardArray") {
-                            // continue;
-//                            var cards = reward[key];
-//                            var len = cards.length;
-//
-//                            for (var i = 0; i < len; i++) {
-//                                var card = Card.create(cards[i]);
-//                                var num = cards[i].qty || 1;
-//
-//                                TipLayer.tipNoBg(card.get("name") + ": +" + num);
-//                            }
 
-
-                            // } else {
                             TipLayer.tipNoBg(str.name + ": +" + reward[key]);
                         }
                     }
@@ -431,7 +419,7 @@ lz.getRewardString = function (data) {
             for (var i = 0; i < len; i++) {
                 var fn2 = (function (i) {
                     return function () {
-                        TipLayer.tipNoBg(cards[i].name + ": +" + cards[i].qty);
+                        TipLayer.tipCard(cards[i].tableId, " +" + cards[i].qty);
                     }
                 })(i);
 
@@ -454,6 +442,7 @@ lz.getRewardString = function (data) {
 
         for (var i = 0; i < len; i++) {
             var cards = {
+                tableId: cardArray[i].tableId,
                 name: cardTable[cardArray[i].tableId].name,
                 qty: 1
             };

@@ -99,8 +99,15 @@ var User = Entity.extend({
             version = cc.AssetsManager.getInstance().getVersion();
         }
 
+        var curVersion = "1.4.2";
+        if (typeof(cc.Application.getInstance().getAppVersion) != "undefined") {
+            curVersion = cc.Application.getInstance().getAppVersion();
+        }
+
+
         cc.log("=================================================");
         cc.log(version);
+        cc.log(curVersion);
         cc.log("=================================================");
 
         var that = this;
@@ -109,7 +116,8 @@ var User = Entity.extend({
                 account: that._account,
                 password: that._password,
                 areaId: that._area,
-                version: version
+                version: version,
+                curVersion: curVersion
             }, function (data) {
                 cc.log(data);
 

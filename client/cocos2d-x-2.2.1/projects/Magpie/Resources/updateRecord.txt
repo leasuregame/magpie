@@ -24,6 +24,7 @@ res/main/icon452.png
 res/main/icon453.png
 res/main/icon454.png
 res/main/icon455.png
+res/ccb/uiEffect117.ccbi
 
 resYY/main/icon97.png
 resYY/main/icon144.png
@@ -34,6 +35,7 @@ resYY/main/icon452.png
 resYY/main/icon453.png
 resYY/main/icon454.png
 resYY/main/icon455.png
+resYY/ccb/uiEffect117.ccbi
 
 ----------v1.4.8版本----------------------------------------------------------------------------------------------------
 

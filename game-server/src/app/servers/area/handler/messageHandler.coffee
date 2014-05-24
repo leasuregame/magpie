@@ -89,42 +89,50 @@ Handler::sysMsg = (msg, session, next) ->
   options = msg.options
   validDate = msg.validDate
 
-  if msg.playerId and _.isNumber(msg.playerId) and msg.playerId > 0
-    receiver = msg.playerId
+  if msg.playerIds?
+    if not _.isArray(msg.playerIds)
+      ids = [msg.playerIds] 
+    else
+      ids = msg.playerIds 
+    receiver = ids
   else
-    receiver = SYSTEM
+    receiver = [SYSTEM]
 
   async.waterfall [
     (cb) ->
       checkSystemOptions(options, cb)
     (cb) ->
-      if receiver isnt SYSTEM
-        playerManager.getPlayerInfo pid: receiver, (err, res) ->
+      if not _.isEqual(receiver, [SYSTEM])
+        dao.player.getCount receiver, (err, count) ->
           if err
-            return cb({code: 501, msg: '找不到指定玩家'})
+            return cb({code: 500, msg: err})
           else
-            cb()
+            if count is receiver.length
+              cb()
+            else 
+              return cb({code: 501, msg: '找不到部分玩家'})
       else 
         cb()
     (cb) ->
-      dao.message.create data: {
-        options: options
-        sender: SYSTEM
-        receiver: receiver
-        content: content
-        type: configData.message.MESSAGETYPE.SYSTEM
-        status: configData.message.MESSAGESTATUS.UNHANDLED
-        validDate: validDate
-      }, cb
-  ], (err, res) =>
+      async.map receiver, (rcv, done) ->
+        dao.message.create data: {
+          options: options
+          sender: SYSTEM
+          receiver: rcv
+          content: content
+          type: configData.message.MESSAGETYPE.SYSTEM
+          status: configData.message.MESSAGESTATUS.UNHANDLED
+          validDate: validDate
+        }, done
+      , cb
+  ], (err, msgs) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sendMessage @app, (if receiver is -1 then null else receiver), {
+    sendMessage @app, (if _.isEqual(receiver, [SYSTEM]) then null else receiver), {
       route: 'onMessage'
-      msg: res.toJson()
+      msg: msgs[0].toJson()
     }, '邮件发送成功', (err, data) ->
-      data.msg = {msgId: res.id, tip: data.msg} if not err
       next(err, data)
 
 checkSystemOptions = (options, cb) ->
@@ -701,6 +709,6 @@ sendMessage = (app, target, msg, data, next) ->
     next(null, {code: code, msg: data if data}) if next?
 
   if target?
-    app.get('messageService').pushByPid target, msg, callback
+    app.get('messageService').pushByPids target, msg, callback
   else 
     app.get('messageService').pushMessage msg, callback

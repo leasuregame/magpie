@@ -225,17 +225,17 @@ var Message = Entity.extend({
 
                     message.status = HANDLED_STATUS;
 
-                    for(var key in msg) {
+                    for (var key in msg) {
                         var k = lz.getKeyStr(key);
-                        if(k) {
+                        if (k) {
                             gameData.player.add(k, msg[key]);
                         } else {
-                            if(key == "spirit") {
+                            if (key == "spirit") {
                                 gameData.spirit.add("exp", msg[key]);
-                            } else if(key == "cardArray") {
+                            } else if (key == "cardArray") {
                                 var cards = msg[key];
                                 var len = cards.length;
-                                for(var i = 0;i < len;i++) {
+                                for (var i = 0; i < len; i++) {
                                     var card = Card.create(cards[i]);
                                     gameData.cardList.push(card);
                                 }
@@ -247,7 +247,6 @@ var Message = Entity.extend({
                     }
 
                     lz.tipReward(msg);
-
                     cb();
 
                     lz.um.event("event_handle_sys_message");

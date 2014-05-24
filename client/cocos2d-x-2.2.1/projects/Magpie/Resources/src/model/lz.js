@@ -396,17 +396,20 @@ lz.getRewardString = function (data) {
                     if (str.icon) {
                         TipLayer.tipWithIcon(str.icon, " +" + reward[key], isDouble || false);
                     } else {
-                        if (key == "cardArray") {
-                            var cards = reward[key];
-                            var len = cards.length;
+                        if (key != "cardArray") {
+                            // continue;
+//                            var cards = reward[key];
+//                            var len = cards.length;
+//
+//                            for (var i = 0; i < len; i++) {
+//                                var card = Card.create(cards[i]);
+//                                var num = cards[i].qty || 1;
+//
+//                                TipLayer.tipNoBg(card.get("name") + ": +" + num);
+//                            }
 
-                            for (var i = 0; i < len; i++) {
-                                var card = Card.create(cards[i]);
-                                var num = cards[i].qty || 1;
 
-                                TipLayer.tipNoBg(card.get("name") + ": +" + num);
-                            }
-                        } else {
+                            // } else {
                             TipLayer.tipNoBg(str.name + ": +" + reward[key]);
                         }
                     }
@@ -420,7 +423,57 @@ lz.getRewardString = function (data) {
 
             lz.scheduleOnce(fn, delay);
         }
+
+        //卡牌奖励
+        if (reward["cardArray"]) {
+            var cards = dealCardArray(reward[key]);
+            var len = cards.length;
+            for (var i = 0; i < len; i++) {
+                var fn2 = (function (i) {
+                    return function () {
+                        TipLayer.tipNoBg(cards[i].name + ": +" + cards[i].qty);
+                    }
+                })(i);
+
+                now = Date.now();
+                lastTimestamp += TIP_INTERVAL;
+                lastTimestamp = Math.max(lastTimestamp, now);
+                delay = (lastTimestamp - now) / 1000;
+
+                lz.scheduleOnce(fn2, delay);
+            }
+        }
+
     };
+
+    var dealCardArray = function (cardArray) {
+
+        var len = cardArray.length;
+        var cbData = [];
+        var cardTable = outputTables.cards.rows;
+
+        for (var i = 0; i < len; i++) {
+            var cards = {
+                name: cardTable[cardArray[i].tableId].name,
+                qty: 1
+            };
+            var j = i + 1;
+            while (j < len) {
+                if (cardArray[i].tableId == cardArray[j].tableId) {
+                    cards.qty++;
+                    cardArray.splice(j, 1);
+                    len--;
+                } else {
+                    j++;
+                }
+            }
+
+            cbData.push(cards);
+        }
+
+        return cbData;
+    }
+
 })();
 
 
@@ -515,6 +568,7 @@ var keys2Key = {
     fragments: "fragment",
     fragment: "fragment",
     speaker: "speaker",
+    speakers: "speaker",
     honor: "honor",
     superHonor: "superHonor"
 };

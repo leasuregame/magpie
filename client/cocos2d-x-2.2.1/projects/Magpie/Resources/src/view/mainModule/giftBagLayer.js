@@ -72,9 +72,9 @@ var giftBagGoods = {
         url: "icon411"
     },
 
-    spirit: {
-        name: "灵气",
-        url: "icon111"
+    speaker: {
+        name: "喇叭",
+        url: "icon144"
     }
 };
 

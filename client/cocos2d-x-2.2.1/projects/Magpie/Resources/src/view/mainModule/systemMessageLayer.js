@@ -18,7 +18,7 @@ var SystemMessageLayer = cc.Layer.extend({
     _messages: [],
     _scrollView: null,
     _scrollViewElement: {},
-    _handlerIcons: [],
+    _handlerElement: [],
 
     onEnter: function () {
         cc.log("SystemMessageLayer onEnter");
@@ -57,7 +57,6 @@ var SystemMessageLayer = cc.Layer.extend({
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
         }
-
 
         this._messages = systemMessageList;
         var scrollViewLayer = MarkLayer.create(this._systemMessageLayerFit.scrollViewLayerRect);
@@ -129,7 +128,19 @@ var SystemMessageLayer = cc.Layer.extend({
                 this
             );
             readItem.setPosition(cc.p(520, y + 52));
+            readItem.setVisible(message.status == HANDLED_STATUS);
             menu.addChild(readItem);
+
+            var readItem2 = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon97,
+                this._onClickRead(i),
+                this
+            );
+            readItem2.setPosition(cc.p(520, y + 52));
+            readItem2.setVisible(message.status == UNHANDLED_STATUS);
+            menu.addChild(readItem2);
 
             var handlerIcon = cc.Sprite.create(main_scene_image.icon455);
             handlerIcon.setAnchorPoint(cc.p(1, 1));
@@ -137,7 +148,11 @@ var SystemMessageLayer = cc.Layer.extend({
             handlerIcon.setVisible(message.status == HANDLED_STATUS);
             scrollViewLayer.addChild(handlerIcon, 1);
 
-            this._handlerIcons[i] = handlerIcon;
+            this._handlerElement[i] = {
+                readItem: readItem,
+                readItem2: readItem2,
+                handlerIcon: handlerIcon
+            };
         }
 
         this._scrollView = cc.ScrollView.create(this._systemMessageLayerFit.scrollViewSize, scrollViewLayer);
@@ -159,7 +174,10 @@ var SystemMessageLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var cb = function () {
-                that._handlerIcons[id].setVisible(true);
+                that._handlerElement[id].readItem.setVisible(true);
+                that._handlerElement[id].readItem2.setVisible(false);
+                that._handlerElement[id].handlerIcon.setVisible(true);
+                gameMark.updateSystemMessageMark(false);
             };
 
             SystemMessageLabel.pop({

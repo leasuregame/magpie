@@ -1,7 +1,22 @@
 更新记录表
 
 ----------v1.4.8版本----------------------------------------------------------------------------------------------------
+替换更新：
+res/main/icon303.png
+res/main/icon304.png
+res/main/icon364.png
+res/main/icon365.png
+res/main/icon376.png
+
+resYY/main/icon303.png
+resYY/main/icon304.png
+resYY/main/icon364.png
+resYY/main/icon365.png
+resYY/main/icon376.png
+
 新加资源：
+res/main/icon97.png
+res/main/icon144.png
 res/main/icon449.png
 res/main/icon450.png
 res/main/icon451.png
@@ -10,6 +25,8 @@ res/main/icon453.png
 res/main/icon454.png
 res/main/icon455.png
 
+resYY/main/icon97.png
+resYY/main/icon144.png
 resYY/main/icon449.png
 resYY/main/icon450.png
 resYY/main/icon451.png

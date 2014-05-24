@@ -98,9 +98,11 @@ var SystemMessageLabel = LazyLayer.extend({
                     cardItem.setPosition(cc.p(x, y));
                     cardMenu.addChild(cardItem);
 
-                    var numLabel = cc.LabelTTF.create(cards[i].qty, "STHeitiTC-Medium", 16);
+                    var numLabel = StrokeLabel.create("+" + cards[i].qty, "STHeitiTC-Medium", 20);
                     numLabel.setAnchorPoint(cc.p(1, 0));
-                    numLabel.setPosition(cc.p(85, 8));
+                    numLabel.setPosition(cc.p(90, 10));
+                    numLabel.setColor(cc.c3b(255, 255, 255));
+                    numLabel.setBgColor(cc.c3b(0, 0, 0));
                     cardItem.addChild(numLabel);
 
                     index++;

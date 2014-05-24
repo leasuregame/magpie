@@ -78,7 +78,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     color: cc.c3b(255, 248, 69)
                 },
                 {
-                    string: "再冲",
+                    string: "再充",
                     fontName: "STHeitiTC-Medium",
                     fontSize: 23
                 },

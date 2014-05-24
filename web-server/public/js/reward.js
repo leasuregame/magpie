@@ -409,6 +409,7 @@ function doSubmit(areaId, playerNames, mail) {
                 if (err) {
                     console.log("err = ", err);
                 } else {
+                    var areaName = getAreaById(areaId).name;
                     window.webAPI.logReward(areaName, JSON.stringify(mail));
                 }
             }

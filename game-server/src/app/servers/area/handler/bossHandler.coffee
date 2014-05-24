@@ -328,9 +328,10 @@ checkBossStatus = (items, cb) ->
 
 sortBossList = (items, playerId) ->
   group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
-  
-  mine = (group.mine?.sort (x, y) -> x.status - y.status > 0) or []
-  friend = (group.friend?.sort (x, y) -> x.status - y.status > 0) or []
+
+  mine = (group.mine?.sort (x, y) -> x.status - y.status) or []
+  friend = (group.friend?.sort (x, y) -> x.status - y.status) or []
+
   mine.concat friend
 
 Handler::attack = (msg, session, next) ->
@@ -409,14 +410,12 @@ Handler::attack = (msg, session, next) ->
 
 countDamageRewards = (rank) ->
   row = table.getTableItem('boss_rank_reward', rank)
-  if row    
-    money: row.money
+  if row
     honor: row.honor
-    energy: row.energy
+    money: row.money if row.money
   else 
-    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or configData.bossStatus.REWARD_COUNT.BASE_VALUE
-    gap = table.getTableItem('values', 'damageOfRankHonorGap')?.value or 0
-    honor = parseInt (honor5-gap)*(1-Math.ceil((rank-5)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
+    honor6 = table.getTableItem('boss_rank_reward', 6)?.honor or configData.bossStatus.REWARD_COUNT.BASE_VALUE
+    honor = parseInt honor6*(1-Math.ceil((rank-5)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
     honor = configData.bossStatus.REWARD_COUNT.MIN if honor < configData.bossStatus.REWARD_COUNT.MIN
     honor: honor
 

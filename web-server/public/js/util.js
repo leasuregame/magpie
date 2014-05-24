@@ -27,6 +27,12 @@
         return ret;
     };
 
+    wsUtil.splitNoBlank = function (str, separator) {
+        return $.grep(str.split(separator), function(n) {
+            return $.trim(n).length > 0;
+        });
+    };
+
     // AMD / RequireJS
     if (typeof define !== 'undefined' && define.amd) {
         define([], function () {

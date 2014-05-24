@@ -1,6 +1,6 @@
 var helper = require('../../shared/version_helper');
 var KSS_HOST = 'http://kss.ksyun.com';
-var updateRecordDao = require('../util/updateRecordDao');
+var updateRecordDao = require('../dao/updateRecordDao');
 var async = require('async');
 var util = require('util');
 

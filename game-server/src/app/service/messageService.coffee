@@ -42,7 +42,7 @@ class Service
     pids = [pids] if not _.isArray(pids)
 
     records = []
-    records.push v for k, v of @pidMap if k in pids
+    records.push v for k, v of @pidMap when parseInt(k) in pids 
     records = records.map (r) -> {uid: r.uid, sid: r.sid}
     if records.length > 0
       @app.get('channelService').pushMessageByUids(msg.route, msg, records, cb)

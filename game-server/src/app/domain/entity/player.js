@@ -1462,9 +1462,9 @@ var Player = (function(_super) {
         if (this.dailyGift.rmTimerCount <= 10) {
             consume = 20;
         } else if (this.dailyGift.rmTimerCount <= 20 && this.dailyGift.rmTimerCount > 10) {
-            consume = 30;
-        } else {
             consume = 50;
+        } else {
+            consume = 100;
         }
 
         return consume;

@@ -242,8 +242,6 @@ function queryPlayer() {
     var options = getPlayerQueryOptData();
     options.areaId = areaId;
 
-    console.log('query options', options);
-
     window.webAPI.getPlayerNames(options, function (data) {
         var text = '';
         for(var i in data) {
@@ -428,7 +426,6 @@ function doSubmit(areaId, playerNames, mail) {
             });
         } else { //指定玩家
             window.webAPI.getPlayerIdsByNames(areaId, playerNames, function (data){
-                console.log(data);
                 if (data.id) {
                     mail['playerIds'] = data.id;
                     dealAll(areaId, mail, function(err) {
@@ -642,7 +639,6 @@ $(document).ready(function() {
     $('#playerName').change(function(){
         var $this = $(this);
         var total = window.wsUtil.splitNoBlank($this.val(), PLAYER_NAME_SEPARATOR).length;
-        console.log('total', total);
         $this.closest('#playerBox').find('.totalPlayers').text(total);
     });
 

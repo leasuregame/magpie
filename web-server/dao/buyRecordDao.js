@@ -33,13 +33,10 @@ exports.getAllPlayerId = function(amount, payTime, areaId, cb) {
     var brSql = 'select playerId from buyRecord where ' + baseWhere + brPayTimeWhere +
         ' group by playerId having '+ baseWhere + brAmountWhere;
 
-    console.log('brSql', brSql);
-
     db(areaId).query(brSql, function (err, rows) {
         var brRows = rows ? rows : [];
         var tbSql = 'select playerId from tbOrder where ' + baseWhere + tbPayTimeWhere +
             ' group by playerId having '+ baseWhere + tbAmountWhere;
-        console.log('tbSql', tbSql);
         db(areaId).query(tbSql, function (err, rows) {
             cb(err, rows.concat(brRows));
         });

@@ -150,7 +150,7 @@ function showModal(msg) {
     // 生成奖励文本
     var rewardDom = '';
     $.each(msg.options.rewards, function (key, val) {
-        if(key == 'cards') {
+        if(key == 'cardArray') {
             rewardDom += '<br>卡牌 : ' + val.length + '张<br>';
             $.each(val, function (idx, val) {
                 var card = cards[val.tableId + ""];
@@ -207,7 +207,7 @@ function getRewardOptData() {
         }
     });
     if(cards.length > 0) {
-        data['cards'] = cards;
+        data['cardArray'] = cards;
     }
 
     return data;

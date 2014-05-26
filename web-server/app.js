@@ -80,6 +80,9 @@ app.get('/api/:platform/version', version.version);
 app.get('/api/:platform/update', version.update);
 app.get('/api/:platform/update/:version', version.update);
 
+app.get('/api/actor-cards', gameData.getActorCards);
+app.get('/api/card-lv', gameData.getCardLvLimit);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

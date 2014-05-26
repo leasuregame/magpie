@@ -113,10 +113,11 @@ CREATE TABLE IF NOT EXISTS `message` (
   `sender` BIGINT(20),
   `receiver` BIGINT(20),
   `type` SMALLINT(2) UNSIGNED DEFAULT '0',
-  `options` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
+  `options` VARCHAR(1024) COLLATE utf8_unicode_ci DEFAULT '',
   `content` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
   `status` SMALLINT(2) UNSIGNED DEFAULT '0',
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `validDate` DATETIME,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

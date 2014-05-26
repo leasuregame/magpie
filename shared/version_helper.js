@@ -127,7 +127,7 @@ var getLastVersion = function(platform) {
 var updateVersions = function(data) {
   jdata = versionData();
 
-  var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion'];
+  var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion', 'forceUpdateVersion'];
   console.log(jdata, data);
   var platform;
   for (platform in jdata) {

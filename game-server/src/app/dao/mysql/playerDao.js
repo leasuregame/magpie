@@ -335,6 +335,22 @@ var PlayerDao = (function(_super) {
         });
     };
 
+    PlayerDao.getCount = function(ids, cb) {
+        var sql = 'select count(id) as num from player where id in (' + ids.toString() + ');';
+        dbClient.query(sql, [], function(err, res) {
+            if (err) {
+                logger.error('[SQL OERROR, when fetch player by random]');
+                logger.error(err.stack);
+            }
+
+            if ( !! res && res.length > 0) {
+                return cb(null, res[0].num);
+            } else {
+                return cb(null, 0);
+            }
+        });
+    };
+
     return PlayerDao;
 })(DaoBase);
 

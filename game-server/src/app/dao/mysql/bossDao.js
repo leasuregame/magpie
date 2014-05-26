@@ -39,7 +39,7 @@ var BossDao = (function(_super) {
     });
 
     if (!!friendIds && friendIds.length > 0) {
-      sql += ' or ' + sprintf('(playerId in (%(friendIds)s) and status in (2,4) and createTime + 50400000 >  %(now)s)', { 
+      sql += ' or ' + sprintf('(playerId in (%(friendIds)s) and (status = 2 or (status = 4 and atkCount > 0)) and createTime + 50400000 >  %(now)s)', { 
             now: now.toString(), 
             friendIds: friendIds.toString() 
       });

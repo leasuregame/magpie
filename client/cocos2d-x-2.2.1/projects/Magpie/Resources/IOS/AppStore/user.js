@@ -99,16 +99,17 @@ var User = Entity.extend({
             version = cc.AssetsManager.getInstance().getVersion();
         }
 
-        var curVersion = "1.4.2";
+        var appVersion = lz.platformConfig.VERSION;
         if (typeof(cc.Application.getInstance().getAppVersion) != "undefined") {
-            curVersion = cc.Application.getInstance().getAppVersion();
+            appVersion = cc.Application.getInstance().getAppVersion();
         }
 
 
         cc.log("=================================================");
         cc.log(version);
-        cc.log(curVersion);
+        cc.log(appVersion);
         cc.log("=================================================");
+
 
         var that = this;
         lz.server.connectGameServer(function () {
@@ -117,7 +118,7 @@ var User = Entity.extend({
                 password: that._password,
                 areaId: that._area,
                 version: version,
-                curVersion: curVersion
+                appVersion: appVersion
             }, function (data) {
                 cc.log(data);
 

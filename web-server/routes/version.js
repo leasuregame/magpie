@@ -38,7 +38,7 @@ exports.update = function(req, res) {
   }
 
   var filename = vData[platform].filename;
-  if (helper.versionCompare(ver, lastVersion)) {
+  if (helper.versionCompare(ver, lastVersion)<0) {
     filename = vData[platform].lastFilename;
   }
 

@@ -7,67 +7,14 @@ block head
     script.
         require('boot');
     style.
-        .no-pad-left {padding-left:0px;}
-        .no-pad-right {padding-right:0px;}
         .no-margin {margin:0;}
         .no-mar-bottom {margin-bottom:0;}
-        .center {text-align: center;}
 
 block content
     h1.text-center 奖励发放
     hr
     div.form-horizontal(role='form', action='#')
-        div(id='queryPlayerBox')
-            div.form-group
-                label.col-sm-3.control-label (切换服务器将清空玩家) 服务器
-                div.col-sm-7
-                    select.form-control(type='text', id="area" name='area' required)
-            div.form-group
-                div.paramSet(name='lv')
-                    label.col-sm-3.control-label 玩家等级
-                    div.col-sm-1.no-pad-right
-                        input.form-control.low(name='lvLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-1.no-pad-left
-                        input.form-control.up(name='lvUp')
-                div.paramSet(name='vip')
-                    label.col-sm-1.control-label VIP
-                    div.col-sm-1.no-pad-right
-                        input.form-control.low(name='vipLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-1.no-pad-left
-                        input.form-control.up(name='vipUp')
-            div.form-group
-                div.paramSet(name='payTime')
-                    label.col-sm-3.control-label 充值时间
-                    div.col-sm-3
-                        input.form-control.low(type='date' name='ptLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-3
-                        input.form-control.up(type='date' name='ptUp')
-            div.form-group
-                div.paramSet(name='amount')
-                    label.col-sm-3.control-label 充值额度
-                    div.col-sm-1.no-pad-right
-                        input.form-control.low(name='pmLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-1.no-pad-left
-                        input.form-control.up(name='pmUp')
-                div.col-sm-4.center
-                    button.btn.btn-primary(id='btnFindPlayer') 查询玩家
-            div(id='playerBox')
-                div.form-group
-                    label.col-sm-3.control-label 玩家
-                    div.col-sm-7.form-control-static 符合人数&nbsp;:&nbsp;
-                        span.totalPlayers 0
-                div.form-group
-                    label.col-sm-3.control-label
-                    div.col-sm-7
-                        textarea.form-control(type='text', id='playerName' name='playerName')
+        include ./queryPlayerBox
         hr
         div.form-group
             label.col-sm-3.control-label 有效期限
@@ -236,3 +183,4 @@ block content
                 input.form-control.cardReward.cQty(name='qty')
     script(type='text/javascript', src='/js/webServerHandle.js')
     script(type='text/javascript', src='/js/reward.js')
+    script(type='text/javascript', src='/js/queryPlayer.js')

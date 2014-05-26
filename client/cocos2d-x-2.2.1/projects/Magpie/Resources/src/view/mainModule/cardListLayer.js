@@ -987,7 +987,7 @@ var CardListLayer = cc.Layer.extend({
         var isShowTip = false;
         for (var i = 0; i < len; ++i) {
             var star = selectCardList[i].get("star");
-            if (star == 4 || star == 5) {
+            if (star >= 4) {
                 isShowTip = true;
             }
             cardIdList.push(selectCardList[i].get("id"));

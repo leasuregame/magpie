@@ -1,3 +1,4 @@
+_ = require 'underscore'
 Code = require '../../../shared/code'
 CHANNEL_NAME = 'MESSAGE'
 
@@ -36,6 +37,17 @@ class Service
       return cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
 
     @app.get('channelService').pushMessageByUids(msg.route, msg, [{uid: record.uid, sid: record.sid}], cb)
+
+  pushByPids: (pids, msg, cb) ->
+    pids = [pids] if not _.isArray(pids)
+
+    records = []
+    records.push v for k, v of @pidMap when parseInt(k) in pids 
+    records = records.map (r) -> {uid: r.uid, sid: r.sid}
+    if records.length > 0
+      @app.get('channelService').pushMessageByUids(msg.route, msg, records, cb)
+    else
+      cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
 
   pushMessage: (msg, cb) ->
     channel = @app.get('channelService').getChannel(CHANNEL_NAME)

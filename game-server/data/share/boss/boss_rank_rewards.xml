@@ -1,3 +1,129 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0"?>
 <?mso-application progid="Excel.Sheet"?>
-<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><DocumentProperties xmlns="urn:schemas-microsoft-com:office:office"><Author>arthur wu</Author><LastAuthor>arthur wu</LastAuthor><Created>2014-03-26T17:13:26</Created><Company>le zhi of zhuhai</Company></DocumentProperties><CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office"><KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer></CustomDocumentProperties><ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel"><WindowWidth>28800</WindowWidth><WindowHeight>11880</WindowHeight><ProtectStructure>False</ProtectStructure><ProtectWindows>False</ProtectWindows></ExcelWorkbook><Styles><Style ss:ID="s5" ss:Name="货币[0]"><NumberFormat ss:Format="_ &quot;￥&quot;* #,##0_ ;_ &quot;￥&quot;* \-#,##0_ ;_ &quot;￥&quot;* &quot;-&quot;_ ;_ @_ "/></Style><Style ss:ID="s4" ss:Name="百分比"><NumberFormat ss:Format="0%"/></Style><Style ss:ID="s3" ss:Name="千位分隔[0]"><NumberFormat ss:Format="_ * #,##0_ ;_ * \-#,##0_ ;_ * &quot;-&quot;_ ;_ @_ "/></Style><Style ss:ID="s2" ss:Name="货币"><NumberFormat ss:Format="_ &quot;￥&quot;* #,##0.00_ ;_ &quot;￥&quot;* \-#,##0.00_ ;_ &quot;￥&quot;* &quot;-&quot;??_ ;_ @_ "/></Style><Style ss:ID="s1" ss:Name="千位分隔"><NumberFormat ss:Format="_ * #,##0.00_ ;_ * \-#,##0.00_ ;_ * &quot;-&quot;??_ ;_ @_ "/></Style><Style ss:ID="Default" ss:Name="Normal"><Alignment ss:Vertical="Bottom"/><Borders/><Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/><Interior/><NumberFormat/><Protection/></Style><Style ss:ID="s6"><Alignment ss:Vertical="Bottom"/><Borders/><Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/><Interior/><NumberFormat/><Protection/></Style></Styles><Worksheet ss:Name="伤害排行榜奖励配置表"><Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="8" x:FullColumns="1" x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19"><Row><Cell><Data ss:Type="String">排名</Data></Cell><Cell><Data ss:Type="String">荣誉点</Data></Cell><Cell><Data ss:Type="String">仙币</Data></Cell><Cell><Data ss:Type="String">活力值</Data></Cell></Row><Row><Cell><Data ss:Type="String">id</Data></Cell><Cell><Data ss:Type="String">honor</Data></Cell><Cell><Data ss:Type="String">money</Data></Cell><Cell><Data ss:Type="String">energy</Data></Cell></Row><Row><Cell><Data ss:Type="Number">1</Data></Cell><Cell><Data ss:Type="Number">12000</Data></Cell><Cell><Data ss:Type="Number">500000</Data></Cell><Cell><Data ss:Type="Number">8000</Data></Cell></Row><Row><Cell><Data ss:Type="Number">2</Data></Cell><Cell ss:Formula="=R[-1]C-1200"><Data ss:Type="Number">10800</Data></Cell><Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">450000</Data></Cell><Cell><Data ss:Type="Number">7000</Data></Cell></Row><Row><Cell><Data ss:Type="Number">3</Data></Cell><Cell ss:Formula="=R[-1]C-1200"><Data ss:Type="Number">9600</Data></Cell><Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">400000</Data></Cell><Cell><Data ss:Type="Number">6000</Data></Cell></Row><Row><Cell><Data ss:Type="Number">4</Data></Cell><Cell ss:Formula="=R[-1]C-1200"><Data ss:Type="Number">8400</Data></Cell><Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">350000</Data></Cell><Cell><Data ss:Type="Number">5000</Data></Cell></Row><Row><Cell><Data ss:Type="Number">5</Data></Cell><Cell ss:Formula="=R[-1]C-1200"><Data ss:Type="Number">7200</Data></Cell><Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">300000</Data></Cell><Cell><Data ss:Type="Number">4000</Data></Cell></Row><Row><Cell><Data ss:Type="Number">6</Data></Cell><Cell><Data ss:Type="Number">5000</Data></Cell></Row></Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><PageSetup><Header x:Margin="0.511805555555556"/><Footer x:Margin="0.511805555555556"/></PageSetup><Selected/><TopRowVisible>0</TopRowVisible><LeftColumnVisible>0</LeftColumnVisible><Panes><Pane><Number>3</Number><ActiveRow>5</ActiveRow><ActiveCol>3</ActiveCol><RangeSelection>R6C4</RangeSelection></Pane></Panes><ProtectObjects>False</ProtectObjects><ProtectScenarios>False</ProtectScenarios></WorksheetOptions></Worksheet><Worksheet ss:Name="export"><Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1" x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19"><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="172"/><Column ss:StyleID="Default" ss:AutoFitWidth="0" ss:Width="140"/><Row><Cell><Data ss:Type="String">sheet_name</Data></Cell><Cell><Data ss:Type="String">export_name</Data></Cell></Row><Row><Cell><Data ss:Type="String">伤害排行榜奖励配置表</Data></Cell><Cell><Data ss:Type="String">boss_rank_reward</Data></Cell></Row></Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><PageSetup><Header x:Margin="0.511805555555556"/><Footer x:Margin="0.511805555555556"/></PageSetup><TopRowVisible>0</TopRowVisible><LeftColumnVisible>0</LeftColumnVisible><Panes><Pane><Number>3</Number><ActiveRow>2</ActiveRow><ActiveCol>1</ActiveCol><RangeSelection>R3C2</RangeSelection></Pane></Panes><ProtectObjects>False</ProtectObjects><ProtectScenarios>False</ProtectScenarios></WorksheetOptions></Worksheet></Workbook>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>arthur wu</Author>
+  <LastAuthor>arthur wu</LastAuthor>
+  <Created>2014-03-26T17:13:26Z</Created>
+  <Company>le zhi of zhuhai</Company>
+  <Version>12.00</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer>
+ </CustomDocumentProperties>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11880</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>120</WindowTopX>
+  <WindowTopY>135</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="伤害排行榜奖励配置表">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">排名</Data></Cell>
+    <Cell><Data ss:Type="String">荣誉点</Data></Cell>
+    <Cell><Data ss:Type="String">仙币</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">honor</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">18000</Data></Cell>
+    <Cell><Data ss:Type="Number">500000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-2000"><Data ss:Type="Number">16000</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">450000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-2000"><Data ss:Type="Number">14000</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">400000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-2000"><Data ss:Type="Number">12000</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">350000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-2000"><Data ss:Type="Number">10000</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-50000"><Data ss:Type="Number">300000</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:Formula="=R[-1]C-2000"><Data ss:Type="Number">8000</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="export">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:AutoFitWidth="0" ss:Width="171.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="140.25"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell><Data ss:Type="String">export_name</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">伤害排行榜奖励配置表</Data></Cell>
+    <Cell><Data ss:Type="String">boss_rank_reward</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

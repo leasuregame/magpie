@@ -57,6 +57,11 @@ var giftBagGoods = {
         name: "cardArray"
     },
 
+    spirit: {
+        name: "灵气", 
+        url: "icon111"
+    },
+
     honor: {
         name: "荣誉",
         url: "icon410"

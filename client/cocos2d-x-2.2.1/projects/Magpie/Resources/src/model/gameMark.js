@@ -63,7 +63,7 @@ var gameMark = {
         if (!this._activity) {
             this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
                 this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() ||
-                this.getNewAreaReward() || this.getGrowthPlan() || this.getVipDailyReward();
+                this.getNewAreaRewardMark() || this.getGrowthPlanMark() || this.getVipDailyRewardMark();
         }
 
         return this._activity;
@@ -490,8 +490,8 @@ var gameMark = {
         MainScene.getInstance().updateMark();
     },
 
-    getNewAreaReward: function () {
-        cc.log("gameMark getNewAreaReward");
+    getNewAreaRewardMark: function () {
+        cc.log("gameMark getNewAreaRewardMark");
 
         if (!this._newAreaReward) {
             for (var i = 1; i <= 30; i++) {
@@ -505,16 +505,16 @@ var gameMark = {
         return this._newAreaReward;
     },
 
-    updateNewAreaReward: function (mark) {
-        cc.log("gameMark updateNewAreaReward");
+    updateNewAreaRewardMark: function (mark) {
+        cc.log("gameMark updateNewAreaRewardMark");
 
         this._newAreaReward = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
-    getGrowthPlan: function () {
-        cc.log("gameMark getGrowthPlan");
+    getGrowthPlanMark: function () {
+        cc.log("gameMark getGrowthPlanMark");
 
         if (!this._growthPlan) {
             var activity = gameData.activity;
@@ -534,16 +534,16 @@ var gameMark = {
         return this._growthPlan;
     },
 
-    updateGrowPlan: function (mark) {
-        cc.log("gameMark updateGrowthPlan");
+    updateGrowPlanMark: function (mark) {
+        cc.log("gameMark updateGrowPlanMark");
 
         this._growthPlan = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
-    getVipDailyReward: function() {
-        cc.log("gameMark getVipDailyReward");
+    getVipDailyRewardMark: function() {
+        cc.log("gameMark getVipDailyRewardMark");
 
         if(!this._vipDailyReward) {
             if(gameData.player.get("vip") > 0 && gameData.activity.get("vipLoginReward")) {
@@ -554,8 +554,8 @@ var gameMark = {
         return this._vipDailyReward;
     },
 
-    updateVipDailyReward: function(mark) {
-        cc.log("gameMark updateVipDailyReward");
+    updateVipDailyRewardMark: function(mark) {
+        cc.log("gameMark updateVipDailyRewardMark");
 
         this._vipDailyReward = mark;
         this.updateActivityMark(mark);

@@ -202,7 +202,7 @@ checkVersion = (app, msg, platform, cb) ->
   if not vData
     return cb({501, msg: "找不到#{platform}的版本信息"})
 
-  if msg.curVersion? and versionCompare(msg.curVersion, vData.forceUpdateVersion) < 0
+  if msg.appVersion? and versionCompare(msg.appVersion, vData.forceUpdateVersion) < 0
     cb({code: 501, msg: '版本过低，请到发行商更新游戏'})
 
   if versionCompare(version, vData.version) >= 0

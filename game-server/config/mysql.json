@@ -17,14 +17,14 @@
 		"userdb": {
 			"host": "127.0.0.1",
 			"port": "3306",
-			"database": "userdb1",
+			"database": "userdb",
 			"user": "dev",
 			"password": "1"
 		},
 		"sharedb": {
 			"host": "127.0.0.1",
 			"port": "3306",
-			"database": "sharedb1",
+			"database": "sharedb",
 			"user": "dev",
 			"password": "1"
 		}
@@ -32,32 +32,32 @@
 
 	"production": {
 		"1": {
-			"host": "127.0.0.1",
-			"port": "6033",
-			"database": "magpie_area_1",
-			"user": "dev",
-			"password": "1"
+			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
+			"port": "3306",
+			"database": "tb_db_area_1",
+			"user": "tb_leasuregame",
+			"password": "leasure405GAME"
 		},
 		"2": {
-			"host": "127.0.0.1",
-			"port": "6033",
-			"database": "magpie_area_2",
-			"user": "dev",
-			"password": "1"
+			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
+			"port": "3306",
+			"database": "tb_db_area_2",
+			"user": "tb_leasuregame",
+			"password": "leasure405GAME"
 		},
 		"userdb": {
-			"host": "127.0.0.1",
-			"port": "6033",
-			"database": "userdb",
-			"user": "dev",
-			"password": "1"
+			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
+			"port": "3306",
+			"database": "tb_db_userdb",
+			"user": "tb_leasuregame",
+			"password": "leasure405GAME"
 		},
 		"sharedb": {
-			"host": "127.0.0.1",
-			"port": "6033",
-			"database": "sharedb",
-			"user": "dev",
-			"password": "1"
+			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
+			"port": "3306",
+			"database": "tb_db_sharedb",
+			"user": "tb_leasuregame",
+			"password": "leasure405GAME"
 		}
 	}
 }

@@ -341,13 +341,22 @@ describe("Area Server", function() {
             doAjax('/create/boss', {
               playerId: 1,
               tableId: 1,
+              status: 4,
+              createTime: bossCreateTime
+            }, function(res) {
+              
+            });
+
+            doAjax('/create/boss', {
+              playerId: 1,
+              tableId: 1,
               createTime: bossCreateTime
             }, function(res) {
               loginWith('arthur', '1', 1);
             });
           });
 
-          it('返回正确的列表', function() {
+          it('返回空列表', function() {
             request('area.bossHandler.bossList', {}, function(data) {
               expect(data.code).toEqual(200);
               expect(data.msg).toEqual([]);              

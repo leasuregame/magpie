@@ -120,7 +120,6 @@ var GoldRewardLayer = cc.Layer.extend({
             energyText.setColor(cc.c3b(97, 11, 9));
             scrollViewLayer.addChild(energyText);
 
-
             var type = gameData.activity.getStateById(TYPE_GOLD_REWARD, goldRewards[i].id);
             var btnGetReward = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,

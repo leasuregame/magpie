@@ -487,10 +487,10 @@ Handler::starUpgrade = (msg, session, next) ->
       addRate = card_count * starUpgradeData.rate_per_card
       totalRate = _.min([addRate + rate, 100])
       
+      if card.star >= 4
+        totalRate = table.getTableItem('star_upgrade_rate', totalRate)?.rate or totalRate
+
       is_upgrade = !!utility.hitRate(totalRate)
-      # if card.star >= 4 
-      #   useCardCount = player.useCardCount['star'+card.star] or 0
-      #   is_upgrade = false if (useCardCount+card_count) <= (starUpgradeData.no_work_count or 0)
       
       player.decrease('money', money_consume)
       player.decrease('superHonor', starUpgradeData.super_honor) if starUpgradeData.super_honor > 0
@@ -522,6 +522,9 @@ Handler::starUpgrade = (msg, session, next) ->
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
+
+        # 重新添加卡牌，为了计算一次图鉴
+        player.addCard(card)
         cb null
       else
         player.incInitRate(card.star, parseInt addRate*0.5)

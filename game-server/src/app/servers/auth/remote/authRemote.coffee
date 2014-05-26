@@ -59,7 +59,6 @@ class Authorize
       if password isnt user.password
         return cb({code: 501, msg: '密码不正确'})
 
-      
       checkDuplicatedLogin areaId, frontendId, user, sid, (err, user)->
         if checkWhiteList(user)
           cb(null, user.toJson())

@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('./db/db');
 var async = require('async');
 
 exports.getRecords = function(scope, areaId, cb) {

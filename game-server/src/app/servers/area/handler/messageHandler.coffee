@@ -6,7 +6,9 @@ async = require 'async'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 utility = require '../../../common/utility'
+eUtil = require '../../../util/entityUtil'
 table = require '../../../manager/table'
+
 
 resData = table.getTableItem('resource_limit', 1)
 MAX_POWER_VALUE = resData.power_value
@@ -23,6 +25,7 @@ Handler = (@app) ->
 Handler::messageList = (msg, session, next) ->
   playerId = session.get('playerId')
 
+  today = utility.dateFormat new Date(), 'yyyy-MM-dd'
   async.parallel [
     (cb) ->
       dao.message.fetchMany {
@@ -33,6 +36,7 @@ Handler::messageList = (msg, session, next) ->
           receiver: -1
           type: configData.message.MESSAGETYPE.SYSTEM
           msgId: null
+          validDate__date_ge: today # 小于等于
         }
       }, cb
 
@@ -48,9 +52,10 @@ Handler::messageList = (msg, session, next) ->
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and 
-          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.ADDFRIEND}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
-          status <> #{configData.message.MESSAGESTATUS.ASKING} "
+        where: " receiver = #{playerId} and (
+          (type = #{configData.message.MESSAGETYPE.SYSTEM} and DATE(validDate) >= '#{today}') or 
+          (type = #{configData.message.MESSAGETYPE.MESSAGE})
+        )"
         orderby: ' createTime DESC '
       }, cb
 
@@ -74,54 +79,103 @@ Handler::messageList = (msg, session, next) ->
     unhandledMessage = results[3]
 
     messages = mergeMessages(friendMessages, systemMessages, blMessages, unhandledMessage)
-    messages = messages.map (m) -> 
-      if m.type is configData.message.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
+    messages = messages.map (m) -> m.toJson?()
     messages = _.groupBy messages, (item) -> item.type
     msgs = changeGroupNameAndSort(messages)
     next(null, {code: 200, msg: msgs})
 
 Handler::sysMsg = (msg, session, next) ->
   content = msg.content
-  options = msg.options or {}
-  receiver = msg.playerId or SYSTEM
+  options = msg.options
+  validDate = msg.validDate
+
+  if msg.playerIds?
+    if not _.isArray(msg.playerIds)
+      ids = [msg.playerIds] 
+    else
+      ids = msg.playerIds 
+    receiver = ids
+  else
+    receiver = [SYSTEM]
 
   async.waterfall [
     (cb) ->
-      if receiver isnt SYSTEM
-        playerManager.getPlayerInfo pid: receiver, (err, res) ->
+      checkSystemOptions(options, cb)
+    (cb) ->
+      if not _.isEqual(receiver, [SYSTEM])
+        dao.player.getCount receiver, (err, count) ->
           if err
-            return cb({code: 501, msg: '找不到指定玩家'})
+            return cb({code: 500, msg: err})
           else
-            cb()
+            if count is receiver.length
+              cb()
+            else 
+              return cb({code: 501, msg: '找不到部分玩家'})
       else 
         cb()
     (cb) ->
-      dao.message.create data: {
-        options: options
-        sender: SYSTEM
-        receiver: receiver
-        content: content
-        type: configData.message.MESSAGETYPE.SYSTEM
-        status: configData.message.MESSAGESTATUS.UNHANDLED
-      }, cb
-  ], (err, res) =>
+      async.map receiver, (rcv, done) ->
+        dao.message.create data: {
+          options: options
+          sender: SYSTEM
+          receiver: rcv
+          content: content
+          type: configData.message.MESSAGETYPE.SYSTEM
+          status: configData.message.MESSAGESTATUS.UNHANDLED
+          validDate: validDate
+        }, done
+      , cb
+  ], (err, msgs) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sendMessage @app, msg.playerId, {
+    sendMessage @app, (if _.isEqual(receiver, [SYSTEM]) then null else receiver), {
       route: 'onMessage'
-      msg: res.toJson()
-    }, '邮件发送成功', next
+      msg: msgs[0].toJson()
+    }, '邮件发送成功', (err, data) ->
+      next(err, data)
+
+checkSystemOptions = (options, cb) ->
+  isObject = _.isObject(options)
+  hasRightProperties = _.has(options, 'title') and _.has(options, 'sender') and _.has(options, 'rewards')
+  isAcceptLength = JSON.stringify(options).length <= 1024 if isObject
+
+  rewardTypes = ['gold', 'money', 'spirit', 'skillPoint', 'energy',
+    'fragments', 'elixir', 'superHonor', 'powerValue', 'cardArray'
+    'speaker', 'honor']
+  wrongKeys = _.keys(options.rewards).filter (k) -> k not in rewardTypes
+  hasRightRewards = wrongKeys.length == 0 if isObject and hasRightProperties
+  
+  if isObject and hasRightProperties and hasRightRewards and isAcceptLength
+    cb()
+  else 
+    cb({code: 501, msg: '消息奖励内容格式不正确'})
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
-  player = null
-  incValues = (obj, data) ->
+  
+  incValues = (obj, options, done) ->
+    return done(null, {}) if not options.rewards or _.isEmpty(options.rewards)
+
+    data = options.rewards
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')
+    # todo add exp card with entityUtil
+    if _.has(data, 'cardArray') and data.cardArray.length > 0
+      data.cardArray.forEach (c) -> c.playerId = obj.id
+      eUtil.createCards data.cardArray, (err, cards) ->
+        if err
+          done(err)
+        else
+          obj.addCards cards
+          data.cardArray = cards.map (c) -> c.toJson()
+          done(null, data)
+    else
+      done(null, data)
 
+  player = null
   async.waterfall [
     (cb)->
       dao.message.fetchOne where: id: msgId, (err, message) ->
@@ -164,6 +218,7 @@ Handler::handleSysMsg = (msg, session, next) ->
         data.status = configData.message.MESSAGESTATUS.HANDLED
         data.msgId = message.id
         data.receiver = playerId
+        data.validDate = utility.dateFormat(data.validDate, 'yyyy-MM-dd hh:mm:ss')
 
         dao.message.create {
           data:data
@@ -171,14 +226,22 @@ Handler::handleSysMsg = (msg, session, next) ->
           cb(err, res.options)
 
     (options, cb) ->
-      incValues(player, options)
-      player.save()
-      cb(null, options)
+      incValues(player, options, cb)
 
+    (data, cb) ->
+      if _.isArray(data.cardArray) and data.cardArray.length > 0
+        data.cardArray.forEach (c) ->
+          star = c.tableId%20 || 20
+          achieve.star5card(player) if star is 5
+          achieve.star6card(player) if star is 6
+          achieve.star7card(player) if star is 7
+
+      cb(null, data)
   ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})
 
+    player.save()
     next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->
@@ -318,6 +381,7 @@ Handler::addFriend = (msg, session, next) ->
         dao.message.create data: {
           type: configData.message.MESSAGETYPE.ADDFRIEND
           sender: playerId
+          options: {playerName: playerName}
           receiver: friend.id
           content: "#{playerName}发来请求"
           status: configData.message.MESSAGESTATUS.ASKING
@@ -647,6 +711,6 @@ sendMessage = (app, target, msg, data, next) ->
     next(null, {code: code, msg: data if data}) if next?
 
   if target?
-    app.get('messageService').pushByPid target, msg, callback
+    app.get('messageService').pushByPids target, msg, callback
   else 
     app.get('messageService').pushMessage msg, callback

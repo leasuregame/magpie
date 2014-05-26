@@ -154,7 +154,7 @@ Handler::challenge = (msg, session, next) ->
         firstTime: firstTime if firstTime
       }})
 
-      saveBattleLog(bl, playerName)
+      saveBattleLog(bl, playerName, ranking, target.rank.ranking)
 
 Handler::fight = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -322,12 +322,11 @@ rewardOfRank = (rank) ->
   if row
     row
   else 
-    money50 = table.getTableItem('elixir_ranking_reward', 50)?.money or 330500
-    gap = table.getTableItem('values', 'elixirOfRankMoneyGap')?.value or 0
-    money = parseInt (money50-gap)*(1-Math.ceil((rank-50)/20)*0.003)
-    if money < 50000
-      money = 50000
-    money: money
+    elixir51 = table.getTableItem('elixir_ranking_reward', 51)?.elixir
+    elixir = parseInt elixir51*(1-Math.ceil((rank-51)/20)*0.003)
+    if elixir < 5000
+      elixir = 5000
+    elixir: elixir
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0
@@ -383,11 +382,12 @@ filterPlayersInfo = (players, ranks, rankings) ->
       type: rankings[ranks[p.id]]
     }
     
-saveBattleLog = (bl, playerName) ->
+saveBattleLog = (bl, playerName, oldRank, curRank) ->
   playerId = bl.ownId
   targetId = bl.enemyId
 
-  if bl.winner is 'own'
+  isWin = bl.winner is 'own'
+  if isWin
     result = '你输了'
   else
     result = '你赢了'
@@ -407,7 +407,13 @@ saveBattleLog = (bl, playerName) ->
       content: "#{playerName}挑战了你，" + result 
       type: configData.message.MESSAGETYPE.BATTLENOTICE
       status: configData.message.MESSAGESTATUS.NOTICE
-      options: {battleLogId: res.id}
+      options: {
+        battleLogId: res.id
+        isWin: !isWin
+        oldRank: oldRank
+        curRank: curRank
+        defier: playerName
+      }
     }, (err, message) ->
       if err
         logger.error '[fail to create message]' + err

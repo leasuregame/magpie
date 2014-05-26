@@ -260,6 +260,39 @@ var Message = Entity.extend({
         }
     },
 
+    handleSysMsg: function (msgId) {
+        cc.log("Message handleSysMsg: " + msgId);
+
+        var len = this._systemMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._systemMessage[i].id == msgId) {
+                message = this._systemMessage[i];
+                break;
+            }
+        }
+
+        if (message) {
+            message.status = HANDLED_STATUS;
+
+            lz.server.request("area.messageHandler.handleSysMsg", {
+                msgId: msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+                if (data.code == 200) {
+                    cc.log("handleSysMsg success");
+                } else {
+                    cc.log("receive fail");
+                    TipLayer.tip(data.msg);
+                }
+            }, true);
+        } else {
+            TipLayer.tip("找不到这个消息");
+        }
+
+    },
+
     playback: function (id) {
         cc.log("Message playback");
 

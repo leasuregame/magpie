@@ -135,7 +135,7 @@ var SystemMessageLabel = LazyLayer.extend({
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon21,
-            this._onClickOK,
+            this._onClickOK(message),
             this
         );
         OKItem.setPosition(cc.p(0, -315));
@@ -172,7 +172,7 @@ var SystemMessageLabel = LazyLayer.extend({
         return function () {
             cc.log("SystemMessageLabel _onClickGetReward: " + id);
 
-            if(that._cardsLen > 0) {
+            if (that._cardsLen > 0) {
                 if (gameData.cardList.isFull()) {
                     CardListFullTipLayer.pop();
                     return;
@@ -187,10 +187,19 @@ var SystemMessageLabel = LazyLayer.extend({
 
     },
 
-    _onClickOK: function () {
-        cc.log("SystemMessageLabel _onClickOK");
+    _onClickOK: function (message) {
+        var that = this;
 
-        this.removeFromParent();
+        return function () {
+            cc.log("SystemMessageLabel _onClickOK: " + message);
+
+            if (message.status == UNHANDLED_STATUS) {
+                gameData.message.handleSysMsg(message.id);
+                that._cb();
+            }
+
+            that.removeFromParent();
+        }
     },
 
     _onClickClose: function () {

@@ -502,9 +502,9 @@ var Boss = Entity.extend({
         if (this._rmTimerCount <= 10) {
             needGold = 20;
         } else if (this._rmTimerCount <= 20) {
-            needGold = 30;
-        } else {
             needGold = 50;
+        } else {
+            needGold = 100;
         }
         return needGold;
     },

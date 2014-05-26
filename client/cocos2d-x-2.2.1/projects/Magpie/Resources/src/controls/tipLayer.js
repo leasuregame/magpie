@@ -116,6 +116,7 @@ var TipLayer = {
         });
         var cardItem = CardHeadNode.create(card);
         cardItem.setScale(0.5);
+        cardItem.setAnchorPoint(cc.p(0.5, 0.5));
         controller.ccbCardNode.addChild(cardItem);
 
         effect.setPosition(gameFit.GAME_MIDPOINT);

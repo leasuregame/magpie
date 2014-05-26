@@ -5,6 +5,7 @@
 var SystemMessageLabel = LazyLayer.extend({
 
     _cb: null,
+    _cardsLen: null,
 
     init: function (data) {
         cc.log("SystemMessageLabel init");
@@ -16,6 +17,7 @@ var SystemMessageLabel = LazyLayer.extend({
         }
 
         var message = data.message;
+        this._cardsLen = 0;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
@@ -91,8 +93,8 @@ var SystemMessageLabel = LazyLayer.extend({
         for (var key in rewards) {
             if (key == "cardArray") {
                 var cards = rewards[key];
-                var cardsLen = cards.length;
-                for (i = 0; i < cardsLen; i++) {
+                this._cardsLen = cards.length;
+                for (i = 0; i < this._cardsLen; i++) {
                     x = 25 + (index % 5 ) * 92;
                     y = 170 - parseInt(index / 5) * 100;
                     var card = Card.create(cards[i]);
@@ -169,6 +171,13 @@ var SystemMessageLabel = LazyLayer.extend({
 
         return function () {
             cc.log("SystemMessageLabel _onClickGetReward: " + id);
+
+            if(that._cardsLen > 0) {
+                if (gameData.cardList.isFull()) {
+                    CardListFullTipLayer.pop();
+                    return;
+                }
+            }
 
             gameData.message.receive(function () {
                 that.removeFromParent();

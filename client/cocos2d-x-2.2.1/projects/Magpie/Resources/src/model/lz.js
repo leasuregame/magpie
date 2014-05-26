@@ -389,6 +389,10 @@ lz.getRewardString = function (data) {
         for (var key in reward) {
             if (!reward[key]) continue;
 
+            if (key == "cardArray") {
+                continue;
+            }
+
             var fn = (function (key) {
                 return function () {
                     var str = lz.getGoodsNameByKey(key);
@@ -396,10 +400,7 @@ lz.getRewardString = function (data) {
                     if (str.icon) {
                         TipLayer.tipWithIcon(str.icon, " +" + reward[key], isDouble || false);
                     } else {
-                        if (key != "cardArray") {
-
-                            TipLayer.tipNoBg(str.name + ": +" + reward[key]);
-                        }
+                        TipLayer.tipNoBg(str.name + ": +" + reward[key]);
                     }
                 }
             })(key);

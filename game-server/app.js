@@ -121,7 +121,7 @@ app.configure('production|development', 'area', function() {
   var dao_share = require('./app/dao').init('mysql', 'share');
   app.set('dao_share', dao_share);
 
-  app.set('useSanbox', false);
+  app.set('useSanbox', true);
 
   app.load(counter);
   app.load(verifier);

@@ -23,20 +23,20 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci, -- 每日奖励
-  `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
-  `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
-  `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
+  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci, 
+  `fragments` INT(5) UNSIGNED DEFAULT '0', 
+  `energy` INT(10) UNSIGNED DEFAULT '0',  
+  `elixir` INT(10) UNSIGNED DEFAULT '0', 
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',
   `achievement` TEXT COLLATE utf8_unicode_ci,
   `cardBook` TEXT COLLATE utf8_unicode_ci,
-  `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',-- 好友上限
-  `rowFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 普通抽卡魂次数
-  `highFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡魂次数
-  `highDrawCardCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡次数
-  `cardsCount` SMALLINT(5) UNSIGNED DEFAULT '0', -- 卡牌数量上限
+  `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',
+  `rowFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',
+  `highFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',
+  `highDrawCardCount` SMALLINT(3) UNSIGNED DEFAULT '0',
+  `cardsCount` SMALLINT(5) UNSIGNED DEFAULT '0', 
   `resetDate` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `firstTime` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
@@ -53,11 +53,6 @@ CREATE TABLE IF NOT EXISTS `player` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- alter table player add column `honor` INT(10) DEFAULT '0';
--- alter table player add column `superHonor` INT(10) DEFAULT '0';
--- alter table player add column `kneelCount` INT(5) DEFAULT '0';
--- alter table player add column `cd` VARCHAR(100) DEFAULT '{}';
 
 -- ----------------------------
 -- Table structure for greeting
@@ -135,14 +130,14 @@ CREATE TABLE IF NOT EXISTS `card` (
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `skillLv` TINYINT(3) UNSIGNED DEFAULT '1',
   `factor` INT(5) UNSIGNED DEFAULT '0',
-  `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
-  `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
-  `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
+  `skillPoint` INT(10) UNSIGNED DEFAULT '0', 
+  `elixirHp` INT(10) UNSIGNED DEFAULT '0',  
+  `elixirAtk` INT(10) UNSIGNED DEFAULT '0', 
   `elixirHpCrit` INT(10) UNSIGNED DEFAULT '0',
   `elixirAtkCrit` INT(10) UNSIGNED DEFAULT '0',
   `passiveSkills` VARCHAR(2500) COLLATE utf8_unicode_ci DEFAULT '',
-  `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
-  `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量
+  `useCardsCounts` SMALLINT(2) DEFAULT '0', 
+  `psGroupCount` INT(2) DEFAULT '3', 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -168,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
-  `ranking` INT(10) UNSIGNED DEFAULT '0',   -- 排名
+  `ranking` INT(10) UNSIGNED DEFAULT '0',   
   `challengeCount` BIGINT(20) UNSIGNED DEFAULT '0',
   `startCount` BIGINT(20) UNSIGNED DEFAULT '0',
   `winCount` INT(10) UNSIGNED DEFAULT '0',
@@ -205,6 +200,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `receiptData` VARCHAR(5000) COLLATE utf8_unicode_ci,
+  `verifyResult` VARCHAR(TEXT),
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,

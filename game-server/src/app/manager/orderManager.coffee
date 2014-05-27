@@ -1,6 +1,6 @@
 dao = require('pomelo').app.get('dao');
-table = require '../../../manager/table'
-utility = require '../../../common/utility'
+table = require './table'
+utility = require '../common/utility'
 async = require 'async'
 _ = require 'underscore'
 
@@ -11,7 +11,8 @@ GOLDCARDMAP_REVERT =
 class Manager
   @checkReceiptIsVerify: (playerId, receipt, productId, cb) ->
     dao.buyRecord.fetchOne {where: {receiptData: receipt, playerId: playerId}}, (err, res) ->
-      if err and err.code is 404 return Manager.createBuyRecord(playerId, receipt, productId, cb)
+      if err and err.code is 404 
+        return Manager.createBuyRecord(playerId, receipt, productId, cb)
 
       if !!res and res.isVerify is 1
         return cb({code: 600, msg: '该凭证已经验证过了'})

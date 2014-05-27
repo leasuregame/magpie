@@ -10,7 +10,7 @@ var GoldCard = (function(_super) {
         GoldCard.__super__.constructor.apply(this, arguments);
     }
 
-    GoldCard.FIELDS = ['id', 'orderId', 'orderNo', 'playerId', 'type', 'flag', 'created', 'validDate', 'status'];
+    GoldCard.FIELDS = ['id', 'orderId', 'orderNo', 'playerId', 'type', 'flag', 'created', 'validDate', 'status', 'verifyResult'];
     GoldCard.DEFAULT_VALUES = {
         flag: 0,
         type: '',

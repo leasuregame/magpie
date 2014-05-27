@@ -1352,6 +1352,10 @@ var Player = (function(_super) {
         this.goldCards[gc.type] = gc;
     };
 
+    Player.prototype.removeGoldCard = function(gc) {
+        delete this.goldCards[gc.type];
+    };
+
     Player.prototype.addGoldCards = function(gcs) {
         for (var i = 0; i < gcs.length; i++) {
             this.addGoldCard(gcs[i]);

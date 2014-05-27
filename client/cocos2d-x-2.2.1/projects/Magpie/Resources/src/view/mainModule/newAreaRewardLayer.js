@@ -33,7 +33,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
         var activity = gameData.activity;
         var index = 0;
 
-        var currentId = -1;
+        var currentId;
 
         for (var id in table) {
             var y = scrollViewHeight - 153 - index * 153;
@@ -96,7 +96,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
             btnGetReward.setEnabled(state == NOT_GOT_REWARD);
             btnGetReward.setVisible(!(state == ALREADY_GOT_REWARD));
 
-            if (state == NOT_GOT_REWARD && currentId == -1) {
+            if (state == NOT_GOT_REWARD && currentId == undefined) {
                 currentId = index;
             }
 
@@ -125,15 +125,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
 
         this.addChild(scrollView);
 
-        var size = this._newAreaRewardLayerFit.scrollViewSize;
-        var offsetY;
-
-        if (currentId > 0) {
-            offsetY = -1 * (len - currentId) * 153 + size.height;
-            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
-        } else {
-            offsetY = scrollView.minContainerOffset().y;
-        }
+        var offsetY = Math.min(scrollView.minContainerOffset().y + 153 * (currentId || 0), 0);
 
         scrollView.setContentOffset(cc.p(0, offsetY));
 

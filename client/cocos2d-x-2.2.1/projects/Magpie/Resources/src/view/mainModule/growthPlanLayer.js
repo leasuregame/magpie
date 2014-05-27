@@ -119,7 +119,7 @@ var GrowthPlanLayer = cc.Layer.extend({
         var scrollViewHeight = len * 112;
 
         var lv = gameData.player.get("lv");
-        var currentId = -1;
+        var currentId;
 
         for (var id in rewards) {
             var y = scrollViewHeight - 112 * id;
@@ -176,7 +176,7 @@ var GrowthPlanLayer = cc.Layer.extend({
             rewardItem.setEnabled(lv >= reward.lv);
             rewardItem.setVisible(state != ALREADY_GOT_REWARD);
 
-            if(state == NOT_GOT_REWARD && currentId == -1) {
+            if(state == NOT_GOT_REWARD && currentId == undefined) {
                 currentId = id;
             }
 
@@ -200,16 +200,7 @@ var GrowthPlanLayer = cc.Layer.extend({
 
         scrollView.setContentSize(cc.size(600, scrollViewHeight));
 
-        var size = this._growthPlanLayerFit.scrollViewSize;
-        var offsetY;
-
-        if (currentId > 0) {
-            offsetY = -1 * (len - currentId + 1) * 112 + size.height;
-            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
-        } else {
-            offsetY = scrollView.minContainerOffset().y;
-        }
-
+        var offsetY = Math.min(scrollView.minContainerOffset().y + 122 * (currentId || 0), 0);
         scrollView.setContentOffset(cc.p(0, offsetY));
 
     },

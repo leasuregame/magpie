@@ -134,6 +134,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         var vipTable = outputTables.vip.rows;
         var vipPrivilegeLabel, vipPrivilegeIcon;
+        var index;
 
         for (var i = 0; i < len; ++i) {
 
@@ -144,6 +145,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
             var bgSpriteUrl = main_scene_image.icon169;
             if (vip == vipPrivilege.id) {
                 bgSpriteUrl = main_scene_image.icon168;
+                index = i;
             }
 
             var bgIcon = cc.Sprite.create(bgSpriteUrl);
@@ -254,16 +256,8 @@ var VipPrivilegeLayer = LazyLayer.extend({
         this.addChild(scrollView);
 
         scrollView.setContentSize(cc.size(500, scrollViewHeight));
-
-        var size = this._vipPrivilegeLayerFit.scrollViewSize;
-
-        if (vip > 0) {
-            offsetY = (vip - 1) * -440 + (size.height - 440);
-            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
-        } else {
-            offsetY = scrollView.minContainerOffset().y;
-        }
-
+        
+        offsetY = Math.min(scrollView.minContainerOffset().y + 440 * (index || 0), 0);
         scrollView.setContentOffset(cc.p(0, offsetY));
 
         return true;

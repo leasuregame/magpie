@@ -13,7 +13,7 @@
 
 
 var MAX_TREASURE_HUNT_COUNT = 20;
-var TREASURE_HUNT_BUFFER_LEN = 10;
+var TREASURE_HUNT_BUFFER_LEN = 6;
 var TREASURE_HUNT_ACCELERATION = (0.5 - 0.02) / TREASURE_HUNT_BUFFER_LEN;
 
 var TreasureHuntLayer = cc.Layer.extend({
@@ -206,7 +206,7 @@ var TreasureHuntLayer = cc.Layer.extend({
     },
 
     _getSlideCount: function (targetIndex) {
-        var count = MAX_TREASURE_HUNT_COUNT * 3;
+        var count = MAX_TREASURE_HUNT_COUNT * 2;
 
         if (targetIndex > this._index) {
             count += targetIndex - this._index;
@@ -223,7 +223,7 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._index = this._getRandomIndex();
         this._slideCount = this._getSlideCount(targetIndex);
         this._nowSlideNum = 0;
-        this._interval = 0.5;
+        this._interval = 0.02;
 
         cc.log(this._index);
         cc.log(targetIndex);
@@ -261,9 +261,9 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         this.schedule(this._playAStep, this._interval, 1);
 
-        if (this._nowSlideNum <= TREASURE_HUNT_BUFFER_LEN) {
-            this._interval -= TREASURE_HUNT_ACCELERATION;
-        }
+//        if (this._nowSlideNum <= TREASURE_HUNT_BUFFER_LEN) {
+//            this._interval -= TREASURE_HUNT_ACCELERATION;
+//        }
 
         if (this._nowSlideNum + TREASURE_HUNT_BUFFER_LEN + 1 >= this._slideCount) {
             this._interval += TREASURE_HUNT_ACCELERATION;

@@ -3,6 +3,7 @@ playerManager = require('pomelo').app.get('playerManager')
 table = require('../manager/table')
 configData = require '../../config/data'
 utility = require '../common/utility'
+job = require '../dao/job'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
@@ -12,7 +13,7 @@ MAX_PLAYER_LV = table.getTableItem('lv_limit', 1).player_lv_limit
 module.exports = 
   createCard: (data, done) ->
     unless data.star
-      data.star = data.tableId%5 or 5
+      data.star = cardStar(data.tableId)
 
     if data.star >= 3
       data.passiveSkills = initPassiveSkillGroup(data.star)
@@ -22,6 +23,28 @@ module.exports =
       if err
         return done(err)
       done(null, card)
+
+  ###
+  cards  a array contains one or more card's info
+  done   a callback execute after created all cards
+  ###
+  createCards: (cards, done) ->
+    cards = [cards] if not _.isArray(cards)
+
+    async.map cards, (card, doneEach) =>
+      qty = card.qty or 1
+      delete card.qty
+      async.times qty, (n, doneTimes) => 
+        @createCard card, doneTimes
+      , doneEach
+    , (err, res) ->
+      if err
+        done(err)
+      else 
+        items = res.reduce(
+          (x, y) -> x.concat(y)
+        , [])
+        done(err, items)
 
   resetSkillIncForCard: (card) ->
     genSkillInc(card) if card.star >= 3
@@ -105,16 +128,52 @@ module.exports =
       player.incSpirit(data.spirit)
     if typeof data.power != 'undefined' and data.power > 0
       player.addPower(data.power)
+      
     if typeof data.exp_card != 'undefined' and data.exp_card > 0
       playerManager.addExpCardFor player, data.exp_card, cb
-
-    if typeof data.card_id != 'undefined' and data.card_id > 0
+    else if typeof data.card_id != 'undefined' and data.card_id > 0
       this.createCard {
         playerId: player.id
         tableId: data.card_id
       }, (err, card) -> cb(null, [card])
     else 
       cb(null, [])
+
+  updateEntities: (group..., cb) ->
+    jobs = []
+    groups.forEach (group) ->
+      if _.isArray(group) and group.length >= 2
+        type = group[0]
+        tableName = group[1]
+        entities = group.slice(2)
+        entities.forEach (ent) -> 
+          action = type: type, options: {table: tableName}
+
+          switch type
+            when 'update' 
+              data = ent.getSaveData()
+              if not _.isEmpty(data)
+                action.options.where = id: ent.id
+                action.options.data = data
+            when 'delete'
+              if _.isArray(ent) and ent.length > 0
+                ids = ent.map (e) -> e.id or e
+                action.options.where = " id in (#{ids.toString()}) "
+              else if _.has(ent, 'id')
+                action.options.where = id: ent.id
+              else if _.isString(ent)
+                action.options.where = ent
+              else
+                action.options.where = ''
+            when 'insert'
+              action.options.data = ent
+            else
+              action.options = {}
+
+          jobs.push action
+
+    console.log '-jobs-', JSON.stringify(jobs)
+    job.multJobs jobs, cb
 
 setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
   player.increase att, val for att, val of data when att in attrs and val > 0
@@ -184,6 +243,8 @@ updateFriendCount = (player) ->
 
 initPassiveSkill = (star) ->
   count = star - 2
+  count = 3 if count > 3
+  
   results = []
   for i in [0...count]
     index = _.random(configData.card.PASSIVESKILL.TYPE.length-1)

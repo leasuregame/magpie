@@ -1,6 +1,6 @@
 var helper = require('../../shared/version_helper');
 var KSS_HOST = 'http://kss.ksyun.com';
-var updateRecordDao = require('../util/updateRecordDao');
+var updateRecordDao = require('../dao/updateRecordDao');
 var async = require('async');
 var util = require('util');
 
@@ -38,7 +38,7 @@ exports.update = function(req, res) {
   }
 
   var filename = vData[platform].filename;
-  if (helper.versionCompare(ver, lastVersion)) {
+  if (helper.versionCompare(ver, lastVersion)<0) {
     filename = vData[platform].lastFilename;
   }
 

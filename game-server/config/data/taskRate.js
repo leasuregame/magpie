@@ -4,6 +4,7 @@ module.exports = {
   "fight": 20,
   "precious_box": 5,
   "fragment_rate": 1,
+  "obtain_spirit_rate": 15,
   "gold_obtain": {
     rate: 10,
     value: 5

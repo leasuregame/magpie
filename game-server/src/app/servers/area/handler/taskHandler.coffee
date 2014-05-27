@@ -97,7 +97,8 @@ Handler::explore = (msg, session, next) ->
         , (err, battleLog) ->
           data.battle_log = battleLog
 
-          if not player.task.hasWin
+          if utility.hitRate(configData.taskRate.obtain_spirit_rate)
+          #if not player.task.hasWin
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.rewards.totalSpirit if battleLog.winner is 'own'      
 
@@ -344,6 +345,10 @@ Handler::mysticalPass = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+
+      if player.pass.mystical.diff is 5 and player.pass.mystical.isClear
+        return cb({code: 501, msg: '魔道已通关'})
+
       if not player.pass.mystical.isTrigger or player.pass.mystical.isClear
         return cb({code: 501, msg: '不能闯此神秘关卡'})
 
@@ -408,10 +413,11 @@ checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
+  return if not mpc
 
-  if mpc and player.passLayer < mpc.layer_from
+  if player.passLayer < mpc.layer_from
     return
-  else if mpc and player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
+  else if player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
     player.triggerMysticalPass()
   else if utility.hitRate(mpc.rate)
     player.triggerMysticalPass()

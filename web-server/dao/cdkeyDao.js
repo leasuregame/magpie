@@ -1,4 +1,4 @@
-var db = require('./shareDb');
+var db = require('./db/shareDb');
 var async = require('async');
 
 exports.insert = function(rows, cb) {

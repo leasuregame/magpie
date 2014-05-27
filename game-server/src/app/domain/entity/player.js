@@ -489,7 +489,7 @@ var Player = (function(_super) {
                 count: 0,
                 got: false
             },
-            vipReward: 0
+            vipReward: 0 // vip登陆奖励是否已领取标记 1：已领取 0：未领取
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -522,7 +522,10 @@ var Player = (function(_super) {
             pass: this.pass,
             task: this.task,
             spiritPool: this.spiritPool,
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+            goldCards: this.getGoldCard(),
+            vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
+            loginInfo: this.activities.logined || {count: 0, got: 0}
         };
     };
 
@@ -1116,8 +1119,12 @@ var Player = (function(_super) {
     Player.prototype.clearMysticalPass = function() {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
-        pass.mystical.diff += 1;
-        pass.mystical.isTrigger = false;
+
+        if (this.pass.mystical.diff < 5) {
+            pass.mystical.diff += 1;
+            pass.mystical.isTrigger = false;
+        }
+        
         this.set('pass', pass);
     };
 
@@ -1330,7 +1337,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        var lr = utility.deepCopy(this.levelRewardMark.value);
+
+        var lr = _.clone(this.levelRewardMark.value);
         this.set('levelReward', lr);
     };
 
@@ -1454,9 +1462,9 @@ var Player = (function(_super) {
         if (this.dailyGift.rmTimerCount <= 10) {
             consume = 20;
         } else if (this.dailyGift.rmTimerCount <= 20 && this.dailyGift.rmTimerCount > 10) {
-            consume = 30;
-        } else {
             consume = 50;
+        } else {
+            consume = 100;
         }
 
         return consume;
@@ -1550,9 +1558,13 @@ var Player = (function(_super) {
         var star6Num = cards.filter(function(c) {
             return c.star >= 6;
         }).length;
-        console.log('message:', star5Num, star6Num);
+        var star7Num = cards.filter(function(c) {
+            return c.star == 7;
+        }).length;
+
         if (star5Num > 0) achieve.star5card(this, star5Num);
         if (star6Num > 0) achieve.star6card(this, star6Num);
+        if (star7Num > 0) achieve.star7card(this, star7Num);
     };
 
     Player.prototype.toJson = function() {

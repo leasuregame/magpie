@@ -502,6 +502,25 @@ lz.getNumberStr = function (num) {
     return str;
 };
 
+var keys2Key = {
+    gold: "gold",
+    money: "money",
+    powerValue: "power",
+    power: "power",
+    skillPoint: "skillPoint",
+    elixir: "elixir",
+    energy: "energy",
+    fragments: "fragment",
+    fragment: "fragment",
+    speaker: "speaker",
+    honor: "honor",
+    superHonor: "superHonor"
+};
+
+lz.getKeyStr = function (key) {
+    return keys2Key[key] ? keys2Key[key] : null;
+};
+
 lz.getMoneyStr = function (money) {
     var threshold = 100000;
 

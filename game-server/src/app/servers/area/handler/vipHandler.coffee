@@ -97,7 +97,7 @@ Handler::getPlanReward = (msg, session, next) ->
     player.increase('gold', reward.gold)
     player.setPlanFlag(id)
     player.save()
-    next(null, {code: 200, msg: gold: player.gold})
+    next(null, {code: 200, msg: gold: player.gold, plan: player.plan})
 
 Handler::buyVipBox = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -183,6 +183,7 @@ openVipBox = (player, boxInfo, next) ->
   vb = _.clone(player.vipBox)
   vb.push boxInfo.id
   player.vipBox = vb
+  player.decrease 'gold', boxInfo.price
   player.save()
   
   if _.has boxInfo, 'exp_card'

@@ -71,7 +71,7 @@ var mergeXmlFile = function(files, dir, cb) {
 };
 
 var outputFiles = {
-  default: ['../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/src/table/table.json'],
+  default: ['../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/src/table/table.json', '../../web-server/data/table.json'],
   YY: ['../../client/cocos2d-x-2.2.1/projects/Magpie/Resources/IOS/YY/table.json']
 };
 

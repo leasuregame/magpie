@@ -1,5 +1,9 @@
 TB01890600
 
+/usr/local/mysql/bin/mysqlbinlog --start-position=0 --stop-position=1000 -d yy_db_area_1 /data2/log/mysql/mysql-bin.000007
+
+/usr/local/mysql/bin/mysqlbinlog --start-datetime="2014-05-14 23:00:00" --stop-datetime="2014-05-14 23:59:00" -d yy_db_area_1 /data2/log/mysql/mysql-bin.000014
+
 user：root
 电信 网通 密码：
 124.238.236.30 219.232.247.30   URT7d8cJ4wMukArWMqWxjraxheErqL2i

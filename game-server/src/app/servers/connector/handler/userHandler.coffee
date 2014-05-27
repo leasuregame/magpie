@@ -228,7 +228,7 @@ checkIsOpenServer = (app, cb) ->
 update_file_size = {}
 getUpdateSize = (version, vData, cb) ->
   filename = vData.filename
-  if versionHandler.versionCompare(version, vData.lastVersion)
+  if versionHandler.versionCompare(version, vData.lastVersion) < 0
     filename = vData.lastFilename
 
   key = vData.version+filename

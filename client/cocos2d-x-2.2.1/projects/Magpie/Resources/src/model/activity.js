@@ -548,69 +548,6 @@ var Activity = Entity.extend({
             cc.log("类型出错！！！");
             return null;
         }
-    },
-
-    ActivityIsShowHandler: {
-        NewAreaRewardLayer: function () {
-            var table = outputTables.login_count_reward.rows;
-            for (var id in table) {
-                if (gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, id) != ALREADY_GOT_REWARD) {
-                    return true;
-                }
-            }
-            return false;
-        },
-        SignInLayer: function () {
-            return true;
-        },
-        GoldCardsLayer: function () {
-            return true;
-        },
-        GrowthPlanLayer: function () {
-            return true;
-        },
-        PowerRewardLayer: function () {
-            return true;
-        },
-        VipDailyRewardLayer: function () {
-            return true;
-        },
-        GoldRewardLayer: function () {
-            return true;
-        },
-        InvitationLayer: function () {
-            if (lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore") {
-                return false;
-            }
-            return true;
-        }
-    },
-
-    ActivityIsMarkHandler: {
-        NewAreaRewardLayer: function () {
-            return gameMark.getNewAreaRewardMark();
-        },
-        SignInLayer: function () {
-            return gameMark.getSignInMark();
-        },
-        GoldCardsLayer: function () {
-            return gameMark.getGoldCardsMark();
-        },
-        GrowthPlanLayer: function () {
-            return gameMark.getGrowthPlanMark();
-        },
-        PowerRewardLayer: function () {
-            return gameMark.getPowerRewardMark();
-        },
-        VipDailyRewardLayer: function () {
-            return gameMark.getVipDailyRewardMark();
-        },
-        GoldRewardLayer: function () {
-            return gameMark.getGoldRewardMark();
-        },
-        InvitationLayer: function () {
-            return false;
-        }
     }
 });
 
@@ -622,4 +559,64 @@ Activity.create = function () {
     }
 
     return null;
+};
+
+Activity.ActivityIsShowHandler =  {
+    newAreaRewardLayer: function () {
+        var table = outputTables.login_count_reward.rows;
+        for (var id in table) {
+            if (gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, id) != ALREADY_GOT_REWARD) {
+                return true;
+            }
+        }
+        return false;
+    },
+    signInLayer: function () {
+        return true;
+    },
+    goldCardsLayer: function () {
+        return true;
+    },
+    growthPlanLayer: function () {
+        return true;
+    },
+    powerRewardLayer: function () {
+        return true;
+    },
+    vipDailyRewardLayer: function () {
+        return true;
+    },
+    goldRewardLayer: function () {
+        return true;
+    },
+    invitationLayer: function () {
+        return !(lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore");
+    }
+};
+
+Activity.ActivityIsMarkHandler = {
+    newAreaRewardLayer: function () {
+        return gameMark.getNewAreaRewardMark();
+    },
+    signInLayer: function () {
+        return gameMark.getSignInMark();
+    },
+    goldCardsLayer: function () {
+        return gameMark.getGoldCardsMark();
+    },
+    growthPlanLayer: function () {
+        return gameMark.getGrowthPlanMark();
+    },
+    powerRewardLayer: function () {
+        return gameMark.getPowerRewardMark();
+    },
+    vipDailyRewardLayer: function () {
+        return gameMark.getVipDailyRewardMark();
+    },
+    goldRewardLayer: function () {
+        return gameMark.getGoldRewardMark();
+    },
+    invitationLayer: function () {
+        return false;
+    }
 };

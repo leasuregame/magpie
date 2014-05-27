@@ -188,7 +188,7 @@ var CardLabel = cc.Node.extend({
 
         this._starLabel.setVisible(false);
 
-        var rateLabel = cc.LabelTTF.create("概率: " + this._card.getPreCardRate() + "%", "STHeitiTC-Medium", 20);
+        var rateLabel = cc.LabelTTF.create("概率: " + this._otherData.leadCard.getPreCardRate() + "%", "STHeitiTC-Medium", 20);
         rateLabel.setColor(cc.c3b(56, 3, 5));
         rateLabel.setAnchorPoint(cc.p(0, 0.5));
         rateLabel.setPosition(cc.p(142, 65));

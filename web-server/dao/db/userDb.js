@@ -1,7 +1,7 @@
 var mysql = require('mysql');
-var config = require('../../game-server/config/mysql');
+var config = require('../../../game-server/config/mysql');
 
-var cfg = config['production']['sharedb'];
+var cfg = config['production']['userdb'];
 
 var connection = mysql.createConnection({
   host: cfg.host,

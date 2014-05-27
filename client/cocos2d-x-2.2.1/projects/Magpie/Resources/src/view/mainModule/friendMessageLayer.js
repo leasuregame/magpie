@@ -50,6 +50,9 @@ var FriendMessageLayer = cc.Layer.extend({
         cc.log("FriendMessageLayer update");
 
         this._friendMessageList = gameData.message.get("friendMessage");
+        
+        cc.log(this._friendMessageList);
+
         this._markEffect = [];
         var len = this._friendMessageList.length;
 
@@ -73,6 +76,7 @@ var FriendMessageLayer = cc.Layer.extend({
             (function (i) {
                 var y = scrollViewHeight - 127 - 127 * i;
 
+                var message = that._friendMessageList[i];
                 var id = that._friendMessageList[i].id;
                 var message = that._friendMessageList[i];
                 var type = that._friendMessageList[i].type;
@@ -107,7 +111,7 @@ var FriendMessageLayer = cc.Layer.extend({
 
                 var timeLabel = cc.LabelTTF.create(
                     lz.getTimeStr({
-                        time: that._friendMessageList[i].createTime,
+                        time: message.createTime,
                         fmt: "yyyy.MM.dd hh:mm"
                     }),
                     "STHeitiTC-Medium",
@@ -163,7 +167,7 @@ var FriendMessageLayer = cc.Layer.extend({
                         hasBeenAcceptIcon.setVisible(false);
                     }
                 } else if (type == LEAVE_MESSAGE) {
-                    var name = that._friendMessageList[i].senderName;
+                    var name = message.senderName;
 
                     if (!gameData.friend.getFriend(name)) {
                         var addFriendItem = cc.MenuItemImage.createWithIcon(

@@ -106,7 +106,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
     _initCardTips: function () {
         cc.log("AdvancedTipsLabel _initCardTips");
 
-        var tipLabel = cc.LabelTTF.create("所选中卡牌中有4星以上卡牌，确定继续么", "STHeitiTC-Medium", 25);
+        var tipLabel = cc.LabelTTF.create("所选卡牌中有4星以上卡牌，确定继续么", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         this._frameLayer.addChild(tipLabel);
     },

@@ -5,6 +5,7 @@
 var SystemMessageLabel = LazyLayer.extend({
 
     _cb: null,
+    _cardsLen: null,
 
     init: function (data) {
         cc.log("SystemMessageLabel init");
@@ -16,14 +17,19 @@ var SystemMessageLabel = LazyLayer.extend({
         }
 
         var message = data.message;
+        this._cardsLen = 0;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
         this.addChild(bgLayer);
 
+        var point = gameFit.GAME_MIDPOINT;
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect113, this);
+        effect.setPosition(point);
+        this.addChild(effect);
+
         var frameLayer = cc.Node.create();
-        frameLayer.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(frameLayer);
+        effect.controller.ccbLabel.addChild(frameLayer);
 
         var bgLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgLabel.setContentSize(cc.size(550, 730));
@@ -87,8 +93,8 @@ var SystemMessageLabel = LazyLayer.extend({
         for (var key in rewards) {
             if (key == "cardArray") {
                 var cards = rewards[key];
-                var cardsLen = cards.length;
-                for (i = 0; i < cardsLen; i++) {
+                this._cardsLen = cards.length;
+                for (i = 0; i < this._cardsLen; i++) {
                     x = 25 + (index % 5 ) * 92;
                     y = 170 - parseInt(index / 5) * 100;
                     var card = Card.create(cards[i]);
@@ -97,6 +103,14 @@ var SystemMessageLabel = LazyLayer.extend({
                     cardItem.setAnchorPoint(cc.p(0, 0));
                     cardItem.setPosition(cc.p(x, y));
                     cardMenu.addChild(cardItem);
+
+                    var numLabel = StrokeLabel.create("+" + cards[i].qty, "STHeitiTC-Medium", 20);
+                    numLabel.setAnchorPoint(cc.p(1, 0));
+                    numLabel.setPosition(cc.p(90, 10));
+                    numLabel.setColor(cc.c3b(255, 255, 255));
+                    numLabel.setBgColor(cc.c3b(0, 0, 0));
+                    cardItem.addChild(numLabel);
+
                     index++;
                 }
             } else {
@@ -121,11 +135,11 @@ var SystemMessageLabel = LazyLayer.extend({
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon21,
-            this._onClickOK,
+            this._onClickOK(message),
             this
         );
         OKItem.setPosition(cc.p(0, -315));
-        OKItem.setVisible(message.status == HANDLED_STATUS);
+        OKItem.setVisible(message.status == HANDLED_STATUS || !index);
 
         var getRewardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
@@ -135,7 +149,7 @@ var SystemMessageLabel = LazyLayer.extend({
             this
         );
         getRewardItem.setPosition(cc.p(0, -315));
-        getRewardItem.setVisible(message.status == UNHANDLED_STATUS);
+        getRewardItem.setVisible(message.status == UNHANDLED_STATUS && index > 0);
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button37,
@@ -158,6 +172,13 @@ var SystemMessageLabel = LazyLayer.extend({
         return function () {
             cc.log("SystemMessageLabel _onClickGetReward: " + id);
 
+            if (that._cardsLen > 0) {
+                if (gameData.cardList.isFull()) {
+                    CardListFullTipLayer.pop();
+                    return;
+                }
+            }
+
             gameData.message.receive(function () {
                 that.removeFromParent();
                 that._cb();
@@ -166,10 +187,19 @@ var SystemMessageLabel = LazyLayer.extend({
 
     },
 
-    _onClickOK: function () {
-        cc.log("SystemMessageLabel _onClickOK");
+    _onClickOK: function (message) {
+        var that = this;
 
-        this.removeFromParent();
+        return function () {
+            cc.log("SystemMessageLabel _onClickOK: " + message);
+
+            if (message.status == UNHANDLED_STATUS) {
+                gameData.message.handleSysMsg(message.id);
+                that._cb();
+            }
+
+            that.removeFromParent();
+        }
     },
 
     _onClickClose: function () {

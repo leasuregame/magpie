@@ -349,10 +349,10 @@ var Tournament = Entity.extend({
         if (rank <= 50) {
             return outputTables.elixir_ranking_reward.rows[rank];
         } else {
-            var money = outputTables.elixir_ranking_reward.rows[51].money;
-            money -= parseInt(Math.ceil((rank - 51) / 20) * 0.003 * money);
-            money = Math.max(50000, money);
-            return {money: money}
+            var elixir = outputTables.elixir_ranking_reward.rows[51].elixir;
+            elixir -= parseInt(Math.ceil((rank - 51) / 20) * 0.003 * elixir);
+            elixir = Math.max(5000, elixir);
+            return {elixir: elixir}
         }
     },
 

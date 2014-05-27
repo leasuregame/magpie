@@ -104,9 +104,8 @@ ppAdapter.PPSetCloseRechargeAlertMessage("当前关闭充值功能哦");
 ppAdapter.PPCheckGameUpdate();
 
 ppAdapter.token = "";
-ppAdapter._PPCurrentUserId = ppAdapter.PPCurrentUserId;
-ppAdapter.PPCurrentUserId = function () {
-    return parseInt(ppAdapter._PPCurrentUserId());
+ppAdapter.PPCurrentUserIdInt = function () {
+    return parseInt(ppAdapter.PPCurrentUserId());
 };
 
 // 充值回调
@@ -223,10 +222,10 @@ ppAdapter.PPLogOffCallBack = function () {
 
 lz.platformIsLogin = function () {
     cc.log("ppAdapter token: " + ppAdapter.token);
-    cc.log(ppAdapter.PPCurrentUserId());
+    cc.log(ppAdapter.PPCurrentUserIdInt());
     cc.log(ppAdapter.PPCurrentUserName());
 
-    return (ppAdapter.PPCurrentUserId() && ppAdapter.PPCurrentUserName());
+    return (ppAdapter.PPCurrentUserIdInt() && ppAdapter.PPCurrentUserName());
 };
 
 lz.platformLogout = function () {

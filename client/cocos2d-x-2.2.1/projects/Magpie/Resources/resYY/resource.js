@@ -427,7 +427,7 @@ var main_scene_image = {
     icon94: main_scene_path + "icon94.png",
     icon95: main_scene_path + "icon95.png",
     icon96: main_scene_path + "icon96.png",
-//    icon97: main_scene_path + "icon97.png",
+    icon97: main_scene_path + "icon97.png",
     icon98: main_scene_path + "icon98.png",
     icon99: main_scene_path + "icon99.png",
     icon100: main_scene_path + "icon100.png",
@@ -472,7 +472,7 @@ var main_scene_image = {
     icon141: main_scene_path + "icon141.png",
     icon142: main_scene_path + "icon142.png",
     icon143: main_scene_path + "icon143.png",
-//    icon144: main_scene_path + "icon144.png",
+    icon144: main_scene_path + "icon144.png",
     icon145: main_scene_path + "icon145.png",
     icon146: main_scene_path + "icon146.png",
     icon147: main_scene_path + "icon147.png",
@@ -1045,6 +1045,8 @@ var main_scene_image = {
     uiEffect114: "resYY/ccb/uiEffect114.ccbi",
     uiEffect115: "resYY/ccb/uiEffect115.ccbi",
     uiEffect116: "resYY/ccb/uiEffect116.ccbi",
+    uiEffect117: "resYY/ccb/uiEffect117.ccbi",
+
 
     // 特效资源
     p1: "resYY/effect/effect/p1.png",

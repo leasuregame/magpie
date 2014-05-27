@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var config = require('../../game-server/config/mysql');
+var config = require('../../../game-server/config/mysql');
 
 var dbs = config['production'];
 

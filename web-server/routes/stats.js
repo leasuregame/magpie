@@ -1,4 +1,4 @@
-var onlineUserDao = require('../util/onlineUserDao');
+var onlineUserDao = require('../dao/onlineUserDao');
 var _ = require('underscore');
 
 exports.onlineUser = function(req, res) {

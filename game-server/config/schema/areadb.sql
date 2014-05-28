@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci, -- 每日奖励
+  `dailyGift` TEXT COLLATE utf8_unicode_ci, -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数

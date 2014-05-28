@@ -78,17 +78,21 @@ var gameMark = {
         MainScene.getInstance().updateMark();
     },
 
-    getSummonMark: function() {
+    getSummonMark: function () {
         cc.log("gameMark getSummonMark");
 
-        if(!this._summon) {
-
+        if (!this._summon) {
+            this._summon = this.getLotteryMark() || this.getTreasureHuntMark();
         }
 
+        return this._summon;
     },
 
-    updateSummonMark: function() {
+    updateSummonMark: function (mark) {
+        cc.log("gameMark updateSummonMark");
 
+        this._summon = mark;
+        MainScene.getInstance().updateMark();
     },
 
     getCardLibraryMark: function () {
@@ -372,6 +376,7 @@ var gameMark = {
         cc.log("gameMark updateLotteryMark");
 
         this._lottery = mark;
+        this.updateSummonMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -424,6 +429,7 @@ var gameMark = {
         cc.log("gameMark updateTreasureHuntMark");
 
         this._treasureHunt = mark;
+        this.updateSummonMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -557,11 +563,11 @@ var gameMark = {
         MainScene.getInstance().updateMark();
     },
 
-    getVipDailyRewardMark: function() {
+    getVipDailyRewardMark: function () {
         cc.log("gameMark getVipDailyRewardMark");
 
-        if(!this._vipDailyReward) {
-            if(gameData.player.get("vip") > 0 && gameData.activity.get("vipLoginReward")) {
+        if (!this._vipDailyReward) {
+            if (gameData.player.get("vip") > 0 && gameData.activity.get("vipLoginReward")) {
                 this._vipDailyReward = true;
             }
         }
@@ -569,7 +575,7 @@ var gameMark = {
         return this._vipDailyReward;
     },
 
-    updateVipDailyRewardMark: function(mark) {
+    updateVipDailyRewardMark: function (mark) {
         cc.log("gameMark updateVipDailyRewardMark");
 
         this._vipDailyReward = mark;

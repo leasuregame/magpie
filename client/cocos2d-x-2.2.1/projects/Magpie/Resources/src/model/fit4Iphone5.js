@@ -1443,7 +1443,7 @@ var fit4Iphone5 = {
             "verticalIcon1Point": cc.p(74, 544),
             "verticalIcon2Point": cc.p(569, 544),
             "verticalIconScale": 1,
-            "helpItemPoint": cc.p(580, 1096)
+            "helpItemPoint": cc.p(50, 1021)
         },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(325, 610),

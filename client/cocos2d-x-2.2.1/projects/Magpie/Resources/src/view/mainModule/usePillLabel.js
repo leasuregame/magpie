@@ -302,6 +302,14 @@ var UsePillLabel = cc.Layer.extend({
             that.update();
         });
 
+    },
+
+    _onClickHelp: function () {
+        cc.log("UsePillLabel _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["usePill"]);
     }
 
 });
@@ -314,4 +322,18 @@ UsePillLabel.create = function () {
         return ret;
     }
     return null;
+};
+
+UsePillLabel.canEnter = function () {
+
+    var limitLv = outputTables.function_limit.rows[1].use_pill;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("觉醒" + limitLv + "级开放");
+
+    return false;
 };

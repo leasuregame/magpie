@@ -26,25 +26,47 @@ var SmeltLayer = cc.Layer.extend({
         bgSprite.setPosition(this._smeltLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        this._cardSmeltLabelItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button22,
-            main_scene_image.button22s,
-            main_scene_image.button22d,
-            main_scene_image.icon457,
-            this._onClickCardSmeltLayer,
-            this
-        );
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].card_smelt) {
+            this._cardSmeltLabelItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button22h,
+                main_scene_image.button22h,
+                main_scene_image.button22h,
+                main_scene_image.icon457,
+                this._onClickCardSmeltLayer,
+                this
+            );
+        } else {
+            this._cardSmeltLabelItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button22,
+                main_scene_image.button22s,
+                main_scene_image.button22d,
+                main_scene_image.icon457,
+                this._onClickCardSmeltLayer,
+                this
+            );
+        }
         this._cardSmeltLabelItem.setPosition(this._smeltLayerFit.cardSmeltLayerItemPoint);
         this._cardSmeltLabelItem.setOffset(cc.p(0, -5));
 
-        this._usePillLabelItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button23,
-            main_scene_image.button23s,
-            main_scene_image.button23d,
-            main_scene_image.icon458,
-            this._onClickUsePillLayer,
-            this
-        );
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].use_pill) {
+            this._usePillLabelItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.icon458,
+                this._onClickUsePillLayer,
+                this
+            );
+        } else {
+            this._usePillLabelItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23,
+                main_scene_image.button23s,
+                main_scene_image.button23d,
+                main_scene_image.icon458,
+                this._onClickUsePillLayer,
+                this
+            );
+        }
         this._usePillLabelItem.setPosition(this._smeltLayerFit.usePillLayerItemPoint);
         this._usePillLabelItem.setOffset(cc.p(-6, -5));
 
@@ -57,7 +79,7 @@ var SmeltLayer = cc.Layer.extend({
 
         this._cardSmeltLabelItem.setEnabled(false);
         this._usePillLabelItem.setEnabled(true);
-        this.switchLayer(CardSmeltLabel);
+        this._switchLabel(CardSmeltLabel);
 
         return true;
     },
@@ -67,10 +89,10 @@ var SmeltLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._cardSmeltLabelItem.setEnabled(false);
-        this._usePillLabelItem.setEnabled(true);
-
-        this.switchLayer(CardSmeltLabel);
+        if (this._switchLabel(CardSmeltLabel)) {
+            this._cardSmeltLabelItem.setEnabled(false);
+            this._usePillLabelItem.setEnabled(true);
+        }
     },
 
     _onClickUsePillLayer: function () {
@@ -78,10 +100,10 @@ var SmeltLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._cardSmeltLabelItem.setEnabled(true);
-        this._usePillLabelItem.setEnabled(false);
-
-        this.switchLayer(UsePillLabel);
+        if (this._switchLabel(UsePillLabel)) {
+            this._cardSmeltLabelItem.setEnabled(true);
+            this._usePillLabelItem.setEnabled(false);
+        }
     },
 
     backToThisLayer: function () {
@@ -96,16 +118,18 @@ var SmeltLayer = cc.Layer.extend({
         MainScene.getInstance().switchTo(cardListLayer);
     },
 
-
-    switchLayer: function (runLayer) {
-        cc.log("SmeltLayer switchMenu");
-        cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
-
-        if (!(this._nowLayer instanceof runLayer)) {
-            if (this._nowLayer != null) this.removeChild(this._nowLayer);
-            this._nowLayer = runLayer.create();
-            this.addChild(this._nowLayer);
+    _switchLabel: function (runLabel) {
+        if (runLabel.canEnter && !runLabel.canEnter()) {
+            return false;
         }
+
+        if (!(this._nowLayer instanceof runLabel)) {
+            if (this._nowLabel != null) this.removeChild(this._nowLabel);
+            this._nowLabel = runLabel.create();
+            this.addChild(this._nowLabel);
+        }
+
+        return true;
     }
 
 });
@@ -118,4 +142,18 @@ SmeltLayer.create = function () {
         return ret;
     }
     return null;
+};
+
+SmeltLayer.canEnter = function () {
+
+    var limitLv = outputTables.function_limit.rows[1].card_smelt;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("觉醒功能" + limitLv + "级开放");
+
+    return false;
 };

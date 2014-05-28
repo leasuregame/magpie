@@ -17,10 +17,10 @@ var nameChanged = {
     "卡牌熔炼配置表": "card_pill_dissolve",
     "card_pill_use": "卡牌潜能升级配置表",
     "卡牌潜能升级配置表": "card_pill_use",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
     "神仙卡牌配置表": "cards",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
     "elixir": "仙丹配置表",
     "仙丹配置表": "elixir",
     "factors": "基础属性成长表",
@@ -77,18 +77,18 @@ var nameChanged = {
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
+    "product": "道具配置表",
+    "道具配置表": "product",
     "elixir_ranking_reward": "竞技仙丹排行版奖励",
     "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
-    "ranking_list": "竞技排名配置表",
-    "竞技排名配置表": "ranking_list",
     "ranking_reward": "排名奖励",
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
-    "product": "道具配置表",
-    "道具配置表": "product",
+    "ranking_list": "竞技排名配置表",
+    "竞技排名配置表": "ranking_list",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -127,18 +127,16 @@ var nameChanged = {
     "任务怪物属性表": "task_card",
     "task_config": "任务卡牌配置表",
     "任务卡牌配置表": "task_config",
-    "task_through_reward": "通关仙币奖励",
-    "通关仙币奖励": "task_through_reward",
     "turn_reward_type": "探索获得奖励类型",
     "探索获得奖励类型": "turn_reward_type",
     "turn_reward": "每轮奖励",
     "每轮奖励": "turn_reward",
     "turn_reward_base": "每轮基础奖励",
     "每轮基础奖励": "turn_reward_base",
+    "task_through_reward": "通关仙币奖励",
+    "通关仙币奖励": "task_through_reward",
     "wipe_out": "任务扫荡产出表",
     "任务扫荡产出表": "wipe_out",
-    "first_recharge_box": "首次充值赠送礼包",
-    "首次充值赠送礼包": "first_recharge_box",
     "growth_plan": "成长计划",
     "成长计划": "growth_plan",
     "recharge": "充值类型",
@@ -150,7 +148,9 @@ var nameChanged = {
     "vip_daily_reward": "vip每日登陆奖励",
     "vip每日登陆奖励": "vip_daily_reward",
     "vip_privilege": "vip特权",
-    "vip特权": "vip_privilege"
+    "vip特权": "vip_privilege",
+    "first_recharge_box": "首次充值赠送礼包",
+    "首次充值赠送礼包": "first_recharge_box"
 };
 var outputTables = {
     "achievement": {
@@ -1642,22 +1642,6 @@ var outputTables = {
             "7": {
                 "id": 7,
                 "pill": 20000
-            }
-        }
-    },
-    "card_price": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "grow_per_lv": 0,
-                "star1": 100,
-                "star2": 500,
-                "star3": 5000,
-                "star4": 20000,
-                "star5": 200000,
-                "star6": 500000,
-                "star7": 1000000
             }
         }
     },
@@ -11630,6 +11614,22 @@ var outputTables = {
             }
         }
     },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 0,
+                "star1": 100,
+                "star2": 500,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000,
+                "star6": 500000,
+                "star7": 1000000
+            }
+        }
+    },
     "elixir": {
         "colComment": {},
         "rows": {
@@ -13522,7 +13522,9 @@ var outputTables = {
                 "lottery": 18,
                 "card5_position": 35,
                 "boss": 40,
-                "pass_skillafresh": 20
+                "pass_skillafresh": 20,
+                "card_smelt": 25,
+                "use_pill": 50
             }
         }
     },
@@ -28357,6 +28359,107 @@ var outputTables = {
             }
         }
     },
+    "product": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "order": 1,
+                "method": "expCard",
+                "name": "经验元灵",
+                "disc": "经验元灵1张，含1200点卡牌经验。",
+                "consume_type": "money",
+                "consume": 7500,
+                "obtain_type": "card",
+                "obtain": 1,
+                "isVisible": 1
+            },
+            "2": {
+                "id": 2,
+                "order": 2,
+                "method": "power",
+                "name": "体力",
+                "disc": "50点体力。首次购买仅20魔石。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50,
+                "isVisible": 1
+            },
+            "3": {
+                "id": 3,
+                "order": 4,
+                "method": "money",
+                "name": "一小袋仙币",
+                "disc": "15000仙币，额外赠送5000仙币。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "money",
+                "obtain": 20000,
+                "isVisible": 1
+            },
+            "4": {
+                "id": 4,
+                "order": 5,
+                "method": "money",
+                "name": "一袋仙币",
+                "disc": "75000仙币，额外赠送45000仙币。",
+                "consume_type": "gold",
+                "consume": 50,
+                "obtain_type": "money",
+                "obtain": 120000,
+                "isVisible": 1
+            },
+            "5": {
+                "id": 5,
+                "order": 6,
+                "method": "money",
+                "name": "一大袋仙币",
+                "disc": "150000仙币，额外赠送100000仙币。",
+                "consume_type": "gold",
+                "consume": 100,
+                "obtain_type": "money",
+                "obtain": 250000,
+                "isVisible": 1
+            },
+            "6": {
+                "id": 6,
+                "order": 7,
+                "method": "challengeCount",
+                "name": "有奖竞技次数",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "challengeCount",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "7": {
+                "id": 7,
+                "order": 8,
+                "method": "cardCount",
+                "name": "卡库位置",
+                "consume_type": "gold",
+                "consume": 5,
+                "obtain_type": "cardCount",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "8": {
+                "id": 8,
+                "order": 3,
+                "method": "speaker",
+                "name": "喇叭",
+                "disc": "用于世界聊天，一次性买10个以上打8折。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "speaker",
+                "obtain": 1,
+                "isVisible": 1,
+                "discount_num": 10,
+                "discount": 8
+            }
+        }
+    },
     "elixir_ranking_reward": {
         "colComment": {},
         "rows": {
@@ -29681,18 +29784,6 @@ var outputTables = {
             }
         }
     },
-    "ranking_list": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "top": 10,
-                "challenge_count": 10,
-                "beat_back_count": 3,
-                "add_count": 3
-            }
-        }
-    },
     "ranking_reward": {
         "colComment": {},
         "rows": {
@@ -29888,104 +29979,15 @@ var outputTables = {
             }
         }
     },
-    "product": {
+    "ranking_list": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "order": 1,
-                "method": "expCard",
-                "name": "经验元灵",
-                "disc": "经验元灵1张，含1200点卡牌经验。",
-                "consume_type": "money",
-                "consume": 7500,
-                "obtain_type": "card",
-                "obtain": 1,
-                "isVisible": 1
-            },
-            "2": {
-                "id": 2,
-                "order": 2,
-                "method": "power",
-                "name": "体力",
-                "disc": "50点体力。首次购买仅20魔石。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "power",
-                "obtain": 50,
-                "isVisible": 1
-            },
-            "3": {
-                "id": 3,
-                "order": 4,
-                "method": "money",
-                "name": "一小袋仙币",
-                "disc": "15000仙币，额外赠送5000仙币。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "money",
-                "obtain": 20000,
-                "isVisible": 1
-            },
-            "4": {
-                "id": 4,
-                "order": 5,
-                "method": "money",
-                "name": "一袋仙币",
-                "disc": "75000仙币，额外赠送45000仙币。",
-                "consume_type": "gold",
-                "consume": 50,
-                "obtain_type": "money",
-                "obtain": 120000,
-                "isVisible": 1
-            },
-            "5": {
-                "id": 5,
-                "order": 6,
-                "method": "money",
-                "name": "一大袋仙币",
-                "disc": "150000仙币，额外赠送100000仙币。",
-                "consume_type": "gold",
-                "consume": 100,
-                "obtain_type": "money",
-                "obtain": 250000,
-                "isVisible": 1
-            },
-            "6": {
-                "id": 6,
-                "order": 7,
-                "method": "challengeCount",
-                "name": "有奖竞技次数",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "challengeCount",
-                "obtain": 1,
-                "isVisible": 0
-            },
-            "7": {
-                "id": 7,
-                "order": 8,
-                "method": "cardCount",
-                "name": "卡库位置",
-                "consume_type": "gold",
-                "consume": 5,
-                "obtain_type": "cardCount",
-                "obtain": 1,
-                "isVisible": 0
-            },
-            "8": {
-                "id": 8,
-                "order": 3,
-                "method": "speaker",
-                "name": "喇叭",
-                "disc": "用于世界聊天，一次性买10个以上打8折。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "speaker",
-                "obtain": 1,
-                "isVisible": 1,
-                "discount_num": 10,
-                "discount": 8
+                "top": 10,
+                "challenge_count": 10,
+                "beat_back_count": 3,
+                "add_count": 3
             }
         }
     },
@@ -49358,6 +49360,190 @@ var outputTables = {
             }
         }
     },
+    "turn_reward_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "reward_type": "card",
+                "desc": "神仙卡"
+            },
+            "2": {
+                "id": 2,
+                "reward_type": "exp_card",
+                "desc": "经验元灵"
+            },
+            "3": {
+                "id": 3,
+                "reward_type": "spirit",
+                "desc": "灵气"
+            },
+            "4": {
+                "id": 4,
+                "reward_type": "gold",
+                "desc": "魔石"
+            }
+        }
+    },
+    "turn_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "type": "fragments",
+                "num_min": 1,
+                "num_max": 1
+            },
+            "2": {
+                "id": 2,
+                "type": "gold",
+                "num_min": 30,
+                "num_max": 50
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "num_min": 5000,
+                "num_max": 7000
+            },
+            "4": {
+                "id": 4,
+                "type": "superHonor",
+                "num_min": 1,
+                "num_max": 1
+            },
+            "5": {
+                "id": 5,
+                "type": "energy",
+                "num_min": 1500,
+                "num_max": 2000
+            }
+        }
+    },
+    "turn_reward_base": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 20,
+                "money": 5000,
+                "exp_card": 10,
+                "powerValue": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 25,
+                "money": 10000,
+                "exp_card": 11,
+                "powerValue": 10
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "money": 15000,
+                "exp_card": 12,
+                "powerValue": 10
+            },
+            "4": {
+                "id": 4,
+                "lv": 35,
+                "money": 20000,
+                "exp_card": 13,
+                "powerValue": 10
+            },
+            "5": {
+                "id": 5,
+                "lv": 40,
+                "money": 25000,
+                "exp_card": 14,
+                "powerValue": 10
+            },
+            "6": {
+                "id": 6,
+                "lv": 45,
+                "money": 30000,
+                "exp_card": 15,
+                "powerValue": 15
+            },
+            "7": {
+                "id": 7,
+                "lv": 50,
+                "money": 35000,
+                "exp_card": 16,
+                "powerValue": 15
+            },
+            "8": {
+                "id": 8,
+                "lv": 55,
+                "money": 40000,
+                "exp_card": 17,
+                "powerValue": 15
+            },
+            "9": {
+                "id": 9,
+                "lv": 60,
+                "money": 45000,
+                "exp_card": 18,
+                "powerValue": 15
+            },
+            "10": {
+                "id": 10,
+                "lv": 65,
+                "money": 50000,
+                "exp_card": 19,
+                "powerValue": 15
+            },
+            "11": {
+                "id": 11,
+                "lv": 70,
+                "money": 55000,
+                "exp_card": 20,
+                "powerValue": 20
+            },
+            "12": {
+                "id": 12,
+                "lv": 75,
+                "money": 60000,
+                "exp_card": 21,
+                "powerValue": 20
+            },
+            "13": {
+                "id": 13,
+                "lv": 80,
+                "money": 65000,
+                "exp_card": 22,
+                "powerValue": 20
+            },
+            "14": {
+                "id": 14,
+                "lv": 85,
+                "money": 70000,
+                "exp_card": 23,
+                "powerValue": 20
+            },
+            "15": {
+                "id": 15,
+                "lv": 90,
+                "money": 75000,
+                "exp_card": 24,
+                "powerValue": 20
+            },
+            "16": {
+                "id": 16,
+                "lv": 95,
+                "money": 80000,
+                "exp_card": 25,
+                "powerValue": 30
+            },
+            "17": {
+                "id": 17,
+                "lv": 100,
+                "money": 85000,
+                "exp_card": 26,
+                "powerValue": 30
+            }
+        }
+    },
     "task_through_reward": {
         "colComment": {},
         "rows": {
@@ -51363,190 +51549,6 @@ var outputTables = {
             }
         }
     },
-    "turn_reward_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "reward_type": "card",
-                "desc": "神仙卡"
-            },
-            "2": {
-                "id": 2,
-                "reward_type": "exp_card",
-                "desc": "经验元灵"
-            },
-            "3": {
-                "id": 3,
-                "reward_type": "spirit",
-                "desc": "灵气"
-            },
-            "4": {
-                "id": 4,
-                "reward_type": "gold",
-                "desc": "魔石"
-            }
-        }
-    },
-    "turn_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "type": "fragments",
-                "num_min": 1,
-                "num_max": 1
-            },
-            "2": {
-                "id": 2,
-                "type": "gold",
-                "num_min": 30,
-                "num_max": 50
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "num_min": 5000,
-                "num_max": 7000
-            },
-            "4": {
-                "id": 4,
-                "type": "superHonor",
-                "num_min": 1,
-                "num_max": 1
-            },
-            "5": {
-                "id": 5,
-                "type": "energy",
-                "num_min": 1500,
-                "num_max": 2000
-            }
-        }
-    },
-    "turn_reward_base": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 20,
-                "money": 5000,
-                "exp_card": 10,
-                "powerValue": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 25,
-                "money": 10000,
-                "exp_card": 11,
-                "powerValue": 10
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "money": 15000,
-                "exp_card": 12,
-                "powerValue": 10
-            },
-            "4": {
-                "id": 4,
-                "lv": 35,
-                "money": 20000,
-                "exp_card": 13,
-                "powerValue": 10
-            },
-            "5": {
-                "id": 5,
-                "lv": 40,
-                "money": 25000,
-                "exp_card": 14,
-                "powerValue": 10
-            },
-            "6": {
-                "id": 6,
-                "lv": 45,
-                "money": 30000,
-                "exp_card": 15,
-                "powerValue": 15
-            },
-            "7": {
-                "id": 7,
-                "lv": 50,
-                "money": 35000,
-                "exp_card": 16,
-                "powerValue": 15
-            },
-            "8": {
-                "id": 8,
-                "lv": 55,
-                "money": 40000,
-                "exp_card": 17,
-                "powerValue": 15
-            },
-            "9": {
-                "id": 9,
-                "lv": 60,
-                "money": 45000,
-                "exp_card": 18,
-                "powerValue": 15
-            },
-            "10": {
-                "id": 10,
-                "lv": 65,
-                "money": 50000,
-                "exp_card": 19,
-                "powerValue": 15
-            },
-            "11": {
-                "id": 11,
-                "lv": 70,
-                "money": 55000,
-                "exp_card": 20,
-                "powerValue": 20
-            },
-            "12": {
-                "id": 12,
-                "lv": 75,
-                "money": 60000,
-                "exp_card": 21,
-                "powerValue": 20
-            },
-            "13": {
-                "id": 13,
-                "lv": 80,
-                "money": 65000,
-                "exp_card": 22,
-                "powerValue": 20
-            },
-            "14": {
-                "id": 14,
-                "lv": 85,
-                "money": 70000,
-                "exp_card": 23,
-                "powerValue": 20
-            },
-            "15": {
-                "id": 15,
-                "lv": 90,
-                "money": 75000,
-                "exp_card": 24,
-                "powerValue": 20
-            },
-            "16": {
-                "id": 16,
-                "lv": 95,
-                "money": 80000,
-                "exp_card": 25,
-                "powerValue": 30
-            },
-            "17": {
-                "id": 17,
-                "lv": 100,
-                "money": 85000,
-                "exp_card": 26,
-                "powerValue": 30
-            }
-        }
-    },
     "wipe_out": {
         "colComment": {},
         "rows": {
@@ -51749,22 +51751,6 @@ var outputTables = {
             "50": {
                 "id": 50,
                 "money_obtain": 8450
-            }
-        }
-    },
-    "first_recharge_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 8000,
-                "money": 80000,
-                "elixir": 10000,
-                "skillPoint": 10000,
-                "spirit": 1000,
-                "power": 100,
-                "card_id": 764,
-                "card_lv": 20
             }
         }
     },
@@ -52369,6 +52355,22 @@ var outputTables = {
                 "spirit_collect_count": 11,
                 "challenge_buy_count": 50,
                 "friend_count": 45
+            }
+        }
+    },
+    "first_recharge_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 8000,
+                "money": 80000,
+                "elixir": 10000,
+                "skillPoint": 10000,
+                "spirit": 1000,
+                "power": 100,
+                "card_id": 764,
+                "card_lv": 20
             }
         }
     }

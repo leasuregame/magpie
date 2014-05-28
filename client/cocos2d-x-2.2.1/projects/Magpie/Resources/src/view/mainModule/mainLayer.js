@@ -130,10 +130,6 @@ var MainLayer = cc.Layer.extend({
         smeltLayerItem.setOffset(cc.p(-5, 5));
         smeltLayerItem.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
 
-//        this._treasureHuntMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
-//        this._treasureHuntMark.setPosition(cc.p(185, 80));
-//        treasureHuntLayerItem.addChild(this._treasureHuntMark);
-
         var strengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
             main_scene_image.button2s,
@@ -304,8 +300,7 @@ var MainLayer = cc.Layer.extend({
         this._achievementMark.setVisible(gameMark.getAchievementMark());
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
-        this._lotteryMark.setVisible(gameMark.getLotteryMark());
-         //this._treasureHuntMark.setVisible(gameMark.getTreasureHuntMark());
+        this._lotteryMark.setVisible(gameMark.getSummonMark());
     },
 
     updateGuide: function () {

@@ -19,11 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8120</WindowHeight>
+  <WindowHeight>4360</WindowHeight>
   <WindowWidth>32900</WindowWidth>
   <WindowTopX>1580</WindowTopX>
   <WindowTopY>2640</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -37,7 +36,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s62">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
@@ -48,7 +47,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="功能开放等级限制">
-  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="13" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="107"/>
    <Column ss:AutoFitWidth="0" ss:Width="149"/>
@@ -71,6 +70,8 @@
     <Cell><Data ss:Type="String">第5个卡槽开放等级</Data></Cell>
     <Cell><Data ss:Type="String">降魔开放等级</Data></Cell>
     <Cell><Data ss:Type="String">被动洗练</Data></Cell>
+    <Cell><Data ss:Type="String">卡牌熔炼</Data></Cell>
+    <Cell><Data ss:Type="String">卡牌觉醒</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -84,6 +85,8 @@
     <Cell><Data ss:Type="String">card5_position</Data></Cell>
     <Cell><Data ss:Type="String">boss</Data></Cell>
     <Cell><Data ss:Type="String">pass_skillafresh</Data></Cell>
+    <Cell><Data ss:Type="String">card_smelt</Data></Cell>
+    <Cell><Data ss:Type="String">use_pill</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -97,6 +100,8 @@
     <Cell><Data ss:Type="Number">35</Data></Cell>
     <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -105,12 +110,19 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>18</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -160,7 +172,6 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -178,9 +189,9 @@
    <Column ss:AutoFitWidth="0" ss:Width="156"/>
    <Column ss:AutoFitWidth="0" ss:Width="142"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s66"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">merge_to</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">功能开放等级限制</Data></Cell>

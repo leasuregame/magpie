@@ -138,7 +138,7 @@ var CardSmeltLabel = cc.Layer.extend({
             var len = this._retinueCard.length;
             var pill = 0;
             var money = 0;
-            for(var i = 0;i < len;i++) {
+            for (var i = 0; i < len; i++) {
                 var card = this._retinueCard[i];
                 pill += card.getCardPill();
                 money += card.getSmeltMoney();
@@ -162,7 +162,7 @@ var CardSmeltLabel = cc.Layer.extend({
     ccbFnCallback: function () {
         cc.log("CardSmeltLabel ccbFnCallback");
 
-        if(this._getGoods) {
+        if (this._getGoods) {
             lz.tipReward(this._getGoods);
             this._getGoods = null;
         }
@@ -181,7 +181,7 @@ var CardSmeltLabel = cc.Layer.extend({
         }
 
         var that = this;
-        gameData.cardList.dissolveCard(cardIdList, function(data){
+        gameData.cardList.dissolveCard(cardIdList, function (data) {
             that._getGoods = data;
             that._smeltItem.setEnabled(false);
             that._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
@@ -208,6 +208,10 @@ var CardSmeltLabel = cc.Layer.extend({
 
     _onClickHelp: function () {
         cc.log("CardSmeltLabel _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["cardSmelt"]);
     }
 
 });
@@ -220,4 +224,18 @@ CardSmeltLabel.create = function () {
         return ret;
     }
     return null;
+};
+
+CardSmeltLabel.canEnter = function () {
+
+    var limitLv = outputTables.function_limit.rows[1].card_smelt;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("熔炼" + limitLv + "级开放");
+
+    return false;
 };

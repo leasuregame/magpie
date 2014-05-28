@@ -44,6 +44,11 @@ var SummonLayer = cc.Layer.extend({
         this._lotteryLayerItem.setPosition(this._summonLayerFit.lotteryLayerItemPoint);
         this._lotteryLayerItem.setOffset(cc.p(0, -5));
 
+        this._lotteryMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._lotteryMark.setPosition(cc.p(125, 50));
+        this._lotteryMark.setVisible(false);
+        this._lotteryLayerItem.addChild(this._lotteryMark, 3);
+
         this._exchangeLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
             main_scene_image.button23s,
@@ -66,9 +71,14 @@ var SummonLayer = cc.Layer.extend({
         this._treasureHuntLayerItem.setOffset(cc.p(-6, -5));
         this._treasureHuntLayerItem.setPosition(this._summonLayerFit.treasureHuntLayerItemPoint);
 
+        this._treasureHuntMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._treasureHuntMark.setPosition(cc.p(125, 50));
+        this._treasureHuntMark.setVisible(false);
+        this._treasureHuntLayerItem.addChild(this._treasureHuntMark, 3);
+
         var menu = cc.Menu.create(
-            this._lotteryLayerItem,
             this._exchangeLayerItem,
+            this._lotteryLayerItem,
             this._treasureHuntLayerItem
         );
         menu.setPosition(cc.p(0, 0));
@@ -80,6 +90,13 @@ var SummonLayer = cc.Layer.extend({
         this.switchLayer(LotteryLayer);
 
         return true;
+    },
+
+    updateMark: function () {
+        cc.log("SummonLayer updateMark");
+        this._lotteryMark.setVisible(gameMark.getLotteryMark());
+        this._treasureHuntMark.setVisible(gameMark.getTreasureHuntMark());
+
     },
 
     _onClickLotteryLayer: function () {

@@ -72,6 +72,10 @@ var VipDailyRewardLayer = cc.Layer.extend({
                     continue;
                 }
 
+                if (rewards[key] == 0) {
+                    continue;
+                }
+
                 var goods = giftBagGoods[key];
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
                 goodsSprite.setAnchorPoint(cc.p(0, 0));

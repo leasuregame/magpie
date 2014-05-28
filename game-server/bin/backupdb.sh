@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo ${PWD}
+curTime=`date "+%Y-%m-%d_%H:%M:%S"`
+filepath="/data/mysql-backup/dbbackup_$curTime.tar.gz"
+echo $filepath
 
-cd /Users/arthur/magpie/game-server/bin
+sudo -i
 
-node ./read_db_info.js $1 | sh
+innobackupex --user=root --password=leasure:GAME --defaults-file=/etc/mysql/my.cnf --stream=tar /data/mysql-backup | gzip -> $filepath

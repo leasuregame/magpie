@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -6,20 +7,20 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>lin</LastAuthor>
+  <LastAuthor>Windows 用户</LastAuthor>
   <Created>2014-05-05T09:20:18Z</Created>
-  <LastSaved>2014-05-20T09:30:31Z</LastSaved>
+  <LastSaved>2014-05-20T09:17:23Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
-  <Version>14.0</Version>
+  <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11760</WindowHeight>
-  <WindowWidth>20360</WindowWidth>
-  <WindowTopX>2560</WindowTopX>
-  <WindowTopY>1400</WindowTopY>
+  <WindowHeight>11565</WindowHeight>
+  <WindowWidth>25605</WindowWidth>
+  <WindowTopX>6945</WindowTopX>
+  <WindowTopY>45</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -42,7 +43,7 @@
  </Styles>
  <Worksheet ss:Name="每轮基础奖励">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="19" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">等级</Data></Cell>
@@ -185,7 +186,6 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -195,11 +195,12 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="每轮奖励">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">轮次</Data></Cell>
     <Cell><Data ss:Type="String">奖励类型</Data></Cell>
@@ -251,22 +252,22 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="探索获得奖励类型">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">奖励类型</Data></Cell>
@@ -300,7 +301,6 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -310,12 +310,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Width="140" ss:Span="1"/>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:Width="140.25" ss:Span="1"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
@@ -336,7 +337,6 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -346,6 +346,7 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

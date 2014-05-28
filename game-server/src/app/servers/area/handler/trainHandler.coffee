@@ -522,6 +522,9 @@ Handler::starUpgrade = (msg, session, next) ->
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
+
+        # 重新添加卡牌，为了计算一次图鉴
+        player.addCard(card)
         cb null
       else
         player.incInitRate(card.star, parseInt addRate*0.5)

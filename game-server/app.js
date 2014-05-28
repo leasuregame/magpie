@@ -121,6 +121,8 @@ app.configure('production|development', 'area', function() {
   var dao_share = require('./app/dao').init('mysql', 'share');
   app.set('dao_share', dao_share);
 
+  app.set('useSanbox', false);
+
   app.load(counter);
   app.load(verifier);
 });
@@ -135,6 +137,7 @@ app.configure('production|development', 'connector|auth|area', function() {
 
 app.configure('development', 'connector|auth|area', function() {
   app.set('debug', true);
+  app.set('useSanbox', true);
 });
 
 app.configure('production|development', 'notice', function() {

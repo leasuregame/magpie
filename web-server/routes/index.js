@@ -5,8 +5,8 @@
 var fs = require('fs');
 var path = require('path');
 var auth = require('../util/auth');
-var updateRecordDao = require('../util/updateRecordDao');
-var onlineUserDao = require('../util/onlineUserDao');
+var updateRecordDao = require('../dao/updateRecordDao');
+var onlineUserDao = require('../dao/onlineUserDao');
 var async = require('async')
 
 var convertData = function(items) {

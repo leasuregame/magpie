@@ -50,6 +50,9 @@ var FriendMessageLayer = cc.Layer.extend({
         cc.log("FriendMessageLayer update");
 
         this._friendMessageList = gameData.message.get("friendMessage");
+        
+        cc.log(this._friendMessageList);
+
         this._markEffect = [];
         var len = this._friendMessageList.length;
 

@@ -33,8 +33,12 @@ Achievement.rankingToOne = function(player) {
 	checkIsReached(player, 'rankingToOne', 1);
 };
 
-Achievement.friends = function(player) {
-	checkIsReached_alpha(player, 'friends', 1);
+Achievement.friends = function(player, count) {
+	if (_.isNumber(count) || count > 0) {
+		checkIsReached(player, 'friends', count, true);
+	} else {
+		checkIsReached_alpha(player, 'friends', 1);
+	}	
 };
 
 Achievement.elixirTo = function(player, eli) {
@@ -71,7 +75,7 @@ Achievement.vip = function(player) {
 
 Achievement.star5card = function(player, count) {
 	if (_.isNumber(count) || count > 0) {
-		checkIsReached(player, 'star5card', count);
+		checkIsReached(player, 'star5card', count, true);
 	} else {
 		checkIsReached_alpha(player, 'star5card', 1);
 	}	
@@ -79,14 +83,18 @@ Achievement.star5card = function(player, count) {
 
 Achievement.star6card = function(player, count) {
 	if (_.isNumber(count) || count > 0) {
-		checkIsReached(player, 'star6card', count);
+		checkIsReached(player, 'star6card', count, true);
 	} else {
 		checkIsReached_alpha(player, 'star6card', 1);
 	}	
 };
 
-Achievement.star7card = function(player) {
-	checkIsReached_alpha(player, 'star7card', 1);
+Achievement.star7card = function(player, count) {
+	if (_.isNumber(count) || count > 0) {
+		checkIsReached(player, 'star7card', count, true);
+	} else {
+		checkIsReached_alpha(player, 'star7card', 1);
+	}
 };
 
 Achievement.star5cardFullLevel = function(player) {

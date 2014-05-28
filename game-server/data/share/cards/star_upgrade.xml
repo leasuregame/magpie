@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -9,7 +10,7 @@
   <Author>gaobin</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-03-26T11:30:56Z</Created>
-  <Version>14.0</Version>
+  <Version>12.00</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer>
@@ -18,11 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8220</WindowHeight>
+  <WindowHeight>8115</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>7320</WindowTopX>
-  <WindowTopY>2180</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <WindowTopX>2325</WindowTopX>
+  <WindowTopY>825</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -59,11 +59,11 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="69"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="144"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="87"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="140"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="140.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108"/>
    <Column ss:AutoFitWidth="0" ss:Width="126"/>
    <Column ss:AutoFitWidth="0" ss:Width="75"/>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">当前星级</Data></Cell>
     <Cell><Data ss:Type="String">素材卡牌星级</Data></Cell>
@@ -73,7 +73,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">不成功卡牌数量</Data></Cell>
     <Cell><Data ss:Type="String">消耗精元</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">star</Data></Cell>
     <Cell><Data ss:Type="String">source_card_star</Data></Cell>
@@ -83,7 +83,7 @@
     <Cell><Data ss:Type="String">no_work_count</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">super_honor</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -93,7 +93,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -103,27 +103,27 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">20000</Data></Cell>
-    <Cell><Data ss:Type="Number">7</Data></Cell>
-    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">50000</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -133,7 +133,7 @@
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -151,16 +151,17 @@
    </PageSetup>
    <Unsynced/>
    <PageBreakZoom>100</PageBreakZoom>
-   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="高星级卡牌进阶概率配置表">
@@ -550,10 +551,10 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:Width="153"/>
-   <Column ss:Width="111"/>
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="96"/>
+   <Column ss:AutoFitWidth="0" ss:Width="83.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
@@ -564,10 +565,6 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">star_upgrade</Data></Cell>
     <Cell ss:StyleID="s62"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">高星级卡牌进阶概率配置表</Data></Cell>
-    <Cell><Data ss:Type="String">star_upgrade_rate</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -575,8 +572,6 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -586,6 +581,7 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

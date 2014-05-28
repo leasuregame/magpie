@@ -3,6 +3,7 @@ table = require '../../../manager/table'
 playerManager = require('pomelo').app.get('playerManager')
 utility = require '../../../common/utility'
 configData = require '../../../../config/data'
+achieve = require '../../../domain/achievement'
 async = require 'async'
 _ = require 'underscore'
 
@@ -84,6 +85,7 @@ Handler::getFriends = (msg, session, next) ->
     player = results[0]
     messages = results[1]
     friends = checkFriendsStatus(player, messages)
+    achieve.friends(player, friends.length)
     next(null, {code: 200, msg: {
       friends: friends
       giveCount: player.dailyGift.gaveBless.count

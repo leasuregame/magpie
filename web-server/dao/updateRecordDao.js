@@ -1,4 +1,4 @@
-var userDb = require('./userDb');
+var userDb = require('./db/userDb');
 var async = require('async');
 
 exports.versionCounts = function(cb) {

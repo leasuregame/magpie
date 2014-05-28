@@ -142,6 +142,7 @@
                 <file name="src/view/mainModule/cardLibraryLayer.js"/>
                 <file name="src/view/mainModule/cardListFullTipLayer.js"/>
                 <file name="src/view/mainModule/cardListLayer.js"/>
+                <file name="src/view/mainModule/cardSmeltLabel.js"/>
                 <file name="src/view/mainModule/cardTrainLabel.js"/>
                 <file name="src/view/mainModule/cardUpgradeLabel.js"/>
                 <file name="src/view/mainModule/tipsLayer.js"/>
@@ -190,6 +191,7 @@
                 <file name="src/view/mainModule/sendMessageLayer.js"/>
                 <file name="src/view/mainModule/shopLayer.js"/>
                 <file name="src/view/mainModule/skillUpgradeLabel.js"/>
+                <file name="src/view/mainModule/smeltLayer.js"/>
                 <file name="src/view/mainModule/speakerLayer.js"/>
                 <file name="src/view/mainModule/spiritDetails.js"/>
                 <file name="src/view/mainModule/spiritNode.js"/>
@@ -208,6 +210,7 @@
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>
                 <file name="src/view/mainModule/tournamentTipLayer.js"/>
                 <file name="src/view/mainModule/treasureHuntLayer.js"/>
+                <file name="src/view/mainModule/usePillLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>

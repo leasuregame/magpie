@@ -205,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `receiptData` VARCHAR(5000) COLLATE utf8_unicode_ci,
-  `verifyResult` VARCHAR(TEXT),
+  `verifyResult` TEXT,
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,

@@ -23,10 +23,10 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci, 
-  `fragments` INT(5) UNSIGNED DEFAULT '0', 
-  `energy` INT(10) UNSIGNED DEFAULT '0',  
-  `elixir` INT(10) UNSIGNED DEFAULT '0', 
+  `dailyGift` TEXT COLLATE utf8_unicode_ci, -- 每日奖励
+  `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
+  `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
+  `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `receiptData` VARCHAR(5000) COLLATE utf8_unicode_ci,
-  `verifyResult` VARCHAR(TEXT),
+  `verifyResult` TEXT,
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,

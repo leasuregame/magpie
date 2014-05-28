@@ -5,6 +5,12 @@
 var SmeltLayer = cc.Layer.extend({
     smeltLayerFit: null,
 
+    onEnter: function() {
+
+        this._super();
+        this.updateGuide();
+    },
+
     init: function () {
         cc.log("SmeltLayer init");
 
@@ -84,6 +90,16 @@ var SmeltLayer = cc.Layer.extend({
         return true;
     },
 
+    updateGuide: function() {
+        cc.log("SmeltLayer updateGuide");
+
+        if (gameGuide.get("usePillGuide") && !this._usePillGuide) {
+            this._usePillGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._usePillGuide.setPosition(this._smeltLayerFit.usePillLayerItemPoint);
+            this.addChild(this._usePillGuide, 2);
+        }
+    },
+
     _onClickCardSmeltLayer: function () {
         cc.log("SmeltLayer _onClickCardSmeltLayer");
 
@@ -99,6 +115,12 @@ var SmeltLayer = cc.Layer.extend({
         cc.log("SmeltLayer _onClickUsePillLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._usePillGuide) {
+            this._usePillGuide.removeFromParent();
+            this._usePillGuide = null;
+            gameGuide.set("usePillGuide", false);
+        }
 
         if (this._switchLabel(UsePillLabel)) {
             this._cardSmeltLabelItem.setEnabled(true);

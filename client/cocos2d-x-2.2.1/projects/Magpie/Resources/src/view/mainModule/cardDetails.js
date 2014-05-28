@@ -132,6 +132,19 @@ var CardDetails = LazyLayer.extend({
         this._atkLabel.setPosition(this._cardDetailsFit.atkLabelPoint);
         this.addChild(this._atkLabel);
 
+        var potentialLv = this._card.get("potentialLv");
+        if (potentialLv > 0) {
+            var potentialLvIcon = cc.Sprite.create(main_scene_image.icon462);
+            potentialLvIcon.setPosition(this._cardDetailsFit.potentialLvIconPoint);
+            this.addChild(potentialLvIcon);
+
+            var potentialLvLabel = StrokeLabel.create(potentialLv, "STHeitiTC-Medium", 28);
+            potentialLvLabel.setPosition(cc.p(21 ,20));
+            potentialLvLabel.setColor(cc.c3b(255, 255, 255));
+            potentialLvLabel.setBgColor(cc.c3b(0, 0, 0));
+            potentialLvIcon.addChild(potentialLvLabel);
+        }
+
         var description = lz.format(this._card.get("description"), 9);
         var len = description.length;
         for (var i = 0; i < len; ++i) {

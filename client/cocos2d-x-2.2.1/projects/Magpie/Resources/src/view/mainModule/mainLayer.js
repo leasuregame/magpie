@@ -38,9 +38,9 @@ var MainLayer = cc.Layer.extend({
     _lotteryMark: null,
     _treasureHuntMark: null,
 
-    _treasureHuntGuide: null,
     _rankGuide: null,
     _lotteryGuide: null,
+    _smeltGuide: null,
 
     _spiritLayerItem: null,
 
@@ -306,10 +306,10 @@ var MainLayer = cc.Layer.extend({
     updateGuide: function () {
         cc.log("MainLayer updateGuide");
 
-        if (gameGuide.get("treasureHuntGuide") && !this._treasureHuntGuide) {
-            this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
-            this._treasureHuntGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
-            this.addChild(this._treasureHuntGuide);
+        if (gameGuide.get("smeltGuide") && !this._smeltGuide) {
+            this._smeltGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._smeltGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
+            this.addChild(this._smeltGuide);
         }
 
         if (gameGuide.get("rankGuide") && !this._rankGuide) {
@@ -362,10 +362,10 @@ var MainLayer = cc.Layer.extend({
             }
 
             if (index == 2) {
-                if (this._treasureHuntGuide) {
-                    this._treasureHuntGuide.removeFromParent();
-                    this._treasureHuntGuide = null;
-                    gameGuide.set("treasureHuntGuide", false);
+                if (this._smeltGuide) {
+                    this._smeltGuide.removeFromParent();
+                    this._smeltGuide = null;
+                    gameGuide.set("smeltGuide", false);
                 }
             }
 

@@ -280,6 +280,7 @@ var fit4Iphone5 = {
             "lvLabelPoint": cc.p(528, 938),
             "hpLabelPoint": cc.p(528, 858),
             "atkLabelPoint": cc.p(528, 778),
+            "potentialLvIconPoint": cc.p(580, 960),
             "descriptionLabelBasePoint": cc.p(400, 720),
             "descriptionLabelOffsetY": 30,
             "skillIconPoint": cc.p(60, 510),

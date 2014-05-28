@@ -136,7 +136,7 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
         productId: receiptResult.receipt.product_id
         qty: receiptResult.receipt.quantity
         status: receiptResult.status
-        verifyResult: body
+        verifyResult: receiptResult
 
       updateBuyRecord(app, buyRecord.id, rdata, cb)
     (updateResult, cb) ->

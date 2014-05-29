@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -390,7 +390,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -460,7 +460,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>50</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2338,7 +2338,7 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>-17.639997482299805</real>
+													<real>-17.600000381469727</real>
 													<real>0.0</real>
 													<integer>0</integer>
 												</array>
@@ -2445,7 +2445,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>360</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2785,7 +2785,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>100</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2977,7 +2977,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<false/>
+										<true/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3050,7 +3050,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>150</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3076,8 +3076,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>seqExpanded</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -3472,7 +3470,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3505,48 +3503,7 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>2</key>
-					<dict>
-						<key>visible</key>
-						<dict>
-							<key>keyframes</key>
-							<array>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>visible</string>
-									<key>time</key>
-									<real>0.96666663885116577</real>
-									<key>type</key>
-									<integer>1</integer>
-									<key>value</key>
-									<true/>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>visible</string>
-									<key>time</key>
-									<real>3.6666667461395264</real>
-									<key>type</key>
-									<integer>1</integer>
-									<key>value</key>
-									<true/>
-								</dict>
-							</array>
-							<key>name</key>
-							<string>visible</string>
-							<key>type</key>
-							<integer>1</integer>
-						</dict>
-					</dict>
+					<dict/>
 				</dict>
 				<key>baseClass</key>
 				<string>CCParticleSystemQuad</string>
@@ -3563,8 +3520,6 @@
 				<key>properties</key>
 				<array>
 					<dict>
-						<key>baseValue</key>
-						<false/>
 						<key>name</key>
 						<string>visible</string>
 						<key>type</key>
@@ -3828,9 +3783,11 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/uiEffect/up72.png</string>
+						<string>res/effect/effect/p57.png</string>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -3919,7 +3876,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>1.1333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -3953,7 +3910,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4023,7 +3980,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3999999761581421</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

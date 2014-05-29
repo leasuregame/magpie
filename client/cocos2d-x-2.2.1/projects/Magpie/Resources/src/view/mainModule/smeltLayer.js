@@ -5,10 +5,17 @@
 var SmeltLayer = cc.Layer.extend({
     smeltLayerFit: null,
 
-    onEnter: function() {
+    onEnter: function () {
+        cc.log("SmeltLayer onEnter");
 
         this._super();
         this.updateGuide();
+    },
+
+    onExit: function () {
+        cc.log("SmeltLayer onExit");
+
+        this._super();
     },
 
     init: function () {
@@ -87,10 +94,12 @@ var SmeltLayer = cc.Layer.extend({
         this._usePillLabelItem.setEnabled(true);
         this._switchLabel(CardSmeltLabel);
 
+        this.retain();
+
         return true;
     },
 
-    updateGuide: function() {
+    updateGuide: function () {
         cc.log("SmeltLayer updateGuide");
 
         if (gameGuide.get("usePillGuide") && !this._usePillGuide) {
@@ -128,16 +137,17 @@ var SmeltLayer = cc.Layer.extend({
         }
     },
 
+    switchToCardListLayer: function (cardListLayer) {
+        cc.log("SmeltLayer switchToCardListLayer");
+
+        this.stopAllActions();
+        MainScene.getInstance().switchTo(cardListLayer);
+    },
+
     backToThisLayer: function () {
         cc.log("SmeltLayer backToThisLayer");
 
         MainScene.getInstance().switchTo(this);
-    },
-
-    switchToCardListLayer: function (cardListLayer) {
-        cc.log("SmeltLayer switchToCardListLayer");
-
-        MainScene.getInstance().switchTo(cardListLayer);
     },
 
     _switchLabel: function (runLabel) {

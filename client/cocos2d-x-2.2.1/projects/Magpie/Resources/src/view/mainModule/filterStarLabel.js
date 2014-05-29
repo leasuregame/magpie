@@ -32,7 +32,7 @@ var FilterStarLabel = LazyLayer.extend({
         this.addChild(frameLayer);
 
         var bgLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgLabel.setContentSize(cc.size(580, 730));
+        bgLabel.setContentSize(cc.size(580, 760));
         bgLabel.setPosition(cc.p(0, 0));
         frameLayer.addChild(bgLabel);
 
@@ -95,7 +95,7 @@ var FilterStarLabel = LazyLayer.extend({
             this._onClickOK,
             this
         );
-        OKItem.setPosition(cc.p(0, -315));
+        OKItem.setPosition(cc.p(0, -320));
         menu.addChild(OKItem);
 
         return true;

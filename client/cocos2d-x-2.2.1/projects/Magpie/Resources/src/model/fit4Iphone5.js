@@ -281,6 +281,8 @@ var fit4Iphone5 = {
             "hpLabelPoint": cc.p(528, 858),
             "atkLabelPoint": cc.p(528, 778),
             "potentialLvIconPoint": cc.p(580, 960),
+            "hpAdditionLabelPoint": cc.p(565, 870),
+            "atkAdditionLabelPoint": cc.p(565, 790),
             "descriptionLabelBasePoint": cc.p(400, 720),
             "descriptionLabelOffsetY": 30,
             "skillIconPoint": cc.p(60, 510),
@@ -381,7 +383,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 307),
             "helpLabelPoint": cc.p(320, 307),
             "selectRetinueCardItemPoint": cc.p(420, 197),
-            "smeltItemPoint": cc.p(220, 197),
+            "smeltItemPoint": cc.p(320, 197),
             "helpItemPoint": cc.p(50, 810)
         },
         "cardTrainLabel": {

@@ -277,10 +277,12 @@ var fit4Iphone4 = {
             "lvIconPoint": cc.p(470, 782),
             "hpIconPoint": cc.p(470, 702),
             "atkIconPoint": cc.p(470, 622),
-            "lvLabelPoint": cc.p(568, 780),
-            "hpLabelPoint": cc.p(568, 700),
-            "atkLabelPoint": cc.p(568, 620),
+            "lvLabelPoint": cc.p(558, 780),
+            "hpLabelPoint": cc.p(558, 700),
+            "atkLabelPoint": cc.p(558, 620),
             "potentialLvIconPoint": cc.p(620, 802),
+            "hpAdditionLabelPoint": cc.p(605, 712),
+            "atkAdditionLabelPoint": cc.p(605, 632),
             "descriptionLabelBasePoint": cc.p(440, 562),
             "descriptionLabelOffsetY": 30,
             "skillIconPoint": cc.p(100, 392),
@@ -381,7 +383,7 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(360, 292),
             "helpLabelPoint": cc.p(360, 292),
             "selectRetinueCardItemPoint": cc.p(460, 182),
-            "smeltItemPoint": cc.p(260, 182),
+            "smeltItemPoint": cc.p(360, 182),
             "helpItemPoint": cc.p(80, 670)
         },
         "cardTrainLabel": {
@@ -1174,7 +1176,7 @@ var fit4Iphone4 = {
             "bgSpriteRect2": cc.rect(0, 0, 640, 706),
             "playerHeaderLabelPoint": cc.p(40, 802),
             "cardSmeltLayerItemPoint": cc.p(110, 756),
-            "usePillLayerItemPoint": cc.p(254, 756),
+            "usePillLayerItemPoint": cc.p(254, 756)
         },
         "speakerLayer": {
             "msgBgLabelPoint": cc.p(380, 870),

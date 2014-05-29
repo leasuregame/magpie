@@ -214,8 +214,8 @@ var UsePillLabel = cc.Layer.extend({
                 this._arrowLabel1.setVisible(false);
                 this._arrowLabel2.setVisible(false);
 
-                this._nextSkillLvLabel.setString("已满级");
-                this._nextSkillHarmLabel.setString("已满级");
+                this._nextAwakenLvLabel.setString("已满级");
+                this._nextAwakenAdditionLabel.setString("已满级");
             }
 
             this._resLabel.setVisible(true);
@@ -291,8 +291,10 @@ var UsePillLabel = cc.Layer.extend({
                 that._effect = null;
             }
 
+            that._awakenEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+
             that._effect = cc.BuilderReader.load(main_scene_image.uiEffect116, this);
-            that._effect.setPosition(that._usePillLabelFit.leadCardHalfNodePoint);
+            that._effect.setPosition(that._usePillLabelFit.awakenEffectPoint);
             that._effect.animationManager.setCompletedAnimationCallback(this, function () {
                 that._effect.removeFromParent();
                 that._effect = null;

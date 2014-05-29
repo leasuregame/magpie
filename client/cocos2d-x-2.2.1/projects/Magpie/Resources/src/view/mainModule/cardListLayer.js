@@ -991,9 +991,14 @@ var CardListLayer = cc.Layer.extend({
         }
 
         var selectCardList = this._getSelectCardList();
+        var len = selectCardList.length;
+
+        if(len == 0) {
+            TipLayer.tip("没有满足条件的卡牌");
+        }
 
         if (this._selectType == SELECT_TYPE_CARD_UPGRADE_RETINUE) {
-            var len = selectCardList.length;
+
             var isShowTip = false;
             for (var i = 0; i < len; i++) {
                 var star = selectCardList[i].get("star");

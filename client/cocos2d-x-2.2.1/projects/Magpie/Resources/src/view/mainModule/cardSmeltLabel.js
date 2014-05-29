@@ -21,6 +21,10 @@ var CardSmeltLabel = cc.Layer.extend({
         this.update();
     },
 
+    onExit: function() {
+        this._super();
+    },
+
     init: function () {
         cc.log("CardSmeltLabel init");
 
@@ -28,7 +32,7 @@ var CardSmeltLabel = cc.Layer.extend({
 
         this._cardSmeltLabelFit = gameFit.mainScene.cardSmeltLabel;
 
-        this._retinueCard = null;
+        this._retinueCard = [];
 
         this._smelter = cc.BuilderReader.load(main_scene_image.uiEffect114, this);
         this._smelter.setPosition(this._cardSmeltLabelFit.smelterPoint);
@@ -93,16 +97,6 @@ var CardSmeltLabel = cc.Layer.extend({
         this._smeltItem.setPosition(this._cardSmeltLabelFit.smeltItemPoint);
         this._smeltItem.setEnabled(false);
 
-        this._selectRetinueCardItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon53,
-            this._onClickSelectRetinueCard,
-            this
-        );
-        this._selectRetinueCardItem.setPosition(this._cardSmeltLabelFit.selectRetinueCardItemPoint);
-
         var helpItem = cc.MenuItemImage.create(
             main_scene_image.button41,
             main_scene_image.button41s,
@@ -114,8 +108,7 @@ var CardSmeltLabel = cc.Layer.extend({
 
         var menu = cc.Menu.create(
             helpItem,
-            this._smeltItem,
-            this._selectRetinueCardItem
+            this._smeltItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
@@ -128,7 +121,7 @@ var CardSmeltLabel = cc.Layer.extend({
 
         this._pillLabel.setString(gameData.player.get("pill"));
 
-        if (this._retinueCard) {
+        if (this._retinueCard && this._retinueCard.length > 0) {
             this._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
             this.ccbBoxItem.setEnabled(false);
             this._smeltItem.setEnabled(true);
@@ -167,12 +160,14 @@ var CardSmeltLabel = cc.Layer.extend({
             this._getGoods = null;
         }
         this.ccbBoxItem.setEnabled(true);
-        this._retinueCard = null;
+        this._retinueCard = [];
         this.update();
     },
 
     _onClickSmelt: function () {
         cc.log("CardSmeltLabel _onClickSmelt");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var cardIdList = [];
         var len = this._retinueCard.length;
@@ -191,14 +186,20 @@ var CardSmeltLabel = cc.Layer.extend({
     _onClickSelectRetinueCard: function () {
         cc.log("CardSmeltLabel _onClickSelectRetinueCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_SMELT_RETINUE, function (data) {
             cc.log(data);
-
+            cc.log(that);
             if (data) {
                 that._retinueCard = data;
             }
+
             that.getParent().backToThisLayer();
+
+            cc.log("this._retinueCard :");
+            cc.log(that._retinueCard);
         }, {
             retinueCard: this._retinueCard
         });

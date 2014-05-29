@@ -156,6 +156,7 @@
                 <file name="src/view/mainModule/exploreCardLayer.js"/>
                 <file name="src/view/mainModule/exploreLayer.js"/>
                 <file name="src/view/mainModule/extractTipLabel.js"/>
+                <file name="src/view/mainModule/filterStarLabel.js"/>
                 <file name="src/view/mainModule/friendLayer.js"/>
                 <file name="src/view/mainModule/friendMessageLayer.js"/>
                 <file name="src/view/mainModule/gameFrame.js"/>

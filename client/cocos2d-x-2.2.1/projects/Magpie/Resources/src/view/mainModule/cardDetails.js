@@ -133,18 +133,64 @@ var CardDetails = LazyLayer.extend({
         this.addChild(this._atkLabel);
 
         var potentialLv = this._card.get("potentialLv");
+
+        var potentialLvIcon = cc.Sprite.create(main_scene_image.icon462);
+        potentialLvIcon.setPosition(this._cardDetailsFit.potentialLvIconPoint);
+        this.addChild(potentialLvIcon);
+
+        var potentialLvLabel = StrokeLabel.create(potentialLv, "STHeitiTC-Medium", 28);
+        potentialLvLabel.setPosition(cc.p(21, 20));
+        potentialLvLabel.setColor(cc.c3b(255, 255, 255));
+        potentialLvLabel.setBgColor(cc.c3b(0, 0, 0));
+        potentialLvIcon.addChild(potentialLvLabel);
+
         if (potentialLv > 0) {
-            var potentialLvIcon = cc.Sprite.create(main_scene_image.icon462);
-            potentialLvIcon.setPosition(this._cardDetailsFit.potentialLvIconPoint);
-            this.addChild(potentialLvIcon);
+            var addition = this._card.getPotentialLvAddition();
 
-            var potentialLvLabel = StrokeLabel.create(potentialLv, "STHeitiTC-Medium", 28);
-            potentialLvLabel.setPosition(cc.p(21 ,20));
-            potentialLvLabel.setColor(cc.c3b(255, 255, 255));
-            potentialLvLabel.setBgColor(cc.c3b(0, 0, 0));
-            potentialLvIcon.addChild(potentialLvLabel);
+            var hpAdditionLabel = ColorLabelTTF.create(
+                {
+                    string: "(",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    color: cc.c3b(178, 255, 13)
+                },
+                {
+                    iconName: "icon465",
+                    offset: cc.p(0, 2)
+                },
+                {
+                    string: addition + "%)",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    color: cc.c3b(178, 255, 13)
+                }
+            );
+            hpAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
+            hpAdditionLabel.setPosition(this._cardDetailsFit.hpAdditionLabelPoint);
+            this.addChild(hpAdditionLabel);
+
+            var atkAdditionLabel = ColorLabelTTF.create(
+                {
+                    string: "(",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    color: cc.c3b(178, 255, 13)
+                },
+                {
+                    iconName: "icon465",
+                    offset: cc.p(0, 2)
+                },
+                {
+                    string: addition + "%)",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 22,
+                    color: cc.c3b(178, 255, 13)
+                }
+            );
+            atkAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
+            atkAdditionLabel.setPosition(this._cardDetailsFit.atkAdditionLabelPoint);
+            this.addChild(atkAdditionLabel);
         }
-
         var description = lz.format(this._card.get("description"), 9);
         var len = description.length;
         for (var i = 0; i < len; ++i) {

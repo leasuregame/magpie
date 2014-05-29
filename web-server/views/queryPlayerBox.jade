@@ -44,7 +44,7 @@ div(id='queryPlayerBox')
             div.col-sm-1.no-pad-left
                 input.form-control.up(name='pmUp')
         div.col-sm-4.center
-            button.btn.btn-primary(id='btnQueryPlayer') 查询玩家
+            a.btn.btn-primary(href='javascript:void(0);',id='btnQueryPlayer') 查询玩家
     div(id='playerBox')
         div.form-group
             label.col-sm-3.control-label 玩家
@@ -52,5 +52,6 @@ div(id='queryPlayerBox')
                 span.totalPlayers 0
         div.form-group
             label.col-sm-3.control-label
+                span.alert.alert-danger.hide(id='queryPlayerAlert' style='padding:8px 15px;font-weight:normal')
             div.col-sm-7
                 textarea.form-control(type='text', id='playerName' name='playerName')

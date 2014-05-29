@@ -32,17 +32,7 @@ var reward = function(app) {
 		log += '    内容: ' + data;
 
 		logger.info(log);
-	});	
-
-    app.get('/admin/check-reward', filter.authorize, function (req, res) {
-       res.render('checkReward', {
-           menu: 'checkReward',
-           title: '奖励记录',
-           user: req.session.user,
-           success: req.flash('success').toString(),
-           error: req.flash('error').toString()
-       })
-    });
+	});
 };
 
 module.exports = reward;

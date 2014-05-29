@@ -7,6 +7,25 @@ var queryPlayerLimits = {
     amount : {lower:0, upper: 1000000}
 };
 
+function getInputAreaIds() {
+    var areaId = $('#area').val();
+    return areaId;
+}
+
+function getInputPlayerNames() {
+    var playerNameTxt = $("#playerName").val();
+    var playerNames = playerNameTxt.length > 0 ? window.wsUtil.splitNoBlank(playerNameTxt, PLAYER_NAME_SEPARATOR) : '';
+    return playerNames;
+}
+
+function showQueryPlayerBoxAlert(tips) {
+    $('#queryPlayerAlert').text(tips).removeClass('hide');
+}
+
+function hideQueryPlayerBoxAlert() {
+    $('#queryPlayerAlert').addClass('hide');
+}
+
 /**
  * 初始化服务器列表
  */
@@ -71,7 +90,10 @@ function queryPlayer() {
     var options = getPlayerQueryOptData();
     options.areaId = areaId;
 
+    $('#btnQueryPlayer').attr('disabled', true);
     window.webAPI.getPlayerNames(options, function (data) {
+        $('#btnQueryPlayer').attr('disabled', false);
+
         var text = '';
         for(var i in data) {
             text += data[i] += PLAYER_NAME_SEPARATOR;
@@ -80,20 +102,22 @@ function queryPlayer() {
     });
 }
 
+function removeAreaError() {
+    $('#area').closest('.form-group').removeClass('has-error').find('.help-block').remove();
+}
+
 $(document).ready(function() {
     initAreasList();
 
-    $('#btnQueryPlayer').click(function(e) {
-        e.preventDefault();
-        // 查询玩家
-        queryPlayer();
-    });
+    $('#btnQueryPlayer').click(queryPlayer);
     $('#area').change(function() {
+        removeAreaError();
         $('#playerName').val('').change();
     });
     $('#playerName').change(function(){
         var $this = $(this);
         var total = window.wsUtil.splitNoBlank($this.val(), PLAYER_NAME_SEPARATOR).length;
         $this.closest('#playerBox').find('.totalPlayers').text(total);
+        hideQueryPlayerBoxAlert();
     });
 });

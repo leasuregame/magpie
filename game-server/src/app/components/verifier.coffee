@@ -100,13 +100,22 @@ executeVerify = (app, queue) ->
       logger.error('faild to verify app store reciept.', err)
 
 updatePlayer = (app, buyRecord, receiptResult, done) ->
+  rdata =     
+    purchaseDate: utility.dateFormat(new Date(parseInt receiptResult.receipt.purchase_date_ms), 'yyyy-MM-dd h:mm:ss')
+    productId: receiptResult.receipt.product_id
+    qty: receiptResult.receipt.quantity
+    status: receiptResult.status
+    verifyResult: receiptResult
+
   products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
   if products and products.length > 0
     product = products[0]
+    rdata.isVerify = 1
+    updateBuyRecord app, buyRecord.id, rdata, () ->
   else
     logger.error('verify result: ', receiptResult)
     logger.error('buy record: ', buyRecord)
-    throw new Error('can not find product info by product id ', receiptResult.receipt.product_id)
+    updateBuyRecord app, buyRecord.id, rdata, () ->
     return done()
 
   isFirstRechage = false
@@ -130,16 +139,6 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
       player.increase('gold', (product.cash * 10 + product.gold) * times)
       player.save()
 
-      rdata = 
-        isVerify: 1
-        purchaseDate: utility.dateFormat(new Date(parseInt receiptResult.receipt.purchase_date_ms), 'yyyy-MM-dd h:mm:ss')
-        productId: receiptResult.receipt.product_id
-        qty: receiptResult.receipt.quantity
-        status: receiptResult.status
-        verifyResult: receiptResult
-
-      updateBuyRecord(app, buyRecord.id, rdata, cb)
-    (updateResult, cb) ->
       addGoldCard(app, buyRecord.id, player, product, cb)
 
     # (cb) ->

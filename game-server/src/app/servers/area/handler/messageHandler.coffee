@@ -156,7 +156,9 @@ Handler::handleSysMsg = (msg, session, next) ->
   msgId = msg.msgId
   
   incValues = (obj, options, done) ->
-    data = options.rewards or options
+    return done(null, {}) if not options.rewards or _.isEmpty(options.rewards)
+
+    data = options.rewards
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')

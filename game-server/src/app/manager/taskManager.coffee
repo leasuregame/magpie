@@ -299,7 +299,7 @@ getBossInfo = (type) ->
     return null
 
 checkFindBoss = (count) ->
-  rate = table.getTableItem('boss_find_rate', count)?.rate or 1
+  rate = table.getTableItem('boss_find_rate', count)?.rate or 0
   return utility.hitRate(rate)
 
 saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->

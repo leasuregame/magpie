@@ -163,11 +163,14 @@ function showModal(msg) {
     var rewardDom = '';
     $.each(msg.options.rewards, function (key, val) {
         if(key == 'cardArray') {
-            rewardDom += '<br>卡牌 : ' + val.length + '张<br>';
+            var qty = 0;
+            
             $.each(val, function (idx, val) {
+                qty += val.qty;
                 var card = configCards[val.tableId + ""];
-                ret += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + '<br>';
-            })
+                rewardDom += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + '<br>';
+            });
+            rewardDom = '<br>卡牌 : ' + val.length + '张<br>' + rewardDom;
         } else {
             rewardDom += baseRewardNames[key] + ' x ' + val + ' <br>';
         }

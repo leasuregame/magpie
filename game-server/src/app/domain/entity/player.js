@@ -519,7 +519,7 @@ var Player = (function(_super) {
     Player.prototype.dailyData = function() {
         return {
             dailyGift: this.dailyGift,
-            pass: this.pass,
+            pass: this.getPass(),
             task: this.task,
             spiritPool: this.spiritPool,
             friendsCount: this.friendsCount,

@@ -217,6 +217,11 @@ Handler::luckyCard = (msg, session, next) ->
     cards4 = cards.filter (c) -> 
       _tid = c.tableId + 5 - c.star
       c.star < 5 and _tid not in lids
+
+    # 所有5星卡牌都已经点亮后 cards4为空列表
+    if cards4.length is 0
+      cards4 = cards.filter (c) -> c.star < 5
+
     idx = _.random(0, cards4.length-1)
     
     card = cards4[idx]

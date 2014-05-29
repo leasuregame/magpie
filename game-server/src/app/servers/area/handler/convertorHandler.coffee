@@ -100,6 +100,7 @@ Handler::dissolveCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
+    player.popCards(cardIds)
     next(null, {code: 200, msg: pill: pill, money: money})
 
 updateEntities = (groups..., cb) ->

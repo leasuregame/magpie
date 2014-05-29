@@ -170,7 +170,7 @@ function showModal(msg) {
                 var card = configCards[val.tableId + ""];
                 rewardDom += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + '<br>';
             });
-            rewardDom = '<br>卡牌 : ' + val.length + '张<br>' + rewardDom;
+            rewardDom = '<br>卡牌 : ' + qty + '张<br>' + rewardDom;
         } else {
             rewardDom += baseRewardNames[key] + ' x ' + val + ' <br>';
         }

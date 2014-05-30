@@ -65,3 +65,14 @@ util.loadShareDatabaseInfo = (app) ->
   app.set 'mysql_sharedb', mysqlConfig[env]['sharedb']
   dbClient = new Mysql(app, 'mysql_sharedb')
   app.set('dbClient_sharedb', dbClient)
+
+util.isActivityTime = (app, name) ->
+  sconf = app.get('sharedConf')
+  activity = sconf.activity[name] or sconf.activity.default
+  return false if not activity?.enable
+
+  now = new Date()
+  startDate = new Date activity.startDate
+  endDate = new Date activity.endDate
+
+  return startDate < now < endDate

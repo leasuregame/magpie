@@ -14,7 +14,7 @@
     "level": "ERROR",
     "appender": {
       "type": "smtp",
-      "recipients": "wuzhanghai@leasuregame.com",
+      "recipients": "wuzhanghai@leasuregame.com,linchenchen@leasuregame.com",
       "subject": "[Aliyun Game Server Error]",
       "sendInterval": 5,
       "transport": "SMTP",

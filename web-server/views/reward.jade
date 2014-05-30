@@ -7,67 +7,14 @@ block head
     script.
         require('boot');
     style.
-        .no-pad-left {padding-left:0px;}
-        .no-pad-right {padding-right:0px;}
         .no-margin {margin:0;}
         .no-mar-bottom {margin-bottom:0;}
-        .center {text-align: center;}
 
 block content
     h1.text-center 奖励发放
     hr
     div.form-horizontal(role='form', action='#')
-        div(id='queryPlayerBox')
-            div.form-group
-                label.col-sm-3.control-label (切换服务器将清空玩家) 服务器
-                div.col-sm-7
-                    select.form-control(type='text', id="area" name='area' required)
-            div.form-group
-                div.paramSet(name='lv')
-                    label.col-sm-3.control-label 玩家等级
-                    div.col-sm-1.no-pad-right
-                        input.form-control.low(name='lvLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-1.no-pad-left
-                        input.form-control.up(name='lvUp')
-                div.paramSet(name='vip')
-                    label.col-sm-1.control-label VIP
-                    div.col-sm-1.no-pad-right
-                        input.form-control.low(name='vipLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-1.no-pad-left
-                        input.form-control.up(name='vipUp')
-            div.form-group
-                div.paramSet(name='payTime')
-                    label.col-sm-3.control-label 充值时间
-                    div.col-sm-3
-                        input.form-control.low(type='date' name='ptLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-3
-                        input.form-control.up(type='date' name='ptUp')
-            div.form-group
-                div.paramSet(name='amount')
-                    label.col-sm-3.control-label 充值额度
-                    div.col-sm-1.no-pad-right
-                        input.form-control.low(name='pmLow')
-                    div.col-sm-1.center
-                        span.glyphicon.glyphicon-minus.control-label
-                    div.col-sm-1.no-pad-left
-                        input.form-control.up(name='pmUp')
-                div.col-sm-4.center
-                    button.btn.btn-primary(id='btnFindPlayer') 查询玩家
-            div(id='playerBox')
-                div.form-group
-                    label.col-sm-3.control-label 玩家
-                    div.col-sm-7.form-control-static 符合人数&nbsp;:&nbsp;
-                        span.totalPlayers 0
-                div.form-group
-                    label.col-sm-3.control-label
-                    div.col-sm-7
-                        textarea.form-control(type='text', id='playerName' name='playerName')
+        include ./queryPlayerBox
         hr
         div.form-group
             label.col-sm-3.control-label 有效期限
@@ -89,24 +36,24 @@ block content
         div(id='rewardBox')
             div.form-group.no-margin
                 div.col-sm-2.control-label(style='padding: 16px 20px;')
-                    button.btn.btn-primary(id='btnResetReward') 清空奖励
+                    a.btn.btn-primary(href='javascript:void(0);',id='btnResetReward') 清空奖励
                 div.alert.no-margin
                     span(style='font-size:24px;margin-right:8px;padding-top:4px;font-weight:bolder') 奖励选项
                     span.alert.alert-danger.hide(id='baseRewardAlert' style='padding:8px 15px;position:relative;top:-3px;')
             div.form-group
                 div.rewardTag
-                    label.col-sm-2.control-label.limitTag(limit='1000')
+                    label.col-sm-2.control-label.limitTag(limit='30000')
                     label.col-sm-1.control-label.name 魔石
                     div.col-sm-2
                         input.form-control.baseReward(id='gold' name='gold')
                 div.rewardTag
-                    label.col-sm-2.control-label.limitTag(limit='1000000')
+                    label.col-sm-2.control-label.limitTag(limit='5000000')
                     label.col-sm-1.control-label.name 仙币
                     div.col-sm-2
                         input.form-control.baseReward(id='money' name='money')
             div.form-group
                 div.rewardTag
-                    label.col-sm-2.control-label.limitTag(limit='200')
+                    label.col-sm-2.control-label.limitTag(limit='500')
                     label.col-sm-1.control-label.name 体力点
                     div.col-sm-2
                         input.form-control.baseReward(id='powerValue' name='powerValue')
@@ -122,7 +69,7 @@ block content
                     div.col-sm-2
                         input.form-control.baseReward(id='skillPoint' name='skillPoint')
                 div.rewardTag
-                    label.col-sm-2.control-label.limitTag(limit='20000')
+                    label.col-sm-2.control-label.limitTag(limit='200000')
                     label.col-sm-1.control-label.name 仙丹
                     div.col-sm-2
                         input.form-control.baseReward(id='elixir' name='elixir')
@@ -139,7 +86,7 @@ block content
                         input.form-control.baseReward(id='fragments' name='fragments')
             div.form-group
                 div.rewardTag
-                    label.col-sm-2.control-label.limitTag(limit='10')
+                    label.col-sm-2.control-label.limitTag(limit='50')
                     label.col-sm-1.control-label.name 精元
                     div.col-sm-2
                         input.form-control.baseReward(id='superHonor' name='superHonor')
@@ -158,7 +105,7 @@ block content
             div(id='cardBox')
                 div.form-group
                     label.col-sm-3.control-label
-                        button.btn.btn-primary(id='btnAddCard')
+                        a.btn.btn-primary(href='javascript:void(0);',id='btnAddCard')
                             span.glyphicon.glyphicon-plus
                     label.col-sm-3.control-label(style='text-align:center') 卡牌
                     label.col-sm-2.control-label(style='text-align:center') 等级
@@ -174,7 +121,7 @@ block content
                         hidden.cardLimit(limit='30')
                         input.form-control.cardReward.cLv(name='lv')
                     label.col-sm-2.control-label
-                        hidden.cardLimit(limit='50')
+                        hidden.cardLimit(limit='100')
                         input.form-control.cardReward.cQty(name='qty')
             div.form-group(style='text-align:center')
                     span.alert.alert-danger.hide(id='cardRewardAlert' style='padding:8px 15px;font-weight:normal')
@@ -182,18 +129,18 @@ block content
         hr
         div.form-group.text-right
             div.col-sm-7.col-sm-offset-3
-                button.btn.btn-success.btn-lg(id='btnOk', data-loading-text="Loading...") &nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;
+                a.btn.btn-success.btn-lg(href='javascript:void(0);',id='btnOk', data-loading-text="Loading...") &nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;
         div.form-group(id='msg-block')
             div.col-sm-7.col-sm-offset-3
                 div.alert.alert-dismissable.hide(id='resAlert')
-                    button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+                    a.close(href='javascript:void(0);', data-dismiss='alert', aria-hidden='true') &times;
                     span
 
     div.modal.fade(id='actionConfirm', tabindex='-1' role='dialog', aria-labelledby='actionConfirmModalLable', aria-hidden='true')
         div.modal-dialog
             div.modal-content
                 div.modal-header
-                    button.close(type='button', data-dismiss='modal' aria-hidden='true') &times;
+                    a.close(href='javascript:void(0);', data-dismiss='modal' aria-hidden='true') &times;
                     h4.modal-title(id='actionConfirmModalLable') 确定要提交此信息吗？
                 div.modal-body.form-horizontal(id='modalContent')
                     div.form-group.no-mar-bottom.area
@@ -218,8 +165,8 @@ block content
                         label.col-sm-2.control-label 奖励:
                         div.col-sm-8.form-control-static.text
                 div.modal-footer
-                    button.btn.btn-default(type='button', data-dismiss='modal') 取消
-                    button.btn.btn-primary(type='button', id='btnSendMsg') 确定
+                    a.btn.btn-default(href='javascript:void(0);', data-dismiss='modal') 取消
+                    a.btn.btn-primary(href='javascript:void(0);', id='btnSendMsg') 确定
     div.hide(id='cardOptTemp')
         div.form-group.cardTag
             label.col-sm-3.control-label
@@ -236,3 +183,4 @@ block content
                 input.form-control.cardReward.cQty(name='qty')
     script(type='text/javascript', src='/js/webServerHandle.js')
     script(type='text/javascript', src='/js/reward.js')
+    script(type='text/javascript', src='/js/queryPlayer.js')

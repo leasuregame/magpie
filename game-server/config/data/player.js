@@ -12,6 +12,7 @@ module.exports = {
     "hours": [11, 17], // 体力赠送的开始的时间点
     "duration": 2,     // 体力领取持续的时间段，单位（小时）
     "point": 50,       // 领取的体力值
+    "activity_point": 100, // 活动期间领取的体力点
     "interval": 60000  
   },
 

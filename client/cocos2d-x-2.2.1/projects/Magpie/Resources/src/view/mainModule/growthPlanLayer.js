@@ -176,8 +176,8 @@ var GrowthPlanLayer = cc.Layer.extend({
             rewardItem.setEnabled(lv >= reward.lv);
             rewardItem.setVisible(state != ALREADY_GOT_REWARD);
 
-            if(state == NOT_GOT_REWARD && currentId == undefined) {
-                currentId = id;
+            if (state == NOT_GOT_REWARD && currentId == undefined) {
+                currentId = id - 1
             }
 
             this._getRewardItems[reward.id] = rewardItem;
@@ -200,7 +200,7 @@ var GrowthPlanLayer = cc.Layer.extend({
 
         scrollView.setContentSize(cc.size(600, scrollViewHeight));
 
-        var offsetY = Math.min(scrollView.minContainerOffset().y + 122 * (currentId || 0), 0);
+        var offsetY = Math.min(scrollView.minContainerOffset().y + 112 * (currentId|| 0), 0);
         scrollView.setContentOffset(cc.p(0, offsetY));
 
     },

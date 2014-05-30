@@ -29,6 +29,7 @@ res/main/icon465.png
 res/ccb/uiEffect114.ccbi
 res/ccb/uiEffect115.ccbi
 res/ccb/uiEffect116.ccbi
+res/ccb/uiEffect118.ccbi
 res/effect/uiEffect/up250.png
 res/effect/uiEffect/up251.png
 res/effect/uiEffect/up252.png
@@ -42,6 +43,7 @@ res/effect/uiEffect/up259.png
 res/effect/uiEffect/up260.png
 res/effect/uiEffect/up261.png
 res/effect/uiEffect/up262.png
+res/effect/uiEffect/up263.png
 
 resYY/main/button86.png
 resYY/main/button87.png
@@ -70,6 +72,7 @@ resYY/main/icon465.png
 resYY/ccb/uiEffect114.ccbi
 resYY/ccb/uiEffect115.ccbi
 resYY/ccb/uiEffect116.ccbi
+resYY/ccb/uiEffect118.ccbi
 resYY/effect/uiEffect/up250.png
 resYY/effect/uiEffect/up251.png
 resYY/effect/uiEffect/up252.png
@@ -83,6 +86,7 @@ resYY/effect/uiEffect/up259.png
 resYY/effect/uiEffect/up260.png
 resYY/effect/uiEffect/up261.png
 resYY/effect/uiEffect/up262.png
+resYY/effect/uiEffect/up263.png
 ----------v1.5.0版本----------------------------------------------------------------------------------------------------
 
 ----------v1.4.9版本----------------------------------------------------------------------------------------------------

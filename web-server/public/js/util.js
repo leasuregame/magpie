@@ -33,6 +33,27 @@
         });
     };
 
+    /**
+     * 日期字符串转毫秒数
+     * @param str 格式(YYYY-MM-DD hh:mm:ss | YYYY/MM/DD hh:mm:ss)
+     * @returns {*}
+     */
+    wsUtil.strDate2Ms = function (str) {
+        if(/^(\d{4})[-,/](\d{1,2})[-,/](\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/.test(str)) {
+            return new Date(RegExp.$1,RegExp.$2 - 1,RegExp.$3,RegExp.$4,RegExp.$5,RegExp.$6).getTime();
+        }
+        return null;
+    };
+
+    wsUtil.isNotEmptyObj = function (obj) {
+        if(typeof obj == 'object') {
+            for(var i in obj) {
+                return true;
+            }
+        }
+        return false;
+    };
+
     // AMD / RequireJS
     if (typeof define !== 'undefined' && define.amd) {
         define([], function () {

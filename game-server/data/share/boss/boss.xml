@@ -21,7 +21,7 @@
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>10140</WindowHeight>
   <WindowWidth>30140</WindowWidth>
-  <WindowTopX>3480</WindowTopX>
+  <WindowTopX>3200</WindowTopX>
   <WindowTopY>1520</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
@@ -181,24 +181,24 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell ss:StyleID="s64"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">100</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">蓝卡</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="Number">0</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">0</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell ss:StyleID="s64"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">紫卡</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">0</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
     <Cell ss:StyleID="s64"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">金卡</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="Number">150</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">100</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -218,7 +218,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

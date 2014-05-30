@@ -5,6 +5,7 @@ utility = require '../../../common/utility'
 configData = require '../../../../config/data'
 achieve = require '../../../domain/achievement'
 async = require 'async'
+areaUtil = require '../../../util/areaUtil'
 _ = require 'underscore'
 
 resData = table.getTableItem('resource_limit', 1)
@@ -133,7 +134,7 @@ Handler::givePower = (msg, session, next) ->
     return next(null, {code: 501, msg: '不在领取体力的时间段'})
 
   playerId = session.get('playerId')
-  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) =>
     if err
       return next(null, {
         code: err.code or 501
@@ -145,7 +146,7 @@ Handler::givePower = (msg, session, next) ->
     if hasGetPower(player, star_hour) 
       return next(null, {code: 501, msg: '不能重复领取'})
 
-    point = configData.player.POWER_GIVE.point
+    point = areaUtil.powerGivenValue(@app)
     player.givePower(star_hour, point)
     player.save()
     next(null, {code: 200, msg: {powerValue: point}})

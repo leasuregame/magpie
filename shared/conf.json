@@ -5,5 +5,18 @@
     "endDate": "2014-2-28"
   },
 
-  "useWhiteList": false
+  "useWhiteList": false,
+
+  "activity": {
+    "default": {
+      "enable": false,
+      "startDate": "2014-1-1",
+      "endDate": "2014-1-1"
+    },
+    "boss": {
+      "enable": true,
+      "startDate": "2014-6-1",
+      "endDate": "2014-6-3 23:59:59:999"
+    }
+  }
 }

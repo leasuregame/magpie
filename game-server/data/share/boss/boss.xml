@@ -19,10 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8120</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>140</WindowTopY>
+  <WindowHeight>10140</WindowHeight>
+  <WindowWidth>30140</WindowWidth>
+  <WindowTopX>3480</WindowTopX>
+  <WindowTopY>1520</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -36,13 +36,24 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s62">
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s64">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -59,36 +70,36 @@
    <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="124"/>
    <Column ss:AutoFitWidth="0" ss:Width="141"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s66"><Data ss:Type="String">索引ID</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">名称</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">boss类型</Data><Comment
+    <Cell ss:StyleID="s62"><Data ss:Type="String">索引ID</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">名称</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">boss类型</Data><Comment
       ss:Author="gaobin"><Data>gaobin:&#10;这里就是类型ID，BOSS卡牌的品质类型</Data></Comment></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Boss卡牌Id</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">卡牌ID</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">阵型</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">存活时间</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">消失时间</Data><Comment
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Boss卡牌Id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">卡牌ID</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">阵型</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">存活时间</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">消失时间</Data><Comment
       ss:Author="gaobin"><Data>gaobin:&#10;死亡后，或者逃走后存在的持续时间</Data></Comment></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">最高可被攻击次数</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">最高可被攻击次数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s66"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">type</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">boss_id</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">card_ids</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">formation</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">live_time</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">disappear_time</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">atk_count</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">type</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">boss_id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">card_ids</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">formation</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">live_time</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">disappear_time</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">atk_count</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">九阴罗刹</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">40000</Data></Cell>
     <Cell><Data ss:Type="String">40003#40000#40003</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">2:40000,4:40003,6:40003</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">2:40000,4:40003,6:40003</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
@@ -96,10 +107,10 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">赤炎星君</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">40001</Data></Cell>
     <Cell><Data ss:Type="String">40004#40001#40004</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">2:40001,4:40004,6:40004</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">2:40001,4:40004,6:40004</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
@@ -107,22 +118,22 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">金身冥王</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">40002</Data></Cell>
     <Cell><Data ss:Type="String">40005#40002#40005</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">2:40002,4:40005,6:40005</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">2:40002,4:40005,6:40005</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:Index="7" ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -149,39 +160,45 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="BOSS类型配置表">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="72" ss:DefaultRowHeight="20.25">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="104"/>
    <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="141"/>
+   <Column ss:AutoFitWidth="0" ss:Width="148"/>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell><Data ss:Type="String">类型ID</Data></Cell>
-    <Cell><Data ss:Type="String">刷新概率</Data></Cell>
-    <Cell><Data ss:Type="String">名称</Data></Cell>
-    <Cell><Data ss:Type="String">每次攻击奖励加成</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">类型ID</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">刷新概率</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">名称</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">每次攻击奖励加成</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">活动期间的刷新概率</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">rate</Data></Cell>
-    <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">reward_inc</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">rate</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">reward_inc</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">rate_activity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">55</Data></Cell>
-    <Cell><Data ss:Type="String">蓝卡</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">蓝卡</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="String">紫卡</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">紫卡</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">55</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">15</Data></Cell>
-    <Cell><Data ss:Type="String">金卡</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">金卡</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">35</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -201,8 +218,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

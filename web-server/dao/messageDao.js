@@ -32,7 +32,7 @@ exports.getPlayerMessage = function(where, areaId, cb) {
 
     var queryWhere = buildWhereSql(where);
 
-    var sql = util.format('select m.*, p.name, p.areaId from %s m, %s p where m.%s = p.%s and %s order by m.id desc', DB_NAME, PLAYER_DB_NAME, dbFields.receiver, 'id', queryWhere);
+    var sql = util.format('select m.*, p.name, p.areaId from %s m, %s p where m.%s = p.%s and %s order by m.createTime desc', DB_NAME, PLAYER_DB_NAME, dbFields.receiver, 'id', queryWhere);
 
     console.log("areaId : " + areaId, sql);
 

@@ -20,7 +20,10 @@ function initServer(cb) {
     }, function () {
 
         var route = "gate.gateHandler.queryEntry";
-        pomelo.request(route, {}, function (data) {
+        pomelo.request(route, {
+            os: 'ALL',
+            platform: 'ALL'
+        }, function (data) {
             console.log(data);
             var msg = data.msg;
             port = msg.port;

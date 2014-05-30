@@ -11,18 +11,50 @@
  * activity layer
  * */
 
-
-var titleIcons = ["icon261", "icon344", "icon262", "icon263", "icon265"];
-
 var ActivityLayer = cc.Layer.extend({
     _activityLayerFit: null,
 
-    _layer: [
-        SignInLayer,
-        GoldCardsLayer,
-        PowerRewardLayer,
-        GoldRewardLayer,
-        InvitationLayer
+    _layers: [
+        {
+            titleIcon: "icon429",
+            layer: NewAreaRewardLayer,
+            nameString: "newAreaRewardLayer"
+        },
+        {
+            titleIcon: "icon261",
+            layer: SignInLayer,
+            nameString: "signInLayer"
+        },
+        {
+            titleIcon: "icon344",
+            layer: GoldCardsLayer,
+            nameString: "goldCardsLayer"
+        },
+        {
+            titleIcon: "icon433",
+            layer: GrowthPlanLayer,
+            nameString: "growthPlanLayer"
+        },
+        {
+            titleIcon: "icon262",
+            layer: PowerRewardLayer,
+            nameString: "powerRewardLayer"
+        },
+        {
+            titleIcon: "icon442",
+            layer: VipDailyRewardLayer,
+            nameString: "vipDailyRewardLayer"
+        },
+        {
+            titleIcon: "icon263",
+            layer: GoldRewardLayer,
+            nameString: "goldRewardLayer"
+        },
+        {
+            titleIcon: "icon265",
+            layer: InvitationLayer,
+            nameString: "invitationLayer"
+        }
     ],
     _selectIcon: null,
     _mark: [],
@@ -75,43 +107,52 @@ var ActivityLayer = cc.Layer.extend({
         turnLeftIcon.setPosition(this._activityLayerFit.turnLeftIconPoint);
         this.addChild(turnLeftIcon, 2);
 
-        var len = this._layer.length;
-
         var scrollViewLayer = cc.Layer.create();
         var mainMenu = LazyMenu.create();
         mainMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
         mainMenu.setPosition(cc.p(0, 0));
 
+        var index = 0;
+        var showIndex = -1;
+        var len = this._layers.length;
+
         for (var i = 0; i < len; ++i) {
 
-            if (i == len - 1 && lz.platformConfig.PLATFORM != "TB") {
+            var layer = this._layers[i];
+
+            if (!Activity.ActivityIsShowHandler[layer.nameString]()) {
                 continue;
             }
 
-            var url = titleIcons[i];
-
             this._item[i] = cc.MenuItemImage.create(
-                main_scene_image[url],
+                main_scene_image[layer.titleIcon],
                 null,
                 this._onClickLayer(i),
                 this
             );
             this._item[i].setScale(0.9);
             this._item[i].setAnchorPoint(cc.p(0, 0));
-            this._item[i].setPosition(cc.p(107 * i, 10));
+            this._item[i].setPosition(cc.p(107 * index, 10));
 
             this._mark[i] = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
             this._mark[i].setAnchorPoint(cc.p(0, 0));
-            this._mark[i].setPosition(cc.p(107 * i + 70, 80));
+            this._mark[i].setPosition(cc.p(107 * index + 70, 80));
             this._mark[i].setVisible(false);
             scrollViewLayer.addChild(this._mark[i], 2);
             mainMenu.addChild(this._item[i]);
+
+            if(showIndex == -1) {
+                showIndex = i;
+            }
+
+            index++;
         }
         scrollViewLayer.addChild(mainMenu);
 
         this._selectIcon = cc.Sprite.create(main_scene_image.icon19);
         this._selectIcon.setAnchorPoint(cc.p(0, 0));
-        this._selectIcon.setPosition(this._item[0].getPosition());
+
+        this._selectIcon.setPosition(this._item[showIndex].getPosition());
         this._selectIcon.setScale(0.9);
         scrollViewLayer.addChild(this._selectIcon);
 
@@ -123,9 +164,9 @@ var ActivityLayer = cc.Layer.extend({
         this._scrollView.updateInset();
         this.addChild(this._scrollView, 10);
 
-        this._scrollView.setContentSize(cc.size(len * 107, 106));
+        this._scrollView.setContentSize(cc.size(index * 107, 106));
 
-        this.switchLayer(this._layer[0]);
+        this.switchLayer(this._layers[showIndex].layer);
         return true;
     },
 
@@ -136,7 +177,7 @@ var ActivityLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             this._selectIcon.setPosition(this._item[index].getPosition());
-            this.switchLayer(this._layer[index]);
+            this.switchLayer(this._layers[index].layer);
         }
     },
 
@@ -154,11 +195,15 @@ var ActivityLayer = cc.Layer.extend({
     updateMark: function () {
         cc.log("ActivityLayer updateMark");
 
-        this._mark[0].setVisible(gameMark.getSignInMark());
-        this._mark[1].setVisible(gameMark.getGoldCardsMark());
-        this._mark[2].setVisible(gameMark.getPowerRewardMark());
-        this._mark[3].setVisible(gameMark.getGoldRewardMark());
-        // this._mark[4].setVisible(gameMark.getRechargeMark());
+        var len = this._layers.length;
+
+        for (var i = 0; i < len; ++i) {
+            var layer = this._layers[i];
+            if (!Activity.ActivityIsShowHandler[layer.nameString]()) {
+                continue;
+            }
+            this._mark[i].setVisible(Activity.ActivityIsMarkHandler[layer.nameString]());
+        }
     }
 });
 

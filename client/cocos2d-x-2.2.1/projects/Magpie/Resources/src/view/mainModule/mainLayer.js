@@ -18,7 +18,7 @@ var MainLayer = cc.Layer.extend({
     _layer: [
         SpiritPoolLayer,
         SummonLayer,
-        TreasureHuntLayer,
+        SmeltLayer,
         StrengthenLayer,
         EvolutionLayer,
         ActivityLayer,
@@ -38,9 +38,9 @@ var MainLayer = cc.Layer.extend({
     _lotteryMark: null,
     _treasureHuntMark: null,
 
-    _treasureHuntGuide: null,
     _rankGuide: null,
     _lotteryGuide: null,
+    _smeltGuide: null,
 
     _spiritLayerItem: null,
 
@@ -120,19 +120,15 @@ var MainLayer = cc.Layer.extend({
         this._lotteryMark.setPosition(cc.p(185, 80));
         lotteryLayerItem.addChild(this._lotteryMark);
 
-        var treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
+        var smeltLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
             main_scene_image.button2s,
-            main_scene_image.icon6,
+            main_scene_image.icon464,
             this._onClickLayer(2),
             this
         );
-        treasureHuntLayerItem.setOffset(cc.p(-5, 5));
-        treasureHuntLayerItem.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
-
-        this._treasureHuntMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
-        this._treasureHuntMark.setPosition(cc.p(185, 80));
-        treasureHuntLayerItem.addChild(this._treasureHuntMark);
+        smeltLayerItem.setOffset(cc.p(-5, 5));
+        smeltLayerItem.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
 
         var strengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -242,7 +238,7 @@ var MainLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(
             lotteryLayerItem,
-            treasureHuntLayerItem,
+            smeltLayerItem,
             strengthenLayerItem,
             evolutionLayerItem,
             activityLayerItem,
@@ -304,17 +300,16 @@ var MainLayer = cc.Layer.extend({
         this._achievementMark.setVisible(gameMark.getAchievementMark());
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
-        this._lotteryMark.setVisible(gameMark.getLotteryMark());
-        this._treasureHuntMark.setVisible(gameMark.getTreasureHuntMark());
+        this._lotteryMark.setVisible(gameMark.getSummonMark());
     },
 
     updateGuide: function () {
         cc.log("MainLayer updateGuide");
 
-        if (gameGuide.get("treasureHuntGuide") && !this._treasureHuntGuide) {
-            this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
-            this._treasureHuntGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
-            this.addChild(this._treasureHuntGuide);
+        if (gameGuide.get("smeltGuide") && !this._smeltGuide) {
+            this._smeltGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._smeltGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
+            this.addChild(this._smeltGuide);
         }
 
         if (gameGuide.get("rankGuide") && !this._rankGuide) {
@@ -367,10 +362,10 @@ var MainLayer = cc.Layer.extend({
             }
 
             if (index == 2) {
-                if (this._treasureHuntGuide) {
-                    this._treasureHuntGuide.removeFromParent();
-                    this._treasureHuntGuide = null;
-                    gameGuide.set("treasureHuntGuide", false);
+                if (this._smeltGuide) {
+                    this._smeltGuide.removeFromParent();
+                    this._smeltGuide = null;
+                    gameGuide.set("smeltGuide", false);
                 }
             }
 

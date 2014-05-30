@@ -89,8 +89,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
-									<real>60</real>
+									<real>40</real>
+									<real>40</real>
 								</array>
 							</dict>
 							<dict>
@@ -99,7 +99,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>80</real>
+								<real>100</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -136,7 +136,7 @@
 								<key>value</key>
 								<array>
 									<real>100</real>
-									<real>100</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -146,8 +146,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>150</real>
-									<real>100</real>
+									<real>60</real>
+									<real>40</real>
 								</array>
 							</dict>
 							<dict>
@@ -158,7 +158,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>180</real>
+									<real>-60</real>
 								</array>
 							</dict>
 							<dict>
@@ -169,7 +169,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>-60</real>
 								</array>
 							</dict>
 							<dict>
@@ -191,9 +191,9 @@
 								<key>value</key>
 								<array>
 									<array>
-										<real>0.082908280193805695</real>
-										<real>0.084106050431728363</real>
-										<real>0.084129385650157928</real>
+										<real>0.10390175133943558</real>
+										<real>0.25601178407669067</real>
+										<real>0.38333231210708618</real>
 										<real>1</real>
 									</array>
 									<array>
@@ -215,7 +215,7 @@
 										<real>0.0</real>
 										<real>0.0</real>
 										<real>0.0</real>
-										<real>0.51999998092651367</real>
+										<real>1</real>
 									</array>
 									<array>
 										<real>0.0</real>
@@ -254,7 +254,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>150</real>
+									<real>200</real>
 									<real>20</real>
 								</array>
 							</dict>
@@ -286,7 +286,7 @@
 								<key>type</key>
 								<string>Texture</string>
 								<key>value</key>
-								<string>res/effect/effect/p149.png</string>
+								<string>res/effect/effect/p55.png</string>
 							</dict>
 						</array>
 					</dict>
@@ -352,8 +352,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
-									<real>20</real>
+									<real>40</real>
+									<real>40</real>
 								</array>
 							</dict>
 							<dict>
@@ -387,7 +387,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
+									<real>1</real>
 									<real>0.10000000149011612</real>
 								</array>
 							</dict>
@@ -409,8 +409,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>30</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -625,7 +625,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>50</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -641,7 +641,7 @@
 								<key>type</key>
 								<string>Integer</string>
 								<key>value</key>
-								<integer>50</integer>
+								<integer>30</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -769,8 +769,8 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>30</real>
+									<real>20</real>
+									<real>20</real>
 								</array>
 							</dict>
 							<dict>
@@ -781,7 +781,7 @@
 								<key>value</key>
 								<array>
 									<real>120</real>
-									<real>120</real>
+									<real>60</real>
 								</array>
 							</dict>
 							<dict>
@@ -956,7 +956,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.1666666716337204</real>
+			<real>0.83333331346511841</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

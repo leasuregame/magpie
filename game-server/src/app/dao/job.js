@@ -9,6 +9,10 @@ var sqlHelper = require('./mysql/sqlHelper');
 
 module.exports = {
   multJobs: function(jobs, cb) {
+  	if (jobs.length == 0) {
+  	  return cb(null, false)
+    }
+
     jobs = jobs.map(function(job) {
       return sqlHelper.generateSql(job.type, job.options);
     });

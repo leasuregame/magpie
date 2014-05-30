@@ -2,12 +2,10 @@ playerManager = require('pomelo').app.get('playerManager')
 taskManager = require '../../../manager/taskManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
-taskRate = require '../../../../config/data/taskRate'
+configData = require '../../../../config/data'
 async = require 'async'
 _ = require 'underscore'
 Card = require '../../../domain/entity/card'
-cardConfig = require '../../../../config/data/card'
-spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
@@ -19,9 +17,54 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-###
-探索
-###
+Handler::getTurnReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  player = null
+  data = {}
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+    (res, cb) ->
+      player = res
+      if not player.canGetTurnReward()
+        return cb({code: 501, msg: '亲,还没有集齐一轮奖励哦'})
+
+      reward = table.getTableItem('turn_reward', player.task.turn.num)
+      if not reward
+        return cb({code: 501, msg: '找不到奖励'})
+
+      rd_val = _.random(reward.num_min, reward.num_max)
+      player.increase reward.type, rd_val
+      if reward.type == 'fragments'
+        data['fragment'] = rd_val
+      else 
+        data[reward.type] = rd_val
+
+      base_reward = getBaseRewardByLevel player.lv
+      if not base_reward
+        return cb({code: 501, msg: '找不到奖励'})
+
+      player.increase 'money', base_reward.money
+      player.addPower base_reward.powerValue
+      data.money = base_reward.money
+      data.power = base_reward.powerValue
+      playerManager.addExpCardFor player, base_reward.exp_card, cb
+  ], (err, cards) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg})
+
+    data.exp_card = card: cards[0], ids: cards.map (c) -> c.id
+    player.nextTurn()
+    player.save()
+    next(null, {code: 200, msg: reward: data})
+
+getBaseRewardByLevel = (lv) ->
+  items = table.getTable('turn_reward_base').filter (id, row) -> row.lv > lv
+  items.sort (x, y) -> x.lv - y.lv
+
+  items[0]
+
 Handler::explore = (msg, session, next) ->
 
   playerId = session.get('playerId') or msg.playerId
@@ -54,7 +97,8 @@ Handler::explore = (msg, session, next) ->
         , (err, battleLog) ->
           data.battle_log = battleLog
 
-          if not player.task.hasWin
+          if utility.hitRate(configData.taskRate.obtain_spirit_rate)
+          #if not player.task.hasWin
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.rewards.totalSpirit if battleLog.winner is 'own'      
 
@@ -83,6 +127,8 @@ Handler::explore = (msg, session, next) ->
     (data, cb) ->
       # 寻找boss，1~20次探索必然出现一个boss
       taskManager.seekBoss(data, player, cb)
+    (data, cb) ->
+      taskManager.turnReward(data, player, cb)
   ], (err, data) =>
     if err
       if err.code is 501
@@ -111,8 +157,13 @@ Handler::updateMomoResult = (msg, session, next) ->
     player.clearMonoGift()
 
     player.increase 'gold', gold
+    types = table.getTable('turn_reward_type')
+    id = types.find('reward_type', 'gold')
+    task = utility.deepCopy(player.task)
+    task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
+    player.set('task', task)
     player.save()
-    next(null, {code: 200})
+    next(null, {code: 200, msg: collected: player.task.turn.collected || 0})
 
 ###
 任务扫荡
@@ -294,6 +345,10 @@ Handler::mysticalPass = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+
+      if player.pass.mystical.diff is 5 and player.pass.mystical.isClear
+        return cb({code: 501, msg: '魔道已通关'})
+
       if not player.pass.mystical.isTrigger or player.pass.mystical.isClear
         return cb({code: 501, msg: '不能闯此神秘关卡'})
 
@@ -341,15 +396,16 @@ Handler::mysticalPass = (msg, session, next) ->
 
 countSpirit = (player, bl, type) ->
   totalSpirit = 0
-  _.each bl.cards, (v, k) ->
-    return if k <= 6
-    
-    if v.boss?
-      v.spirit = spiritConfig.SPIRIT[type].BOSS
-      totalSpirit += spiritConfig.SPIRIT[type].BOSS
-    else
-      v.spirit = spiritConfig.SPIRIT[type].OTHER
-      totalSpirit += spiritConfig.SPIRIT[type].OTHER
+  for card in bl.cards
+    for k, v of card
+      continue if k <= 6
+      
+      if v.boss?
+        v.spirit = configData.spirit.SPIRIT[type].BOSS
+        totalSpirit += configData.spirit.SPIRIT[type].BOSS
+      else
+        v.spirit = configData.spirit.SPIRIT[type].OTHER
+        totalSpirit += configData.spirit.SPIRIT[type].OTHER
 
   bl.rewards.totalSpirit = totalSpirit if bl.winner is 'own'
 
@@ -357,10 +413,11 @@ checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
+  return if not mpc
 
-  if mpc and player.passLayer < mpc.layer_from
+  if player.passLayer < mpc.layer_from
     return
-  else if mpc and player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
+  else if player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
     player.triggerMysticalPass()
   else if utility.hitRate(mpc.rate)
     player.triggerMysticalPass()
@@ -378,7 +435,7 @@ checkFragment = (battleLog, player, chapterId) ->
   scope = chapterScope cid
   if(
     player.task.hasFragment not in scope and 
-    ( utility.hitRate(taskRate.fragment_rate) or cid%5 is 0 )
+    ( utility.hitRate(configData.taskRate.fragment_rate) or cid%5 is 0 )
     )
     battleLog.rewards.fragment = 1
     task = utility.deepCopy(player.task)

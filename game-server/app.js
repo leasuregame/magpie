@@ -1,31 +1,22 @@
+// load .env value to process.env
+require('dotenv').load();
+
 var pomelo = require('pomelo');
-var sync = require('pomelo-sync-plugin');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
 var ServerStateService = require('./app/service/serverStateService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var cdFilter = require('./app/servers/area/filter/cdFilter');
+var sensitiveWordFilter = require('./app/servers/area/filter/sensitiveWordFilter');
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
 var verifier = require('./app/components/verifier');
 var PlayerManager = require('./app/manager/playerManager');
+var appUtil = require('./app/util/appUtil');
 var fs = require('fs');
 var path = require('path');
-
-var watchSharedConf = function(app) {
-  var confpath = path.join(__dirname, '..', 'shared', 'conf.json')
-
-    function setSharedConf(app, confpath) {
-      app.set('sharedConf', JSON.parse(
-        fs.readFileSync(confpath)))
-    }
-  setSharedConf(app, confpath);
-  fs.watchFile(confpath, function(curr, prev) {
-    setSharedConf(app, confpath)
-  });
-}
 
 /**
  * Init app for client.
@@ -56,12 +47,7 @@ app.configure('production|development', function() {
 
   //Set areasIdMap, a map from area id to serverId.
   if (app.serverType !== 'master') {
-    var areas = app.get('servers').area;
-    var areaIdMap = {};
-    for (var id in areas) {
-      areaIdMap[areas[id].area] = areas[id].id;
-    }
-    app.set('areaIdMap', areaIdMap);
+    appUtil.loadAreaInfo(app);
   }
 
   // proxy configures
@@ -83,14 +69,11 @@ app.configure('production|development', function() {
   app.filter(pomelo.filters.timeout());
   app.rpcFilter(pomelo.rpcFilters.rpcLog());
 
-  watchSharedConf(app);
-
+  appUtil.loadShareConfig(app);
   app.set('errorHandler', function(err, msg, resp, session, opts, cb){
     cb(err, resp, opts);
   });
 });
-
-
 
 // app configuration
 app.configure('production|development', 'connector', function() {
@@ -114,19 +97,7 @@ app.configure('production|development', 'gate', function() {
 
 // configure sql database
 app.configure('production|development', 'connector|auth', function() {
-  var env = app.get('env');
-  app.set('mysql', require(app.getBase() + '/config/mysql.json')[env]['userdb']);
-
-  var dbclient = require('./app/dao/mysql/mysql').init(app);
-  app.set('dbClient', dbclient);
-
-  app.use(sync, {
-    sync: {
-      path: __dirname + '/app/dao/mysql/mapping/user',
-      dbclient: dbclient,
-      interval: 60000
-    }
-  });
+  appUtil.loadDatabaseInfo(app, 'userdb');
 });
 
 app.configure('production|development', 'area', function() {
@@ -140,28 +111,17 @@ app.configure('production|development', 'area', function() {
     app: app
   });
   areaUtil.checkFlagFile(app);
+  
   app.before(cdFilter());
+  // app.before(sensitiveWordFilter());
 
-  var areaId = app.get('curServer').area;
-  var mysqlConfig = require(app.getBase() + '/config/mysql.json');
-  var env = app.get('env');
+  appUtil.loadDatabaseInfo(app, 'areadb');
+  appUtil.loadShareDatabaseInfo(app);
 
-  var val = mysqlConfig;
-  if (mysqlConfig[env] && mysqlConfig[env][areaId]) {
-    val = mysqlConfig[env][areaId];
-  }
-  app.set('mysql', val);
+  var dao_share = require('./app/dao').init('mysql', 'share');
+  app.set('dao_share', dao_share);
 
-  var dbclient = require('./app/dao/mysql/mysql').init(app);
-  app.set('dbClient', dbclient);
-
-  app.use(sync, {
-    sync: {
-      path: __dirname + '/app/dao/mysql/mapping/area',
-      dbclient: dbclient,
-      interval: 60000
-    }
-  });
+  app.set('useSanbox', false);
 
   app.load(counter);
   app.load(verifier);
@@ -177,6 +137,7 @@ app.configure('production|development', 'connector|auth|area', function() {
 
 app.configure('development', 'connector|auth|area', function() {
   app.set('debug', true);
+  app.set('useSanbox', true);
 });
 
 app.configure('production|development', 'notice', function() {
@@ -187,5 +148,5 @@ app.configure('production|development', 'notice', function() {
 app.start();
 
 process.on('uncaughtException', function(err) {
-  console.error(' Caught exception: ' + err.stack);
+  console.error(' Uncaught exception: ' + err.stack);
 });

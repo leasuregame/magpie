@@ -1,9 +1,9 @@
 dao = require('pomelo').app.get('dao')
 playerManager = require('pomelo').app.get('playerManager')
 table = require('../manager/table')
-cardConfig = require '../../config/data/card'
-playerConfig = require '../../config/data/player'
+configData = require '../../config/data'
 utility = require '../common/utility'
+job = require '../dao/job'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
@@ -13,7 +13,7 @@ MAX_PLAYER_LV = table.getTableItem('lv_limit', 1).player_lv_limit
 module.exports = 
   createCard: (data, done) ->
     unless data.star
-      data.star = data.tableId%5 or 5
+      data.star = cardStar(data.tableId)
 
     if data.star >= 3
       data.passiveSkills = initPassiveSkillGroup(data.star)
@@ -23,6 +23,28 @@ module.exports =
       if err
         return done(err)
       done(null, card)
+
+  ###
+  cards  a array contains one or more card's info
+  done   a callback execute after created all cards
+  ###
+  createCards: (cards, done) ->
+    cards = [cards] if not _.isArray(cards)
+
+    async.map cards, (card, doneEach) =>
+      qty = card.qty or 1
+      delete card.qty
+      async.times qty, (n, doneTimes) => 
+        @createCard card, doneTimes
+      , doneEach
+    , (err, res) ->
+      if err
+        done(err)
+      else 
+        items = res.reduce(
+          (x, y) -> x.concat(y)
+        , [])
+        done(err, items)
 
   resetSkillIncForCard: (card) ->
     genSkillInc(card) if card.star >= 3
@@ -38,7 +60,7 @@ module.exports =
 
     isUpgrade = false
     level9Box = null
-    rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0, power: 0
+    rewards = money: 0, power: 0
     while(upgradeInfo? and player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
@@ -47,28 +69,24 @@ module.exports =
       updateFriendCount(player)
 
       rewards.money += upgradeInfo.money
-      rewards.energy += upgradeInfo.energy
-      rewards.skillPoint += upgradeInfo.skillPoint
-      rewards.elixir += upgradeInfo.elixir
       rewards.power += upgradeInfo.power
 
       upgradeInfo = table.getTableItem 'player_upgrade', player.lv
       if player.lv is 9
         level9Box = 
           money: 50000
-          skillPoint: 20000
+          skillPoint: 50000
           energy: 5000
-          powerValue: 200
+          powerValue: 100
+          gold: 200
         player.increase('money', level9Box.money)
         player.increase('skillPoint', level9Box.skillPoint)
         player.increase('energy', level9Box.energy)
         player.addPower(level9Box.powerValue)        
+        player.increase('gold', level9Box.gold)
 
     if isUpgrade
       player.increase('money', rewards.money)
-      player.increase('energy', rewards.energy)
-      player.increase('skillPoint', rewards.skillPoint)
-      player.increase('elixir', rewards.elixir)
       player.addPower rewards.power
 
     if player.lv is MAX_PLAYER_LV
@@ -80,8 +98,8 @@ module.exports =
     ###
       点亮7张卡牌后，概率随机到新卡和旧卡
     ###
-    if lightUpIds.length > cardConfig.LUCKY_CARD_LIMIT.COUNT
-      if utility.hitRate cardConfig.LUCKY_CARD_LIMIT.NEW
+    if lightUpIds.length > configData.card.LUCKY_CARD_LIMIT.COUNT
+      if utility.hitRate configData.card.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
       else
         #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
@@ -106,8 +124,50 @@ module.exports =
       player.addPower(data.power)
     if typeof data.exp_card != 'undefined' and data.exp_card > 0
       playerManager.addExpCardFor player, data.exp_card, cb
+
+    if typeof data.card_id != 'undefined' and data.card_id > 0
+      this.createCard {
+        playerId: player.id
+        tableId: data.card_id
+      }, (err, card) -> cb(null, [card])
     else 
       cb(null, [])
+
+  updateEntities: (group..., cb) ->
+    jobs = []
+    groups.forEach (group) ->
+      if _.isArray(group) and group.length >= 2
+        type = group[0]
+        tableName = group[1]
+        entities = group.slice(2)
+        entities.forEach (ent) -> 
+          action = type: type, options: {table: tableName}
+
+          switch type
+            when 'update' 
+              data = ent.getSaveData()
+              if not _.isEmpty(data)
+                action.options.where = id: ent.id
+                action.options.data = data
+            when 'delete'
+              if _.isArray(ent) and ent.length > 0
+                ids = ent.map (e) -> e.id or e
+                action.options.where = " id in (#{ids.toString()}) "
+              else if _.has(ent, 'id')
+                action.options.where = id: ent.id
+              else if _.isString(ent)
+                action.options.where = ent
+              else
+                action.options.where = ''
+            when 'insert'
+              action.options.data = ent
+            else
+              action.options = {}
+
+          jobs.push action
+
+    console.log '-jobs-', JSON.stringify(jobs)
+    job.multJobs jobs, cb
 
 setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
   player.increase att, val for att, val of data when att in attrs and val > 0
@@ -166,7 +226,7 @@ genSkillInc = (card) ->
     logger.warn('can not find skill info of card: ' + card.tableId)
 
 updateFriendCount = (player) ->
-  fl = playerConfig.FRIENDCOUNT_LIMIT
+  fl = configData.player.FRIENDCOUNT_LIMIT
   keys = Object.keys(fl).reverse()
 
   for lv in keys
@@ -177,13 +237,15 @@ updateFriendCount = (player) ->
 
 initPassiveSkill = (star) ->
   count = star - 2
+  count = 3 if count > 3
+  
   results = []
   for i in [0...count]
-    index = _.random(cardConfig.PASSIVESKILL.TYPE.length-1)
-    [start, end] = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-')
+    index = _.random(configData.card.PASSIVESKILL.TYPE.length-1)
+    [start, end] = configData.card.PASSIVESKILL.VALUE_SCOPE.split('-')
     results.push(
       id:i,
-      name: cardConfig.PASSIVESKILL.TYPE[index],
+      name: configData.card.PASSIVESKILL.TYPE[index],
       value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
     )
   results

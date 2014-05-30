@@ -1,6 +1,5 @@
 async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
-playerConfig = require '../../../../config/data/player'
 table = require '../../../manager/table'
 RESOURE_LIMIT = table.getTableItem('resource_limit', 1)
 
@@ -28,43 +27,43 @@ Handler::buyProduct = (msg, session, next)->
 products =
 
   money: (playerId, product, times, next) ->
-      player = null
-      money = times * product.obtain
-      gold = times * product.consume
+    player = null
+    money = times * product.obtain
+    gold = times * product.consume
 
-      async.waterfall [
-         (cb) ->
-           playerManager.getPlayerInfo {pid:playerId}, cb
-         (res, cb) ->
+    async.waterfall [
+       (cb) ->
+         playerManager.getPlayerInfo {pid:playerId}, cb
+       (res, cb) ->
 
-          player = res
-          if player.gold < gold
-            cb {code: 501, msg: "魔石不足"}
+        player = res
+        if player.gold < gold
+          cb {code: 501, msg: "魔石不足"}
 
-          else if Math.ceil((RESOURE_LIMIT.money - player.money) * 1.0 / product.obtain) < times
-            cb {code: 501, msg: "超过仙币上限"}
+        else if Math.ceil((RESOURE_LIMIT.money - player.money) * 1.0 / product.obtain) < times
+          cb {code: 501, msg: "超过仙币上限"}
 
-          else
-            if player.money + money > RESOURE_LIMIT.money
-              money = RESOURE_LIMIT.money - player.money
-            player.increase 'money', money
-            player.decrease 'gold', gold
-            cb()
+        else
+          if player.money + money > RESOURE_LIMIT.money
+            money = RESOURE_LIMIT.money - player.money
+          player.increase 'money', money
+          player.decrease 'gold', gold
+          cb()
 
-      ],(err) ->
-        if err
-          return next null, {code: err.code, msg: err.msg}
-        player.save()
-        next null, {
-          code: 200,
-          msg: {
-            money: money,
-            consume: {
-              key: "gold",
-              value: player.gold
-            }
+    ],(err) ->
+      if err
+        return next null, {code: err.code, msg: err.msg}
+      player.save()
+      next null, {
+        code: 200,
+        msg: {
+          money: money,
+          consume: {
+            key: "gold",
+            value: player.gold
           }
         }
+      }
 
   power: (playerId, product, times, next) ->
     player = null
@@ -180,7 +179,7 @@ products =
         return next(null, {code: 501, msg: '仙币不足'})
 
       if _.keys(player.cards).length + times > player.cardsCount
-        return next(null, {code: 501, msg: '卡牌容量不足'})
+        return next(null, {code: 501, msg: '卡库容量不足'})
 
       playerManager.addExpCardFor player, times, (err, cards) ->
         if err
@@ -210,7 +209,8 @@ products =
 
       curCount = player.cardsCount - RESOURE_LIMIT.card_count_min + 1
       totalGold = countTotalGold curCount, product, times
-      
+      console.log('consume: ', totalGold)
+
       if player.gold < totalGold
         return next(null, {code: 501, msg: "魔石不足"})
 
@@ -260,6 +260,9 @@ countTotalGold = (curCount, product, times) ->
   curCounts = [curCount..curCount+times-1]
   
   curCounts.reduce (preVal,curVal) -> 
-    g = product.consume + product.consume_inc * (curVal-1)
-    preVal + _.min([g, product.consume_max])
+    g = product.consume + (product.consume_inc or 0) * (curVal-1)
+    if not product.consume_max or product.consume_max == 0
+      return preVal + g
+    else
+      preVal + _.min([g, product.consume_max])
   , 0

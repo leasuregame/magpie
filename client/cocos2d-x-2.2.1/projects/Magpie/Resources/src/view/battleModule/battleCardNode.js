@@ -81,7 +81,7 @@ var BattleCardNode = cc.Node.extend({
                 var subscriptSprite = cc.Sprite.create(this.getCardSubscript());
                 subscriptSprite.setAnchorPoint(cc.p(0, 0));
                 subscriptSprite.setPosition(cc.p(-1.8, -2.3));
-                this._iconSprite.addChild(subscriptSprite);
+                this.ccbIconSprite.addChild(subscriptSprite);
             }
         }
 

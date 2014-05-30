@@ -1,5 +1,9 @@
 TB01890600
 
+/usr/local/mysql/bin/mysqlbinlog --start-position=0 --stop-position=1000 -d yy_db_area_1 /data2/log/mysql/mysql-bin.000007
+
+/usr/local/mysql/bin/mysqlbinlog --start-datetime="2014-05-14 23:00:00" --stop-datetime="2014-05-14 23:59:00" -d yy_db_area_1 /data2/log/mysql/mysql-bin.000014
+
 user：root
 电信 网通 密码：
 124.238.236.30 219.232.247.30   URT7d8cJ4wMukArWMqWxjraxheErqL2i
@@ -39,9 +43,6 @@ mysql信息：
 
 user: dev, password: 1 port: 6033
 mysql -udev -p1
-
-初始化数据csv文件目录：
-/game-server/data/csv
 
 重新创建数据库表：
 make inittables db=magpie_area_1
@@ -89,11 +90,4 @@ scp root@115.29.12.178:/alidata1/magpie/game-server/logs/node-log-area-server-1.
 服务器：水帘洞
 角色名称：杨翠阳
 
-[2014-02-10 14:19:29.086] [INFO] console - [sql connection error]:  { [Error: Connection lost: The server closed the connection.] fatal: true, code: 'PROTOCOL_CONNECTION_LOST' }
-Error: Connection lost: The server closed the connection.
-    at Protocol.end (/alidata1/magpie/game-server/node_modules/mysql/lib/protocol/Protocol.js:78:13)
-    at Socket.onend (stream.js:79:10)
-    at Socket.EventEmitter.emit (events.js:117:20)
-    at _stream_readable.js:920:16
-    at process._tickCallback (node.js:415:13)
 

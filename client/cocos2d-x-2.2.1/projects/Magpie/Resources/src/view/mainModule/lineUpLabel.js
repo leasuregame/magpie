@@ -13,12 +13,11 @@
 
 var MAX_LINEUP_LIST = 2;
 
-var lineUpIcon = ["icon416", "icon417"];
 
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,
     _lineUp: null,
-    _lineUpName: null,
+    _lineUpItem: null,
     _index: 0,
 
     _card3Guide: null,
@@ -26,6 +25,7 @@ var LineUpLabel = cc.Layer.extend({
     _card5Guide: null,
 
     _succorCardsGuide: null,
+    _isClick: false,
 
     onEnter: function () {
         cc.log("LineUpLabel onEnter");
@@ -43,27 +43,34 @@ var LineUpLabel = cc.Layer.extend({
         this.setTouchEnabled(true);
 
         this._cardList = gameData.cardList;
-        this._index = 0;
-        this._lineUpName = [];
+        this._index = LINE_UP_INDEX;
+        this._lineUpItem = [];
         this._succorCardsGuide = [];
+        this._isClick = false;
 
-        this._turnLeftIcon = cc.Sprite.create(main_scene_image.icon415);
-        this._turnLeftIcon.setScaleX(-1);
-        this._turnLeftIcon.setPosition(cc.p(20, 0));
-        this.addChild(this._turnLeftIcon, 2);
+        var bgSprite = cc.Sprite.create(main_scene_image.icon428);
+        bgSprite.setPosition(cc.p(320, 0));
+        this.addChild(bgSprite);
 
-        this._turnRightIcon = cc.Sprite.create(main_scene_image.icon415);
-        this._turnRightIcon.setPosition(cc.p(620, 0));
-        this.addChild(this._turnRightIcon, 2);
+        var lineUpMenu = cc.Menu.create();
+        lineUpMenu.setPosition(cc.p(0, 0));
+        this.addChild(lineUpMenu);
 
         var lineUp = gameData.lineUp;
         var len = lineUp.get("maxLineUp");
 
         for (var i = 0; i < len; i++) {
-            this._lineUpName[i] = cc.Sprite.create(main_scene_image[lineUpIcon[i]]);
-            this._lineUpName[i].setAnchorPoint(cc.p(0.5, 0));
-            this._lineUpName[i].setPosition(cc.p(320, 63));
-            this.addChild(this._lineUpName[i]);
+            this._lineUpItem[i] = cc.MenuItemImage.create(
+                main_scene_image["button" + (81 + i)],
+                main_scene_image["button" + (81 + i) + "s"],
+                main_scene_image["button" + (81 + i) + "d"],
+                this._onClickLineUp,
+                this
+            );
+
+            this._lineUpItem[i].setAnchorPoint(cc.p(0, 0));
+            this._lineUpItem[i].setPosition(cc.p(0 + i * 114, 60));
+            lineUpMenu.addChild(this._lineUpItem[i]);
         }
 
         var scrollViewLayer = MarkLayer.create(cc.rect(0, 0, 600, 165));
@@ -79,7 +86,7 @@ var LineUpLabel = cc.Layer.extend({
             for (var j = 0; j < MAX_LINE_UP_CARD; j++) {
                 var cardHeadItem = null;
                 var effect = null;
-                var x = 69 + (i * 5 + j) * 117 + 20 * (i > 0 ? 1 : 0);
+                var x = 59 + (i * 5 + j) * 122;
                 if (j < count) {
                     cardHeadItem = CardHeadNode.getCardHeadItem(cardList[j], this._onClickCard, this);
 
@@ -98,14 +105,19 @@ var LineUpLabel = cc.Layer.extend({
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(600, 165), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(600 * MAX_LINEUP_LIST, 165));
+        this._scrollView = cc.ScrollView.create(cc.size(610, 165), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(610 * MAX_LINEUP_LIST, 165));
         this._scrollView.setPosition(cc.p(20, -60));
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
         this._scrollView.setContentOffset(this._getScrollViewOffset());
         this.addChild(this._scrollView);
+
+        var table = outputTables.card_lineup_limit.rows[1];
+        if (gameData.player.get("lv") < table["card_1"]) {
+            this._scrollView.setTouchEnabled(false);
+        }
 
         return true;
     },
@@ -115,12 +127,15 @@ var LineUpLabel = cc.Layer.extend({
 
         var len = gameData.lineUp.get("maxLineUp");
         for (var i = 0; i < len; i++) {
-            this._lineUpName[i].setVisible(false);
+            if (this._index == i) {
+                this._lineUpItem[i].setEnabled(false);
+                this._lineUpItem[i].setZOrder(2);
+            } else {
+                this._lineUpItem[i].setEnabled(true);
+                this._lineUpItem[i].setZOrder(1);
+            }
         }
 
-        this._lineUpName[this._index].setVisible(true);
-        this._turnLeftIcon.setVisible(this._index != 0);
-        this._turnRightIcon.setVisible(this._index != len - 1);
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
 
         if (this._card3Guide) {
@@ -141,12 +156,14 @@ var LineUpLabel = cc.Layer.extend({
             }
         }
 
+        LINE_UP_INDEX = this._index;
+
     },
 
     _getScrollViewOffset: function () {
         cc.log("LineUpLabel _getScrollViewOffset");
 
-        return cc.p(this._index * -600, 0);
+        return cc.p(this._index * -610, 0);
     },
 
     updateGuide: function () {
@@ -169,8 +186,9 @@ var LineUpLabel = cc.Layer.extend({
             this.addChild(this._card3Guide, 10);
         }
 
-        if (gameGuide.get("succorCardsGuide")) {
-            for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 5; i++) {
+            var key = "card" + (6 + i) + "Guide";
+            if (gameGuide.get(key)) {
                 if (!this._succorCardsGuide[i]) {
                     this._succorCardsGuide[i] = cc.BuilderReader.load(main_scene_image.uiEffect43);
                     this._succorCardsGuide[i].setPosition(cc.p(79 + 122 * i, 0));
@@ -178,6 +196,26 @@ var LineUpLabel = cc.Layer.extend({
                     this.addChild(this._succorCardsGuide[i], 10);
                 }
             }
+        }
+
+        this.update();
+    },
+
+    _onClickLineUp: function () {
+        cc.log("LineUpLabel _onClickCard");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var len = gameData.lineUp.get("maxLineUp");
+
+        this._index = (this._index + 1) % len;
+        this._isClick = true;
+
+        var table = outputTables.card_lineup_limit.rows[this._index];
+        if (gameData.player.get("lv") < table["card_1"]) {
+            TipLayer.tip(table["card_1"] + " 级开启");
+            this._index = (this._index + 1) % len;
+            return;
         }
 
         this.update();
@@ -211,9 +249,10 @@ var LineUpLabel = cc.Layer.extend({
                 if (this._succorCardsGuide[i]) {
                     this._succorCardsGuide[i].removeFromParent();
                     this._succorCardsGuide[i] = null;
+                    var key = "card" + (6 + i) + "Guide";
+                    gameGuide.set(key, false);
                 }
             }
-            gameGuide.set("succorCardsGuide", false);
         }
 
         MainScene.getInstance().switchTo(CardListLayer.create(SELECT_TYPE_LINEUP, {index: this._index}));
@@ -225,7 +264,6 @@ var LineUpLabel = cc.Layer.extend({
     },
 
     _onClickLock: function (index) {
-
         var that = this;
 
         return function () {
@@ -235,7 +273,6 @@ var LineUpLabel = cc.Layer.extend({
 
             var table = outputTables.card_lineup_limit.rows[that._index];
             TipLayer.tip(table["card_" + (index + 1)] + " 级开启");
-
         }
     },
 
@@ -247,6 +284,11 @@ var LineUpLabel = cc.Layer.extend({
     onTouchesEnded: function (touches, event) {
         cc.log("LineUpLabel onTouchesEnded");
 
+        if (this._isClick) {
+            this._isClick = false;
+            return;
+        }
+
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();
 
@@ -256,9 +298,9 @@ var LineUpLabel = cc.Layer.extend({
 
         if (len !== 0) {
             if (len > 30) {
-                this._index = 0 - Math.floor(endOffset.x / 600);
+                this._index = 0 - Math.floor(endOffset.x / 610);
             } else if (len < -30) {
-                this._index = 0 - Math.ceil(endOffset.x / 600);
+                this._index = 0 - Math.ceil(endOffset.x / 610);
             }
 
             this.update();

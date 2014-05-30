@@ -4,6 +4,7 @@ module.exports = {
   "fight": 20,
   "precious_box": 5,
   "fragment_rate": 1,
+  "obtain_spirit_rate": 15,
   "gold_obtain": {
     rate: 10,
     value: 5
@@ -11,9 +12,9 @@ module.exports = {
   "open_box": {
     "star": {
       "1": 40,
-      "2": 41,
-      "3": 17,
-      "4": 2
+      "2": 35,
+      "3": 20,
+      "4": 5
     }
   },
 

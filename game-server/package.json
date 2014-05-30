@@ -21,7 +21,10 @@
     "request": "2.27",
     "coffee-script": "1.6.2",
     "csv": "*",
-    "pomelo-admin": "*"
+    "pomelo-admin": "*",
+    "ursa": "~0.8.0",
+    "dotenv": "*",
+    "nodemailer": "~0.6.3"
   },
   "devDependencies": {
     "underscore": "1.4.4",

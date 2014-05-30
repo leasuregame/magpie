@@ -77,6 +77,7 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(this._lotteryLabel);
 
         this._tenLotteryTip = this._lotteryLabel.controller.ccbTenLotteryTip;
+        this._tenLotteryTip.setVisible(false);
         this._tenLotteryTip2 = this._lotteryLabel.controller.ccbTenLotteryTip2;
 
         var lotteryDescLabel1 = cc.Sprite.create(main_scene_image.icon113);
@@ -220,6 +221,16 @@ var LotteryLayer = cc.Layer.extend({
         this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
         this.addChild(this._tipsLabel, 2);
 
+        var helpItem = cc.MenuItemImage.create(
+            main_scene_image.button41,
+            main_scene_image.button41s,
+            this._onClickHelp,
+            this
+        );
+
+        helpItem.setPosition(this._lotteryLayerFit.helpItemPoint);
+        menu.addChild(helpItem);
+
         return true;
     },
 
@@ -227,10 +238,6 @@ var LotteryLayer = cc.Layer.extend({
         cc.log("LotteryLayer update");
 
         var player = gameData.player;
-
-        var isFirst = gameData.lottery.get("firstHighTenLuckCard");
-        this._tenLotteryTip.setVisible(isFirst);
-        this._tenLotteryTip2.setVisible(!isFirst);
 
         this._goldLabel.setString(player.get("gold"));
         this._energyLabel.setString(player.get("energy"));
@@ -295,7 +302,8 @@ var LotteryLayer = cc.Layer.extend({
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22,
-                        color: cc.c3b(117, 255, 57)
+                        color: cc.c3b(117, 255, 57),
+                        offset: cc.p(0, -2)
                     },
                     {
                         string: "得",
@@ -318,12 +326,19 @@ var LotteryLayer = cc.Layer.extend({
                         string: rate + "%",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22,
-                        color: cc.c3b(117, 255, 57)
+                        color: cc.c3b(117, 255, 57),
+                        offset: cc.p(0, -2)
                     },
                     {
-                        string: "得5",
+                        string: "得",
                         fontName: "STHeitiTC-Medium",
                         fontSize: 22
+                    },
+                    {
+                        string: "5",
+                        fontName: "STHeitiTC-Medium",
+                        fontSize: 22,
+                        offset: cc.p(0, -2)
                     },
                     {
                         iconName: "star",
@@ -332,11 +347,6 @@ var LotteryLayer = cc.Layer.extend({
                 );
                 this._tipsLabel.setVisible(true);
             }
-        }
-
-        if (this._tipsLabel) {
-            this._tipsLabel.setPosition(this._lotteryLayerFit.tipsLabelPoint);
-            this.addChild(this._tipsLabel, 2);
         }
     },
 
@@ -476,6 +486,14 @@ var LotteryLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
+    },
+
+    _onClickHelp: function () {
+        cc.log("LotteryLayer _onClickHelp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        GameHelpLabel.pop(gameHelp["lottery"]);
     }
 });
 

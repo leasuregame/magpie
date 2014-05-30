@@ -239,7 +239,7 @@ var ElixirRankLayer = cc.Layer.extend({
 
         if (lastWeek) {
             this._lastWeekRank.setString(lastWeek["rank"]);
-            this._lastWeekElixir.setString(lastWeek["elixir"]);
+            this._lastWeekElixir.setString(lz.getMoneyStr(lastWeek["elixir"]));
         }
 
         var point = this._elixirRankLayerFit.thisWeekItemPoint;
@@ -255,7 +255,7 @@ var ElixirRankLayer = cc.Layer.extend({
             gameData.tournament.updateElixirRank(function (data) {
                 if (data.thisWeek) {
                     that._thisWeekRank.setString(data.thisWeek["rank"]);
-                    that._thisWeekElixir.setString(data.thisWeek["elixir"]);
+                    that._thisWeekElixir.setString(lz.getMoneyStr(data.thisWeek["elixir"]));
                 }
                 if (data.elixirs) {
                     that._rankList = data.elixirs;
@@ -346,7 +346,7 @@ var ElixirRankLayer = cc.Layer.extend({
             elixirIcon.setPosition(cc.p(410, y + 30));
             scrollViewLayer.addChild(elixirIcon);
 
-            var elixirLabel = cc.LabelTTF.create(player.elixir, "STHeitiTC-Medium", 22);
+            var elixirLabel = cc.LabelTTF.create(lz.getMoneyStr(player.elixir), "STHeitiTC-Medium", 22);
             elixirLabel.setColor(cc.c3b(108, 41, 41));
             elixirLabel.setAnchorPoint(cc.p(0, 0.5));
             elixirLabel.setPosition(cc.p(450, y + 25));
@@ -401,7 +401,7 @@ var ElixirRankLayer = cc.Layer.extend({
         GiftBagLayer.pop({
             reward: reward,
             titleType: TYPE_LOOK_REWARD,
-            tip: "亲，你的竞技仙丹数量为0，无法获得奖励哟。"
+            tip: "亲，你本周的竞技仙丹数量为0，无法获得奖励哟。"
         });
 
     },

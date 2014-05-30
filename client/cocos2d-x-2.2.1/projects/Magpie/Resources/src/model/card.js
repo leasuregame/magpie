@@ -12,7 +12,7 @@
  * */
 
 
-var MAX_CARD_TABLE_ID = 1000;
+var MAX_CARD_TABLE_ID = 2000;
 var MAX_CARD_STAR = 7;
 
 var EVOLUTION_SUCCESS = 1;
@@ -26,6 +26,11 @@ var LOCK_TYPE_DEFAULT = 0;
 var LOCK_TYPE_NAME = 1;
 var LOCK_TYPE_VALUE = 2;
 var LOCK_TYPE_BOTH = 3;
+
+var TYPE_CRIT_NONE = 0;
+var TYPE_CRIT_SMALL = 1;
+var TYPE_CRIT_MIDDLE = 2;
+var TYPE_CTIT_BIG = 3;
 
 var BOSS_CARD_TABLE_ID = {
     begin: 40000,
@@ -83,6 +88,8 @@ var Card = Entity.extend({
     _skillInc: 0,           // 技能初始伤害
     _elixirHp: 0,           // 生命值仙丹
     _elixirAtk: 0,          // 攻击力仙丹
+    _elixirHpCrit: 0,       // 生命值暴击仙丹
+    _elixirAtkCrit: 0,      // 攻击力暴击仙丹
     _skillPoint: 0,         // 技能点
     _passiveSkill: {},      // 被动技能
 
@@ -106,6 +113,9 @@ var Card = Entity.extend({
     _skillMaxLv: 0,         // 技能最大等级
 
     _url: "",               // 图片资源路径
+
+    _pill: 0,               // 当前觉醒玉数量
+    _potentialLv: 0,        // 当前觉醒等级
 
     _newCardMark: false,
 
@@ -133,12 +143,15 @@ var Card = Entity.extend({
             this.set("tableId", data.tableId);
             this.set("lv", data.lv);
             this.set("exp", data.exp);
-            this.set("ability", data.ability);
             this.set("skillLv", data.skillLv);
             this.set("skillInc", data.skillInc);
             this.set("elixirHp", data.elixirHp);
             this.set("elixirAtk", data.elixirAtk);
+            this.set("elixirHpCrit", data.elixirHpCrit);
+            this.set("elixirAtkCrit", data.elixirAtkCrit);
             this.set("skillPoint", data.skillPoint);
+            this.set("pill", data.pill);
+            this.set("potentialLv", data.potentialLv);
 
             this._updatePassiveSkills(data.passiveSkills);
         }
@@ -146,6 +159,10 @@ var Card = Entity.extend({
         this._loadCardTable();
         this._loadSkillTable();
         this._calculateAddition();
+
+        if (data) {
+            this.set("ability", data.ability);
+        }
     },
 
     _updatePassiveSkills: function (data) {
@@ -233,10 +250,13 @@ var Card = Entity.extend({
         var skillHarmGrow = skillTable["star" + this._star + "_grow"] || 0;
 
         if (!this._skillInc) {
-            this._skillInc = skillTable["star" + this._star + "_inc_max"] || 0;
+            var skillIncMin = skillTable["star" + this._star + "_inc_min"] || 0;
+            var skillIncMax = this._skillInc = skillTable["star" + this._star + "_inc_max"] || 0;
+            this._skillHarm = [skillIncMin + skillHarmGrow * (this._skillLv - 1), skillIncMax + skillHarmGrow * (this._skillLv - 1)];
+        } else {
+            this._skillHarm = this._skillInc + skillHarmGrow * (this._skillLv - 1);
         }
 
-        this._skillHarm = this._skillInc + skillHarmGrow * (this._skillLv - 1);
         this._skillRate = skillTable["rate" + this._star] || 0;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
@@ -246,32 +266,65 @@ var Card = Entity.extend({
     _calculateAddition: function () {
         cc.log("Card _calculateAddition");
 
-        // 读取仙丹配置表
-        var elixirTable = outputTables.elixir.rows[1];
+        this._atk = this._hp = 0;
 
-        var eachConsume = elixirTable.elixir;
+        this._calculatePotentialLvAddition();
+        this._calculatePassiveSkillAddition();
+        this._calculateElixirAddition();
+    },
 
-        var elixirHp = Math.floor(this._elixirHp / eachConsume) * elixirTable.hp;
-        var elixirAtk = Math.floor(this._elixirAtk / eachConsume) * elixirTable.atk;
+    _calculatePotentialLvAddition: function () {
+        cc.log("Card _calculatePotentialLvAddition");
+
+        this._initHp = parseInt(this._initHp * (100 + this._potentialLv * 10) / 100);
+        this._initAtk = parseInt(this._initAtk * (100 + this._potentialLv * 10) / 100);
+
+        this._hp += this._initHp;
+        this._atk += this._initAtk;
+    },
+
+    _calculatePassiveSkillAddition: function () {
+        cc.log("Card _calculatePassiveSkillAddition");
 
         var psHpMultiple = 0;
         var psAtkMultiple = 0;
 
         for (var key in this._passiveSkill) {
-            if (this._passiveSkill[key].name == "hp_improve") {
-                psHpMultiple += this._passiveSkill[key].value;
-            }
-
-            if (this._passiveSkill[key].name == "atk_improve") {
-                psAtkMultiple += this._passiveSkill[key].value;
+            var ps = this._passiveSkill[key];
+            if (ps.active) {
+                for (var id in ps.items) {
+                    var item = ps.items[id];
+                    if (item.name == "hp_improve") {
+                        psHpMultiple += item.value;
+                    }
+                    if (item.name == "atk_improve") {
+                        psAtkMultiple += item.value;
+                    }
+                }
+                break;
             }
         }
 
         var psHp = Math.floor(this._initHp * psHpMultiple / 100);
         var psAtk = Math.floor(this._initAtk * psAtkMultiple / 100);
 
-        this._hp = this._initHp + elixirHp + psHp;
-        this._atk = this._initAtk + elixirAtk + psAtk;
+        this._hp += psHp;
+        this._atk += psAtk;
+    },
+
+    _calculateElixirAddition: function () {
+        cc.log("Card _calculateElixirAddition");
+
+        // 读取仙丹配置表
+        var elixirTable = outputTables.elixir.rows[1];
+
+        var eachConsume = elixirTable.elixir;
+
+        var elixirHp = parseInt((this._elixirHp + this._elixirHpCrit) / eachConsume) * elixirTable.hp;
+        var elixirAtk = parseInt((this._elixirAtk + this._elixirAtkCrit) / eachConsume) * elixirTable.atk;
+
+        this._hp += elixirHp;
+        this._atk += elixirAtk;
     },
 
     _abilityChangeEvent: function () {
@@ -309,20 +362,6 @@ var Card = Entity.extend({
         }
 
         return false;
-    },
-
-    getCardFullUrl: function () {
-        cc.log("Card getCardFullUrl");
-
-        var len = Math.min(this._star - 3, 2);
-
-        var urlList = [main_scene_image[this._url + "_full1"]];
-
-        for (var i = 0; i < len; ++i) {
-            urlList.push(main_scene_image[this._url + "_full" + (i + 2)]);
-        }
-
-        return urlList;
     },
 
     getCardIcon: function (type) {
@@ -383,6 +422,21 @@ var Card = Entity.extend({
         var cardGrow = outputTables.card_grow.rows[this._maxLv];
 
         return (cardGrow.cur_exp - this.getCardExp());
+    },
+
+    getCardNextLvNeedExp: function () {
+        return (this._lv == this._maxLv) ? 0 : outputTables.card_grow.rows[this._lv + 1].cur_exp - this.getCardExp();
+    },
+
+    // 可获得觉醒玉
+    getCardPill: function () {
+        cc.log("Card getCardPill");
+        return outputTables.card_pill_dissolve.rows[this._star].pill;
+    },
+
+    getSmeltMoney: function () {
+        cc.log("Card getSmeltMoney");
+        return outputTables.card_pill_dissolve.rows[this._star].money;
     },
 
     canUpgrade: function () {
@@ -480,6 +534,7 @@ var Card = Entity.extend({
                 cc.log("upgradeSkill success");
 
                 var msg = data.msg;
+                that.add("skillPoint", msg.skillPoint);
 
                 that.update({
                     skillLv: msg.skillLv,
@@ -487,7 +542,6 @@ var Card = Entity.extend({
                 });
 
                 gameData.player.add("skillPoint", -msg.skillPoint);
-                that.add("skillPoint", msg.skillPoint);
 
                 cb();
 
@@ -581,8 +635,9 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
-                that.set("ability", msg.ability);
                 that._updatePassiveSkill(msg.passiveSkill);
+                that.update();
+                that.set("ability", msg.ability);
 
                 if (type == USE_MONEY) {
                     gameData.player.add("money", -5000);
@@ -617,6 +672,7 @@ var Card = Entity.extend({
                 cc.log("passSkillActive success");
 
                 that.updateActivePassiveSkill(id);
+                that._calculateAddition();
                 that.set("ability", data.msg.ability);
                 cb();
 
@@ -657,7 +713,7 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {
@@ -727,6 +783,7 @@ var Card = Entity.extend({
                 }
 
                 var result = msg.upgrade ? EVOLUTION_SUCCESS : EVOLUTION_FAIL;
+
                 cb(result);
 
                 lz.um.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
@@ -767,7 +824,7 @@ var Card = Entity.extend({
 
                 gameData.player.add("elixir", -elixir);
 
-                cb();
+                cb(msg.critType);
 
                 lz.um.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {
@@ -826,6 +883,71 @@ var Card = Entity.extend({
         });
     },
 
+    usePill: function (cb) {
+        cc.log("Card usePill");
+
+        var that = this;
+        lz.server.request("area.convertorHandler.usePill", {
+            cardId: this._id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("usePill success");
+
+                var msg = data.msg;
+                gameData.player.set("pill", msg.playerPill);
+
+                that.update({
+                    "pill": msg.pill,
+                    "potentialLv": msg.potentialLv,
+                    "ability": msg.ability
+                });
+
+                cb();
+
+            } else {
+                cc.log("usePill fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+
+    },
+
+    canUsePill: function () {
+        cc.log("Card canUsePill");
+
+        return this._star >= 4;
+    },
+
+    canUpgradePotentialLv: function () {
+        cc.log("Card canUpgradePotentialLv");
+
+        return this._potentialLv < 7;
+    },
+
+    getUpgradeNeedPill: function () {
+        cc.log("Card getUpgradeNeedPill");
+
+        if (this.canUpgradePotentialLv()) {
+            return outputTables.card_pill_use.rows[this._potentialLv + 1].pill;
+        }
+
+        return 0;
+    },
+
+    getPotentialLvAddition: function () {
+        cc.log("Card getPotentialLvAddition");
+
+        return this._potentialLv * 10;
+    },
+
+    getNextPotentialLvAddition: function () {
+        cc.log("Card getNextPotentialLvAddition");
+
+        return (this._potentialLv + 1) * 10;
+    },
+
     getSellCardMoney: function () {
         cc.log("Card getSellCardMoney");
 
@@ -833,9 +955,16 @@ var Card = Entity.extend({
 
         var price = table["star" + this._star];
 
-        price += Math.max(this._lv - 1, 0) * table.grow_per_lv;
+        var rows = outputTables.card_grow.rows;
+        for (var i = 1; i < this._lv; ++i) {
+            price += rows[i].money_need;
+        }
 
         return price;
+    },
+
+    isExpCard: function () {
+        return this._tableId == 30000;
     },
 
     isLeadCard: function () {

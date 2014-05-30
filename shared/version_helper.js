@@ -76,7 +76,36 @@ var versionData = function() {
         oldestVersion: '1.0.0',
         filename: '',
         lastFilename: ''
+      },
+      pp: {
+        version: '1.0.0',
+        lastVersion: '1.0.0',
+        oldestVersion: '1.0.0',
+        filename: '',
+        lastFilename: ''
+      },
+      yy: {
+        version: '1.0.0',
+        lastVersion: '1.0.0',
+        oldestVersion: '1.0.0',
+        filename: '',
+        lastFilename: ''
+      },
+      91: {
+        version: '1.0.0',
+        lastVersion: '1.0.0',
+        oldestVersion: '1.0.0',
+        filename: '',
+        lastFilename: ''
+      },
+      uc: {
+        version: '1.0.0',
+        lastVersion: '1.0.0',
+        oldestVersion: '1.0.0',
+        filename: '',
+        lastFilename: ''
       }
+
     }
   }
   return JSON.parse(fs.readFileSync(fpath, 'utf8'));
@@ -98,8 +127,8 @@ var getLastVersion = function(platform) {
 var updateVersions = function(data) {
   jdata = versionData();
 
-  var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion'];
-
+  var fields = ['version', 'lastVersion', 'filename', 'lastFilename', 'oldestVersion', 'forceUpdateVersion'];
+  console.log(jdata, data);
   var platform;
   for (platform in jdata) {
     for (var i = 0; i < fields.length; i++) {

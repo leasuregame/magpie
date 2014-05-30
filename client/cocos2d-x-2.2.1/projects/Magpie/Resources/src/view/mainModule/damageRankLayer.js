@@ -246,7 +246,7 @@ var DamageRankLayer = LazyLayer.extend({
 
         if (lastWeek) {
             this._lastWeekRank.setString(lastWeek["rank"]);
-            this._lastWeekDamage.setString(lastWeek["damage"]);
+            this._lastWeekDamage.setString(lz.getMoneyStr(lastWeek["damage"]));
         }
 
         var point = cc.p(120, 804);
@@ -264,7 +264,7 @@ var DamageRankLayer = LazyLayer.extend({
                 var thisWeek = gameData.boss.get("thisWeek");
                 if (thisWeek) {
                     that._thisWeekRank.setString(thisWeek["rank"]);
-                    that._thisWeekDamage.setString(thisWeek["damage"]);
+                    that._thisWeekDamage.setString(lz.getMoneyStr(thisWeek["damage"]));
                 }
                 if (thisWeekRank) {
                     that._rankList = thisWeekRank;
@@ -374,7 +374,7 @@ var DamageRankLayer = LazyLayer.extend({
             damageLabel.setPosition(cc.p(310, y + 45));
             this._rankView.addChild(damageLabel);
 
-            var damageCountLabel = cc.LabelTTF.create(player.damage, "STHeitiTC-Medium", 22);
+            var damageCountLabel = cc.LabelTTF.create(lz.getMoneyStr(player.damage), "STHeitiTC-Medium", 22);
             damageCountLabel.setColor(cc.c3b(108, 41, 41));
             damageCountLabel.setAnchorPoint(cc.p(0, 0.5));
             damageCountLabel.setPosition(cc.p(380, y + 42));
@@ -436,7 +436,7 @@ var DamageRankLayer = LazyLayer.extend({
         GiftBagLayer.pop({
             reward: reward,
             titleType: TYPE_LOOK_REWARD,
-            tip: "亲，你的伤害值为0，无法获得奖励哟。"
+            tip: "亲，你本周的伤害值为0，无法获得奖励哟。"
         });
 
     },
@@ -461,6 +461,7 @@ var DamageRankLayer = LazyLayer.extend({
                 cb: function () {
                     lz.tipReward(data);
                     that.update();
+                    that.getParent().update();
                 }
             });
         });

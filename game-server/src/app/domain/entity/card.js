@@ -16,32 +16,31 @@ var utility = require('../../common/utility');
 var Entity = require('./entity');
 var table = require('../../manager/table');
 var elixirConfig = table.getTableItem('elixir', 1);
-var cardConfig = require('../../../config/data/card');
+var configData = require('../../../config/data');
 var _ = require("underscore");
-var psConfig = require('../../../config/data/passSkill');
 var PassiveSkillGroup = require('./passiveSkill');
 var cardLvs = table.getTable('card_lv_limit');
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
 var addEvents = function(card) {
-    card.on('add.passiveSkill', function() {
+    card.on('passiveSkills.change', function() {
         countPassiveSkills(card);
     });
 
     card.on('elixirHp.change', function(elixir) {
-        card.incs.elixir_hp = parseInt(elixir / elixirConfig.elixir * elixirConfig.hp);
+        card.incs.elixir_hp = parseInt((elixir + card.elixirHpCrit) / elixirConfig.elixir * elixirConfig.hp);
         card.recountHpAndAtk();
     });
 
     card.on('elixirAtk.change', function(elixir) {
-        card.incs.elixir_atk = parseInt(elixir / elixirConfig.elixir * elixirConfig.atk);
+        card.incs.elixir_atk = parseInt((elixir + card.elixirAtkCrit) / elixirConfig.elixir * elixirConfig.atk);
         card.recountHpAndAtk();
     });
 
     card.on('lv.change', function(lv) {
         countHpAtk(card);
-        card.recountHpAndAtk();
+        countPassiveSkills(card);
     });
 
     card.on('tableId.change', function(id) {
@@ -53,9 +52,35 @@ var addEvents = function(card) {
                 if (cardData.star >= 3) {
                     card.skill = table.getTableItem('skills', cardData.skill_id);
                 }
-                card.cardData = cardData;
             }
         }
+        countHpAtk(card);
+        countPassiveSkills(card);
+    });
+
+    card.on('pill.change', function(pill) {
+        if (card.star < 4) {
+            return;
+        }
+
+        var plv = 0;
+        items = table.getTable('card_pill_use').map(function(row){
+            return row.pill;
+        })
+        .sort(function(x, y) { return x - y;})
+        .forEach(function(val) {
+            if (pill >= val) {
+                plv += 1;
+                pill -= val;
+            }
+        });
+
+        card.potentialLv = plv;
+    });
+
+    card.on('potentialLv.change', function(lv) {
+        countHpAtk(card);
+        countPassiveSkills(card);
     });
 
     // card.on('skillPoint.change', function() {
@@ -64,8 +89,8 @@ var addEvents = function(card) {
 };
 
 var countElixirEffect = function(card) {
-    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.elixir) * elixirConfig.hp;
-    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.elixir) * elixirConfig.atk;
+    card.incs.elixir_hp = parseInt((card.elixirHp + card.elixirHpCrit) / elixirConfig.elixir) * elixirConfig.hp;
+    card.incs.elixir_atk = parseInt((card.elixirAtk + card.elixirAtkCrit) / elixirConfig.elixir) * elixirConfig.atk;
 
     card.recountHpAndAtk();
 };
@@ -105,6 +130,9 @@ var countHpAtk = function(card) {
 
         var _hp = parseInt(cardData.hp * factor),
             _atk = parseInt(cardData.atk * factor);
+
+        _hp = parseInt(_hp*(100+10*card.potentialLv)/100);
+        _atk = parseInt(_atk*(100+10*card.potentialLv)/100);
         card.set({
             init_hp: _hp,
             hp: _hp,
@@ -156,7 +184,6 @@ var Card = (function(_super) {
             if (cardData.star >= 3) {
                 this.skill = table.getTableItem('skills', cardData.skill_id);
             }
-            this.cardData = cardData;
         }
 
 
@@ -165,6 +192,8 @@ var Card = (function(_super) {
         countPassiveSkills(this);
         addEvents(this);
     }
+
+    Card.tableName = 'card';
 
     Card.FIELDS = [
         'id',
@@ -178,10 +207,14 @@ var Card = (function(_super) {
         'factor',
         'skillPoint',
         'elixirHp',
+        'elixirHpCrit',
         'elixirAtk',
+        'elixirAtkCrit',
         'passiveSkills',
         'useCardsCounts',
-        'psGroupCount'
+        'psGroupCount',
+        'pill',
+        'potentialLv'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -192,7 +225,9 @@ var Card = (function(_super) {
         factor: 0,
         skillPoint: 0,
         elixirHp: 0,
+        elixirHpCrit: 0,
         elixirAtk: 0,
+        elixirAtkCrit: 0,
         init_hp: 0,
         init_atk: 0,
         hp: 0,
@@ -207,11 +242,17 @@ var Card = (function(_super) {
         },
         passiveSkills: [],
         useCardsCounts: 0,
-        psGroupCount: 3
+        psGroupCount: 3,
+        pill: 0,
+        potentialLv: 0
     };
 
     Card.prototype.init = function() {
         this.passiveSkills = this.passiveSkills || [];
+    };
+
+    Card.prototype.canUsePill = function(){
+        return this.potentialLv < this.star;
     };
 
     Card.prototype.getPsGroup = function(gid) {
@@ -255,7 +296,6 @@ var Card = (function(_super) {
 
         this.passiveSkills = pss;
         this.psGroupCount = pss.length;
-        this.emit('add.passiveSkill');
     };
 
     Card.prototype.activeGroup = function(gid) {
@@ -276,35 +316,15 @@ var Card = (function(_super) {
 
         hp += this.incs.elixir_hp;
         hp += this.incs.ps_hp;
-        hp += this.incs.spirit_hp;
         atk += this.incs.elixir_atk;
         atk += this.incs.ps_atk;
-        atk += this.incs.spirit_atk;
 
         this.hp = hp;
         this.atk = atk;
     };
 
-    Card.prototype.activeGroupEffect = function() {
-        var _property = {};
-        _property[GROUP_EFFECT_ATK] = 'atk';
-        _property[GROUP_EFFECT_HP] = 'hp';
-
-        var type = parseInt(this.cardData.effetc_type);
-        var effect_val = 20;
-        if (type == GROUP_EFFECT_HP) {
-            effect_val = 25;
-        }
-        var aval = parseInt(this[_property[type]] * effect_val / 100);
-        this.increase(_property[type] + 'Addition', aval);
-
-        this.increase(_property[type], aval);
-        this.incs['group_' + _property[type]] = aval;
-        return this;
-    };
-
     Card.prototype.ability = function() {
-        var ae = cardConfig.ABILIGY_EXCHANGE;
+        var ae = configData.card.ABILIGY_EXCHANGE;
 
         // 1点攻击力=1点战斗力
         // 2点生命值=1点战斗力
@@ -315,9 +335,9 @@ var Card = (function(_super) {
             _abi += ae.star[this.star] * this.skillLv;
         }
 
-        // 0.1%暴击率=10点战斗力
-        // 0.1%闪避率=10点战斗力
-        // 0.1%减伤率=10点战斗力
+        // 1%暴击率=80点战斗力
+        // 1%闪避率=80点战斗力
+        // 1%减伤率=80点战斗力
         var should_inc_ps = ['dmg_reduce', 'crit', 'dodge', 'toughness', 'hit', 'disrupting'];
         if (this.star >= 3) {
             var group = this.passiveSkills.filter(function(group) {
@@ -327,8 +347,8 @@ var Card = (function(_super) {
                 var items = group[0].items;
 
                 var sum = items.filter(function(ps) {
-                        return should_inc_ps.indexOf(ps.name) > -1;
-                    })
+                    return should_inc_ps.indexOf(ps.name) > -1;
+                })
                     .map(function(ps) {
                         return ps.value * ae[ps.name];
                     })
@@ -372,6 +392,23 @@ var Card = (function(_super) {
     Card.prototype.bornPassiveSkill = function() {
         var pss = _.clone(this.passiveSkills);
         var star = this.star;
+
+        if (pss.length == 0) {
+            pss = [{
+                id: 1,
+                items: [],
+                active: true
+            }, {
+                id: 2,
+                items: [],
+                active: false
+            }, {
+                id: 3,
+                items: [],
+                active: false
+            }];
+        }
+
         pss.forEach(function(group) {
             group = new PassiveSkillGroup(group).create(star).toJson();
         });
@@ -380,9 +417,9 @@ var Card = (function(_super) {
 
 
     Card.prototype.afreshPassiveSkill = function(type, ps) {
-        var born_rates = psConfig.BORN_RATES;
+        var born_rates = configData.passSkill.BORN_RATES;
         var star = this.star >= 5 ? this.star : 5;
-        var value_obj = psConfig.AFRESH.TYPE[type].STAR[star];
+        var value_obj = configData.passSkill.AFRESH.TYPE[type].STAR[star];
 
         var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
         var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));
@@ -450,8 +487,17 @@ var Card = (function(_super) {
     };
 
     Card.prototype.price = function() {
-        cfg = table.getTableItem('card_price', 1);
-        return (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
+        var curLv = this.lv;
+        var cfg = table.getTableItem('card_price', 1);
+        var lv_money = table.getTable('card_grow').filter(function(id, item) {
+            return item.lv < curLv && item.lv > 0;
+        }).map(function(item) {
+            return item.money_need;
+        }).reduce(function(x, y) {
+            return x + y;
+        }, 0);
+
+        return lv_money + (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
     };
 
     Card.prototype.resetSkillLv = function() {
@@ -484,12 +530,19 @@ var Card = (function(_super) {
         return res < 0 ? 0 : res;
     };
 
+    Card.prototype.totalElixir = function(){
+        return this.elixirHp + this.elixirHpCrit + this.elixirAtk + this.elixirAtkCrit;
+    };
+
     Card.prototype.toJson = function() {
         return {
             id: this.id,
             tableId: this.tableId,
             hp: this.hp,
             atk: this.atk,
+            init_hp: this.init_hp,
+            init_atk: this.init_atk,
+            incs: this.incs,
             ability: this.ability(),
             lv: this.lv,
             exp: this.exp,
@@ -499,7 +552,11 @@ var Card = (function(_super) {
             skillPoint: this.skillPoint,
             elixirHp: this.elixirHp,
             elixirAtk: this.elixirAtk,
-            passiveSkills: this.passiveSkills
+            elixirHpCrit: this.elixirHpCrit,
+            elixirAtkCrit: this.elixirAtkCrit,
+            passiveSkills: this.passiveSkills,
+            pill: this.pill,
+            potentialLv: this.potentialLv
         };
     };
 

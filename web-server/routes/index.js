@@ -5,8 +5,20 @@
 var fs = require('fs');
 var path = require('path');
 var auth = require('../util/auth');
-var updateRecordDao = require('../util/updateRecordDao');
+var updateRecordDao = require('../dao/updateRecordDao');
+var onlineUserDao = require('../dao/onlineUserDao');
 var async = require('async')
+
+var convertData = function(items) {
+  var list = items.map(function(item) {
+    item.ct = new Date(item.ct).getHours();
+    return [item.ct, item.qty];
+  }).sort(function(x, y) {
+    return y[0] - x[0];
+  });
+  list.push(['date', 'qty']);
+  return list.reverse();
+};
 
 exports.index = function(req, res) {
   async.parallel([
@@ -15,14 +27,19 @@ exports.index = function(req, res) {
     }, 
     function(cb) {
       updateRecordDao.getUserCount(cb);
+    },
+    function(cb) {
+      onlineUserDao.getRecords(new Date().toLocaleDateString(), cb);
     }
   ], function(err, results) {
     if (err) {
-      return res.status(500).send('服务器出错');
+      return res.status(500).send('服务器出错'+err);
     }
     console.log('message: ', results);
     var counts = results[0][0];
     var userNum = results[1][0][0].num;
+    var users = results[2][0];
+
     console.log(counts, userNum);
     res.render('index', {
       title: 'LeasureGame',
@@ -30,7 +47,8 @@ exports.index = function(req, res) {
       counts: counts.map(function(c) {
         c.percent = ((c.num/userNum)*100).toFixed(1);
         return c;
-      })
+      }),
+      users: convertData(users)
     });
   });
 };
@@ -55,7 +73,7 @@ exports.doLogin = function(req, res, next) {
       title: '管理后台-- 请先登录',
       error: ermsg.join("\n")
     };
-    res.render('/login', json);
+    res.render('login', json);
     return;
   }
   var userid = req.body.username;
@@ -66,7 +84,7 @@ exports.doLogin = function(req, res, next) {
         title: '管理后台-- 请先登录',
         error: err
       };
-      res.render('/login', json);
+      res.render('login', json);
     } else {
       req.session.user_id = user.user_id;
       req.session.user = user;

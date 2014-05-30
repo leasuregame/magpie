@@ -29,7 +29,7 @@
 require('jsb.js');
 
 var appFiles = [
-    'src/resource.js',
+    'res/resource.js',
 
     'src/table/table.js',
 
@@ -100,6 +100,7 @@ var appFiles = [
     'src/controls/waitLayer.js',
     'src/controls/dialog.js',
     'src/controls/slideLayer.js',
+    'src/controls/lzMenu.js',
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginBgLayer.js',
@@ -127,8 +128,11 @@ var appFiles = [
     'src/view/mainModule/powerRewardLayer.js',
     'src/view/mainModule/goldCardsLayer.js',
     'src/view/mainModule/goldRewardLayer.js',
+    'src/view/mainModule/growthPlanLayer.js',
+    'src/view/mainModule/vipDailyRewardLayer.js',
     'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/invitationLayer.js',
+    'src/view/mainModule/newAreaRewardLayer.js',
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/amountLayer.js',
     'src/view/mainModule/battleMessageLayer.js',
@@ -143,6 +147,7 @@ var appFiles = [
     'src/view/mainModule/cardLibraryLayer.js',
     'src/view/mainModule/cardListFullTipLayer.js',
     'src/view/mainModule/cardListLayer.js',
+    'src/view/mainModule/cardSmeltLabel.js',
     'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/tipsLayer.js',
@@ -153,8 +158,10 @@ var appFiles = [
     'src/view/mainModule/elixirRankLayer.js',
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exchangeLayer.js',
+    'src/view/mainModule/exploreCardLayer.js',
     'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/extractTipLabel.js',
+    'src/view/mainModule/filterStarLabel.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',
@@ -190,6 +197,7 @@ var appFiles = [
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
+    'src/view/mainModule/smeltLayer.js',
     'src/view/mainModule/speakerLayer.js',
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
@@ -198,6 +206,7 @@ var appFiles = [
     'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/summonLayer.js',
+    'src/view/mainModule/systemMessageLabel.js',
     'src/view/mainModule/systemMessageLayer.js',
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tenLotteryCardLayer.js',
@@ -207,6 +216,7 @@ var appFiles = [
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
+    'src/view/mainModule/usePillLabel.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',
     'src/view/mainModule/mainBgLayer.js',

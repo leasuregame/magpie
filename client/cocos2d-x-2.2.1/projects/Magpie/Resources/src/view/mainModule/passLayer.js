@@ -16,7 +16,6 @@ var PassLayer = cc.Layer.extend({
     _passLayerFit: null,
 
     _top: 0,
-    _isWin: null,
     _spirit: null,
     _towerSprite: null,
     _topLabel: null,

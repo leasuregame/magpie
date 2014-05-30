@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<project name="Javascript compress project" basedir="../../../../../../" default="compile">
+
+    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
+             classpath="${basedir}/tools/closure-compiler/compiler.jar"/>
+
+    <target name="compile">
+        <!--advanced / simple-->
+        <jscomp compilationLevel="simple" warning="quiet"
+                debug="false" output="${basedir}/projects/Magpie/Resources/game/IOS/91-Releases/game.js">
+            <externs dir="${basedir}/scripting/javascript/bindings/obfuscate/">
+                <file name="obfuscate_exclude_cocos2d.js"/>
+                <file name="obfuscate_exclude_chipmunk.js"/>
+                <file name="obfuscate_exclude_magpie.js"/>
+            </externs>
+            <sources dir="${basedir}/scripting/javascript/bindings/js/">
+                <file name="jsb_cocos2d_constants.js"/>
+                <file name="jsb_cocos2d.js"/>
+                <file name="jsb_cocos2d_extension.js"/>
+                <file name="jsb_opengl_constants.js"/>
+                <file name="jsb_opengl.js"/>
+                <file name="jsb_cocosbuilder.js"/>
+                <file name="jsb_sys.js"/>
+                <file name="jsb_deprecated.js"/>
+            </sources>
+            <sources dir="${basedir}/projects/Magpie/Res_ios/">
+                <file name="res/resource.js"/>
+
+                <file name="src/table/table.js"/>
+
+                <file name="src/model/event.js"/>
+                <file name="src/model/entity.js"/>
+
+                <file name="src/model/lz.js"/>
+                <file name="src/model/um.js"/>
+                <file name="IOS/91/platform.js"/>
+                <file name="src/model/pomelo.js"/>
+                <file name="src/model/server.js"/>
+
+                <file name="src/model/singleton.js"/>
+                <file name="src/model/gameConfig.js"/>
+
+                <file name="src/model/fit4Iphone4.js"/>
+                <file name="src/model/fit4Iphone5.js"/>
+                <file name="src/model/gameFit.js"/>
+                <file name="src/model/clock.js"/>
+                <file name="IOS/91/user.js"/>
+                <file name="src/model/player.js"/>
+                <file name="src/model/card.js"/>
+                <file name="src/model/cardList.js"/>
+                <file name="src/model/lineUp.js"/>
+                <file name="src/model/task.js"/>
+                <file name="src/model/pass.js"/>
+                <file name="src/model/rank.js"/>
+                <file name="src/model/lottery.js"/>
+                <file name="src/model/treasureHunt.js"/>
+                <file name="src/model/cardLibrary.js"/>
+                <file name="src/model/message.js"/>
+                <file name="src/model/tournament.js"/>
+                <file name="src/model/sound.js"/>
+                <file name="src/model/speak.js"/>
+                <file name="src/model/spirit.js"/>
+                <file name="src/model/spiritPool.js"/>
+                <file name="src/model/friend.js"/>
+                <file name="src/model/shop.js"/>
+                <file name="src/model/signIn.js"/>
+                <file name="src/model/achievement.js"/>
+                <file name="src/model/exchange.js"/>
+                <file name="src/model/activity.js"/>
+                <file name="src/model/greeting.js"/>
+                <file name="src/model/boss.js"/>
+
+                <file name="IOS/91/payment.js"/>
+
+                <file name="src/model/battleLogPool.js"/>
+                <file name="src/model/battleLog.js"/>
+                <file name="src/model/battleStep.js"/>
+
+                <file name="src/model/gameCombo.js"/>
+                <file name="src/model/gameData.js"/>
+                <file name="src/model/gameMark.js"/>
+                <file name="src/model/gameGuide.js"/>
+                <file name="src/model/gameHelp.js"/>
+
+                <file name="src/controls/progress.js"/>
+                <file name="src/controls/lazyLayer.js"/>
+                <file name="src/controls/shyLayer.js"/>
+                <file name="src/controls/skyDialog.js"/>
+                <file name="src/controls/lazyMenu.js"/>
+                <file name="src/controls/markLayer.js"/>
+                <file name="src/controls/strokeLabel.js"/>
+                <file name="src/controls/LzMenuItem.js"/>
+                <file name="src/controls/tipLayer.js"/>
+                <file name="src/controls/colorLabelTTF.js"/>
+                <file name="src/controls/waitLayer.js"/>
+                <file name="src/controls/dialog.js"/>
+                <file name="src/controls/slideLayer.js"/>
+                <file name="src/controls/lzMenu.js"/>
+
+                <file name="src/view/loginModule/loginScene.js"/>
+                <file name="src/view/loginModule/loginBgLayer.js"/>
+                <file name="src/view/loginModule/updateLayer.js"/>
+                <file name="IOS/91/loginLayer.js"/>
+                <file name="src/view/loginModule/newPlayerLayer.js"/>
+                <file name="src/view/loginModule/registerLayer.js"/>
+                <file name="src/view/loginModule/selectAreaLayer.js"/>
+
+                <file name="src/view/startAnimationModule/startAnimationLayer.js"/>
+                <file name="src/view/startAnimationModule/startAnimationScene.js"/>
+
+                <file name="src/view/mainModule/cocosBuilderClass.js"/>
+                <file name="src/view/mainModule/abilityRankLayer.js"/>
+                <file name="src/view/mainModule/achievementLayer.js"/>
+                <file name="src/view/mainModule/addFriendsLayer.js"/>
+                <file name="src/view/mainModule/advancedTipsLabel.js"/>
+                <file name="src/view/mainModule/attackDetailsLayer.js"/>
+                <file name="src/view/mainModule/bossAppearLabel.js"/>
+                <file name="src/view/mainModule/bossHelpLabel.js"/>
+                <file name="src/view/mainModule/bossLayer.js"/>
+                <file name="src/view/mainModule/bossListLayer.js"/>
+                <file name="src/view/mainModule/bossRewardLabel.js"/>
+                <file name="src/view/mainModule/rechargeLayer.js"/>
+                <file name="src/view/mainModule/powerRewardLayer.js"/>
+                <file name="src/view/mainModule/goldCardsLayer.js"/>
+                <file name="src/view/mainModule/goldRewardLayer.js"/>
+                <file name="src/view/mainModule/growthPlanLayer.js"/>
+                <file name="src/view/mainModule/signInLayer.js"/>
+                <file name="src/view/mainModule/invitationLayer.js"/>
+                <file name="src/view/mainModule/newAreaRewardLayer.js"/>
+                <file name="src/view/mainModule/vipDailyRewardLayer.js"/>
+                <file name="src/view/mainModule/activityLayer.js"/>
+                <file name="src/view/mainModule/amountLayer.js"/>
+                <file name="src/view/mainModule/battleMessageLayer.js"/>
+                <file name="src/view/mainModule/bubbleLabel.js"/>
+                <file name="src/view/mainModule/cardDetails.js"/>
+                <file name="src/view/mainModule/cardEvolutionLabel.js"/>
+                <file name="src/view/mainModule/cardEvolutionLayer.js"/>
+                <file name="src/view/mainModule/cardFullNode.js"/>
+                <file name="src/view/mainModule/cardHalfNode.js"/>
+                <file name="src/view/mainModule/cardHeadNode.js"/>
+                <file name="src/view/mainModule/cardLabel.js"/>
+                <file name="src/view/mainModule/cardLibraryLayer.js"/>
+                <file name="src/view/mainModule/cardListFullTipLayer.js"/>
+                <file name="src/view/mainModule/cardListLayer.js"/>
+                <file name="src/view/mainModule/cardSmeltLabel.js"/>
+                <file name="src/view/mainModule/cardTrainLabel.js"/>
+                <file name="src/view/mainModule/cardUpgradeLabel.js"/>
+                <file name="src/view/mainModule/tipsLayer.js"/>
+                <file name="src/view/mainModule/configLayer.js"/>
+                <file name="src/view/mainModule/damageRankHelpLabel.js"/>
+                <file name="src/view/mainModule/damageRankLayer.js"/>
+                <file name="src/view/mainModule/elixirRankHelpLabel.js"/>
+                <file name="src/view/mainModule/elixirRankLayer.js"/>
+                <file name="src/view/mainModule/evolutionLayer.js"/>
+                <file name="src/view/mainModule/exchangeLayer.js"/>
+                <file name="src/view/mainModule/exploreCardLayer.js"/>
+                <file name="src/view/mainModule/exploreLayer.js"/>
+                <file name="src/view/mainModule/extractTipLabel.js"/>
+                <file name="src/view/mainModule/filterStarLabel.js"/>
+                <file name="src/view/mainModule/friendLayer.js"/>
+                <file name="src/view/mainModule/friendMessageLayer.js"/>
+                <file name="src/view/mainModule/gameFrame.js"/>
+                <file name="src/view/mainModule/gameHelpLabel.js"/>
+                <file name="src/view/mainModule/giftBagLayer.js"/>
+                <file name="src/view/mainModule/goldLayer.js"/>
+                <file name="src/view/mainModule/goPaymentLayer.js"/>
+                <file name="src/view/mainModule/greetingLabel.js"/>
+                <file name="src/view/mainModule/instancesLayer.js"/>
+                <file name="src/view/mainModule/level9BoxLayer.js"/>
+                <file name="src/view/mainModule/lineUpDetail.js"/>
+                <file name="src/view/mainModule/lineUpDetailsLayer.js"/>
+                <file name="src/view/mainModule/lineUpLabel.js"/>
+                <file name="src/view/mainModule/lineUpLayer.js"/>
+                <file name="src/view/mainModule/lotteryCardLayer.js"/>
+                <file name="src/view/mainModule/lotteryLayer.js"/>
+                <file name="src/view/mainModule/lvRankLayer.js"/>
+                <file name="src/view/mainModule/messageLabel.js"/>
+                <file name="src/view/mainModule/messageLayer.js"/>
+                <file name="src/view/mainModule/monthLabel.js"/>
+                <file name="src/view/mainModule/passiveSkillLabel.js"/>
+                <file name="src/view/mainModule/passiveSkillAfreshLabel.js"/>
+                <file name="src/view/mainModule/passLayer.js"/>
+                <file name="src/view/mainModule/passRankLayer.js"/>
+                <file name="src/view/mainModule/paymentLayer.js"/>
+                <file name="src/view/mainModule/playerDetails.js"/>
+                <file name="src/view/mainModule/playerHeaderLabel.js"/>
+                <file name="src/view/mainModule/playerUpgradeLayer.js"/>
+                <file name="src/view/mainModule/propsLayer.js"/>
+                <file name="src/view/mainModule/rankLayer.js"/>
+                <file name="src/view/mainModule/readMessageLayer.js"/>
+                <file name="src/view/mainModule/removeCdTipLabel.js"/>
+                <file name="src/view/mainModule/sendMessageLayer.js"/>
+                <file name="src/view/mainModule/shopLayer.js"/>
+                <file name="src/view/mainModule/skillUpgradeLabel.js"/>
+                <file name="src/view/mainModule/smeltLayer.js"/>
+                <file name="src/view/mainModule/speakerLayer.js"/>
+                <file name="src/view/mainModule/spiritDetails.js"/>
+                <file name="src/view/mainModule/spiritNode.js"/>
+                <file name="src/view/mainModule/spiritPoolLayer.js"/>
+                <file name="src/view/mainModule/spiritSideNode.js"/>
+                <file name="src/view/mainModule/starLabel.js"/>
+                <file name="src/view/mainModule/strengthenLayer.js"/>
+                <file name="src/view/mainModule/summonLayer.js"/>
+                <file name="src/view/mainModule/systemMessageLabel.js"/>
+                <file name="src/view/mainModule/systemMessageLayer.js"/>
+                <file name="src/view/mainModule/taskLayer.js"/>
+                <file name="src/view/mainModule/tenLotteryCardLayer.js"/>
+                <file name="src/view/mainModule/tournamentDetails.js"/>
+                <file name="src/view/mainModule/tournamentLayer.js"/>
+                <file name="src/view/mainModule/tournamentLabel.js"/>
+                <file name="src/view/mainModule/tournamentRankLayer.js"/>
+                <file name="src/view/mainModule/tournamentTipLayer.js"/>
+                <file name="src/view/mainModule/treasureHuntLayer.js"/>
+                <file name="src/view/mainModule/usePillLabel.js"/>
+                <file name="src/view/mainModule/vipLayer.js"/>
+                <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
+                <file name="src/view/mainModule/mainBgLayer.js"/>
+                <file name="src/view/mainModule/mainLayer.js"/>
+                <file name="src/view/mainModule/mainMenuLayer.js"/>
+                <file name="src/view/mainModule/mandatoryTeachingLayer.js"/>
+                <file name="src/view/mainModule/noticeLayer.js"/>
+                <file name="src/view/mainModule/noviceTeachingLayer.js"/>
+                <file name="src/view/mainModule/mainScene.js"/>
+
+                <file name="src/view/battleModule/battleBeganLayer.js"/>
+                <file name="src/view/battleModule/battleCardNode.js"/>
+                <file name="src/view/battleModule/battleEndLayer.js"/>
+                <file name="src/view/battleModule/battleLayer.js"/>
+                <file name="src/view/battleModule/battlePlayer.js"/>
+                <file name="src/view/battleModule/battleScene.js"/>
+                <file name="src/view/battleModule/battleSpiritNode.js"/>
+                <file name="src/view/battleModule/cloudLayer.js"/>
+                <file name="src/view/battleModule/fragmentLayer.js"/>
+
+                <file name="main_binding.js"/>
+            </sources>
+        </jscomp>
+    </target>
+</project>

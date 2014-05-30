@@ -34,7 +34,7 @@ Manager = module.exports =
       challenger.increase('startCount')
       defender.increase('challengeCount')
       
-      rewards = {ranking_elixir: 0}
+      rewards = {ranking_elixir: 0, elixir: 0}
       ###  获取竞技奖励，每天10次，还可额外购买10次 ###
       upgradeInfo = null
       level9Box = null
@@ -103,6 +103,8 @@ updateElixir = (player, elixir) ->
 
 
 updateAll = (player, target, challenger, defender, targetId, rewards, upgradeInfo, level9Box, cb) ->
+  player.rank = challenger
+  target.rank = defender
   
   jobs = [
     {
@@ -188,7 +190,6 @@ countRewards = (player, challenger, isWin, rewards) ->
   rewards.money = parseInt rankData[_str+'money']*(1 + percent/100)
   rewards.elixir = parseInt rankData[_str+'elixir']*(1 + percent/100)
 
-  # player.increase('exp', rewards.exp)
   player.increase('money', rewards.money)
   player.increase('elixir', rewards.elixir)
   player.updateGift('challengeCount', player.dailyGift.challengeCount-1)

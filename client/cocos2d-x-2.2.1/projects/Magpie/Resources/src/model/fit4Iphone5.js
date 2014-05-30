@@ -69,7 +69,8 @@ var fit4Iphone5 = {
 
     "loginScene": {
         "loginBgLayer": {
-            "bgEffectPoint": cc.p(320, 568)
+            "bgEffectPoint": cc.p(320, 568),
+            "appVersionLabelPoint": cc.p(620, 1116)
         },
         "loginLayer": {
             "bgEffectPoint": cc.p(320, 568),
@@ -279,6 +280,9 @@ var fit4Iphone5 = {
             "lvLabelPoint": cc.p(528, 938),
             "hpLabelPoint": cc.p(528, 858),
             "atkLabelPoint": cc.p(528, 778),
+            "potentialLvIconPoint": cc.p(580, 960),
+            "hpAdditionLabelPoint": cc.p(565, 870),
+            "atkAdditionLabelPoint": cc.p(565, 790),
             "descriptionLabelBasePoint": cc.p(400, 720),
             "descriptionLabelOffsetY": 30,
             "skillIconPoint": cc.p(60, 510),
@@ -286,14 +290,14 @@ var fit4Iphone5 = {
             "skillDescriptionLabelPoint": cc.p(60, 460),
             "skillRateIconPoint": cc.p(60, 360),
             "skillHarmIconPoint": cc.p(60, 410),
-            "skillRateLabelPoint": cc.p(200, 358),
-            "skillHarmLabelPoint": cc.p(200, 408),
+            "skillRateLabelPoint": cc.p(180, 358),
+            "skillHarmLabelPoint": cc.p(180, 408),
             "skillLvIconPoint": cc.p(460, 410),
             "skillLvLabelPoint": cc.p(565, 408),
             "tipLabelPoint": cc.p(210, 510),
             "tipDescriptionLabelPoint": cc.p(60, 470),
             "passiveSkillIconPoint": cc.p(60, 275),
-            "updatePassiveSKillItemPoint": cc.p(210, 275),
+            "updatePassiveSKillItemPoint": cc.p(230, 275),
             "passiveSkillOffsetX": -130,
             "passiveSkillIconPointY": 225,
             "passiveSkillNameLabelPointY": 225,
@@ -369,6 +373,18 @@ var fit4Iphone5 = {
             "moneyLabelPoint": cc.p(385, 1014),
             "buyCountItemPoint": cc.p(575, 151),
             "tipLayerPoint": cc.p(90, 1014)
+        },
+        "cardSmeltLabel": {
+            "smelterPoint": cc.p(325, 610),
+            "pillIconPoint": cc.p(435, 820),
+            "pillIconLabelPoint": cc.p(495, 820),
+            "pillLabelPoint": cc.p(545, 818),
+            "helpBgSpritePoint": cc.p(320, 307),
+            "tipLabelPoint": cc.p(320, 307),
+            "helpLabelPoint": cc.p(320, 307),
+            "selectRetinueCardItemPoint": cc.p(420, 197),
+            "smeltItemPoint": cc.p(320, 197),
+            "helpItemPoint": cc.p(50, 810)
         },
         "cardTrainLabel": {
             "cardItemBgSpritePoint": cc.p(324, 613),
@@ -517,7 +533,7 @@ var fit4Iphone5 = {
             "line1IconPoint": cc.p(320, 1016),
             "line2IconPoint": cc.p(320, 835),
             "descriptionBgIconPoint": cc.p(0, 106),
-            "descriptionIconPoint": cc.p(80, 162),
+            "descriptionIconPoint": cc.p(80, 202),
             "titleLabelPoint": cc.p(320, 1096),
             "spiritShadowPoint": cc.p(310, 824),
             "spiritNodePoint": cc.p(320, 821),
@@ -539,7 +555,11 @@ var fit4Iphone5 = {
             "rewardEffectPoint": cc.p(320, 900),
             "lvIconPoint": cc.p(84, 837),
             "playerLvLabelPoint": cc.p(35, 834),
-            "rewardEffectUrl": "animation_2"
+            "rewardEffectUrl": "animation_2",
+            "prePageItemPoint": cc.p(525, 246),
+            "nextPageItemPoint": cc.p(595, 246),
+            "rewardItemPoint": cc.p(580, 990),
+            "collectLabelPoint": cc.p(320, 781)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -615,9 +635,21 @@ var fit4Iphone5 = {
             "lineIconPoint": cc.p(0, 963),
             "headIconPoint": cc.p(0, 963),
             "scrollViewHeight": 780,
-            "scrollViewLayerRect": cc.rect(0, 0, 620, 780),
-            "scrollViewSize": cc.size(620, 780),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 780),
+            "scrollViewSize": cc.size(640, 780),
             "scrollViewPoint": cc.p(0, 140)
+        },
+        "growthPlanLayer": {
+            "bgLabelScaleY": 1.23,
+            "topIconPoint": cc.p(320, 900),
+            "go2PaymentItemPoint": cc.p(230, 760),
+            "buyItemPoint": cc.p(430, 760),
+            "buyTipLabelPoint": cc.p(500, 780),
+            "rewardBgLabelPoint": cc.p(320, 420),
+            "rewardBgLabelScaleY": 0.95,
+            "scrollViewLayerRect": cc.rect(0, 0, 600, 560),
+            "scrollViewSize": cc.size(600, 560),
+            "scrollViewPoint": cc.p(16, 140)
         },
         "instancesLayer": {
             "headIconPoint": cc.p(0, 1050),
@@ -715,7 +747,8 @@ var fit4Iphone5 = {
             "privilegeIconPoint": cc.p(330, 280),
             "fragmentTipLayerPoint": cc.p(320, 970),
             "fragmentTipIconPoint": cc.p(425, 970),
-            "tipsLabelPoint": cc.p(493, 335)
+            "tipsLabelPoint": cc.p(493, 340),
+            "helpItemPoint": cc.p(600, 960)
         },
         "lvRankLayer": {
             "scrollViewHeight": 876,
@@ -830,6 +863,12 @@ var fit4Iphone5 = {
             "friendMessageIconPoint": cc.p(214, 1085),
             "systemMessageIconPoint": cc.p(361, 1085),
             "bgSpritePoint": cc.p(0, 106)
+        },
+        "newAreaRewardLayer": {
+            "tipLabelPoint": cc.p(320, 997),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 820),
+            "scrollViewSize": cc.size(640, 820),
+            "scrollViewPoint": cc.p(0, 130)
         },
         "newYearLayer": {
             "bgSpritePoint": cc.p(8, 108),
@@ -1133,6 +1172,14 @@ var fit4Iphone5 = {
             "helpItemPoint": cc.p(50, 810),
             "extractEffectUrl": "animation_2"
         },
+        "smeltLayer": {
+            "bgSpriteRect1": cc.rect(0, 0, 640, 995),
+            "bgSpritePoint": cc.p(0, 106),
+            "bgSpriteRect2": cc.rect(0, 0, 640, 845),
+            "playerHeaderLabelPoint": cc.p(0, 968),
+            "cardSmeltLayerItemPoint": cc.p(70, 897),
+            "usePillLayerItemPoint": cc.p(214, 897)
+        },
         "speakerLayer": {
             "msgBgLabelPoint": cc.p(340, 1010),
             "speakerIconPoint": cc.p(100, 1010),
@@ -1201,12 +1248,12 @@ var fit4Iphone5 = {
             "cardTrainItemOffset": cc.p(0, -2),
             "cardEvolutionItemPoint": cc.p(364, 897),
             "cardEvolutionItemOffset": cc.p(0, -2)
-
         },
         "summonLayer": {
             "headIconPoint": cc.p(0, 1048),
             "lotteryLayerItemPoint": cc.p(71, 1087),
-            "exChangeLayerItemPoint": cc.p(214, 1087)
+            "exChangeLayerItemPoint": cc.p(214, 1087),
+            "treasureHuntLayerItemPoint": cc.p(363, 1087)
         },
         "systemMessageLayer": {
             "scrollViewHeight": 880,
@@ -1398,7 +1445,21 @@ var fit4Iphone5 = {
             "horizontalIcon2Point": cc.p(322, 196),
             "verticalIcon1Point": cc.p(74, 544),
             "verticalIcon2Point": cc.p(569, 544),
-            "verticalIconScale": 1
+            "verticalIconScale": 1,
+            "helpItemPoint": cc.p(50, 1021)
+        },
+        "usePillLabel": {
+            "awakenEffectPoint": cc.p(325, 610),
+            "pillIconPoint": cc.p(435, 820),
+            "pillIconLabelPoint": cc.p(495, 820),
+            "pillLabelPoint": cc.p(545, 818),
+            "resLabelPoint": cc.p(320, 430),
+            "helpBgSpritePoint": cc.p(320, 307),
+            "tipLabelPoint": cc.p(320, 307),
+            "helpLabelPoint": cc.p(320, 307),
+            "leadCardHalfNodePoint": cc.p(324, 720),
+            "awakenItemPoint": cc.p(320, 197),
+            "helpItemPoint": cc.p(50, 810)
         },
         "goPaymentLayer": {
             "bgSpritePoint": cc.p(320, 580),
@@ -1416,7 +1477,7 @@ var fit4Iphone5 = {
             "speakerIconPoint": cc.p(110, 850),
             "msgEditBoxPoint": cc.p(305, 850),
             "sendItemPoint": cc.p(520, 850),
-            "scrollViewLayerRect": cc.rect(0, 0, 500, 590),
+            "scrollViewLayerRect": cc.rect(70, 205, 500, 590),
             "scrollViewBgLayerSize": cc.size(500, 600),
             "scrollViewBgLayerPoint": cc.p(320, 500),
             "scrollViewSize": cc.size(500, 590),
@@ -1424,6 +1485,13 @@ var fit4Iphone5 = {
             "scrollViewHeight": 590,
             "closeItemPoint": cc.p(565, 918),
             "speakerNumPoint": cc.p(87, 861)
+        },
+        "vipDailyRewardLayer": {
+            "bgLabelScaleY": 1.23,
+            "titleIconPoint": cc.p(0, 900),
+            "cardIconPoint": cc.p(480, 695),
+            "tipsIconPoint": cc.p(0, 655),
+            "rewardBgLabelPoint": cc.p(320, 305)
         },
         "vipLayer": {
             "bgSpritePoint": cc.p(0, 106),

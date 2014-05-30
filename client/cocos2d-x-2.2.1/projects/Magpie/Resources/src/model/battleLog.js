@@ -45,8 +45,9 @@ var BattleLog = Entity.extend({
 
         var battleLog = BattleLogPool.getInstance().get(id);
 
+        var winner = battleLog.winner;
         if (battleLog.enemyId === gameData.player.get("id")) {
-            battleLog.winner = battleLog.winner == "own" ? "enemy" : "own";
+            winner = battleLog.winner == "own" ? "enemy" : "own";
         }
 
         this.set("id", battleLog.id);
@@ -56,7 +57,7 @@ var BattleLog = Entity.extend({
         this.set("ownName", battleLog.ownName);
         this.set("enemyId", battleLog.enemyId);
         this.set("enemyName", battleLog.enemyName);
-        this.set("winner", battleLog.winner);
+        this.set("winner", winner);
         this.set("reward", battleLog.rewards);
         this.set("battleStep", battleLog.steps);
         this.set("battleStepLen", battleLog.steps.length);

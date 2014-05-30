@@ -93,15 +93,23 @@ var User = Entity.extend({
 
         this._save();
 
-        var version = "1.3.0";
+        var version = lz.platformConfig.VERSION;
 
         if (typeof(cc.AssetsManager) != "undefined") {
             version = cc.AssetsManager.getInstance().getVersion();
         }
 
+        var appVersion = lz.platformConfig.VERSION;
+        if (typeof(cc.Application.getInstance().getAppVersion) != "undefined") {
+            appVersion = cc.Application.getInstance().getAppVersion();
+        }
+
+
         cc.log("=================================================");
         cc.log(version);
+        cc.log(appVersion);
         cc.log("=================================================");
+
 
         var that = this;
         lz.server.connectGameServer(function () {
@@ -109,7 +117,8 @@ var User = Entity.extend({
                 account: that._account,
                 password: that._password,
                 areaId: that._area,
-                version: version
+                version: version,
+                appVersion: appVersion
             }, function (data) {
                 cc.log(data);
 

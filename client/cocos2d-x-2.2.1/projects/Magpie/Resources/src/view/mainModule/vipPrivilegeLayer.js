@@ -78,7 +78,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     color: cc.c3b(255, 248, 69)
                 },
                 {
-                    string: "再冲",
+                    string: "再充",
                     fontName: "STHeitiTC-Medium",
                     fontSize: 23
                 },
@@ -127,43 +127,78 @@ var VipPrivilegeLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 420;
+        var scrollViewHeight = len * 440;
         if (scrollViewHeight < this._vipPrivilegeLayerFit.scrollViewHeight) {
             scrollViewHeight = this._vipPrivilegeLayerFit.scrollViewHeight;
         }
 
-        for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 420 - i * 420;
+        var vipTable = outputTables.vip.rows;
+        var vipPrivilegeLabel, vipPrivilegeIcon;
+        var index;
 
+        for (var i = 0; i < len; ++i) {
+
+            var y = scrollViewHeight - 440 - i * 440;
             var vipPrivilege = vipPrivilegeList[i];
+            var tmpVip = MAX_VIP_LEVEL - i;
 
             var bgSpriteUrl = main_scene_image.icon169;
             if (vip == vipPrivilege.id) {
                 bgSpriteUrl = main_scene_image.icon168;
+                index = i;
             }
 
-            var bgSprite = cc.Sprite.create(bgSpriteUrl);
-            bgSprite.setAnchorPoint(cc.p(0, 0));
-            bgSprite.setPosition(cc.p(0, y));
-            bgSprite.setScaleY(1.29);
-            scrollViewLayer.addChild(bgSprite);
+            var bgIcon = cc.Sprite.create(bgSpriteUrl);
+            bgIcon.setAnchorPoint(cc.p(0, 0));
+            bgIcon.setPosition(cc.p(0, y));
+            bgIcon.setScaleY(1.4);
+            scrollViewLayer.addChild(bgIcon);
 
             var vipIcon = cc.Sprite.create(main_scene_image["vip" + vipPrivilege.id]);
-            vipIcon.setPosition(cc.p(250, y + 360));
+            vipIcon.setPosition(cc.p(250, y + 385));
             scrollViewLayer.addChild(vipIcon);
 
-            var offsetY = y + 315;
+            var offsetY = y + 340;
+
+
+            vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+            vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
+            scrollViewLayer.addChild(vipPrivilegeIcon);
+
+            vipPrivilegeLabel = ColorLabelTTF.create(
+                {
+                    string: "累计充值",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: vipTable[tmpVip].total_cash,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "元即可享受该级特权",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                }
+            );
+            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0));
+            vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
+            scrollViewLayer.addChild(vipPrivilegeLabel);
+
+            offsetY -= 35;
+
             for (var key in vipPrivilege) {
 
                 if (vipPrivilege[key] <= 0 || key == "id") {
                     continue;
                 }
 
-                var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+                vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
                 vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
                 scrollViewLayer.addChild(vipPrivilegeIcon);
-
-                var vipPrivilegeLabel = null;
 
                 if (key == "description") {
                     vipPrivilegeLabel = cc.LabelTTF.create(
@@ -179,7 +214,6 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     );
                 }
 
-
                 vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
                 vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
                 scrollViewLayer.addChild(vipPrivilegeLabel);
@@ -187,17 +221,17 @@ var VipPrivilegeLayer = LazyLayer.extend({
                 offsetY -= 35;
             }
 
-            var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+            vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
             vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
             scrollViewLayer.addChild(vipPrivilegeIcon);
-            var vipPrivilegeLabel = ColorLabelTTF.create(
+            vipPrivilegeLabel = ColorLabelTTF.create(
                 {
                     string: "可购买",
                     fontName: "STHeitiTC-Medium",
                     fontSize: 20
                 },
                 {
-                    string: "VIP" + (MAX_VIP_LEVEL - i),
+                    string: "VIP" + tmpVip,
                     fontName: "STHeitiTC-Medium",
                     fontSize: 20,
                     isStroke: true,
@@ -222,7 +256,9 @@ var VipPrivilegeLayer = LazyLayer.extend({
         this.addChild(scrollView);
 
         scrollView.setContentSize(cc.size(500, scrollViewHeight));
-        scrollView.setContentOffset(scrollView.minContainerOffset());
+        
+        offsetY = Math.min(scrollView.minContainerOffset().y + 440 * (index || 0), 0);
+        scrollView.setContentOffset(cc.p(0, offsetY));
 
         return true;
     },

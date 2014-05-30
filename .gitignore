@@ -18,6 +18,8 @@ client/cocos2d-x-2.2.1/projects/Magpie/proj.android/libs
 client/cocos2d-x-2.2.1/projects/Magpie/proj.android/bin
 client/cocos2d-x-2.2.1/projects/Magpie/proj.android/gen
 client/cocos2d-x-2.2.1/projects/MagpieTest
+client/cocos2d-x-2.2.1/projects/Magpie/proj.ios/lib/YY/SDK/libyygamesdk_universal.a
+client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/bin/libcocos2dx.jar
 fileLookup.plist
 table.json
 .idea
@@ -33,7 +35,14 @@ game-server/selenium-server-standalone-2.33.0.jar
 *.csv#
 
 game-server/config/powerGivenFlag-*.json
-web-server/data/*.html
+web-server/data
 shared/version.json
 gm/config/mysql.json
 shared/version.json
+
+game-server/config/area.json
+
+shared/whiteList.json
+
+*.map
+

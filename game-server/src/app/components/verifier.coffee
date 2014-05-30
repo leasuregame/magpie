@@ -52,15 +52,17 @@ class Component
     @timerId = setInterval executeVerify.bind(null, @app, @app.get('verifyQueue')), @interval
     process.nextTick cb
 
-  stop: (cd) ->
+  stop: (cb) ->
     clearInterval @timerId
     process.nextTick cb
 
 executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
+
   return if items.length is 0
 
+  useSanbox = app.get('useSanbox') or false
   async.each items, (item, done) ->    
     tryCount = 0
     postReceipt = (reqUrl, receiptData) ->
@@ -73,6 +75,7 @@ executeVerify = (app, queue) ->
           logger.error('faild to verify app store receipt.', err)
           return done()
 
+        #logger.info 'verify result: ', reqUrl, body
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
           return updatePlayer(app, item, body, done)
@@ -84,7 +87,7 @@ executeVerify = (app, queue) ->
           queue.del(item.id)
           updateBuyRecord(app, item.id, {status: body.status}, ()->)
 
-        if body.status is 21007 and tryCount == 0
+        if body.status is 21007 and tryCount == 0 and useSanbox
           tryCount += 1
           return postReceipt(SANBOX_URL, receiptData)
 
@@ -100,7 +103,9 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
   if products and products.length > 0
     product = products[0]
   else
-    throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
+    logger.error('verify result: ', receiptResult)
+    logger.error('buy record: ', buyRecord)
+    throw new Error('can not find product info by product id ', receiptResult.receipt.product_id)
     return done()
 
   isFirstRechage = false
@@ -247,6 +252,7 @@ successMsg = (app, player, isFirstRechage) ->
       goldCards: player.getGoldCard(),
       recharge: player.firstTime.recharge or 0,
       firstRechargeBox: 1 if isFirstRechage
+      vipLoginReward: !player.dailyGift.vipReward if player.isVip()
     }
   }, (err, res) ->
     if err

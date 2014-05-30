@@ -236,11 +236,6 @@ var GreetingLabel = LazyLayer.extend({
             playerItem.setPosition(cc.p(50, -60));
             playerMenu.addChild(playerItem);
 
-            if (this._playerItem[id]) {
-                this._playerItem[id].removeFromParent();
-                this._playerItem[id] = null;
-            }
-
             this._playerItem[id] = playerItem;
         }
 
@@ -320,6 +315,9 @@ var GreetingLabel = LazyLayer.extend({
             );
             return;
         }
+
+
+        text = lz.replaceStr(text);
 
         gameData.greeting.sendMsg(function () {
             that._msgEditBox.setText("");

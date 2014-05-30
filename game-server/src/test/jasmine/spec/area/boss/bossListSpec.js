@@ -312,8 +312,61 @@ describe("Area Server", function() {
           });
         });
 
-        describe('沉睡的boss', function() {
+        describe('沉睡的boss, 未逃跑', function() {
           var bossCreateTime = new Date().getTime();
+
+          beforeEach(function() {
+            doAjax('/create/boss', {
+              playerId: 1,
+              tableId: 1,
+              createTime: bossCreateTime
+            }, function(res) {
+              loginWith('arthur', '1', 1);
+            });
+          });
+
+          it('返回正确的列表', function() {
+            request('area.bossHandler.bossList', {}, function(data) {
+              expect(data.code).toEqual(200);
+              expect(data.msg).toEqual([]);              
+
+            });
+          });
+        });
+
+        describe('沉睡的boss, 已超时，未消失', function() {
+          var bossCreateTime = new Date().getTime() + 13 * 60 * 60 * 1000;
+
+          beforeEach(function() {
+            doAjax('/create/boss', {
+              playerId: 1,
+              tableId: 1,
+              status: 4,
+              createTime: bossCreateTime
+            }, function(res) {
+              
+            });
+
+            doAjax('/create/boss', {
+              playerId: 1,
+              tableId: 1,
+              createTime: bossCreateTime
+            }, function(res) {
+              loginWith('arthur', '1', 1);
+            });
+          });
+
+          it('返回空列表', function() {
+            request('area.bossHandler.bossList', {}, function(data) {
+              expect(data.code).toEqual(200);
+              expect(data.msg).toEqual([]);              
+
+            });
+          });
+        });
+
+        describe('沉睡的boss，已消失', function() {
+          var bossCreateTime = new Date().getTime() + 15 * 60 * 60 * 1000;
 
           beforeEach(function() {
             doAjax('/create/boss', {

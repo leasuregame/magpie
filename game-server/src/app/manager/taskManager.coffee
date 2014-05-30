@@ -1,7 +1,5 @@
 table = require './table'
-taskRate = require '../../config/data/taskRate'
-psConfig = require '../../config/data/passSkill'
-spiritConfig = require '../../config/data/spirit'
+configData = require '../../config/data'
 utility = require '../common/utility'
 entityUtil = require '../util/entityUtil'
 dao = require('pomelo').app.get('dao')
@@ -34,7 +32,7 @@ class Manager
 
     data.result = utility.randomValue(
       ['fight','box', 'none'],
-      [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
+      [configData.taskRate.fight, configData.taskRate.precious_box, (100 - configData.taskRate.fight - configData.taskRate.precious_box)]
     )
 
     ### 判断最后一小关，如果没有在这一个章节中获得战斗的胜利，则触发战斗 ###
@@ -94,7 +92,7 @@ class Manager
     cb(null, player, rewards)
 
   @openBox: (player, data, cb) ->
-    _obj = taskRate.open_box.star
+    _obj = configData.taskRate.open_box.star
 
     _rd_star = parseInt utility.randomValue(_.keys(_obj), _.values(_obj))
     _card_table_id = entityUtil.randomCardId(_rd_star, player.lightUpCards())
@@ -133,9 +131,9 @@ class Manager
         data.money_obtain += 5000
 
     ### 每次战斗结束都有10%的概率获得5魔石 ###
-    if utility.hitRate(taskRate.gold_obtain.rate)
-      player.increase('gold', taskRate.gold_obtain.value)
-      battleLog.rewards.gold = taskRate.gold_obtain.value  
+    if utility.hitRate(configData.taskRate.gold_obtain.rate)
+      player.increase('gold', configData.taskRate.gold_obtain.value)
+      battleLog.rewards.gold = configData.taskRate.gold_obtain.value  
 
     saveExpCardsInfo player.id, player.lv, taskData.max_drop_card_number, firstWin, (err, results) ->
       if err
@@ -167,9 +165,9 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
-      if taskId is 500 and player.task.progress is taskData.points
+      if taskId is 500 and player.task.progress >= taskData.points
         ### 全部通关，do nothing ###
-        return cb(null, data)
+        
       else
         if taskId < 4
           ### 十步之遥 成就奖励 ###
@@ -254,21 +252,43 @@ class Manager
         
         cb(null, data)
 
+  @turnReward: (data, player, cb) ->
+    if not player.task.turn
+      player.task.turn = collected: 0, num: 1
+
+    ### 当集齐一轮奖励后，但奖励还没有领取时，不再收集下一轮奖励 ###
+    if player.canGetTurnReward()
+      return cb(null, data)
+
+    types = table.getTable('turn_reward_type')
+    task = utility.deepCopy(player.task)
+    if data.result is 'box'
+      id = types.find('reward_type', 'card')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
+    if data.result is 'fight' and data.battle_log.winner is 'own'
+      id = types.find('reward_type', 'exp_card')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
+    if data.battle_log?.rewards.totalSpirit > 0
+      id = types.find('reward_type', 'spirit')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
+    if data.battle_log?.rewards.gold > 0
+      id = types.find('reward_type', 'gold')
+      task.turn.collected = utility.mark(task.turn.collected, parseInt(id.id))
+
+    player.task = task;
+    cb(null, data)
+
 lineUpToObj = (lineUp) ->
   _results = {}
   if _.isString(lineUp) and lineUp isnt ''
     lines = lineUp.split(',')
     lines.forEach (l) ->
       [pos, num] = l.split(':')
-      _results[positionConvert(pos)] = 
+      _results[pos] = 
         cardId: parseInt(num)
         hp: table.getTableItem('boss_card', num).hp
 
   _results
-
-positionConvert = (val) ->
-  order = ['00', '01', '02', '10', '11', '12']
-  order.indexOf(val) + 1
 
 getBossInfo = (type) ->
   results = table.getTable('boss').filter (id, item) -> item.type is type
@@ -296,7 +316,7 @@ saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
     , cb
 
 genCardLv = (playerLv) ->
-  CD = taskRate.CARD_DROP
+  CD = configData.taskRate.CARD_DROP
   lvs = _.keys(CD).sort (x, y) -> parseInt(y) - parseInt(x)
   
   lv = lvs[0]

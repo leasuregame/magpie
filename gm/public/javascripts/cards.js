@@ -158,6 +158,8 @@ function init() {
                 return;
             if (checkSkillLv() == false)
                 return;
+            if (checkLv() == false)
+                return;
             submitAdd();
         }
         else if (operate == OperateConfig.UPDATE) {

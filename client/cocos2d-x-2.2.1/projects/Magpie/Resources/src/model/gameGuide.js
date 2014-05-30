@@ -22,15 +22,26 @@ var FUNCTION_OPEN = {
     "3": {
         "tableName": "lottery",
         "tip": "寻宝已开启，现在可回到首页参与该功能。",
-        "name": "treasureHuntGuide"
+        "name": "lotteryGuide",
+        "childName": "treasureHuntGuide"
     },
 
     "4": {
         "tableName": "ranking_list",
         "tip": "排行榜已开放，现在可回到首页，进行查询。",
         "name": "rankGuide"
+    },
+    "5": {
+        "tableName": "card_smelt",
+        "tip": "觉醒已开启，现在可回到首页参与该功能。",
+        "name": "smeltGuide"
+    },
+    "6": {
+        "tableName": "use_pill",
+        "tip": "觉醒已开启，现在可回到首页参与该功能。",
+        "name": "smeltGuide",
+        "childName": "usePillGuide"
     }
-
 };
 
 var CARD_LINEUP_LIMIT = [
@@ -54,8 +65,28 @@ var CARD_LINEUP_LIMIT = [
     {
         "1": {
             "tableName": "card_1",
-            "tip": "援军卡组已开启，现在可上阵新的卡牌",
-            "name": "succorCardsGuide"
+            "tip": "第6个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card6Guide"
+        },
+        "2": {
+            "tableName": "card_2",
+            "tip": "第7个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card7Guide"
+        },
+        "3": {
+            "tableName": "card_3",
+            "tip": "第8个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card8Guide"
+        },
+        "4": {
+            "tableName": "card_4",
+            "tip": "第9个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card9Guide"
+        },
+        "5": {
+            "tableName": "card_5",
+            "tip": "第10个卡槽已开启，现在可上阵新的卡牌",
+            "name": "card10Guide"
         }
     }
 ];
@@ -85,6 +116,27 @@ var gameGuide = {
     _lotteryGuide: false,
     _bossGuide: false,
     _succorCardsGuide: false,
+    _cardSmeltGuide: false,
+    _usePillGuide: false,
+
+    init: function () {
+        cc.log("gameGuide init");
+
+        this._tournamentGuide = false;
+        this._passGuide = false;
+        this._instancesGuide = false;
+        this._treasureHuntGuide = false;
+        this._rankGuide = false;
+        this._card3Guide = false;
+        this._card4Guide = false;
+        this._card5Guide = false;
+        this._isFirstPassiveSkillAfresh = false;
+        this._lotteryGuide = false;
+        this._bossGuide = false;
+        this._succorCardsGuide = false;
+        this._cardSmeltGuide = false;
+        this._usePillGuide = false;
+    },
 
     updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
@@ -104,7 +156,6 @@ var gameGuide = {
         if (lv == table["pass_skillafresh"]) {
             this.set("isFirstPassiveSkillAfresh", true);
         }
-
 
         //卡槽开放
         len = CARD_LINEUP_LIMIT.length;

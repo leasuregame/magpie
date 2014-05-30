@@ -8,7 +8,7 @@
 
 var pomelo = window.pomelo;
 var host = "";
-var host = "127.0.0.1";
+var host = "124.238.236.33";
 var servers = null;
 var port = null;
 
@@ -21,7 +21,10 @@ function initServer(cb) {
     }, function () {
 
         var route = "gate.gateHandler.queryEntry";
-        pomelo.request(route, {}, function (data) {
+        pomelo.request(route, {
+            os: 'ALL',
+            platform: 'ALL'
+        }, function (data) {
             console.log(data);
             var msg = data.msg;
             port = msg.port;

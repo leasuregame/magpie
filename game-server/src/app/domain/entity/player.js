@@ -15,19 +15,13 @@
 var utility = require('../../common/utility');
 var MarkGroup = require('../../common/markGroup');
 var Entity = require('./entity');
-var playerConfig = require('../../../config/data/player');
-var msgConfig = require('../../../config/data/message');
-var spiritConfig = require('../../../config/data/spirit');
+var configData = require('../../../config/data');
 var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
-var cardConfig = require('../../../config/data/card');
-var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
-var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
-var DEFAULT_SPIRIT = require('../../../config/data/spirit').DEFAULT_SPIRIT;
 
 var cardLvs = table.getTable('card_lv_limit');
 var resData = table.getTableItem('resource_limit', 1);
@@ -70,7 +64,7 @@ var NOW = function() {
 var addEvents = function(player) {
     // // 经验值改变，判断是否升级
     // player.on('exp.change', function(exp) {
-    //     if (player.lv <= 0 || player.lv >= playerConfig.MAX_PLAYER_LV) {
+    //     if (player.lv <= 0 || player.lv >= configData.player.MAX_PLAYER_LV) {
     //         return;
     //     }
 
@@ -133,7 +127,7 @@ var addEvents = function(player) {
             player.activeSpiritorEffect();
         }
 
-        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != EXP_CARD_ID) {
+        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != configData.card.EXP_CARD_ID) {
             card.isNewLightUp = true;
             player.cardBookMark.mark(card.tableId);
             var cardBook = utility.deepCopy(player.cardBook);
@@ -176,13 +170,13 @@ var correctPower = function(player) {
     var interval, power, now, times = 1,
         resumePoint;
 
-    interval = playerConfig.POWER_RESUME.interval;
+    interval = configData.player.POWER_RESUME.interval;
     power = player.power;
     now = Date.now();
 
     if ((power.time + interval) <= now) {
         times = parseInt((now - power.time) / interval);
-        resumePoint = playerConfig.POWER_RESUME.point;
+        resumePoint = configData.player.POWER_RESUME.point;
         player.resumePower(resumePoint * times);
         player.save();
     }
@@ -216,6 +210,8 @@ var Player = (function(_super) {
         correctPower(this);
         this.created = utility.dateFormat(new Date(this.created), 'yyyy-MM-dd h:mm:ss');
     };
+
+    Player.tableName = 'player';
 
     Player.FIELDS = [
         'id',
@@ -262,7 +258,10 @@ var Player = (function(_super) {
         'speaker',
         'honor',
         'superHonor',
-        'cd'
+        'cd',
+        'plan',
+        'useCardCount',
+        'pill'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -288,6 +287,10 @@ var Player = (function(_super) {
             boss: {
                 count: 0,
                 found: false
+            },
+            turn: {
+                collected: 0,
+                num: 1,
             }
         },
         passLayer: 0,
@@ -320,14 +323,15 @@ var Player = (function(_super) {
             kneelCountLeft: KNEELCOUNT_DEFAULT,
             kneelList: [],
             rmTimerCount: 1,
-            goldLuckyCard10: {
+            goldLuckyCard10: { // 每日高级魔石10连抽次数
                 count: 0,
                 got: false
             },
-            goldLuckyCardForFragment: {
+            goldLuckyCardForFragment: { // 每日单次高级魔石抽卡次数，判断是否获得卡魂
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0
         },
         fragments: 0,
         energy: 0,
@@ -335,12 +339,12 @@ var Player = (function(_super) {
         skillPoint: 0,
         spiritor: {
             lv: 1,
-            spirit: DEFAULT_SPIRIT
+            spirit: configData.spirit.DEFAULT_SPIRIT
         },
         spiritPool: {
             lv: 1,
             exp: 0,
-            collectCount: spiritConfig.MAX_COLLECT_COUNT
+            collectCount: configData.spirit.MAX_COLLECT_COUNT
         },
         signIn: {},
         achievement: {},
@@ -352,12 +356,13 @@ var Player = (function(_super) {
         rank: null,
         friends: [],
         friendsCount: DEFAULT_FRIENDS_COUNT,
-        rowFragmentCount: 0,
-        highFragmentCount: 0,
-        highDrawCardCount: 0,
+        rowFragmentCount: 0,  // 低级卡魂次数
+        highFragmentCount: 0, // 高级卡魂次数
+        highDrawCardCount: 0, // 高级抽卡次数
         cardsCount: MIN_CARD_COUNT,
         resetDate: '1970-1-1',
         firstTime: {
+            star5card: 1,
             lowLuckyCard: 1,
             highLuckyCard: 1,
             highTenLuckCard: 1,
@@ -380,7 +385,63 @@ var Player = (function(_super) {
         superHonor: 0,
         cd: {
             lastAtkTime: 0 // 上一次攻击boss的时间点
+        },
+        plan: {
+            buy: false,
+            flag: 0
+        },
+        useCardCount: {
+            star4: 10,
+            star5: 1,
+            star6: 3
+        },
+        pill: 0
+    };
+
+    Player.prototype.updateUseCardCoun = function(star, val) {
+        var ucc = utility.deepCopy(this.useCardCount);
+        ucc['star'+star] = val;
+        this.useCardCount = ucc;
+    };
+
+    Player.prototype.canGetTurnReward = function() {
+        return this.task.turn.collected == 15;
+    };
+
+    Player.prototype.nextTurn = function() {
+        var task = utility.deepCopy(this.task);
+        task.turn.collected = 0;
+        task.turn.num += 1;
+
+        if (task.turn.num > 5) {
+            task.turn.num = 1;
         }
+
+        this.task = task;
+    };
+
+    Player.prototype.buyPlan = function() {
+        var plan = { buy: true, flag: 0 };
+        this.plan = plan;
+    };
+
+    Player.prototype.hasBuyPlan = function() {
+        return !!this.plan.buy;
+    };
+
+    Player.prototype.hasPlanFlag = function(id) {
+        var flag = this.plan.flag || 0;
+        return utility.hasMark(flag, id);
+    };
+
+    Player.prototype.setPlanFlag = function(id) {
+        var plan = utility.deepCopy(this.plan);
+        if (_.isUndefined(plan.flag)) {
+            plan.flag = 0;
+        }
+
+        plan.flag = utility.mark(plan.flag, id);
+        this.plan = plan;
     };
 
     Player.prototype.resetData = function() {
@@ -431,7 +492,8 @@ var Player = (function(_super) {
             goldLuckyCardForFragment: {
                 count: 0,
                 got: false
-            }
+            },
+            vipReward: 0 // vip登陆奖励是否已领取标记 1：已领取 0：未领取
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -442,7 +504,7 @@ var Player = (function(_super) {
         task.mark = [];
 
         var spiritPool = utility.deepCopy(this.spiritPool);
-        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
+        spiritPool.collectCount = configData.spirit.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
 
         this.dailyGift = dg;
         this.pass = pass;
@@ -450,6 +512,12 @@ var Player = (function(_super) {
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
+
+        // 记录登陆次数
+        this.incLoginCount();
+
+        // 重新计算5星卡成就
+        this.recountStar5CardAchievement();
     };
 
     Player.prototype.dailyData = function() {
@@ -458,7 +526,10 @@ var Player = (function(_super) {
             pass: this.pass,
             task: this.task,
             spiritPool: this.spiritPool,
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+            goldCards: this.getGoldCard(),
+            vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
+            loginInfo: this.activities.logined || {count: 0, got: 0}
         };
     };
 
@@ -620,7 +691,7 @@ var Player = (function(_super) {
 
     Player.prototype.getAbility = function() {
         var ability = 0;
-        var ae = cardConfig.ABILIGY_EXCHANGE;
+        var ae = configData.card.ABILIGY_EXCHANGE;
         var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
         var hp_pct = spiritorData.hp_inc;
         var atk_pct = spiritorData.atk_inc;
@@ -757,14 +828,14 @@ var Player = (function(_super) {
 
     Player.prototype.checkResumePower = function() {
         var interval, now, power, resumePoint, times;
-        interval = playerConfig.POWER_RESUME.interval;
+        interval = configData.player.POWER_RESUME.interval;
         power = this.power;
         now = Date.now();
         times = 1;
 
         if ((power.time + interval) <= now) {
             times = parseInt((now - power.time) / interval);
-            resumePoint = playerConfig.POWER_RESUME.point;
+            resumePoint = configData.player.POWER_RESUME.point;
             this.resumePower(resumePoint * times, power.time + interval * times);
             this.save();
         }
@@ -889,16 +960,23 @@ var Player = (function(_super) {
         this.decrease('money', moneyConsume);
         targetCard.upgrade(upgraded_lv, exp_remain);
 
-        // 第一张满级五星卡
+        // 第一张满级5星卡
         if (targetCard.star == 5 && targetCard.lv == cardLvs.getItem(5).max_lv) {
             achieve.star5cardFullLevel(this);
+        }
+        // 第一张满级6星卡
+        if (targetCard.star == 6 && targetCard.lv == cardLvs.getItem(6).max_lv) {
+            achieve.star6cardFullLevel(this);
+        }
+        // 第一张满级7星卡
+        if (targetCard.star == 7 && targetCard.lv == cardLvs.getItem(7).max_lv) {
+            achieve.star7cardFullLevel(this);
         }
 
         return cb(null, {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
-            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };
@@ -1045,8 +1123,12 @@ var Player = (function(_super) {
     Player.prototype.clearMysticalPass = function() {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
-        pass.mystical.diff += 1;
-        pass.mystical.isTrigger = false;
+
+        if (this.pass.mystical.diff < 5) {
+            pass.mystical.diff += 1;
+            pass.mystical.isTrigger = false;
+        }
+        
         this.set('pass', pass);
     };
 
@@ -1179,7 +1261,8 @@ var Player = (function(_super) {
         return {
             id: this.task.id,
             progress: this.task.progress,
-            mark: this.task.mark
+            mark: this.task.mark,
+            collected: this.task.turn != null ? this.task.turn.collected : 0
         };
     };
 
@@ -1258,7 +1341,8 @@ var Player = (function(_super) {
 
     Player.prototype.setLevelReward = function(val) {
         this.levelRewardMark.mark(val);
-        var lr = utility.deepCopy(this.levelRewardMark.value);
+
+        var lr = _.clone(this.levelRewardMark.value);
         this.set('levelReward', lr);
     };
 
@@ -1378,8 +1462,16 @@ var Player = (function(_super) {
             this.updateGift('rmTimerCount', 1);
         }
 
-        var consume = 20 * this.dailyGift.rmTimerCount;
-        return consume > 200 ? 200 : consume;
+        var consume = 0;
+        if (this.dailyGift.rmTimerCount <= 10) {
+            consume = 20;
+        } else if (this.dailyGift.rmTimerCount <= 20 && this.dailyGift.rmTimerCount > 10) {
+            consume = 50;
+        } else {
+            consume = 100;
+        }
+
+        return consume;
     };
 
     Player.prototype.incRmTimerCount = function() {
@@ -1393,7 +1485,7 @@ var Player = (function(_super) {
 
     Player.prototype.kneelCountLeft = function() {
         if (typeof this.dailyGift.kneelCountLeft == 'undefined') {
-            this.updateGift('kneelCountLfet', KNEELCOUNT_DEFAULT);
+            this.updateGift('kneelCountLeft', KNEELCOUNT_DEFAULT);
         }
         return this.dailyGift.kneelCountLeft;
     };
@@ -1422,6 +1514,61 @@ var Player = (function(_super) {
         delete dailyGift.kneelList;
         delete dailyGift.rmTimerCount;
         return dailyGift;
+    };
+
+    Player.prototype.hasLoginCountReward = function(count) {
+        loginedCount = this.activities.logined != null ? this.activities.logined.got : 0;
+        return utility.hasMark(loginedCount, count);
+    };
+
+    Player.prototype.canGetLoginCountReward = function(count) {
+        loginedCount = this.activities.logined != null ? this.activities.logined.count : 1;
+        return loginedCount >= count;
+    };
+
+    Player.prototype.setLoginCountReward = function(count) {
+        var act = utility.deepCopy(this.activities);
+
+        if (typeof act.logined == 'undefined') {
+            act.logined = {
+                count: 1, 
+                got: 0
+            };
+        }
+
+        act.logined.got = utility.mark(act.logined.got, count);
+        this.set('activities', act);
+    };
+
+    Player.prototype.incLoginCount = function() {
+        var act = utility.deepCopy(this.activities);
+        if (typeof act.logined == 'undefined') {
+            act.logined = {
+                count: 0, 
+                got: 0
+            };
+        }
+        act.logined.count += 1;
+        this.set('activities', act);
+    };
+
+    Player.prototype.recountStar5CardAchievement = function() {
+        if (this.firstTime.star5card) return;
+
+        var cards = _.values(this.cards);
+        var star5Num = cards.filter(function(c) {
+            return c.star >= 5;
+        }).length;
+        var star6Num = cards.filter(function(c) {
+            return c.star >= 6;
+        }).length;
+        var star7Num = cards.filter(function(c) {
+            return c.star == 7;
+        }).length;
+
+        if (star5Num > 0) achieve.star5card(this, star5Num);
+        if (star6Num > 0) achieve.star6card(this, star6Num);
+        if (star7Num > 0) achieve.star7card(this, star7Num);
     };
 
     Player.prototype.toJson = function() {
@@ -1474,7 +1621,8 @@ var Player = (function(_super) {
                 kneelList: this.dailyGift.kneelList || [],
                 rmTimerCount: this.dailyGift.rmTimerCount || 1,
                 canReceive: this.hasFriendReward || false,
-            }
+            },
+            pill: this.pill
         };
     };
 
@@ -1499,7 +1647,7 @@ var elixirLimit = function(lv) {
 //         return sp;
 //     }
 //     sp = utility.deepCopy(sp);
-//     sp.collectCount = spiritConfig.MAX_COLLECT_COUNT - sp.collectCount;
+//     sp.collectCount = configData.spirit.MAX_COLLECT_COUNT - sp.collectCount;
 //     return sp;
 // };
 
@@ -1508,8 +1656,8 @@ var elixirLimit = function(lv) {
 //         return dg;
 //     }
 //     dg = utility.deepCopy(dg);
-//     dg.gaveBless.count = msgConfig.MAX_GIVE_COUNT - dg.gaveBless.count;
-//     dg.receivedBless.count = msgConfig.MAX_RECEIVE_COUNT - dg.receivedBless.count;
+//     dg.gaveBless.count = configData.message.MAX_GIVE_COUNT - dg.gaveBless.count;
+//     dg.receivedBless.count = configData.message.MAX_RECEIVE_COUNT - dg.receivedBless.count;
 //     dg.lotteryCount = DAILY_LOTTERY_COUNT - dg.lotteryCount;
 //     return dg;
 // };
@@ -1597,7 +1745,7 @@ var positionConvert = function(val) {
 
 var getMaxPower = function(lv) {
     // var max_power = 50;
-    // var powerLimit = playerConfig.POWER_LIMIT;
+    // var powerLimit = configData.player.POWER_LIMIT;
     // for (var lv in powerLimit) {
     //     if (this.lv <= parseInt(lv)) {
     //         max_power = powerLimit[lv];

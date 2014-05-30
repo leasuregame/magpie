@@ -25,10 +25,9 @@ Utility =
       _rates = []
       _r = 0
       for r in rates
-        _rates.push _r += r
+        _rates.push _r += parseFloat r
 
       rd = _.random(1, maxVal * 100)
-
       for r, i in _rates
         if rd <= r * 100
           return values[i]
@@ -37,7 +36,10 @@ Utility =
     else # default
       return
 
-  randArrayItems: (arr, num) ->
+  ###
+  随机返回数组中指定数量的元素
+  ###
+  randArrayItems: (arr, num=1) ->
     newArr = []
     newArr.push i for i in arr
     
@@ -74,6 +76,9 @@ Utility =
     child
 
   deepCopy: (obj) ->
+    if _.isArray(obj) 
+      throw new Error('invalid paramenter type: obj can not be Array')
+
     newObj = {}
     for key of obj
       if _.isObject(obj[key]) and not _.isArray(obj[key])

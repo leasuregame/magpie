@@ -64,6 +64,7 @@ var Player = Entity.extend({
 
     _honor: 0,              // 荣誉
     _superHonor: 0,         // 精元
+    _pill: 0,               // 觉醒玉
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
@@ -139,6 +140,7 @@ var Player = Entity.extend({
         this.set("vip", data.vip);
         this.set("honor", data.honor);
         this.set("superHonor", data.superHonor);
+        this.set("pill", data.pill);
 
         if (data.speaker) {
             this.set("speaker", data.speaker);
@@ -205,7 +207,6 @@ var Player = Entity.extend({
 
                     that.set("evolutionRate", msg.initRate);
 
-                    lz.um.event("event_order_list");
                 } else {
                     cc.log("Player sync fail");
 
@@ -219,6 +220,7 @@ var Player = Entity.extend({
     setListener: function () {
         cc.log("Player setListener");
 
+        var that = this;
         lz.server.on("onResetData", function (data) {
             cc.log("***** on reset data:");
             cc.log(data);
@@ -241,6 +243,13 @@ var Player = Entity.extend({
                 expCardBuyCount: msg.dailyGift.expCardCount
             });
 
+            if (msg.goldCards) {
+                that.set("goldCards", msg.goldCards);
+            }
+
+            gameData.activity.set("vipLoginReward", msg.vipLoginReward);
+            gameData.activity.updateLoginCountFlag(msg.loginInfo);
+
             MainScene.getInstance().updateMark();
         });
     },
@@ -250,12 +259,12 @@ var Player = Entity.extend({
         var len = lineUpCardList.length;
         var ability = 0;
         var card = null;
-        var spiritPassiveHarm = gameData.spirit.get("passiveHarm") / 100;
+        var spiritPassiveHarm = gameData.spirit.get("passiveHarm");
 
         for (var i = 0; i < len; ++i) {
             card = lineUpCardList[i];
             ability += card.get("ability");
-            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm) + parseInt(card.get("initAtk") * spiritPassiveHarm);
+            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
         }
 
         return ability;
@@ -297,7 +306,9 @@ var Player = Entity.extend({
             }
         }
 
-        this.set("power", power);
+        if (this._power != power) {
+            this.set("power", power);
+        }
     },
 
     correctionPower: function (power, powerTimestamp) {
@@ -316,6 +327,11 @@ var Player = Entity.extend({
         this.adds(data.rewards);
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
+
+        // YY数据收集
+        if (typeof(yyAdapter) != "undefined" && yyAdapter.YYUpdateUserRole) {
+            yyAdapter.YYUpdateUserRole(this._name, this._lv);
+        }
     },
 
     isFullLv: function () {
@@ -327,7 +343,9 @@ var Player = Entity.extend({
 
         this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
         gameData.lineUp.update();
+        gameData.activity.updateGrowthPlanFlag();
         gameMark.updateGoldRewardMark(false);
+        gameMark.updateGrowPlanMark(false);
     },
 
     _energyChangeEvent: function () {
@@ -355,7 +373,7 @@ var Player = Entity.extend({
             if (this._power < this._maxPower) {
                 var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
 
-                lz.NotificationHelp.push("哥，在干啥呢，体力回复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+                lz.NotificationHelp.push("哥，在干啥呢，体力恢复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
             }
         }
     },
@@ -461,6 +479,8 @@ var Player = Entity.extend({
                             var card = Card.create(cards[i]);
                             gameData.cardList.push(card);
                         }
+                    } else if (key == "fragments") {
+                        that.add("fragment", msg[key]);
                     } else {
                         that.add(key, msg[key]);
                     }
@@ -595,13 +615,21 @@ var Player = Entity.extend({
         return !((mark >> offset & 1) == 1);
     },
 
+    updateFirstPayment: function (id) {
+        cc.log("Player updateFirstPayment: " + id);
+
+        this._recharge = this._recharge | (1 << (id - 1));
+    },
+
     getEvolutionRate: function (star) {
         cc.log("Player getEvolutionRate: " + star);
 
         var rate = this._evolutionRate;
+
         if (rate) {
             return rate["star" + star] || 0;
         }
+
         return 0;
     }
 });

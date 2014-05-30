@@ -9,6 +9,8 @@
 
 var TYPE_GOLD_REWARD = "goldReward";
 var TYPE_RECHARGE_REWARD = "rechargeReward";
+var TYPE_LOGIN_COUNT_REWARD = "loginCountReward";
+var TYPE_GROWTH_PLAN_REWARD = "growthPlanPlan";
 
 var GOLD_RECEIVE = 1;
 var GOLD_NO_RECEIVE = 0;
@@ -17,13 +19,25 @@ var NO_RECHARGE_REWARD = 0;
 var RECHARGE_REWARD = 1;
 var ALREADY_RECHARGE_REWARD = 2;
 
+var NO_ATTAIN_REWARD = 0;       //未达到奖励
+var NOT_GOT_REWARD = 1;         //有奖励未领取
+var ALREADY_GOT_REWARD = 2;     //已经领取奖励
+
 var RECEIVE_LOGIN_REWARD = "login";
 var RECEIVE_GIFT_REWARD = "recharge";
+var RECEIVE_LOGIN_COUNT_REWARD = "loginCount";
+var RECEIVE_GROWTH_PLAN_REWARD = "growthPlan";
 
 var Activity = Entity.extend({
     _goldReward: {},
     _hasLoginReward: false,
     _rechargeReward: {},
+    _goldRewardList: [],
+    _loginCountReward: {},
+    _growthPlanReward: {},
+    _isBuyPlan: false,
+    _vipLoginReward: false,
+    _growthPlan: null,
 
     init: function () {
         cc.log("Activity init");
@@ -31,6 +45,23 @@ var Activity = Entity.extend({
         this._goldReward = {};
         this._rechargeReward = {};
         this._hasLoginReward = false;
+        this._loginCountReward = {};
+        this._growthPlanReward = {};
+        this._isBuyPlan = false;
+        this._vipLoginReward = false;
+        this._growthPlan = {};
+
+        var rows = outputTables.player_upgrade_reward.rows;
+        var index = 0;
+
+        for (var key in rows) {
+            this._goldRewardList[index] = rows[key];
+            index++;
+        }
+
+        this._goldRewardList.sort(function (a, b) {
+            return a.lv - b.lv;
+        });
 
         this.sync();
 
@@ -38,27 +69,25 @@ var Activity = Entity.extend({
     },
 
     update: function (data) {
-        cc.log("Activity update: " + data);
+        cc.log("Activity update: ");
+        cc.log(data);
 
         this.set("hasLoginReward", data.hasLoginReward);
         gameMark.updatePowerRewardMark(data.canGetPower);
 
-        var mark = data.levelReward;
-        for (var i = 1; i <= 10; i++) {
-            var offset = (i - 1) % EACH_NUM_BIT;
-            var index = Math.floor((i - 1) / EACH_NUM_BIT);
-            if (mark[index]) {
-                if ((mark[index] >> offset & 1) == 1) {
-                    this._changeStateById(TYPE_GOLD_REWARD, i, GOLD_RECEIVE);
-                } else {
-                    this._changeStateById(TYPE_GOLD_REWARD, i, GOLD_NO_RECEIVE);
-                }
-            } else {
-                this._changeStateById(TYPE_GOLD_REWARD, i, GOLD_NO_RECEIVE);
-            }
+        this.updateLevelRewardFlag(data.levelReward);
+        this.updateRechargeFlag(data.rechargeFlag);
+
+        if (data.loginInfo) {
+            this.updateLoginCountFlag(data.loginInfo);
         }
 
-        this.updateRechargeFlag(data.rechargeFlag);
+        this.updateGrowthPlanFlag(data.plan);
+        this.set("growthPlan", data.plan);
+
+        if (data.vipLoginReward) {
+            this.set("vipLoginReward", data.vipLoginReward);
+        }
     },
 
     sync: function () {
@@ -118,6 +147,27 @@ var Activity = Entity.extend({
         });
     },
 
+    updateLevelRewardFlag: function (levelReward) {
+        cc.log("Activity updateLevelRewardFlag: " + levelReward);
+
+        var mark = levelReward;
+        var rows = outputTables.player_upgrade_reward.rows;
+
+        for (var key in rows) {
+            var offset = (key - 1) % EACH_NUM_BIT;
+            var index = Math.floor((key - 1) / EACH_NUM_BIT);
+            if (mark[index]) {
+                if ((mark[index] >> offset & 1) == 1) {
+                    this._changeStateById(TYPE_GOLD_REWARD, key, GOLD_RECEIVE);
+                } else {
+                    this._changeStateById(TYPE_GOLD_REWARD, key, GOLD_NO_RECEIVE);
+                }
+            } else {
+                this._changeStateById(TYPE_GOLD_REWARD, key, GOLD_NO_RECEIVE);
+            }
+        }
+    },
+
     updateRechargeFlag: function (flag) {
         cc.log("Activity updateRechargeFlag: " + flag);
 
@@ -139,6 +189,64 @@ var Activity = Entity.extend({
                     this._changeStateById(TYPE_RECHARGE_REWARD, id, ALREADY_RECHARGE_REWARD); //已领取
                 } else {
                     this._changeStateById(TYPE_RECHARGE_REWARD, id, NO_RECHARGE_REWARD); //没有奖励
+                }
+            }
+        }
+    },
+
+    updateLoginCountFlag: function (loginInfo) {
+        cc.log("Activity updateLoginCountFlag: ");
+        cc.log(loginInfo);
+
+        var count = loginInfo.count;
+        var got = loginInfo.got;
+
+        for (var id = 1; id <= 30; id++) {
+            if (id <= count) {
+                var offset = (id - 1) % EACH_NUM_BIT;
+                if ((got >> offset & 1) == 1) {
+                    this._changeStateById(TYPE_LOGIN_COUNT_REWARD, id, ALREADY_GOT_REWARD);
+                } else {
+                    this._changeStateById(TYPE_LOGIN_COUNT_REWARD, id, NOT_GOT_REWARD);
+                }
+            } else {
+                this._changeStateById(TYPE_LOGIN_COUNT_REWARD, id, NO_ATTAIN_REWARD);
+            }
+        }
+
+        cc.log(this._loginCountReward);
+    },
+
+    updateGrowthPlanFlag: function (growthPlan) {
+        cc.log("Activity updateGrowthPlanFlag: ");
+        cc.log(growthPlan);
+
+        growthPlan = growthPlan || this.get("growthPlan");
+
+        if (!growthPlan) {
+            return;
+        }
+
+        this._isBuyPlan = growthPlan.buy;
+        var flag = growthPlan.flag;
+
+        var table = outputTables.growth_plan.rows;
+        var lv = gameData.player.get("lv");
+
+        var that = this;
+        for (var id in table) {
+            if (!that._isBuyPlan) {
+                that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, NO_ATTAIN_REWARD);
+            } else {
+                var offset = (id - 1) % EACH_NUM_BIT;
+                if ((flag >> offset & 1) == 1) {
+                    that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, ALREADY_RECHARGE_REWARD);
+                } else {
+                    if (lv < table[id].lv) {
+                        that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, NO_ATTAIN_REWARD);
+                    } else {
+                        that._changeStateById(TYPE_GROWTH_PLAN_REWARD, id, NOT_GOT_REWARD);
+                    }
                 }
             }
         }
@@ -171,9 +279,10 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 gameData.player.add("gold", data.msg.gold);
+                gameData.player.add("energy", data.msg.energy);
                 that._changeStateById(TYPE_GOLD_REWARD, id, GOLD_RECEIVE);
 
-                lz.tipReward("gold", data.msg.gold);
+                lz.tipReward(data.msg);
 
                 cb(true);
 
@@ -225,6 +334,54 @@ var Activity = Entity.extend({
         });
     },
 
+    getLoginCountReward: function (cb, day) {
+        cc.log("Activity getLoginCountReward: " + day);
+
+        var that = this;
+        lz.server.request("area.activityHandler.get", {
+            type: RECEIVE_LOGIN_COUNT_REWARD,
+            args: {count: parseInt(day)}
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("getLoginCountReward success");
+
+                var reward = {};
+
+                var table = outputTables.login_count_reward.rows[day];
+                for (var key in table) {
+                    if (key != "id" && key != "card_id") {
+                        if (key == "fragments") {
+                            reward["fragment"] = table[key];
+                            gameData.player.add("fragment", table[key]);
+                        } else {
+                            reward[key] = table[key];
+                            gameData.player.add(key, table[key]);
+                        }
+                    }
+                }
+
+                if (data.msg.card) {
+                    var card = Card.create(data.msg.card);
+                    gameData.cardList.push(card);
+                    var cards = [];
+                    cards.push(data.msg.card);
+                    reward["cardArray"] = cards;
+                }
+
+                that._changeStateById(TYPE_LOGIN_COUNT_REWARD, day, ALREADY_GOT_REWARD);
+
+                gameMark.updateNewAreaRewardMark(false);
+
+                cb(reward);
+
+            } else {
+                cc.log("getLoginCountReward fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
     getFirstRechargeBox: function (cb) {
         cc.log("Activity getFirstRechargeBox");
 
@@ -232,6 +389,7 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 cc.log("getFirstRechargeBox success");
+
                 var card = Card.create(data.msg.card);
                 gameData.cardList.push(card);
 
@@ -266,11 +424,112 @@ var Activity = Entity.extend({
         });
     },
 
+    buyPlan: function (cb) {
+        cc.log("Activity buyPlan");
+
+        var that = this;
+        lz.server.request("area.vipHandler.buyPlan", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyPlan success");
+
+                that.set("isBuyPlan", true);
+                gameData.player.set("gold", data.msg.gold);
+                that.updateGrowthPlanFlag(data.msg.plan);
+                gameMark.updateGrowPlanMark(false);
+
+                TipLayer.tip("购买成功");
+
+                cb();
+
+            } else {
+                cc.log("buyPlan fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    getPlanReward: function (id, cb) {
+        cc.log("Activity getPlanReward: " + id);
+
+        var that = this;
+        lz.server.request("area.vipHandler.getPlanReward", {
+            id: id
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("getPlanReward success");
+
+                gameData.player.set("gold", data.msg.gold);
+
+                that.set("growthPlan", data.msg.plan);
+                that.updateGrowthPlanFlag(data.msg.plan);
+
+                gameMark.updateGrowPlanMark(false);
+
+                cb();
+            } else {
+                cc.log("getPlanReward fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+
+    },
+
+    getVipDailyReward: function (cb) {
+        cc.log("Activity getVipDailyReward");
+
+        var that = this;
+        lz.server.request("area.vipHandler.dailyReward", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("getVipDailyReward success");
+
+                that.set("vipLoginReward", false);
+
+                var player = gameData.player;
+                var table = outputTables.vip_daily_reward.rows[player.get("vip")];
+                var rewards = {};
+
+                for (var key in table) {
+                    if (key != "id") {
+                        if (key == "exp_card") {
+                            var card = data.msg.card;
+                            var ids = data.msg.cardIds;
+                            var len = ids.length;
+                            for (var i = 0; i < len; i++) {
+                                card.id = ids[i];
+                                gameData.cardList.push(Card.create(card));
+                            }
+
+                        } else {
+                            player.add(key, table[key]);
+                        }
+                        rewards[key] = table[key];
+                    }
+                }
+
+                cb(rewards);
+                gameMark.updateVipDailyRewardMark(false);
+            } else {
+                cc.log("getVipDailyReward fail");
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
     _changeStateById: function (type, id, state) {
         if (type == TYPE_GOLD_REWARD) {
             this._goldReward[id] = state;
         } else if (type == TYPE_RECHARGE_REWARD) {
             this._rechargeReward[id] = state;
+        } else if (type == TYPE_LOGIN_COUNT_REWARD) {
+            this._loginCountReward[id] = state;
+        } else if (type == TYPE_GROWTH_PLAN_REWARD) {
+            this._growthPlanReward[id] = state;
         } else {
             cc.log("类型出错！！！");
         }
@@ -281,6 +540,10 @@ var Activity = Entity.extend({
             return this._goldReward[id];
         } else if (type == TYPE_RECHARGE_REWARD) {
             return this._rechargeReward[id];
+        } else if (type == TYPE_LOGIN_COUNT_REWARD) {
+            return this._loginCountReward[id];
+        } else if (type == TYPE_GROWTH_PLAN_REWARD) {
+            return this._growthPlanReward[id];
         } else {
             cc.log("类型出错！！！");
             return null;
@@ -296,4 +559,64 @@ Activity.create = function () {
     }
 
     return null;
+};
+
+Activity.ActivityIsShowHandler =  {
+    newAreaRewardLayer: function () {
+        var table = outputTables.login_count_reward.rows;
+        for (var id in table) {
+            if (gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, id) != ALREADY_GOT_REWARD) {
+                return true;
+            }
+        }
+        return false;
+    },
+    signInLayer: function () {
+        return true;
+    },
+    goldCardsLayer: function () {
+        return true;
+    },
+    growthPlanLayer: function () {
+        return true;
+    },
+    powerRewardLayer: function () {
+        return true;
+    },
+    vipDailyRewardLayer: function () {
+        return true;
+    },
+    goldRewardLayer: function () {
+        return true;
+    },
+    invitationLayer: function () {
+        return !(lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore");
+    }
+};
+
+Activity.ActivityIsMarkHandler = {
+    newAreaRewardLayer: function () {
+        return gameMark.getNewAreaRewardMark();
+    },
+    signInLayer: function () {
+        return gameMark.getSignInMark();
+    },
+    goldCardsLayer: function () {
+        return gameMark.getGoldCardsMark();
+    },
+    growthPlanLayer: function () {
+        return gameMark.getGrowthPlanMark();
+    },
+    powerRewardLayer: function () {
+        return gameMark.getPowerRewardMark();
+    },
+    vipDailyRewardLayer: function () {
+        return gameMark.getVipDailyRewardMark();
+    },
+    goldRewardLayer: function () {
+        return gameMark.getGoldRewardMark();
+    },
+    invitationLayer: function () {
+        return false;
+    }
 };

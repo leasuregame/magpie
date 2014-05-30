@@ -83,7 +83,7 @@ var PaymentLayer = LazyLayer.extend({
 
         var nextVipCash = gameData.shop.getNextVipCash();
         var vip = gameData.player.get("vip");
-        cc.log(nextVipCash);
+
         if (nextVipCash) {
             var tipLabel = ColorLabelTTF.create(
                 {
@@ -99,7 +99,7 @@ var PaymentLayer = LazyLayer.extend({
                     color: cc.c3b(255, 248, 69)
                 },
                 {
-                    string: "再冲",
+                    string: "再充",
                     fontName: "STHeitiTC-Medium",
                     fontSize: 20
                 },

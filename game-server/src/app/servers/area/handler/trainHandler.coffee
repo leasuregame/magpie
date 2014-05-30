@@ -1,13 +1,9 @@
 playerManager = require('pomelo').app.get('playerManager')
-cardManager = require '../../../manager/cardManager'
 lottery = require '../../../manager/lottery'
 async = require 'async'
 dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
-passSkillConfig = require '../../../../config/data/passSkill'
-elixirConfig = require '../../../../config/data/elixir'
-starUpgradeConfig = require '../../../../config/data/starUpgrade'
-cardConfig = require '../../../../config/data/card'
+configData = require '../../../../config/data'
 utility = require '../../../common/utility'
 msgQueue = require '../../../common/msgQueue'
 entityUtil = require '../../../util/entityUtil'
@@ -16,6 +12,8 @@ achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 _s = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
+fs = require 'fs'
+path = require 'path'
 
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
@@ -62,6 +60,9 @@ Handler::extract = (msg, session, next) ->
       else 
         card.set('elixirHp', 0)
         card.set('elixirAtk', 0)
+        card.set('elixirHpCrit', 0)
+        card.set('elixirAtkCrit', 0)
+
         player.increase('elixir', extVal)
         player.decrease('gold', consume)
         return next(null, {code: 200, msg: {card: card.toJson(), elixir: player.elixir}})
@@ -132,6 +133,7 @@ Handler::strengthen = (msg, session, next) ->
           where: " id in (#{sources.toString()}) "
       } if sources.length > 0 
 
+      results.ability = targetCard.ability()
       job.multJobs _jobs, (err, ok) ->
         if err and not ok
           return cb(err)
@@ -159,6 +161,7 @@ Handler::luckyCard = (msg, session, next) ->
   totalConsume = 0
   totalFragment = 0
   isFree = 0
+  star5For10 = false
 
   generateCard = (player, level, type, times, isFree, cb) ->
     if isFree and times is 1
@@ -186,15 +189,17 @@ Handler::luckyCard = (msg, session, next) ->
         if level is HIGH_LUCKYCARD and card.star is 5
           hdcc = 1
 
+        star5For10 = true if times is 10 and card.star is 5
+
         next(null, card, consumeVal, fragment)
       , (err, cards, consumes, fragments) ->
-        firstTen = 0
-        if typeof player.firstTime.highTenLuckCard is 'undefined' or player.firstTime.highTenLuckCard
-          firstTen = 1
+        # firstTen = 0
+        # if typeof player.firstTime.highTenLuckCard is 'undefined' or player.firstTime.highTenLuckCard
+        #   firstTen = 1
 
-        if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
-          grainFiveStarCard cards, player
-          player.setFirstTime('highTenLuckCard', 0)
+        # if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
+        #   grainFiveStarCard cards, player
+        #   player.setFirstTime('highTenLuckCard', 0)
 
         # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
         frags = 0;
@@ -208,14 +213,16 @@ Handler::luckyCard = (msg, session, next) ->
 
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
-    for card in cards
-      tid = card.tableId + 5 - card.star
-      if card.star isnt 5 and tid not in lids
-        card.tableId = tid
-        card.star = 5
-        break
-
-    return
+    
+    cards4 = cards.filter (c) -> 
+      _tid = c.tableId + 5 - c.star
+      c.star < 5 and _tid not in lids
+    idx = _.random(0, cards4.length-1)
+    
+    card = cards4[idx]
+    tid = card.tableId + 5 - card.star
+    card.tableId = tid
+    card.star = 5
 
   processCards = (cards) ->
     ### 抽奖次数成就 ###
@@ -230,26 +237,22 @@ Handler::luckyCard = (msg, session, next) ->
       if ent.star is 5
         achieve.star5card(player)
 
-      if level is HIGH_LUCKYCARD and ent.star == 5 
+      if level is HIGH_LUCKYCARD and ent.star >= 5 
         card = table.getTableItem('cards', ent.tableId)
-        msg = {
+        msgContent = {
           #route: 'onSystemMessage',
-          msg: player.name + '*幸运的召唤到了5星卡*' + card.name + '*',
+          msg: player.name + "*幸运的召唤到了#{ent.star}星卡*#{card.name}*",
           type: 0,
           validDuration: 10 / 60
         }
         #@app.get('messageService').pushMessage(msg)
-        msgQueue.push(msg)
+        msgQueue.push(msgContent)
 
   first5GoldLuckyCardBy10 = (player, cards) ->
     ### 每天前5次魔石10连抽，必得一张5星卡 ###
 
     rates = 
-      1: 25
-      2: 35
-      3: 45
-      4: 55
-      5: 100
+      1: 100
 
     player.incGoldLuckyCard10()
     goldLuckyCard10 = player.dailyGift.goldLuckyCard10
@@ -263,9 +266,7 @@ Handler::luckyCard = (msg, session, next) ->
     ### 每天前3次单次魔石抽卡，比得一个卡魂 ###
 
     rates = 
-      1: 50
-      2: 70
-      3: 100
+      1: 100
 
     player.incGoldLuckyCardForFragment()
     goldLuckyCardForFragment = player.dailyGift.goldLuckyCardForFragment
@@ -305,7 +306,7 @@ Handler::luckyCard = (msg, session, next) ->
           player.set('highFragmentCount', hfc)
           player.set('highDrawCardCount', hdcc)
 
-      first5GoldLuckyCardBy10(player, cards) if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
+      first5GoldLuckyCardBy10(player, cards) if not star5For10 and times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
       first3GoldLuckyCard(player) if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
 
       card.playerId = player.id for card in cards
@@ -382,7 +383,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       sp_need = sp_need - sp_left
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need)
+      player.decrease('skillPoint', sp_need)  
       cb(null, player, card)
 
     (player, card, cb) ->
@@ -435,7 +436,7 @@ Handler::starUpgrade = (msg, session, next) ->
   money_consume = 0
   card = null
   player = null
-  starUpgradeConfig = null
+  starUpgradeData = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -452,50 +453,51 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.star is 7
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
 
-      if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
-        return cb({code: 501, msg: "未达到进阶等级"})
+      # if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
+      #   return cb({code: 501, msg: "未达到进阶等级"})
 
-      starUpgradeConfig = table.getTableItem('star_upgrade', card.star)
-      if not starUpgradeConfig
+      starUpgradeData = table.getTableItem('star_upgrade', card.star)
+      if not starUpgradeData
         return cb({code: 500, msg: "找不到卡牌进阶的配置信息"})
 
       sourceCards = player.getCards(sources)
       if _.isEmpty(sourceCards)
         return cb({code: 501, msg: "找不到素材卡牌"})
 
-      badCardsCount = (sourceCards.filter (s) -> s.star isnt starUpgradeConfig.source_card_star).length
+      badCardsCount = (sourceCards.filter (s) -> s.star isnt starUpgradeData.source_card_star).length
       if badCardsCount > 0
-        return cb({code: 501, msg: "素材卡牌必须为#{starUpgradeConfig.source_card_star}星"})
+        return cb({code: 501, msg: "素材卡牌必须为#{starUpgradeData.source_card_star}星"})
 
       cb(null)
 
     (cb) =>
-      money_consume = starUpgradeConfig.money_need
+      money_consume = starUpgradeData.money_need
       
       if player.money < money_consume
         return cb({code: 501, msg: '仙币不足'})
 
-      if starUpgradeConfig.super_honor > 0 and player.superHonor < starUpgradeConfig.super_honor
+      if starUpgradeData.super_honor > 0 and player.superHonor < starUpgradeData.super_honor
         return cb({code: 501, msg: '精元不足'})
 
       rate = player.initRate['star'+card.star] or 0
-      max_num = Math.ceil (100 - rate)/starUpgradeConfig.rate_per_card
+      max_num = Math.ceil (100 - rate)/starUpgradeData.rate_per_card
       if card_count > max_num
         return cb({code: 501, msg: "最多消耗#{max_num}张卡牌"})
 
-      addRate = card_count * starUpgradeConfig.rate_per_card
+      addRate = card_count * starUpgradeData.rate_per_card
       totalRate = _.min([addRate + rate, 100])
+      
+      if card.star >= 4
+        totalRate = table.getTableItem('star_upgrade_rate', totalRate)?.rate or totalRate
 
       is_upgrade = !!utility.hitRate(totalRate)
-      if card.star >= 4 
-        is_upgrade = false if (card.useCardsCounts+card_count) <= (starUpgradeConfig.no_work_count or 0)
-        card.increase('useCardsCounts' , card_count)
       
       player.decrease('money', money_consume)
-      player.decrease('superHonor', starUpgradeConfig.super_honor) if starUpgradeConfig.super_honor > 0
+      player.decrease('superHonor', starUpgradeData.super_honor) if starUpgradeData.super_honor > 0
       if is_upgrade
         ### 成功进阶，对应星级初始概率置为0 ###
         player.setInitRate(card.star, 0)
+        player.updateUseCardCoun(card.star, 0)
 
         card.increase('star')
         card.increase('tableId')
@@ -506,18 +508,23 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.soLucky(player)
 
         # 获得五星卡成就
-        if card.star is 5
-          achieve.star5card(player)
+        if card.star >= 5
+          achieve.star5card(player) if card.star is 5
+          achieve.star6card(player) if card.star is 6
+          achieve.star7card(player) if card.star is 7
           cardNmae = table.getTableItem('cards', parseInt(card.tableId)-1).name
-          msg = {
+          msgContent = {
             msg: "#{player.name}*成功的将*#{cardNmae}*进阶为#{card.star}星",
             type: 0,
             validDuration: 10 / 60
           }
-          msgQueue.push(msg)
+          msgQueue.push(msgContent)
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
+
+        # 重新添加卡牌，为了计算一次图鉴
+        player.addCard(card)
         cb null
       else
         player.incInitRate(card.star, parseInt addRate*0.5)
@@ -635,8 +642,24 @@ Handler::passSkillAfresh  = (msg, session, next) ->
   cardId = msg.cardId
   psIds = msg.psIds or []
   groupId = msg.groupId
-  type = if msg.type? then msg.type else passSkillConfig.TYPE.MONEY
+  type = if msg.type? then msg.type else configData.passSkill.TYPE.MONEY
   _pros = 1: 'money', 2: 'gold'
+
+  fpath = path.join(__dirname, '../../../../config/pids.json')
+  if (!fs.existsSync(fpath)) 
+    console.log 'not found pids.json', fpath
+    pids = []
+  else 
+    pids = JSON.parse(fs.readFileSync(fpath, 'utf8'))
+
+  isLog = playerId in pids
+
+  debugLog = (text='', args...) ->
+    return if not isLog
+    d = new Date()
+    logger.error(d.toLocaleDateString() + ' ' + d.toLocaleTimeString(), '[passive skill afresh]', text, JSON.stringify(args))
+
+  debugLog 'before', 'playerid=' + playerId, 'cardId=' + cardId, 'psIds=' + JSON.stringify(psIds), 'groupId=' + groupId, 'type=' + type
 
   if _.isUndefined(groupId) or not checkPsIds(psIds)
     return next(null, {code: 501, msg: '参数错误'})
@@ -653,7 +676,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       if player.lv < fun_limit?.pass_skillafresh 
         return cb({code: 501, msg: "#{fun_limit.pass_skillafresh}级开放"})
 
-      consumeVal = passSkillConfig.CONSUME[type]
+      consumeVal = configData.passSkill.CONSUME[type]
 
       if player[_pros[type]] < consumeVal
         return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})
@@ -688,6 +711,8 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       passiveSkill: card.passiveSkills.filter((p) -> p.id is groupId)[0]
     }
 
+    debugLog 'after', 'result=', JSON.stringify result
+
     next(null, {code: 200, msg: result})
 
 checkPsIds = (ids) ->
@@ -716,8 +741,8 @@ Handler::smeltElixir_is_discarded = (msg, session, next) ->
 
       result = cards.map (c) ->
         _points = 0
-        if utility.hitRate(elixirConfig.smelt[c.star].rate)
-          _points += elixirConfig.smelt[c.star].value
+        if utility.hitRate(configData.elixir.smelt[c.star].rate)
+          _points += configData.elixir.smelt[c.star].value
 
         return _points
 
@@ -758,7 +783,9 @@ Handler::useElixir = (msg, session, next) ->
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
   elixirLimit = table.getTable('elixir_limit')
-
+  critType = 0
+  critElixir = 0
+  
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -774,14 +801,29 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '3星以下的卡牌不能使用仙丹'})
 
     limit = elixirLimit.getItem(card.star)
-    if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
+    if card.totalElixir() >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌可吞噬仙丹数量已满"})
 
-    if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
-      return next(null, {code: 501, msg: "使用的仙丹已达卡牌上限"})
+    if (card.totalElixir() + elixir) > limit.elixir_limit
+      return next(null, {code: 501, msg: "使用的仙丹已超卡牌上限"})
 
-    card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
-    card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
+    # 判断暴击
+    isCrit = utility.hitRate configData.elixir.useElixirCritRate
+    if isCrit
+      growRate = configData.elixir.growRate
+      zf = parseInt utility.randomValue _.values(growRate), _.keys(growRate)
+      typeMap = 30: 1, 50: 2, 100: 3
+      critType =  typeMap[zf] or 0
+      critElixir = parseInt elixir*zf/100
+
+    if type is ELIXIR_TYPE_HP
+      card.increase('elixirHpCrit', critElixir)
+      card.increase('elixirHp', elixir) 
+      
+    if type is ELIXIR_TYPE_ATK
+      card.increase('elixirAtkCrit', critElixir)
+      card.increase('elixirAtk', elixir) 
+
     player.decrease('elixir', elixir)
     
     _jobs = []
@@ -809,8 +851,11 @@ Handler::useElixir = (msg, session, next) ->
 
       result = {
         elixirHp: card.elixirHp,
+        elixirHpCrit: card.elixirHpCrit,
         elixirAtk:card.elixirAtk,
-        ability: card.ability()
+        elixirAtkCrit: card.elixirAtkCrit,
+        ability: card.ability(),
+        critType: critType
       }
 
       return next(null, {code: 200,msg:result})
@@ -842,15 +887,13 @@ Handler::changeLineUp = (msg, session, next) ->
     if _.uniq(cids_wo_spirit).length isnt cids_wo_spirit.length
       return next(null, {code: 501, msg: '上阵卡牌的不能重复'})
 
-    console.log cids, lineupItems
-    console.log cids.filter((i) -> i is -1).length, lineupItems.length
     if cids.filter((i) -> i is -1).length isnt lineupItems.length
       return next(null, {code: 501, msg: '阵型中缺少元神信息'})
 
     for lineup in lineupItems
       cardIds = _.values(lineup)
       tids = player.getCards(cardIds).map (i) -> i.tableId
-      console.log '-6-', cardIds, tids
+      
       if cardIds.length isnt (tids.length+1)
         return next(null, {code: 501, msg: '上阵卡牌不存在'})
 
@@ -913,7 +956,7 @@ Handler::getCardBookEnergy = (msg, session, next) ->
   playerId = session.get('playerId')
   tableId = msg.tableId
 
-  ENERGY = cardConfig.LIGHT_UP_ENERGY[cardStar(tableId)]
+  ENERGY = configData.card.LIGHT_UP_ENERGY[cardStar(tableId)]
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
@@ -967,7 +1010,7 @@ Handler::exchangeCard = (msg, session, next) ->
       if _.keys(player.cards).length >= player.cardsCount
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
       
-      if player.fragments < cardConfig.CARD_EXCHANGE[star]
+      if player.fragments < configData.card.CARD_EXCHANGE[star]
         return cb({code: 501, msg: '卡牌碎片不足'})
 
       entityUtil.createCard {
@@ -978,7 +1021,7 @@ Handler::exchangeCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
+    player.decrease('fragments', configData.card.CARD_EXCHANGE[star])
     player.addCard(card)
     setExchangedCard(player, tableId)
     ### 增加5星卡牌成就 ###
@@ -990,14 +1033,14 @@ Handler::exchangeCard = (msg, session, next) ->
       fragments: player.fragments
     }})
 
-    if card.star is 5
+    if card.star >= 5
       cardNmae = table.getTableItem('cards', card.tableId).name
-      msg = {
-        msg: player.name + '*成功兑换到一张*' + cardNmae + '*的五星卡牌',
+      msgContent = {
+        msg: player.name + "*成功兑换到一张*#{cardNmae}*的#{card.star}星卡牌",
         type: 0,
         validDuration: 10 / 60
       }
-      msgQueue.push(msg)
+      msgQueue.push(msgContent)
 
 
 setExchangedCard = (player, tid) ->

@@ -24,7 +24,7 @@
                 <file name="jsb_deprecated.js"/>
             </sources>
             <sources dir="${basedir}/projects/Magpie/Res_android/">
-                <file name="src/resource.js"/>
+                <file name="res/resource.js"/>
 
                 <file name="src/table/table.js"/>
 
@@ -95,6 +95,7 @@
                 <file name="src/controls/waitLayer.js"/>
                 <file name="src/controls/dialog.js"/>
                 <file name="src/controls/slideLayer.js"/>
+                <file name="src/controls/lzMenu.js"/>
 
                 <file name="src/view/loginModule/loginScene.js"/>
                 <file name="src/view/loginModule/loginBgLayer.js"/>
@@ -122,8 +123,11 @@
                 <file name="src/view/mainModule/powerRewardLayer.js"/>
                 <file name="src/view/mainModule/goldCardsLayer.js"/>
                 <file name="src/view/mainModule/goldRewardLayer.js"/>
+                <file name="src/view/mainModule/growthPlanLayer.js"/>
                 <file name="src/view/mainModule/signInLayer.js"/>
                 <file name="src/view/mainModule/invitationLayer.js"/>
+                <file name="src/view/mainModule/newAreaRewardLayer.js"/>
+                <file name="src/view/mainModule/vipDailyRewardLayer.js"/>
                 <file name="src/view/mainModule/activityLayer.js"/>
                 <file name="src/view/mainModule/amountLayer.js"/>
                 <file name="src/view/mainModule/battleMessageLayer.js"/>
@@ -138,6 +142,7 @@
                 <file name="src/view/mainModule/cardLibraryLayer.js"/>
                 <file name="src/view/mainModule/cardListFullTipLayer.js"/>
                 <file name="src/view/mainModule/cardListLayer.js"/>
+                <file name="src/view/mainModule/cardSmeltLabel.js"/>
                 <file name="src/view/mainModule/cardTrainLabel.js"/>
                 <file name="src/view/mainModule/cardUpgradeLabel.js"/>
                 <file name="src/view/mainModule/tipsLayer.js"/>
@@ -148,8 +153,10 @@
                 <file name="src/view/mainModule/elixirRankLayer.js"/>
                 <file name="src/view/mainModule/evolutionLayer.js"/>
                 <file name="src/view/mainModule/exchangeLayer.js"/>
+                <file name="src/view/mainModule/exploreCardLayer.js"/>
                 <file name="src/view/mainModule/exploreLayer.js"/>
                 <file name="src/view/mainModule/extractTipLabel.js"/>
+                <file name="src/view/mainModule/filterStarLabel.js"/>
                 <file name="src/view/mainModule/friendLayer.js"/>
                 <file name="src/view/mainModule/friendMessageLayer.js"/>
                 <file name="src/view/mainModule/gameFrame.js"/>
@@ -185,6 +192,7 @@
                 <file name="src/view/mainModule/sendMessageLayer.js"/>
                 <file name="src/view/mainModule/shopLayer.js"/>
                 <file name="src/view/mainModule/skillUpgradeLabel.js"/>
+                <file name="src/view/mainModule/smeltLayer.js"/>
                 <file name="src/view/mainModule/speakerLayer.js"/>
                 <file name="src/view/mainModule/spiritDetails.js"/>
                 <file name="src/view/mainModule/spiritNode.js"/>
@@ -202,6 +210,7 @@
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>
                 <file name="src/view/mainModule/tournamentTipLayer.js"/>
                 <file name="src/view/mainModule/treasureHuntLayer.js"/>
+                <file name="src/view/mainModule/usePillLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>

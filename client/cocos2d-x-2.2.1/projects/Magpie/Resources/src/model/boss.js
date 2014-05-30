@@ -19,6 +19,7 @@ var UPDATE_CD_TIME_INTERVAL = 1;    // cd和boss剩余时间更新间隔
 
 var Boss = Entity.extend({
     _bossList: null,        // boss列表
+    _cdTimestamp: 0,        // cd时间戳
     _cd: 0,                 // 下次攻击剩余时间
     _kneelList: null,       // 已膜拜列表
     _kneelCount: 0,         // 膜拜次数
@@ -41,6 +42,7 @@ var Boss = Entity.extend({
         this.on("canReceiveChange", this._canReceiveChangeEvent);
 
         this._bossList = [];
+        this._cdTimestamp = 0;
         this._cd = 0;
         this._kneelCount = 0;
         this._canReceive = false;
@@ -67,8 +69,14 @@ var Boss = Entity.extend({
         cc.log("Boss update");
 
         if (data) {
+            if (data.cd != undefined) {
+                this.sets({
+                    "cd": data.cd,
+                    "cdTimestamp": Date.now()
+                });
+            }
+
             this.sets({
-                "cd": data.cd,
                 "kneelCount": data.kneelCountLeft,
                 "kneelList": data.kneelList,
                 "canReceive": data.canReceive,
@@ -207,6 +215,19 @@ var Boss = Entity.extend({
         }
 
         return this._bossList;
+    },
+
+    isCanAttack: function (bossId) {
+        cc.log("Boss isCanAttack: " + bossId);
+        var boss = this.getBoss(bossId);
+
+        if (boss.timeLeft == 0) {
+            return false;
+        } else if (boss.status == BOSS_STATUS_DIE || boss.status == BOSS_STATUS_FLEE || boss.stattus == BOSS_STATUS_TIMEOUT) {
+            return false;
+        }
+
+        return true;
     },
 
     attack: function (cb, bossId, inspireCount) {
@@ -433,7 +454,12 @@ var Boss = Entity.extend({
     },
 
     _updateCdAndBoss: function () {
-        var interval = UPDATE_CD_TIME_INTERVAL * 1000;
+        if (this._cdTimestamp <= 0) {
+            this._cdTimestamp = Date.now();
+        }
+
+        var interval = Date.now() - this._cdTimestamp;
+        this._cdTimestamp = Date.now();
 
         if (this._cd > 0) {
             var cd = Math.max(0, this._cd - interval);
@@ -444,7 +470,7 @@ var Boss = Entity.extend({
             var len = this._bossList.length;
             for (var i = 0; i < len; ++i) {
                 var boss = this._bossList[i];
-                if (boss.status == BOSS_STATUS_FLEE || boss.status == BOSS_STATUS_DIE) {
+                if (boss.status == BOSS_STATUS_FLEE || boss.status == BOSS_STATUS_TIMEOUT || boss.status == BOSS_STATUS_DIE) {
                     boss.timeLeft = 0;
                 } else {
                     boss.timeLeft = Math.max(0, boss.timeLeft - interval);
@@ -472,14 +498,32 @@ var Boss = Entity.extend({
     },
 
     removeCdNeedGold: function () {
-        return Math.min(200, this._rmTimerCount * 20);
+        var needGold = 0;
+        if (this._rmTimerCount <= 10) {
+            needGold = 20;
+        } else if (this._rmTimerCount <= 20) {
+            needGold = 50;
+        } else {
+            needGold = 100;
+        }
+        return needGold;
     },
 
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
+
+        var mark = gameMark.getBossMark();
+
         if (this.get("cd") == 0) {
-            gameMark.updateBossMark(true);
+            if (!mark) {
+                gameMark.updateBossMark(true);
+            }
+        } else {
+            if (mark) {
+                gameMark.updateBossMark(false);
+            }
         }
+
     },
 
     _kneelCountChangeEvent: function () {

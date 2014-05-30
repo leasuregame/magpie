@@ -63,15 +63,23 @@ var User = Entity.extend({
         var that = this;
 
         var fn = function () {
-            var version = "1.3.0";
+            var version = lz.platformConfig.VERSION;
 
             if (typeof(cc.AssetsManager) != "undefined") {
                 version = cc.AssetsManager.getInstance().getVersion();
             }
 
+            var appVersion = lz.platformConfig.VERSION;
+            if (typeof(cc.Application.getInstance().getAppVersion) != "undefined") {
+                appVersion = cc.Application.getInstance().getAppVersion();
+            }
+
+
             cc.log("=================================================");
             cc.log(version);
+            cc.log(appVersion);
             cc.log("=================================================");
+
 
             lz.server.connectGameServer(function () {
                 lz.server.request("connector.userHandler.loginTB", {
@@ -79,7 +87,8 @@ var User = Entity.extend({
                     userId: tbAdapter.TBUserID(),
                     sessionId: tbAdapter.TBSessionID(),
                     areaId: that._area,
-                    version: version
+                    version: version,
+                    appVersion: appVersion
                 }, function (data) {
                     cc.log(data);
 
@@ -115,7 +124,9 @@ var User = Entity.extend({
                     } else {
                         cc.log("login fail");
 
-                        tbAdapter.TBLogout(0);
+                        if (lz.platformLogout) {
+                            lz.platformLogout();
+                        }
 
                         cb(0);
 
@@ -125,7 +136,7 @@ var User = Entity.extend({
             });
         };
 
-        if (!tbAdapter.TBIsLogined()) {
+        if (lz.platformIsLogin && !lz.platformIsLogin()) {
             // 登录成功回调
             tbAdapter.loginResultHandler = function (isSuccess) {
                 cc.log("tbAdapter loginResultHandler: " + isSuccess);

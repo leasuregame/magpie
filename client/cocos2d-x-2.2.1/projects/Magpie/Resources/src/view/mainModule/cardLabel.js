@@ -22,6 +22,7 @@ var CardLabel = cc.Node.extend({
     _hookLabel: null,
     _hookBgLabel: null,
     _cardItem: null,
+    _newCardMarkIcon: null,
     _otherData: null,
 
     init: function (target, card, selectType, otherData) {
@@ -48,24 +49,24 @@ var CardLabel = cc.Node.extend({
         cardItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardItemMenu);
 
-        var newCardMarkIcon = null;
+        this._newCardMarkIcon = null;
 
         var cardHeadItem = CardHeadNode.getCardHeadItem(this._card, function () {
             CardDetails.pop(this._card);
 
             this._card.setNewCardMark(false);
 
-            if (newCardMarkIcon) {
-                newCardMarkIcon.removeFromParent();
-                newCardMarkIcon = null;
+            if (this._newCardMarkIcon) {
+                this._newCardMarkIcon.removeFromParent();
+                this._newCardMarkIcon = null;
             }
         }, this);
         cardHeadItem.setPosition(cc.p(70, 65));
 
         if (this._card.get("newCardMark")) {
-            newCardMarkIcon = cc.Sprite.create(main_scene_image.icon93);
-            newCardMarkIcon.setPosition(cc.p(25, 31));
-            cardHeadItem.addChild(newCardMarkIcon);
+            this._newCardMarkIcon = cc.Sprite.create(main_scene_image.icon93);
+            this._newCardMarkIcon.setPosition(cc.p(25, 31));
+            cardHeadItem.addChild(this._newCardMarkIcon);
         }
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
@@ -143,7 +144,6 @@ var CardLabel = cc.Node.extend({
 
     _initDefault: function () {
         cc.log("CardLabel _initDefault");
-
     },
 
     _initLineUp: function () {
@@ -188,7 +188,7 @@ var CardLabel = cc.Node.extend({
 
         this._starLabel.setVisible(false);
 
-        var rateLabel = cc.LabelTTF.create("概率: " + this._card.getPreCardRate() + "%", "STHeitiTC-Medium", 20);
+        var rateLabel = cc.LabelTTF.create("概率: " + this._otherData.leadCard.getPreCardRate() + "%", "STHeitiTC-Medium", 20);
         rateLabel.setColor(cc.c3b(56, 3, 5));
         rateLabel.setAnchorPoint(cc.p(0, 0.5));
         rateLabel.setPosition(cc.p(142, 65));
@@ -282,6 +282,13 @@ var CardLabel = cc.Node.extend({
         this._hookLabel.setVisible(this._isSelect);
         if (this._selectType == SELECT_TYPE_LINEUP) {
             this._useLabel[this._otherData.index].setVisible(this._isSelect);
+
+            this._card.setNewCardMark(false);
+
+            if (this._newCardMarkIcon) {
+                this._newCardMarkIcon.removeFromParent();
+                this._newCardMarkIcon = null;
+            }
         }
 
         this._target.selectCallback(this._card.get("id"));

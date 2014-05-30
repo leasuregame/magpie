@@ -10,6 +10,7 @@
 var gameMark = {
 
     _activity: false,
+    _summon: false,
     _achievement: false,
     _cardLibrary: false,
     _friend: false,
@@ -27,11 +28,15 @@ var gameMark = {
     _boss: false,
     _tournament: false,
     _bossList: false,
+    _newAreaReward: false,
+    _growthPlan: false,
+    _vipDailyReward: false,
 
     init: function () {
         cc.log("gameMark init");
 
         this._activity = false;
+        this._summon = false;
         this._achievement = false;
         this._cardLibrary = false;
         this._friend = false;
@@ -49,6 +54,9 @@ var gameMark = {
         this._boss = false;
         this._tournament = false;
         this._bossList = false;
+        this._newAreaReward = false;
+        this._growthPlan = false;
+        this._vipDailyReward = false;
     },
 
     getActivityMark: function () {
@@ -56,7 +64,8 @@ var gameMark = {
 
         if (!this._activity) {
             this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
-                this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark();
+                this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() ||
+                this.getNewAreaRewardMark() || this.getGrowthPlanMark() || this.getVipDailyRewardMark();
         }
 
         return this._activity;
@@ -66,6 +75,23 @@ var gameMark = {
         cc.log("gameMark updateActivityMark");
 
         this._activity = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getSummonMark: function () {
+        cc.log("gameMark getSummonMark");
+
+        if (!this._summon) {
+            this._summon = this.getLotteryMark() || this.getTreasureHuntMark();
+        }
+
+        return this._summon;
+    },
+
+    updateSummonMark: function (mark) {
+        cc.log("gameMark updateSummonMark");
+
+        this._summon = mark;
         MainScene.getInstance().updateMark();
     },
 
@@ -350,6 +376,7 @@ var gameMark = {
         cc.log("gameMark updateLotteryMark");
 
         this._lottery = mark;
+        this.updateSummonMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -402,6 +429,7 @@ var gameMark = {
         cc.log("gameMark updateTreasureHuntMark");
 
         this._treasureHunt = mark;
+        this.updateSummonMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -480,6 +508,78 @@ var gameMark = {
         cc.log("gameMark updateBossListMark");
 
         this._bossList = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getNewAreaRewardMark: function () {
+        cc.log("gameMark getNewAreaRewardMark");
+
+        if (!this._newAreaReward) {
+            for (var i = 1; i <= 30; i++) {
+                if (gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, i) == NOT_GOT_REWARD) {
+                    this._newAreaReward = true;
+                    break;
+                }
+            }
+        }
+
+        return this._newAreaReward;
+    },
+
+    updateNewAreaRewardMark: function (mark) {
+        cc.log("gameMark updateNewAreaRewardMark");
+
+        this._newAreaReward = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getGrowthPlanMark: function () {
+        cc.log("gameMark getGrowthPlanMark");
+
+        if (!this._growthPlan) {
+            var activity = gameData.activity;
+            if (gameData.player.get("vip") < 2 || !activity.get("isBuyPlan")) {
+                return false;
+            }
+
+            var table = outputTables.growth_plan.rows;
+            for (var id in table) {
+                if (activity.getStateById(TYPE_GROWTH_PLAN_REWARD, id) == NOT_GOT_REWARD) {
+                    this._growthPlan = true;
+                    break;
+                }
+            }
+        }
+
+        return this._growthPlan;
+    },
+
+    updateGrowPlanMark: function (mark) {
+        cc.log("gameMark updateGrowPlanMark");
+
+        this._growthPlan = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getVipDailyRewardMark: function () {
+        cc.log("gameMark getVipDailyRewardMark");
+
+        if (!this._vipDailyReward) {
+            if (gameData.player.get("vip") > 0 && gameData.activity.get("vipLoginReward")) {
+                this._vipDailyReward = true;
+            }
+        }
+
+        return this._vipDailyReward;
+    },
+
+    updateVipDailyRewardMark: function (mark) {
+        cc.log("gameMark updateVipDailyRewardMark");
+
+        this._vipDailyReward = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }
 };

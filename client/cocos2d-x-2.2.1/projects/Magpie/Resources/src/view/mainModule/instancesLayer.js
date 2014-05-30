@@ -105,10 +105,10 @@ var InstancesLayer = cc.Layer.extend({
             gameGuide.set("passGuide", false);
         }
 
-        this._taskLayerItem.setEnabled(true);
-        this._passLayerItem.setEnabled(false);
-
-        this.switchLayer(PassLayer);
+        if (this.switchLayer(PassLayer)) {
+            this._taskLayerItem.setEnabled(true);
+            this._passLayerItem.setEnabled(false);
+        }
     },
 
     switchLayer: function (runLayer) {
@@ -116,7 +116,7 @@ var InstancesLayer = cc.Layer.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (runLayer.canEnter && !runLayer.canEnter()) {
-            return;
+            return false;
         }
 
         if (!(this._nowLayer instanceof runLayer)) {
@@ -124,6 +124,8 @@ var InstancesLayer = cc.Layer.extend({
             this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
         }
+
+        return true;
     }
 });
 

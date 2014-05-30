@@ -130,7 +130,8 @@ var Pass = Entity.extend({
                         money: msg.level9Box.money,
                         skillPoint: msg.level9Box.skillPoint,
                         energy: msg.level9Box.energy,
-                        power: msg.level9Box.powerValue
+                        power: msg.level9Box.powerValue,
+                        gold: msg.level9Box.gold
                     };
 
                     player.adds(box);
@@ -200,7 +201,8 @@ var Pass = Entity.extend({
                         money: msg.level9Box.money,
                         skillPoint: msg.level9Box.skillPoint,
                         energy: msg.level9Box.energy,
-                        power: msg.level9Box.powerValue
+                        power: msg.level9Box.powerValue,
+                        gold: msg.level9Box.gold
                     };
 
                     player.adds(box);

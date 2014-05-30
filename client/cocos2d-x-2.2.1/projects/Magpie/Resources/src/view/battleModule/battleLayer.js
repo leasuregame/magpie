@@ -101,7 +101,10 @@ var BattleLayer = cc.Layer.extend({
 
                 this._battleNode[key].setPosition(locate);
                 this._battleNode[key].setVisible(false);
-                this.addChild(this._battleNode[key], NODE_Z_ORDER);
+                this.addChild(
+                    this._battleNode[key],
+                    NODE_Z_ORDER + (this._battleNode[key].isBossCard && this._battleNode[key].isBossCard() ? 1 : 0)
+                );
             }
         }
 
@@ -314,7 +317,10 @@ var BattleLayer = cc.Layer.extend({
 
                 this._battleNode[i].setPosition(locate);
                 this._battleNode[i].setVisible(false);
-                this.addChild(this._battleNode[i], NODE_Z_ORDER);
+                this.addChild(
+                    this._battleNode[i],
+                    NODE_Z_ORDER + (this._battleNode[i].isBossCard && this._battleNode[i].isBossCard() ? 1 : 0)
+                );
             }
         }
 
@@ -504,10 +510,14 @@ var BattleLayer = cc.Layer.extend({
 
     setBattleNodeZOrder: function (z, index) {
         if (index != undefined) {
-            this._battleNode[index].setZOrder(z);
+            this._battleNode[index].setZOrder(
+                z + (this._battleNode[index].isBossCard && this._battleNode[index].isBossCard() ? 1 : 0)
+            );
         } else {
             for (var key in this._battleNode) {
-                this._battleNode[key].setZOrder(z);
+                this._battleNode[key].setZOrder(
+                    z + (this._battleNode[key].isBossCard && this._battleNode[key].isBossCard() ? 1 : 0)
+                );
             }
         }
     },
@@ -520,7 +530,7 @@ var BattleLayer = cc.Layer.extend({
             that._counter -= 1;
 
             if (that._counter == 0) {
-                that.nextStep();
+                that.scheduleOnce(that.nextStep, 0.1);
             }
         }
     },
@@ -549,7 +559,6 @@ var BattleLayer = cc.Layer.extend({
             this.scheduleOnce(this._collectSpirit, 1.3);
             return;
         }
-
 
         this.step(this._battleLog.getBattleStep());
     },
@@ -4847,8 +4856,8 @@ var BattleLayer = cc.Layer.extend({
         var lv = gameData.player.get("lv");
 
         if (vip < 1) { // 普通玩家
-            if (lv < 10) {
-                TipLayer.tip("vip1或10级开启2倍速");
+            if (lv < 5) {
+                TipLayer.tip("vip1或5级开启2倍速");
             } else if (this._playSpeed == 3) {
                 TipLayer.tip("vip2开启3倍速");
             } else {

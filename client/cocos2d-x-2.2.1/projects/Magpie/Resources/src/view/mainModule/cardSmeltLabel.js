@@ -21,7 +21,7 @@ var CardSmeltLabel = cc.Layer.extend({
         this.update();
     },
 
-    onExit: function() {
+    onExit: function () {
         this._super();
     },
 
@@ -180,6 +180,14 @@ var CardSmeltLabel = cc.Layer.extend({
             that._getGoods = data;
             that._smeltItem.setEnabled(false);
             that._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect118, this);
+            effect.setPosition(that._cardSmeltLabelFit.smelterPoint);
+            effect.animationManager.setCompletedAnimationCallback(this, function () {
+                effect.removeFromParent();
+                effect = null;
+            });
+            that.addChild(effect);
         });
     },
 

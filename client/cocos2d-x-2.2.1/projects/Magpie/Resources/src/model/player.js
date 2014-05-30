@@ -352,7 +352,7 @@ var Player = Entity.extend({
         cc.log("Player _energyChangeEvent");
 
         if (this._energy >= LOTTERY_ENOUGH) {
-            gameMark.updateLotteryMark(true);
+            gameMark.updateLotteryMark(false);
         } else {
             gameMark.updateLotteryMark(false);
         }

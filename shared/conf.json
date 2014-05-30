@@ -17,6 +17,11 @@
       "enable": true,
       "startDate": "2014-6-1",
       "endDate": "2014-6-3 23:59:59:999"
+    },
+    "power": {
+      "enable": true,
+      "startDate": "2014-6-1",
+      "endDate": "2014-6-3 23:59:59:999"
     }
   }
 }

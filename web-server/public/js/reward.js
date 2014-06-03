@@ -347,8 +347,11 @@ function doSubmit(mail) {
                 if (err) {
                     console.log("err = ", err);
                 } else {
-                    var areaName = getAreaById(areaId).name;
-                    window.webAPI.logReward(areaName, JSON.stringify(mail));
+                    var areaIds = [];
+                    for(var i in servers) {
+                        areaIds.push(servers[i].id);
+                    }
+                    window.webAPI.recordSendMsgOpt(areaIds, mail.options, mail.playerNames, 1);
                 }
             }
         );
@@ -359,8 +362,11 @@ function doSubmit(mail) {
                 if (err) {
                     console.log("err = ", err);
                 } else {
-                    var areaName = getAreaById(areaId).name;
-                    window.webAPI.logReward(areaName, JSON.stringify(mail));
+                    var areaIds = [];
+                    for(var i in server) {
+                        areaIds.push(server[i].id);
+                    }
+                    window.webAPI.recordSendMsgOpt(areaIds, mail.options, mail.playerNames, 1);
                 }
             });
         } else { //指定玩家
@@ -371,8 +377,7 @@ function doSubmit(mail) {
                         if (err) {
                             console.log("err = ", err);
                         } else {
-                            var areaName = getAreaById(areaId).name;
-                            window.webAPI.logReward(areaName, JSON.stringify(mail), playerNames);
+                            window.webAPI.recordSendMsgOpt(areaId, mail.options, mail.playerNames, 1);
                         }
                     });
                 }

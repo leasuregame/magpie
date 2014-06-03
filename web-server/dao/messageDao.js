@@ -3,7 +3,7 @@ var sqlUtil = require('./util/sqlUtil');
 var util = require('util');
 
 var DB_NAME = 'message';
-var PLAYER_DB_NAME = 'player';
+var PLAYER_TAB_NAME = 'player';
 var SERV_MSG_REC_CODE = -1;
 var dbFields = {
     id : 'id',
@@ -32,7 +32,7 @@ exports.getPlayerMessage = function(where, areaId, cb) {
 
     var queryWhere = buildWhereSql(where);
 
-    var sql = util.format('select m.*, p.name, p.areaId from %s m, %s p where m.%s = p.%s and %s order by m.createTime desc', DB_NAME, PLAYER_DB_NAME, dbFields.receiver, 'id', queryWhere);
+    var sql = util.format('select m.*, p.name, p.areaId from %s m, %s p where m.%s = p.%s and %s order by m.createTime desc', DB_NAME, PLAYER_TAB_NAME, dbFields.receiver, 'id', queryWhere);
 
     console.log("areaId : " + areaId, sql);
 

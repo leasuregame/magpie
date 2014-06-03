@@ -189,11 +189,13 @@ function rewardJson2Str(reward) {
     if (window.wsUtil.isNotEmptyObj(reward)){
         $.each(reward, function (key, val) {
             if (key == 'cardArray') {
-                ret += '\n卡牌 : ' + val.length + '张;\n';
+                var qty = 0;
                 $.each(val, function (idx, val) {
+                    qty += val.qty;
                     var card = configCards[val.tableId + ""];
                     ret += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + ';\n';
-                })
+                });
+                ret ='\n卡牌 : ' + qty + '张;\n' + ret;
             } else {
                 ret += baseRewardNames[key] + ' x ' + val + ';\n';
             }

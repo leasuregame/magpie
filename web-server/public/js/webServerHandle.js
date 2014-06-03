@@ -8,7 +8,8 @@
         CARD_LV_LIMIT : API_BASE_PATH + 'card-lv',
         PLAYER_NAMES : API_BASE_PATH + 'playerNames',
         PLAYER_IDS : API_BASE_PATH + 'playerId',
-        LOG_REWARD : API_BASE_PATH + 'logger4Reward',
+        RECORD_MSG_OPT : API_BASE_PATH + 'recordMsgOpt',
+        GET_MSG_OPT : API_BASE_PATH + 'getSysMsgOpt',
         SYS_MSG : API_BASE_PATH + 'sysMsg'
     };
 
@@ -47,13 +48,24 @@
         ajax(API.PLAYER_IDS, param, scb, ecb);
     };
 
-    webAPI.logReward = function (area, data, player) {
+    webAPI.recordSendMsgOpt = function (areaId, options, playerNames, status) {
         var param = {
-            area : area,
-            data : data,
-            player : player
+            areaId : areaId,
+            playerNames : playerNames,
+            options : options,
+            status : status
         };
-        ajax(API.LOG_REWARD, param, null);
+        ajax(API.RECORD_MSG_OPT, param, null);
+    };
+
+    webAPI.getMsgOptions = function (createTime, scb, ecb) {
+        createTime[0] = util.strDate2Ms(createTime[0]);
+        createTime[1] = util.strDate2Ms(createTime[1]);
+
+        var param = {
+            createTime : createTime
+        };
+        ajax(API.GET_MSG_OPT, param, scb, ecb);
     };
 
     webAPI.getSysMessages = function (areaId, playerIds, createTime, scb, ecb) {

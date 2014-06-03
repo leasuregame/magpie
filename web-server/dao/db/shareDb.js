@@ -13,6 +13,8 @@ var connection = mysql.createConnection({
 
 exports.query = function(sql, args, cb) {
   //connection.connect();
-  connection.query(sql, args, cb);
-  //connection.end();
+  connection.query(sql, args, function(err, res){
+      connection.end();
+      cb(err, res);
+  });
 };

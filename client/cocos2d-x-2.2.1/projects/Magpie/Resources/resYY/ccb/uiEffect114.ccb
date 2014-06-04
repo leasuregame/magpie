@@ -3299,7 +3299,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>102</integer>
 									</dict>
 									<dict>
 										<key>baseValue</key>
@@ -3852,7 +3852,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-60</real>
+							<real>-53.200000762939453</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3994,7 +3994,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>0.89999997615814209</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4098,7 +4098,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.6666666269302368</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4122,6 +4122,24 @@
 						<key>value</key>
 						<array>
 							<string>resYY/sound/startAnimationSound/startAnimation_treelight_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.89999997615814209</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>resYY/sound/card_upgrade_end_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

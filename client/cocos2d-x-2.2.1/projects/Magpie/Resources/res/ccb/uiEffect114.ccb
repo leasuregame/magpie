@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -390,7 +390,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -460,7 +460,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>150</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2912,7 +2912,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<true/>
+										<false/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2987,7 +2987,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3299,7 +3299,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>50</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>baseValue</key>
@@ -3662,7 +3662,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<true/>
+										<false/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3740,7 +3740,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>150</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -4098,7 +4098,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>4</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4122,6 +4122,24 @@
 						<key>value</key>
 						<array>
 							<string>res/sound/startAnimationSound/startAnimation_treelight_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.89999997615814209</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/card_upgrade_end_sound.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

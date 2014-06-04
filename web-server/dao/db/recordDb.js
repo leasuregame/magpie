@@ -25,4 +25,5 @@ exports.insert = function(table, rows, cb) {
         }
         stmt.finalize(cb);
     });
+    conn.close();
 };

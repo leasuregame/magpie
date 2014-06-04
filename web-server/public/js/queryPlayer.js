@@ -13,7 +13,7 @@ function getInputAreaIds() {
 }
 
 function getInputPlayerNames() {
-    var playerNameTxt = $("#playerName").val();
+    var playerNameTxt = $("#playerName").val().replace(/；/g, PLAYER_NAME_SEPARATOR);
     var playerNames = playerNameTxt.length > 0 ? window.wsUtil.splitNoBlank(playerNameTxt, PLAYER_NAME_SEPARATOR) : '';
     return playerNames;
 }
@@ -116,7 +116,7 @@ $(document).ready(function() {
     });
     $('#playerName').change(function(){
         var $this = $(this);
-        var total = window.wsUtil.splitNoBlank($this.val(), PLAYER_NAME_SEPARATOR).length;
+        var total = getInputPlayerNames().length;
         $this.closest('#playerBox').find('.totalPlayers').text(total);
         hideQueryPlayerBoxAlert();
     });

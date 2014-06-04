@@ -657,6 +657,7 @@ var Player = (function(_super) {
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);
+        this.activeSpiritorEffect();
     };
 
     Player.prototype.incSpiritPoolExp = function(exp) {

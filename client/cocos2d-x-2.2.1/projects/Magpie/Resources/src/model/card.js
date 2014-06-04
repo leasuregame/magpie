@@ -726,6 +726,16 @@ var Card = Entity.extend({
         return 0;
     },
 
+    getEvolutionNeedStar: function() {
+        cc.log("Card getEvolutionNeedStar");
+
+        if (this._star < MAX_CARD_STAR) {
+            return outputTables.star_upgrade.rows[this._star].source_card_star;
+        }
+
+        return 0;
+    },
+
     getEvolutionUseMaxCard: function () {
         cc.log("Card getEvolutionUseMaxCard");
 

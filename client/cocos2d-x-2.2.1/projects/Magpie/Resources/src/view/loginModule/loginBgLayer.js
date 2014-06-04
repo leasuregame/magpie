@@ -26,10 +26,15 @@ var LoginBgLayer = cc.Layer.extend({
         bgEffect.setPosition(this._loginBgLayerFit.bgEffectPoint);
         this.addChild(bgEffect);
 
-        var application = cc.Application.getInstance();
+        var version = lz.platformConfig.VERSION;
+
+        if (typeof(cc.AssetsManager) != "undefined") {
+            version = cc.AssetsManager.getInstance().getVersion();
+        }
+
         if (typeof (application.getAppVersion) != "undefined") {
             var appVersionLabel = StrokeLabel.create(
-                application.getAppVersion(),
+                version,
                 "STHeitiTC-Medium",
                 25
             );

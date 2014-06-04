@@ -1,12 +1,4 @@
 var ROWS_PER_PAGE = 10;
-var messageStatus = {
-    1 : 'ASKING',
-    2 : '已接受',
-    3 : '已拒绝',
-    4 : '未处理',
-    5 : '已处理',
-    6 : 'NOTICE'
-};
 var serverNamePair = {};
 var configCards = {};
 var tipAlertId = {
@@ -29,14 +21,16 @@ var baseRewardNames = {
 
 /**
  * 将服务器的id于name组成pair方便使用
+ * @param cb
  */
-function initServerNames() {
+function initServerNames(cb) {
     if(servers) {
         var tmpServs = servers;
         for(var i in tmpServs) {
             var tmpSer = tmpServs[i];
             serverNamePair[tmpSer.id] = tmpSer.name;
         }
+        cb();
     }
 }
 
@@ -87,21 +81,33 @@ function showTabPage(pageIdx){
     $('#rsTable tbody tr').addClass('hide').slice(ROWS_PER_PAGE * (pageIdx - 1), ROWS_PER_PAGE * pageIdx).removeClass('hide');
 }
 
+function areaIds2Names(areaIds) {
+    var areaNames = [];
+    if(areaIds instanceof Array) {
+        for(var k in areaIds) {
+            areaNames.push(serverNamePair[areaIds[k]]);
+        }
+    } else {
+        areaNames.push(serverNamePair[areaIds]);
+    }
+    return areaNames;
+}
+
+/**
+ * appendTxt2Dom
+ * @param $dom
+ * @param txt
+ */
+function appendTxt2Dom($dom, txt) {
+    $dom.text(txt).attr('title', txt);
+}
+
 /**
  * 获取各查询条件选项内容
- * @returns {{areaId: (*|jQuery), playerNames: *, createTime: *[]}}
+ * @returns {{createTime: *[]}}
  */
 function getInputData() {
-    var retData,areaId,playerNames,createTime;
-
-    areaId = $('#area').val();
-    if(areaId == AREAID_ALL && servers) {
-        areaId = [];
-        for(var i in servers) {
-            areaId.push(servers[i].id);
-        }
-    }
-    playerNames = getInputPlayerNames();
+    var retData,createTime;
 
     var lowerCreateTime = $('#createTime .low').val();
     var upperCreateTime = $('#createTime .up').val();
@@ -115,8 +121,6 @@ function getInputData() {
     createTime = [lowerCreateTime + ' 00:00:00', upperCreateTime + ' 23:59:59'];
 
     retData = {
-        areaId : areaId,
-        playerNames : playerNames,
         createTime : createTime
     };
 
@@ -125,21 +129,7 @@ function getInputData() {
 
 function submit() {
     var reqData = getInputData();
-    if(reqData.playerNames) {
-        window.webAPI.getPlayerIdsByNames(reqData.areaId, reqData.playerNames, function (resPids){
-            if (resPids.id) {
-                reqData.playerIds = resPids.id;
-                doRequest(reqData);
-            }
-        }, function (data) {
-            if(data.status == 404) {
-                showQueryPlayerBoxAlert('发送失败! 玩家不存在,请确认');
-                $('#playerName').focus();
-            }
-        });
-    } else {
-        doRequest(reqData);
-    }
+    doRequest(reqData);
 }
 
 function doRequest(reqData) {
@@ -148,7 +138,7 @@ function doRequest(reqData) {
     $(tipAlertId.LOADING).removeClass('hide');
     $('#submitCheck').attr('disabled', true);
 
-    window.webAPI.getSysMessages(reqData.areaId, reqData.playerIds, reqData.createTime, function(data){
+    window.webAPI.getMsgOptions(reqData.createTime, function (data){
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
 
@@ -156,19 +146,30 @@ function doRequest(reqData) {
         var rowTemp = $('#rowTemp').html();
         for(var i in data) {
             var rowData = data[i];
-            rowData.options = $.parseJSON(rowData.options);
+            rowData.options = rowData.options ? $.parseJSON(rowData.options) : rowData.options;
             rowData.createDate = new Date(rowData.createTime).toLocaleDateString();
-            rowData.validDate = new Date(rowData.validDate).toLocaleDateString();
+
+            // format data and append
             var $tmpRow = $(rowTemp);
-            var receiverTxt = rowData.name ? '(' + serverNamePair[rowData.areaId] + ") " + rowData.name : serverNamePair[rowData.areaId];
-            $tmpRow.find('.receiver').text(receiverTxt).attr('title', receiverTxt);
-            $tmpRow.find('.title').text(rowData.options.title).attr('title', rowData.options.title);
-            $tmpRow.find('.content').text(rowData.content).attr('title', rowData.content);
+
+            // areaIds
+            var areaNames = areaIds2Names($.parseJSON(rowData.areaIds));
+            rowData.areaTxt = areaNames.toString();
+            appendTxt2Dom($tmpRow.find('.area'), rowData.areaTxt);
+            // receiver
+            var pns = $.parseJSON(rowData.playerNames);
+            var receiverTxt = pns ? $.parseJSON(rowData.playerNames).toString() : "全服";
+            appendTxt2Dom($tmpRow.find('.receiver'), receiverTxt);
+            // sender
+            appendTxt2Dom($tmpRow.find('.sender'), rowData.operator);
+            // titile
+            appendTxt2Dom($tmpRow.find('.title'), rowData.options.title);
+            // reward
             var rewardTxt = rewardJson2Str(rowData.options.rewards);
-            $tmpRow.find('.rewards').text(rewardTxt).attr('title', rewardTxt);
-            $tmpRow.find('.status').text(messageStatus[rowData.status]);
-            $tmpRow.find('.createTime').text(rowData.createDate);
-            $tmpRow.find('.validDate').text(rowData.validDate);
+            appendTxt2Dom($tmpRow.find('.rewards'), rewardTxt);
+            // create time
+            appendTxt2Dom($tmpRow.find('.createTime'), rowData.createDate);
+
             tabBody.append($tmpRow);
         }
         initPaginator();
@@ -207,7 +208,9 @@ function rewardJson2Str(reward) {
 }
 
 $(document).ready(function() {
-    initServer(initServerNames);
+    initServer(function(){
+        initServerNames(submit);
+    });
     initConfCards();
 
     $('#submitCheck').click(function(){

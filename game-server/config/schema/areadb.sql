@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
-  `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',
+  `signIn` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
   `achievement` TEXT COLLATE utf8_unicode_ci,
   `cardBook` TEXT COLLATE utf8_unicode_ci,
   `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',-- 好友上限

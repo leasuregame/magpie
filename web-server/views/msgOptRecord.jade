@@ -15,7 +15,6 @@ block head
 
 block content
     .form-horizontal(role='form', action='#')
-        include ./queryPlayerBox
         hr
         .form-group
             #createTime.paramSet(name='createTime')
@@ -34,28 +33,25 @@ block content
                 table#rsTable.table.table-hover
                     thead
                         tr
-                            th(style='width:13%') 服务器/玩家
-                            th(style='width:10%') 标题
-                            th(style='width:15%') 内容
-                            th(style='width:26%') 奖励
-                            th(style='width:8%') 状态
-                            th(style='width:14%') 发送时间
-                            th(style='width:14%') 有效时间
+                            th(style='width:16%') 服务器
+                            th(style='width:16%') 玩家
+                            th(style='width:9%') 操作人
+                            th(style='width:12%') 标题
+                            th(style='width:34%') 奖励
+                            th(style='width:15%') 发送时间
                     tbody
                 #loadingAlert.alert.alert-info.center.hide loading..
                 #noRsAlert.alert.alert-warning.center Ooooops! No such record.. ╮(╯▽╰)╭
             #paginatorCntr(style='float: right')
         script#rowTemp.hide(type='text/template')
             tr.hide
+                td.area
                 td.receiver
+                td.sender
                 td.title
-                td.content
                 td.rewards
-                td.status
                 td.createTime
-                td.validDate
 
     script(type='text/javascript', src='/js/webServerHandle.js')
-    script(type='text/javascript', src='/js/sysMsgRecord.js')
-    script(type='text/javascript', src='/js/queryPlayer.js')
+    script(type='text/javascript', src='/js/msgOptRecrod.js')
     script(type='text/javascript', src='/js/bootstrap-paginator.js')

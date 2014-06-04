@@ -30,12 +30,12 @@ exports.getAllPlayerId = function(amount, payTime, areaId, cb) {
         tbPayTimeWhere = sqlUtil.buildBetweenWhere('created', payTime);
     }
 
-    var brSql = 'select playerId from buyRecord where ' + baseWhere + brPayTimeWhere +
+    var brSql = 'select playerId from buyRecord where isVerify = 1 ' + brPayTimeWhere +
         ' group by playerId having '+ baseWhere + brAmountWhere;
 
     db(areaId).query(brSql, function (err, rows) {
         var brRows = rows ? rows : [];
-        var tbSql = 'select playerId from tbOrder where ' + baseWhere + tbPayTimeWhere +
+        var tbSql = 'select playerId from tbOrder where status = 2000 ' + tbPayTimeWhere +
             ' group by playerId having '+ baseWhere + tbAmountWhere;
         db(areaId).query(tbSql, function (err, rows) {
             cb(err, rows.concat(brRows));

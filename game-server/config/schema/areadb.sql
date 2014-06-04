@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
-  `dailyGift` TEXT(2000) COLLATE utf8_unicode_ci, -- 每日奖励
+  `dailyGift` TEXT COLLATE utf8_unicode_ci, -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
@@ -113,10 +113,11 @@ CREATE TABLE IF NOT EXISTS `message` (
   `sender` BIGINT(20),
   `receiver` BIGINT(20),
   `type` SMALLINT(2) UNSIGNED DEFAULT '0',
-  `options` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
+  `options` VARCHAR(1024) COLLATE utf8_unicode_ci DEFAULT '',
   `content` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
   `status` SMALLINT(2) UNSIGNED DEFAULT '0',
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `validDate` DATETIME,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -204,6 +205,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `receiptData` VARCHAR(5000) COLLATE utf8_unicode_ci,
+  `verifyResult` TEXT,
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,

@@ -7,6 +7,7 @@ path = require 'path'
 util = require 'util'
 versionHandler = require '../../../../../shared/version_helper'
 request = require 'request'
+appUtil = require '../../../util/appUtil'
 
 EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
 ACCOUNT_REG = /[\w+]{6,50}$/
@@ -92,10 +93,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (cb) ->
       checkIsOpenServer app, cb
 
-    (cb) ->
-      ### 检查是否最新版本 ###
-      checkVersion(app, msg, platform, cb)
-
     (cb) =>
       args = authParams(type, msg, app)
       args.sid = session.id
@@ -103,6 +100,14 @@ doLogin  = (type, app, msg, session, platform, next) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
+          cb(err)
+        else 
+          cb(null, u)
+
+    (u, cb) ->
+      ### 检查是否最新版本 ###
+      checkVersion app, msg, platform, (err) ->
+        if err
           cb(err)
         else 
           cb(null, u)
@@ -134,7 +139,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       session.pushAll cb
   ], (err) ->
     if err
-      logger.warn 'fail to login: ', err, err.stack
+      appUtil.errHandler(err)
       return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
     ### 只有每个帐号的第一个角色才会进行新手教程，教程结束后不返回teachingStep ###
@@ -148,7 +153,7 @@ onUserLeave = (app, session, reason) ->
     return
   app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
-      logger.warn 'user leave error' + err
+      appUtil.errHandler(err)
 
 authParams = (type, msg, app) ->
   keyMap = 
@@ -197,6 +202,9 @@ checkVersion = (app, msg, platform, cb) ->
   if not vData
     return cb({501, msg: "找不到#{platform}的版本信息"})
 
+  if msg.appVersion? and versionCompare(msg.appVersion, vData.forceUpdateVersion) < 0
+    cb({code: 501, msg: '版本过低，请到发行商更新游戏'})
+
   if versionCompare(version, vData.version) >= 0
     cb()
   else
@@ -220,7 +228,7 @@ checkIsOpenServer = (app, cb) ->
 update_file_size = {}
 getUpdateSize = (version, vData, cb) ->
   filename = vData.filename
-  if versionHandler.versionCompare(version, vData.lastVersion)
+  if versionHandler.versionCompare(version, vData.lastVersion) < 0
     filename = vData.lastFilename
 
   key = vData.version+filename

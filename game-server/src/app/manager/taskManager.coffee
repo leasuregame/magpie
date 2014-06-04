@@ -7,6 +7,7 @@ async = require('async')
 _ = require 'underscore'
 fightManager = require './fightManager'
 achieve = require '../domain/achievement'
+appUtil = require '../util/appUtil'
 logger = require('pomelo-logger').getLogger(__filename)
 
 class Manager
@@ -212,7 +213,7 @@ class Manager
 
       cb(null, data)
         
-  @seekBoss: (data, player, cb) ->
+  @seekBoss: (app, data, player, cb) ->
     ### boss等级限制判断 ###
     boss_limit_level = table.getTableItem('function_limit', 1)?.boss or 1
     if player.lv < boss_limit_level
@@ -221,11 +222,7 @@ class Manager
     player.incBossCount()
 
     if not player.task.boss.found and checkFindBoss(player.task.boss.count)
-      typeRates = table.getTable('boss_type_rate')
-      ids = typeRates.map (r) -> r.id
-      rates = typeRates.map (r) -> r.rate
-      type = utility.randomValue(ids, rates)
-      bossInfo = getBossInfo(type)
+      bossInfo = getBossInfo(app)
       if not bossInfo
         logger.error('找不到boss卡牌')
         cb(null, data)
@@ -290,7 +287,17 @@ lineUpToObj = (lineUp) ->
 
   _results
 
-getBossInfo = (type) ->
+getBossInfo = (app) ->
+  if appUtil.isActivityTime(app, 'boss')
+    rate_name = 'rate_activity'
+  else
+    rate_name = 'rate'
+
+  typeRates = table.getTable('boss_type_rate')
+  ids = typeRates.map (r) -> r.id
+  rates = typeRates.map (r) -> r[rate_name]
+  type = utility.randomValue(ids, rates)
+
   results = table.getTable('boss').filter (id, item) -> item.type is type
   if results.length > 0
     idx = _.random(0, results.length-1)
@@ -299,7 +306,7 @@ getBossInfo = (type) ->
     return null
 
 checkFindBoss = (count) ->
-  rate = table.getTableItem('boss_find_rate', count)?.rate or 1
+  rate = table.getTableItem('boss_find_rate', count)?.rate or 0
   return utility.hitRate(rate)
 
 saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->

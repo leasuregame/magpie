@@ -56,13 +56,13 @@ Remote::add = (args, platform, callback) ->
 
       product = table.getTableItem('recharge', args.productId)
       if not product
-        logger.warn('找不到购买的对应产品, 产品id为', args.productId)
+        logger.error('找不到购买的对应产品, 产品id为', args.productId)
         updateOrderStatus(@app, order, ORDER_ERROR_STATUS_1)
         return cb({ok: false, msg: '找不到购买的对应产品'})
 
       # 检查充值的金额是否正确
       if not checkAmountIsCorrect(args.amount, product?.cash, platform)
-        logger.warn('充值的金额跟产品金额不匹配,', '订单金额为:', args.amount+'分,', 
+        logger.error('充值的金额跟产品金额不匹配,', '订单金额为:', args.amount+'分,', 
           '产品实际金额为:', product.cash+'元', '产品id为:', args.productId)
         updateOrderStatus(@app, order, ORDER_ERROR_STATUS_2)
         return cb({ok: false, msg: '充值的金额跟产品金额不匹配'})
@@ -219,7 +219,8 @@ successMsg = (app, player, isFirstRechage) ->
       cash: player.cash,
       goldCards: player.getGoldCard(),
       recharge: player.firstTime.recharge or 0,
-      firstRechargeBox: 1 if isFirstRechage
+      firstRechargeBox: 1 if isFirstRechage,
+      vipLoginReward: !player.dailyGift.vipReward if player.isVip()
     }
   }, (err, res) ->
     if err

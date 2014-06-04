@@ -9,6 +9,7 @@ async = require 'async'
 _string = require 'underscore.string'
 fs = require 'fs'
 path = require 'path'
+appUtil = require '../../../util/appUtil'
 logger = require('pomelo-logger').getLogger(__filename)
 
 accountMap = {}
@@ -58,9 +59,7 @@ class Authorize
       if password isnt user.password
         return cb({code: 501, msg: '密码不正确'})
 
-      
       checkDuplicatedLogin areaId, frontendId, user, sid, (err, user)->
-        console.log checkWhiteList(user)
         if checkWhiteList(user)
           cb(null, user.toJson())
         else
@@ -105,7 +104,7 @@ class Authorize
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
       if err
-        logger.error(err)
+        appUtil.errHandler(err)
         return cb(err)
 
       cb(null, user?.toJson())
@@ -144,14 +143,13 @@ class Authorize
         checkDuplicatedLogin areaId, frontendId, user, sid, done
     ], (err, user) ->
       if err
-        logger.error(err)
+        appUtil.errHandler(err)
         return cb(err)
       cb(null, user?.toJson())
 
   @YY: (args, cb) ->
     text = "#{process.env.APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
     if args.signid is md5(text).toUpperCase()
-      
       fetchUserInfoOrCreate "yy-#{args.account}", null, {name: args.userName}, (err, user) ->
         if err
           return cb(err)
@@ -191,8 +189,15 @@ class Authorize
         checkDuplicatedLogin args.areaId, args.frontendId, user, args.sid, done
     ], (err, user) ->
       if err
+        appUtil.errHandler(err)
         return cb(err)
       cb(null, user?.toJson())
+
+logError = (err) ->
+  if err.code is 501
+    logger.warn(JSON.stringify(err))
+  else
+    logger.error(JSON.stringify(err))
 
 md5 = (text) ->
   hash = require('crypto').createHash('md5')
@@ -260,7 +265,10 @@ fetchUserInfoOrCreate = (account, id, data, done) ->
             done({code: 501, msg: '服务器维护当中，请耐心等待！'})          
 
     else if not err and user
-      done(null, user)
+      if checkWhiteList(user)
+        done(null, user)
+      else
+        done({code: 501, msg: '服务器维护当中，请耐心等待！'})
     else 
       done({code: 501, msg: '登录失败，请重新登录'})
 

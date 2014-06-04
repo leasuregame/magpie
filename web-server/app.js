@@ -8,6 +8,7 @@ var routes = require('./routes');
 var notice = require('./routes/notice');
 var version = require('./routes/version');
 var cdkey = require('./routes/cdkey');
+var gameData = require('./routes/gameData');
 var http = require('http');
 var path = require('path');
 var filter = require('./util/filter');
@@ -18,6 +19,8 @@ var flash = require('connect-flash');
 var player = require('./routes/player');
 var stats = require('./routes/stats');
 var area = require('./routes/area');
+var messgae = require('./routes/message');
+var optRecord = require('./routes/optRecord');
 
 var app = express();
 
@@ -60,20 +63,27 @@ app.get('/admin/cdkey', filter.authorize, cdkey.manage);
 app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
 app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
 app.get('/admin/cdkey/search', filter.authorize, cdkey.search);
-app.get('/admin/playerId', filter.authorize, player.get);
+app.all('/admin/playerId',  player.get);
+app.all('/admin/playerNames',  player.getPlayerNames);
 app.get('/admin/areaeditor', filter.authorize, area.editor);
 app.post('/admin/areaeditor/save', filter.authorize, area.save);
+app.all('/admin/actor-cards', filter.authorize, gameData.getActorCards);
+app.all('/admin/card-lv', filter.authorize, gameData.getCardLvLimit);
 
 app.get('/admin/stats/onlineuser', filter.authorize, stats.onlineUser);
 
-
 pushMessage(app);
 sendReward(app);
+messgae(app);
+optRecord(app);
 
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);
 app.get('/api/:platform/update', version.update);
 app.get('/api/:platform/update/:version', version.update);
+
+app.get('/api/actor-cards', gameData.getActorCards);
+app.get('/api/card-lv', gameData.getCardLvLimit);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

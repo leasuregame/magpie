@@ -309,11 +309,29 @@ Handler::bossList = (msg, session, next) ->
       msg: sortBossList(results.map((r) -> r.toJson()), playerId)
     })
 
+checkBossStatus = (items, cb) ->
+  timeOutItems = items.filter (i) -> i.timeLeft() <= 0 and i.status isnt configData.bossStatus.STATUS.TIMEOUT
+  ids = timeOutItems.map (i) -> i.id
+
+  if ids.length is 0
+    return cb(null, items)
+
+  dao.boss.update {
+    where: ' id in ('+ids.toString()+') '
+    data: status: configData.bossStatus.STATUS.TIMEOUT
+  }, (err, res) ->
+    if err
+      cb(err)
+    else
+      timeOutItems.forEach (i) -> i.status = configData.bossStatus.STATUS.TIMEOUT
+      cb(null, items)
+
 sortBossList = (items, playerId) ->
   group = _.groupBy items, (i) -> if i.playerId is playerId then 'mine' else 'friend'
-  
-  mine = (group.mine?.sort (x, y) -> x.status - y.status > 0) or []
-  friend = (group.friend?.sort (x, y) -> x.status - y.status > 0) or []
+
+  mine = (group.mine?.sort (x, y) -> x.status - y.status) or []
+  friend = (group.friend?.sort (x, y) -> x.status - y.status) or []
+
   mine.concat friend
 
 Handler::attack = (msg, session, next) ->
@@ -392,33 +410,14 @@ Handler::attack = (msg, session, next) ->
 
 countDamageRewards = (rank) ->
   row = table.getTableItem('boss_rank_reward', rank)
-  if row    
-    money: row.money
+  if row
     honor: row.honor
-    energy: row.energy
+    money: row.money if row.money
   else 
-    honor5 = table.getTableItem('boss_rank_reward', 5)?.honor or configData.bossStatus.REWARD_COUNT.BASE_VALUE
-    gap = table.getTableItem('values', 'damageOfRankHonorGap')?.value or 0
-    honor = parseInt (honor5-gap)*(1-Math.ceil((rank-5)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
+    honor6 = table.getTableItem('boss_rank_reward', 6)?.honor or configData.bossStatus.REWARD_COUNT.BASE_VALUE
+    honor = parseInt honor6*(1-Math.ceil((rank-6)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
     honor = configData.bossStatus.REWARD_COUNT.MIN if honor < configData.bossStatus.REWARD_COUNT.MIN
     honor: honor
-
-checkBossStatus = (items, cb) ->
-  timeOutItems = items.filter (i) -> i.timeLeft() <= 0 and i.status isnt configData.bossStatus.STATUS.TIMEOUT
-  ids = timeOutItems.map (i) -> i.id
-
-  if ids.length is 0
-    return cb(null, items)
-
-  dao.boss.update {
-    where: ' id in ('+ids.toString()+') '
-    data: status: configData.bossStatus.STATUS.TIMEOUT
-  }, (err, res) ->
-    if err
-      cb(err)
-    else
-      timeOutItems.forEach (i) -> i.status = configData.bossStatus.STATUS.TIMEOUT
-      cb(null, items)
 
 countDamage = (bl) ->
   ds = []

@@ -170,7 +170,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickNextPage,
             this
         );
-        this._nextPageItem.setRotation(180);
+        this._nextPageItem.setScaleX(-1);
         this._nextPageItem.setPosition(this._exploreLayerFit.nextPageItemPoint);
 
         this._rewardTipsItem = cc.MenuItemImage.create(
@@ -178,7 +178,7 @@ var ExploreLayer = cc.Layer.extend({
             main_scene_image.button84d,
             function () {
                 gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-                TipLayer.tip("还没达成奖励");
+                TipLayer.tip("凑齐4种奖励方可领取");
             },
             this
         );
@@ -313,6 +313,7 @@ var ExploreLayer = cc.Layer.extend({
 
         this.update();
         this._updatePage();
+        gameData.task.resetNewCollect();
         this._updateCollect();
 
         return true;
@@ -369,10 +370,6 @@ var ExploreLayer = cc.Layer.extend({
         }
 
         this._updatePage();
-
-        if (gameData.task.isCollectedAll()) {
-            this._showRewardEffect();
-        }
     },
 
     _updatePage: function () {
@@ -381,8 +378,17 @@ var ExploreLayer = cc.Layer.extend({
         var sectionId = gameData.task.getSection();
         var maxIndex = gameData.task.getPoints() + (sectionId - 1) * TASK_POINTS_COUNT;
 
-        this._prePageItem.setVisible(this._pageIndex > 1);
-        this._nextPageItem.setVisible(this._pageIndex < maxIndex);
+        if (this._pageIndex < 1) {
+            TipLayer.tip("没有上一页了");
+            this._pageIndex = 1;
+            return;
+        }
+
+        if (this._pageIndex > maxIndex) {
+            TipLayer.tip("下一页未开启");
+            this._pageIndex = maxIndex;
+            return;
+        }
 
         this._descriptionLabel.removeAllChildren();
 
@@ -425,17 +431,25 @@ var ExploreLayer = cc.Layer.extend({
             this._collectElement[reward["reward_type"]].setVisible(task.getCollectStateById(TYPE_COLLECTED, reward.id));
         }
 
+        var isCollectedAll = task.isCollectedAll();
+
+        this._rewardTipsItem.setVisible(!isCollectedAll);
+
+        if (isCollectedAll && !this._rewardEffect) {
+            this._showRewardEffect();
+        }
+
+        if (!isCollectedAll) {
+            if (this._rewardEffect) {
+                this._rewardEffect.removeFromParent();
+                this._rewardEffect = null;
+            }
+        }
+
     },
 
     _showRewardEffect: function () {
         cc.log("ExploreLayer _showRewardEffect");
-
-        if (this._rewardEffect) {
-            this._rewardEffect.removeFromParent();
-            this._rewardEffect = null;
-        }
-
-        this._rewardTipsItem.setVisible(false);
 
         this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect111, this);
         this._rewardEffect.setPosition(this._exploreLayerFit.rewardItemPoint);
@@ -787,6 +801,11 @@ var ExploreLayer = cc.Layer.extend({
                                     passEffect.removeFromParent();
                                     that._index += 1;
 
+                                    if(that._pageIndex == that._getTaskId() - 1) {
+                                        that._pageIndex++;
+                                        that._updatePage();
+                                    }
+
                                     next();
                                 });
                             } else {
@@ -795,6 +814,7 @@ var ExploreLayer = cc.Layer.extend({
                         },
                         function () {
                             if (that._index > that._maxIndex) {
+                                that._sectionId = gameData.task.getSection();
                                 that._unlock();
                                 that._onClickBack();
                                 next();
@@ -918,8 +938,7 @@ var ExploreLayer = cc.Layer.extend({
                 titleType: TYPE_EXPLORE_REWARD,
                 cb: function () {
                     that._updateCollect();
-                    that._rewardEffect.removeFromParent();
-                    that._rewardEffect = null;
+                    that.update();
                     lz.tipReward(reward);
                 }
             });

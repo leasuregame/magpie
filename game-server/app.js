@@ -113,13 +113,15 @@ app.configure('production|development', 'area', function() {
   areaUtil.checkFlagFile(app);
   
   app.before(cdFilter());
-  app.before(sensitiveWordFilter());
+  // app.before(sensitiveWordFilter());
 
   appUtil.loadDatabaseInfo(app, 'areadb');
   appUtil.loadShareDatabaseInfo(app);
 
   var dao_share = require('./app/dao').init('mysql', 'share');
   app.set('dao_share', dao_share);
+
+  app.set('useSanbox', false);
 
   app.load(counter);
   app.load(verifier);
@@ -135,6 +137,7 @@ app.configure('production|development', 'connector|auth|area', function() {
 
 app.configure('development', 'connector|auth|area', function() {
   app.set('debug', true);
+  app.set('useSanbox', true);
 });
 
 app.configure('production|development', 'notice', function() {
@@ -145,5 +148,5 @@ app.configure('production|development', 'notice', function() {
 app.start();
 
 process.on('uncaughtException', function(err) {
-  console.error(' Caught exception: ' + err.stack);
+  console.error(' Uncaught exception: ' + err.stack);
 });

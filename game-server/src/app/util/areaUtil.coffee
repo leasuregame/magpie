@@ -2,6 +2,7 @@ fs = require('fs')
 path = require('path')
 configData = require '../../config/data'
 utility = require('../common/utility')
+appUtil = require '../util/appUtil'
 
 FLAG_FILE = path.join(__dirname, '..', '..', 'config', 'powerGivenFlag')
 DEFAULT_FLAG = powerGiven: [], endPowerGiven: [], date: '1970-1-1'
@@ -65,13 +66,19 @@ module.exports =
 
   _addSysMsg: (app, key) ->
     msgs = 
-      powerGiven: route: 'onPowerGive', msg: {powerValue: configData.player.POWER_GIVE.point}
+      powerGiven: route: 'onPowerGive', msg: {powerValue: @powerGivenValue(app)}
       endPowerGiven: route: 'onPowerGiveEnd', msg: {}
 
     app.get('messageService').pushMessage {
       route: msgs[key].route
       msg: msgs[key].msg
     }, () ->
+
+  powerGivenValue: (app) ->
+    if appUtil.isActivityTime(app, 'power')
+      return configData.player.POWER_GIVE.activity_point
+    else
+      return configData.player.POWER_GIVE.point
 
   
         

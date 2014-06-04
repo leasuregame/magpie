@@ -114,7 +114,7 @@ var Progress = cc.Node.extend({
 
         var ratio = 0;
 
-        if(this._maxValue === 0 && this._value === 0) {
+        if (this._maxValue === 0 && this._value === 0) {
             ratio = 100;
         }
 
@@ -122,9 +122,12 @@ var Progress = cc.Node.extend({
             ratio = this._value / this._maxValue * 100;
         }
 
-        var action = cc.ProgressFromTo.create(duration, this._ratio, ratio);
-        this._progress.runAction(action);
-
+        if (duration == 0) {
+            this._progress.setPercentage(ratio);
+        } else {
+            var action = cc.ProgressFromTo.create(duration, this._ratio, ratio);
+            this._progress.runAction(action);
+        }
         this._ratio = ratio;
     },
 

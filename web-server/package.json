@@ -15,6 +15,7 @@
     "async": "~0.2.9",
     "log4js": "~0.6.9",
     "connect-flash": "~0.1.1",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "sqlite3":"*"
   }
 }

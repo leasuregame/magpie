@@ -31,16 +31,6 @@ var nameChanged = {
 	"高星级卡牌进阶概率配置表": "star_upgrade_rate",
 	"star_upgrade": "卡牌进阶配置表",
 	"卡牌进阶配置表": "star_upgrade",
-	"elixir_ranking_reward": "竞技仙丹排行版奖励",
-	"竞技仙丹排行版奖励": "elixir_ranking_reward",
-	"rank": "竞技产出表",
-	"竞技产出表": "rank",
-	"ranking_list": "竞技排名配置表",
-	"竞技排名配置表": "ranking_list",
-	"ranking_reward": "排名奖励",
-	"排名奖励": "ranking_reward",
-	"ranking_reward_factor": "竞技排名奖励加成系数",
-	"竞技排名奖励加成系数": "ranking_reward_factor",
 	"login_count_reward": "开服累计登陆奖励配置表",
 	"开服累计登陆奖励配置表": "login_count_reward",
 	"new_year_rechage": "新年充值奖励",
@@ -79,14 +69,24 @@ var nameChanged = {
 	"连续签到奖励": "signIn_rewards",
 	"values": "零碎的值配置表",
 	"零碎的值配置表": "values",
+	"treasure_hunt": "寻宝配置表",
+	"寻宝配置表": "treasure_hunt",
 	"illegal_str": "非法字符串",
 	"非法字符串": "illegal_str",
 	"first_name": "名",
 	"名": "first_name",
 	"last_name": "姓",
 	"姓": "last_name",
-	"treasure_hunt": "寻宝配置表",
-	"寻宝配置表": "treasure_hunt",
+	"elixir_ranking_reward": "竞技仙丹排行版奖励",
+	"竞技仙丹排行版奖励": "elixir_ranking_reward",
+	"rank": "竞技产出表",
+	"竞技产出表": "rank",
+	"ranking_list": "竞技排名配置表",
+	"竞技排名配置表": "ranking_list",
+	"ranking_reward": "排名奖励",
+	"排名奖励": "ranking_reward",
+	"ranking_reward_factor": "竞技排名奖励加成系数",
+	"竞技排名奖励加成系数": "ranking_reward_factor",
 	"product": "道具配置表",
 	"道具配置表": "product",
 	"scope": "卡牌范围表",
@@ -296,7 +296,7 @@ var outputTables = {
 				"method": "psTo10",
 				"need": 1,
 				"name": "但求最好",
-				"desc": "拥有1个10%的被动属性",
+				"desc": "拥有1个10%以上的被动属性",
 				"gold": 100,
 				"energy": 100
 			},
@@ -916,19 +916,22 @@ var outputTables = {
 				"id": 1,
 				"rate": 55,
 				"name": "蓝卡",
-				"reward_inc": 0
+				"reward_inc": 0,
+				"rate_activity": 10
 			},
 			"2": {
 				"id": 2,
 				"rate": 30,
 				"name": "紫卡",
-				"reward_inc": 50
+				"reward_inc": 50,
+				"rate_activity": 55
 			},
 			"3": {
 				"id": 3,
 				"rate": 15,
 				"name": "金卡",
-				"reward_inc": 150
+				"reward_inc": 150,
+				"rate_activity": 35
 			}
 		}
 	},
@@ -1677,8 +1680,8 @@ var outputTables = {
 				"name": "猪刚鬣·猪八戒",
 				"star": 1,
 				"lv": 1,
-				"atk": 45,
-				"hp": 196,
+				"atk": 50,
+				"hp": 200,
 				"normal_atk_id": 8,
 				"description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
 				"url": 2
@@ -1689,8 +1692,8 @@ var outputTables = {
 				"name": "高庄主·猪八戒",
 				"star": 2,
 				"lv": 1,
-				"atk": 91,
-				"hp": 418,
+				"atk": 100,
+				"hp": 400,
 				"normal_atk_id": 8,
 				"description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
 				"url": 2
@@ -1701,8 +1704,8 @@ var outputTables = {
 				"name": "二师兄·猪八戒",
 				"star": 3,
 				"lv": 1,
-				"atk": 142,
-				"hp": 605,
+				"atk": 150,
+				"hp": 600,
 				"skill_name": "倒打一耙",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -1716,8 +1719,8 @@ var outputTables = {
 				"name": "净坛使者·猪八戒",
 				"star": 4,
 				"lv": 1,
-				"atk": 182,
-				"hp": 825,
+				"atk": 200,
+				"hp": 800,
 				"skill_name": "倒打一耙",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -1731,8 +1734,8 @@ var outputTables = {
 				"name": "天蓬元帅·猪八戒",
 				"star": 5,
 				"lv": 1,
-				"atk": 255,
-				"hp": 1084,
+				"atk": 270,
+				"hp": 1080,
 				"skill_name": "倒打一耙",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -1747,7 +1750,7 @@ var outputTables = {
 				"star": 6,
 				"lv": 1,
 				"atk": 350,
-				"hp": 1330,
+				"hp": 1400,
 				"skill_name": "倒打一耙",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -1762,7 +1765,7 @@ var outputTables = {
 				"star": 7,
 				"lv": 1,
 				"atk": 440,
-				"hp": 1672,
+				"hp": 1760,
 				"skill_name": "倒打一耙",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -1776,8 +1779,8 @@ var outputTables = {
 				"name": "流沙河·沙悟净",
 				"star": 1,
 				"lv": 1,
-				"atk": 51,
-				"hp": 185,
+				"atk": 53,
+				"hp": 188,
 				"normal_atk_id": 9,
 				"description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
 				"url": 3
@@ -1788,8 +1791,8 @@ var outputTables = {
 				"name": "骷髅九·沙悟净",
 				"star": 2,
 				"lv": 1,
-				"atk": 97,
-				"hp": 374,
+				"atk": 103,
+				"hp": 388,
 				"normal_atk_id": 9,
 				"description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
 				"url": 3
@@ -1800,8 +1803,8 @@ var outputTables = {
 				"name": "沙和尚·沙悟净",
 				"star": 3,
 				"lv": 1,
-				"atk": 148,
-				"hp": 565,
+				"atk": 153,
+				"hp": 588,
 				"skill_name": "流沙搅风",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -1815,8 +1818,8 @@ var outputTables = {
 				"name": "卷帘大将·沙悟净",
 				"star": 4,
 				"lv": 1,
-				"atk": 202,
-				"hp": 787,
+				"atk": 203,
+				"hp": 788,
 				"skill_name": "流沙搅风",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -1831,7 +1834,7 @@ var outputTables = {
 				"star": 5,
 				"lv": 1,
 				"atk": 273,
-				"hp": 1024,
+				"hp": 1068,
 				"skill_name": "流沙搅风",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -1845,8 +1848,8 @@ var outputTables = {
 				"name": "和为贵·沙悟净",
 				"star": 6,
 				"lv": 1,
-				"atk": 365,
-				"hp": 1321,
+				"atk": 353,
+				"hp": 1388,
 				"skill_name": "流沙搅风",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -1860,8 +1863,8 @@ var outputTables = {
 				"name": "一心向佛·沙悟净",
 				"star": 7,
 				"lv": 1,
-				"atk": 452,
-				"hp": 1683,
+				"atk": 443,
+				"hp": 1748,
 				"skill_name": "流沙搅风",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -1875,8 +1878,8 @@ var outputTables = {
 				"name": "唐僧·金蝉子",
 				"star": 1,
 				"lv": 1,
-				"atk": 99,
-				"hp": 246,
+				"atk": 125,
+				"hp": 500,
 				"normal_atk_id": 10,
 				"description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
 				"url": 5
@@ -1887,8 +1890,8 @@ var outputTables = {
 				"name": "普渡众佛·金蝉子",
 				"star": 2,
 				"lv": 1,
-				"atk": 156,
-				"hp": 426,
+				"atk": 175,
+				"hp": 700,
 				"normal_atk_id": 10,
 				"description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
 				"url": 5
@@ -1899,8 +1902,8 @@ var outputTables = {
 				"name": "燃灯道人·金蝉子",
 				"star": 3,
 				"lv": 1,
-				"atk": 232,
-				"hp": 623,
+				"atk": 225,
+				"hp": 900,
 				"skill_name": "普度众生",
 				"skill_id": 10,
 				"normal_atk_id": 10,
@@ -1914,8 +1917,8 @@ var outputTables = {
 				"name": "功德佛·金蝉子",
 				"star": 4,
 				"lv": 1,
-				"atk": 305,
-				"hp": 856,
+				"atk": 275,
+				"hp": 1100,
 				"skill_name": "普度众生",
 				"skill_id": 10,
 				"normal_atk_id": 10,
@@ -1929,8 +1932,8 @@ var outputTables = {
 				"name": "真身·金蝉子",
 				"star": 5,
 				"lv": 1,
-				"atk": 425,
-				"hp": 1210,
+				"atk": 345,
+				"hp": 1380,
 				"skill_name": "普度众生",
 				"skill_id": 10,
 				"normal_atk_id": 10,
@@ -1944,8 +1947,8 @@ var outputTables = {
 				"name": "组织部长·金蝉子",
 				"star": 6,
 				"lv": 1,
-				"atk": 509,
-				"hp": 1492,
+				"atk": 425,
+				"hp": 1700,
 				"skill_name": "普度众生",
 				"skill_id": 10,
 				"normal_atk_id": 10,
@@ -1959,8 +1962,8 @@ var outputTables = {
 				"name": "女儿情·金蝉子",
 				"star": 7,
 				"lv": 1,
-				"atk": 603,
-				"hp": 1638,
+				"atk": 515,
+				"hp": 2060,
 				"skill_name": "普度众生",
 				"skill_id": 10,
 				"normal_atk_id": 10,
@@ -1974,8 +1977,8 @@ var outputTables = {
 				"name": "天将·巨灵神",
 				"star": 1,
 				"lv": 1,
-				"atk": 53,
-				"hp": 190,
+				"atk": 49,
+				"hp": 204,
 				"normal_atk_id": 2,
 				"description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
 				"url": 7
@@ -1986,8 +1989,8 @@ var outputTables = {
 				"name": "门卫·巨灵神",
 				"star": 2,
 				"lv": 1,
-				"atk": 101,
-				"hp": 382,
+				"atk": 99,
+				"hp": 404,
 				"normal_atk_id": 2,
 				"description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
 				"url": 7
@@ -1998,8 +2001,8 @@ var outputTables = {
 				"name": "搬山救民·巨灵神",
 				"star": 3,
 				"lv": 1,
-				"atk": 151,
-				"hp": 564,
+				"atk": 149,
+				"hp": 604,
 				"skill_name": "雷霆之怒",
 				"skill_id": 6,
 				"normal_atk_id": 2,
@@ -2013,8 +2016,8 @@ var outputTables = {
 				"name": "急先锋·巨灵神",
 				"star": 4,
 				"lv": 1,
-				"atk": 205,
-				"hp": 789,
+				"atk": 199,
+				"hp": 804,
 				"skill_name": "雷霆之怒",
 				"skill_id": 6,
 				"normal_atk_id": 2,
@@ -2028,8 +2031,8 @@ var outputTables = {
 				"name": "神斧·巨灵神",
 				"star": 5,
 				"lv": 1,
-				"atk": 277,
-				"hp": 1029,
+				"atk": 269,
+				"hp": 1084,
 				"skill_name": "雷霆之怒",
 				"skill_id": 6,
 				"normal_atk_id": 2,
@@ -2043,8 +2046,8 @@ var outputTables = {
 				"name": "转世·巨灵神",
 				"star": 6,
 				"lv": 1,
-				"atk": 362,
-				"hp": 1350,
+				"atk": 349,
+				"hp": 1404,
 				"skill_name": "雷霆之怒",
 				"skill_id": 6,
 				"normal_atk_id": 2,
@@ -2058,8 +2061,8 @@ var outputTables = {
 				"name": "逆袭·巨灵神",
 				"star": 7,
 				"lv": 1,
-				"atk": 462,
-				"hp": 1702,
+				"atk": 439,
+				"hp": 1764,
 				"skill_name": "雷霆之怒",
 				"skill_id": 6,
 				"normal_atk_id": 2,
@@ -2073,8 +2076,8 @@ var outputTables = {
 				"name": "神二代·红孩儿",
 				"star": 1,
 				"lv": 1,
-				"atk": 49,
-				"hp": 185,
+				"atk": 64,
+				"hp": 144,
 				"normal_atk_id": 11,
 				"description": "我爸是牛魔，我妈是铁扇，我是神二代！",
 				"url": 8
@@ -2085,8 +2088,8 @@ var outputTables = {
 				"name": "火云洞·红孩儿",
 				"star": 2,
 				"lv": 1,
-				"atk": 100,
-				"hp": 377,
+				"atk": 114,
+				"hp": 344,
 				"normal_atk_id": 11,
 				"description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
 				"url": 8
@@ -2097,8 +2100,8 @@ var outputTables = {
 				"name": "三味真火·红孩儿",
 				"star": 3,
 				"lv": 1,
-				"atk": 145,
-				"hp": 572,
+				"atk": 164,
+				"hp": 544,
 				"skill_name": "三味真火",
 				"skill_id": 2,
 				"normal_atk_id": 11,
@@ -2112,8 +2115,8 @@ var outputTables = {
 				"name": "圣婴大王·红孩儿",
 				"star": 4,
 				"lv": 1,
-				"atk": 206,
-				"hp": 789,
+				"atk": 214,
+				"hp": 744,
 				"skill_name": "三味真火",
 				"skill_id": 2,
 				"normal_atk_id": 11,
@@ -2127,8 +2130,8 @@ var outputTables = {
 				"name": "善财童子·红孩儿",
 				"star": 5,
 				"lv": 1,
-				"atk": 273,
-				"hp": 1020,
+				"atk": 284,
+				"hp": 1024,
 				"skill_name": "三味真火",
 				"skill_id": 2,
 				"normal_atk_id": 11,
@@ -2142,8 +2145,8 @@ var outputTables = {
 				"name": "凡尘苦楚·红孩儿",
 				"star": 6,
 				"lv": 1,
-				"atk": 342,
-				"hp": 1350,
+				"atk": 364,
+				"hp": 1344,
 				"skill_name": "三味真火",
 				"skill_id": 2,
 				"normal_atk_id": 11,
@@ -2157,8 +2160,8 @@ var outputTables = {
 				"name": "火云邪神·红孩儿",
 				"star": 7,
 				"lv": 1,
-				"atk": 431,
-				"hp": 1699,
+				"atk": 454,
+				"hp": 1704,
 				"skill_name": "三味真火",
 				"skill_id": 2,
 				"normal_atk_id": 11,
@@ -2172,8 +2175,8 @@ var outputTables = {
 				"name": "冀州侯·黄飞虎",
 				"star": 1,
 				"lv": 1,
-				"atk": 43,
-				"hp": 172,
+				"atk": 58,
+				"hp": 168,
 				"normal_atk_id": 3,
 				"description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
 				"url": 9
@@ -2184,8 +2187,8 @@ var outputTables = {
 				"name": "夜奔·黄飞虎",
 				"star": 2,
 				"lv": 1,
-				"atk": 106,
-				"hp": 371,
+				"atk": 108,
+				"hp": 368,
 				"normal_atk_id": 3,
 				"description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
 				"url": 9
@@ -2196,8 +2199,8 @@ var outputTables = {
 				"name": "复仇·黄飞虎",
 				"star": 3,
 				"lv": 1,
-				"atk": 156,
-				"hp": 564,
+				"atk": 158,
+				"hp": 568,
 				"skill_name": "兽之元神",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -2211,8 +2214,8 @@ var outputTables = {
 				"name": "武成王·黄飞虎",
 				"star": 4,
 				"lv": 1,
-				"atk": 204,
-				"hp": 798,
+				"atk": 208,
+				"hp": 768,
 				"skill_name": "兽之元神",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -2227,7 +2230,7 @@ var outputTables = {
 				"star": 5,
 				"lv": 1,
 				"atk": 278,
-				"hp": 1034,
+				"hp": 1048,
 				"skill_name": "兽之元神",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -2241,8 +2244,8 @@ var outputTables = {
 				"name": "成仁·黄飞虎",
 				"star": 6,
 				"lv": 1,
-				"atk": 370,
-				"hp": 1390,
+				"atk": 358,
+				"hp": 1368,
 				"skill_name": "兽之元神",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -2256,8 +2259,8 @@ var outputTables = {
 				"name": "威行天下·黄飞虎",
 				"star": 7,
 				"lv": 1,
-				"atk": 460,
-				"hp": 1650,
+				"atk": 448,
+				"hp": 1728,
 				"skill_name": "兽之元神",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -2271,8 +2274,8 @@ var outputTables = {
 				"name": "阿哥·雷震子",
 				"star": 1,
 				"lv": 1,
-				"atk": 53,
-				"hp": 181,
+				"atk": 59,
+				"hp": 164,
 				"normal_atk_id": 11,
 				"description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
 				"url": 10
@@ -2283,8 +2286,8 @@ var outputTables = {
 				"name": "羽人·雷震子",
 				"star": 2,
 				"lv": 1,
-				"atk": 103,
-				"hp": 371,
+				"atk": 109,
+				"hp": 364,
 				"normal_atk_id": 11,
 				"description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
 				"url": 10
@@ -2295,8 +2298,8 @@ var outputTables = {
 				"name": "救父·雷震子",
 				"star": 3,
 				"lv": 1,
-				"atk": 151,
-				"hp": 567,
+				"atk": 159,
+				"hp": 564,
 				"skill_name": "雷音破",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2310,8 +2313,8 @@ var outputTables = {
 				"name": "出五关·雷震子",
 				"star": 4,
 				"lv": 1,
-				"atk": 206,
-				"hp": 789,
+				"atk": 209,
+				"hp": 764,
 				"skill_name": "雷音破",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2325,8 +2328,8 @@ var outputTables = {
 				"name": "金刚·雷震子",
 				"star": 5,
 				"lv": 1,
-				"atk": 281,
-				"hp": 990,
+				"atk": 279,
+				"hp": 1044,
 				"skill_name": "雷音破",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2340,8 +2343,8 @@ var outputTables = {
 				"name": "不死·雷震子",
 				"star": 6,
 				"lv": 1,
-				"atk": 368,
-				"hp": 1388,
+				"atk": 359,
+				"hp": 1364,
 				"skill_name": "雷音破",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2355,8 +2358,8 @@ var outputTables = {
 				"name": "归圣·雷震子",
 				"star": 7,
 				"lv": 1,
-				"atk": 459,
-				"hp": 1710,
+				"atk": 449,
+				"hp": 1724,
 				"skill_name": "雷音破",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2370,8 +2373,8 @@ var outputTables = {
 				"name": "隐士·姜子牙",
 				"star": 1,
 				"lv": 1,
-				"atk": 60,
-				"hp": 184,
+				"atk": 35,
+				"hp": 260,
 				"normal_atk_id": 1,
 				"description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
 				"url": 12
@@ -2382,8 +2385,8 @@ var outputTables = {
 				"name": "渔者·姜子牙",
 				"star": 2,
 				"lv": 1,
-				"atk": 115,
-				"hp": 395,
+				"atk": 85,
+				"hp": 460,
 				"normal_atk_id": 1,
 				"description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
 				"url": 12
@@ -2394,8 +2397,8 @@ var outputTables = {
 				"name": "占卜师·姜子牙",
 				"star": 3,
 				"lv": 1,
-				"atk": 162,
-				"hp": 562,
+				"atk": 135,
+				"hp": 660,
 				"skill_name": "太公之悲",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -2409,8 +2412,8 @@ var outputTables = {
 				"name": "尚父·姜子牙",
 				"star": 4,
 				"lv": 1,
-				"atk": 219,
-				"hp": 793,
+				"atk": 185,
+				"hp": 860,
 				"skill_name": "太公之悲",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -2424,8 +2427,8 @@ var outputTables = {
 				"name": "齐祖·姜子牙",
 				"star": 5,
 				"lv": 1,
-				"atk": 285,
-				"hp": 1029,
+				"atk": 255,
+				"hp": 1140,
 				"skill_name": "太公之悲",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -2439,8 +2442,8 @@ var outputTables = {
 				"name": "雷锋·姜子牙",
 				"star": 6,
 				"lv": 1,
-				"atk": 365,
-				"hp": 1352,
+				"atk": 335,
+				"hp": 1460,
 				"skill_name": "太公之悲",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -2454,8 +2457,8 @@ var outputTables = {
 				"name": "太公·姜子牙",
 				"star": 7,
 				"lv": 1,
-				"atk": 462,
-				"hp": 1788,
+				"atk": 425,
+				"hp": 1820,
 				"skill_name": "太公之悲",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -2469,8 +2472,8 @@ var outputTables = {
 				"name": "总兵·李靖",
 				"star": 1,
 				"lv": 1,
-				"atk": 62,
-				"hp": 198,
+				"atk": 65,
+				"hp": 140,
 				"normal_atk_id": 11,
 				"description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
 				"url": 13
@@ -2481,8 +2484,8 @@ var outputTables = {
 				"name": "人父·李靖",
 				"star": 2,
 				"lv": 1,
-				"atk": 113,
-				"hp": 394,
+				"atk": 115,
+				"hp": 340,
 				"normal_atk_id": 11,
 				"description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
 				"url": 13
@@ -2493,8 +2496,8 @@ var outputTables = {
 				"name": "降魔大元帅·李靖",
 				"star": 3,
 				"lv": 1,
-				"atk": 155,
-				"hp": 578,
+				"atk": 165,
+				"hp": 540,
 				"skill_name": "塔锁封禁",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2508,8 +2511,8 @@ var outputTables = {
 				"name": "保卫天庭·李靖",
 				"star": 4,
 				"lv": 1,
-				"atk": 219,
-				"hp": 804,
+				"atk": 215,
+				"hp": 740,
 				"skill_name": "塔锁封禁",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2523,8 +2526,8 @@ var outputTables = {
 				"name": "托塔天王·李靖",
 				"star": 5,
 				"lv": 1,
-				"atk": 288,
-				"hp": 1034,
+				"atk": 285,
+				"hp": 1020,
 				"skill_name": "塔锁封禁",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2538,8 +2541,8 @@ var outputTables = {
 				"name": "风火轮之爹·李靖",
 				"star": 6,
 				"lv": 1,
-				"atk": 371,
-				"hp": 1372,
+				"atk": 365,
+				"hp": 1340,
 				"skill_name": "塔锁封禁",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2553,8 +2556,8 @@ var outputTables = {
 				"name": "妇女之友·李靖",
 				"star": 7,
 				"lv": 1,
-				"atk": 476,
-				"hp": 1699,
+				"atk": 455,
+				"hp": 1700,
 				"skill_name": "塔锁封禁",
 				"skill_id": 6,
 				"normal_atk_id": 11,
@@ -2568,8 +2571,8 @@ var outputTables = {
 				"name": "瞬移·土行孙",
 				"star": 1,
 				"lv": 1,
-				"atk": 49,
-				"hp": 182,
+				"atk": 45,
+				"hp": 220,
 				"normal_atk_id": 11,
 				"description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
 				"url": 16
@@ -2580,8 +2583,8 @@ var outputTables = {
 				"name": "遁神·土行孙",
 				"star": 2,
 				"lv": 1,
-				"atk": 103,
-				"hp": 375,
+				"atk": 95,
+				"hp": 420,
 				"normal_atk_id": 11,
 				"description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
 				"url": 16
@@ -2592,8 +2595,8 @@ var outputTables = {
 				"name": "捆仙绳·土行孙",
 				"star": 3,
 				"lv": 1,
-				"atk": 156,
-				"hp": 578,
+				"atk": 145,
+				"hp": 620,
 				"skill_name": "土遁飞剑",
 				"skill_id": 4,
 				"normal_atk_id": 11,
@@ -2607,8 +2610,8 @@ var outputTables = {
 				"name": "地行仙·土行孙",
 				"star": 4,
 				"lv": 1,
-				"atk": 210,
-				"hp": 790,
+				"atk": 195,
+				"hp": 820,
 				"skill_name": "土遁飞剑",
 				"skill_id": 4,
 				"normal_atk_id": 11,
@@ -2622,8 +2625,8 @@ var outputTables = {
 				"name": "土府星君·土行孙",
 				"star": 5,
 				"lv": 1,
-				"atk": 277,
-				"hp": 1035,
+				"atk": 265,
+				"hp": 1100,
 				"skill_name": "土遁飞剑",
 				"skill_id": 4,
 				"normal_atk_id": 11,
@@ -2637,8 +2640,8 @@ var outputTables = {
 				"name": "三界屌丝·土行孙",
 				"star": 6,
 				"lv": 1,
-				"atk": 351,
-				"hp": 1328,
+				"atk": 345,
+				"hp": 1420,
 				"skill_name": "土遁飞剑",
 				"skill_id": 4,
 				"normal_atk_id": 11,
@@ -2652,8 +2655,8 @@ var outputTables = {
 				"name": "精神领袖·土行孙",
 				"star": 7,
 				"lv": 1,
-				"atk": 429,
-				"hp": 1650,
+				"atk": 435,
+				"hp": 1780,
 				"skill_name": "土遁飞剑",
 				"skill_id": 4,
 				"normal_atk_id": 11,
@@ -2667,8 +2670,8 @@ var outputTables = {
 				"name": "青城山·白素贞",
 				"star": 1,
 				"lv": 1,
-				"atk": 55,
-				"hp": 199,
+				"atk": 44,
+				"hp": 224,
 				"normal_atk_id": 4,
 				"description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
 				"url": 18
@@ -2679,8 +2682,8 @@ var outputTables = {
 				"name": "断桥·白素贞",
 				"star": 2,
 				"lv": 1,
-				"atk": 106,
-				"hp": 386,
+				"atk": 94,
+				"hp": 424,
 				"normal_atk_id": 4,
 				"description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
 				"url": 18
@@ -2691,8 +2694,8 @@ var outputTables = {
 				"name": "盗草·白素贞",
 				"star": 3,
 				"lv": 1,
-				"atk": 143,
-				"hp": 561,
+				"atk": 144,
+				"hp": 624,
 				"skill_name": "千年修",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -2706,8 +2709,8 @@ var outputTables = {
 				"name": "水漫金山·白素贞",
 				"star": 4,
 				"lv": 1,
-				"atk": 206,
-				"hp": 796,
+				"atk": 194,
+				"hp": 824,
 				"skill_name": "千年修",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -2721,8 +2724,8 @@ var outputTables = {
 				"name": "紫微星·白素贞",
 				"star": 5,
 				"lv": 1,
-				"atk": 265,
-				"hp": 1047,
+				"atk": 264,
+				"hp": 1104,
 				"skill_name": "千年修",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -2736,8 +2739,8 @@ var outputTables = {
 				"name": "雷峰塔·白素贞",
 				"star": 6,
 				"lv": 1,
-				"atk": 342,
-				"hp": 1300,
+				"atk": 344,
+				"hp": 1424,
 				"skill_name": "千年修",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -2751,8 +2754,8 @@ var outputTables = {
 				"name": "白娘子·白素贞",
 				"star": 7,
 				"lv": 1,
-				"atk": 431,
-				"hp": 1640,
+				"atk": 434,
+				"hp": 1784,
 				"skill_name": "千年修",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -2766,8 +2769,8 @@ var outputTables = {
 				"name": "青蛇·小青",
 				"star": 1,
 				"lv": 1,
-				"atk": 53,
-				"hp": 192,
+				"atk": 48,
+				"hp": 208,
 				"normal_atk_id": 5,
 				"description": "我修行了一千年，孤独了一千年。",
 				"url": 19
@@ -2778,8 +2781,8 @@ var outputTables = {
 				"name": "变身·小青",
 				"star": 2,
 				"lv": 1,
-				"atk": 106,
-				"hp": 371,
+				"atk": 98,
+				"hp": 408,
 				"normal_atk_id": 5,
 				"description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
 				"url": 19
@@ -2790,8 +2793,8 @@ var outputTables = {
 				"name": "斗法海·小青",
 				"star": 3,
 				"lv": 1,
-				"atk": 152,
-				"hp": 565,
+				"atk": 148,
+				"hp": 608,
 				"skill_name": "黯然销魂",
 				"skill_id": 3,
 				"normal_atk_id": 5,
@@ -2805,8 +2808,8 @@ var outputTables = {
 				"name": "烧塔·小青",
 				"star": 4,
 				"lv": 1,
-				"atk": 203,
-				"hp": 783,
+				"atk": 198,
+				"hp": 808,
 				"skill_name": "黯然销魂",
 				"skill_id": 3,
 				"normal_atk_id": 5,
@@ -2821,7 +2824,7 @@ var outputTables = {
 				"star": 5,
 				"lv": 1,
 				"atk": 268,
-				"hp": 1029,
+				"hp": 1088,
 				"skill_name": "黯然销魂",
 				"skill_id": 3,
 				"normal_atk_id": 5,
@@ -2835,8 +2838,8 @@ var outputTables = {
 				"name": "姐妹情深·小青",
 				"star": 6,
 				"lv": 1,
-				"atk": 331,
-				"hp": 1311,
+				"atk": 348,
+				"hp": 1408,
 				"skill_name": "黯然销魂",
 				"skill_id": 3,
 				"normal_atk_id": 5,
@@ -2850,8 +2853,8 @@ var outputTables = {
 				"name": "二次元·小青",
 				"star": 7,
 				"lv": 1,
-				"atk": 421,
-				"hp": 1721,
+				"atk": 438,
+				"hp": 1768,
 				"skill_name": "黯然销魂",
 				"skill_id": 3,
 				"normal_atk_id": 5,
@@ -2865,8 +2868,8 @@ var outputTables = {
 				"name": "秀姑·何仙姑",
 				"star": 1,
 				"lv": 1,
-				"atk": 60,
-				"hp": 179,
+				"atk": 38,
+				"hp": 248,
 				"normal_atk_id": 6,
 				"description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
 				"url": 20
@@ -2877,8 +2880,8 @@ var outputTables = {
 				"name": "辟谷·何仙姑",
 				"star": 2,
 				"lv": 1,
-				"atk": 111,
-				"hp": 363,
+				"atk": 88,
+				"hp": 448,
 				"normal_atk_id": 6,
 				"description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
 				"url": 20
@@ -2889,8 +2892,8 @@ var outputTables = {
 				"name": "凌风驾云·何仙姑",
 				"star": 3,
 				"lv": 1,
-				"atk": 161,
-				"hp": 562,
+				"atk": 138,
+				"hp": 648,
 				"skill_name": "莲花心经",
 				"skill_id": 10,
 				"normal_atk_id": 6,
@@ -2904,8 +2907,8 @@ var outputTables = {
 				"name": "风凰台·何仙姑",
 				"star": 4,
 				"lv": 1,
-				"atk": 221,
-				"hp": 793,
+				"atk": 188,
+				"hp": 848,
 				"skill_name": "莲花心经",
 				"skill_id": 10,
 				"normal_atk_id": 6,
@@ -2919,8 +2922,8 @@ var outputTables = {
 				"name": "碧波仙子·何仙姑",
 				"star": 5,
 				"lv": 1,
-				"atk": 290,
-				"hp": 1006,
+				"atk": 258,
+				"hp": 1128,
 				"skill_name": "莲花心经",
 				"skill_id": 10,
 				"normal_atk_id": 6,
@@ -2934,8 +2937,8 @@ var outputTables = {
 				"name": "八仙之女·何仙姑",
 				"star": 6,
 				"lv": 1,
-				"atk": 380,
-				"hp": 1360,
+				"atk": 338,
+				"hp": 1448,
 				"skill_name": "莲花心经",
 				"skill_id": 10,
 				"normal_atk_id": 6,
@@ -2949,8 +2952,8 @@ var outputTables = {
 				"name": "铁拐李之梦·何仙姑",
 				"star": 7,
 				"lv": 1,
-				"atk": 462,
-				"hp": 1692,
+				"atk": 428,
+				"hp": 1808,
 				"skill_name": "莲花心经",
 				"skill_id": 10,
 				"normal_atk_id": 6,
@@ -2964,8 +2967,8 @@ var outputTables = {
 				"name": "神游·铁拐李",
 				"star": 1,
 				"lv": 1,
-				"atk": 56,
-				"hp": 208,
+				"atk": 50,
+				"hp": 200,
 				"normal_atk_id": 7,
 				"description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
 				"url": 22
@@ -2976,8 +2979,8 @@ var outputTables = {
 				"name": "借尸还魂·铁拐李",
 				"star": 2,
 				"lv": 1,
-				"atk": 111,
-				"hp": 366,
+				"atk": 100,
+				"hp": 400,
 				"normal_atk_id": 7,
 				"description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
 				"url": 22
@@ -2988,8 +2991,8 @@ var outputTables = {
 				"name": "化龙·铁拐李",
 				"star": 3,
 				"lv": 1,
-				"atk": 159,
-				"hp": 544,
+				"atk": 150,
+				"hp": 600,
 				"skill_name": "流星拐",
 				"skill_id": 4,
 				"normal_atk_id": 7,
@@ -3003,8 +3006,8 @@ var outputTables = {
 				"name": "呼风唤雨·铁拐李",
 				"star": 4,
 				"lv": 1,
-				"atk": 221,
-				"hp": 784,
+				"atk": 200,
+				"hp": 800,
 				"skill_name": "流星拐",
 				"skill_id": 4,
 				"normal_atk_id": 7,
@@ -3018,8 +3021,8 @@ var outputTables = {
 				"name": "东华教主·铁拐李",
 				"star": 5,
 				"lv": 1,
-				"atk": 276,
-				"hp": 1038,
+				"atk": 270,
+				"hp": 1080,
 				"skill_name": "流星拐",
 				"skill_id": 4,
 				"normal_atk_id": 7,
@@ -3033,8 +3036,8 @@ var outputTables = {
 				"name": "横扫千军·铁拐李",
 				"star": 6,
 				"lv": 1,
-				"atk": 365,
-				"hp": 1352,
+				"atk": 350,
+				"hp": 1400,
 				"skill_name": "流星拐",
 				"skill_id": 4,
 				"normal_atk_id": 7,
@@ -3048,8 +3051,8 @@ var outputTables = {
 				"name": "地动山摇·铁拐李",
 				"star": 7,
 				"lv": 1,
-				"atk": 442,
-				"hp": 1670,
+				"atk": 440,
+				"hp": 1760,
 				"skill_name": "流星拐",
 				"skill_id": 4,
 				"normal_atk_id": 7,
@@ -3063,8 +3066,8 @@ var outputTables = {
 				"name": "不羁·韩湘子",
 				"star": 1,
 				"lv": 1,
-				"atk": 41,
-				"hp": 198,
+				"atk": 53,
+				"hp": 188,
 				"normal_atk_id": 2,
 				"description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
 				"url": 25
@@ -3075,8 +3078,8 @@ var outputTables = {
 				"name": "天花引·韩湘子",
 				"star": 2,
 				"lv": 1,
-				"atk": 92,
-				"hp": 418,
+				"atk": 103,
+				"hp": 388,
 				"normal_atk_id": 2,
 				"description": "我一辈子只写了这一曲，却流传了几辈子。",
 				"url": 25
@@ -3087,8 +3090,8 @@ var outputTables = {
 				"name": "点化·韩湘子",
 				"star": 3,
 				"lv": 1,
-				"atk": 144,
-				"hp": 593,
+				"atk": 153,
+				"hp": 588,
 				"skill_name": "天籁之音",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -3102,8 +3105,8 @@ var outputTables = {
 				"name": "箫中情·韩湘子",
 				"star": 4,
 				"lv": 1,
-				"atk": 179,
-				"hp": 845,
+				"atk": 203,
+				"hp": 788,
 				"skill_name": "天籁之音",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -3117,8 +3120,8 @@ var outputTables = {
 				"name": "尸解仙·韩湘子",
 				"star": 5,
 				"lv": 1,
-				"atk": 255,
-				"hp": 1067,
+				"atk": 273,
+				"hp": 1068,
 				"skill_name": "天籁之音",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -3132,8 +3135,8 @@ var outputTables = {
 				"name": "多情种子·韩湘子",
 				"star": 6,
 				"lv": 1,
-				"atk": 338,
-				"hp": 1392,
+				"atk": 353,
+				"hp": 1388,
 				"skill_name": "天籁之音",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -3147,8 +3150,8 @@ var outputTables = {
 				"name": "八仙之首·韩湘子",
 				"star": 7,
 				"lv": 1,
-				"atk": 421,
-				"hp": 1710,
+				"atk": 443,
+				"hp": 1748,
 				"skill_name": "天籁之音",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -3162,8 +3165,8 @@ var outputTables = {
 				"name": "女红·织女",
 				"star": 1,
 				"lv": 1,
-				"atk": 42,
-				"hp": 185,
+				"atk": 40,
+				"hp": 240,
 				"normal_atk_id": 1,
 				"description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。",
 				"url": 28
@@ -3174,8 +3177,8 @@ var outputTables = {
 				"name": "天浴·织女",
 				"star": 2,
 				"lv": 1,
-				"atk": 92,
-				"hp": 398,
+				"atk": 90,
+				"hp": 440,
 				"normal_atk_id": 1,
 				"description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。",
 				"url": 28
@@ -3186,8 +3189,8 @@ var outputTables = {
 				"name": "天伦·织女",
 				"star": 3,
 				"lv": 1,
-				"atk": 132,
-				"hp": 581,
+				"atk": 140,
+				"hp": 640,
 				"skill_name": "鹊桥泪",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -3201,8 +3204,8 @@ var outputTables = {
 				"name": "七仙姑·织女",
 				"star": 4,
 				"lv": 1,
-				"atk": 182,
-				"hp": 839,
+				"atk": 190,
+				"hp": 840,
 				"skill_name": "鹊桥泪",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -3216,8 +3219,8 @@ var outputTables = {
 				"name": "七星娘娘·织女",
 				"star": 5,
 				"lv": 1,
-				"atk": 242,
-				"hp": 1082,
+				"atk": 260,
+				"hp": 1120,
 				"skill_name": "鹊桥泪",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -3231,8 +3234,8 @@ var outputTables = {
 				"name": "鹊桥泪·织女",
 				"star": 6,
 				"lv": 1,
-				"atk": 346,
-				"hp": 1368,
+				"atk": 340,
+				"hp": 1440,
 				"skill_name": "鹊桥泪",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -3246,8 +3249,8 @@ var outputTables = {
 				"name": "牛郎情·织女",
 				"star": 7,
 				"lv": 1,
-				"atk": 445,
-				"hp": 1699,
+				"atk": 430,
+				"hp": 1800,
 				"skill_name": "鹊桥泪",
 				"skill_id": 7,
 				"normal_atk_id": 1,
@@ -3261,8 +3264,8 @@ var outputTables = {
 				"name": "决斗·吴刚",
 				"star": 1,
 				"lv": 1,
-				"atk": 33,
-				"hp": 187,
+				"atk": 36,
+				"hp": 256,
 				"normal_atk_id": 12,
 				"description": "偷情也就算了，还生了三个娃，让我喜当爹三次！",
 				"url": 29
@@ -3273,8 +3276,8 @@ var outputTables = {
 				"name": "刺配·吴刚",
 				"star": 2,
 				"lv": 1,
-				"atk": 83,
-				"hp": 400,
+				"atk": 86,
+				"hp": 456,
 				"normal_atk_id": 12,
 				"description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。",
 				"url": 29
@@ -3285,8 +3288,8 @@ var outputTables = {
 				"name": "樵夫·吴刚",
 				"star": 3,
 				"lv": 1,
-				"atk": 133,
-				"hp": 582,
+				"atk": 136,
+				"hp": 656,
 				"skill_name": "半月斩",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3300,8 +3303,8 @@ var outputTables = {
 				"name": "逆袭·吴刚",
 				"star": 4,
 				"lv": 1,
-				"atk": 183,
-				"hp": 841,
+				"atk": 186,
+				"hp": 856,
 				"skill_name": "半月斩",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3315,8 +3318,8 @@ var outputTables = {
 				"name": "桂花仙·吴刚",
 				"star": 5,
 				"lv": 1,
-				"atk": 243,
-				"hp": 1069,
+				"atk": 256,
+				"hp": 1136,
 				"skill_name": "半月斩",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3330,8 +3333,8 @@ var outputTables = {
 				"name": "玉兔泪·吴刚",
 				"star": 6,
 				"lv": 1,
-				"atk": 368,
-				"hp": 1352,
+				"atk": 336,
+				"hp": 1456,
 				"skill_name": "半月斩",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3345,8 +3348,8 @@ var outputTables = {
 				"name": "嫦娥梦·吴刚",
 				"star": 7,
 				"lv": 1,
-				"atk": 462,
-				"hp": 1682,
+				"atk": 426,
+				"hp": 1816,
 				"skill_name": "半月斩",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3360,8 +3363,8 @@ var outputTables = {
 				"name": "天书·鬼谷子",
 				"star": 1,
 				"lv": 1,
-				"atk": 46,
-				"hp": 202,
+				"atk": 43,
+				"hp": 228,
 				"normal_atk_id": 8,
 				"description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！",
 				"url": 30
@@ -3372,8 +3375,8 @@ var outputTables = {
 				"name": "纵横术·鬼谷子",
 				"star": 2,
 				"lv": 1,
-				"atk": 95,
-				"hp": 398,
+				"atk": 93,
+				"hp": 428,
 				"normal_atk_id": 8,
 				"description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！",
 				"url": 30
@@ -3384,8 +3387,8 @@ var outputTables = {
 				"name": "鬼谷井·鬼谷子",
 				"star": 3,
 				"lv": 1,
-				"atk": 145,
-				"hp": 585,
+				"atk": 143,
+				"hp": 628,
 				"skill_name": "鬼脚七",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -3399,8 +3402,8 @@ var outputTables = {
 				"name": "斩草撒豆·鬼谷子",
 				"star": 4,
 				"lv": 1,
-				"atk": 188,
-				"hp": 845,
+				"atk": 193,
+				"hp": 828,
 				"skill_name": "鬼脚七",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -3414,8 +3417,8 @@ var outputTables = {
 				"name": "玄微真人·鬼谷子",
 				"star": 5,
 				"lv": 1,
-				"atk": 244,
-				"hp": 1096,
+				"atk": 263,
+				"hp": 1108,
 				"skill_name": "鬼脚七",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -3429,8 +3432,8 @@ var outputTables = {
 				"name": "冥界丧神·鬼谷子",
 				"star": 6,
 				"lv": 1,
-				"atk": 367,
-				"hp": 1349,
+				"atk": 343,
+				"hp": 1428,
 				"skill_name": "鬼脚七",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -3444,8 +3447,8 @@ var outputTables = {
 				"name": "阎罗无极·鬼谷子",
 				"star": 7,
 				"lv": 1,
-				"atk": 455,
-				"hp": 1679,
+				"atk": 433,
+				"hp": 1788,
 				"skill_name": "鬼脚七",
 				"skill_id": 1,
 				"normal_atk_id": 8,
@@ -3459,8 +3462,8 @@ var outputTables = {
 				"name": "生老病死·黑无常",
 				"star": 1,
 				"lv": 1,
-				"atk": 50,
-				"hp": 199,
+				"atk": 55,
+				"hp": 180,
 				"normal_atk_id": 5,
 				"description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？",
 				"url": 31
@@ -3471,8 +3474,8 @@ var outputTables = {
 				"name": "爱别离·黑无常",
 				"star": 2,
 				"lv": 1,
-				"atk": 102,
-				"hp": 424,
+				"atk": 105,
+				"hp": 380,
 				"normal_atk_id": 5,
 				"description": "我能想到最浪漫的事，就是和你一起卖卖电脑。",
 				"url": 31
@@ -3483,8 +3486,8 @@ var outputTables = {
 				"name": "怨憎会·黑无常",
 				"star": 3,
 				"lv": 1,
-				"atk": 149,
-				"hp": 575,
+				"atk": 155,
+				"hp": 580,
 				"skill_name": "招魂蟠",
 				"skill_id": 6,
 				"normal_atk_id": 5,
@@ -3498,8 +3501,8 @@ var outputTables = {
 				"name": "求不得·黑无常",
 				"star": 4,
 				"lv": 1,
-				"atk": 201,
-				"hp": 834,
+				"atk": 205,
+				"hp": 780,
 				"skill_name": "招魂蟠",
 				"skill_id": 6,
 				"normal_atk_id": 5,
@@ -3513,8 +3516,8 @@ var outputTables = {
 				"name": "五阴盛·黑无常",
 				"star": 5,
 				"lv": 1,
-				"atk": 265,
-				"hp": 1093,
+				"atk": 275,
+				"hp": 1060,
 				"skill_name": "招魂蟠",
 				"skill_id": 6,
 				"normal_atk_id": 5,
@@ -3528,8 +3531,8 @@ var outputTables = {
 				"name": "恶鬼道·黑无常",
 				"star": 6,
 				"lv": 1,
-				"atk": 357,
-				"hp": 1342,
+				"atk": 355,
+				"hp": 1380,
 				"skill_name": "招魂蟠",
 				"skill_id": 6,
 				"normal_atk_id": 5,
@@ -3543,8 +3546,8 @@ var outputTables = {
 				"name": "非洲梦·黑无常",
 				"star": 7,
 				"lv": 1,
-				"atk": 421,
-				"hp": 1688,
+				"atk": 445,
+				"hp": 1740,
 				"skill_name": "招魂蟠",
 				"skill_id": 6,
 				"normal_atk_id": 5,
@@ -3558,8 +3561,8 @@ var outputTables = {
 				"name": "地狱道·白无常",
 				"star": 1,
 				"lv": 1,
-				"atk": 53,
-				"hp": 192,
+				"atk": 42,
+				"hp": 232,
 				"normal_atk_id": 7,
 				"description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。",
 				"url": 32
@@ -3570,8 +3573,8 @@ var outputTables = {
 				"name": "恶鬼道·白无常",
 				"star": 2,
 				"lv": 1,
-				"atk": 105,
-				"hp": 421,
+				"atk": 92,
+				"hp": 432,
 				"normal_atk_id": 7,
 				"description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！",
 				"url": 32
@@ -3582,8 +3585,8 @@ var outputTables = {
 				"name": "畜生道·白无常",
 				"star": 3,
 				"lv": 1,
-				"atk": 154,
-				"hp": 561,
+				"atk": 142,
+				"hp": 632,
 				"skill_name": "哭丧棒",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -3597,8 +3600,8 @@ var outputTables = {
 				"name": "阿修罗道·白无常",
 				"star": 4,
 				"lv": 1,
-				"atk": 206,
-				"hp": 845,
+				"atk": 192,
+				"hp": 832,
 				"skill_name": "哭丧棒",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -3612,8 +3615,8 @@ var outputTables = {
 				"name": "人间道·白无常",
 				"star": 5,
 				"lv": 1,
-				"atk": 266,
-				"hp": 1012,
+				"atk": 262,
+				"hp": 1112,
 				"skill_name": "哭丧棒",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -3628,7 +3631,7 @@ var outputTables = {
 				"star": 6,
 				"lv": 1,
 				"atk": 342,
-				"hp": 1356,
+				"hp": 1432,
 				"skill_name": "哭丧棒",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -3642,8 +3645,8 @@ var outputTables = {
 				"name": "亚洲梦·白无常",
 				"star": 7,
 				"lv": 1,
-				"atk": 451,
-				"hp": 1685,
+				"atk": 432,
+				"hp": 1792,
 				"skill_name": "哭丧棒",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -3657,8 +3660,8 @@ var outputTables = {
 				"name": "科员·日游神",
 				"star": 1,
 				"lv": 1,
-				"atk": 62,
-				"hp": 190,
+				"atk": 48,
+				"hp": 208,
 				"normal_atk_id": 12,
 				"description": "我怎么也是个有编制的神，可不是临时工。",
 				"url": 33
@@ -3669,8 +3672,8 @@ var outputTables = {
 				"name": "副科长·日游神",
 				"star": 2,
 				"lv": 1,
-				"atk": 112,
-				"hp": 371,
+				"atk": 98,
+				"hp": 408,
 				"normal_atk_id": 12,
 				"description": "终于走上领导岗位了，虽然还是要整天出来巡街。",
 				"url": 33
@@ -3681,8 +3684,8 @@ var outputTables = {
 				"name": "科长·日游神",
 				"star": 3,
 				"lv": 1,
-				"atk": 159,
-				"hp": 568,
+				"atk": 148,
+				"hp": 608,
 				"skill_name": "日炎拳",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3696,8 +3699,8 @@ var outputTables = {
 				"name": "副处长·日游神",
 				"star": 4,
 				"lv": 1,
-				"atk": 222,
-				"hp": 789,
+				"atk": 198,
+				"hp": 808,
 				"skill_name": "日炎拳",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3712,7 +3715,7 @@ var outputTables = {
 				"star": 5,
 				"lv": 1,
 				"atk": 268,
-				"hp": 1017,
+				"hp": 1088,
 				"skill_name": "日炎拳",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3726,8 +3729,8 @@ var outputTables = {
 				"name": "科长·日游神",
 				"star": 6,
 				"lv": 1,
-				"atk": 333,
-				"hp": 1342,
+				"atk": 348,
+				"hp": 1408,
 				"skill_name": "日炎拳",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3741,8 +3744,8 @@ var outputTables = {
 				"name": "部长·日游神",
 				"star": 7,
 				"lv": 1,
-				"atk": 425,
-				"hp": 1666,
+				"atk": 438,
+				"hp": 1768,
 				"skill_name": "日炎拳",
 				"skill_id": 1,
 				"normal_atk_id": 12,
@@ -3756,8 +3759,8 @@ var outputTables = {
 				"name": "士官·夜游神",
 				"star": 1,
 				"lv": 1,
-				"atk": 60,
-				"hp": 185,
+				"atk": 51,
+				"hp": 196,
 				"normal_atk_id": 9,
 				"description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。",
 				"url": 34
@@ -3768,8 +3771,8 @@ var outputTables = {
 				"name": "中尉·夜游神",
 				"star": 2,
 				"lv": 1,
-				"atk": 115,
-				"hp": 374,
+				"atk": 101,
+				"hp": 396,
 				"normal_atk_id": 9,
 				"description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
 				"url": 34
@@ -3780,8 +3783,8 @@ var outputTables = {
 				"name": "少校·夜游神",
 				"star": 3,
 				"lv": 1,
-				"atk": 162,
-				"hp": 567,
+				"atk": 151,
+				"hp": 596,
 				"skill_name": "流星击",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -3795,8 +3798,8 @@ var outputTables = {
 				"name": "上校·夜游神",
 				"star": 4,
 				"lv": 1,
-				"atk": 223,
-				"hp": 783,
+				"atk": 201,
+				"hp": 796,
 				"skill_name": "流星击",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -3810,8 +3813,8 @@ var outputTables = {
 				"name": "大校·夜游神",
 				"star": 5,
 				"lv": 1,
-				"atk": 279,
-				"hp": 1015,
+				"atk": 271,
+				"hp": 1076,
 				"skill_name": "流星击",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -3825,8 +3828,8 @@ var outputTables = {
 				"name": "少将·夜游神",
 				"star": 6,
 				"lv": 1,
-				"atk": 372,
-				"hp": 1321,
+				"atk": 351,
+				"hp": 1396,
 				"skill_name": "流星击",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -3840,8 +3843,8 @@ var outputTables = {
 				"name": "中将·夜游神",
 				"star": 7,
 				"lv": 1,
-				"atk": 462,
-				"hp": 1652,
+				"atk": 441,
+				"hp": 1756,
 				"skill_name": "流星击",
 				"skill_id": 1,
 				"normal_atk_id": 9,
@@ -3855,8 +3858,8 @@ var outputTables = {
 				"name": "公主驾到·精卫",
 				"star": 1,
 				"lv": 1,
-				"atk": 45,
-				"hp": 207,
+				"atk": 41,
+				"hp": 236,
 				"normal_atk_id": 4,
 				"description": "虽然咱们部落没多少人，但我也算是个公主呀！",
 				"url": 36
@@ -3867,8 +3870,8 @@ var outputTables = {
 				"name": "海泳·精卫",
 				"star": 2,
 				"lv": 1,
-				"atk": 106,
-				"hp": 392,
+				"atk": 91,
+				"hp": 436,
 				"normal_atk_id": 4,
 				"description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。",
 				"url": 36
@@ -3879,8 +3882,8 @@ var outputTables = {
 				"name": "东海遇·精卫",
 				"star": 3,
 				"lv": 1,
-				"atk": 151,
-				"hp": 579,
+				"atk": 141,
+				"hp": 636,
 				"skill_name": "碧波滔天",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -3894,8 +3897,8 @@ var outputTables = {
 				"name": "逼婚·精卫",
 				"star": 4,
 				"lv": 1,
-				"atk": 200,
-				"hp": 815,
+				"atk": 191,
+				"hp": 836,
 				"skill_name": "碧波滔天",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -3909,8 +3912,8 @@ var outputTables = {
 				"name": "化鸟·精卫",
 				"star": 5,
 				"lv": 1,
-				"atk": 280,
-				"hp": 1096,
+				"atk": 261,
+				"hp": 1116,
 				"skill_name": "碧波滔天",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -3924,8 +3927,8 @@ var outputTables = {
 				"name": "生死恋·精卫",
 				"star": 6,
 				"lv": 1,
-				"atk": 373,
-				"hp": 1329,
+				"atk": 341,
+				"hp": 1436,
 				"skill_name": "碧波滔天",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -3939,8 +3942,8 @@ var outputTables = {
 				"name": "东海卫士·精卫",
 				"star": 7,
 				"lv": 1,
-				"atk": 468,
-				"hp": 1659,
+				"atk": 431,
+				"hp": 1796,
 				"skill_name": "碧波滔天",
 				"skill_id": 8,
 				"normal_atk_id": 4,
@@ -3954,8 +3957,8 @@ var outputTables = {
 				"name": "箭客·后羿",
 				"star": 1,
 				"lv": 1,
-				"atk": 44,
-				"hp": 214,
+				"atk": 52,
+				"hp": 192,
 				"normal_atk_id": 2,
 				"description": "我喜欢射，我喜欢箭，我是箭客！",
 				"url": 38
@@ -3966,8 +3969,8 @@ var outputTables = {
 				"name": "失嫦娥·后羿",
 				"star": 2,
 				"lv": 1,
-				"atk": 93,
-				"hp": 397,
+				"atk": 102,
+				"hp": 392,
 				"normal_atk_id": 2,
 				"description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。",
 				"url": 38
@@ -3978,8 +3981,8 @@ var outputTables = {
 				"name": "七弦·后羿",
 				"star": 3,
 				"lv": 1,
-				"atk": 144,
-				"hp": 590,
+				"atk": 152,
+				"hp": 592,
 				"skill_name": "穿云箭",
 				"skill_id": 3,
 				"normal_atk_id": 2,
@@ -3993,8 +3996,8 @@ var outputTables = {
 				"name": "射日·后羿",
 				"star": 4,
 				"lv": 1,
-				"atk": 205,
-				"hp": 822,
+				"atk": 202,
+				"hp": 792,
 				"skill_name": "穿云箭",
 				"skill_id": 3,
 				"normal_atk_id": 2,
@@ -4008,8 +4011,8 @@ var outputTables = {
 				"name": "宗布神·后羿",
 				"star": 5,
 				"lv": 1,
-				"atk": 277,
-				"hp": 1108,
+				"atk": 272,
+				"hp": 1072,
 				"skill_name": "穿云箭",
 				"skill_id": 3,
 				"normal_atk_id": 2,
@@ -4023,8 +4026,8 @@ var outputTables = {
 				"name": "偶像·后羿",
 				"star": 6,
 				"lv": 1,
-				"atk": 375,
-				"hp": 1341,
+				"atk": 352,
+				"hp": 1392,
 				"skill_name": "穿云箭",
 				"skill_id": 3,
 				"normal_atk_id": 2,
@@ -4038,8 +4041,8 @@ var outputTables = {
 				"name": "笑看风云·后羿",
 				"star": 7,
 				"lv": 1,
-				"atk": 462,
-				"hp": 1679,
+				"atk": 442,
+				"hp": 1752,
 				"skill_name": "穿云箭",
 				"skill_id": 3,
 				"normal_atk_id": 2,
@@ -4053,8 +4056,8 @@ var outputTables = {
 				"name": "郎才女貌·嫦娥",
 				"star": 1,
 				"lv": 1,
-				"atk": 62,
-				"hp": 185,
+				"atk": 56,
+				"hp": 176,
 				"normal_atk_id": 5,
 				"description": "后羿是个神射手，嫁给他我很幸福，你懂的。",
 				"url": 39
@@ -4065,8 +4068,8 @@ var outputTables = {
 				"name": "奔月·嫦娥",
 				"star": 2,
 				"lv": 1,
-				"atk": 105,
-				"hp": 354,
+				"atk": 106,
+				"hp": 376,
 				"normal_atk_id": 5,
 				"description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。",
 				"url": 39
@@ -4077,8 +4080,8 @@ var outputTables = {
 				"name": "捣药·嫦娥",
 				"star": 3,
 				"lv": 1,
-				"atk": 159,
-				"hp": 535,
+				"atk": 156,
+				"hp": 576,
 				"skill_name": "天音玄",
 				"skill_id": 4,
 				"normal_atk_id": 5,
@@ -4092,8 +4095,8 @@ var outputTables = {
 				"name": "真爱·嫦娥",
 				"star": 4,
 				"lv": 1,
-				"atk": 212,
-				"hp": 763,
+				"atk": 206,
+				"hp": 776,
 				"skill_name": "天音玄",
 				"skill_id": 4,
 				"normal_atk_id": 5,
@@ -4107,8 +4110,8 @@ var outputTables = {
 				"name": "月光女神·嫦娥",
 				"star": 5,
 				"lv": 1,
-				"atk": 290,
-				"hp": 983,
+				"atk": 276,
+				"hp": 1056,
 				"skill_name": "天音玄",
 				"skill_id": 4,
 				"normal_atk_id": 5,
@@ -4122,8 +4125,8 @@ var outputTables = {
 				"name": "梦中情人·嫦娥",
 				"star": 6,
 				"lv": 1,
-				"atk": 385,
-				"hp": 1290,
+				"atk": 356,
+				"hp": 1376,
 				"skill_name": "天音玄",
 				"skill_id": 4,
 				"normal_atk_id": 5,
@@ -4137,8 +4140,8 @@ var outputTables = {
 				"name": "桂花泪·嫦娥",
 				"star": 7,
 				"lv": 1,
-				"atk": 475,
-				"hp": 1610,
+				"atk": 446,
+				"hp": 1736,
 				"skill_name": "天音玄",
 				"skill_id": 4,
 				"normal_atk_id": 5,
@@ -4153,7 +4156,7 @@ var outputTables = {
 				"star": 1,
 				"lv": 1,
 				"atk": 51,
-				"hp": 184,
+				"hp": 196,
 				"normal_atk_id": 6,
 				"description": "嫁给河伯是我一生最大的错。",
 				"url": 43
@@ -4165,7 +4168,7 @@ var outputTables = {
 				"star": 2,
 				"lv": 1,
 				"atk": 101,
-				"hp": 382,
+				"hp": 396,
 				"normal_atk_id": 6,
 				"description": "我献出洛书，只是想离开这个人。",
 				"url": 43
@@ -4177,7 +4180,7 @@ var outputTables = {
 				"star": 3,
 				"lv": 1,
 				"atk": 151,
-				"hp": 564,
+				"hp": 596,
 				"skill_name": "水乳之欢",
 				"skill_id": 9,
 				"normal_atk_id": 6,
@@ -4192,7 +4195,7 @@ var outputTables = {
 				"star": 4,
 				"lv": 1,
 				"atk": 201,
-				"hp": 792,
+				"hp": 796,
 				"skill_name": "水乳之欢",
 				"skill_id": 9,
 				"normal_atk_id": 6,
@@ -4207,7 +4210,7 @@ var outputTables = {
 				"star": 5,
 				"lv": 1,
 				"atk": 271,
-				"hp": 1020,
+				"hp": 1076,
 				"skill_name": "水乳之欢",
 				"skill_id": 9,
 				"normal_atk_id": 6,
@@ -4221,8 +4224,8 @@ var outputTables = {
 				"name": "爱爱女神·宓妃",
 				"star": 6,
 				"lv": 1,
-				"atk": 348,
-				"hp": 1328,
+				"atk": 351,
+				"hp": 1396,
 				"skill_name": "水乳之欢",
 				"skill_id": 9,
 				"normal_atk_id": 6,
@@ -4236,8 +4239,8 @@ var outputTables = {
 				"name": "笑傲天庭·宓妃",
 				"star": 7,
 				"lv": 1,
-				"atk": 439,
-				"hp": 1676,
+				"atk": 441,
+				"hp": 1756,
 				"skill_name": "水乳之欢",
 				"skill_id": 9,
 				"normal_atk_id": 6,
@@ -4251,8 +4254,8 @@ var outputTables = {
 				"name": "长生之道·张道陵",
 				"star": 1,
 				"lv": 1,
-				"atk": 49,
-				"hp": 192,
+				"atk": 46,
+				"hp": 216,
 				"normal_atk_id": 7,
 				"description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。",
 				"url": 44
@@ -4263,8 +4266,8 @@ var outputTables = {
 				"name": "神医·张道陵",
 				"star": 2,
 				"lv": 1,
-				"atk": 106,
-				"hp": 377,
+				"atk": 96,
+				"hp": 416,
 				"normal_atk_id": 7,
 				"description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？",
 				"url": 44
@@ -4275,8 +4278,8 @@ var outputTables = {
 				"name": "授术·张道陵",
 				"star": 3,
 				"lv": 1,
-				"atk": 158,
-				"hp": 568,
+				"atk": 146,
+				"hp": 616,
 				"skill_name": "无米之炊",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -4290,8 +4293,8 @@ var outputTables = {
 				"name": "五斗米·张道陵",
 				"star": 4,
 				"lv": 1,
-				"atk": 203,
-				"hp": 807,
+				"atk": 196,
+				"hp": 816,
 				"skill_name": "无米之炊",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -4305,8 +4308,8 @@ var outputTables = {
 				"name": "天师·张道陵",
 				"star": 5,
 				"lv": 1,
-				"atk": 274,
-				"hp": 1031,
+				"atk": 266,
+				"hp": 1096,
 				"skill_name": "无米之炊",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -4320,8 +4323,8 @@ var outputTables = {
 				"name": "三界·张道陵",
 				"star": 6,
 				"lv": 1,
-				"atk": 335,
-				"hp": 1341,
+				"atk": 346,
+				"hp": 1416,
 				"skill_name": "无米之炊",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -4335,8 +4338,8 @@ var outputTables = {
 				"name": "无极·张道陵",
 				"star": 7,
 				"lv": 1,
-				"atk": 428,
-				"hp": 1668,
+				"atk": 436,
+				"hp": 1776,
 				"skill_name": "无米之炊",
 				"skill_id": 2,
 				"normal_atk_id": 7,
@@ -4350,8 +4353,8 @@ var outputTables = {
 				"name": "异人·哪吒",
 				"star": 1,
 				"lv": 1,
-				"atk": 46,
-				"hp": 213,
+				"atk": 60,
+				"hp": 160,
 				"normal_atk_id": 3,
 				"description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？",
 				"url": 49
@@ -4362,8 +4365,8 @@ var outputTables = {
 				"name": "小仙·哪吒",
 				"star": 2,
 				"lv": 1,
-				"atk": 92,
-				"hp": 441,
+				"atk": 110,
+				"hp": 360,
 				"normal_atk_id": 3,
 				"description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。",
 				"url": 49
@@ -4374,8 +4377,8 @@ var outputTables = {
 				"name": "神臂·哪吒",
 				"star": 3,
 				"lv": 1,
-				"atk": 141,
-				"hp": 623,
+				"atk": 160,
+				"hp": 560,
 				"skill_name": "风火轮",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -4389,8 +4392,8 @@ var outputTables = {
 				"name": "擒龙·哪吒",
 				"star": 4,
 				"lv": 1,
-				"atk": 192,
-				"hp": 851,
+				"atk": 210,
+				"hp": 760,
 				"skill_name": "风火轮",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -4404,8 +4407,8 @@ var outputTables = {
 				"name": "不死·哪吒",
 				"star": 5,
 				"lv": 1,
-				"atk": 262,
-				"hp": 1094,
+				"atk": 280,
+				"hp": 1040,
 				"skill_name": "风火轮",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -4419,8 +4422,8 @@ var outputTables = {
 				"name": "龙骨枪·哪吒",
 				"star": 6,
 				"lv": 1,
-				"atk": 325,
-				"hp": 1396,
+				"atk": 360,
+				"hp": 1360,
 				"skill_name": "风火轮",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -4434,8 +4437,8 @@ var outputTables = {
 				"name": "风火轮·哪吒",
 				"star": 7,
 				"lv": 1,
-				"atk": 421,
-				"hp": 1710,
+				"atk": 450,
+				"hp": 1720,
 				"skill_name": "风火轮",
 				"skill_id": 1,
 				"normal_atk_id": 3,
@@ -4449,8 +4452,8 @@ var outputTables = {
 				"name": "灯芯·紫霞",
 				"star": 1,
 				"lv": 1,
-				"atk": 55,
-				"hp": 207,
+				"atk": 47,
+				"hp": 212,
 				"normal_atk_id": 2,
 				"description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。",
 				"url": 50
@@ -4461,8 +4464,8 @@ var outputTables = {
 				"name": "盘丝大仙·紫霞",
 				"star": 2,
 				"lv": 1,
-				"atk": 91,
-				"hp": 441,
+				"atk": 97,
+				"hp": 412,
 				"normal_atk_id": 2,
 				"description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。",
 				"url": 50
@@ -4473,8 +4476,8 @@ var outputTables = {
 				"name": "紫青宝剑·紫霞",
 				"star": 3,
 				"lv": 1,
-				"atk": 141,
-				"hp": 623,
+				"atk": 147,
+				"hp": 612,
 				"skill_name": "月光宝盒",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -4488,8 +4491,8 @@ var outputTables = {
 				"name": "月光宝盒·紫霞",
 				"star": 4,
 				"lv": 1,
-				"atk": 185,
-				"hp": 845,
+				"atk": 197,
+				"hp": 812,
 				"skill_name": "月光宝盒",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -4503,8 +4506,8 @@ var outputTables = {
 				"name": "七色云彩·紫霞",
 				"star": 5,
 				"lv": 1,
-				"atk": 255,
-				"hp": 1102,
+				"atk": 267,
+				"hp": 1092,
 				"skill_name": "月光宝盒",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -4518,8 +4521,8 @@ var outputTables = {
 				"name": "至尊情·紫霞",
 				"star": 6,
 				"lv": 1,
-				"atk": 326,
-				"hp": 1380,
+				"atk": 347,
+				"hp": 1412,
 				"skill_name": "月光宝盒",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -4533,8 +4536,8 @@ var outputTables = {
 				"name": "诀别·紫霞",
 				"star": 7,
 				"lv": 1,
-				"atk": 429,
-				"hp": 1688,
+				"atk": 437,
+				"hp": 1772,
 				"skill_name": "月光宝盒",
 				"skill_id": 5,
 				"normal_atk_id": 2,
@@ -4548,8 +4551,8 @@ var outputTables = {
 				"name": "智慧·文曲星",
 				"star": 1,
 				"lv": 1,
-				"atk": 46,
-				"hp": 205,
+				"atk": 50,
+				"hp": 200,
 				"normal_atk_id": 5,
 				"description": "天生智商300多，这不是我的错。",
 				"url": 51
@@ -4560,8 +4563,8 @@ var outputTables = {
 				"name": "凡尘·文曲星",
 				"star": 2,
 				"lv": 1,
-				"atk": 110,
-				"hp": 391,
+				"atk": 100,
+				"hp": 400,
 				"normal_atk_id": 5,
 				"description": "不能老呆天上，该下凡尘时，必须得下去走一趟。",
 				"url": 51
@@ -4572,8 +4575,8 @@ var outputTables = {
 				"name": "状元·文曲星",
 				"star": 3,
 				"lv": 1,
-				"atk": 152,
-				"hp": 581,
+				"atk": 150,
+				"hp": 600,
 				"skill_name": "慧眼诀",
 				"skill_id": 2,
 				"normal_atk_id": 5,
@@ -4587,8 +4590,8 @@ var outputTables = {
 				"name": "了然缘·文曲星",
 				"star": 4,
 				"lv": 1,
-				"atk": 201,
-				"hp": 813,
+				"atk": 200,
+				"hp": 800,
 				"skill_name": "慧眼诀",
 				"skill_id": 2,
 				"normal_atk_id": 5,
@@ -4602,8 +4605,8 @@ var outputTables = {
 				"name": "慧心三界·文曲星",
 				"star": 5,
 				"lv": 1,
-				"atk": 281,
-				"hp": 1097,
+				"atk": 270,
+				"hp": 1080,
 				"skill_name": "慧眼诀",
 				"skill_id": 2,
 				"normal_atk_id": 5,
@@ -4617,8 +4620,8 @@ var outputTables = {
 				"name": "虚空·文曲星",
 				"star": 6,
 				"lv": 1,
-				"atk": 368,
-				"hp": 1391,
+				"atk": 350,
+				"hp": 1400,
 				"skill_name": "慧眼诀",
 				"skill_id": 2,
 				"normal_atk_id": 5,
@@ -4632,8 +4635,8 @@ var outputTables = {
 				"name": "无恒·文曲星",
 				"star": 7,
 				"lv": 1,
-				"atk": 462,
-				"hp": 1718,
+				"atk": 440,
+				"hp": 1760,
 				"skill_name": "慧眼诀",
 				"skill_id": 2,
 				"normal_atk_id": 5,
@@ -13041,1537 +13044,6 @@ var outputTables = {
 			}
 		}
 	},
-	"elixir_ranking_reward": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"elixir": 60000,
-				"money": 600000,
-				"power": 200,
-				"exp_card": 50
-			},
-			"2": {
-				"id": 2,
-				"elixir": 58000,
-				"money": 585000,
-				"power": 190,
-				"exp_card": 47
-			},
-			"3": {
-				"id": 3,
-				"elixir": 56000,
-				"money": 570000,
-				"power": 180,
-				"exp_card": 44
-			},
-			"4": {
-				"id": 4,
-				"elixir": 54000,
-				"money": 555000,
-				"power": 170,
-				"exp_card": 41
-			},
-			"5": {
-				"id": 5,
-				"elixir": 52000,
-				"money": 540000,
-				"power": 160,
-				"exp_card": 38
-			},
-			"6": {
-				"id": 6,
-				"elixir": 50000,
-				"money": 525000,
-				"power": 150,
-				"exp_card": 35
-			},
-			"7": {
-				"id": 7,
-				"elixir": 48000,
-				"money": 510000,
-				"power": 140,
-				"exp_card": 32
-			},
-			"8": {
-				"id": 8,
-				"elixir": 46000,
-				"money": 495000,
-				"power": 130,
-				"exp_card": 29
-			},
-			"9": {
-				"id": 9,
-				"elixir": 44000,
-				"money": 480000,
-				"power": 120,
-				"exp_card": 26
-			},
-			"10": {
-				"id": 10,
-				"elixir": 42000,
-				"money": 465000,
-				"power": 110,
-				"exp_card": 23
-			},
-			"11": {
-				"id": 11,
-				"elixir": 41500,
-				"money": 460000,
-				"power": 105,
-				"exp_card": 0
-			},
-			"12": {
-				"id": 12,
-				"elixir": 41000,
-				"money": 455000,
-				"power": 100,
-				"exp_card": 0
-			},
-			"13": {
-				"id": 13,
-				"elixir": 40500,
-				"money": 450000,
-				"power": 95,
-				"exp_card": 0
-			},
-			"14": {
-				"id": 14,
-				"elixir": 40000,
-				"money": 445000,
-				"power": 90,
-				"exp_card": 0
-			},
-			"15": {
-				"id": 15,
-				"elixir": 39500,
-				"money": 440000,
-				"power": 85,
-				"exp_card": 0
-			},
-			"16": {
-				"id": 16,
-				"elixir": 39000,
-				"money": 435000,
-				"power": 80,
-				"exp_card": 0
-			},
-			"17": {
-				"id": 17,
-				"elixir": 38500,
-				"money": 430000,
-				"power": 75,
-				"exp_card": 0
-			},
-			"18": {
-				"id": 18,
-				"elixir": 38000,
-				"money": 425000,
-				"power": 70,
-				"exp_card": 0
-			},
-			"19": {
-				"id": 19,
-				"elixir": 37500,
-				"money": 420000,
-				"power": 65,
-				"exp_card": 0
-			},
-			"20": {
-				"id": 20,
-				"elixir": 37000,
-				"money": 415000,
-				"power": 60,
-				"exp_card": 0
-			},
-			"21": {
-				"id": 21,
-				"elixir": 36500,
-				"money": 410000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"22": {
-				"id": 22,
-				"elixir": 36000,
-				"money": 405000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"23": {
-				"id": 23,
-				"elixir": 35500,
-				"money": 400000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"24": {
-				"id": 24,
-				"elixir": 35000,
-				"money": 395000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"25": {
-				"id": 25,
-				"elixir": 34500,
-				"money": 390000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"26": {
-				"id": 26,
-				"elixir": 34000,
-				"money": 385000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"27": {
-				"id": 27,
-				"elixir": 33500,
-				"money": 380000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"28": {
-				"id": 28,
-				"elixir": 33000,
-				"money": 375000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"29": {
-				"id": 29,
-				"elixir": 32500,
-				"money": 370000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"30": {
-				"id": 30,
-				"elixir": 32000,
-				"money": 365000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"31": {
-				"id": 31,
-				"elixir": 31500,
-				"money": 360000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"32": {
-				"id": 32,
-				"elixir": 31000,
-				"money": 355000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"33": {
-				"id": 33,
-				"elixir": 30500,
-				"money": 350000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"34": {
-				"id": 34,
-				"elixir": 30000,
-				"money": 345000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"35": {
-				"id": 35,
-				"elixir": 29500,
-				"money": 340000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"36": {
-				"id": 36,
-				"elixir": 29000,
-				"money": 335000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"37": {
-				"id": 37,
-				"elixir": 28500,
-				"money": 330000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"38": {
-				"id": 38,
-				"elixir": 28000,
-				"money": 325000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"39": {
-				"id": 39,
-				"elixir": 27500,
-				"money": 320000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"40": {
-				"id": 40,
-				"elixir": 27000,
-				"money": 315000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"41": {
-				"id": 41,
-				"elixir": 26500,
-				"money": 310000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"42": {
-				"id": 42,
-				"elixir": 26000,
-				"money": 305000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"43": {
-				"id": 43,
-				"elixir": 25500,
-				"money": 300000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"44": {
-				"id": 44,
-				"elixir": 25000,
-				"money": 295000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"45": {
-				"id": 45,
-				"elixir": 24500,
-				"money": 290000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"46": {
-				"id": 46,
-				"elixir": 24000,
-				"money": 285000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"47": {
-				"id": 47,
-				"elixir": 23500,
-				"money": 280000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"48": {
-				"id": 48,
-				"elixir": 23000,
-				"money": 275000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"49": {
-				"id": 49,
-				"elixir": 22500,
-				"money": 270000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"50": {
-				"id": 50,
-				"elixir": 22000,
-				"money": 265000,
-				"power": 0,
-				"exp_card": 0
-			},
-			"51": {
-				"id": 51,
-				"elixir": 20000
-			}
-		}
-	},
-	"rank": {
-		"colComment": {},
-		"rows": {
-			"5": {
-				"id": 5,
-				"lv": 5,
-				"win_exp": 1,
-				"win_money": 10,
-				"win_elixir": 600,
-				"lose_exp": 1,
-				"lose_money": 5,
-				"lose_elixir": 300
-			},
-			"6": {
-				"id": 6,
-				"lv": 6,
-				"win_exp": 2,
-				"win_money": 11,
-				"win_elixir": 605,
-				"lose_exp": 1,
-				"lose_money": 6,
-				"lose_elixir": 303
-			},
-			"7": {
-				"id": 7,
-				"lv": 7,
-				"win_exp": 3,
-				"win_money": 12,
-				"win_elixir": 610,
-				"lose_exp": 2,
-				"lose_money": 6,
-				"lose_elixir": 305
-			},
-			"8": {
-				"id": 8,
-				"lv": 8,
-				"win_exp": 4,
-				"win_money": 13,
-				"win_elixir": 615,
-				"lose_exp": 2,
-				"lose_money": 7,
-				"lose_elixir": 308
-			},
-			"9": {
-				"id": 9,
-				"lv": 9,
-				"win_exp": 5,
-				"win_money": 14,
-				"win_elixir": 620,
-				"lose_exp": 3,
-				"lose_money": 7,
-				"lose_elixir": 310
-			},
-			"10": {
-				"id": 10,
-				"lv": 10,
-				"win_exp": 6,
-				"win_money": 15,
-				"win_elixir": 625,
-				"lose_exp": 3,
-				"lose_money": 8,
-				"lose_elixir": 313
-			},
-			"11": {
-				"id": 11,
-				"lv": 11,
-				"win_exp": 7,
-				"win_money": 16,
-				"win_elixir": 630,
-				"lose_exp": 4,
-				"lose_money": 8,
-				"lose_elixir": 315
-			},
-			"12": {
-				"id": 12,
-				"lv": 12,
-				"win_exp": 8,
-				"win_money": 17,
-				"win_elixir": 635,
-				"lose_exp": 4,
-				"lose_money": 9,
-				"lose_elixir": 318
-			},
-			"13": {
-				"id": 13,
-				"lv": 13,
-				"win_exp": 9,
-				"win_money": 18,
-				"win_elixir": 640,
-				"lose_exp": 5,
-				"lose_money": 9,
-				"lose_elixir": 320
-			},
-			"14": {
-				"id": 14,
-				"lv": 14,
-				"win_exp": 10,
-				"win_money": 19,
-				"win_elixir": 645,
-				"lose_exp": 5,
-				"lose_money": 10,
-				"lose_elixir": 323
-			},
-			"15": {
-				"id": 15,
-				"lv": 15,
-				"win_exp": 11,
-				"win_money": 20,
-				"win_elixir": 650,
-				"lose_exp": 6,
-				"lose_money": 10,
-				"lose_elixir": 325
-			},
-			"16": {
-				"id": 16,
-				"lv": 16,
-				"win_exp": 12,
-				"win_money": 21,
-				"win_elixir": 655,
-				"lose_exp": 6,
-				"lose_money": 11,
-				"lose_elixir": 328
-			},
-			"17": {
-				"id": 17,
-				"lv": 17,
-				"win_exp": 13,
-				"win_money": 22,
-				"win_elixir": 660,
-				"lose_exp": 7,
-				"lose_money": 11,
-				"lose_elixir": 330
-			},
-			"18": {
-				"id": 18,
-				"lv": 18,
-				"win_exp": 14,
-				"win_money": 23,
-				"win_elixir": 665,
-				"lose_exp": 7,
-				"lose_money": 12,
-				"lose_elixir": 333
-			},
-			"19": {
-				"id": 19,
-				"lv": 19,
-				"win_exp": 15,
-				"win_money": 24,
-				"win_elixir": 670,
-				"lose_exp": 8,
-				"lose_money": 12,
-				"lose_elixir": 335
-			},
-			"20": {
-				"id": 20,
-				"lv": 20,
-				"win_exp": 16,
-				"win_money": 25,
-				"win_elixir": 675,
-				"lose_exp": 8,
-				"lose_money": 13,
-				"lose_elixir": 338
-			},
-			"21": {
-				"id": 21,
-				"lv": 21,
-				"win_exp": 17,
-				"win_money": 26,
-				"win_elixir": 680,
-				"lose_exp": 9,
-				"lose_money": 13,
-				"lose_elixir": 340
-			},
-			"22": {
-				"id": 22,
-				"lv": 22,
-				"win_exp": 18,
-				"win_money": 27,
-				"win_elixir": 685,
-				"lose_exp": 9,
-				"lose_money": 14,
-				"lose_elixir": 343
-			},
-			"23": {
-				"id": 23,
-				"lv": 23,
-				"win_exp": 19,
-				"win_money": 28,
-				"win_elixir": 690,
-				"lose_exp": 10,
-				"lose_money": 14,
-				"lose_elixir": 345
-			},
-			"24": {
-				"id": 24,
-				"lv": 24,
-				"win_exp": 20,
-				"win_money": 29,
-				"win_elixir": 695,
-				"lose_exp": 10,
-				"lose_money": 15,
-				"lose_elixir": 348
-			},
-			"25": {
-				"id": 25,
-				"lv": 25,
-				"win_exp": 21,
-				"win_money": 30,
-				"win_elixir": 700,
-				"lose_exp": 11,
-				"lose_money": 15,
-				"lose_elixir": 350
-			},
-			"26": {
-				"id": 26,
-				"lv": 26,
-				"win_exp": 22,
-				"win_money": 31,
-				"win_elixir": 705,
-				"lose_exp": 11,
-				"lose_money": 16,
-				"lose_elixir": 353
-			},
-			"27": {
-				"id": 27,
-				"lv": 27,
-				"win_exp": 23,
-				"win_money": 32,
-				"win_elixir": 710,
-				"lose_exp": 12,
-				"lose_money": 16,
-				"lose_elixir": 355
-			},
-			"28": {
-				"id": 28,
-				"lv": 28,
-				"win_exp": 24,
-				"win_money": 33,
-				"win_elixir": 715,
-				"lose_exp": 12,
-				"lose_money": 17,
-				"lose_elixir": 358
-			},
-			"29": {
-				"id": 29,
-				"lv": 29,
-				"win_exp": 25,
-				"win_money": 34,
-				"win_elixir": 720,
-				"lose_exp": 13,
-				"lose_money": 17,
-				"lose_elixir": 360
-			},
-			"30": {
-				"id": 30,
-				"lv": 30,
-				"win_exp": 26,
-				"win_money": 35,
-				"win_elixir": 725,
-				"lose_exp": 13,
-				"lose_money": 18,
-				"lose_elixir": 363
-			},
-			"31": {
-				"id": 31,
-				"lv": 31,
-				"win_exp": 27,
-				"win_money": 36,
-				"win_elixir": 730,
-				"lose_exp": 14,
-				"lose_money": 18,
-				"lose_elixir": 365
-			},
-			"32": {
-				"id": 32,
-				"lv": 32,
-				"win_exp": 28,
-				"win_money": 37,
-				"win_elixir": 735,
-				"lose_exp": 14,
-				"lose_money": 19,
-				"lose_elixir": 368
-			},
-			"33": {
-				"id": 33,
-				"lv": 33,
-				"win_exp": 29,
-				"win_money": 38,
-				"win_elixir": 740,
-				"lose_exp": 15,
-				"lose_money": 19,
-				"lose_elixir": 370
-			},
-			"34": {
-				"id": 34,
-				"lv": 34,
-				"win_exp": 30,
-				"win_money": 39,
-				"win_elixir": 745,
-				"lose_exp": 15,
-				"lose_money": 20,
-				"lose_elixir": 373
-			},
-			"35": {
-				"id": 35,
-				"lv": 35,
-				"win_exp": 31,
-				"win_money": 40,
-				"win_elixir": 750,
-				"lose_exp": 16,
-				"lose_money": 20,
-				"lose_elixir": 375
-			},
-			"36": {
-				"id": 36,
-				"lv": 36,
-				"win_exp": 32,
-				"win_money": 41,
-				"win_elixir": 755,
-				"lose_exp": 16,
-				"lose_money": 21,
-				"lose_elixir": 378
-			},
-			"37": {
-				"id": 37,
-				"lv": 37,
-				"win_exp": 33,
-				"win_money": 42,
-				"win_elixir": 760,
-				"lose_exp": 17,
-				"lose_money": 21,
-				"lose_elixir": 380
-			},
-			"38": {
-				"id": 38,
-				"lv": 38,
-				"win_exp": 34,
-				"win_money": 43,
-				"win_elixir": 765,
-				"lose_exp": 17,
-				"lose_money": 22,
-				"lose_elixir": 383
-			},
-			"39": {
-				"id": 39,
-				"lv": 39,
-				"win_exp": 35,
-				"win_money": 44,
-				"win_elixir": 770,
-				"lose_exp": 18,
-				"lose_money": 22,
-				"lose_elixir": 385
-			},
-			"40": {
-				"id": 40,
-				"lv": 40,
-				"win_exp": 36,
-				"win_money": 45,
-				"win_elixir": 775,
-				"lose_exp": 18,
-				"lose_money": 23,
-				"lose_elixir": 388
-			},
-			"41": {
-				"id": 41,
-				"lv": 41,
-				"win_exp": 37,
-				"win_money": 46,
-				"win_elixir": 780,
-				"lose_exp": 19,
-				"lose_money": 23,
-				"lose_elixir": 390
-			},
-			"42": {
-				"id": 42,
-				"lv": 42,
-				"win_exp": 38,
-				"win_money": 47,
-				"win_elixir": 785,
-				"lose_exp": 19,
-				"lose_money": 24,
-				"lose_elixir": 393
-			},
-			"43": {
-				"id": 43,
-				"lv": 43,
-				"win_exp": 39,
-				"win_money": 48,
-				"win_elixir": 790,
-				"lose_exp": 20,
-				"lose_money": 24,
-				"lose_elixir": 395
-			},
-			"44": {
-				"id": 44,
-				"lv": 44,
-				"win_exp": 40,
-				"win_money": 49,
-				"win_elixir": 795,
-				"lose_exp": 20,
-				"lose_money": 25,
-				"lose_elixir": 398
-			},
-			"45": {
-				"id": 45,
-				"lv": 45,
-				"win_exp": 41,
-				"win_money": 50,
-				"win_elixir": 800,
-				"lose_exp": 21,
-				"lose_money": 25,
-				"lose_elixir": 400
-			},
-			"46": {
-				"id": 46,
-				"lv": 46,
-				"win_exp": 42,
-				"win_money": 51,
-				"win_elixir": 805,
-				"lose_exp": 21,
-				"lose_money": 26,
-				"lose_elixir": 403
-			},
-			"47": {
-				"id": 47,
-				"lv": 47,
-				"win_exp": 43,
-				"win_money": 52,
-				"win_elixir": 810,
-				"lose_exp": 22,
-				"lose_money": 26,
-				"lose_elixir": 405
-			},
-			"48": {
-				"id": 48,
-				"lv": 48,
-				"win_exp": 44,
-				"win_money": 53,
-				"win_elixir": 815,
-				"lose_exp": 22,
-				"lose_money": 27,
-				"lose_elixir": 408
-			},
-			"49": {
-				"id": 49,
-				"lv": 49,
-				"win_exp": 45,
-				"win_money": 54,
-				"win_elixir": 820,
-				"lose_exp": 23,
-				"lose_money": 27,
-				"lose_elixir": 410
-			},
-			"50": {
-				"id": 50,
-				"lv": 50,
-				"win_exp": 46,
-				"win_money": 55,
-				"win_elixir": 825,
-				"lose_exp": 23,
-				"lose_money": 28,
-				"lose_elixir": 413
-			},
-			"51": {
-				"id": 51,
-				"lv": 51,
-				"win_exp": 47,
-				"win_money": 56,
-				"win_elixir": 830,
-				"lose_exp": 24,
-				"lose_money": 28,
-				"lose_elixir": 415
-			},
-			"52": {
-				"id": 52,
-				"lv": 52,
-				"win_exp": 48,
-				"win_money": 57,
-				"win_elixir": 835,
-				"lose_exp": 24,
-				"lose_money": 29,
-				"lose_elixir": 418
-			},
-			"53": {
-				"id": 53,
-				"lv": 53,
-				"win_exp": 49,
-				"win_money": 58,
-				"win_elixir": 840,
-				"lose_exp": 25,
-				"lose_money": 29,
-				"lose_elixir": 420
-			},
-			"54": {
-				"id": 54,
-				"lv": 54,
-				"win_exp": 50,
-				"win_money": 59,
-				"win_elixir": 845,
-				"lose_exp": 25,
-				"lose_money": 30,
-				"lose_elixir": 423
-			},
-			"55": {
-				"id": 55,
-				"lv": 55,
-				"win_exp": 51,
-				"win_money": 60,
-				"win_elixir": 850,
-				"lose_exp": 26,
-				"lose_money": 30,
-				"lose_elixir": 425
-			},
-			"56": {
-				"id": 56,
-				"lv": 56,
-				"win_exp": 52,
-				"win_money": 61,
-				"win_elixir": 855,
-				"lose_exp": 26,
-				"lose_money": 31,
-				"lose_elixir": 428
-			},
-			"57": {
-				"id": 57,
-				"lv": 57,
-				"win_exp": 53,
-				"win_money": 62,
-				"win_elixir": 860,
-				"lose_exp": 27,
-				"lose_money": 31,
-				"lose_elixir": 430
-			},
-			"58": {
-				"id": 58,
-				"lv": 58,
-				"win_exp": 54,
-				"win_money": 63,
-				"win_elixir": 865,
-				"lose_exp": 27,
-				"lose_money": 32,
-				"lose_elixir": 433
-			},
-			"59": {
-				"id": 59,
-				"lv": 59,
-				"win_exp": 55,
-				"win_money": 64,
-				"win_elixir": 870,
-				"lose_exp": 28,
-				"lose_money": 32,
-				"lose_elixir": 435
-			},
-			"60": {
-				"id": 60,
-				"lv": 60,
-				"win_exp": 56,
-				"win_money": 65,
-				"win_elixir": 875,
-				"lose_exp": 28,
-				"lose_money": 33,
-				"lose_elixir": 438
-			},
-			"61": {
-				"id": 61,
-				"lv": 61,
-				"win_exp": 57,
-				"win_money": 66,
-				"win_elixir": 880,
-				"lose_exp": 29,
-				"lose_money": 33,
-				"lose_elixir": 440
-			},
-			"62": {
-				"id": 62,
-				"lv": 62,
-				"win_exp": 58,
-				"win_money": 67,
-				"win_elixir": 885,
-				"lose_exp": 29,
-				"lose_money": 34,
-				"lose_elixir": 443
-			},
-			"63": {
-				"id": 63,
-				"lv": 63,
-				"win_exp": 59,
-				"win_money": 68,
-				"win_elixir": 890,
-				"lose_exp": 30,
-				"lose_money": 34,
-				"lose_elixir": 445
-			},
-			"64": {
-				"id": 64,
-				"lv": 64,
-				"win_exp": 60,
-				"win_money": 69,
-				"win_elixir": 895,
-				"lose_exp": 30,
-				"lose_money": 35,
-				"lose_elixir": 448
-			},
-			"65": {
-				"id": 65,
-				"lv": 65,
-				"win_exp": 61,
-				"win_money": 70,
-				"win_elixir": 900,
-				"lose_exp": 31,
-				"lose_money": 35,
-				"lose_elixir": 450
-			},
-			"66": {
-				"id": 66,
-				"lv": 66,
-				"win_exp": 62,
-				"win_money": 71,
-				"win_elixir": 905,
-				"lose_exp": 31,
-				"lose_money": 36,
-				"lose_elixir": 453
-			},
-			"67": {
-				"id": 67,
-				"lv": 67,
-				"win_exp": 63,
-				"win_money": 72,
-				"win_elixir": 910,
-				"lose_exp": 32,
-				"lose_money": 36,
-				"lose_elixir": 455
-			},
-			"68": {
-				"id": 68,
-				"lv": 68,
-				"win_exp": 64,
-				"win_money": 73,
-				"win_elixir": 915,
-				"lose_exp": 32,
-				"lose_money": 37,
-				"lose_elixir": 458
-			},
-			"69": {
-				"id": 69,
-				"lv": 69,
-				"win_exp": 65,
-				"win_money": 74,
-				"win_elixir": 920,
-				"lose_exp": 33,
-				"lose_money": 37,
-				"lose_elixir": 460
-			},
-			"70": {
-				"id": 70,
-				"lv": 70,
-				"win_exp": 66,
-				"win_money": 75,
-				"win_elixir": 925,
-				"lose_exp": 33,
-				"lose_money": 38,
-				"lose_elixir": 463
-			},
-			"71": {
-				"id": 71,
-				"lv": 71,
-				"win_exp": 67,
-				"win_money": 76,
-				"win_elixir": 930,
-				"lose_exp": 34,
-				"lose_money": 38,
-				"lose_elixir": 465
-			},
-			"72": {
-				"id": 72,
-				"lv": 72,
-				"win_exp": 68,
-				"win_money": 77,
-				"win_elixir": 935,
-				"lose_exp": 34,
-				"lose_money": 39,
-				"lose_elixir": 468
-			},
-			"73": {
-				"id": 73,
-				"lv": 73,
-				"win_exp": 69,
-				"win_money": 78,
-				"win_elixir": 940,
-				"lose_exp": 35,
-				"lose_money": 39,
-				"lose_elixir": 470
-			},
-			"74": {
-				"id": 74,
-				"lv": 74,
-				"win_exp": 70,
-				"win_money": 79,
-				"win_elixir": 945,
-				"lose_exp": 35,
-				"lose_money": 40,
-				"lose_elixir": 473
-			},
-			"75": {
-				"id": 75,
-				"lv": 75,
-				"win_exp": 71,
-				"win_money": 80,
-				"win_elixir": 950,
-				"lose_exp": 36,
-				"lose_money": 40,
-				"lose_elixir": 475
-			},
-			"76": {
-				"id": 76,
-				"lv": 76,
-				"win_exp": 72,
-				"win_money": 81,
-				"win_elixir": 955,
-				"lose_exp": 36,
-				"lose_money": 41,
-				"lose_elixir": 478
-			},
-			"77": {
-				"id": 77,
-				"lv": 77,
-				"win_exp": 73,
-				"win_money": 82,
-				"win_elixir": 960,
-				"lose_exp": 37,
-				"lose_money": 41,
-				"lose_elixir": 480
-			},
-			"78": {
-				"id": 78,
-				"lv": 78,
-				"win_exp": 74,
-				"win_money": 83,
-				"win_elixir": 965,
-				"lose_exp": 37,
-				"lose_money": 42,
-				"lose_elixir": 483
-			},
-			"79": {
-				"id": 79,
-				"lv": 79,
-				"win_exp": 75,
-				"win_money": 84,
-				"win_elixir": 970,
-				"lose_exp": 38,
-				"lose_money": 42,
-				"lose_elixir": 485
-			},
-			"80": {
-				"id": 80,
-				"lv": 80,
-				"win_exp": 76,
-				"win_money": 85,
-				"win_elixir": 975,
-				"lose_exp": 38,
-				"lose_money": 43,
-				"lose_elixir": 488
-			},
-			"81": {
-				"id": 81,
-				"lv": 81,
-				"win_exp": 77,
-				"win_money": 86,
-				"win_elixir": 980,
-				"lose_exp": 39,
-				"lose_money": 43,
-				"lose_elixir": 490
-			},
-			"82": {
-				"id": 82,
-				"lv": 82,
-				"win_exp": 78,
-				"win_money": 87,
-				"win_elixir": 985,
-				"lose_exp": 39,
-				"lose_money": 44,
-				"lose_elixir": 493
-			},
-			"83": {
-				"id": 83,
-				"lv": 83,
-				"win_exp": 79,
-				"win_money": 88,
-				"win_elixir": 990,
-				"lose_exp": 40,
-				"lose_money": 44,
-				"lose_elixir": 495
-			},
-			"84": {
-				"id": 84,
-				"lv": 84,
-				"win_exp": 80,
-				"win_money": 89,
-				"win_elixir": 995,
-				"lose_exp": 40,
-				"lose_money": 45,
-				"lose_elixir": 498
-			},
-			"85": {
-				"id": 85,
-				"lv": 85,
-				"win_exp": 81,
-				"win_money": 90,
-				"win_elixir": 1000,
-				"lose_exp": 41,
-				"lose_money": 45,
-				"lose_elixir": 500
-			},
-			"86": {
-				"id": 86,
-				"lv": 86,
-				"win_exp": 82,
-				"win_money": 91,
-				"win_elixir": 1005,
-				"lose_exp": 41,
-				"lose_money": 46,
-				"lose_elixir": 503
-			},
-			"87": {
-				"id": 87,
-				"lv": 87,
-				"win_exp": 83,
-				"win_money": 92,
-				"win_elixir": 1010,
-				"lose_exp": 42,
-				"lose_money": 46,
-				"lose_elixir": 505
-			},
-			"88": {
-				"id": 88,
-				"lv": 88,
-				"win_exp": 84,
-				"win_money": 93,
-				"win_elixir": 1015,
-				"lose_exp": 42,
-				"lose_money": 47,
-				"lose_elixir": 508
-			},
-			"89": {
-				"id": 89,
-				"lv": 89,
-				"win_exp": 85,
-				"win_money": 94,
-				"win_elixir": 1020,
-				"lose_exp": 43,
-				"lose_money": 47,
-				"lose_elixir": 510
-			},
-			"90": {
-				"id": 90,
-				"lv": 90,
-				"win_exp": 86,
-				"win_money": 95,
-				"win_elixir": 1025,
-				"lose_exp": 43,
-				"lose_money": 48,
-				"lose_elixir": 513
-			},
-			"91": {
-				"id": 91,
-				"lv": 91,
-				"win_exp": 87,
-				"win_money": 96,
-				"win_elixir": 1030,
-				"lose_exp": 44,
-				"lose_money": 48,
-				"lose_elixir": 515
-			},
-			"92": {
-				"id": 92,
-				"lv": 92,
-				"win_exp": 88,
-				"win_money": 97,
-				"win_elixir": 1035,
-				"lose_exp": 44,
-				"lose_money": 49,
-				"lose_elixir": 518
-			},
-			"93": {
-				"id": 93,
-				"lv": 93,
-				"win_exp": 89,
-				"win_money": 98,
-				"win_elixir": 1040,
-				"lose_exp": 45,
-				"lose_money": 49,
-				"lose_elixir": 520
-			},
-			"94": {
-				"id": 94,
-				"lv": 94,
-				"win_exp": 90,
-				"win_money": 99,
-				"win_elixir": 1045,
-				"lose_exp": 45,
-				"lose_money": 50,
-				"lose_elixir": 523
-			},
-			"95": {
-				"id": 95,
-				"lv": 95,
-				"win_exp": 91,
-				"win_money": 100,
-				"win_elixir": 1050,
-				"lose_exp": 46,
-				"lose_money": 50,
-				"lose_elixir": 525
-			},
-			"96": {
-				"id": 96,
-				"lv": 96,
-				"win_exp": 92,
-				"win_money": 101,
-				"win_elixir": 1055,
-				"lose_exp": 46,
-				"lose_money": 51,
-				"lose_elixir": 528
-			},
-			"97": {
-				"id": 97,
-				"lv": 97,
-				"win_exp": 93,
-				"win_money": 102,
-				"win_elixir": 1060,
-				"lose_exp": 47,
-				"lose_money": 51,
-				"lose_elixir": 530
-			},
-			"98": {
-				"id": 98,
-				"lv": 98,
-				"win_exp": 94,
-				"win_money": 103,
-				"win_elixir": 1065,
-				"lose_exp": 47,
-				"lose_money": 52,
-				"lose_elixir": 533
-			},
-			"99": {
-				"id": 99,
-				"lv": 99,
-				"win_exp": 95,
-				"win_money": 104,
-				"win_elixir": 1070,
-				"lose_exp": 48,
-				"lose_money": 52,
-				"lose_elixir": 535
-			},
-			"100": {
-				"id": 100,
-				"lv": 100,
-				"win_exp": 96,
-				"win_money": 105,
-				"win_elixir": 1075,
-				"lose_exp": 48,
-				"lose_money": 53,
-				"lose_elixir": 538
-			}
-		}
-	},
-	"ranking_list": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"top": 10,
-				"challenge_count": 10,
-				"beat_back_count": 3,
-				"add_count": 3
-			}
-		}
-	},
-	"ranking_reward": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"elixir": 80000
-			},
-			"10": {
-				"id": 10,
-				"elixir": 50000
-			},
-			"50": {
-				"id": 50,
-				"elixir": 30000
-			},
-			"100": {
-				"id": 100,
-				"elixir": 20000
-			},
-			"500": {
-				"id": 500,
-				"elixir": 10000
-			}
-		}
-	},
-	"ranking_reward_factor": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"ranking": 1,
-				"percent": 95
-			},
-			"2": {
-				"id": 2,
-				"ranking": 2,
-				"percent": 90
-			},
-			"3": {
-				"id": 3,
-				"ranking": 3,
-				"percent": 85
-			},
-			"4": {
-				"id": 4,
-				"ranking": 4,
-				"percent": 80
-			},
-			"5": {
-				"id": 5,
-				"ranking": 5,
-				"percent": 75
-			},
-			"6": {
-				"id": 6,
-				"ranking": 6,
-				"percent": 70
-			},
-			"7": {
-				"id": 7,
-				"ranking": 7,
-				"percent": 65
-			},
-			"8": {
-				"id": 8,
-				"ranking": 8,
-				"percent": 60
-			},
-			"9": {
-				"id": 9,
-				"ranking": 9,
-				"percent": 55
-			},
-			"10": {
-				"id": 10,
-				"ranking": 10,
-				"percent": 50
-			},
-			"11": {
-				"id": 11,
-				"ranking": 11,
-				"percent": 48
-			},
-			"12": {
-				"id": 12,
-				"ranking": 12,
-				"percent": 46
-			},
-			"13": {
-				"id": 13,
-				"ranking": 13,
-				"percent": 44
-			},
-			"14": {
-				"id": 14,
-				"ranking": 14,
-				"percent": 42
-			},
-			"15": {
-				"id": 15,
-				"ranking": 15,
-				"percent": 40
-			},
-			"16": {
-				"id": 16,
-				"ranking": 16,
-				"percent": 38
-			},
-			"17": {
-				"id": 17,
-				"ranking": 17,
-				"percent": 36
-			},
-			"18": {
-				"id": 18,
-				"ranking": 18,
-				"percent": 34
-			},
-			"19": {
-				"id": 19,
-				"ranking": 19,
-				"percent": 32
-			},
-			"20": {
-				"id": 20,
-				"ranking": 20,
-				"percent": 30
-			},
-			"21": {
-				"id": 21,
-				"ranking": 31,
-				"percent": 28
-			},
-			"22": {
-				"id": 22,
-				"ranking": 41,
-				"percent": 26
-			},
-			"23": {
-				"id": 23,
-				"ranking": 51,
-				"percent": 24
-			},
-			"24": {
-				"id": 24,
-				"ranking": 101,
-				"percent": 22
-			},
-			"25": {
-				"id": 25,
-				"ranking": 201,
-				"percent": 20
-			},
-			"26": {
-				"id": 26,
-				"ranking": 501,
-				"percent": 18
-			},
-			"27": {
-				"id": 27,
-				"ranking": 1001,
-				"percent": 16
-			},
-			"28": {
-				"id": 28,
-				"ranking": 2001,
-				"percent": 14
-			},
-			"29": {
-				"id": 29,
-				"ranking": 3001,
-				"percent": 12
-			},
-			"30": {
-				"id": 30,
-				"ranking": 4001,
-				"percent": 10
-			},
-			"31": {
-				"id": 31,
-				"ranking": 5001,
-				"percent": 8
-			},
-			"32": {
-				"id": 32,
-				"ranking": 8001,
-				"percent": 6
-			},
-			"33": {
-				"id": 33,
-				"ranking": 10001,
-				"percent": 4
-			}
-		}
-	},
 	"login_count_reward": {
 		"colComment": {},
 		"rows": {
@@ -15307,6 +13779,191 @@ var outputTables = {
 				"id": "damageOfRankHonorGap",
 				"value": 3000,
 				"desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
+			}
+		}
+	},
+	"treasure_hunt": {
+		"colComment": {},
+		"rows": {
+			"0": {
+				"id": 0,
+				"type": "power",
+				"value": 10,
+				"name": "体力",
+				"type_rate": 5,
+				"value_rate": 85,
+				"rate": 4.25
+			},
+			"1": {
+				"id": 1,
+				"type": "power",
+				"value": 50,
+				"name": "体力",
+				"type_rate": 5,
+				"value_rate": 14,
+				"rate": 0.7
+			},
+			"2": {
+				"id": 2,
+				"type": "power",
+				"value": 100,
+				"name": "体力",
+				"type_rate": 5,
+				"value_rate": 1,
+				"rate": 0.05
+			},
+			"3": {
+				"id": 3,
+				"type": "elixir",
+				"value": 1000,
+				"name": "仙丹",
+				"type_rate": 20,
+				"value_rate": 85,
+				"rate": 17
+			},
+			"4": {
+				"id": 4,
+				"type": "elixir",
+				"value": 5000,
+				"name": "仙丹",
+				"type_rate": 20,
+				"value_rate": 14,
+				"rate": 2.8
+			},
+			"5": {
+				"id": 5,
+				"type": "elixir",
+				"value": 20000,
+				"name": "仙丹",
+				"type_rate": 20,
+				"value_rate": 1,
+				"rate": 0.2
+			},
+			"6": {
+				"id": 6,
+				"type": "spirit",
+				"value": 50,
+				"name": "灵气",
+				"type_rate": 15,
+				"value_rate": 85,
+				"rate": 12.75
+			},
+			"7": {
+				"id": 7,
+				"type": "spirit",
+				"value": 200,
+				"name": "灵气",
+				"type_rate": 15,
+				"value_rate": 14,
+				"rate": 2.1
+			},
+			"8": {
+				"id": 8,
+				"type": "spirit",
+				"value": 500,
+				"name": "灵气",
+				"type_rate": 15,
+				"value_rate": 1,
+				"rate": 0.15
+			},
+			"9": {
+				"id": 9,
+				"type": "skillPoint",
+				"value": 1000,
+				"name": "技能点",
+				"type_rate": 20,
+				"value_rate": 85,
+				"rate": 17
+			},
+			"10": {
+				"id": 10,
+				"type": "skillPoint",
+				"value": 5000,
+				"name": "技能点",
+				"type_rate": 20,
+				"value_rate": 14,
+				"rate": 2.8
+			},
+			"11": {
+				"id": 11,
+				"type": "skillPoint",
+				"value": 20000,
+				"name": "技能点",
+				"type_rate": 20,
+				"value_rate": 1,
+				"rate": 0.2
+			},
+			"12": {
+				"id": 12,
+				"type": "energy",
+				"value": 500,
+				"name": "活力点",
+				"type_rate": 15,
+				"value_rate": 85,
+				"rate": 12.75
+			},
+			"13": {
+				"id": 13,
+				"type": "energy",
+				"value": 1000,
+				"name": "活力点",
+				"type_rate": 15,
+				"value_rate": 14,
+				"rate": 2.1
+			},
+			"14": {
+				"id": 14,
+				"type": "energy",
+				"value": 5000,
+				"name": "活力点",
+				"type_rate": 15,
+				"value_rate": 1,
+				"rate": 0.15
+			},
+			"15": {
+				"id": 15,
+				"type": "money",
+				"value": 10000,
+				"name": "仙币",
+				"type_rate": 20,
+				"value_rate": 85,
+				"rate": 17
+			},
+			"16": {
+				"id": 16,
+				"type": "money",
+				"value": 30000,
+				"name": "仙币",
+				"type_rate": 20,
+				"value_rate": 14,
+				"rate": 2.8
+			},
+			"17": {
+				"id": 17,
+				"type": "money",
+				"value": 100000,
+				"name": "仙币",
+				"type_rate": 20,
+				"value_rate": 1,
+				"rate": 0.2
+			},
+			"18": {
+				"id": 18,
+				"type": "gold",
+				"value": 10,
+				"name": "魔石",
+				"type_rate": 5,
+				"value_rate": 99,
+				"rate": 4.95
+			},
+			"19": {
+				"id": 19,
+				"type": "gold",
+				"value": 500,
+				"name": "魔石",
+				"type_rate": 5,
+				"value_rate": 1,
+				"rate": 0.05
 			}
 		}
 	},
@@ -29705,188 +28362,1534 @@ var outputTables = {
 			}
 		}
 	},
-	"treasure_hunt": {
+	"elixir_ranking_reward": {
 		"colComment": {},
 		"rows": {
-			"0": {
-				"id": 0,
-				"type": "power",
-				"value": 10,
-				"name": "体力",
-				"type_rate": 5,
-				"value_rate": 85,
-				"rate": 4.25
-			},
 			"1": {
 				"id": 1,
-				"type": "power",
-				"value": 50,
-				"name": "体力",
-				"type_rate": 5,
-				"value_rate": 14,
-				"rate": 0.7
+				"elixir": 60000,
+				"money": 600000,
+				"power": 200,
+				"exp_card": 50
 			},
 			"2": {
 				"id": 2,
-				"type": "power",
-				"value": 100,
-				"name": "体力",
-				"type_rate": 5,
-				"value_rate": 1,
-				"rate": 0.05
+				"elixir": 58000,
+				"money": 585000,
+				"power": 190,
+				"exp_card": 47
 			},
 			"3": {
 				"id": 3,
-				"type": "elixir",
-				"value": 1000,
-				"name": "仙丹",
-				"type_rate": 20,
-				"value_rate": 85,
-				"rate": 17
+				"elixir": 56000,
+				"money": 570000,
+				"power": 180,
+				"exp_card": 44
 			},
 			"4": {
 				"id": 4,
-				"type": "elixir",
-				"value": 5000,
-				"name": "仙丹",
-				"type_rate": 20,
-				"value_rate": 14,
-				"rate": 2.8
+				"elixir": 54000,
+				"money": 555000,
+				"power": 170,
+				"exp_card": 41
 			},
 			"5": {
 				"id": 5,
-				"type": "elixir",
-				"value": 20000,
-				"name": "仙丹",
-				"type_rate": 20,
-				"value_rate": 1,
-				"rate": 0.2
+				"elixir": 52000,
+				"money": 540000,
+				"power": 160,
+				"exp_card": 38
 			},
 			"6": {
 				"id": 6,
-				"type": "spirit",
-				"value": 50,
-				"name": "灵气",
-				"type_rate": 15,
-				"value_rate": 85,
-				"rate": 12.75
+				"elixir": 50000,
+				"money": 525000,
+				"power": 150,
+				"exp_card": 35
 			},
 			"7": {
 				"id": 7,
-				"type": "spirit",
-				"value": 200,
-				"name": "灵气",
-				"type_rate": 15,
-				"value_rate": 14,
-				"rate": 2.1
+				"elixir": 48000,
+				"money": 510000,
+				"power": 140,
+				"exp_card": 32
 			},
 			"8": {
 				"id": 8,
-				"type": "spirit",
-				"value": 500,
-				"name": "灵气",
-				"type_rate": 15,
-				"value_rate": 1,
-				"rate": 0.15
+				"elixir": 46000,
+				"money": 495000,
+				"power": 130,
+				"exp_card": 29
 			},
 			"9": {
 				"id": 9,
-				"type": "skillPoint",
-				"value": 1000,
-				"name": "技能点",
-				"type_rate": 20,
-				"value_rate": 85,
-				"rate": 17
+				"elixir": 44000,
+				"money": 480000,
+				"power": 120,
+				"exp_card": 26
 			},
 			"10": {
 				"id": 10,
-				"type": "skillPoint",
-				"value": 5000,
-				"name": "技能点",
-				"type_rate": 20,
-				"value_rate": 14,
-				"rate": 2.8
+				"elixir": 42000,
+				"money": 465000,
+				"power": 110,
+				"exp_card": 23
 			},
 			"11": {
 				"id": 11,
-				"type": "skillPoint",
-				"value": 20000,
-				"name": "技能点",
-				"type_rate": 20,
-				"value_rate": 1,
-				"rate": 0.2
+				"elixir": 41500,
+				"money": 460000,
+				"power": 105,
+				"exp_card": 0
 			},
 			"12": {
 				"id": 12,
-				"type": "energy",
-				"value": 500,
-				"name": "活力点",
-				"type_rate": 15,
-				"value_rate": 85,
-				"rate": 12.75
+				"elixir": 41000,
+				"money": 455000,
+				"power": 100,
+				"exp_card": 0
 			},
 			"13": {
 				"id": 13,
-				"type": "energy",
-				"value": 1000,
-				"name": "活力点",
-				"type_rate": 15,
-				"value_rate": 14,
-				"rate": 2.1
+				"elixir": 40500,
+				"money": 450000,
+				"power": 95,
+				"exp_card": 0
 			},
 			"14": {
 				"id": 14,
-				"type": "energy",
-				"value": 5000,
-				"name": "活力点",
-				"type_rate": 15,
-				"value_rate": 1,
-				"rate": 0.15
+				"elixir": 40000,
+				"money": 445000,
+				"power": 90,
+				"exp_card": 0
 			},
 			"15": {
 				"id": 15,
-				"type": "money",
-				"value": 10000,
-				"name": "仙币",
-				"type_rate": 20,
-				"value_rate": 85,
-				"rate": 17
+				"elixir": 39500,
+				"money": 440000,
+				"power": 85,
+				"exp_card": 0
 			},
 			"16": {
 				"id": 16,
-				"type": "money",
-				"value": 30000,
-				"name": "仙币",
-				"type_rate": 20,
-				"value_rate": 14,
-				"rate": 2.8
+				"elixir": 39000,
+				"money": 435000,
+				"power": 80,
+				"exp_card": 0
 			},
 			"17": {
 				"id": 17,
-				"type": "money",
-				"value": 100000,
-				"name": "仙币",
-				"type_rate": 20,
-				"value_rate": 1,
-				"rate": 0.2
+				"elixir": 38500,
+				"money": 430000,
+				"power": 75,
+				"exp_card": 0
 			},
 			"18": {
 				"id": 18,
-				"type": "gold",
-				"value": 10,
-				"name": "魔石",
-				"type_rate": 5,
-				"value_rate": 99,
-				"rate": 4.95
+				"elixir": 38000,
+				"money": 425000,
+				"power": 70,
+				"exp_card": 0
 			},
 			"19": {
 				"id": 19,
-				"type": "gold",
-				"value": 500,
-				"name": "魔石",
-				"type_rate": 5,
-				"value_rate": 1,
-				"rate": 0.05
+				"elixir": 37500,
+				"money": 420000,
+				"power": 65,
+				"exp_card": 0
+			},
+			"20": {
+				"id": 20,
+				"elixir": 37000,
+				"money": 415000,
+				"power": 60,
+				"exp_card": 0
+			},
+			"21": {
+				"id": 21,
+				"elixir": 36500,
+				"money": 410000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"22": {
+				"id": 22,
+				"elixir": 36000,
+				"money": 405000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"23": {
+				"id": 23,
+				"elixir": 35500,
+				"money": 400000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"24": {
+				"id": 24,
+				"elixir": 35000,
+				"money": 395000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"25": {
+				"id": 25,
+				"elixir": 34500,
+				"money": 390000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"26": {
+				"id": 26,
+				"elixir": 34000,
+				"money": 385000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"27": {
+				"id": 27,
+				"elixir": 33500,
+				"money": 380000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"28": {
+				"id": 28,
+				"elixir": 33000,
+				"money": 375000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"29": {
+				"id": 29,
+				"elixir": 32500,
+				"money": 370000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"30": {
+				"id": 30,
+				"elixir": 32000,
+				"money": 365000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"31": {
+				"id": 31,
+				"elixir": 31500,
+				"money": 360000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"32": {
+				"id": 32,
+				"elixir": 31000,
+				"money": 355000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"33": {
+				"id": 33,
+				"elixir": 30500,
+				"money": 350000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"34": {
+				"id": 34,
+				"elixir": 30000,
+				"money": 345000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"35": {
+				"id": 35,
+				"elixir": 29500,
+				"money": 340000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"36": {
+				"id": 36,
+				"elixir": 29000,
+				"money": 335000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"37": {
+				"id": 37,
+				"elixir": 28500,
+				"money": 330000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"38": {
+				"id": 38,
+				"elixir": 28000,
+				"money": 325000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"39": {
+				"id": 39,
+				"elixir": 27500,
+				"money": 320000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"40": {
+				"id": 40,
+				"elixir": 27000,
+				"money": 315000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"41": {
+				"id": 41,
+				"elixir": 26500,
+				"money": 310000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"42": {
+				"id": 42,
+				"elixir": 26000,
+				"money": 305000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"43": {
+				"id": 43,
+				"elixir": 25500,
+				"money": 300000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"44": {
+				"id": 44,
+				"elixir": 25000,
+				"money": 295000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"45": {
+				"id": 45,
+				"elixir": 24500,
+				"money": 290000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"46": {
+				"id": 46,
+				"elixir": 24000,
+				"money": 285000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"47": {
+				"id": 47,
+				"elixir": 23500,
+				"money": 280000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"48": {
+				"id": 48,
+				"elixir": 23000,
+				"money": 275000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"49": {
+				"id": 49,
+				"elixir": 22500,
+				"money": 270000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"50": {
+				"id": 50,
+				"elixir": 22000,
+				"money": 265000,
+				"power": 0,
+				"exp_card": 0
+			},
+			"51": {
+				"id": 51,
+				"elixir": 20000
+			}
+		}
+	},
+	"rank": {
+		"colComment": {},
+		"rows": {
+			"5": {
+				"id": 5,
+				"lv": 5,
+				"win_exp": 1,
+				"win_money": 10,
+				"win_elixir": 600,
+				"lose_exp": 1,
+				"lose_money": 5,
+				"lose_elixir": 300
+			},
+			"6": {
+				"id": 6,
+				"lv": 6,
+				"win_exp": 2,
+				"win_money": 11,
+				"win_elixir": 605,
+				"lose_exp": 1,
+				"lose_money": 6,
+				"lose_elixir": 303
+			},
+			"7": {
+				"id": 7,
+				"lv": 7,
+				"win_exp": 3,
+				"win_money": 12,
+				"win_elixir": 610,
+				"lose_exp": 2,
+				"lose_money": 6,
+				"lose_elixir": 305
+			},
+			"8": {
+				"id": 8,
+				"lv": 8,
+				"win_exp": 4,
+				"win_money": 13,
+				"win_elixir": 615,
+				"lose_exp": 2,
+				"lose_money": 7,
+				"lose_elixir": 308
+			},
+			"9": {
+				"id": 9,
+				"lv": 9,
+				"win_exp": 5,
+				"win_money": 14,
+				"win_elixir": 620,
+				"lose_exp": 3,
+				"lose_money": 7,
+				"lose_elixir": 310
+			},
+			"10": {
+				"id": 10,
+				"lv": 10,
+				"win_exp": 6,
+				"win_money": 15,
+				"win_elixir": 625,
+				"lose_exp": 3,
+				"lose_money": 8,
+				"lose_elixir": 313
+			},
+			"11": {
+				"id": 11,
+				"lv": 11,
+				"win_exp": 7,
+				"win_money": 16,
+				"win_elixir": 630,
+				"lose_exp": 4,
+				"lose_money": 8,
+				"lose_elixir": 315
+			},
+			"12": {
+				"id": 12,
+				"lv": 12,
+				"win_exp": 8,
+				"win_money": 17,
+				"win_elixir": 635,
+				"lose_exp": 4,
+				"lose_money": 9,
+				"lose_elixir": 318
+			},
+			"13": {
+				"id": 13,
+				"lv": 13,
+				"win_exp": 9,
+				"win_money": 18,
+				"win_elixir": 640,
+				"lose_exp": 5,
+				"lose_money": 9,
+				"lose_elixir": 320
+			},
+			"14": {
+				"id": 14,
+				"lv": 14,
+				"win_exp": 10,
+				"win_money": 19,
+				"win_elixir": 645,
+				"lose_exp": 5,
+				"lose_money": 10,
+				"lose_elixir": 323
+			},
+			"15": {
+				"id": 15,
+				"lv": 15,
+				"win_exp": 11,
+				"win_money": 20,
+				"win_elixir": 650,
+				"lose_exp": 6,
+				"lose_money": 10,
+				"lose_elixir": 325
+			},
+			"16": {
+				"id": 16,
+				"lv": 16,
+				"win_exp": 12,
+				"win_money": 21,
+				"win_elixir": 655,
+				"lose_exp": 6,
+				"lose_money": 11,
+				"lose_elixir": 328
+			},
+			"17": {
+				"id": 17,
+				"lv": 17,
+				"win_exp": 13,
+				"win_money": 22,
+				"win_elixir": 660,
+				"lose_exp": 7,
+				"lose_money": 11,
+				"lose_elixir": 330
+			},
+			"18": {
+				"id": 18,
+				"lv": 18,
+				"win_exp": 14,
+				"win_money": 23,
+				"win_elixir": 665,
+				"lose_exp": 7,
+				"lose_money": 12,
+				"lose_elixir": 333
+			},
+			"19": {
+				"id": 19,
+				"lv": 19,
+				"win_exp": 15,
+				"win_money": 24,
+				"win_elixir": 670,
+				"lose_exp": 8,
+				"lose_money": 12,
+				"lose_elixir": 335
+			},
+			"20": {
+				"id": 20,
+				"lv": 20,
+				"win_exp": 16,
+				"win_money": 25,
+				"win_elixir": 675,
+				"lose_exp": 8,
+				"lose_money": 13,
+				"lose_elixir": 338
+			},
+			"21": {
+				"id": 21,
+				"lv": 21,
+				"win_exp": 17,
+				"win_money": 26,
+				"win_elixir": 680,
+				"lose_exp": 9,
+				"lose_money": 13,
+				"lose_elixir": 340
+			},
+			"22": {
+				"id": 22,
+				"lv": 22,
+				"win_exp": 18,
+				"win_money": 27,
+				"win_elixir": 685,
+				"lose_exp": 9,
+				"lose_money": 14,
+				"lose_elixir": 343
+			},
+			"23": {
+				"id": 23,
+				"lv": 23,
+				"win_exp": 19,
+				"win_money": 28,
+				"win_elixir": 690,
+				"lose_exp": 10,
+				"lose_money": 14,
+				"lose_elixir": 345
+			},
+			"24": {
+				"id": 24,
+				"lv": 24,
+				"win_exp": 20,
+				"win_money": 29,
+				"win_elixir": 695,
+				"lose_exp": 10,
+				"lose_money": 15,
+				"lose_elixir": 348
+			},
+			"25": {
+				"id": 25,
+				"lv": 25,
+				"win_exp": 21,
+				"win_money": 30,
+				"win_elixir": 700,
+				"lose_exp": 11,
+				"lose_money": 15,
+				"lose_elixir": 350
+			},
+			"26": {
+				"id": 26,
+				"lv": 26,
+				"win_exp": 22,
+				"win_money": 31,
+				"win_elixir": 705,
+				"lose_exp": 11,
+				"lose_money": 16,
+				"lose_elixir": 353
+			},
+			"27": {
+				"id": 27,
+				"lv": 27,
+				"win_exp": 23,
+				"win_money": 32,
+				"win_elixir": 710,
+				"lose_exp": 12,
+				"lose_money": 16,
+				"lose_elixir": 355
+			},
+			"28": {
+				"id": 28,
+				"lv": 28,
+				"win_exp": 24,
+				"win_money": 33,
+				"win_elixir": 715,
+				"lose_exp": 12,
+				"lose_money": 17,
+				"lose_elixir": 358
+			},
+			"29": {
+				"id": 29,
+				"lv": 29,
+				"win_exp": 25,
+				"win_money": 34,
+				"win_elixir": 720,
+				"lose_exp": 13,
+				"lose_money": 17,
+				"lose_elixir": 360
+			},
+			"30": {
+				"id": 30,
+				"lv": 30,
+				"win_exp": 26,
+				"win_money": 35,
+				"win_elixir": 725,
+				"lose_exp": 13,
+				"lose_money": 18,
+				"lose_elixir": 363
+			},
+			"31": {
+				"id": 31,
+				"lv": 31,
+				"win_exp": 27,
+				"win_money": 36,
+				"win_elixir": 730,
+				"lose_exp": 14,
+				"lose_money": 18,
+				"lose_elixir": 365
+			},
+			"32": {
+				"id": 32,
+				"lv": 32,
+				"win_exp": 28,
+				"win_money": 37,
+				"win_elixir": 735,
+				"lose_exp": 14,
+				"lose_money": 19,
+				"lose_elixir": 368
+			},
+			"33": {
+				"id": 33,
+				"lv": 33,
+				"win_exp": 29,
+				"win_money": 38,
+				"win_elixir": 740,
+				"lose_exp": 15,
+				"lose_money": 19,
+				"lose_elixir": 370
+			},
+			"34": {
+				"id": 34,
+				"lv": 34,
+				"win_exp": 30,
+				"win_money": 39,
+				"win_elixir": 745,
+				"lose_exp": 15,
+				"lose_money": 20,
+				"lose_elixir": 373
+			},
+			"35": {
+				"id": 35,
+				"lv": 35,
+				"win_exp": 31,
+				"win_money": 40,
+				"win_elixir": 750,
+				"lose_exp": 16,
+				"lose_money": 20,
+				"lose_elixir": 375
+			},
+			"36": {
+				"id": 36,
+				"lv": 36,
+				"win_exp": 32,
+				"win_money": 41,
+				"win_elixir": 755,
+				"lose_exp": 16,
+				"lose_money": 21,
+				"lose_elixir": 378
+			},
+			"37": {
+				"id": 37,
+				"lv": 37,
+				"win_exp": 33,
+				"win_money": 42,
+				"win_elixir": 760,
+				"lose_exp": 17,
+				"lose_money": 21,
+				"lose_elixir": 380
+			},
+			"38": {
+				"id": 38,
+				"lv": 38,
+				"win_exp": 34,
+				"win_money": 43,
+				"win_elixir": 765,
+				"lose_exp": 17,
+				"lose_money": 22,
+				"lose_elixir": 383
+			},
+			"39": {
+				"id": 39,
+				"lv": 39,
+				"win_exp": 35,
+				"win_money": 44,
+				"win_elixir": 770,
+				"lose_exp": 18,
+				"lose_money": 22,
+				"lose_elixir": 385
+			},
+			"40": {
+				"id": 40,
+				"lv": 40,
+				"win_exp": 36,
+				"win_money": 45,
+				"win_elixir": 775,
+				"lose_exp": 18,
+				"lose_money": 23,
+				"lose_elixir": 388
+			},
+			"41": {
+				"id": 41,
+				"lv": 41,
+				"win_exp": 37,
+				"win_money": 46,
+				"win_elixir": 780,
+				"lose_exp": 19,
+				"lose_money": 23,
+				"lose_elixir": 390
+			},
+			"42": {
+				"id": 42,
+				"lv": 42,
+				"win_exp": 38,
+				"win_money": 47,
+				"win_elixir": 785,
+				"lose_exp": 19,
+				"lose_money": 24,
+				"lose_elixir": 393
+			},
+			"43": {
+				"id": 43,
+				"lv": 43,
+				"win_exp": 39,
+				"win_money": 48,
+				"win_elixir": 790,
+				"lose_exp": 20,
+				"lose_money": 24,
+				"lose_elixir": 395
+			},
+			"44": {
+				"id": 44,
+				"lv": 44,
+				"win_exp": 40,
+				"win_money": 49,
+				"win_elixir": 795,
+				"lose_exp": 20,
+				"lose_money": 25,
+				"lose_elixir": 398
+			},
+			"45": {
+				"id": 45,
+				"lv": 45,
+				"win_exp": 41,
+				"win_money": 50,
+				"win_elixir": 800,
+				"lose_exp": 21,
+				"lose_money": 25,
+				"lose_elixir": 400
+			},
+			"46": {
+				"id": 46,
+				"lv": 46,
+				"win_exp": 42,
+				"win_money": 51,
+				"win_elixir": 805,
+				"lose_exp": 21,
+				"lose_money": 26,
+				"lose_elixir": 403
+			},
+			"47": {
+				"id": 47,
+				"lv": 47,
+				"win_exp": 43,
+				"win_money": 52,
+				"win_elixir": 810,
+				"lose_exp": 22,
+				"lose_money": 26,
+				"lose_elixir": 405
+			},
+			"48": {
+				"id": 48,
+				"lv": 48,
+				"win_exp": 44,
+				"win_money": 53,
+				"win_elixir": 815,
+				"lose_exp": 22,
+				"lose_money": 27,
+				"lose_elixir": 408
+			},
+			"49": {
+				"id": 49,
+				"lv": 49,
+				"win_exp": 45,
+				"win_money": 54,
+				"win_elixir": 820,
+				"lose_exp": 23,
+				"lose_money": 27,
+				"lose_elixir": 410
+			},
+			"50": {
+				"id": 50,
+				"lv": 50,
+				"win_exp": 46,
+				"win_money": 55,
+				"win_elixir": 825,
+				"lose_exp": 23,
+				"lose_money": 28,
+				"lose_elixir": 413
+			},
+			"51": {
+				"id": 51,
+				"lv": 51,
+				"win_exp": 47,
+				"win_money": 56,
+				"win_elixir": 830,
+				"lose_exp": 24,
+				"lose_money": 28,
+				"lose_elixir": 415
+			},
+			"52": {
+				"id": 52,
+				"lv": 52,
+				"win_exp": 48,
+				"win_money": 57,
+				"win_elixir": 835,
+				"lose_exp": 24,
+				"lose_money": 29,
+				"lose_elixir": 418
+			},
+			"53": {
+				"id": 53,
+				"lv": 53,
+				"win_exp": 49,
+				"win_money": 58,
+				"win_elixir": 840,
+				"lose_exp": 25,
+				"lose_money": 29,
+				"lose_elixir": 420
+			},
+			"54": {
+				"id": 54,
+				"lv": 54,
+				"win_exp": 50,
+				"win_money": 59,
+				"win_elixir": 845,
+				"lose_exp": 25,
+				"lose_money": 30,
+				"lose_elixir": 423
+			},
+			"55": {
+				"id": 55,
+				"lv": 55,
+				"win_exp": 51,
+				"win_money": 60,
+				"win_elixir": 850,
+				"lose_exp": 26,
+				"lose_money": 30,
+				"lose_elixir": 425
+			},
+			"56": {
+				"id": 56,
+				"lv": 56,
+				"win_exp": 52,
+				"win_money": 61,
+				"win_elixir": 855,
+				"lose_exp": 26,
+				"lose_money": 31,
+				"lose_elixir": 428
+			},
+			"57": {
+				"id": 57,
+				"lv": 57,
+				"win_exp": 53,
+				"win_money": 62,
+				"win_elixir": 860,
+				"lose_exp": 27,
+				"lose_money": 31,
+				"lose_elixir": 430
+			},
+			"58": {
+				"id": 58,
+				"lv": 58,
+				"win_exp": 54,
+				"win_money": 63,
+				"win_elixir": 865,
+				"lose_exp": 27,
+				"lose_money": 32,
+				"lose_elixir": 433
+			},
+			"59": {
+				"id": 59,
+				"lv": 59,
+				"win_exp": 55,
+				"win_money": 64,
+				"win_elixir": 870,
+				"lose_exp": 28,
+				"lose_money": 32,
+				"lose_elixir": 435
+			},
+			"60": {
+				"id": 60,
+				"lv": 60,
+				"win_exp": 56,
+				"win_money": 65,
+				"win_elixir": 875,
+				"lose_exp": 28,
+				"lose_money": 33,
+				"lose_elixir": 438
+			},
+			"61": {
+				"id": 61,
+				"lv": 61,
+				"win_exp": 57,
+				"win_money": 66,
+				"win_elixir": 880,
+				"lose_exp": 29,
+				"lose_money": 33,
+				"lose_elixir": 440
+			},
+			"62": {
+				"id": 62,
+				"lv": 62,
+				"win_exp": 58,
+				"win_money": 67,
+				"win_elixir": 885,
+				"lose_exp": 29,
+				"lose_money": 34,
+				"lose_elixir": 443
+			},
+			"63": {
+				"id": 63,
+				"lv": 63,
+				"win_exp": 59,
+				"win_money": 68,
+				"win_elixir": 890,
+				"lose_exp": 30,
+				"lose_money": 34,
+				"lose_elixir": 445
+			},
+			"64": {
+				"id": 64,
+				"lv": 64,
+				"win_exp": 60,
+				"win_money": 69,
+				"win_elixir": 895,
+				"lose_exp": 30,
+				"lose_money": 35,
+				"lose_elixir": 448
+			},
+			"65": {
+				"id": 65,
+				"lv": 65,
+				"win_exp": 61,
+				"win_money": 70,
+				"win_elixir": 900,
+				"lose_exp": 31,
+				"lose_money": 35,
+				"lose_elixir": 450
+			},
+			"66": {
+				"id": 66,
+				"lv": 66,
+				"win_exp": 62,
+				"win_money": 71,
+				"win_elixir": 905,
+				"lose_exp": 31,
+				"lose_money": 36,
+				"lose_elixir": 453
+			},
+			"67": {
+				"id": 67,
+				"lv": 67,
+				"win_exp": 63,
+				"win_money": 72,
+				"win_elixir": 910,
+				"lose_exp": 32,
+				"lose_money": 36,
+				"lose_elixir": 455
+			},
+			"68": {
+				"id": 68,
+				"lv": 68,
+				"win_exp": 64,
+				"win_money": 73,
+				"win_elixir": 915,
+				"lose_exp": 32,
+				"lose_money": 37,
+				"lose_elixir": 458
+			},
+			"69": {
+				"id": 69,
+				"lv": 69,
+				"win_exp": 65,
+				"win_money": 74,
+				"win_elixir": 920,
+				"lose_exp": 33,
+				"lose_money": 37,
+				"lose_elixir": 460
+			},
+			"70": {
+				"id": 70,
+				"lv": 70,
+				"win_exp": 66,
+				"win_money": 75,
+				"win_elixir": 925,
+				"lose_exp": 33,
+				"lose_money": 38,
+				"lose_elixir": 463
+			},
+			"71": {
+				"id": 71,
+				"lv": 71,
+				"win_exp": 67,
+				"win_money": 76,
+				"win_elixir": 930,
+				"lose_exp": 34,
+				"lose_money": 38,
+				"lose_elixir": 465
+			},
+			"72": {
+				"id": 72,
+				"lv": 72,
+				"win_exp": 68,
+				"win_money": 77,
+				"win_elixir": 935,
+				"lose_exp": 34,
+				"lose_money": 39,
+				"lose_elixir": 468
+			},
+			"73": {
+				"id": 73,
+				"lv": 73,
+				"win_exp": 69,
+				"win_money": 78,
+				"win_elixir": 940,
+				"lose_exp": 35,
+				"lose_money": 39,
+				"lose_elixir": 470
+			},
+			"74": {
+				"id": 74,
+				"lv": 74,
+				"win_exp": 70,
+				"win_money": 79,
+				"win_elixir": 945,
+				"lose_exp": 35,
+				"lose_money": 40,
+				"lose_elixir": 473
+			},
+			"75": {
+				"id": 75,
+				"lv": 75,
+				"win_exp": 71,
+				"win_money": 80,
+				"win_elixir": 950,
+				"lose_exp": 36,
+				"lose_money": 40,
+				"lose_elixir": 475
+			},
+			"76": {
+				"id": 76,
+				"lv": 76,
+				"win_exp": 72,
+				"win_money": 81,
+				"win_elixir": 955,
+				"lose_exp": 36,
+				"lose_money": 41,
+				"lose_elixir": 478
+			},
+			"77": {
+				"id": 77,
+				"lv": 77,
+				"win_exp": 73,
+				"win_money": 82,
+				"win_elixir": 960,
+				"lose_exp": 37,
+				"lose_money": 41,
+				"lose_elixir": 480
+			},
+			"78": {
+				"id": 78,
+				"lv": 78,
+				"win_exp": 74,
+				"win_money": 83,
+				"win_elixir": 965,
+				"lose_exp": 37,
+				"lose_money": 42,
+				"lose_elixir": 483
+			},
+			"79": {
+				"id": 79,
+				"lv": 79,
+				"win_exp": 75,
+				"win_money": 84,
+				"win_elixir": 970,
+				"lose_exp": 38,
+				"lose_money": 42,
+				"lose_elixir": 485
+			},
+			"80": {
+				"id": 80,
+				"lv": 80,
+				"win_exp": 76,
+				"win_money": 85,
+				"win_elixir": 975,
+				"lose_exp": 38,
+				"lose_money": 43,
+				"lose_elixir": 488
+			},
+			"81": {
+				"id": 81,
+				"lv": 81,
+				"win_exp": 77,
+				"win_money": 86,
+				"win_elixir": 980,
+				"lose_exp": 39,
+				"lose_money": 43,
+				"lose_elixir": 490
+			},
+			"82": {
+				"id": 82,
+				"lv": 82,
+				"win_exp": 78,
+				"win_money": 87,
+				"win_elixir": 985,
+				"lose_exp": 39,
+				"lose_money": 44,
+				"lose_elixir": 493
+			},
+			"83": {
+				"id": 83,
+				"lv": 83,
+				"win_exp": 79,
+				"win_money": 88,
+				"win_elixir": 990,
+				"lose_exp": 40,
+				"lose_money": 44,
+				"lose_elixir": 495
+			},
+			"84": {
+				"id": 84,
+				"lv": 84,
+				"win_exp": 80,
+				"win_money": 89,
+				"win_elixir": 995,
+				"lose_exp": 40,
+				"lose_money": 45,
+				"lose_elixir": 498
+			},
+			"85": {
+				"id": 85,
+				"lv": 85,
+				"win_exp": 81,
+				"win_money": 90,
+				"win_elixir": 1000,
+				"lose_exp": 41,
+				"lose_money": 45,
+				"lose_elixir": 500
+			},
+			"86": {
+				"id": 86,
+				"lv": 86,
+				"win_exp": 82,
+				"win_money": 91,
+				"win_elixir": 1005,
+				"lose_exp": 41,
+				"lose_money": 46,
+				"lose_elixir": 503
+			},
+			"87": {
+				"id": 87,
+				"lv": 87,
+				"win_exp": 83,
+				"win_money": 92,
+				"win_elixir": 1010,
+				"lose_exp": 42,
+				"lose_money": 46,
+				"lose_elixir": 505
+			},
+			"88": {
+				"id": 88,
+				"lv": 88,
+				"win_exp": 84,
+				"win_money": 93,
+				"win_elixir": 1015,
+				"lose_exp": 42,
+				"lose_money": 47,
+				"lose_elixir": 508
+			},
+			"89": {
+				"id": 89,
+				"lv": 89,
+				"win_exp": 85,
+				"win_money": 94,
+				"win_elixir": 1020,
+				"lose_exp": 43,
+				"lose_money": 47,
+				"lose_elixir": 510
+			},
+			"90": {
+				"id": 90,
+				"lv": 90,
+				"win_exp": 86,
+				"win_money": 95,
+				"win_elixir": 1025,
+				"lose_exp": 43,
+				"lose_money": 48,
+				"lose_elixir": 513
+			},
+			"91": {
+				"id": 91,
+				"lv": 91,
+				"win_exp": 87,
+				"win_money": 96,
+				"win_elixir": 1030,
+				"lose_exp": 44,
+				"lose_money": 48,
+				"lose_elixir": 515
+			},
+			"92": {
+				"id": 92,
+				"lv": 92,
+				"win_exp": 88,
+				"win_money": 97,
+				"win_elixir": 1035,
+				"lose_exp": 44,
+				"lose_money": 49,
+				"lose_elixir": 518
+			},
+			"93": {
+				"id": 93,
+				"lv": 93,
+				"win_exp": 89,
+				"win_money": 98,
+				"win_elixir": 1040,
+				"lose_exp": 45,
+				"lose_money": 49,
+				"lose_elixir": 520
+			},
+			"94": {
+				"id": 94,
+				"lv": 94,
+				"win_exp": 90,
+				"win_money": 99,
+				"win_elixir": 1045,
+				"lose_exp": 45,
+				"lose_money": 50,
+				"lose_elixir": 523
+			},
+			"95": {
+				"id": 95,
+				"lv": 95,
+				"win_exp": 91,
+				"win_money": 100,
+				"win_elixir": 1050,
+				"lose_exp": 46,
+				"lose_money": 50,
+				"lose_elixir": 525
+			},
+			"96": {
+				"id": 96,
+				"lv": 96,
+				"win_exp": 92,
+				"win_money": 101,
+				"win_elixir": 1055,
+				"lose_exp": 46,
+				"lose_money": 51,
+				"lose_elixir": 528
+			},
+			"97": {
+				"id": 97,
+				"lv": 97,
+				"win_exp": 93,
+				"win_money": 102,
+				"win_elixir": 1060,
+				"lose_exp": 47,
+				"lose_money": 51,
+				"lose_elixir": 530
+			},
+			"98": {
+				"id": 98,
+				"lv": 98,
+				"win_exp": 94,
+				"win_money": 103,
+				"win_elixir": 1065,
+				"lose_exp": 47,
+				"lose_money": 52,
+				"lose_elixir": 533
+			},
+			"99": {
+				"id": 99,
+				"lv": 99,
+				"win_exp": 95,
+				"win_money": 104,
+				"win_elixir": 1070,
+				"lose_exp": 48,
+				"lose_money": 52,
+				"lose_elixir": 535
+			},
+			"100": {
+				"id": 100,
+				"lv": 100,
+				"win_exp": 96,
+				"win_money": 105,
+				"win_elixir": 1075,
+				"lose_exp": 48,
+				"lose_money": 53,
+				"lose_elixir": 538
+			}
+		}
+	},
+	"ranking_list": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"top": 10,
+				"challenge_count": 10,
+				"beat_back_count": 3,
+				"add_count": 3
+			}
+		}
+	},
+	"ranking_reward": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"elixir": 80000
+			},
+			"10": {
+				"id": 10,
+				"elixir": 50000
+			},
+			"50": {
+				"id": 50,
+				"elixir": 30000
+			},
+			"100": {
+				"id": 100,
+				"elixir": 20000
+			},
+			"500": {
+				"id": 500,
+				"elixir": 10000
+			}
+		}
+	},
+	"ranking_reward_factor": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"ranking": 1,
+				"percent": 95
+			},
+			"2": {
+				"id": 2,
+				"ranking": 2,
+				"percent": 90
+			},
+			"3": {
+				"id": 3,
+				"ranking": 3,
+				"percent": 85
+			},
+			"4": {
+				"id": 4,
+				"ranking": 4,
+				"percent": 80
+			},
+			"5": {
+				"id": 5,
+				"ranking": 5,
+				"percent": 75
+			},
+			"6": {
+				"id": 6,
+				"ranking": 6,
+				"percent": 70
+			},
+			"7": {
+				"id": 7,
+				"ranking": 7,
+				"percent": 65
+			},
+			"8": {
+				"id": 8,
+				"ranking": 8,
+				"percent": 60
+			},
+			"9": {
+				"id": 9,
+				"ranking": 9,
+				"percent": 55
+			},
+			"10": {
+				"id": 10,
+				"ranking": 10,
+				"percent": 50
+			},
+			"11": {
+				"id": 11,
+				"ranking": 11,
+				"percent": 48
+			},
+			"12": {
+				"id": 12,
+				"ranking": 12,
+				"percent": 46
+			},
+			"13": {
+				"id": 13,
+				"ranking": 13,
+				"percent": 44
+			},
+			"14": {
+				"id": 14,
+				"ranking": 14,
+				"percent": 42
+			},
+			"15": {
+				"id": 15,
+				"ranking": 15,
+				"percent": 40
+			},
+			"16": {
+				"id": 16,
+				"ranking": 16,
+				"percent": 38
+			},
+			"17": {
+				"id": 17,
+				"ranking": 17,
+				"percent": 36
+			},
+			"18": {
+				"id": 18,
+				"ranking": 18,
+				"percent": 34
+			},
+			"19": {
+				"id": 19,
+				"ranking": 19,
+				"percent": 32
+			},
+			"20": {
+				"id": 20,
+				"ranking": 20,
+				"percent": 30
+			},
+			"21": {
+				"id": 21,
+				"ranking": 31,
+				"percent": 28
+			},
+			"22": {
+				"id": 22,
+				"ranking": 41,
+				"percent": 26
+			},
+			"23": {
+				"id": 23,
+				"ranking": 51,
+				"percent": 24
+			},
+			"24": {
+				"id": 24,
+				"ranking": 101,
+				"percent": 22
+			},
+			"25": {
+				"id": 25,
+				"ranking": 201,
+				"percent": 20
+			},
+			"26": {
+				"id": 26,
+				"ranking": 501,
+				"percent": 18
+			},
+			"27": {
+				"id": 27,
+				"ranking": 1001,
+				"percent": 16
+			},
+			"28": {
+				"id": 28,
+				"ranking": 2001,
+				"percent": 14
+			},
+			"29": {
+				"id": 29,
+				"ranking": 3001,
+				"percent": 12
+			},
+			"30": {
+				"id": 30,
+				"ranking": 4001,
+				"percent": 10
+			},
+			"31": {
+				"id": 31,
+				"ranking": 5001,
+				"percent": 8
+			},
+			"32": {
+				"id": 32,
+				"ranking": 8001,
+				"percent": 6
+			},
+			"33": {
+				"id": 33,
+				"ranking": 10001,
+				"percent": 4
 			}
 		}
 	},
@@ -30155,24 +30158,24 @@ var outputTables = {
 				"description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
 				"type": 2,
 				"scope": 2,
-				"star3_inc_min": 75,
-				"star3_inc_max": 78,
+				"star3_inc_min": 77,
+				"star3_inc_max": 80,
 				"star3_grow": 3,
 				"rate3": 30,
-				"star4_inc_min": 80,
-				"star4_inc_max": 83,
+				"star4_inc_min": 82,
+				"star4_inc_max": 85,
 				"star4_grow": 3,
 				"rate4": 35,
-				"star5_inc_min": 85,
-				"star5_inc_max": 88,
+				"star5_inc_min": 87,
+				"star5_inc_max": 90,
 				"star5_grow": 3,
 				"rate5": 40,
-				"star6_inc_min": 90,
-				"star6_inc_max": 93,
+				"star6_inc_min": 92,
+				"star6_inc_max": 95,
 				"star6_grow": 3,
 				"rate6": 45,
-				"star7_inc_min": 95,
-				"star7_inc_max": 98,
+				"star7_inc_min": 97,
+				"star7_inc_max": 100,
 				"star7_grow": 3,
 				"rate7": 50
 			},
@@ -32517,600 +32520,900 @@ var outputTables = {
 				"id": 1,
 				"exp": 40,
 				"money": 10000,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"2": {
 				"id": 2,
 				"exp": 44,
-				"money": 10000,
+				"money": 10500,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"3": {
 				"id": 3,
 				"exp": 49,
-				"money": 10000,
+				"money": 11000,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"4": {
 				"id": 4,
 				"exp": 54,
-				"money": 10000,
+				"money": 11500,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"5": {
 				"id": 5,
 				"exp": 60,
-				"money": 10000,
+				"money": 12000,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"6": {
 				"id": 6,
 				"exp": 66,
-				"money": 10000,
+				"money": 12500,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"7": {
 				"id": 7,
 				"exp": 73,
-				"money": 10000,
+				"money": 13000,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"8": {
 				"id": 8,
 				"exp": 81,
-				"money": 10000,
+				"money": 13500,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"9": {
 				"id": 9,
 				"exp": 90,
-				"money": 10000,
+				"money": 14000,
+				"elixir": 0,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 10
 			},
 			"10": {
 				"id": 10,
 				"exp": 100,
-				"money": 10000,
-				"power": 10
+				"money": 14500,
+				"elixir": 1000,
+				"skillPoint": 0,
+				"energy": 0,
+				"power": 20
 			},
 			"11": {
 				"id": 11,
 				"exp": 112,
-				"money": 11000,
+				"money": 15000,
+				"elixir": 1020,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"12": {
 				"id": 12,
 				"exp": 125,
-				"money": 11000,
+				"money": 15500,
+				"elixir": 1040,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"13": {
 				"id": 13,
 				"exp": 139,
-				"money": 11000,
+				"money": 16000,
+				"elixir": 1060,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"14": {
 				"id": 14,
 				"exp": 155,
-				"money": 11000,
+				"money": 16500,
+				"elixir": 1080,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"15": {
 				"id": 15,
 				"exp": 173,
-				"money": 11000,
+				"money": 17000,
+				"elixir": 1100,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"16": {
 				"id": 16,
 				"exp": 193,
-				"money": 11000,
+				"money": 17500,
+				"elixir": 1120,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"17": {
 				"id": 17,
 				"exp": 215,
-				"money": 11000,
+				"money": 18000,
+				"elixir": 1140,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"18": {
 				"id": 18,
 				"exp": 240,
-				"money": 11000,
+				"money": 18500,
+				"elixir": 1160,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"19": {
 				"id": 19,
 				"exp": 268,
-				"money": 11000,
+				"money": 19000,
+				"elixir": 1180,
+				"skillPoint": 0,
+				"energy": 0,
 				"power": 20
 			},
 			"20": {
 				"id": 20,
 				"exp": 299,
-				"money": 11000,
-				"power": 20
+				"money": 19500,
+				"elixir": 1200,
+				"skillPoint": 800,
+				"energy": 0,
+				"power": 30
 			},
 			"21": {
 				"id": 21,
 				"exp": 333,
-				"money": 12000,
+				"money": 20000,
+				"elixir": 1220,
+				"skillPoint": 810,
+				"energy": 0,
 				"power": 30
 			},
 			"22": {
 				"id": 22,
 				"exp": 371,
-				"money": 12000,
+				"money": 20500,
+				"elixir": 1240,
+				"skillPoint": 820,
+				"energy": 0,
 				"power": 30
 			},
 			"23": {
 				"id": 23,
 				"exp": 414,
-				"money": 12000,
+				"money": 21000,
+				"elixir": 1260,
+				"skillPoint": 830,
+				"energy": 0,
 				"power": 30
 			},
 			"24": {
 				"id": 24,
 				"exp": 462,
-				"money": 12000,
+				"money": 21500,
+				"elixir": 1280,
+				"skillPoint": 840,
+				"energy": 0,
 				"power": 30
 			},
 			"25": {
 				"id": 25,
 				"exp": 515,
-				"money": 12000,
+				"money": 22000,
+				"elixir": 1300,
+				"skillPoint": 850,
+				"energy": 0,
 				"power": 30
 			},
 			"26": {
 				"id": 26,
 				"exp": 574,
-				"money": 12000,
+				"money": 22500,
+				"elixir": 1320,
+				"skillPoint": 860,
+				"energy": 0,
 				"power": 30
 			},
 			"27": {
 				"id": 27,
 				"exp": 640,
-				"money": 12000,
+				"money": 23000,
+				"elixir": 1340,
+				"skillPoint": 870,
+				"energy": 0,
 				"power": 30
 			},
 			"28": {
 				"id": 28,
 				"exp": 714,
-				"money": 12000,
+				"money": 23500,
+				"elixir": 1360,
+				"skillPoint": 880,
+				"energy": 0,
 				"power": 30
 			},
 			"29": {
 				"id": 29,
 				"exp": 796,
-				"money": 12000,
+				"money": 24000,
+				"elixir": 1380,
+				"skillPoint": 890,
+				"energy": 0,
 				"power": 30
 			},
 			"30": {
 				"id": 30,
 				"exp": 888,
-				"money": 12000,
-				"power": 30
+				"money": 24500,
+				"elixir": 1400,
+				"skillPoint": 900,
+				"energy": 100,
+				"power": 40
 			},
 			"31": {
 				"id": 31,
 				"exp": 990,
-				"money": 13000,
+				"money": 25000,
+				"elixir": 1420,
+				"skillPoint": 910,
+				"energy": 105,
 				"power": 40
 			},
 			"32": {
 				"id": 32,
 				"exp": 1104,
-				"money": 13000,
+				"money": 25500,
+				"elixir": 1440,
+				"skillPoint": 920,
+				"energy": 110,
 				"power": 40
 			},
 			"33": {
 				"id": 33,
 				"exp": 1231,
-				"money": 13000,
+				"money": 26000,
+				"elixir": 1460,
+				"skillPoint": 930,
+				"energy": 115,
 				"power": 40
 			},
 			"34": {
 				"id": 34,
 				"exp": 1373,
-				"money": 13000,
+				"money": 26500,
+				"elixir": 1480,
+				"skillPoint": 940,
+				"energy": 120,
 				"power": 40
 			},
 			"35": {
 				"id": 35,
 				"exp": 1531,
-				"money": 13000,
+				"money": 27000,
+				"elixir": 1500,
+				"skillPoint": 950,
+				"energy": 125,
 				"power": 40
 			},
 			"36": {
 				"id": 36,
 				"exp": 1707,
-				"money": 13000,
+				"money": 27500,
+				"elixir": 1520,
+				"skillPoint": 960,
+				"energy": 130,
 				"power": 40
 			},
 			"37": {
 				"id": 37,
 				"exp": 1903,
-				"money": 13000,
+				"money": 28000,
+				"elixir": 1540,
+				"skillPoint": 970,
+				"energy": 135,
 				"power": 40
 			},
 			"38": {
 				"id": 38,
 				"exp": 2122,
-				"money": 13000,
+				"money": 28500,
+				"elixir": 1560,
+				"skillPoint": 980,
+				"energy": 140,
 				"power": 40
 			},
 			"39": {
 				"id": 39,
 				"exp": 2366,
-				"money": 13000,
+				"money": 29000,
+				"elixir": 1580,
+				"skillPoint": 990,
+				"energy": 145,
 				"power": 40
 			},
 			"40": {
 				"id": 40,
 				"exp": 2638,
-				"money": 13000,
-				"power": 40
+				"money": 29500,
+				"elixir": 1600,
+				"skillPoint": 1000,
+				"energy": 150,
+				"power": 50
 			},
 			"41": {
 				"id": 41,
 				"exp": 2941,
-				"money": 14000,
+				"money": 30000,
+				"elixir": 1620,
+				"skillPoint": 1010,
+				"energy": 155,
 				"power": 50
 			},
 			"42": {
 				"id": 42,
 				"exp": 3279,
-				"money": 14000,
+				"money": 30500,
+				"elixir": 1640,
+				"skillPoint": 1020,
+				"energy": 160,
 				"power": 50
 			},
 			"43": {
 				"id": 43,
 				"exp": 3656,
-				"money": 14000,
+				"money": 31000,
+				"elixir": 1660,
+				"skillPoint": 1030,
+				"energy": 165,
 				"power": 50
 			},
 			"44": {
 				"id": 44,
 				"exp": 4076,
-				"money": 14000,
+				"money": 31500,
+				"elixir": 1680,
+				"skillPoint": 1040,
+				"energy": 170,
 				"power": 50
 			},
 			"45": {
 				"id": 45,
 				"exp": 4545,
-				"money": 14000,
+				"money": 32000,
+				"elixir": 1700,
+				"skillPoint": 1050,
+				"energy": 175,
 				"power": 50
 			},
 			"46": {
 				"id": 46,
 				"exp": 5068,
-				"money": 14000,
+				"money": 32500,
+				"elixir": 1720,
+				"skillPoint": 1060,
+				"energy": 180,
 				"power": 50
 			},
 			"47": {
 				"id": 47,
 				"exp": 5651,
-				"money": 14000,
+				"money": 33000,
+				"elixir": 1740,
+				"skillPoint": 1070,
+				"energy": 185,
 				"power": 50
 			},
 			"48": {
 				"id": 48,
 				"exp": 6301,
-				"money": 14000,
+				"money": 33500,
+				"elixir": 1760,
+				"skillPoint": 1080,
+				"energy": 190,
 				"power": 50
 			},
 			"49": {
 				"id": 49,
 				"exp": 7026,
-				"money": 14000,
+				"money": 34000,
+				"elixir": 1780,
+				"skillPoint": 1090,
+				"energy": 195,
 				"power": 50
 			},
 			"50": {
 				"id": 50,
 				"exp": 7834,
-				"money": 14000,
-				"power": 50
+				"money": 34500,
+				"elixir": 1800,
+				"skillPoint": 1100,
+				"energy": 200,
+				"power": 60
 			},
 			"51": {
 				"id": 51,
 				"exp": 8735,
-				"money": 15000,
+				"money": 35000,
+				"elixir": 1820,
+				"skillPoint": 1110,
+				"energy": 205,
 				"power": 60
 			},
 			"52": {
 				"id": 52,
 				"exp": 9740,
-				"money": 15000,
+				"money": 35500,
+				"elixir": 1840,
+				"skillPoint": 1120,
+				"energy": 210,
 				"power": 60
 			},
 			"53": {
 				"id": 53,
 				"exp": 10860,
-				"money": 15000,
+				"money": 36000,
+				"elixir": 1860,
+				"skillPoint": 1130,
+				"energy": 215,
 				"power": 60
 			},
 			"54": {
 				"id": 54,
 				"exp": 12109,
-				"money": 15000,
+				"money": 36500,
+				"elixir": 1880,
+				"skillPoint": 1140,
+				"energy": 220,
 				"power": 60
 			},
 			"55": {
 				"id": 55,
 				"exp": 13502,
-				"money": 15000,
+				"money": 37000,
+				"elixir": 1900,
+				"skillPoint": 1150,
+				"energy": 225,
 				"power": 60
 			},
 			"56": {
 				"id": 56,
 				"exp": 15055,
-				"money": 15000,
+				"money": 37500,
+				"elixir": 1920,
+				"skillPoint": 1160,
+				"energy": 230,
 				"power": 60
 			},
 			"57": {
 				"id": 57,
 				"exp": 16786,
-				"money": 15000,
+				"money": 38000,
+				"elixir": 1940,
+				"skillPoint": 1170,
+				"energy": 235,
 				"power": 60
 			},
 			"58": {
 				"id": 58,
 				"exp": 18716,
-				"money": 15000,
+				"money": 38500,
+				"elixir": 1960,
+				"skillPoint": 1180,
+				"energy": 240,
 				"power": 60
 			},
 			"59": {
 				"id": 59,
 				"exp": 20868,
-				"money": 15000,
+				"money": 39000,
+				"elixir": 1980,
+				"skillPoint": 1190,
+				"energy": 245,
 				"power": 60
 			},
 			"60": {
 				"id": 60,
 				"exp": 23268,
-				"money": 15000,
-				"power": 60
+				"money": 39500,
+				"elixir": 2000,
+				"skillPoint": 1200,
+				"energy": 250,
+				"power": 70
 			},
 			"61": {
 				"id": 61,
 				"exp": 25944,
-				"money": 16000,
+				"money": 40000,
+				"elixir": 2020,
+				"skillPoint": 1210,
+				"energy": 255,
 				"power": 70
 			},
 			"62": {
 				"id": 62,
 				"exp": 28928,
-				"money": 16000,
+				"money": 40500,
+				"elixir": 2040,
+				"skillPoint": 1220,
+				"energy": 260,
 				"power": 70
 			},
 			"63": {
 				"id": 63,
 				"exp": 32255,
-				"money": 16000,
+				"money": 41000,
+				"elixir": 2060,
+				"skillPoint": 1230,
+				"energy": 265,
 				"power": 70
 			},
 			"64": {
 				"id": 64,
 				"exp": 35964,
-				"money": 16000,
+				"money": 41500,
+				"elixir": 2080,
+				"skillPoint": 1240,
+				"energy": 270,
 				"power": 70
 			},
 			"65": {
 				"id": 65,
 				"exp": 40100,
-				"money": 16000,
+				"money": 42000,
+				"elixir": 2100,
+				"skillPoint": 1250,
+				"energy": 275,
 				"power": 70
 			},
 			"66": {
 				"id": 66,
 				"exp": 44712,
-				"money": 16000,
+				"money": 42500,
+				"elixir": 2120,
+				"skillPoint": 1260,
+				"energy": 280,
 				"power": 70
 			},
 			"67": {
 				"id": 67,
 				"exp": 49854,
-				"money": 16000,
+				"money": 43000,
+				"elixir": 2140,
+				"skillPoint": 1270,
+				"energy": 285,
 				"power": 70
 			},
 			"68": {
 				"id": 68,
 				"exp": 55587,
-				"money": 16000,
+				"money": 43500,
+				"elixir": 2160,
+				"skillPoint": 1280,
+				"energy": 290,
 				"power": 70
 			},
 			"69": {
 				"id": 69,
 				"exp": 61980,
-				"money": 16000,
+				"money": 44000,
+				"elixir": 2180,
+				"skillPoint": 1290,
+				"energy": 295,
 				"power": 70
 			},
 			"70": {
 				"id": 70,
 				"exp": 69108,
-				"money": 16000,
-				"power": 70
+				"money": 44500,
+				"elixir": 2200,
+				"skillPoint": 1300,
+				"energy": 300,
+				"power": 80
 			},
 			"71": {
 				"id": 71,
 				"exp": 77055,
-				"money": 17000,
+				"money": 45000,
+				"elixir": 2220,
+				"skillPoint": 1310,
+				"energy": 305,
 				"power": 80
 			},
 			"72": {
 				"id": 72,
 				"exp": 85916,
-				"money": 17000,
+				"money": 45500,
+				"elixir": 2240,
+				"skillPoint": 1320,
+				"energy": 310,
 				"power": 80
 			},
 			"73": {
 				"id": 73,
 				"exp": 95796,
-				"money": 17000,
+				"money": 46000,
+				"elixir": 2260,
+				"skillPoint": 1330,
+				"energy": 315,
 				"power": 80
 			},
 			"74": {
 				"id": 74,
 				"exp": 106813,
-				"money": 17000,
+				"money": 46500,
+				"elixir": 2280,
+				"skillPoint": 1340,
+				"energy": 320,
 				"power": 80
 			},
 			"75": {
 				"id": 75,
 				"exp": 119096,
-				"money": 17000,
+				"money": 47000,
+				"elixir": 2300,
+				"skillPoint": 1350,
+				"energy": 325,
 				"power": 80
 			},
 			"76": {
 				"id": 76,
 				"exp": 132792,
-				"money": 17000,
+				"money": 47500,
+				"elixir": 2320,
+				"skillPoint": 1360,
+				"energy": 330,
 				"power": 80
 			},
 			"77": {
 				"id": 77,
 				"exp": 148063,
-				"money": 17000,
+				"money": 48000,
+				"elixir": 2340,
+				"skillPoint": 1370,
+				"energy": 335,
 				"power": 80
 			},
 			"78": {
 				"id": 78,
 				"exp": 165090,
-				"money": 17000,
+				"money": 48500,
+				"elixir": 2360,
+				"skillPoint": 1380,
+				"energy": 340,
 				"power": 80
 			},
 			"79": {
 				"id": 79,
 				"exp": 184075,
-				"money": 17000,
+				"money": 49000,
+				"elixir": 2380,
+				"skillPoint": 1390,
+				"energy": 345,
 				"power": 80
 			},
 			"80": {
 				"id": 80,
 				"exp": 205244,
-				"money": 17000,
+				"money": 49500,
+				"elixir": 2400,
+				"skillPoint": 1400,
+				"energy": 350,
 				"power": 80
 			},
 			"81": {
 				"id": 81,
 				"exp": 228847,
-				"money": 18000,
+				"money": 50000,
+				"elixir": 2420,
+				"skillPoint": 1410,
+				"energy": 355,
 				"power": 90
 			},
 			"82": {
 				"id": 82,
 				"exp": 255164,
-				"money": 18000,
+				"money": 50500,
+				"elixir": 2440,
+				"skillPoint": 1420,
+				"energy": 360,
 				"power": 90
 			},
 			"83": {
 				"id": 83,
 				"exp": 284508,
-				"money": 18000,
+				"money": 51000,
+				"elixir": 2460,
+				"skillPoint": 1430,
+				"energy": 365,
 				"power": 90
 			},
 			"84": {
 				"id": 84,
 				"exp": 317226,
-				"money": 18000,
+				"money": 51500,
+				"elixir": 2480,
+				"skillPoint": 1440,
+				"energy": 370,
 				"power": 90
 			},
 			"85": {
 				"id": 85,
 				"exp": 353707,
-				"money": 18000,
+				"money": 52000,
+				"elixir": 2500,
+				"skillPoint": 1450,
+				"energy": 375,
 				"power": 90
 			},
 			"86": {
 				"id": 86,
 				"exp": 394383,
-				"money": 18000,
+				"money": 52500,
+				"elixir": 2520,
+				"skillPoint": 1460,
+				"energy": 380,
 				"power": 90
 			},
 			"87": {
 				"id": 87,
 				"exp": 439737,
-				"money": 18000,
+				"money": 53000,
+				"elixir": 2540,
+				"skillPoint": 1470,
+				"energy": 385,
 				"power": 90
 			},
 			"88": {
 				"id": 88,
 				"exp": 490307,
-				"money": 18000,
+				"money": 53500,
+				"elixir": 2560,
+				"skillPoint": 1480,
+				"energy": 390,
 				"power": 90
 			},
 			"89": {
 				"id": 89,
 				"exp": 546692,
-				"money": 18000,
+				"money": 54000,
+				"elixir": 2580,
+				"skillPoint": 1490,
+				"energy": 395,
 				"power": 90
 			},
 			"90": {
 				"id": 90,
 				"exp": 609562,
-				"money": 18000,
-				"power": 90
+				"money": 54500,
+				"elixir": 2600,
+				"skillPoint": 1500,
+				"energy": 400,
+				"power": 100
 			},
 			"91": {
 				"id": 91,
 				"exp": 679662,
-				"money": 19000,
+				"money": 55000,
+				"elixir": 2620,
+				"skillPoint": 1510,
+				"energy": 405,
 				"power": 100
 			},
 			"92": {
 				"id": 92,
 				"exp": 757823,
-				"money": 19000,
+				"money": 55500,
+				"elixir": 2640,
+				"skillPoint": 1520,
+				"energy": 410,
 				"power": 100
 			},
 			"93": {
 				"id": 93,
 				"exp": 844973,
-				"money": 19000,
+				"money": 56000,
+				"elixir": 2660,
+				"skillPoint": 1530,
+				"energy": 415,
 				"power": 100
 			},
 			"94": {
 				"id": 94,
 				"exp": 942145,
-				"money": 19000,
+				"money": 56500,
+				"elixir": 2680,
+				"skillPoint": 1540,
+				"energy": 420,
 				"power": 100
 			},
 			"95": {
 				"id": 95,
 				"exp": 1050492,
-				"money": 19000,
+				"money": 57000,
+				"elixir": 2700,
+				"skillPoint": 1550,
+				"energy": 425,
 				"power": 100
 			},
 			"96": {
 				"id": 96,
 				"exp": 1171299,
-				"money": 19000,
+				"money": 57500,
+				"elixir": 2720,
+				"skillPoint": 1560,
+				"energy": 430,
 				"power": 100
 			},
 			"97": {
 				"id": 97,
 				"exp": 1305998,
-				"money": 19000,
+				"money": 58000,
+				"elixir": 2740,
+				"skillPoint": 1570,
+				"energy": 435,
 				"power": 100
 			},
 			"98": {
 				"id": 98,
 				"exp": 1456188,
-				"money": 19000,
+				"money": 58500,
+				"elixir": 2760,
+				"skillPoint": 1580,
+				"energy": 440,
 				"power": 100
 			},
 			"99": {
 				"id": 99,
 				"exp": 1623650,
-				"money": 19000,
+				"money": 59000,
+				"elixir": 2780,
+				"skillPoint": 1590,
+				"energy": 445,
 				"power": 100
 			},
 			"100": {
 				"id": 100,
 				"exp": 1810370,
-				"money": 19000,
+				"money": 59500,
+				"elixir": 2800,
+				"skillPoint": 1600,
+				"energy": 450,
 				"power": 100
 			}
 		}

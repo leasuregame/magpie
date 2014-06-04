@@ -59,15 +59,30 @@ var InstancesLayer = cc.Layer.extend({
         this._passLayerItem.setPosition(this._instancesLayerFit.passLayerItemPoint);
         this._passLayerItem.setOffset(cc.p(0, -5));
 
+        this._searchImmortalLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button23,
+            main_scene_image.button23s,
+            main_scene_image.button23d,
+            main_scene_image.icon466,
+            this._onClickSearchImmortalLayer,
+            this
+        );
+
+        this._searchImmortalLayerItem.setPosition(this._instancesLayerFit.searchImmortalLayerItemPoint);
+        this._searchImmortalLayerItem.setOffset(cc.p(0, -5));
+
+
         var menu = cc.Menu.create(
             this._taskLayerItem,
-            this._passLayerItem
+            this._passLayerItem,
+            this._searchImmortalLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         this._taskLayerItem.setEnabled(false);
         this._passLayerItem.setEnabled(true);
+        this._searchImmortalLayerItem.setEnabled(true);
         this.switchLayer(TaskLayer);
 
         return true;
@@ -84,7 +99,7 @@ var InstancesLayer = cc.Layer.extend({
     },
 
     _onClickTaskLayer: function () {
-        cc.log("ShopLayer _onClickVipLayer");
+        cc.log("InstancesLayer _onClickVipLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -95,7 +110,7 @@ var InstancesLayer = cc.Layer.extend({
     },
 
     _onClickPassLayer: function () {
-        cc.log("ShopLayer _onClickPropsLayer");
+        cc.log("InstancesLayer _onClickPropsLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -109,6 +124,13 @@ var InstancesLayer = cc.Layer.extend({
             this._taskLayerItem.setEnabled(true);
             this._passLayerItem.setEnabled(false);
         }
+    },
+
+    _onClickSearchImmortalLayer: function() {
+        cc.log("InstancesLayer _onClickPropsLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        TipLayer.tip("敬请期待");
     },
 
     switchLayer: function (runLayer) {

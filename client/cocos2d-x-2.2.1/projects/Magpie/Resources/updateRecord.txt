@@ -26,6 +26,7 @@ res/main/icon462.png
 res/main/icon463.png
 res/main/icon464.png
 res/main/icon465.png
+res/main/icon466.png
 res/ccb/uiEffect114.ccbi
 res/ccb/uiEffect115.ccbi
 res/ccb/uiEffect116.ccbi
@@ -69,6 +70,7 @@ resYY/main/icon462.png
 resYY/main/icon463.png
 resYY/main/icon464.png
 resYY/main/icon465.png
+resYY/main/icon466.png
 resYY/ccb/uiEffect114.ccbi
 resYY/ccb/uiEffect115.ccbi
 resYY/ccb/uiEffect116.ccbi

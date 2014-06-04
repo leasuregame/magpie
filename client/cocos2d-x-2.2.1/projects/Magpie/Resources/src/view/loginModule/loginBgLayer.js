@@ -32,16 +32,15 @@ var LoginBgLayer = cc.Layer.extend({
             version = cc.AssetsManager.getInstance().getVersion();
         }
 
-        if (typeof (application.getAppVersion) != "undefined") {
-            var appVersionLabel = StrokeLabel.create(
-                version,
-                "STHeitiTC-Medium",
-                25
-            );
-            appVersionLabel.setAnchorPoint(cc.p(1, 1));
-            appVersionLabel.setPosition(this._loginBgLayerFit.appVersionLabelPoint);
-            this.addChild(appVersionLabel);
-        }
+        var appVersionLabel = StrokeLabel.create(
+            version,
+            "STHeitiTC-Medium",
+            25
+        );
+        appVersionLabel.setAnchorPoint(cc.p(1, 1));
+        appVersionLabel.setPosition(this._loginBgLayerFit.appVersionLabelPoint);
+        this.addChild(appVersionLabel);
+
 
         return true;
     }

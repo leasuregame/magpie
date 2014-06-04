@@ -654,7 +654,8 @@ var fit4Iphone5 = {
         "instancesLayer": {
             "headIconPoint": cc.p(0, 1050),
             "taskLayerItemPoint": cc.p(71, 1090),
-            "passLayerItemPoint": cc.p(214, 1090)
+            "passLayerItemPoint": cc.p(214, 1090),
+            "searchImmortalLayerItemPoint": cc.p(362, 1090)
         },
         "lineUpDetail": {
             "locatePoints": {

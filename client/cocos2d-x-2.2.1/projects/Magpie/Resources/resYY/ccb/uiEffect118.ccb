@@ -712,7 +712,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -737,8 +737,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>8</real>
-									<real>8</real>
+									<real>6.8000006675720215</real>
+									<real>6.8000006675720215</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -770,7 +770,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>102</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -847,7 +847,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>2</real>
+											<real>1.6666666269302368</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -908,7 +908,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>2</real>
+											<real>1.6666666269302368</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -951,7 +951,7 @@
 											<key>name</key>
 											<string>visible</string>
 											<key>time</key>
-											<real>2</real>
+											<real>1.6666666269302368</real>
 											<key>type</key>
 											<integer>1</integer>
 											<key>value</key>
@@ -1149,7 +1149,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1186,8 +1186,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3.0555555820465088</real>
+									<real>3.0555555820465088</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1219,7 +1219,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>241</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1360,7 +1360,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1698,6 +1698,36 @@
 									<key>value</key>
 									<true/>
 								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>visible</string>
+									<key>time</key>
+									<real>1.1000000238418579</real>
+									<key>type</key>
+									<integer>1</integer>
+									<key>value</key>
+									<true/>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>visible</string>
+									<key>time</key>
+									<real>1.1333333253860474</real>
+									<key>type</key>
+									<integer>1</integer>
+									<key>value</key>
+									<true/>
+								</dict>
 							</array>
 							<key>name</key>
 							<string>visible</string>
@@ -1728,7 +1758,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1801,9 +1831,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>60</integer>
-							<integer>113</integer>
-							<integer>111</integer>
+							<integer>54</integer>
+							<integer>97</integer>
+							<integer>98</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1914,7 +1944,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4</real>
+			<real>1.1000000238418579</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -859,7 +859,7 @@ var CardListLayer = cc.Layer.extend({
         this.addChild(countLabel);
 
         var pillLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        pillLabel.setPosition(this._cardListLayerFit.expLabelPoint);
+        pillLabel.setPosition(this._cardListLayerFit.moneyLabelPoint);
         this.addChild(pillLabel);
 
         this._selectCallback = function () {
@@ -874,7 +874,7 @@ var CardListLayer = cc.Layer.extend({
             }
 
             countLabel.setString(len);
-            pillLabel.setString(pill);
+            pillLabel.setString(lz.getMoneyStr(pill));
         };
 
         this._selectCallback();

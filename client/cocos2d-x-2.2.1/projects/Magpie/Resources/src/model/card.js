@@ -672,7 +672,7 @@ var Card = Entity.extend({
                 cc.log("passSkillActive success");
 
                 that.updateActivePassiveSkill(id);
-                that._calculateAddition();
+                that.update();
                 that.set("ability", data.msg.ability);
                 cb();
 

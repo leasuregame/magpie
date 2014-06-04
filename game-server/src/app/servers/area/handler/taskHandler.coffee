@@ -124,9 +124,9 @@ Handler::explore = (msg, session, next) ->
       else
         taskManager.countExploreResult player, data, taskId, chapterId, cb
 
-    (data, cb) ->
+    (data, cb) =>
       # 寻找boss，1~20次探索必然出现一个boss
-      taskManager.seekBoss(data, player, cb)
+      taskManager.seekBoss(@app, data, player, cb)
     (data, cb) ->
       taskManager.turnReward(data, player, cb)
   ], (err, data) =>

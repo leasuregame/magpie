@@ -129,11 +129,21 @@ Handler::sysMsg = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sendMessage @app, (if _.isEqual(receiver, [SYSTEM]) then null else receiver), {
-      route: 'onMessage'
-      msg: msgs[0].toJson()
-    }, '邮件发送成功', (err, data) ->
-      next(err, data)
+    if _.isEqual(receiver, [SYSTEM])
+      sendMessage @app, null, {
+        route: 'onMessage'
+        msg: msgs[0].toJson()
+      }, '邮件发送成功', (err, data) ->
+        next(err, data)
+    else
+      async.each msgs, (m, done) =>
+        sendMessage @app, m.receiver, {
+          route: 'onMessage'
+          msg: m.toJson()
+        }, '邮件发送成功', (err, data) ->
+          done(err, data)
+      , (err) ->
+        next(err, {code: 200})
 
 checkSystemOptions = (options, cb) ->
   isObject = _.isObject(options)
@@ -206,12 +216,15 @@ Handler::handleSysMsg = (msg, session, next) ->
         cb(null, message)
 
     (message,cb)->
-      if message.receiver is playerId
-        dao.message.update {
-            data: {status: configData.message.MESSAGESTATUS.HANDLED}
-            where: {id: msgId}
-        }, (err, res) ->
-          cb(err, message.options)
+      if message.receiver isnt -1
+        if message.receiver is playerId
+          dao.message.update {
+              data: {status: configData.message.MESSAGESTATUS.HANDLED}
+              where: {id: msgId}
+          }, (err, res) ->
+            cb(err, message.options)
+        else
+          cb({code: 501, msg: '没权限处理该奖励'})
       else
         data = {}
         data[k] = message[k] for k in _.keys(message.attributes) when k isnt 'id'

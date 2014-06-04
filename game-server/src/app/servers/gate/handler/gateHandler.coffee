@@ -69,10 +69,20 @@ filterServers = (areas, os, platform, version) ->
 	else
 		items = areas.filter (area) -> os.toUpperCase() in area.os and platform.toUpperCase() in area.platform
 	
+	versionItems = items.filter (i) -> _.isArray(i.version) and i.version.length > 0
+	noVersionItems = items.filter (i) -> not i.version or i.version.length == 0
+
 	if version
-		versionSpecifyItems = items.filter (i) -> version in i.version
-		if versionSpecifyItems.length > 0
-			items = versionSpecifyItems
+		matchItems = []
+		if versionItems.length > 0
+			matchItems = versionItems.filter (i) -> version in i.version
+
+		if matchItems.length > 0
+			items = matchItems
+		else 
+			items = noVersionItems
+	else 
+		items = noVersionItems
 
 	items.sort (x, y) -> parseInt(x.id) - parseInt(y.id)
 	items.map (el, idx) -> 

@@ -25,7 +25,7 @@ var BuyRecordDao = (function(_super) {
 		this.status = attrs.status;
 	};
 	domain.DEFAULT_VALUES = {isVerify: 0};
-	domain.FIELDS = ['id', 'createTime', 'qty', 'playerId', 'receiptData', 'productId', 'purchaseDate', 'isVerify', 'status'];
+	domain.FIELDS = ['id', 'createTime', 'qty', 'playerId', 'receiptData', 'productId', 'purchaseDate', 'isVerify', 'status', 'verifyResult'];
 	BuyRecordDao.domain = domain;
 
 	return BuyRecordDao;

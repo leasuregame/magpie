@@ -323,7 +323,7 @@ rewardOfRank = (rank) ->
     row
   else 
     elixir51 = table.getTableItem('elixir_ranking_reward', 51)?.elixir
-    elixir = parseInt elixir51*(1-Math.ceil((rank-50)/20)*0.003)
+    elixir = parseInt elixir51*(1-Math.ceil((rank-51)/20)*0.003)
     if elixir < 5000
       elixir = 5000
     elixir: elixir
@@ -331,13 +331,15 @@ rewardOfRank = (rank) ->
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0
   
-  for k, v of bl.cards
-    if k <= 6 and _.isObject(v)
-      ownCardCount += 1
-    
-    if k > 6 and _.isObject(v)
-      enemyCardCount += 1
+  bl.cards.forEach (cards) ->
+    for k, v of cards
+      if k <= 6 and _.isObject(v)
+        ownCardCount += 1
+      
+      if k > 6 and _.isObject(v)
+        enemyCardCount += 1
 
+  console.log ownCardCount, enemyCardCount
   return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->

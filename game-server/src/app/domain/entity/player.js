@@ -523,7 +523,7 @@ var Player = (function(_super) {
     Player.prototype.dailyData = function() {
         return {
             dailyGift: this.dailyGift,
-            pass: this.pass,
+            pass: this.getPass(),
             task: this.task,
             spiritPool: this.spiritPool,
             friendsCount: this.friendsCount,
@@ -1354,6 +1354,10 @@ var Player = (function(_super) {
 
     Player.prototype.addGoldCard = function(gc) {
         this.goldCards[gc.type] = gc;
+    };
+
+    Player.prototype.removeGoldCard = function(gc) {
+        delete this.goldCards[gc.type];
     };
 
     Player.prototype.addGoldCards = function(gcs) {

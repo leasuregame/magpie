@@ -415,7 +415,7 @@ countDamageRewards = (rank) ->
     money: row.money if row.money
   else 
     honor6 = table.getTableItem('boss_rank_reward', 6)?.honor or configData.bossStatus.REWARD_COUNT.BASE_VALUE
-    honor = parseInt honor6*(1-Math.ceil((rank-5)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
+    honor = parseInt honor6*(1-Math.ceil((rank-6)/configData.bossStatus.REWARD_COUNT.DURACTION)*configData.bossStatus.REWARD_COUNT.FACTOR)
     honor = configData.bossStatus.REWARD_COUNT.MIN if honor < configData.bossStatus.REWARD_COUNT.MIN
     honor: honor
 

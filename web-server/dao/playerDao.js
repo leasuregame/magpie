@@ -26,7 +26,3 @@ exports.getPlayers = function(where, areaId, cb) {
 
     db(areaId).query(sql, cb);
 };
-
-exports.getSysMsg = function (where, areaId, cb) {
-
-};

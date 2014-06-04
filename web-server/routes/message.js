@@ -120,8 +120,7 @@ var message = function(app) {
         }
     }
 
-    // todo add filter.authorize
-	app.all('/admin/sysMsg', function(req, res) {
+	app.all('/admin/sysMsg', filter.authorize, function(req, res) {
 
         var areaId = req.body.areaId;
 

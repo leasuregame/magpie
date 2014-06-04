@@ -20,6 +20,7 @@ var player = require('./routes/player');
 var stats = require('./routes/stats');
 var area = require('./routes/area');
 var messgae = require('./routes/message');
+var optRecord = require('./routes/optRecord');
 
 var app = express();
 
@@ -74,6 +75,7 @@ app.get('/admin/stats/onlineuser', filter.authorize, stats.onlineUser);
 pushMessage(app);
 sendReward(app);
 messgae(app);
+optRecord(app);
 
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);

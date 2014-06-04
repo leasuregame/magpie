@@ -21,9 +21,10 @@ module.exports = function(areaId) {
 
       //connection.connect();
       connection.query(sql, args, function(err, res) {
-        connection.end();
         cb(err, res);
       });
+
+      connection.end();
     }
   }
 };

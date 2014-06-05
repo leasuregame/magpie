@@ -127,12 +127,13 @@ var countHpAtk = function(card) {
     if (card.tableId) {
         var cardData = table.getTableItem('cards', card.tableId);
         var factor = table.getTableItem('factors', card.lv).factor;
+        var grow_percent = ((_ref = table.getTableItem('card_pill_use', card.potentialLv)) != null ? _ref.grow_percent : void 0) || 0;
 
         var _hp = parseInt(cardData.hp * factor),
             _atk = parseInt(cardData.atk * factor);
 
-        _hp = parseInt(_hp*(100+10*card.potentialLv)/100);
-        _atk = parseInt(_atk*(100+10*card.potentialLv)/100);
+        _hp = parseInt(_hp*(100+grow_percent)/100);
+        _atk = parseInt(_atk*(100+grow_percent)/100);
         card.set({
             init_hp: _hp,
             hp: _hp,

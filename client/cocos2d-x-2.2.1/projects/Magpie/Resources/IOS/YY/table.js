@@ -46556,8 +46556,8 @@ var outputTables = {
 				"skillPoint": 10000,
 				"spirit": 1000,
 				"power": 100,
-				"card_id": 764,
-				"card_lv": 20
+				"card_id": 765,
+				"card_lv": 1
 			}
 		}
 	},

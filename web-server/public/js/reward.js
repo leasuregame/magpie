@@ -156,7 +156,7 @@ function showModal(msg) {
     contentArea.find('.receiver .text').text(msg.playerNames);
     contentArea.find('.author .text').text(msg.options.sender);
     contentArea.find('.title .text').text(msg.options.title);
-    contentArea.find('.content .text').text(msg.content);
+    contentArea.find('.content .text').val(msg.content).change();
     contentArea.find('.expDate .text').text(msg.validDate);
 
     // 生成奖励文本
@@ -302,7 +302,7 @@ function submit() {
     globalReqData = {
         areaId : areaId,
         playerNames : playerNames,
-        content : $content.val().replace(/(\s*)/g, ""),
+        content : $content.val().replace(/[\f\n\r\t]/g, ""),
         validDate  : $expDate.val() + ' 23:59:59',
         options : {
             title : $title.val(),
@@ -450,7 +450,7 @@ function dealAll(id, mail, cb) {
  * @param cb
  */
 function sendMail(mail, cb) {
-    console.log("mail", mail);
+//    console.log("mail", mail);
 //    return;
     pomelo.request('area.messageHandler.sysMsg', mail, function(data) {
         console.log(data);

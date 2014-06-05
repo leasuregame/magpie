@@ -1620,31 +1620,38 @@ var outputTables = {
 		"rows": {
 			"1": {
 				"id": 1,
-				"pill": 8000
+				"pill": 8000,
+				"grow_percent": 5
 			},
 			"2": {
 				"id": 2,
-				"pill": 10000
+				"pill": 10000,
+				"grow_percent": 10
 			},
 			"3": {
 				"id": 3,
-				"pill": 12000
+				"pill": 12000,
+				"grow_percent": 15
 			},
 			"4": {
 				"id": 4,
-				"pill": 14000
+				"pill": 14000,
+				"grow_percent": 20
 			},
 			"5": {
 				"id": 5,
-				"pill": 16000
+				"pill": 16000,
+				"grow_percent": 25
 			},
 			"6": {
 				"id": 6,
-				"pill": 18000
+				"pill": 18000,
+				"grow_percent": 30
 			},
 			"7": {
 				"id": 7,
-				"pill": 20000
+				"pill": 20000,
+				"grow_percent": 35
 			}
 		}
 	},

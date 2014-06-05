@@ -726,7 +726,7 @@ var Card = Entity.extend({
         return 0;
     },
 
-    getEvolutionNeedStar: function() {
+    getEvolutionNeedStar: function () {
         cc.log("Card getEvolutionNeedStar");
 
         if (this._star < MAX_CARD_STAR) {
@@ -949,13 +949,20 @@ var Card = Entity.extend({
     getPotentialLvAddition: function () {
         cc.log("Card getPotentialLvAddition");
 
-        return this._potentialLv * 10;
+        if (this._potentialLv > 0) {
+            return outputTables.card_pill_use.rows[this._potentialLv].grow_percent;
+        }
+        return 0;
     },
 
     getNextPotentialLvAddition: function () {
         cc.log("Card getNextPotentialLvAddition");
 
-        return (this._potentialLv + 1) * 10;
+        if (this.canUpgradePotentialLv()) {
+            return outputTables.card_pill_use.rows[this._potentialLv + 1].grow_percent;
+        }
+
+        return 0;
     },
 
     getSellCardMoney: function () {

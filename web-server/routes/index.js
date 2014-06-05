@@ -35,12 +35,11 @@ exports.index = function(req, res) {
     if (err) {
       return res.status(500).send('服务器出错'+err);
     }
-    console.log('message: ', results);
-    var counts = results[0][0];
-    var userNum = results[1][0][0].num;
-    var users = results[2][0];
 
-    console.log(counts, userNum);
+    var counts = results[0];
+    var userNum = results[1][0].num;
+    var users = results[2];
+
     res.render('index', {
       title: 'LeasureGame',
       userNum: userNum,

@@ -993,10 +993,6 @@ var CardListLayer = cc.Layer.extend({
         var selectCardList = this._getSelectCardList();
         var len = selectCardList.length;
 
-        if(len == 0) {
-            TipLayer.tip("没有满足条件的卡牌");
-        }
-
         if (this._selectType == SELECT_TYPE_CARD_UPGRADE_RETINUE) {
 
             var isShowTip = false;
@@ -1260,6 +1256,13 @@ var CardListLayer = cc.Layer.extend({
                         }
                     }
                 }
+            }
+
+            var selectCardList = that._getSelectCardList();
+            var len = selectCardList.length;
+
+            if(len == 0) {
+                TipLayer.tip("没有满足条件的卡牌");
             }
         };
 

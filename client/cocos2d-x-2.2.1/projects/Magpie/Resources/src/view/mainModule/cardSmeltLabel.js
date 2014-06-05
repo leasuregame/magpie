@@ -140,6 +140,7 @@ var CardSmeltLabel = cc.Layer.extend({
             this._gotMoneyLabel.setString(money);
 
         } else {
+            this._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
             this._tipLabel.setVisible(true);
             this._helpLabel.setVisible(false);
         }

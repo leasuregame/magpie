@@ -529,7 +529,8 @@ var Player = (function(_super) {
             friendsCount: this.friendsCount,
             goldCards: this.getGoldCard(),
             vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
-            loginInfo: this.activities.logined || {count: 0, got: 0}
+            loginInfo: this.activities.logined || {count: 0, got: 0},
+            rmTimerCount: this.dailyGift.rmTimerCount || 1
         };
     };
 

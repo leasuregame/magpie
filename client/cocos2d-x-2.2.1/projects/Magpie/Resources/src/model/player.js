@@ -249,6 +249,7 @@ var Player = Entity.extend({
 
             gameData.activity.set("vipLoginReward", msg.vipLoginReward);
             gameData.activity.updateLoginCountFlag(msg.loginInfo);
+            gameData.boss.set("rmTimerCount", msg.rmTimerCount);
 
             MainScene.getInstance().updateMark();
         });

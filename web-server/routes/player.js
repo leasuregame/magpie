@@ -51,7 +51,9 @@ exports.getPlayerNames = function (req, res) {
         payTime : req.body.payTime
     };
 
-    playerDao.getPlayers(playerWhere, areaId, function (err, rows){
+    var playerCols = [ 'id', 'userId', 'areaId', 'name'];
+
+    playerDao.getPlayers(playerCols, playerWhere, areaId, function (err, rows){
         // rows = [{player},{player}...]
         var playerRows = rows;
         var retNames = [];

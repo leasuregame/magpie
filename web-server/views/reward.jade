@@ -17,19 +17,20 @@ block content
         include ./queryPlayerBox
         hr
         div.form-group
-            label.col-sm-3.control-label 有效期限
+            label.col-sm-3.control-label.tagName 有效期限
             div.col-sm-3
                 input.form-control(type='date', id='expDate' name='expDate')
         div.form-group
-            label.col-sm-3.control-label 发件人
+            label.col-sm-3.control-label.tagName 发件人
             div.col-sm-7
                 input.form-control(type='text', id='author' name='author')
         div.form-group
-            label.col-sm-3.control-label 标题
+            label.col-sm-2.control-label.limitTag(limit='8') 上限长度 : 8
+            label.col-sm-1.control-label.tagName 标题
             div.col-sm-7
                 input.form-control(type='text', id='title' name='title')
         div.form-group
-            label.col-sm-3.control-label 内容
+            label.col-sm-3.control-label.tagName 内容
             div.col-sm-7
                 textarea.form-control(rows='3' id='content' name='content' maxlength='500')
         hr
@@ -160,7 +161,7 @@ block content
                         div.col-sm-8.form-control-static.text
                     div.form-group.no-mar-bottom.content
                         label.col-sm-2.control-label 内容:
-                        div.col-sm-8.form-control-static.text
+                        textarea.col-sm-8.form-control-static.text(style="overflow-y:hidden;height:256px;width:394px", disabled="disabled")
                     div.form-group.no-mar-bottom.reward
                         label.col-sm-2.control-label 奖励:
                         div.col-sm-8.form-control-static.text

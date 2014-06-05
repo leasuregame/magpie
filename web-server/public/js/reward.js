@@ -156,7 +156,7 @@ function showModal(msg) {
     contentArea.find('.receiver .text').text(msg.playerNames);
     contentArea.find('.author .text').text(msg.options.sender);
     contentArea.find('.title .text').text(msg.options.title);
-    contentArea.find('.content .text').text(msg.content);
+    contentArea.find('.content .text').val(msg.content).change();
     contentArea.find('.expDate .text').text(msg.validDate);
 
     // 生成奖励文本
@@ -201,6 +201,33 @@ function initAllReward() {
 // build request
 
 /**
+ * 对必填text选项的校验
+ * @param $input
+ * @returns {boolean}
+ */
+function validateTextInput ($input) {
+    var rst = true;
+    // 检查是否为空
+    if ($input.val() == '') {
+        $input.closest('.form-group').addClass('has-error');
+        var txt = $input.closest('.form-group').find('.tagName').text();
+        $input.parent().append('<span class="help-block">请填入' + txt + '</span>');
+        $input.focus();
+        rst = false;
+    } else {
+        // 检查长度
+        var limitTag = $input.closest('.form-group').find('.limitTag');
+        if(limitTag.length > 0 && limitTag.attr('limit') < $input.val().length) {
+            $input.closest('.form-group').addClass('has-error');
+            $input.parent().append('<span class="help-block">输入长度超过上限</span>');
+            $input.focus();
+            rst = false;
+        }
+    }
+    return rst;
+}
+
+/**
  * 获取奖励选项中的数据
  * @returns {{}}
  */
@@ -242,24 +269,6 @@ function getRewardOptData() {
  * 校验输入合法性,弹出确认弹窗
  */
 function submit() {
-
-    /**
-     * 对必填text选项的校验
-     * @param $input
-     * @returns {boolean}
-     */
-    function validateText ($input) {
-        var rst = true;
-        if ($input.val() == '') {
-            $input.closest('.form-group').addClass('has-error');
-            var txt = $input.closest('.form-group').find('.control-label').text();
-            $input.parent().append('<span class="help-block">请填入' + txt + '</span>');
-            $input.focus();
-            rst = false;
-        }
-        return rst;
-    }
-
     removeErrors();
 
     var areaId = parseInt($("#area").val());
@@ -280,7 +289,7 @@ function submit() {
         $('#area').parent().append('<span class="help-block">必须指定玩家所在的具体服务器</span>');
         return;
     }
-    if (!validateText($expDate) || !validateText($author) || !validateText($title) || !validateText($content)) {
+    if (!validateTextInput($expDate) || !validateTextInput($author) || !validateTextInput($title) || !validateTextInput($content)) {
         return;
     }
     // 校验奖励输入合法性
@@ -293,7 +302,7 @@ function submit() {
     globalReqData = {
         areaId : areaId,
         playerNames : playerNames,
-        content : $content.val().replace(/(\s*)/g, ""),
+        content : $content.val().replace(/[\f\n\r\t]/g, ""),
         validDate  : $expDate.val() + ' 23:59:59',
         options : {
             title : $title.val(),
@@ -303,21 +312,6 @@ function submit() {
     };
 
     showModal(globalReqData);
-}
-
-/**
- * 根据id获得area信息
- * @param id
- * @returns {*}
- */
-function getAreaById(id) {
-    for (var key in servers) {
-        var area = servers[key];
-        if (area.id = id) {
-            return area;
-        }
-    }
-    return null;
 }
 
 /**
@@ -456,7 +450,7 @@ function dealAll(id, mail, cb) {
  * @param cb
  */
 function sendMail(mail, cb) {
-    console.log("mail", mail);
+//    console.log("mail", mail);
 //    return;
     pomelo.request('area.messageHandler.sysMsg', mail, function(data) {
         console.log(data);
@@ -558,8 +552,12 @@ $(document).ready(function() {
     initCardOpt();
     initRewardLimit();
 
-    $('.container').delegate('.btn', 'click', removeErrors);
+    $('.container').delegate('#rewardBox .btn', 'click', removeErrors);
     $('.baseReward').change(evtAfterChanged.baseReward);
+    $('#title').change(function(){
+        removeErrors();
+        validateTextInput($(this));
+    });
     $('#btnResetReward').click(function() {
         initAllReward();
     });

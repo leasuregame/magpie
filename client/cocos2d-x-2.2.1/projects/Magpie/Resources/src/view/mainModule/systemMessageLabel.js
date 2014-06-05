@@ -47,7 +47,7 @@ var SystemMessageLabel = LazyLayer.extend({
         frameLayer.addChild(contentBgLabel);
 
         var scrollViewLayer = MarkLayer.create(cc.rect(0, 0, 490, 200));
-        var content = lz.format(message.content, 20);
+        var content = lz.format2(message.content, "STHeitiTC-Medium", 22, 440);
         var len = content.length;
 
         var i, x, y;

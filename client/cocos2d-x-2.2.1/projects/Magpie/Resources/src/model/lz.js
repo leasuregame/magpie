@@ -151,6 +151,45 @@ lz.format = function (str, length) {
     return strList;
 };
 
+lz.format2 = function (str, fontName, fontSize, strSize) {
+    cc.log("lz format2");
+
+    var strList = [];
+    var str2 = str.split("#");
+    var len = str2.length;
+
+    cc.log(str2);
+
+    for (var i = 0; i < len; i++) {
+        var temStr = str2[i];
+        var len2 = temStr.length;
+        var size = 0;
+        var index = 0;
+
+        if(len2 == 0) {
+            strList.push(temStr);
+            continue;
+        }
+
+        for (var j = 0; j < len2; j++) {
+            size += lz.getStrWidth(temStr.substr(j, 1), fontName, fontSize);
+            if (size > strSize) {
+                strList.push(temStr.substring(index, j - 1));
+                index = j - 1;
+                j--;
+                size = 0;
+            } else if(j == len2 - 1){
+                strList.push(temStr.substring(index, len2));
+            }
+        }
+    }
+
+    cc.log(strList);
+
+    return strList;
+};
+
+
 lz.getStrWidth = function (str, fonName, fontSize) {
     var label = cc.LabelTTF.create(str, fonName, fontSize);
     return label.getContentSize().width;

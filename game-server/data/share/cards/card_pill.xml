@@ -15,7 +15,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>13740</WindowHeight>
+  <WindowHeight>9980</WindowHeight>
   <WindowWidth>19680</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
@@ -37,43 +37,54 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="卡牌潜能升级配置表">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="2" ss:Width="108"/>
+   <Column ss:Width="188"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">潜能等级</Data></Cell>
     <Cell><Data ss:Type="String">所需轮回丹数</Data></Cell>
+    <Cell><Data ss:Type="String">潜能加成比例（百分比）</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">pill</Data></Cell>
+    <Cell><Data ss:Type="String">grow_percent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">8000</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">10000</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">12000</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">14000</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">16000</Data></Cell>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">18000</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="Number">20000</Data></Cell>
+    <Cell><Data ss:Type="Number">35</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -83,7 +94,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>9</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
@@ -183,7 +194,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

@@ -2,6 +2,7 @@ playerManager = require('pomelo').app.get('playerManager')
 job = require '../../../dao/job'
 table = require '../../../manager/table'
 configData = require '../../../../config/data'
+entityUtil = require '../../../util/entityUtil'
 async = require 'async'
 _ = require 'underscore'
 
@@ -49,7 +50,7 @@ Handler::usePill = (msg, session, next) ->
 
       card.increase 'pill', reward.pill
       player.decrease 'pill', reward.pill
-      updateEntities ['update', 'player', player], ['update', 'card', card], cb
+      entityUtil.updateEntities ['update', 'player', player], ['update', 'card', card], cb
   ], (err) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
@@ -95,48 +96,13 @@ Handler::dissolveCard = (msg, session, next) ->
       [pill, money] = doDissolveCard(cards)
       player.increase('pill', pill)
       player.increase('money', money)
-      updateEntities ['update', 'player', player], ['delete', 'card', cards], cb
+      entityUtil.updateEntities ['update', 'player', player], ['delete', 'card', cards], cb
   ], (err) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
+    player.popCards(cardIds)
     next(null, {code: 200, msg: pill: pill, money: money})
-
-updateEntities = (groups..., cb) ->
-  jobs = []
-  groups.forEach (group) ->
-    if _.isArray(group) and group.length >= 2
-      type = group[0]
-      tableName = group[1]
-      entities = group.slice(2)
-      entities.forEach (ent) -> 
-        action = type: type, options: {table: tableName}
-
-        switch type
-          when 'update' 
-            data = ent.getSaveData()
-            if not _.isEmpty(data)
-              action.options.where = id: ent.id
-              action.options.data = data
-          when 'delete'
-            if _.isArray(ent) and ent.length > 0
-              ids = ent.map (e) -> e.id or e
-              action.options.where = " id in (#{ids.toString()}) "
-            else if _.has(ent, 'id')
-              action.options.where = id: ent.id
-            else if _.isString(ent)
-              action.options.where = ent
-            else
-              action.options.where = ''
-          when 'insert'
-            action.options.data = ent
-          else
-            action.options = {}
-
-        jobs.push action
-
-  console.log '-jobs-', JSON.stringify(jobs)
-  job.multJobs jobs, cb
 
 canDissoleve = (cards) ->
   cards.filter (c) ->
@@ -152,23 +118,3 @@ doDissolveCard = (cards) ->
     pill += pill_tab.getItem(card.star)?.pill or 0
     money += pill_tab.getItem(card.star)?.money or 0
   [pill, money]
-
-updateData = (player, cards, cb) ->
-  jobs = []
-  playerData = player.getSaveData()
-  jobs.push {
-    type: 'update'
-    options: 
-      table: 'player'
-      where: id: player.id
-      data: playerData
-  } if not _.isEmpty(playerData)
-
-  jobs.push {
-    type: 'delete'
-    options: 
-      table: 'card'
-      where: " id in (#{(cards.map (c) -> c.id).toString()}) "
-  } if _.isArray(cards) and cards.length > 0
-
-  job.multJobs jobs, cb

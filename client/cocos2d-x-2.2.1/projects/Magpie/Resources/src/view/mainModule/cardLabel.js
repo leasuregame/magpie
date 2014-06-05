@@ -210,6 +210,24 @@ var CardLabel = cc.Node.extend({
         this.addChild(moneyLabel);
     },
 
+    _initCardSmeltRetinue: function () {
+        cc.log("CardLabel _initCardSmeltRetinue");
+
+        this._starLabel.setVisible(false);
+
+        if (!this._card.isExpCard()) {
+            var pillLabel = cc.LabelTTF.create("觉醒玉: " + this._card.getCardPill(), "STHeitiTC-Medium", 20);
+            pillLabel.setColor(cc.c3b(56, 3, 5));
+            pillLabel.setAnchorPoint(cc.p(0, 0.5));
+            pillLabel.setPosition(cc.p(142, 65));
+            this.addChild(pillLabel);
+        }
+    },
+
+    _initCardUsePillMaster: function () {
+        cc.log("CardLabel _initCardUsePillMaster");
+    },
+
     _updateHookLabel: function () {
         cc.log("CardLabel _showHookLabel");
 
@@ -256,6 +274,12 @@ var CardLabel = cc.Node.extend({
                     break;
                 case SELECT_TYPE_SELL :
                     this._initSell();
+                    break;
+                case SELECT_TYPE_CARD_SMELT_RETINUE:
+                    this._initCardSmeltRetinue();
+                    break;
+                case SELECT_TYPE_CARD_USE_PILL_MASTER:
+                    this._initCardUsePillMaster();
                     break;
                 default :
                     this._initDefault();

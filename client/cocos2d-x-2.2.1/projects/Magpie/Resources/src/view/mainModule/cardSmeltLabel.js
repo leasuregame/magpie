@@ -123,7 +123,6 @@ var CardSmeltLabel = cc.Layer.extend({
 
         if (this._retinueCard && this._retinueCard.length > 0) {
             this._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
-            this.ccbBoxItem.setEnabled(false);
             this._smeltItem.setEnabled(true);
             this._tipLabel.setVisible(false);
             this._helpLabel.setVisible(true);
@@ -179,6 +178,7 @@ var CardSmeltLabel = cc.Layer.extend({
         gameData.cardList.dissolveCard(cardIdList, function (data) {
             that._getGoods = data;
             that._smeltItem.setEnabled(false);
+            that.ccbBoxItem.setEnabled(false);
             that._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
 
             var effect = cc.BuilderReader.load(main_scene_image.uiEffect118, this);

@@ -242,6 +242,10 @@ var Player = Entity.extend({
                 challengeBuyCount: msg.dailyGift.challengeBuyCount,
                 expCardBuyCount: msg.dailyGift.expCardCount
             });
+            gameData.lottery.update({
+                goldLuckyCard10: msg.dailyGift.goldLuckyCard10,
+                goldLuckyCardForFragment: msg.dailyGift.goldLuckyCardForFragment
+            });
 
             if (msg.goldCards) {
                 that.set("goldCards", msg.goldCards);
@@ -249,7 +253,10 @@ var Player = Entity.extend({
 
             gameData.activity.set("vipLoginReward", msg.vipLoginReward);
             gameData.activity.updateLoginCountFlag(msg.loginInfo);
-            gameData.boss.set("rmTimerCount", msg.rmTimerCount);
+
+            gameData.boss.update(msg.bossInfo);
+
+            gameData.friend.sync();
 
             MainScene.getInstance().updateMark();
         });

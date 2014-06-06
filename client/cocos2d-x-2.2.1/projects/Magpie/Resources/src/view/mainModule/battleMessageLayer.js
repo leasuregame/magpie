@@ -140,14 +140,12 @@ var BattleMessageLayer = cc.Layer.extend({
                         }
 
                     );
-                    descLabel2.setAnchorPoint(cc.p(0, 0));
-                    descLabel2.setPosition(cc.p(120, 22)); 
-                }      
+                }
+                descLabel2.setAnchorPoint(cc.p(0, 0));
+                descLabel2.setPosition(cc.p(120, 22));
             }
 
-            if (descLabel2 != null) {
-                msgBgLabel.addChild(descLabel2);    
-            }            
+            msgBgLabel.addChild(descLabel2);
 
             var resultIcon = cc.Sprite.create(main_scene_image[url]);
             resultIcon.setVisible(cc.p(0, 0.5));
@@ -156,7 +154,7 @@ var BattleMessageLayer = cc.Layer.extend({
 
             var timeLabel = cc.LabelTTF.create(
                 lz.getTimeStr({
-                    time: message.createTime,
+                    time: battleMessageList[0].createTime,
                     fmt: "yyyy.MM.dd hh:mm"
                 }),
                 "STHeitiTC-Medium",

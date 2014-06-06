@@ -163,6 +163,7 @@ function showModal(msg) {
     var rewardDom = '';
     $.each(msg.options.rewards, function (key, val) {
         if(key == 'cardArray') {
+            rewardDom += '<br>卡牌 : <br>';
             var qty = 0;
             
             $.each(val, function (idx, val) {

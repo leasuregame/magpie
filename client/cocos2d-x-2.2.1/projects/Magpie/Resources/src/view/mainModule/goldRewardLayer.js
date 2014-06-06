@@ -138,7 +138,7 @@ var GoldRewardLayer = cc.Layer.extend({
             btnGetReward.setVisible(type != GOLD_RECEIVE);
 
             if (currentId == undefined && type != GOLD_RECEIVE) {
-                currentId = i;
+                currentId = (0 == i) ? i : i - 1;
             }
 
             var hasBeenGainIcon = cc.Sprite.create(main_scene_image.icon138);

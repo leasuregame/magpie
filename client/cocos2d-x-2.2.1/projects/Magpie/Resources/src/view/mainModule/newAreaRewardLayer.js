@@ -97,7 +97,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
             btnGetReward.setVisible(!(state == ALREADY_GOT_REWARD));
 
             if (state != ALREADY_GOT_REWARD && currentId == undefined) {
-                currentId = index;
+                currentId = (0 == index) ? index : index - 1;
             }
 
             var menu = cc.Menu.create(btnGetReward);

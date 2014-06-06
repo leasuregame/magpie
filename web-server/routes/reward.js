@@ -32,8 +32,7 @@ var reward = function(app) {
 		log += '    内容: ' + data;
 
 		logger.info(log);
-	});	
-
+	});
 };
 
 module.exports = reward;

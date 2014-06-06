@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var config = require('../../game-server/config/mysql');
+var config = require('../../../game-server/config/mysql');
 
 var dbs = config['production'];
 
@@ -21,9 +21,10 @@ module.exports = function(areaId) {
 
       //connection.connect();
       connection.query(sql, args, function(err, res) {
-        connection.end();
         cb(err, res);
       });
+
+      connection.end();
     }
   }
 };

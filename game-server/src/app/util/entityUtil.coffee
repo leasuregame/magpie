@@ -128,10 +128,10 @@ module.exports =
       player.incSpirit(data.spirit)
     if typeof data.power != 'undefined' and data.power > 0
       player.addPower(data.power)
+      
     if typeof data.exp_card != 'undefined' and data.exp_card > 0
       playerManager.addExpCardFor player, data.exp_card, cb
-
-    if typeof data.card_id != 'undefined' and data.card_id > 0
+    else if typeof data.card_id != 'undefined' and data.card_id > 0
       this.createCard {
         playerId: player.id
         tableId: data.card_id

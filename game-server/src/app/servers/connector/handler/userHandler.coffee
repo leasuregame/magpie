@@ -93,10 +93,6 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (cb) ->
       checkIsOpenServer app, cb
 
-    (cb) ->
-      ### 检查是否最新版本 ###
-      checkVersion(app, msg, platform, cb)
-
     (cb) =>
       args = authParams(type, msg, app)
       args.sid = session.id
@@ -104,6 +100,14 @@ doLogin  = (type, app, msg, session, platform, next) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
+          cb(err)
+        else 
+          cb(null, u)
+
+    (u, cb) ->
+      ### 检查是否最新版本 ###
+      checkVersion app, msg, platform, (err) ->
+        if err
           cb(err)
         else 
           cb(null, u)
@@ -198,6 +202,9 @@ checkVersion = (app, msg, platform, cb) ->
   if not vData
     return cb({501, msg: "找不到#{platform}的版本信息"})
 
+  if msg.appVersion? and versionCompare(msg.appVersion, vData.forceUpdateVersion) < 0
+    cb({code: 501, msg: '版本过低，请到发行商更新游戏'})
+
   if versionCompare(version, vData.version) >= 0
     cb()
   else
@@ -221,7 +228,7 @@ checkIsOpenServer = (app, cb) ->
 update_file_size = {}
 getUpdateSize = (version, vData, cb) ->
   filename = vData.filename
-  if versionHandler.versionCompare(version, vData.lastVersion)
+  if versionHandler.versionCompare(version, vData.lastVersion) < 0
     filename = vData.lastFilename
 
   key = vData.version+filename

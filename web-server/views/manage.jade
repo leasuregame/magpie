@@ -19,6 +19,7 @@ block content
               lable(for='#{k}_version', class='col-sm-2 control-label') 当前版本
               div(class='col-sm-4')
                 input(type='text', class='form-control', name='#{k}_version', value='#{v.version}')
+              
               lable(for='#{k}_lastVersion', class='col-sm-2 control-label') 上一版本
               div(class='col-sm-4')
                 input(type='text', class='form-control', name='#{k}_lastVersion', value='#{v.lastVersion}')
@@ -26,6 +27,11 @@ block content
               lable(for='#{k}_oldestVersion', class='col-sm-2 control-label') 最老版本
               div(class='col-sm-4')
                 input(type='text', class='form-control', name='#{k}_oldestVersion', value='#{v.oldestVersion}')
+            
+              lable(for='#{k}_forceUpdateVersion', class='col-sm-2 control-label') 强制更新版本
+              div(class='col-sm-4')
+                input(type='text', class='form-control', name='#{k}_forceUpdateVersion', value='#{v.forceUpdateVersion}')
+
             hr
             div(class='form-group')
               lable(for='#{k}_filename', class='col-sm-2 control-label') 部分更新包

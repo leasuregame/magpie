@@ -523,7 +523,7 @@ var Player = (function(_super) {
     Player.prototype.dailyData = function() {
         return {
             dailyGift: this.dailyGift,
-            pass: this.pass,
+            pass: this.getPass(),
             task: this.task,
             spiritPool: this.spiritPool,
             friendsCount: this.friendsCount,
@@ -1356,6 +1356,10 @@ var Player = (function(_super) {
         this.goldCards[gc.type] = gc;
     };
 
+    Player.prototype.removeGoldCard = function(gc) {
+        delete this.goldCards[gc.type];
+    };
+
     Player.prototype.addGoldCards = function(gcs) {
         for (var i = 0; i < gcs.length; i++) {
             this.addGoldCard(gcs[i]);
@@ -1466,9 +1470,9 @@ var Player = (function(_super) {
         if (this.dailyGift.rmTimerCount <= 10) {
             consume = 20;
         } else if (this.dailyGift.rmTimerCount <= 20 && this.dailyGift.rmTimerCount > 10) {
-            consume = 30;
-        } else {
             consume = 50;
+        } else {
+            consume = 100;
         }
 
         return consume;
@@ -1562,9 +1566,13 @@ var Player = (function(_super) {
         var star6Num = cards.filter(function(c) {
             return c.star >= 6;
         }).length;
-        console.log('message:', star5Num, star6Num);
+        var star7Num = cards.filter(function(c) {
+            return c.star == 7;
+        }).length;
+
         if (star5Num > 0) achieve.star5card(this, star5Num);
         if (star6Num > 0) achieve.star6card(this, star6Num);
+        if (star7Num > 0) achieve.star7card(this, star7Num);
     };
 
     Player.prototype.toJson = function() {

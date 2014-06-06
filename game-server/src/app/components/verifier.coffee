@@ -62,6 +62,7 @@ executeVerify = (app, queue) ->
 
   return if items.length is 0
 
+  useSanbox = app.get('useSanbox') or false
   async.each items, (item, done) ->    
     tryCount = 0
     postReceipt = (reqUrl, receiptData) ->
@@ -81,12 +82,13 @@ executeVerify = (app, queue) ->
         else if body.status is 21005
           #收据服务器当前不可用
           item.doing = false
-          updateBuyRecord(app, item.id, {status: body.status}, ()->)
+          updateBuyRecord(app, item.id, {status: body.status, verifyResult: body}, ()->)
         else 
           queue.del(item.id)
-          updateBuyRecord(app, item.id, {status: body.status}, ()->)
+          updateBuyRecord(app, item.id, {status: body.status, verifyResult: body}, ()->)
+          deleteGoldCard(app, item.playerId, item.id)
 
-        if body.status is 21007 and tryCount == 0
+        if body.status is 21007 and tryCount == 0 and useSanbox
           tryCount += 1
           return postReceipt(SANBOX_URL, receiptData)
 
@@ -98,13 +100,22 @@ executeVerify = (app, queue) ->
       logger.error('faild to verify app store reciept.', err)
 
 updatePlayer = (app, buyRecord, receiptResult, done) ->
+  rdata =     
+    purchaseDate: utility.dateFormat(new Date(parseInt receiptResult.receipt.purchase_date_ms), 'yyyy-MM-dd h:mm:ss')
+    productId: receiptResult.receipt.product_id
+    qty: receiptResult.receipt.quantity
+    status: receiptResult.status
+    verifyResult: receiptResult
+
   products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
   if products and products.length > 0
     product = products[0]
+    rdata.isVerify = 1
+    updateBuyRecord app, buyRecord.id, rdata, () ->
   else
     logger.error('verify result: ', receiptResult)
     logger.error('buy record: ', buyRecord)
-    throw new Error('can not find product info by product id ', receiptResult.receipt.product_id)
+    updateBuyRecord app, buyRecord.id, rdata, () ->
     return done()
 
   isFirstRechage = false
@@ -128,15 +139,6 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
       player.increase('gold', (product.cash * 10 + product.gold) * times)
       player.save()
 
-      rdata = 
-        isVerify: 1
-        purchaseDate: utility.dateFormat(new Date(parseInt receiptResult.receipt.purchase_date_ms), 'yyyy-MM-dd h:mm:ss')
-        productId: receiptResult.receipt.product_id
-        qty: receiptResult.receipt.quantity
-        status: receiptResult.status
-
-      updateBuyRecord(app, buyRecord.id, rdata, cb)
-    (updateResult, cb) ->
       addGoldCard(app, buyRecord.id, player, product, cb)
 
     # (cb) ->
@@ -205,6 +207,26 @@ updateBuyRecord = (app, id, data, cb) ->
     where: id: id
     data: data
   }, cb
+
+deleteGoldCard = (app, playerId, orderId) ->
+  app.get('dao').goldCard.fetchOne {where: orderId: orderId}, (err, card) ->
+    
+    app.get('dao').goldCard.delete {where: orderId: orderId}, (err, res) ->
+      
+      if not err and res
+        
+        app.get('playerManager').getPlayerInfo {pid: playerId}, (err, player) ->
+        
+          player.removeGoldCard?(card)
+
+        # app.get('messageService').pushByPid card.playerId, {
+        #   route: 'onRemoveGoldCard',
+        #   msg: {
+        #     type: card.type
+        #   }
+        # }, (err, res) ->
+        #   if err
+        #   logger.error('faild to send message to playerId ', card.playerId, err)
 
 noticeNewYearActivity = (app, player, cb) ->
   startDate = new Date app.get('sharedConf').newYearActivity.startDate

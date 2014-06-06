@@ -52,9 +52,10 @@ Handler::messageList = (msg, session, next) ->
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and 
-          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
-          status <> #{configData.message.MESSAGESTATUS.ASKING} and DATE(validDate) >= '#{today}'"
+        where: " receiver = #{playerId} and (
+          (type = #{configData.message.MESSAGETYPE.SYSTEM} and DATE(validDate) >= '#{today}') or 
+          (type = #{configData.message.MESSAGETYPE.MESSAGE})
+        )"
         orderby: ' createTime DESC '
       }, cb
 
@@ -88,24 +89,44 @@ Handler::sysMsg = (msg, session, next) ->
   options = msg.options
   validDate = msg.validDate
 
+<<<<<<< HEAD
   if msg.playerId and _.isNumber(msg.playerId) and msg.playerId > 0
     receiver = msg.playerId
   else
     receiver = SYSTEM
+=======
+  if msg.playerIds?
+    if not _.isArray(msg.playerIds)
+      ids = [msg.playerIds] 
+    else
+      ids = msg.playerIds 
+    receiver = ids
+  else
+    receiver = [SYSTEM]
+>>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
 
   async.waterfall [
     (cb) ->
       checkSystemOptions(options, cb)
     (cb) ->
+<<<<<<< HEAD
       if receiver isnt SYSTEM
         playerManager.getPlayerInfo pid: receiver, (err, res) ->
+=======
+      if not _.isEqual(receiver, [SYSTEM])
+        dao.player.getCount receiver, (err, count) ->
+>>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
           if err
-            return cb({code: 501, msg: '找不到指定玩家'})
+            return cb({code: 500, msg: err})
           else
-            cb()
+            if count is receiver.length
+              cb()
+            else 
+              return cb({code: 501, msg: '找不到部分玩家'})
       else 
         cb()
     (cb) ->
+<<<<<<< HEAD
       dao.message.create data: {
         options: options
         sender: SYSTEM
@@ -125,6 +146,38 @@ Handler::sysMsg = (msg, session, next) ->
     }, '邮件发送成功', (err, data) ->
       data.msg = {msgId: res.id, tip: data.msg} if not err
       next(err, data)
+=======
+      async.map receiver, (rcv, done) ->
+        dao.message.create data: {
+          options: options
+          sender: SYSTEM
+          receiver: rcv
+          content: content
+          type: configData.message.MESSAGETYPE.SYSTEM
+          status: configData.message.MESSAGESTATUS.UNHANDLED
+          validDate: validDate
+        }, done
+      , cb
+  ], (err, msgs) =>
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if _.isEqual(receiver, [SYSTEM])
+      sendMessage @app, null, {
+        route: 'onMessage'
+        msg: msgs[0].toJson()
+      }, '邮件发送成功', (err, data) ->
+        next(err, data)
+    else
+      async.each msgs, (m, done) =>
+        sendMessage @app, m.receiver, {
+          route: 'onMessage'
+          msg: m.toJson()
+        }, '邮件发送成功', (err, data) ->
+          done(err, data)
+      , (err) ->
+        next(err, {code: 200})
+>>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
 
 checkSystemOptions = (options, cb) ->
   isObject = _.isObject(options)
@@ -147,7 +200,13 @@ Handler::handleSysMsg = (msg, session, next) ->
   msgId = msg.msgId
   
   incValues = (obj, options, done) ->
+<<<<<<< HEAD
     data = options.rewards or options
+=======
+    return done(null, {}) if not options.rewards or _.isEmpty(options.rewards)
+
+    data = options.rewards
+>>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')
@@ -195,19 +254,26 @@ Handler::handleSysMsg = (msg, session, next) ->
         cb(null, message)
 
     (message,cb)->
-      if message.receiver is playerId
-        dao.message.update {
-            data: {status: configData.message.MESSAGESTATUS.HANDLED}
-            where: {id: msgId}
-        }, (err, res) ->
-          cb(err, message.options)
+      if message.receiver isnt -1
+        if message.receiver is playerId
+          dao.message.update {
+              data: {status: configData.message.MESSAGESTATUS.HANDLED}
+              where: {id: msgId}
+          }, (err, res) ->
+            cb(err, message.options)
+        else
+          cb({code: 501, msg: '没权限处理该奖励'})
       else
         data = {}
         data[k] = message[k] for k in _.keys(message.attributes) when k isnt 'id'
         data.status = configData.message.MESSAGESTATUS.HANDLED
         data.msgId = message.id
         data.receiver = playerId
+<<<<<<< HEAD
         data.validDate = utility.dateFormat(data.validDate, 'yyy-MM-dd HH:mm:ss')
+=======
+        data.validDate = utility.dateFormat(data.validDate, 'yyyy-MM-dd hh:mm:ss')
+>>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
 
         dao.message.create {
           data:data
@@ -216,7 +282,19 @@ Handler::handleSysMsg = (msg, session, next) ->
 
     (options, cb) ->
       incValues(player, options, cb)
+<<<<<<< HEAD
+=======
 
+    (data, cb) ->
+      if _.isArray(data.cardArray) and data.cardArray.length > 0
+        data.cardArray.forEach (c) ->
+          star = c.tableId%20 || 20
+          achieve.star5card(player) if star is 5
+          achieve.star6card(player) if star is 6
+          achieve.star7card(player) if star is 7
+>>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
+
+      cb(null, data)
   ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})
@@ -668,8 +746,6 @@ changeGroupNameAndSort = (messages) ->
     items.sort (x, y) -> y.createTime - x.createTime
     if n is 'system'
       items.sort (x, y) -> x.status - y.status
-      console.log('system message: ', items.length)
-      console.log(items)
     else if n is 'friend'
       copyItems = _.clone(items)
       newItems = []
@@ -693,6 +769,6 @@ sendMessage = (app, target, msg, data, next) ->
     next(null, {code: code, msg: data if data}) if next?
 
   if target?
-    app.get('messageService').pushByPid target, msg, callback
+    app.get('messageService').pushByPids target, msg, callback
   else 
     app.get('messageService').pushMessage msg, callback

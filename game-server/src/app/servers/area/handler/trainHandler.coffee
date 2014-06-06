@@ -217,6 +217,11 @@ Handler::luckyCard = (msg, session, next) ->
     cards4 = cards.filter (c) -> 
       _tid = c.tableId + 5 - c.star
       c.star < 5 and _tid not in lids
+
+    # 所有5星卡牌都已经点亮后 cards4为空列表
+    if cards4.length is 0
+      cards4 = cards.filter (c) -> c.star < 5
+
     idx = _.random(0, cards4.length-1)
     
     card = cards4[idx]
@@ -522,6 +527,9 @@ Handler::starUpgrade = (msg, session, next) ->
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
+
+        # 重新添加卡牌，为了计算一次图鉴
+        player.addCard(card)
         cb null
       else
         player.incInitRate(card.star, parseInt addRate*0.5)

@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -9,7 +10,7 @@
   <Author>gaobin</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-03-26T11:30:56Z</Created>
-  <Version>14.0</Version>
+  <Version>12.00</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <KSOProductBuildVer dt:dt="string">2052-9.1.0.4468</KSOProductBuildVer>
@@ -63,7 +64,7 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108"/>
    <Column ss:AutoFitWidth="0" ss:Width="126"/>
    <Column ss:AutoFitWidth="0" ss:Width="75"/>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">当前星级</Data></Cell>
     <Cell><Data ss:Type="String">素材卡牌星级</Data></Cell>
@@ -73,7 +74,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">不成功卡牌数量</Data></Cell>
     <Cell><Data ss:Type="String">消耗精元</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">star</Data></Cell>
     <Cell><Data ss:Type="String">source_card_star</Data></Cell>
@@ -83,7 +84,7 @@
     <Cell><Data ss:Type="String">no_work_count</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">super_honor</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -93,7 +94,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -103,7 +104,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -113,7 +114,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
@@ -123,7 +124,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -133,7 +134,7 @@
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="14">
+   <Row ss:AutoFitHeight="0" ss:Height="14.0625">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -586,6 +587,7 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

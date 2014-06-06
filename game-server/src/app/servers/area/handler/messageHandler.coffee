@@ -89,12 +89,6 @@ Handler::sysMsg = (msg, session, next) ->
   options = msg.options
   validDate = msg.validDate
 
-<<<<<<< HEAD
-  if msg.playerId and _.isNumber(msg.playerId) and msg.playerId > 0
-    receiver = msg.playerId
-  else
-    receiver = SYSTEM
-=======
   if msg.playerIds?
     if not _.isArray(msg.playerIds)
       ids = [msg.playerIds] 
@@ -103,19 +97,13 @@ Handler::sysMsg = (msg, session, next) ->
     receiver = ids
   else
     receiver = [SYSTEM]
->>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
 
   async.waterfall [
     (cb) ->
       checkSystemOptions(options, cb)
     (cb) ->
-<<<<<<< HEAD
-      if receiver isnt SYSTEM
-        playerManager.getPlayerInfo pid: receiver, (err, res) ->
-=======
       if not _.isEqual(receiver, [SYSTEM])
         dao.player.getCount receiver, (err, count) ->
->>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
           if err
             return cb({code: 500, msg: err})
           else
@@ -126,27 +114,6 @@ Handler::sysMsg = (msg, session, next) ->
       else 
         cb()
     (cb) ->
-<<<<<<< HEAD
-      dao.message.create data: {
-        options: options
-        sender: SYSTEM
-        receiver: receiver
-        content: content
-        type: configData.message.MESSAGETYPE.SYSTEM
-        status: configData.message.MESSAGESTATUS.UNHANDLED
-        validDate: validDate
-      }, cb
-  ], (err, res) =>
-    if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
-
-    sendMessage @app, (if receiver is -1 then null else receiver), {
-      route: 'onMessage'
-      msg: res.toJson()
-    }, '邮件发送成功', (err, data) ->
-      data.msg = {msgId: res.id, tip: data.msg} if not err
-      next(err, data)
-=======
       async.map receiver, (rcv, done) ->
         dao.message.create data: {
           options: options
@@ -177,7 +144,6 @@ Handler::sysMsg = (msg, session, next) ->
           done(err, data)
       , (err) ->
         next(err, {code: 200})
->>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
 
 checkSystemOptions = (options, cb) ->
   isObject = _.isObject(options)
@@ -200,13 +166,9 @@ Handler::handleSysMsg = (msg, session, next) ->
   msgId = msg.msgId
   
   incValues = (obj, options, done) ->
-<<<<<<< HEAD
-    data = options.rewards or options
-=======
     return done(null, {}) if not options.rewards or _.isEmpty(options.rewards)
 
     data = options.rewards
->>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')
@@ -269,11 +231,7 @@ Handler::handleSysMsg = (msg, session, next) ->
         data.status = configData.message.MESSAGESTATUS.HANDLED
         data.msgId = message.id
         data.receiver = playerId
-<<<<<<< HEAD
-        data.validDate = utility.dateFormat(data.validDate, 'yyy-MM-dd HH:mm:ss')
-=======
         data.validDate = utility.dateFormat(data.validDate, 'yyyy-MM-dd hh:mm:ss')
->>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
 
         dao.message.create {
           data:data
@@ -282,8 +240,6 @@ Handler::handleSysMsg = (msg, session, next) ->
 
     (options, cb) ->
       incValues(player, options, cb)
-<<<<<<< HEAD
-=======
 
     (data, cb) ->
       if _.isArray(data.cardArray) and data.cardArray.length > 0
@@ -292,7 +248,6 @@ Handler::handleSysMsg = (msg, session, next) ->
           achieve.star5card(player) if star is 5
           achieve.star6card(player) if star is 6
           achieve.star7card(player) if star is 7
->>>>>>> 5f612a1c9e37ac287660b1b088ea41f7b047ee36
 
       cb(null, data)
   ],(err, data)->

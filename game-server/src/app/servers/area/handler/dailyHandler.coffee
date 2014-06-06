@@ -23,7 +23,7 @@ Handler::lottery = (msg, session, next) ->
     if player.lv < fdata.lottery
       return next(null, {code: 501, msg: fdata.lottery+'级开放'})
 
-    if player.dailyGift.lotteryCount <= 0
+    if (player.dailyGift.lotteryCount+player.dailyGift.lotteryFreeCount) <= 0
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 
     if player.dailyGift.lotteryFreeCount > 0
@@ -36,11 +36,14 @@ Handler::lottery = (msg, session, next) ->
       ### 无免费次数，则消耗20个魔石 ###
       player.decrease('gold', goldResume)
 
-    if DAILY_LOTTERY_COUNT - player.dailyGift.lotteryCount < 20
-      times = 3
+      if player.dailyGift.lotteryCountUsed < 20
+        times = 3
 
-    ### 抽奖次数减一 ###
-    player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
+      ### 固定抽奖次数减一 ###
+      player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
+
+    ### 当天总共寻宝次数加一 ###
+    player.updateGift 'lotteryCountUsed', (player.dailyGift.lotteryCountUsed or 0)+1
 
     resource = randomReward()
     if resource.type is 'power'
@@ -63,8 +66,8 @@ Handler::lottery = (msg, session, next) ->
     next(null, {code: 200, msg: {
       resourceId: resource.id, 
       times: times,
-      lotteryCount: player.toJson().dailyGift.lotteryCount,
-      lotteryFreeCount: player.toJson().dailyGift.lotteryFreeCount,
+      lotteryCount: player.getDailyGift().lotteryCount,
+      lotteryFreeCount: player.getDailyGift().lotteryFreeCount,
       goldResume: goldResume
       }
     })

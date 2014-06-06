@@ -303,6 +303,7 @@ var Player = (function(_super) {
         dailyGift: {
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT, // 每日免费抽奖次数
+            lotteryCountUsed: 0,
             powerGiven: [], // 体力赠送情况
             powerBuyCount: POWER_BUY_COUNT, // 购买体力次数
             challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
@@ -464,6 +465,7 @@ var Player = (function(_super) {
         var dg = {
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
+            lotteryCountUsed: 0,
             powerGiven: [], // 体力赠送情况
             powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
@@ -1510,6 +1512,10 @@ var Player = (function(_super) {
 
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
+        
+        // 寻宝总次数为：固定50次+免费次数
+        dailyGift.lotteryCount += dailyGift.lotteryFreeCount;
+
         delete dailyGift.kneelCountLeft;
         delete dailyGift.kneelList;
         delete dailyGift.rmTimerCount;

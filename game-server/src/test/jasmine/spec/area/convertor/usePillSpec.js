@@ -170,8 +170,11 @@ describe("Area Server", function() {
             cardId: 103,
             pill: 8000
           }, function(data){
+            console.log(data);
             expect(data.code).toEqual(200);
-            expect(data.msg.pill).toEqual(52000);
+            expect(data.msg.playerPill).toEqual(52000);
+            expect(data.msg.pill).toEqual(8000);
+            expect(data.msg.potentialLv).toEqual(1);
             expect(data.msg.ability).toEqual(29653);
 
             doAjax('/player/100', function(res) {

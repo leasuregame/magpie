@@ -185,8 +185,8 @@ var TreasureHuntLayer = cc.Layer.extend({
         var count = treasureHunt.get("count");
         var freeCount = treasureHunt.get("freeCount");
 
-        this._countLabel.setString("今天还可寻宝:  " + count);
-        this._freeCountLabel.setString("当前免费次数:  " + freeCount);
+        this._countLabel.setString("魔石寻宝次数:  " + count);
+        this._freeCountLabel.setString("免费寻宝次数:  " + freeCount);
 
         this._treasureHuntIcon.setVisible(freeCount <= 0);
     },

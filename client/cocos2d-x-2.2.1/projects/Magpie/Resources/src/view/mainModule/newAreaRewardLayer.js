@@ -96,7 +96,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
             btnGetReward.setEnabled(state == NOT_GOT_REWARD);
             btnGetReward.setVisible(!(state == ALREADY_GOT_REWARD));
 
-            if (state == NOT_GOT_REWARD && currentId == undefined) {
+            if (state != ALREADY_GOT_REWARD && currentId == undefined) {
                 currentId = index;
             }
 

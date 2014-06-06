@@ -137,7 +137,7 @@ var GoldRewardLayer = cc.Layer.extend({
             scrollViewLayer.addChild(menu);
             btnGetReward.setVisible(type != GOLD_RECEIVE);
 
-            if (currentId == undefined && playerLv >= goldRewards[i].lv && type != GOLD_RECEIVE) {
+            if (currentId == undefined && type != GOLD_RECEIVE) {
                 currentId = i;
             }
 

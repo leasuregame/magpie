@@ -176,7 +176,7 @@ var GrowthPlanLayer = cc.Layer.extend({
             rewardItem.setEnabled(lv >= reward.lv);
             rewardItem.setVisible(state != ALREADY_GOT_REWARD);
 
-            if (state == NOT_GOT_REWARD && currentId == undefined) {
+            if (state != ALREADY_GOT_REWARD && currentId == undefined) {
                 currentId = id - 1
             }
 

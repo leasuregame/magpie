@@ -1,3 +1,5 @@
+logger = require('pomelo-logger').getLogger(__filename)
+
 module.exports = 
 	connector: (session, msg, app, cb) ->
 		if not session

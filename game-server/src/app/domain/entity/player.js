@@ -1518,9 +1518,6 @@ var Player = (function(_super) {
 
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
-        
-        // 寻宝总次数为：固定50次+免费次数
-        dailyGift.lotteryCount += dailyGift.lotteryFreeCount;
 
         delete dailyGift.kneelCountLeft;
         delete dailyGift.kneelList;

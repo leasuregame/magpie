@@ -21,6 +21,19 @@ util.loadShareConfig = (app) ->
   setSharedConf app, confPath
   fs.watchFile confPath, () -> setSharedConf app, confPath
 
+util.loadShareConfig = (app, key, filename) ->
+  confPath = path.join app.getBase(), '..', 'shared', filename
+  
+  if not fs.existsSync confPath
+    logger.warn 'can not find ' + confPath
+    return
+
+  setSharedConf = (app, key, confPath) ->
+    app.set key, JSON.parse(fs.readFileSync(confPath))
+
+  setSharedConf app, key, confPath
+  fs.watchFile confPath, () -> setSharedConf app, key, confPath
+
 util.loadAreaInfo = (app) ->
   env = app.get 'env'
   serverConfigPath = path.join app.getBase(), 'config', 'servers.json'

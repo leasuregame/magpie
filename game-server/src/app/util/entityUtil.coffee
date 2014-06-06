@@ -139,7 +139,7 @@ module.exports =
     else 
       cb(null, [])
 
-  updateEntities: (group..., cb) ->
+  updateEntities: (groups..., cb) ->
     jobs = []
     groups.forEach (group) ->
       if _.isArray(group) and group.length >= 2

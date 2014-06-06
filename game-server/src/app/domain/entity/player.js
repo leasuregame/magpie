@@ -306,6 +306,7 @@ var Player = (function(_super) {
         dailyGift: {
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT, // 每日免费抽奖次数
+            lotteryCountUsed: 0,
             powerGiven: [], // 体力赠送情况
             powerBuyCount: POWER_BUY_COUNT, // 购买体力次数
             challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
@@ -468,6 +469,7 @@ var Player = (function(_super) {
         var dg = {
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
+            lotteryCountUsed: 0,
             powerGiven: [], // 体力赠送情况
             powerBuyCount: POWER_BUY_COUNT + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: CHALLENGE_COUNT, // 每日有奖竞技次数
@@ -529,7 +531,8 @@ var Player = (function(_super) {
             friendsCount: this.friendsCount,
             goldCards: this.getGoldCard(),
             vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
-            loginInfo: this.activities.logined || {count: 0, got: 0}
+            loginInfo: this.activities.logined || {count: 0, got: 0},
+            rmTimerCount: this.dailyGift.rmTimerCount || 1
         };
     };
 
@@ -657,6 +660,7 @@ var Player = (function(_super) {
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);
+        this.activeSpiritorEffect();
     };
 
     Player.prototype.incSpiritPoolExp = function(exp) {
@@ -1514,6 +1518,7 @@ var Player = (function(_super) {
 
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
+
         delete dailyGift.kneelCountLeft;
         delete dailyGift.kneelList;
         delete dailyGift.rmTimerCount;

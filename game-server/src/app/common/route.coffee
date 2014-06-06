@@ -1,3 +1,5 @@
+logger = require('pomelo-logger').getLogger(__filename)
+
 module.exports = 
 	connector: (session, msg, app, cb) ->
 		if not session
@@ -19,6 +21,7 @@ module.exports =
 			serverId = areas[msg.args[0]?.areaId] if msg.service in ['authRemote', 'playerRemote']
 
 			if not serverId
+				logger.error(JSON.stringify(session), JSON.stringify(msg))
 				cb(new Error('can not find server info for type: ' + msg.serverType + ' areaId:' + session.get('areaId')))
 				return
 

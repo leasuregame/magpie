@@ -531,7 +531,8 @@ var Player = (function(_super) {
             friendsCount: this.friendsCount,
             goldCards: this.getGoldCard(),
             vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
-            loginInfo: this.activities.logined || {count: 0, got: 0}
+            loginInfo: this.activities.logined || {count: 0, got: 0},
+            rmTimerCount: this.dailyGift.rmTimerCount || 1
         };
     };
 
@@ -659,6 +660,7 @@ var Player = (function(_super) {
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);
+        this.activeSpiritorEffect();
     };
 
     Player.prototype.incSpiritPoolExp = function(exp) {
@@ -1516,9 +1518,6 @@ var Player = (function(_super) {
 
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
-        
-        // 寻宝总次数为：固定50次+免费次数
-        dailyGift.lotteryCount += dailyGift.lotteryFreeCount;
 
         delete dailyGift.kneelCountLeft;
         delete dailyGift.kneelList;

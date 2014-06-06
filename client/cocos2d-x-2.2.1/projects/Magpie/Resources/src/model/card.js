@@ -276,8 +276,9 @@ var Card = Entity.extend({
     _calculatePotentialLvAddition: function () {
         cc.log("Card _calculatePotentialLvAddition");
 
-        this._initHp = parseInt(this._initHp * (100 + this._potentialLv * 10) / 100);
-        this._initAtk = parseInt(this._initAtk * (100 + this._potentialLv * 10) / 100);
+
+        this._initHp = parseInt(this._initHp * (100 + this.getPotentialLvAddition()) / 100);
+        this._initAtk = parseInt(this._initAtk * (100 + this.getPotentialLvAddition()) / 100);
 
         this._hp += this._initHp;
         this._atk += this._initAtk;

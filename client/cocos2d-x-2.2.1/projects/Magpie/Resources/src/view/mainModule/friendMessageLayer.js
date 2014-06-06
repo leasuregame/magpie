@@ -50,9 +50,6 @@ var FriendMessageLayer = cc.Layer.extend({
         cc.log("FriendMessageLayer update");
 
         this._friendMessageList = gameData.message.get("friendMessage");
-        
-        cc.log(this._friendMessageList);
-
         this._markEffect = [];
         var len = this._friendMessageList.length;
 
@@ -76,7 +73,6 @@ var FriendMessageLayer = cc.Layer.extend({
             (function (i) {
                 var y = scrollViewHeight - 127 - 127 * i;
 
-                var message = that._friendMessageList[i];
                 var id = that._friendMessageList[i].id;
                 var message = that._friendMessageList[i];
                 var type = that._friendMessageList[i].type;

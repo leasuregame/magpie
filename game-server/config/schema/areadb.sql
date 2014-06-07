@@ -293,3 +293,22 @@ CREATE TABLE IF NOT EXISTS `bossFriendReward` (
   `created` DATETIME,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+-- ---------------------------------------------------------
+-- 数据收集相关表
+-- ---------------------------------------------------------
+
+-- ---------------------------------------------------------
+-- 用于统计等级流失率
+-- ---------------------------------------------------------
+DROP TABLE IF EXISTS `playerDailyLvRecord`;
+CREATE TABLE `playerDailyLvRecord` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `recordDate` DATE DEFAULT NULL ,
+  `playerLv` SMALLINT(5) UNSIGNED DEFAULT '0',
+  `loginCount` SMALLINT(6) UNSIGNED DEFAULT '1' ,
+  `createTime` DATETIME,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

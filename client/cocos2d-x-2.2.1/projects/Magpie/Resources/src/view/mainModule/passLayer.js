@@ -330,76 +330,6 @@ var PassLayer = cc.Layer.extend({
 
     },
 
-    _reset: function () {
-        cc.log("PassLayer _reset");
-
-        var that = this;
-        gameData.pass.reset(function (data) {
-            cc.log(data);
-
-            that.update();
-        });
-    },
-
-    _showReset: function () {
-        cc.log("PassLayer _showWipeOutReward");
-
-        var layer = LazyLayer.create();
-        this.addChild(layer, 5);
-
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
-        bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
-        layer.addChild(bgLayer);
-
-        var bgSprite = cc.Sprite.create(main_scene_image.bg16);
-        bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
-        layer.addChild(bgSprite);
-
-        var rewardLabel1 = cc.LabelTTF.create("是否消耗 200 ", "STHeitiTC-Medium", 25);
-        rewardLabel1.setColor(cc.c3b(255, 239, 131));
-        rewardLabel1.setAnchorPoint(cc.p(0, 1));
-        rewardLabel1.setPosition(this._passLayerFit.rewardLabel1Point);
-        layer.addChild(rewardLabel1);
-
-        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setAnchorPoint(cc.p(0, 1));
-        goldIcon.setPosition(this._passLayerFit.goldIconPoint);
-        layer.addChild(goldIcon);
-
-        var rewardLabel2 = cc.LabelTTF.create("重置关卡?", "STHeitiTC-Medium", 25);
-        rewardLabel2.setColor(cc.c3b(255, 239, 131));
-        rewardLabel2.setAnchorPoint(cc.p(0, 1));
-        rewardLabel2.setPosition(this._passLayerFit.rewardLabel2Point);
-        layer.addChild(rewardLabel2);
-
-        var okItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon21,
-            function () {
-                this._reset();
-                layer.removeFromParent();
-            },
-            this
-        );
-        okItem.setPosition(this._passLayerFit.okItemPoint);
-
-        var closeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon36,
-            function () {
-                layer.removeFromParent();
-            },
-            this
-        );
-        closeItem.setPosition(this._passLayerFit.closeItemPoint);
-
-        var menu = cc.Menu.create(okItem, closeItem);
-        menu.setPosition(cc.p(0, 0));
-        layer.addChild(menu);
-    },
-
     _showWipeOutReward: function (cb, reward) {
         cc.log("PassLayer _showWipeOutReward");
 
@@ -761,7 +691,14 @@ var PassLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._showReset();
+        var that = this;
+
+        AdvancedTipsLabel.pop(TYPE_PASS_RESET_TIPS, function () {
+            gameData.pass.reset(function (data) {
+                cc.log(data);
+                that.update();
+            });
+        });
     },
 
     updateGuide: function () {

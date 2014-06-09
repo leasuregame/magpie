@@ -7,7 +7,8 @@ var TYPE_PASSIVE_SKILL_AFRESH_TIPS = 1;
 var TYPE_PASSIVE_SKILL_OPEN_TIPS = 2;
 var TYPE_REMOVE_CD_TIPS = 3;
 var TYPE_EXCHANGE_CARD_TIPS = 4;
-var TYPE_BUY_GROWTH_PLAN = 5;
+var TYPE_BUY_GROWTH_PLAN_TIPS = 5;
+var TYPE_PASS_RESET_TIPS = 6;
 
 var spendFailTip = {
     gold: "魔石不足",
@@ -97,9 +98,11 @@ var AdvancedTipsLabel = LazyLayer.extend({
             case TYPE_EXCHANGE_CARD_TIPS:
                 this._initExchangeCardTips();
                 break;
-            case TYPE_BUY_GROWTH_PLAN:
+            case TYPE_BUY_GROWTH_PLAN_TIPS:
                 this._initBuyGrowthPlanTips();
                 break;
+            case TYPE_PASS_RESET_TIPS:
+                this._initPassResetTips();
         }
     },
 
@@ -145,7 +148,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
         this._spend = {
             type: "gold",
             num: needGold
-        }
+        };
     },
 
     _initRemoveCdTips: function () {
@@ -176,7 +179,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
         this._spend = {
             type: "gold",
             num: needGold
-        }
+        };
 
     },
 
@@ -208,7 +211,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
         this._spend = {
             type: "fragment",
             num: needFragment
-        }
+        };
     },
 
     _initBuyGrowthPlanTips: function () {
@@ -239,7 +242,38 @@ var AdvancedTipsLabel = LazyLayer.extend({
         this._spend = {
             type: "gold",
             num: needGold
-        }
+        };
+    },
+
+    _initPassResetTips: function() {
+        cc.log("AdvancedTipsLabel _initPassResetTips");
+
+        var needGold = gameData.pass.getResetNeedConsume();
+
+        var tipsLabel = ColorLabelTTF.create(
+            {
+                string: "是否确定花费" + needGold,
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            },
+            {
+                iconName: "gold",
+                scale: 0.7
+            },
+            {
+                string: "重置关卡",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            }
+        );
+        tipsLabel.setPosition(cc.p(0, 30));
+        tipsLabel.setAnchorPoint(cc.p(0.5, 0));
+        this._frameLayer.addChild(tipsLabel);
+
+        this._spend = {
+            type: "gold",
+            num: needGold
+        };
     },
 
     _onClickCancel: function () {

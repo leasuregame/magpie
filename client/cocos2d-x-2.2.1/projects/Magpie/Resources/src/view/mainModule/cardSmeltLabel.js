@@ -170,31 +170,45 @@ var CardSmeltLabel = cc.Layer.extend({
 
         var cardIdList = [];
         var len = this._retinueCard.length;
+        var isShowTip = false;
+
         for (var i = 0; i < len; ++i) {
+            var star = this._retinueCard[i].get("star");
+            if (star >= 4) {
+                isShowTip = true;
+            }
             cardIdList.push(this._retinueCard[i].get("id"));
         }
 
         var that = this;
-        gameData.cardList.dissolveCard(cardIdList, function (data) {
-            that._getGoods = data;
-            that._smeltItem.setEnabled(false);
-            that.ccbBoxItem.setEnabled(false);
-            that._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+        var cb = function () {
+            gameData.cardList.dissolveCard(cardIdList, function (data) {
+                that._getGoods = data;
+                that._smeltItem.setEnabled(false);
+                that.ccbBoxItem.setEnabled(false);
+                that._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
 
-            that._smelter.animationManager.setCompletedAnimationCallback(that, function () {
-                that.ccbBoxItem.setEnabled(true);
-                that._retinueCard = [];
-                that.update();
-            });
+                that._smelter.animationManager.setCompletedAnimationCallback(that, function () {
+                    that.ccbBoxItem.setEnabled(true);
+                    that._retinueCard = [];
+                    that.update();
+                });
 
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect118, that);
-            effect.setPosition(that._cardSmeltLabelFit.smelterPoint);
-            effect.animationManager.setCompletedAnimationCallback(that, function () {
-                effect.removeFromParent();
-                effect = null;
+                var effect = cc.BuilderReader.load(main_scene_image.uiEffect118, that);
+                effect.setPosition(that._cardSmeltLabelFit.smelterPoint);
+                effect.animationManager.setCompletedAnimationCallback(that, function () {
+                    effect.removeFromParent();
+                    effect = null;
+                });
+                that.addChild(effect);
             });
-            that.addChild(effect);
-        });
+        };
+
+        if (isShowTip) {
+            AdvancedTipsLabel.pop(TYPE_CARD_TIPS, cb);
+        } else {
+            cb();
+        }
     },
 
     _onClickSelectRetinueCard: function () {

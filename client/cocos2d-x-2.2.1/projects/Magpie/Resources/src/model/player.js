@@ -359,11 +359,7 @@ var Player = Entity.extend({
     _energyChangeEvent: function () {
         cc.log("Player _energyChangeEvent");
 
-        if (this._energy >= LOTTERY_ENOUGH) {
-            gameMark.updateLotteryMark(false);
-        } else {
-            gameMark.updateLotteryMark(false);
-        }
+        gameMark.updateLotteryMark(false);
     },
 
     _vipChangeEvent: function () {
@@ -381,7 +377,7 @@ var Player = Entity.extend({
             if (this._power < this._maxPower) {
                 var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
 
-                lz.NotificationHelp.push("哥，在干啥呢，体力恢复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+                lz.NotificationHelp.push("大神，你的体力都流了一地啦，白骨精看了都浑身发热，你赶紧把她收了吧！", time, POWER_NOTIFICATION_KEY);
             }
         }
     },

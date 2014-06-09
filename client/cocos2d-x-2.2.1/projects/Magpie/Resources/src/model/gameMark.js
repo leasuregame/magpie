@@ -415,9 +415,10 @@ var gameMark = {
         cc.log("gameMark getTreasureHuntMark");
 
         if (!this._treasureHunt) {
+            var limitLv = outputTables.function_limit.rows[1].lottery;
             var freeCount = gameData.treasureHunt.get("freeCount");
             var lv = gameData.player.get("lv");
-            if (freeCount > 0 && lv >= 25) {
+            if (freeCount > 0 && lv >= limitLv) {
                 this._treasureHunt = true;
             }
         }

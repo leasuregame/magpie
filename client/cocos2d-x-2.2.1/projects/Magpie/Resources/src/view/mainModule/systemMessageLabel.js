@@ -42,7 +42,7 @@ var SystemMessageLabel = LazyLayer.extend({
         frameLayer.addChild(titleLabel);
 
         var contentBgLabel = cc.Scale9Sprite.create(main_scene_image.icon175);
-        contentBgLabel.setContentSize(cc.size(490, 220));
+        contentBgLabel.setContentSize(cc.size(490, 230));
         contentBgLabel.setPosition(cc.p(0, 180));
         frameLayer.addChild(contentBgLabel);
 
@@ -51,7 +51,7 @@ var SystemMessageLabel = LazyLayer.extend({
         var len = content.length;
 
         var i, x, y;
-        var scrollViewHeight = len * 25 + 10;
+        var scrollViewHeight = len * 25;
 
         for (i = 0; i < len; i++) {
             y = scrollViewHeight - 25 - 25 * i;
@@ -63,7 +63,7 @@ var SystemMessageLabel = LazyLayer.extend({
         }
 
         var scrollView = cc.ScrollView.create(cc.size(490, 200), scrollViewLayer);
-        scrollView.setPosition(cc.p(0, 5));
+        scrollView.setPosition(cc.p(0, 15));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         scrollView.updateInset();

@@ -225,7 +225,7 @@ var GrowthPlanLayer = cc.Layer.extend({
         }
 
         var that = this;
-        AdvancedTipsLabel.pop(TYPE_BUY_GROWTH_PLAN, function () {
+        AdvancedTipsLabel.pop(TYPE_BUY_GROWTH_PLAN_TIPS, function () {
             gameData.activity.buyPlan(function () {
                 that.update();
             });

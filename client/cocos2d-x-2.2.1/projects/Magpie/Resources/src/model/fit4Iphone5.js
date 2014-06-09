@@ -620,8 +620,8 @@ var fit4Iphone5 = {
             "lineIconPoint": cc.p(0, 963),
             "headIconPoint": cc.p(0, 963),
             "scrollViewHeight": 780,
-            "scrollViewLayerRect": cc.rect(0, 0, 620, 780),
-            "scrollViewSize": cc.size(620, 780),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 780),
+            "scrollViewSize": cc.size(640, 780),
             "scrollViewPoint": cc.p(0, 140)
         },
         "growthPlanLayer": {

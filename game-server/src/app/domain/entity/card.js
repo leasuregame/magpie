@@ -52,9 +52,33 @@ var addEvents = function(card) {
                 if (cardData.star >= 3) {
                     card.skill = table.getTableItem('skills', cardData.skill_id);
                 }
-                card.cardData = cardData;
             }
         }
+        countHpAtk(card);
+        countPassiveSkills(card);
+    });
+
+    card.on('pill.change', function(pill) {
+        if (card.star < 4) {
+            return;
+        }
+
+        var plv = 0;
+        items = table.getTable('card_pill_use').map(function(row){
+            return row.pill;
+        })
+        .sort(function(x, y) { return x - y;})
+        .forEach(function(val) {
+            if (pill >= val) {
+                plv += 1;
+                pill -= val;
+            }
+        });
+
+        card.potentialLv = plv;
+    });
+
+    card.on('potentialLv.change', function(lv) {
         countHpAtk(card);
         countPassiveSkills(card);
     });
@@ -103,9 +127,13 @@ var countHpAtk = function(card) {
     if (card.tableId) {
         var cardData = table.getTableItem('cards', card.tableId);
         var factor = table.getTableItem('factors', card.lv).factor;
+        var grow_percent = ((_ref = table.getTableItem('card_pill_use', card.potentialLv)) != null ? _ref.grow_percent : void 0) || 0;
 
         var _hp = parseInt(cardData.hp * factor),
             _atk = parseInt(cardData.atk * factor);
+
+        _hp = parseInt(_hp*(100+grow_percent)/100);
+        _atk = parseInt(_atk*(100+grow_percent)/100);
         card.set({
             init_hp: _hp,
             hp: _hp,
@@ -157,7 +185,6 @@ var Card = (function(_super) {
             if (cardData.star >= 3) {
                 this.skill = table.getTableItem('skills', cardData.skill_id);
             }
-            this.cardData = cardData;
         }
 
 
@@ -166,6 +193,8 @@ var Card = (function(_super) {
         countPassiveSkills(this);
         addEvents(this);
     }
+
+    Card.tableName = 'card';
 
     Card.FIELDS = [
         'id',
@@ -184,7 +213,9 @@ var Card = (function(_super) {
         'elixirAtkCrit',
         'passiveSkills',
         'useCardsCounts',
-        'psGroupCount'
+        'psGroupCount',
+        'pill',
+        'potentialLv'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -212,11 +243,17 @@ var Card = (function(_super) {
         },
         passiveSkills: [],
         useCardsCounts: 0,
-        psGroupCount: 3
+        psGroupCount: 3,
+        pill: 0,
+        potentialLv: 0
     };
 
     Card.prototype.init = function() {
         this.passiveSkills = this.passiveSkills || [];
+    };
+
+    Card.prototype.canUsePill = function(){
+        return this.potentialLv < this.star;
     };
 
     Card.prototype.getPsGroup = function(gid) {
@@ -285,24 +322,6 @@ var Card = (function(_super) {
 
         this.hp = hp;
         this.atk = atk;
-    };
-
-    Card.prototype.activeGroupEffect = function() {
-        var _property = {};
-        _property[GROUP_EFFECT_ATK] = 'atk';
-        _property[GROUP_EFFECT_HP] = 'hp';
-
-        var type = parseInt(this.cardData.effetc_type);
-        var effect_val = 20;
-        if (type == GROUP_EFFECT_HP) {
-            effect_val = 25;
-        }
-        var aval = parseInt(this[_property[type]] * effect_val / 100);
-        this.increase(_property[type] + 'Addition', aval);
-
-        this.increase(_property[type], aval);
-        this.incs['group_' + _property[type]] = aval;
-        return this;
     };
 
     Card.prototype.ability = function() {
@@ -536,7 +555,9 @@ var Card = (function(_super) {
             elixirAtk: this.elixirAtk,
             elixirHpCrit: this.elixirHpCrit,
             elixirAtkCrit: this.elixirAtkCrit,
-            passiveSkills: this.passiveSkills
+            passiveSkills: this.passiveSkills,
+            pill: this.pill,
+            potentialLv: this.potentialLv
         };
     };
 

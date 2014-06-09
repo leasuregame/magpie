@@ -18,7 +18,8 @@ var MainLayer = cc.Layer.extend({
     _layer: [
         SpiritPoolLayer,
         SummonLayer,
-        TreasureHuntLayer,
+       // TreasureHuntLayer,
+        SmeltLayer,
         StrengthenLayer,
         EvolutionLayer,
         ActivityLayer,

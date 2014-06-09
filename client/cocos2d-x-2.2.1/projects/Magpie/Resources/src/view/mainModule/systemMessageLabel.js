@@ -51,7 +51,7 @@ var SystemMessageLabel = LazyLayer.extend({
         var len = content.length;
 
         var i, x, y;
-        var scrollViewHeight = len * 25;
+        var scrollViewHeight = len * 25 + 10;
 
         for (i = 0; i < len; i++) {
             y = scrollViewHeight - 25 - 25 * i;

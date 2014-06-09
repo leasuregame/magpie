@@ -30,7 +30,7 @@ var TreasureHunt = Entity.extend({
     },
 
     canTreasureHunt: function () {
-        if (this._count <= 0) {
+        if (this._count <= 0 && this._freeCount <= 0) {
             TipLayer.tip("今天寻宝次数已用完");
             return false;
         }

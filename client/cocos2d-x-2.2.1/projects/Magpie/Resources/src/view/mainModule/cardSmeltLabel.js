@@ -64,7 +64,7 @@ var CardSmeltLabel = cc.Layer.extend({
         this._helpLabel.setPosition(this._cardSmeltLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
-        var gotLabel = cc.LabelTTF.create("本次吞噬可获得", "STHeitiTC-Medium", 22);
+        var gotLabel = cc.LabelTTF.create("本次熔炼可获得", "STHeitiTC-Medium", 22);
         gotLabel.setPosition(cc.p(0, 20));
         this._helpLabel.addChild(gotLabel);
 
@@ -123,6 +123,8 @@ var CardSmeltLabel = cc.Layer.extend({
 
         if (this._retinueCard && this._retinueCard.length > 0) {
             this._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+            this._smelter.animationManager.setCompletedAnimationCallback(this, null);
+
             this._smeltItem.setEnabled(true);
             this._tipLabel.setVisible(false);
             this._helpLabel.setVisible(true);
@@ -159,9 +161,6 @@ var CardSmeltLabel = cc.Layer.extend({
             lz.tipReward(this._getGoods);
             this._getGoods = null;
         }
-        this.ccbBoxItem.setEnabled(true);
-        this._retinueCard = [];
-        this.update();
     },
 
     _onClickSmelt: function () {
@@ -182,9 +181,15 @@ var CardSmeltLabel = cc.Layer.extend({
             that.ccbBoxItem.setEnabled(false);
             that._smelter.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
 
-            var effect = cc.BuilderReader.load(main_scene_image.uiEffect118, this);
+            that._smelter.animationManager.setCompletedAnimationCallback(that, function () {
+                that.ccbBoxItem.setEnabled(true);
+                that._retinueCard = [];
+                that.update();
+            });
+
+            var effect = cc.BuilderReader.load(main_scene_image.uiEffect118, that);
             effect.setPosition(that._cardSmeltLabelFit.smelterPoint);
-            effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.animationManager.setCompletedAnimationCallback(that, function () {
                 effect.removeFromParent();
                 effect = null;
             });

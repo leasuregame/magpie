@@ -36,11 +36,11 @@ Handler::lottery = (msg, session, next) ->
       ### 无免费次数，则消耗20个魔石 ###
       player.decrease('gold', goldResume)
 
-      if player.dailyGift.lotteryCountUsed < 20
-        times = 3
-
       ### 固定抽奖次数减一 ###
       player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
+
+    if player.dailyGift.lotteryCountUsed < 20
+      times = 3
 
     ### 当天总共寻宝次数加一 ###
     player.updateGift 'lotteryCountUsed', (player.dailyGift.lotteryCountUsed or 0)+1

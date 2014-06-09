@@ -39,7 +39,7 @@ Handler::lottery = (msg, session, next) ->
       ### 固定抽奖次数减一 ###
       player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
 
-    if player.dailyGift.lotteryCountUsed < 20
+    if (parseInt(player.dailyGift.lotteryCountUsed) or 0) < 20
       times = 3
 
     ### 当天总共寻宝次数加一 ###

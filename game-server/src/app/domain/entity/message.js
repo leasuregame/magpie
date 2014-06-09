@@ -97,6 +97,31 @@ var Message = (function(_super) {
         };
     };
 
+    Message.prototype.toBattleLogMessage = function() {
+        return {
+            id: this.id,
+            defier: this.options.defier || '无名氏',
+            isWin: this.options.isWin || false,
+            rank: this.options.curRank,
+            type: this.type,
+            battleLogId: this.options.battleLogId,
+            createTime: this.createTime
+        };
+    };
+
+    Message.prototype.toSystemMessage = function(){
+        return {
+            id: this.id,
+            title: this.options.title || '奖励补偿',
+            sender: this.options.sender || '小仙仙',
+            status: this.status,
+            content: this.content,
+            rewards: this.options.rewards,
+            type: this.type,
+            createTime: this.createTime
+        };
+    };
+
     return Message;
 })(Entity);
 

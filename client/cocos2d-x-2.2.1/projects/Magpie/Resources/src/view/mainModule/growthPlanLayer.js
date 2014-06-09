@@ -119,7 +119,7 @@ var GrowthPlanLayer = cc.Layer.extend({
         var scrollViewHeight = len * 112;
 
         var lv = gameData.player.get("lv");
-
+        var currentId = -1;
 
         for (var id in rewards) {
             var y = scrollViewHeight - 112 * id;
@@ -161,7 +161,7 @@ var GrowthPlanLayer = cc.Layer.extend({
             goldLabel.setPosition(cc.p(73, 8));
             goldIcon.addChild(goldLabel);
 
-            var isGot = gameData.activity.getStateById(TYPE_GROWTH_PLAN_REWARD, reward.id) == ALREADY_GOT_REWARD;
+            var state = gameData.activity.getStateById(TYPE_GROWTH_PLAN_REWARD, reward.id);
 
             var rewardItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
@@ -174,7 +174,11 @@ var GrowthPlanLayer = cc.Layer.extend({
             rewardItem.setAnchorPoint(cc.p(0, 0));
             rewardItem.setPosition(cc.p(435, y + 20));
             rewardItem.setEnabled(lv >= reward.lv);
-            rewardItem.setVisible(!isGot);
+            rewardItem.setVisible(state != ALREADY_GOT_REWARD);
+
+            if(state == NOT_GOT_REWARD && currentId == -1) {
+                currentId = id;
+            }
 
             this._getRewardItems[reward.id] = rewardItem;
             menu.addChild(rewardItem);
@@ -182,7 +186,7 @@ var GrowthPlanLayer = cc.Layer.extend({
             var gotRewardIcon = cc.Sprite.create(main_scene_image.icon138);
             gotRewardIcon.setAnchorPoint(cc.p(0, 0));
             gotRewardIcon.setPosition(cc.p(435, y + 20));
-            gotRewardIcon.setVisible(isGot);
+            gotRewardIcon.setVisible(state == ALREADY_GOT_REWARD);
             scrollViewLayer.addChild(gotRewardIcon);
 
             this._gotRewardIcons[reward.id] = gotRewardIcon;
@@ -195,7 +199,18 @@ var GrowthPlanLayer = cc.Layer.extend({
         this.addChild(scrollView);
 
         scrollView.setContentSize(cc.size(600, scrollViewHeight));
-        scrollView.setContentOffset(scrollView.minContainerOffset());
+
+        var size = this._growthPlanLayerFit.scrollViewSize;
+        var offsetY;
+
+        if (currentId > 0) {
+            offsetY = -1 * (len - currentId + 1) * 112 + size.height;
+            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
+        } else {
+            offsetY = scrollView.minContainerOffset().y;
+        }
+
+        scrollView.setContentOffset(cc.p(0, offsetY));
 
     },
 

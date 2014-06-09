@@ -68,7 +68,9 @@ app.configure('production|development', function() {
   app.filter(pomelo.filters.timeout());
   app.rpcFilter(pomelo.rpcFilters.rpcLog());
 
-  appUtil.loadShareConfig(app);
+  appUtil.loadShareConfig(app, 'sharedConf', 'conf.json');
+  appUtil.loadShareConfig(app, 'versionConf', 'version.json');
+  
   app.set('errorHandler', function(err, msg, resp, session, opts, cb){
     cb(err, resp, opts);
   });

@@ -161,7 +161,6 @@ Handler::luckyCard = (msg, session, next) ->
   totalConsume = 0
   totalFragment = 0
   isFree = 0
-  star5For10 = false
 
   generateCard = (player, level, type, times, isFree, cb) ->
     if isFree and times is 1
@@ -189,18 +188,8 @@ Handler::luckyCard = (msg, session, next) ->
         if level is HIGH_LUCKYCARD and card.star is 5
           hdcc = 1
 
-        star5For10 = true if times is 10 and card.star is 5
-
         next(null, card, consumeVal, fragment)
       , (err, cards, consumes, fragments) ->
-        # firstTen = 0
-        # if typeof player.firstTime.highTenLuckCard is 'undefined' or player.firstTime.highTenLuckCard
-        #   firstTen = 1
-
-        # if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and times is 10 and firstTen
-        #   grainFiveStarCard cards, player
-        #   player.setFirstTime('highTenLuckCard', 0)
-
         # 每次高级10连抽，必得卡魂1个，1%概率额外获得卡魂1个。
         frags = 0;
         if level is HIGH_LUCKYCARD and times == 10
@@ -213,6 +202,8 @@ Handler::luckyCard = (msg, session, next) ->
 
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
+
+    cards.forEach (c) -> lids.push c.id if c.star is 5
     
     cards4 = cards.filter (c) -> 
       _tid = c.tableId + 5 - c.star
@@ -253,7 +244,7 @@ Handler::luckyCard = (msg, session, next) ->
         #@app.get('messageService').pushMessage(msg)
         msgQueue.push(msgContent)
 
-  first5GoldLuckyCardBy10 = (player, cards) ->
+  firstGoldLuckyCardBy10 = (player, cards) ->
     ### 每天前5次魔石10连抽，必得一张5星卡 ###
 
     rates = 
@@ -261,13 +252,13 @@ Handler::luckyCard = (msg, session, next) ->
 
     player.incGoldLuckyCard10()
     goldLuckyCard10 = player.dailyGift.goldLuckyCard10
-    if not goldLuckyCard10.got and utility.hitRate rates[goldLuckyCard10.count]
+    if not goldLuckyCard10.got and utility.hitRate(rates[goldLuckyCard10.count] or 0)
       grainFiveStarCard(cards, player)
       goldLuckyCard10.got = true
       player.updateGift 'goldLuckyCard10', goldLuckyCard10
 
 
-  first3GoldLuckyCard = (player) ->
+  firstGoldLuckyCard = (player) ->
     ### 每天前3次单次魔石抽卡，比得一个卡魂 ###
 
     rates = 
@@ -311,8 +302,8 @@ Handler::luckyCard = (msg, session, next) ->
           player.set('highFragmentCount', hfc)
           player.set('highDrawCardCount', hdcc)
 
-      first5GoldLuckyCardBy10(player, cards) if not star5For10 and times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
-      first3GoldLuckyCard(player) if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
+      firstGoldLuckyCardBy10(player, cards) if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
+      firstGoldLuckyCard(player) if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
 
       card.playerId = player.id for card in cards
       async.map cards, entityUtil.createCard, cb

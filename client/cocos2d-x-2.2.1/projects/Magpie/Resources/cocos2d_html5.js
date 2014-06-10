@@ -212,6 +212,7 @@
             'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
+            'src/view/mainModule/smeltLayer.js',
             'src/view/mainModule/speakerLayer.js',
             'src/view/mainModule/spiritDetails.js',
             'src/view/mainModule/spiritNode.js',

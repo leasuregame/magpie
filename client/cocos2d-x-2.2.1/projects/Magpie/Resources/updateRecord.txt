@@ -9,6 +9,9 @@ res/main/icon452.png
 res/main/icon453.png
 res/main/icon454.png
 res/main/icon455.png
+res/main/icon456.png
+res/main/icon457.png
+res/main/icon458.png
 
 resYY/main/icon449.png
 resYY/main/icon450.png
@@ -17,6 +20,9 @@ resYY/main/icon452.png
 resYY/main/icon453.png
 resYY/main/icon454.png
 resYY/main/icon455.png
+resYY/main/icon456.png
+resYY/main/icon457.png
+resYY/main/icon458.png
 
 ----------v1.4.8版本----------------------------------------------------------------------------------------------------
 

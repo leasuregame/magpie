@@ -77,12 +77,11 @@ exports.versionDetails = function(req, res) {
     if (err) {
       return res.status(500).send('服务器出错');
     }
-
-    var period = results[0][0];
-    var rows = results[1][0];
-    var counts = results[2][0];
-    var userNum = results[3][0];
-    console.log(counts);
+    var period = results[0];
+    var rows = results[1];
+    var counts = results[2];
+    var userNum = results[3];
+    
     res.render('versionDetails', {
       maxDate: localDateString(period[0].maxDate),
       minDate: localDateString(period[0].minDate),

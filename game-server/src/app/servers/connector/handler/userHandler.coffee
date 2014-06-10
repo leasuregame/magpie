@@ -180,45 +180,19 @@ authParams = (type, msg, app) ->
   args.frontendId = app.getServerId()
   args
 
-getVersionData = (app, platform) ->
-  if not platform
-    platform = app.get('platform')
-    
-  vdata = JSON.parse(fs.readFileSync(path.join(app.getBase(), '..', 'shared', 'version.json'), 'utf8'))
-  vdata[platform]
-
-versionCompare = (stra, strb) ->
-  straArr = stra.split('.')
-  strbArr = strb.split('.')
-
-  maxLen = Math.max(straArr.length, strbArr.length)
-  for i in [0...maxLen]
-    sa = ~~straArr[i]
-    sb = ~~strbArr[i]
-    if sa > sb
-      result = 1 
-    else if sa < sb
-      result = -1 
-    else 
-      result = 0
-
-    if result isnt 0
-      return result
-  result
-
 checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
-  vData = getVersionData(app, platform)
+  vData = app.get('versionConf')?[platform]
   if not vData
     return cb({501, msg: "找不到#{platform}的版本信息"})
 
-  if msg.appVersion? and versionCompare(msg.appVersion, vData.forceUpdateVersion) < 0
+  if msg.appVersion? and versionHandler.versionCompare(msg.appVersion, vData.forceUpdateVersion) < 0
     cb({code: 501, msg: '版本过低，请到发行商更新游戏'})
 
-  if versionCompare(version, vData.version) >= 0
+  if versionHandler.versionCompare(version, vData.version) >= 0
     cb()
   else
-    if vData.version is vData.lastVersion or versionCompare(version, vData.oldestVersion) < 0
+    if vData.version is vData.lastVersion or versionHandler.versionCompare(version, vData.oldestVersion) < 0
       cb({code: 501, msg: '版本过低，请及时更新'})
     else 
       getUpdateSize version, vData, cb

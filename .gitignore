@@ -46,5 +46,4 @@ shared/whiteList.json
 
 *.map
 
-
 game-server/src/app/servers/*/*/*.js

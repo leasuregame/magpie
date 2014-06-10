@@ -1,6 +1,4 @@
 var app = require('pomelo').app;
-var dbClient = app.get('dbClient');
-var Message = require('../../domain/entity/message');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 

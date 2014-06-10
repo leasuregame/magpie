@@ -24,7 +24,6 @@ var optRecord = function(app) {
 		var status = reqParam['status'];
 
         recordDao.addRecord([operator, areaId, playerNames, options, status], function (err, res){
-            console.log("addRecord", arguments);
         });
 	});
 

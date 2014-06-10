@@ -4,21 +4,30 @@
 
     var API_BASE_PATH = '/admin/';
     var API = {
-        ACTOR_CARDS : API_BASE_PATH + 'actor-cards',
-        CARD_LV_LIMIT : API_BASE_PATH + 'card-lv',
+        ACTOR_CARDS : API_BASE_PATH + 'actorCards',
+        CARD_LV_LIMIT : API_BASE_PATH + 'cardLv',
         PLAYER_NAMES : API_BASE_PATH + 'playerNames',
         PLAYER_IDS : API_BASE_PATH + 'playerId',
         RECORD_MSG_OPT : API_BASE_PATH + 'recordMsgOpt',
         GET_MSG_OPT : API_BASE_PATH + 'getSysMsgOpt',
-        SYS_MSG : API_BASE_PATH + 'sysMsg'
+        SYS_MSG : API_BASE_PATH + 'sysMsg',
+        WASTAGE_RATE_ON_LV : API_BASE_PATH + 'getWastageRateOnLv'
     };
 
     var webAPI = {};
 
+    /**
+     * 获得神仙卡配置
+     * @param cb
+     */
     webAPI.getActorCards = function (cb) {
         ajax(API.ACTOR_CARDS, cb);
     };
 
+    /**
+     * 获得卡牌每个星级等级上限配置
+     * @param cb
+     */
     webAPI.getCardLvLimit = function (cb) {
         ajax(API.CARD_LV_LIMIT, cb);
     };
@@ -48,6 +57,13 @@
         ajax(API.PLAYER_IDS, param, scb, ecb);
     };
 
+    /**
+     * 记录发送奖励操作
+     * @param areaId
+     * @param options
+     * @param playerNames
+     * @param status
+     */
     webAPI.recordSendMsgOpt = function (areaId, options, playerNames, status) {
         var param = {
             areaId : areaId,
@@ -58,6 +74,12 @@
         ajax(API.RECORD_MSG_OPT, param, null);
     };
 
+    /**
+     * 获取系统消息操作记录
+     * @param createTime
+     * @param scb
+     * @param ecb
+     */
     webAPI.getMsgOptions = function (createTime, scb, ecb) {
         createTime[0] = util.strDate2Ms(createTime[0]);
         createTime[1] = util.strDate2Ms(createTime[1]);
@@ -68,6 +90,14 @@
         ajax(API.GET_MSG_OPT, param, scb, ecb);
     };
 
+    /**
+     * 获取系统消息
+     * @param areaId
+     * @param playerIds
+     * @param createTime
+     * @param scb
+     * @param ecb
+     */
     webAPI.getSysMessages = function (areaId, playerIds, createTime, scb, ecb) {
         createTime[0] = util.strDate2Ms(createTime[0]);
         createTime[1] = util.strDate2Ms(createTime[1]);
@@ -78,6 +108,23 @@
             createTime : createTime
         };
         ajax(API.SYS_MSG, param, scb, ecb);
+    };
+
+    /**
+     * 获取玩家等级流失率
+     * @param areaId
+     * @param created
+     * @param createTime
+     * @param scb
+     * @param ecb
+     */
+    webAPI.getLvWastageRate = function (areaId, created, createTime, scb, ecb) {
+        var param = {
+            areaId : areaId,
+            created : created, // player创建时间
+            createTime : createTime
+        };
+        ajax(API.WASTAGE_RATE_ON_LV, param, scb, ecb);
     };
 
     function ajax(url, data, successCb, errorCb) {

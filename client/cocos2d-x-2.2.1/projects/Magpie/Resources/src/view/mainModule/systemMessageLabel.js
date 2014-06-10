@@ -95,12 +95,11 @@ var SystemMessageLabel = LazyLayer.extend({
                 var cards = rewards[key];
                 this._cardsLen = cards.length;
                 for (i = 0; i < this._cardsLen; i++) {
-                    x = 25 + (index % 5 ) * 92;
-                    y = 170 - parseInt(index / 5) * 100;
+                    x = 67 + (index % 5 ) * 92;
+                    y = 212 - parseInt(index / 5) * 100;
                     var card = Card.create(cards[i]);
                     var cardItem = CardHeadNode.getCardHeadItem(card);
                     cardItem.setScale(0.82);
-                    cardItem.setAnchorPoint(cc.p(0, 0));
                     cardItem.setPosition(cc.p(x, y));
                     cardMenu.addChild(cardItem);
 
@@ -114,12 +113,11 @@ var SystemMessageLabel = LazyLayer.extend({
                     index++;
                 }
             } else {
-                x = 25 + (index % 5 ) * 92;
-                y = 170 - parseInt(index / 5) * 100;
+                x = 67 + (index % 5 ) * 92;
+                y = 212 + 170 - parseInt(index / 5) * 100;
 
                 var goods = giftBagGoods[key];
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                goodsSprite.setAnchorPoint(cc.p(0, 0));
                 goodsSprite.setPosition(cc.p(x, y));
                 rewardsBgLabel.addChild(goodsSprite);
 

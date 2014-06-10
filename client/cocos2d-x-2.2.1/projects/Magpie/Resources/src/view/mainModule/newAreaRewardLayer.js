@@ -48,7 +48,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
             dayLabel.setPosition(cc.p(35, y + 120));
             scrollViewLayer.addChild(dayLabel);
 
-            var x = 60;
+            var x = 102;
             var rewards = table[id];
             for (var key in rewards) {
 
@@ -63,15 +63,13 @@ var NewAreaRewardLayer = cc.Layer.extend({
                         skillLv: 1
                     });
                     var cardItem = CardHeadNode.getCardHeadItem(card);
-                    cardItem.setAnchorPoint(cc.p(0, 0));
                     cardItem.setScale(0.8);
-                    cardItem.setPosition(cc.p(x, y + 20));
+                    cardItem.setPosition(cc.p(x, y + 62));
                     cardMenu.addChild(cardItem);
                 } else {
                     var goods = giftBagGoods[key];
                     var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                    goodsSprite.setAnchorPoint(cc.p(0, 0));
-                    goodsSprite.setPosition(cc.p(x, y + 20));
+                    goodsSprite.setPosition(cc.p(x, y + 62));
                     scrollViewLayer.addChild(goodsSprite);
 
                     var goodsLabel = cc.LabelTTF.create("+" + rewards[key], "STHeitiTC-Medium", 16);

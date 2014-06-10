@@ -173,8 +173,7 @@ var PaymentLayer = LazyLayer.extend({
             }));
 
             cardItem.setScale(0.6);
-            cardItem.setAnchorPoint(cc.p(0, 0));
-            cardItem.setPosition(cc.p(24, y + 101));
+            cardItem.setPosition(cc.p(56, y + 134));
             menu.addChild(cardItem);
 
             var getRewardItem = cc.MenuItemImage.createWithIcon(

@@ -11,15 +11,17 @@ class Record
     makeAPlayerDailyRecord(@app, player, false, cb)
 
   # 新建player消费记录,其中 bill : {resourceType, expense}
-#  createConsumptionRecord : (playerId, source, bill, cb) ->
-#    consumptionDao = @app.get('dao').playerConsumptionRecordDao
-#    record =
-#      playerId : playerId
-#      source : source
-#      expense : bill.expense
-#      resourceType : if bill.resourceType then bill.resourceType else 1
-#    consumptionDao.create record, cb
-
+  createConsumptionRecord : (playerId, source, bill, cb) ->
+    consumptionDao = @app.get('dao').playerConsumptionRecord
+    record =
+      data:
+        playerId : playerId
+        source : source
+        expense : bill.expense
+        resourceType : if bill.resourceType then bill.resourceType else 1
+    cb = if cb then cb else (err) ->
+      console.log "ERROR ON EXECUTING recordManager.createConsumptionRecord", err if err
+    consumptionDao.createRecord record, cb
 
   # 新建player登入登出记录,主要记录playerId, playerLv, loginCount, recordDate
   makeAPlayerDailyRecord = (app, player, isLogin, cb) ->

@@ -315,3 +315,17 @@ CREATE TABLE `playerDailyLvRecord` (
   `createTime` DATETIME,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ---------------------------------------------------------
+-- 用于统计玩家资源消费
+-- ---------------------------------------------------------
+DROP TABLE IF EXISTS `playerConsumptionRecord`;
+CREATE TABLE `playerConsumptionRecord` (
+  `id`  int(20) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `playerId`  int(20) UNSIGNED NOT NULL,
+  `resourceType`  smallint(6) UNSIGNED DEFAULT NULL ,
+  `expense`  smallint(6) UNSIGNED DEFAULT NULL ,
+  `source`  tinyint(4) UNSIGNED DEFAULT NULL ,
+  `createTime`  DATETIME,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

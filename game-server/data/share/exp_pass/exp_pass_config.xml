@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>arthur wu</Author>
+  <LastAuthor>arthur wu</LastAuthor>
+  <Created>2014-06-11T08:11:57Z</Created>
+  <LastSaved>2014-06-11T08:52:54Z</LastSaved>
+  <Company>le zhi of zhuhai</Company>
+  <Version>14.0</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11500</WindowHeight>
+  <WindowWidth>26940</WindowWidth>
+  <WindowTopX>17100</WindowTopX>
+  <WindowTopY>660</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="经验副本配置表">
+  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="17">
+   <Column ss:Index="2" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="270"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">所有卡牌id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">阵型</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">位置是否随机</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss卡牌id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss暴击率</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss闪避率</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boos技能触发概率</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boos技能加成效果</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BOSS攻击加成</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">BOSS生命加成</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">cards</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">formation</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">is_random</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss_id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss_crit</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss_dodge</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">trigger_rate</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">boss_attr</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">atk_inc</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">hp_inc</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">50001#50001#50001#50001#50002</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s64"><Data ss:Type="Number">50002</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">180</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">50002#50002#50002#50002#50003</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s64"><Data ss:Type="Number">50003</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">41</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">181</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">51</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">51</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">50003#50003#50003#50003#50004</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s64"><Data ss:Type="Number">50004</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">42</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">182</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">52</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">52</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">50004#50004#50004#50004#50005</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s64"><Data ss:Type="Number">50005</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">43</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">183</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">53</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">53</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">50004#50004#50004#50004#50005</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s64"><Data ss:Type="Number">50005</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">44</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">184</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">54</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">54</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="export">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="17">
+   <Column ss:StyleID="s63" ss:Width="135"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="136"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="128"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">merge_to</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">经验副本配置表</Data></Cell>
+    <Cell><Data ss:Type="String">exp_pass_config</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

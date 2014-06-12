@@ -161,7 +161,7 @@ var addEvents = function(player) {
         }
         // 达成vip成就
         achieve.vipTo(player, player.vip);
-        
+
         recountVipPrivilege(player, oldVip);
     });
 };
@@ -276,7 +276,9 @@ var Player = (function(_super) {
         exp: 0,
         money: 10000,
         gold: 20,
-        lineUp: [{6:-1}],
+        lineUp: [{
+            6: -1
+        }],
         ability: 0,
         task: {
             id: 1,
@@ -357,7 +359,7 @@ var Player = (function(_super) {
         rank: null,
         friends: [],
         friendsCount: DEFAULT_FRIENDS_COUNT,
-        rowFragmentCount: 0,  // 低级卡魂次数
+        rowFragmentCount: 0, // 低级卡魂次数
         highFragmentCount: 0, // 高级卡魂次数
         highDrawCardCount: 0, // 高级抽卡次数
         cardsCount: MIN_CARD_COUNT,
@@ -401,7 +403,7 @@ var Player = (function(_super) {
 
     Player.prototype.updateUseCardCoun = function(star, val) {
         var ucc = utility.deepCopy(this.useCardCount);
-        ucc['star'+star] = val;
+        ucc['star' + star] = val;
         this.useCardCount = ucc;
     };
 
@@ -422,7 +424,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.buyPlan = function() {
-        var plan = { buy: true, flag: 0 };
+        var plan = {
+            buy: true,
+            flag: 0
+        };
         this.plan = plan;
     };
 
@@ -531,12 +536,15 @@ var Player = (function(_super) {
             friendsCount: this.friendsCount,
             goldCards: this.getGoldCard(),
             vipLoginReward: this.isVip() ? !this.dailyGift.vipReward : false,
-            loginInfo: this.activities.logined || {count: 0, got: 0},
-            rmTimerCount: this.dailyGift.rmTimerCount || 1
+            loginInfo: this.activities.logined || {
+                count: 0,
+                got: 0
+            },
+            bossInfo: this.getBossInfo()
         };
     };
 
-    Player.prototype.incGoldLuckyCard10 = function(){
+    Player.prototype.incGoldLuckyCard10 = function() {
         var goldLuckyCard10 = this.dailyGift.goldLuckyCard10;
         if (_.isUndefined(goldLuckyCard10)) {
             goldLuckyCard10 = {
@@ -549,7 +557,7 @@ var Player = (function(_super) {
         this.updateGift('goldLuckyCard10', goldLuckyCard10);
     };
 
-    Player.prototype.incGoldLuckyCardForFragment = function(){
+    Player.prototype.incGoldLuckyCardForFragment = function() {
         var goldLuckyCardForFragment = this.dailyGift.goldLuckyCardForFragment;
         if (_.isUndefined(goldLuckyCardForFragment)) {
             goldLuckyCardForFragment = {
@@ -639,7 +647,7 @@ var Player = (function(_super) {
 
     Player.prototype.canUpgradeSpiritor = function() {
         var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
-        if ( !! spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
+        if (!!spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
             return true;
         }
         return false;
@@ -650,7 +658,7 @@ var Player = (function(_super) {
         var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
-        if ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
+        if (!!spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
 
@@ -668,7 +676,7 @@ var Player = (function(_super) {
         var total_exp = sp.exp + exp;
         var spData = table.getTableItem('spirit_pool', sp.lv);
 
-        while ( !! spData && total_exp >= spData.exp_need && sp.lv < MAX_SPIRITPOOL_LV) {
+        while (!!spData && total_exp >= spData.exp_need && sp.lv < MAX_SPIRITPOOL_LV) {
             sp.lv += 1;
             total_exp -= spData.exp_need;
             spData = table.getTableItem('spirit_pool', sp.lv);
@@ -791,7 +799,7 @@ var Player = (function(_super) {
         for (var i = 0; i < ids.length; i++) {
             var _id = ids[i];
             var _card = this.cards[_id];
-            if ( !! _card) {
+            if (!!_card) {
                 cards.push(_card);
                 delete this.cards[_id];
             }
@@ -799,8 +807,8 @@ var Player = (function(_super) {
         return cards;
     };
 
-    Player.prototype.activeCardIds = function(){
-        return this.lineUp.reduce(function(pre, cur){
+    Player.prototype.activeCardIds = function() {
+        return this.lineUp.reduce(function(pre, cur) {
             return pre.concat(_.values(cur));
         }, []);
     };
@@ -1132,7 +1140,7 @@ var Player = (function(_super) {
             pass.mystical.diff += 1;
             pass.mystical.isTrigger = false;
         }
-        
+
         this.set('pass', pass);
     };
 
@@ -1156,7 +1164,7 @@ var Player = (function(_super) {
                 flag: 0
             };
         }
-        if(utility.hasMark(si[key].mark, new Date().getDate())) {
+        if (utility.hasMark(si[key].mark, new Date().getDate())) {
             return false;
         }
 
@@ -1540,7 +1548,7 @@ var Player = (function(_super) {
 
         if (typeof act.logined == 'undefined') {
             act.logined = {
-                count: 1, 
+                count: 1,
                 got: 0
             };
         }
@@ -1553,7 +1561,7 @@ var Player = (function(_super) {
         var act = utility.deepCopy(this.activities);
         if (typeof act.logined == 'undefined') {
             act.logined = {
-                count: 0, 
+                count: 0,
                 got: 0
             };
         }
@@ -1578,6 +1586,16 @@ var Player = (function(_super) {
         if (star5Num > 0) achieve.star5card(this, star5Num);
         if (star6Num > 0) achieve.star6card(this, star6Num);
         if (star7Num > 0) achieve.star7card(this, star7Num);
+    };
+
+    Player.prototype.getBossInfo = function() {
+        return {
+            cd: this.getCD(),
+            kneelCountLeft: this.kneelCountLeft(),
+            kneelList: this.dailyGift.kneelList || [],
+            rmTimerCount: this.dailyGift.rmTimerCount || 1,
+            canReceive: this.hasFriendReward || false,
+        };
     };
 
     Player.prototype.toJson = function() {
@@ -1624,13 +1642,7 @@ var Player = (function(_super) {
             speaker: this.speaker,
             honor: this.honor,
             superHonor: this.superHonor,
-            bossInfo: {
-                cd: this.getCD(),
-                kneelCountLeft: this.kneelCountLeft(),
-                kneelList: this.dailyGift.kneelList || [],
-                rmTimerCount: this.dailyGift.rmTimerCount || 1,
-                canReceive: this.hasFriendReward || false,
-            },
+            bossInfo: this.getBossInfo(),
             pill: this.pill
         };
     };

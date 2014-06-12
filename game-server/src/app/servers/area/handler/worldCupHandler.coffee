@@ -53,7 +53,7 @@ Handler::todayGames = (msg, session, next) ->
       answer: g.answer
       gold: g.gold
 
-    return next(null, {code: 200, msg: games: items, isCanAnswer: isCanAnswer, reward: reward})
+    return next(null, {code: 200, msg: games: items, isCanAnswer: isCanAnswer, reward: reward, gameDate: date_for})
 
 Handler::lastGames = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -66,8 +66,9 @@ Handler::lastGames = (msg, session, next) ->
       visiting_team: g.visiting_team
       score: g.score
       bingo: g.answer is g.result
+      answer: g.answer
 
-    return next(null, {code: 200, msg: games: items})
+    return next(null, {code: 200, msg: games: items, gameDate: today()})
 
 Handler::submitAnswer = (msg, session, next) ->
   playerId = session.get('playerId')

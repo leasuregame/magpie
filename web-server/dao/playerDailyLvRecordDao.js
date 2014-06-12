@@ -1,6 +1,5 @@
 var db = require('./db/db');
 var sqlUtil = require('./util/sqlUtil');
-var _ = require('underscore');
 
 /**
  * 获得每个player的最新一次记录,根据where返回

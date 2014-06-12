@@ -143,12 +143,16 @@ var nameChanged = {
 	"充值类型": "recharge",
 	"vip": "vip等级配置表",
 	"vip等级配置表": "vip",
-	"vip_box": "vip礼包赠品",
-	"vip礼包赠品": "vip_box",
 	"vip_daily_reward": "vip每日登陆奖励",
 	"vip每日登陆奖励": "vip_daily_reward",
+	"vip_box": "vip礼包赠品",
+	"vip礼包赠品": "vip_box",
 	"vip_privilege": "vip特权",
 	"vip特权": "vip_privilege",
+	"against_time_list": "世界杯每日比赛场次",
+	"世界杯每日比赛场次": "against_time_list",
+	"country_list": "国家列表",
+	"国家列表": "country_list",
 	"task": "任务奖励表",
 	"任务奖励表": "task"
 };
@@ -46798,6 +46802,95 @@ var outputTables = {
 			}
 		}
 	},
+	"vip_daily_reward": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"money": 20000,
+				"elixir": 3000,
+				"energy": 0,
+				"exp_card": 10
+			},
+			"2": {
+				"id": 2,
+				"money": 40000,
+				"elixir": 4000,
+				"energy": 200,
+				"exp_card": 15
+			},
+			"3": {
+				"id": 3,
+				"money": 60000,
+				"elixir": 5000,
+				"energy": 400,
+				"exp_card": 20
+			},
+			"4": {
+				"id": 4,
+				"money": 80000,
+				"elixir": 6000,
+				"energy": 600,
+				"exp_card": 25
+			},
+			"5": {
+				"id": 5,
+				"money": 100000,
+				"elixir": 7000,
+				"energy": 800,
+				"exp_card": 30
+			},
+			"6": {
+				"id": 6,
+				"money": 120000,
+				"elixir": 8000,
+				"energy": 1000,
+				"exp_card": 35
+			},
+			"7": {
+				"id": 7,
+				"money": 140000,
+				"elixir": 9000,
+				"energy": 1200,
+				"exp_card": 40
+			},
+			"8": {
+				"id": 8,
+				"money": 160000,
+				"elixir": 10000,
+				"energy": 1400,
+				"exp_card": 45
+			},
+			"9": {
+				"id": 9,
+				"money": 180000,
+				"elixir": 11000,
+				"energy": 1600,
+				"exp_card": 50
+			},
+			"10": {
+				"id": 10,
+				"money": 200000,
+				"elixir": 12000,
+				"energy": 1800,
+				"exp_card": 55
+			},
+			"11": {
+				"id": 11,
+				"money": 220000,
+				"elixir": 13000,
+				"energy": 2000,
+				"exp_card": 60
+			},
+			"12": {
+				"id": 12,
+				"money": 240000,
+				"elixir": 14000,
+				"energy": 2200,
+				"exp_card": 65
+			}
+		}
+	},
 	"vip_box": {
 		"colComment": {},
 		"rows": {
@@ -46932,95 +47025,6 @@ var outputTables = {
 				"exp_card": 100,
 				"price": 999,
 				"true_price": 3986
-			}
-		}
-	},
-	"vip_daily_reward": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"money": 20000,
-				"elixir": 3000,
-				"energy": 0,
-				"exp_card": 10
-			},
-			"2": {
-				"id": 2,
-				"money": 40000,
-				"elixir": 4000,
-				"energy": 200,
-				"exp_card": 15
-			},
-			"3": {
-				"id": 3,
-				"money": 60000,
-				"elixir": 5000,
-				"energy": 400,
-				"exp_card": 20
-			},
-			"4": {
-				"id": 4,
-				"money": 80000,
-				"elixir": 6000,
-				"energy": 600,
-				"exp_card": 25
-			},
-			"5": {
-				"id": 5,
-				"money": 100000,
-				"elixir": 7000,
-				"energy": 800,
-				"exp_card": 30
-			},
-			"6": {
-				"id": 6,
-				"money": 120000,
-				"elixir": 8000,
-				"energy": 1000,
-				"exp_card": 35
-			},
-			"7": {
-				"id": 7,
-				"money": 140000,
-				"elixir": 9000,
-				"energy": 1200,
-				"exp_card": 40
-			},
-			"8": {
-				"id": 8,
-				"money": 160000,
-				"elixir": 10000,
-				"energy": 1400,
-				"exp_card": 45
-			},
-			"9": {
-				"id": 9,
-				"money": 180000,
-				"elixir": 11000,
-				"energy": 1600,
-				"exp_card": 50
-			},
-			"10": {
-				"id": 10,
-				"money": 200000,
-				"elixir": 12000,
-				"energy": 1800,
-				"exp_card": 55
-			},
-			"11": {
-				"id": 11,
-				"money": 220000,
-				"elixir": 13000,
-				"energy": 2000,
-				"exp_card": 60
-			},
-			"12": {
-				"id": 12,
-				"money": 240000,
-				"elixir": 14000,
-				"energy": 2200,
-				"exp_card": 65
 			}
 		}
 	},
@@ -47169,6 +47173,522 @@ var outputTables = {
 				"spirit_collect_count": 11,
 				"challenge_buy_count": 50,
 				"friend_count": 45
+			}
+		}
+	},
+	"against_time_list": {
+		"colComment": {
+			"home_team": {
+				"table": "国家列表",
+				"key_index": "country",
+				"value_index": "id",
+				"withPound": false
+			},
+			"visiting_team": {
+				"table": "国家列表",
+				"key_index": "country",
+				"value_index": "id",
+				"withPound": false
+			}
+		},
+		"rows": {
+			"1": {
+				"id": 1,
+				"date": "2014-06-11T00:00:00.000",
+				"home_team": "墨西哥",
+				"visiting_team": "喀麦隆",
+				"result": 2,
+				"score": "1:1",
+				"reward_gold": 100
+			},
+			"2": {
+				"id": 2,
+				"date": "2014-06-12T00:00:00.000",
+				"home_team": "西班牙",
+				"visiting_team": "荷兰",
+				"result": 2,
+				"score": "2:2",
+				"reward_gold": 100
+			},
+			"3": {
+				"id": 3,
+				"date": "2014-06-13T00:00:00.000",
+				"home_team": "智利",
+				"visiting_team": "澳大利亚",
+				"reward_gold": 100
+			},
+			"4": {
+				"id": 4,
+				"date": "2014-06-15T00:00:00.000",
+				"home_team": "哥伦比亚",
+				"visiting_team": "希腊",
+				"reward_gold": 100
+			},
+			"5": {
+				"id": 5,
+				"date": "2014-06-15T00:00:00.000",
+				"home_team": "乌拉圭",
+				"visiting_team": "哥斯达黎加",
+				"reward_gold": 100
+			},
+			"6": {
+				"id": 6,
+				"date": "2014-06-15T00:00:00.000",
+				"home_team": "英格兰",
+				"visiting_team": "意大利",
+				"reward_gold": 100
+			},
+			"7": {
+				"id": 7,
+				"date": "2014-06-15T00:00:00.000",
+				"home_team": "科特迪瓦",
+				"visiting_team": "日本",
+				"reward_gold": 100
+			},
+			"8": {
+				"id": 8,
+				"date": "2014-06-16T00:00:00.000",
+				"home_team": "瑞士",
+				"visiting_team": "厄瓜多尔",
+				"reward_gold": 100
+			},
+			"9": {
+				"id": 9,
+				"date": "2014-06-16T00:00:00.000",
+				"home_team": "法国",
+				"visiting_team": "洪都拉斯",
+				"reward_gold": 100
+			},
+			"10": {
+				"id": 10,
+				"date": "2014-06-16T00:00:00.000",
+				"home_team": "阿根廷",
+				"visiting_team": "波黑",
+				"reward_gold": 100
+			},
+			"11": {
+				"id": 11,
+				"date": "2014-06-17T00:00:00.000",
+				"home_team": "德国",
+				"visiting_team": "葡萄牙",
+				"reward_gold": 100
+			},
+			"12": {
+				"id": 12,
+				"date": "2014-06-17T00:00:00.000",
+				"home_team": "伊朗",
+				"visiting_team": "尼日利亚",
+				"reward_gold": 100
+			},
+			"13": {
+				"id": 13,
+				"date": "2014-06-17T00:00:00.000",
+				"home_team": "加纳",
+				"visiting_team": "美国",
+				"reward_gold": 100
+			},
+			"14": {
+				"id": 14,
+				"date": "2014-06-18T00:00:00.000",
+				"home_team": "比利时",
+				"visiting_team": "阿尔及利亚",
+				"reward_gold": 100
+			},
+			"15": {
+				"id": 15,
+				"date": "2014-06-18T00:00:00.000",
+				"home_team": "巴西",
+				"visiting_team": "墨西哥",
+				"reward_gold": 100
+			},
+			"16": {
+				"id": 16,
+				"date": "2014-06-18T00:00:00.000",
+				"home_team": "俄罗斯",
+				"visiting_team": "韩国",
+				"reward_gold": 100
+			},
+			"17": {
+				"id": 17,
+				"date": "2014-06-19T00:00:00.000",
+				"home_team": "澳大利亚",
+				"visiting_team": "荷兰",
+				"reward_gold": 100
+			},
+			"18": {
+				"id": 18,
+				"date": "2014-06-19T00:00:00.000",
+				"home_team": "西班牙",
+				"visiting_team": "智利",
+				"reward_gold": 100
+			},
+			"19": {
+				"id": 19,
+				"date": "2014-06-19T00:00:00.000",
+				"home_team": "喀麦隆",
+				"visiting_team": "克罗地亚",
+				"reward_gold": 100
+			},
+			"20": {
+				"id": 20,
+				"date": "2014-06-20T00:00:00.000",
+				"home_team": "哥伦比亚",
+				"visiting_team": "科特迪瓦",
+				"reward_gold": 100
+			},
+			"21": {
+				"id": 21,
+				"date": "2014-06-20T00:00:00.000",
+				"home_team": "乌拉圭",
+				"visiting_team": "英格兰",
+				"reward_gold": 100
+			},
+			"22": {
+				"id": 22,
+				"date": "2014-06-20T00:00:00.000",
+				"home_team": "日本",
+				"visiting_team": "希腊",
+				"reward_gold": 100
+			},
+			"23": {
+				"id": 23,
+				"date": "2014-06-21T00:00:00.000",
+				"home_team": "意大利",
+				"visiting_team": "哥斯达黎加",
+				"reward_gold": 100
+			},
+			"24": {
+				"id": 24,
+				"date": "2014-06-21T00:00:00.000",
+				"home_team": "瑞士",
+				"visiting_team": "法国",
+				"reward_gold": 100
+			},
+			"25": {
+				"id": 25,
+				"date": "2014-06-21T00:00:00.000",
+				"home_team": "洪都拉斯",
+				"visiting_team": "厄瓜多尔",
+				"reward_gold": 100
+			},
+			"26": {
+				"id": 26,
+				"date": "2014-06-22T00:00:00.000",
+				"home_team": "阿根廷",
+				"visiting_team": "伊朗",
+				"reward_gold": 100
+			},
+			"27": {
+				"id": 27,
+				"date": "2014-06-22T00:00:00.000",
+				"home_team": "德国",
+				"visiting_team": "加纳",
+				"reward_gold": 100
+			},
+			"28": {
+				"id": 28,
+				"date": "2014-06-22T00:00:00.000",
+				"home_team": "尼日利亚",
+				"visiting_team": "波黑",
+				"reward_gold": 100
+			},
+			"29": {
+				"id": 29,
+				"date": "2014-06-23T00:00:00.000",
+				"home_team": "比利时",
+				"visiting_team": "俄罗斯",
+				"reward_gold": 100
+			},
+			"30": {
+				"id": 30,
+				"date": "2014-06-23T00:00:00.000",
+				"home_team": "韩国",
+				"visiting_team": "阿尔及利亚",
+				"reward_gold": 100
+			},
+			"31": {
+				"id": 31,
+				"date": "2014-06-23T00:00:00.000",
+				"home_team": "美国",
+				"visiting_team": "葡萄牙",
+				"reward_gold": 100
+			},
+			"32": {
+				"id": 32,
+				"date": "2014-06-24T00:00:00.000",
+				"home_team": "澳大利亚",
+				"visiting_team": "西班牙",
+				"reward_gold": 100
+			},
+			"33": {
+				"id": 33,
+				"date": "2014-06-24T00:00:00.000",
+				"home_team": "荷兰",
+				"visiting_team": "智利",
+				"reward_gold": 100
+			},
+			"34": {
+				"id": 34,
+				"date": "2014-06-24T00:00:00.000",
+				"home_team": "喀麦隆",
+				"visiting_team": "巴西",
+				"reward_gold": 100
+			},
+			"35": {
+				"id": 35,
+				"date": "2014-06-24T00:00:00.000",
+				"home_team": "克罗地亚",
+				"visiting_team": "墨西哥",
+				"reward_gold": 100
+			},
+			"36": {
+				"id": 36,
+				"date": "2014-06-25T00:00:00.000",
+				"home_team": "意大利",
+				"visiting_team": "乌拉圭",
+				"reward_gold": 100
+			},
+			"37": {
+				"id": 37,
+				"date": "2014-06-25T00:00:00.000",
+				"home_team": "哥斯达黎加",
+				"visiting_team": "英格兰",
+				"reward_gold": 100
+			},
+			"38": {
+				"id": 38,
+				"date": "2014-06-25T00:00:00.000",
+				"home_team": "日本",
+				"visiting_team": "哥伦比亚",
+				"reward_gold": 100
+			},
+			"39": {
+				"id": 39,
+				"date": "2014-06-25T00:00:00.000",
+				"home_team": "希腊",
+				"visiting_team": "科特迪瓦",
+				"reward_gold": 100
+			},
+			"40": {
+				"id": 40,
+				"date": "2014-06-26T00:00:00.000",
+				"home_team": "尼日利亚",
+				"visiting_team": "阿根廷",
+				"reward_gold": 100
+			},
+			"41": {
+				"id": 41,
+				"date": "2014-06-26T00:00:00.000",
+				"home_team": "波黑",
+				"visiting_team": "伊朗",
+				"reward_gold": 100
+			},
+			"42": {
+				"id": 42,
+				"date": "2014-06-26T00:00:00.000",
+				"home_team": "洪都拉斯",
+				"visiting_team": "瑞士",
+				"reward_gold": 100
+			},
+			"43": {
+				"id": 43,
+				"date": "2014-06-26T00:00:00.000",
+				"home_team": "厄瓜多尔",
+				"visiting_team": "法国",
+				"reward_gold": 100
+			},
+			"44": {
+				"id": 44,
+				"date": "2014-06-27T00:00:00.000",
+				"home_team": "美国",
+				"visiting_team": "德国",
+				"reward_gold": 100
+			},
+			"45": {
+				"id": 45,
+				"date": "2014-06-27T00:00:00.000",
+				"home_team": "葡萄牙",
+				"visiting_team": "加纳",
+				"reward_gold": 100
+			},
+			"46": {
+				"id": 46,
+				"date": "2014-06-27T00:00:00.000",
+				"home_team": "韩国",
+				"visiting_team": "比利时",
+				"reward_gold": 100
+			},
+			"47": {
+				"id": 47,
+				"date": "2014-06-27T00:00:00.000",
+				"home_team": "阿尔及利亚",
+				"visiting_team": "俄罗斯",
+				"reward_gold": 100
+			}
+		}
+	},
+	"country_list": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"country": "巴西",
+				"url": "country1"
+			},
+			"2": {
+				"id": 2,
+				"country": "西班牙",
+				"url": "country2"
+			},
+			"3": {
+				"id": 3,
+				"country": "哥伦比亚",
+				"url": "country3"
+			},
+			"4": {
+				"id": 4,
+				"country": "乌拉圭",
+				"url": "country4"
+			},
+			"5": {
+				"id": 5,
+				"country": "瑞士",
+				"url": "country5"
+			},
+			"6": {
+				"id": 6,
+				"country": "阿根廷",
+				"url": "country6"
+			},
+			"7": {
+				"id": 7,
+				"country": "德国",
+				"url": "country7"
+			},
+			"8": {
+				"id": 8,
+				"country": "比利时",
+				"url": "country8"
+			},
+			"9": {
+				"id": 9,
+				"country": "喀麦隆",
+				"url": "country9"
+			},
+			"10": {
+				"id": 10,
+				"country": "智利",
+				"url": "country10"
+			},
+			"11": {
+				"id": 11,
+				"country": "科特迪瓦",
+				"url": "country11"
+			},
+			"12": {
+				"id": 12,
+				"country": "英格兰",
+				"url": "country12"
+			},
+			"13": {
+				"id": 13,
+				"country": "厄瓜多尔",
+				"url": "country13"
+			},
+			"14": {
+				"id": 14,
+				"country": "尼日利亚",
+				"url": "country14"
+			},
+			"15": {
+				"id": 15,
+				"country": "加纳",
+				"url": "country15"
+			},
+			"16": {
+				"id": 16,
+				"country": "阿尔及利亚",
+				"url": "country16"
+			},
+			"17": {
+				"id": 17,
+				"country": "墨西哥",
+				"url": "country17"
+			},
+			"18": {
+				"id": 18,
+				"country": "澳大利亚",
+				"url": "country18"
+			},
+			"19": {
+				"id": 19,
+				"country": "日本",
+				"url": "country19"
+			},
+			"20": {
+				"id": 20,
+				"country": "哥斯达黎加",
+				"url": "country20"
+			},
+			"21": {
+				"id": 21,
+				"country": "洪都拉斯",
+				"url": "country21"
+			},
+			"22": {
+				"id": 22,
+				"country": "伊朗",
+				"url": "country22"
+			},
+			"23": {
+				"id": 23,
+				"country": "美国",
+				"url": "country23"
+			},
+			"24": {
+				"id": 24,
+				"country": "韩国",
+				"url": "country24"
+			},
+			"25": {
+				"id": 25,
+				"country": "克罗地亚",
+				"url": "country25"
+			},
+			"26": {
+				"id": 26,
+				"country": "荷兰",
+				"url": "country26"
+			},
+			"27": {
+				"id": 27,
+				"country": "希腊",
+				"url": "country27"
+			},
+			"28": {
+				"id": 28,
+				"country": "意大利",
+				"url": "country28"
+			},
+			"29": {
+				"id": 29,
+				"country": "法国",
+				"url": "country29"
+			},
+			"30": {
+				"id": 30,
+				"country": "波黑",
+				"url": "country30"
+			},
+			"31": {
+				"id": 31,
+				"country": "葡萄牙",
+				"url": "country31"
+			},
+			"32": {
+				"id": 32,
+				"country": "俄罗斯",
+				"url": "country32"
 			}
 		}
 	},

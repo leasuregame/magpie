@@ -17,12 +17,12 @@ var WorldCupDao = (function(_super) {
     this.id = attrs.id;
     this.playerId = attrs.playerId;
     this.gameDate = attrs.gameDate;
-    this.answer = attrs.answer;
+    this.answer = JSON.parse(attrs.answer);
     this.got = attrs.got;
     this.created = attrs.created;
   };
-  domain.DEFAULT_VALUES = {isVerify: 0};
-  domain.FIELDS = ['id', 'playerId', 'gameDate', 'answer', 'got', 'created'];
+  domain.DEFAULT_VALUES = {bingo: false, got: 0};
+  domain.FIELDS = ['id', 'playerId', 'gameDate', 'answer', 'got', 'created', 'bingo'];
   WorldCupDao.domain = domain;
 
   return WorldCupDao;

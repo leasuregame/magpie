@@ -305,6 +305,7 @@ CREATE TABLE IF NOT EXISTS `worldCup` (
   `gameDate` Date,
   `answer` VARCHAR(250) DEFAULT '',
   `got` SMALLINT(2) DEFAULT '0',
+  `bingo` SMALLINT(2) DEFAULT '0',
   `created` DATETIME,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

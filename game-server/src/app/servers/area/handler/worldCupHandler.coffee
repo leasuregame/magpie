@@ -26,7 +26,11 @@ Handler::todayGames = (msg, session, next) ->
     (cb) =>
       checkRewardThatNotReceive @app, playerId, cb
     (cb) =>
-      @app.get('dao').worldCup.fetchOne where: {playerId: playerId, gameDate: date_for}, cb
+      @app.get('dao').worldCup.fetchOne where: {playerId: playerId, gameDate: '2014-06-1'}, (err, res) ->
+        if err and err.code is 404
+          cb(null, null)
+        else
+          cb(err, res)
     (record, cb) ->
       if record
         answer = record.answer

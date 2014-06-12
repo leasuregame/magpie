@@ -51,7 +51,7 @@ Handler::todayGames = (msg, session, next) ->
       home_team: g.home_team
       visiting_team: g.visiting_team
       answer: g.answer
-      gold: g.gold
+      gold: g.reward_gold
 
     return next(null, {code: 200, msg: games: items, isCanAnswer: isCanAnswer, reward: reward, gameDate: date_for})
 

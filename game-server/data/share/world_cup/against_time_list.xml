@@ -41,7 +41,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="世界杯每日比赛场次">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="49" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="52" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="155"/>
    <Column ss:Index="4" ss:Width="116"/>
@@ -68,6 +68,33 @@
     <Cell><Data ss:Type="String">result</Data></Cell>
     <Cell><Data ss:Type="String">score</Data></Cell>
     <Cell><Data ss:Type="String">reward_gold</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-12T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">墨西哥</Data></Cell>
+    <Cell><Data ss:Type="String">喀麦隆</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">2:1</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1001</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-12T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">西班牙</Data></Cell>
+    <Cell><Data ss:Type="String">荷兰</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">2:3</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1002</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-12T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">智利</Data></Cell>
+    <Cell><Data ss:Type="String">澳大利亚</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">3:4</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -419,8 +446,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

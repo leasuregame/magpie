@@ -27,7 +27,8 @@ var MainLayer = cc.Layer.extend({
         AchievementLayer,
         FriendLayer,
         MessageLayer,
-        ConfigLayer
+        ConfigLayer,
+        WorldCupLayer
     ],
 
     _activityMark: null,
@@ -233,8 +234,15 @@ var MainLayer = cc.Layer.extend({
             this._onClickGreeting,
             this
         );
-
         greetingLabelItem.setPosition(this._mainLayerFit.greetingLabelItemPoint);
+
+        var worldCupLayerItem = cc.MenuItemImage.create(
+            main_scene_image.worldCupButton2,
+            main_scene_image.worldCupButton2s,
+            this._onClickLayer(12),
+            this
+        );
+        worldCupLayerItem.setPosition(this._mainLayerFit.worldCupLayerItemPoint);
 
         var menu = cc.Menu.create(
             lotteryLayerItem,
@@ -248,7 +256,8 @@ var MainLayer = cc.Layer.extend({
             friendLayerItem,
             messageItem,
             configLayerItem,
-            greetingLabelItem
+            greetingLabelItem,
+            worldCupLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);

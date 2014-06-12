@@ -788,7 +788,8 @@ var fit4Iphone5 = {
             "otherItemPoint": cc.p(588, 167),
             "messageItemPoint": cc.p(588, 167),
             "configLayerItemPoint": cc.p(578, 749),
-            "greetingLabelItemPoint": cc.p(60, 751)
+            "greetingLabelItemPoint": cc.p(60, 751),
+            "worldCupLayerItemPoint": cc.p(588, 267)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(0, 0),
@@ -1538,6 +1539,17 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(0, 0, 500, 665),
             "scrollViewSize": cc.size(500, 665),
             "scrollViewPoint": cc.p(70, 220)
+        },
+        "worldCupLayer": {
+            "bgSpritePoint": cc.p(0, 80),
+            "tipLabelPoint": cc.p(320, 867),
+            "rewardEffectPoint": cc.p(150, 868),
+            "showRewardItemPoint": cc.p(150, 868),
+            "historyItemPoint": cc.p(490, 868),
+            "submitItemPoint": cc.p(320, 140),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 600),
+            "scrollViewSize": cc.size(640, 600),
+            "scrollViewPoint": cc.p(0, 200)
         }
     }
 };

@@ -591,6 +591,9 @@ Activity.ActivityIsShowHandler =  {
     },
     invitationLayer: function () {
         return !(lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore");
+    },
+    worldCupLayer: function () {
+        return true;
     }
 };
 
@@ -617,6 +620,9 @@ Activity.ActivityIsMarkHandler = {
         return gameMark.getGoldRewardMark();
     },
     invitationLayer: function () {
+        return false;
+    },
+    worldCupLayer: function () {
         return false;
     }
 };

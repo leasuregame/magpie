@@ -3,21 +3,23 @@ var main_scene_path = "res/main/";
 
 var effect_scene_path = "res/effect/";
 
+var world_cup_path = "res/worldCup/"
+
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
-//    bg2: main_scene_path + "bg2.png",
-//    bg3: main_scene_path + "bg3.png",
-//    bg4: main_scene_path + "bg4.png",
+    //    bg2: main_scene_path + "bg2.png",s
+    //    bg3: main_scene_path + "bg3.png",
+    //    bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
-//    bg6: main_scene_path + "bg6.png",
-//    bg7: main_scene_path + "bg7.png",
+    //    bg6: main_scene_path + "bg6.png",
+    //    bg7: main_scene_path + "bg7.png",
     bg8: main_scene_path + "bg8.png",
     bg9: main_scene_path + "bg9.png",
     bg10: main_scene_path + "bg10.png",
     bg11: main_scene_path + "bg11.png",
-//    bg12: main_scene_path + "bg12.png",
+    //    bg12: main_scene_path + "bg12.png",
     bg13: main_scene_path + "bg13.png",
-//    bg14: main_scene_path + "bg14.png",
+    //    bg14: main_scene_path + "bg14.png",
     bg15: main_scene_path + "bg15.png",
     bg16: main_scene_path + "bg16.png",
     bg17: main_scene_path + "bg17.png",
@@ -75,9 +77,9 @@ var main_scene_image = {
     progress5: main_scene_path + "progress5.png",
     progress6: main_scene_path + "progress6.png",
     progress7: main_scene_path + "progress7.png",
-//    progress8: main_scene_path + "progress8.png",
-//    progress9: main_scene_path + "progress9.png",
-//    progress10: main_scene_path + "progress10.png",
+    //    progress8: main_scene_path + "progress8.png",
+    //    progress9: main_scene_path + "progress9.png",
+    //    progress10: main_scene_path + "progress10.png",
     progress11: main_scene_path + "progress11.png",
     progress12: main_scene_path + "progress12.png",
     progress13: main_scene_path + "progress13.png",
@@ -382,9 +384,9 @@ var main_scene_image = {
     icon51: main_scene_path + "icon51.png",
     icon52: main_scene_path + "icon52.png",
     icon53: main_scene_path + "icon53.png",
-//    icon54: main_scene_path + "icon54.png",
-//    icon55: main_scene_path + "icon55.png",
-//    icon56: main_scene_path + "icon56.png",
+    //    icon54: main_scene_path + "icon54.png",
+    //    icon55: main_scene_path + "icon55.png",
+    //    icon56: main_scene_path + "icon56.png",
     icon57: main_scene_path + "icon57.png",
     icon58: main_scene_path + "icon58.png",
     icon59: main_scene_path + "icon59.png",
@@ -402,25 +404,25 @@ var main_scene_image = {
     icon71: main_scene_path + "icon71.png",
     icon72: main_scene_path + "icon72.png",
     icon73: main_scene_path + "icon73.png",
-//    icon74: main_scene_path + "icon74.png",
+    //    icon74: main_scene_path + "icon74.png",
     icon75: main_scene_path + "icon75.png",
-//    icon76: main_scene_path + "icon76.png",
-//    icon77: main_scene_path + "icon77.png",
-//    icon78: main_scene_path + "icon78.png",
-//    icon79: main_scene_path + "icon79.png",
-//    icon80: main_scene_path + "icon80.png",
+    //    icon76: main_scene_path + "icon76.png",
+    //    icon77: main_scene_path + "icon77.png",
+    //    icon78: main_scene_path + "icon78.png",
+    //    icon79: main_scene_path + "icon79.png",
+    //    icon80: main_scene_path + "icon80.png",
     icon81: main_scene_path + "icon81.png",
     icon82: main_scene_path + "icon82.png",
     icon83: main_scene_path + "icon83.png",
     icon84: main_scene_path + "icon84.png",
-//    icon85: main_scene_path + "icon85.png",
-//    icon86: main_scene_path + "icon86.png",
-//    icon87: main_scene_path + "icon87.png",
+    //    icon85: main_scene_path + "icon85.png",
+    //    icon86: main_scene_path + "icon86.png",
+    //    icon87: main_scene_path + "icon87.png",
     icon88: main_scene_path + "icon88.png",
     icon89: main_scene_path + "icon89.png",
-//    icon90: main_scene_path + "icon90.png",
-//    icon91: main_scene_path + "icon91.png",
-//    icon92: main_scene_path + "icon92.png",
+    //    icon90: main_scene_path + "icon90.png",
+    //    icon91: main_scene_path + "icon91.png",
+    //    icon92: main_scene_path + "icon92.png",
     icon93: main_scene_path + "icon93.png",
     icon94: main_scene_path + "icon94.png",
     icon95: main_scene_path + "icon95.png",
@@ -479,14 +481,14 @@ var main_scene_image = {
     icon150: main_scene_path + "icon150.png",
     icon151: main_scene_path + "icon151.png",
     icon152: main_scene_path + "icon152.png",
-//    icon153: main_scene_path + "icon153.png",
+    //    icon153: main_scene_path + "icon153.png",
     icon154: main_scene_path + "icon154.png",
     icon155: main_scene_path + "icon155.png",
     icon156: main_scene_path + "icon156.png",
     icon157: main_scene_path + "icon157.png",
     icon158: main_scene_path + "icon158.png",
     icon159: main_scene_path + "icon159.png",
-//    icon160: main_scene_path + "icon160.png",
+    //    icon160: main_scene_path + "icon160.png",
     icon161: main_scene_path + "icon161.png",
     icon162: main_scene_path + "icon162.png",
     icon163: main_scene_path + "icon163.png",
@@ -496,14 +498,14 @@ var main_scene_image = {
     icon167: main_scene_path + "icon167.png",
     icon168: main_scene_path + "icon168.png",
     icon169: main_scene_path + "icon169.png",
-//    icon170: main_scene_path + "icon170.png",
+    //    icon170: main_scene_path + "icon170.png",
     icon171: main_scene_path + "icon171.png",
     icon172: main_scene_path + "icon172.png",
     icon173: main_scene_path + "icon173.png",
     icon174: main_scene_path + "icon174.png",
     icon175: main_scene_path + "icon175.png",
     icon176: main_scene_path + "icon176.png",
-//    icon177: main_scene_path + "icon177.png",
+    //    icon177: main_scene_path + "icon177.png",
     icon178: main_scene_path + "icon178.png",
     icon179: main_scene_path + "icon179.png",
     icon180: main_scene_path + "icon180.png",
@@ -521,11 +523,11 @@ var main_scene_image = {
     icon192: main_scene_path + "icon192.png",
     icon193: main_scene_path + "icon193.png",
     icon194: main_scene_path + "icon194.png",
-//    icon195: main_scene_path + "icon195.png",
+    //    icon195: main_scene_path + "icon195.png",
     icon196: main_scene_path + "icon196.png",
     icon197: main_scene_path + "icon197.png",
     icon198: main_scene_path + "icon198.png",
-//    icon199: main_scene_path + "icon199.png",
+    //    icon199: main_scene_path + "icon199.png",
     icon200: main_scene_path + "icon200.png",
     icon201: main_scene_path + "icon201.png",
     icon202: main_scene_path + "icon202.png",
@@ -535,18 +537,18 @@ var main_scene_image = {
     icon206: main_scene_path + "icon206.png",
     icon207: main_scene_path + "icon207.png",
     icon208: main_scene_path + "icon208.png",
-//    icon209: main_scene_path + "icon209.png",
+    //    icon209: main_scene_path + "icon209.png",
     icon210: main_scene_path + "icon210.png",
-//   icon211: main_scene_path + "icon211.png",
+    //   icon211: main_scene_path + "icon211.png",
     icon212: main_scene_path + "icon212.png",
-//    icon213: main_scene_path + "icon213.png",
-//    icon214: main_scene_path + "icon214.png",
+    //    icon213: main_scene_path + "icon213.png",
+    //    icon214: main_scene_path + "icon214.png",
     icon215: main_scene_path + "icon215.png",
     icon216: main_scene_path + "icon216.png",
     icon217: main_scene_path + "icon217.png",
     icon218: main_scene_path + "icon218.png",
-//    icon219: main_scene_path + "icon219.png",
-//    icon220: main_scene_path + "icon220.png",
+    //    icon219: main_scene_path + "icon219.png",
+    //    icon220: main_scene_path + "icon220.png",
     icon221: main_scene_path + "icon221.png",
     icon222: main_scene_path + "icon222.png",
     icon223: main_scene_path + "icon223.png",
@@ -554,28 +556,28 @@ var main_scene_image = {
     icon225: main_scene_path + "icon225.png",
     icon226: main_scene_path + "icon226.png",
     icon227: main_scene_path + "icon227.png",
-//    icon228: main_scene_path + "icon228.png",
-//    icon229: main_scene_path + "icon229.png",
-//    icon230: main_scene_path + "icon230.png",
-//    icon231: main_scene_path + "icon231.png",
-//    icon232: main_scene_path + "icon232.png",
-//    icon233: main_scene_path + "icon233.png",
-//    icon234: main_scene_path + "icon234.png",
-//    icon235: main_scene_path + "icon235.png",
-//    icon236: main_scene_path + "icon236.png",
+    //    icon228: main_scene_path + "icon228.png",
+    //    icon229: main_scene_path + "icon229.png",
+    //    icon230: main_scene_path + "icon230.png",
+    //    icon231: main_scene_path + "icon231.png",
+    //    icon232: main_scene_path + "icon232.png",
+    //    icon233: main_scene_path + "icon233.png",
+    //    icon234: main_scene_path + "icon234.png",
+    //    icon235: main_scene_path + "icon235.png",
+    //    icon236: main_scene_path + "icon236.png",
     icon237: main_scene_path + "icon237.png",
     icon238: main_scene_path + "icon238.png",
     icon239: main_scene_path + "icon239.png",
     icon240: main_scene_path + "icon240.png",
     icon241: main_scene_path + "icon241.png",
-//    icon242: main_scene_path + "icon242.png",
+    //    icon242: main_scene_path + "icon242.png",
     icon243: main_scene_path + "icon243.png",
     icon244: main_scene_path + "icon244.png",
     icon245: main_scene_path + "icon245.png",
     icon246: main_scene_path + "icon246.png",
     icon247: main_scene_path + "icon247.png",
-//    icon248: main_scene_path + "icon248.png",
-//    icon249: main_scene_path + "icon249.png",
+    //    icon248: main_scene_path + "icon248.png",
+    //    icon249: main_scene_path + "icon249.png",
     icon250: main_scene_path + "icon250.png",
     icon251: main_scene_path + "icon251.png",
     icon252: main_scene_path + "icon252.png",
@@ -583,9 +585,9 @@ var main_scene_image = {
     icon254: main_scene_path + "icon254.png",
     icon255: main_scene_path + "icon255.png",
     icon256: main_scene_path + "icon256.png",
-//    icon257: main_scene_path + "icon257.png",
+    //    icon257: main_scene_path + "icon257.png",
     icon258: main_scene_path + "icon258.png",
-//    icon259: main_scene_path + "icon259.png",
+    //    icon259: main_scene_path + "icon259.png",
     icon260: main_scene_path + "icon260.png",
     icon261: main_scene_path + "icon261.png",
     icon262: main_scene_path + "icon262.png",
@@ -615,7 +617,7 @@ var main_scene_image = {
     icon286: main_scene_path + "icon286.png",
     icon287: main_scene_path + "icon287.png",
     icon288: main_scene_path + "icon288.png",
-//    icon289: main_scene_path + "icon289.png",
+    //    icon289: main_scene_path + "icon289.png",
     icon290: main_scene_path + "icon290.png",
     icon291: main_scene_path + "icon291.png",
     icon292: main_scene_path + "icon292.png",
@@ -623,11 +625,11 @@ var main_scene_image = {
     icon294: main_scene_path + "icon294.png",
     icon295: main_scene_path + "icon295.png",
     icon296: main_scene_path + "icon296.png",
-//    icon297: main_scene_path + "icon297.png",
-//    icon298: main_scene_path + "icon298.png",
-//    icon299: main_scene_path + "icon299.png",
-//    icon300: main_scene_path + "icon300.png",
-//    icon301: main_scene_path + "icon301.png",
+    //    icon297: main_scene_path + "icon297.png",
+    //    icon298: main_scene_path + "icon298.png",
+    //    icon299: main_scene_path + "icon299.png",
+    //    icon300: main_scene_path + "icon300.png",
+    //    icon301: main_scene_path + "icon301.png",
     icon302: main_scene_path + "icon302.png",
     icon303: main_scene_path + "icon303.png",
     icon304: main_scene_path + "icon304.png",
@@ -1103,7 +1105,7 @@ var main_scene_image = {
     p52: "res/effect/effect/p52.png",
     p53: "res/effect/effect/p53.png",
     p54: "res/effect/effect/p54.png",
-//    p55: "res/effect/effect/p55.png",
+    //    p55: "res/effect/effect/p55.png",
     p56: "res/effect/effect/p56.png",
     p57: "res/effect/effect/p57.png",
     p58: "res/effect/effect/p58.png",
@@ -1191,8 +1193,8 @@ var main_scene_image = {
     up29: "res/effect/uiEffect/up29.png",
     up30: "res/effect/uiEffect/up30.png",
     up31: "res/effect/uiEffect/up31.png",
-//    up32: "res/effect/uiEffect/up32.png",
-//    up33: "res/effect/uiEffect/up33.png",
+    //    up32: "res/effect/uiEffect/up32.png",
+    //    up33: "res/effect/uiEffect/up33.png",
     up34: "res/effect/uiEffect/up34.png",
     up35: "res/effect/uiEffect/up35.png",
     up36: "res/effect/uiEffect/up36.png",
@@ -1364,7 +1366,25 @@ var main_scene_image = {
     boss2_png: "res/effect/effect/boss2.png",
     boss2_plist: "res/effect/effect/boss2.plist",
     boss3_png: "res/effect/effect/boss3.png",
-    boss3_plist: "res/effect/effect/boss3.plist"
+    boss3_plist: "res/effect/effect/boss3.plist",
+
+    //世界杯资源
+    worldCupIcon1: world_cup_path + "worldCupIcon1.png",
+    worldCupIcon2: world_cup_path + "worldCupIcon2.png",
+    worldCupIcon3: world_cup_path + "worldCupIcon3.png",
+    worldCupIcon4: world_cup_path + "worldCupIcon4.png",
+    worldCupIcon5: world_cup_path + "worldCupIcon5.png",
+    worldCupIcon6: world_cup_path + "worldCupIcon6.png",
+    worldCupIcon7: world_cup_path + "worldCupIcon7.png",
+    worldCupIcon8: world_cup_path + "worldCupIcon8.png",
+    worldCupIcon9: world_cup_path + "worldCupIcon9.png",
+    worldCupIcon10: world_cup_path + "worldCupIcon10.png",
+    worldCupIcon11: world_cup_path + "worldCupIcon11.png",
+
+    worldCupButton1: world_cup_path + "worldCupButton1.png",
+    worldCupButton1s: world_cup_path + "worldCupButton1s.png",
+    worldCupButton2: world_cup_path + "worldCupButton2.png",
+    worldCupButton2s: world_cup_path + "worldCupButton2s.png"
 };
 
 var main_scene_res = [
@@ -1407,21 +1427,48 @@ for (var taskId = 1; taskId <= 50; ++taskId) {
 }
 
 for (var key in main_scene_image) {
-    main_scene_res.push({src: main_scene_image[key]});
+    main_scene_res.push({
+        src: main_scene_image[key]
+    });
 }
 
 for (var treasureHuntId = 1; treasureHuntId <= 20; ++treasureHuntId) {
     main_scene_image["treasureHunt" + treasureHuntId] = main_scene_path + "treasureHunt" + treasureHuntId + ".png";
 }
 
+//世界杯国家图片
+for (var countryId = 1; countryId <= 32; ++countryId) {
+    main_scene_image["country" + countryId] = world_cup_path + "country" + countryId + ".png";
+}
+
 //字体
-main_scene_res.push({src: "./res/font/skillName.fnt"});
-main_scene_res.push({src: "./res/font/skillName.png"});
-main_scene_res.push({src: "./res/font/tipNumber.fnt"});
-main_scene_res.push({src: "./res/font/tipNumber.png"});
-main_scene_res.push({src: "./res/font/UInumber.fnt"});
-main_scene_res.push({src: "./res/font/UInumber.png"});
-main_scene_res.push({src: "./res/font/AchievementWord.fnt"});
-main_scene_res.push({src: "./res/font/AchievementWord.png"});
-main_scene_res.push({src: "./res/font/levelWord.fnt"});
-main_scene_res.push({src: "./res/font/levelWord.png"});
+main_scene_res.push({
+    src: "./res/font/skillName.fnt"
+});
+main_scene_res.push({
+    src: "./res/font/skillName.png"
+});
+main_scene_res.push({
+    src: "./res/font/tipNumber.fnt"
+});
+main_scene_res.push({
+    src: "./res/font/tipNumber.png"
+});
+main_scene_res.push({
+    src: "./res/font/UInumber.fnt"
+});
+main_scene_res.push({
+    src: "./res/font/UInumber.png"
+});
+main_scene_res.push({
+    src: "./res/font/AchievementWord.fnt"
+});
+main_scene_res.push({
+    src: "./res/font/AchievementWord.png"
+});
+main_scene_res.push({
+    src: "./res/font/levelWord.fnt"
+});
+main_scene_res.push({
+    src: "./res/font/levelWord.png"
+});

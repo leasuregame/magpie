@@ -9,6 +9,7 @@ var TYPE_REMOVE_CD_TIPS = 3;
 var TYPE_EXCHANGE_CARD_TIPS = 4;
 var TYPE_BUY_GROWTH_PLAN_TIPS = 5;
 var TYPE_PASS_RESET_TIPS = 6;
+var TYPE_WORLD_CUP_TIPS = 7;
 
 var spendFailTip = {
     gold: "魔石不足",
@@ -103,6 +104,10 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 break;
             case TYPE_PASS_RESET_TIPS:
                 this._initPassResetTips();
+                break;
+            case TYPE_WORLD_CUP_TIPS:
+                this._initWorldCupTips();
+                break;
         }
     },
 
@@ -274,6 +279,14 @@ var AdvancedTipsLabel = LazyLayer.extend({
             type: "gold",
             num: needGold
         };
+    },
+
+    _initWorldCupTips: function() {
+        cc.log("AdvancedTipsLabel _initWorldCupTips");
+
+        var tipLabel = cc.LabelTTF.create("提交后无法修改竞猜结果，确定继续么", "STHeitiTC-Medium", 25);
+        tipLabel.setPosition(cc.p(0, 30));
+        this._frameLayer.addChild(tipLabel);
     },
 
     _onClickCancel: function () {

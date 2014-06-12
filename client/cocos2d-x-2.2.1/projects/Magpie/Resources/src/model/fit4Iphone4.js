@@ -788,7 +788,8 @@ var fit4Iphone4 = {
             "otherItemPoint": cc.p(628, 157),
             "messageItemPoint": cc.p(628, 157),
             "configLayerItemPoint": cc.p(618, 608),
-            "greetingLabelItemPoint": cc.p(100, 610)
+            "greetingLabelItemPoint": cc.p(100, 610),
+            "worldCupLayerItemPoint": cc.p(628, 242)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(40, 0),
@@ -1535,6 +1536,17 @@ var fit4Iphone4 = {
             "scrollViewLayerRect": cc.rect(0, 0, 500, 600),
             "scrollViewSize": cc.size(500, 600),
             "scrollViewPoint": cc.p(110, 172)
+        },
+        "worldCupLayer": {
+            "bgSpritePoint": cc.p(40, -96),
+            "tipLabelPoint": cc.p(360, 690),
+            "rewardEffectPoint": cc.p(190, 690),
+            "showRewardItemPoint": cc.p(190, 690),
+            "historyItemPoint": cc.p(530, 690),
+            "submitItemPoint": cc.p(360, 140),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 440),
+            "scrollViewSize": cc.size(640, 440),
+            "scrollViewPoint": cc.p(40, 190)
         }
     }
 };

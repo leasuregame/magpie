@@ -54,6 +54,11 @@ var ActivityLayer = cc.Layer.extend({
             titleIcon: "icon265",
             layer: InvitationLayer,
             nameString: "invitationLayer"
+        },
+        {
+            titleIcon: "worldCupIcon1",
+            layer: WorldCupLayer,
+            nameString: "worldCupLayer"
         }
     ],
     _selectIcon: null,
@@ -141,7 +146,7 @@ var ActivityLayer = cc.Layer.extend({
             scrollViewLayer.addChild(this._mark[i], 2);
             mainMenu.addChild(this._item[i]);
 
-            if(showIndex == -1) {
+            if (showIndex == -1) {
                 showIndex = i;
             }
 
@@ -176,7 +181,6 @@ var ActivityLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            this._selectIcon.setPosition(this._item[index].getPosition());
             this.switchLayer(this._layers[index].layer);
         }
     },
@@ -187,8 +191,21 @@ var ActivityLayer = cc.Layer.extend({
 
         if (!(this._nowLayer instanceof runLayer)) {
             if (this._nowLayer != null) this.removeChild(this._nowLayer);
+
+            var index = 0;
+            var len = this._layers.length;
+            for (var i = 0; i < len; i++) {
+                if (this._layers[i].layer == runLayer) {
+                    cc.log(i);
+                    index = i;
+                    break;
+                }
+            }
+
             this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
+
+            this._selectIcon.setPosition(this._item[index].getPosition());
         }
     },
 

@@ -71,16 +71,16 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-11T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-13T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">墨西哥</Data></Cell>
     <Cell><Data ss:Type="String">喀麦隆</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">1:1</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">1:3</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-12T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-13T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">西班牙</Data></Cell>
     <Cell><Data ss:Type="String">荷兰</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -92,46 +92,48 @@
     <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-13T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">智利</Data></Cell>
     <Cell><Data ss:Type="String">澳大利亚</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">6:1</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-15T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-13T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">哥伦比亚</Data></Cell>
     <Cell><Data ss:Type="String">希腊</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-15T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-14T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">乌拉圭</Data></Cell>
     <Cell><Data ss:Type="String">哥斯达黎加</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-15T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-14T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">英格兰</Data></Cell>
     <Cell><Data ss:Type="String">意大利</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-15T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-14T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">科特迪瓦</Data></Cell>
     <Cell><Data ss:Type="String">日本</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-16T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-15T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">瑞士</Data></Cell>
     <Cell><Data ss:Type="String">厄瓜多尔</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-16T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-15T00:00:00.000</Data></Cell>
     <Cell ss:HRef="http://2014.sina.com.cn/teams/france.html"><Data
       ss:Type="String">法国</Data></Cell>
     <Cell><Data ss:Type="String">洪都拉斯</Data></Cell>
@@ -139,7 +141,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-16T00:00:00.000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2014-06-15T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">阿根廷</Data></Cell>
     <Cell><Data ss:Type="String">波黑</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">100</Data></Cell>
@@ -406,13 +408,19 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

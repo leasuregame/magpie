@@ -521,6 +521,93 @@ var Activity = Entity.extend({
         });
     },
 
+    /*
+     * 世界杯活动
+     */
+
+    todayGames: function (cb) {
+        cc.log("Activity todayGames");
+
+        lz.server.request("area.worldCupHandler.todayGames", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("todayGames success");
+
+                cb(data.msg);
+
+            } else {
+                cc.log("todayGames fail");
+                TipLayer.tip(data.msg);
+            }
+
+        });
+    },
+
+    lastGames: function (cb) {
+        cc.log("Activity lastGames");
+
+        var that = this;
+        lz.server.request("area.worldCupHandler.lastGames", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("lastGames success");
+
+                cb(data.msg);
+
+            } else {
+                cc.log("lastGames fail");
+                TipLayer.tip(data.msg);
+            }
+
+        });
+    },
+
+    submitAnswer: function (answers, cb) {
+        cc.log("Activity submitAnswer: ");
+        cc.log(answers);
+
+        var that = this;
+        lz.server.request("area.worldCupHandler.submitAnswer", {
+            answer: answers
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("submitAnswer success");
+
+                cb(true);
+
+            } else {
+                cc.log("submitAnswer fail");
+                TipLayer.tip(data.msg);
+                cb(false);
+            }
+
+        });
+    },
+
+    getWorldCupReward: function (cb) {
+        cc.log("Activity getWorldCupReward");
+
+        lz.server.request("area.worldCupHandler.getReward", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("getWorldCupReward success");
+
+                gameData.player.set("gold", data.msg.gold);
+                cb();
+
+            } else {
+                cc.log("getWorldCupReward fail");
+                TipLayer.tip(data.msg);
+            }
+
+        });
+    },
+
     _changeStateById: function (type, id, state) {
         if (type == TYPE_GOLD_REWARD) {
             this._goldReward[id] = state;
@@ -561,7 +648,7 @@ Activity.create = function () {
     return null;
 };
 
-Activity.ActivityIsShowHandler =  {
+Activity.ActivityIsShowHandler = {
     newAreaRewardLayer: function () {
         var table = outputTables.login_count_reward.rows;
         for (var id in table) {

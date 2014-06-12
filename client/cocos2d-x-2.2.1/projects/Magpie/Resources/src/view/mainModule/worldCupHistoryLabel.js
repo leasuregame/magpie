@@ -29,10 +29,10 @@ var WorldCupHistoryLabel = LazyLayer.extend({
         bgSprite.setPosition(cc.p(0, 0));
         this._frameLayer.addChild(bgSprite);
 
-        var titleLabel = cc.LabelTTF.create("查看记录", "STHeitiTC-Medium", 40);
-        titleLabel.setPosition(cc.p(0, 320));
-        titleLabel.setColor(cc.c3b(251, 250, 183));
-        this._frameLayer.addChild(titleLabel);
+        this._titleLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 40);
+        this._titleLabel.setPosition(cc.p(0, 310));
+        this._titleLabel.setColor(cc.c3b(251, 250, 183));
+        this._frameLayer.addChild(this._titleLabel);
 
         var historyBgLabel = cc.Scale9Sprite.create(main_scene_image.icon175);
         historyBgLabel.setPosition(cc.p(0, 0));
@@ -59,10 +59,16 @@ var WorldCupHistoryLabel = LazyLayer.extend({
     update: function () {
         cc.log("WorldCupHistoryLabel update");
 
-        this._showHistory();
+        var that = this;
+        gameData.activity.lastGames(function (data) {
+            if (data.gameDate) {
+                that._titleLabel.setString(data.gameDate);
+            }
+            that._showHistory(data.games);
+        });
     },
 
-    _showHistory: function () {
+    _showHistory: function (games) {
         cc.log("WorldCupHistoryLabel _showHistory");
 
         if (this._historyLabel) {
@@ -73,42 +79,54 @@ var WorldCupHistoryLabel = LazyLayer.extend({
         this._historyLabel = cc.Layer.create();
         this._frameLayer.addChild(this._historyLabel);
 
+        if (!games || games.length == 0) {
+            var tipLabel = cc.LabelTTF.create("当前没有竞猜历史", "STHeitiTC-Medium", 30);
+            tipLabel.setPosition(cc.p(0, 0));
+            tipLabel.setColor(cc.c3b(251, 250, 183));
+            this._historyLabel.addChild(tipLabel);
+            return;
+        }
+
         var result = {
             1: "赢",
             2: "平",
             3: "输"
         };
 
-        var len = 4;
+        var table = outputTables.country_list.rows;
+
+        var len = games.length;
         for (var i = 0; i < len; i++) {
             var y = 180 - i * 120;
+            var game = games[i];
+
             var bgLabel = cc.Sprite.create(main_scene_image.worldCupIcon8);
             bgLabel.setPosition(cc.p(0, y));
             this._historyLabel.addChild(bgLabel);
 
-            var str = (i % 2) ? "10:10" : "VS";
+            var str = game.score || "VS";
 
             var scoreLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 30);
             scoreLabel.setPosition(cc.p(-50, y));
             scoreLabel.setColor(cc.c3b(251, 250, 183));
             this._historyLabel.addChild(scoreLabel);
 
-            var homeTeamIcon = cc.Sprite.create(main_scene_image["country" + (i + 1)]);
+            var homeTeamIcon = cc.Sprite.create(main_scene_image[table[game.home_team].url]);
             homeTeamIcon.setScale(0.6);
             homeTeamIcon.setPosition(cc.p(-125, y));
             this._historyLabel.addChild(homeTeamIcon);
 
-            var homeTeamName = cc.LabelTTF.create("哥斯达黎加", "STHeitiTC-Medium", 20);
+            var homeTeamName = cc.LabelTTF.create(table[game.home_team].country, "STHeitiTC-Medium", 20);
             homeTeamName.setPosition(cc.p(-220, y));
             homeTeamName.setColor(cc.c3b(251, 250, 183));
             this._historyLabel.addChild(homeTeamName);
 
-            var visitingTeamIcon = cc.Sprite.create(main_scene_image["country" + (i + 2) * 4]);
+            var visitingTeamIcon = cc.Sprite.create(main_scene_image[table[game.visiting_team].url]);
             visitingTeamIcon.setScale(0.6);
             visitingTeamIcon.setPosition(cc.p(25, y));
             this._historyLabel.addChild(visitingTeamIcon);
 
-            var visitingTeamName = cc.LabelTTF.create("哥斯达黎加", "STHeitiTC-Medium", 20);
+            var visitingTeamName = cc.LabelTTF.create(table[game.visiting_team].country, "STHeitiTC-Medium", 20);
             visitingTeamName.setPosition(cc.p(120, y));
             visitingTeamName.setColor(cc.c3b(251, 250, 183));
             this._historyLabel.addChild(visitingTeamName);
@@ -122,7 +140,7 @@ var WorldCupHistoryLabel = LazyLayer.extend({
 
             var bingoIcon = cc.Sprite.create(main_scene_image.worldCupIcon9);
             bingoIcon.setPosition(cc.p(243, y));
-            bingoIcon.setVisible(i % 2);
+            bingoIcon.setVisible(game.bingo);
             this._historyLabel.addChild(bingoIcon);
         }
 

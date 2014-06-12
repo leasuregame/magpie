@@ -16,6 +16,11 @@ var ActivityLayer = cc.Layer.extend({
 
     _layers: [
         {
+            titleIcon: "worldCupIcon1",
+            layer: WorldCupLayer,
+            nameString: "worldCupLayer"
+        },
+        {
             titleIcon: "icon429",
             layer: NewAreaRewardLayer,
             nameString: "newAreaRewardLayer"
@@ -54,11 +59,6 @@ var ActivityLayer = cc.Layer.extend({
             titleIcon: "icon265",
             layer: InvitationLayer,
             nameString: "invitationLayer"
-        },
-        {
-            titleIcon: "worldCupIcon1",
-            layer: WorldCupLayer,
-            nameString: "worldCupLayer"
         }
     ],
     _selectIcon: null,

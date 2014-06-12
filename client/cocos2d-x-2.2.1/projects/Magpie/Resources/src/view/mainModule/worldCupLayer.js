@@ -7,6 +7,7 @@ var WorldCupLayer = cc.Layer.extend({
 
     _answers: null,
     _teamLen: null,
+    _reward: null,
 
     onEnter: function () {
         cc.log("WorldCupLayer onEnter");
@@ -22,6 +23,7 @@ var WorldCupLayer = cc.Layer.extend({
 
         this._worldCupLayerFit = gameFit.mainScene.worldCupLayer;
         this._answers = {};
+        this._reward = null;
         this._teamLen = 0;
 
         var bgSprite = cc.Sprite.create(main_scene_image.worldCupIcon2);
@@ -33,15 +35,19 @@ var WorldCupLayer = cc.Layer.extend({
         tipLabel.setPosition(this._worldCupLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
+        this._timeLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
+        this._timeLabel.setPosition(this._worldCupLayerFit.timeLabelPoint);
+        this.addChild(this._timeLabel);
+
         this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect77, this);
         this._rewardEffect.setScale(0.6);
         this._rewardEffect.setPosition(this._worldCupLayerFit.rewardEffectPoint);
         this.addChild(this._rewardEffect);
-     //   this._rewardEffect.setVisible(false);
+        this._rewardEffect.setVisible(false);
 
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         var sprite = cc.Sprite.create(main_scene_image.icon281);
         var showRewardItem = cc.MenuItemLabel.create(
@@ -83,7 +89,6 @@ var WorldCupLayer = cc.Layer.extend({
             this
         );
         this._submittedItem.setPosition(this._worldCupLayerFit.submitItemPoint);
-        this._submittedItem.setVisible(false);
         menu.addChild(this._submittedItem);
 
         return true;
@@ -92,10 +97,28 @@ var WorldCupLayer = cc.Layer.extend({
     update: function () {
         cc.log("WorldCupLayer update");
 
-        this._addScrollView();
+        var that = this;
+        gameData.activity.todayGames(function (data) {
+
+            if (data.reward && Object.keys(data.reward).length > 0) {
+                that._reward = data.reward;
+                that._rewardEffect.setVisible(true);
+            } else {
+                that._rewardEffect.setVisible(false);
+            }
+
+            if (data.gameDate) {
+                that._timeLabel.setString(data.gameDate);
+            }
+
+            that._submitItem.setVisible(data.isCanAnswer);
+            that._submittedItem.setVisible(!data.isCanAnswer);
+            that._addScrollView(data.games);
+        });
+
     },
 
-    _addScrollView: function () {
+    _addScrollView: function (games) {
         cc.log("WorldCupLayer _addScrollView");
 
         if (this._scrollView) {
@@ -108,14 +131,15 @@ var WorldCupLayer = cc.Layer.extend({
         answerMenu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(answerMenu);
 
-        var len = 4;
-        var scrollViewHeight = len * 240;
-        this._teamLen = len;
+        this._teamLen = games.length;
+        var scrollViewHeight = this._teamLen * 240;
+        var table = outputTables.country_list.rows;
 
         this._selectIcons = [];
 
-        for (var i = 0; i < len; i++) {
+        for (var i = 0; i < this._teamLen; i++) {
             var y = scrollViewHeight - 240 - 240 * i;
+            var game = games[i];
             var guessLabel = cc.Sprite.create(main_scene_image.worldCupIcon3);
             guessLabel.setAnchorPoint(cc.p(0.5, 0));
             guessLabel.setPosition(cc.p(320, y + 80));
@@ -123,7 +147,7 @@ var WorldCupLayer = cc.Layer.extend({
 
             var tipsLabel = ColorLabelTTF.create(
                 {
-                    string: "猜中可得:100",
+                    string: "猜中可得:" + game.gold,
                     fontName: "STHeitiTC-Medium",
                     fontSize: 18
                 },
@@ -136,22 +160,22 @@ var WorldCupLayer = cc.Layer.extend({
             tipsLabel.setPosition(cc.p(325, y + 215));
             scrollViewLayer.addChild(tipsLabel);
 
-            var homeTeamIcon = cc.Sprite.create(main_scene_image["country" + (i + 1)]);
+            var homeTeamIcon = cc.Sprite.create(main_scene_image[table[game.home_team].url]);
             homeTeamIcon.setAnchorPoint(cc.p(0.5, 0));
             homeTeamIcon.setPosition(cc.p(190, y + 84));
             scrollViewLayer.addChild(homeTeamIcon);
 
-            var homeTeamName = cc.LabelTTF.create("巴西", "STHeitiTC-Medium", 20);
+            var homeTeamName = cc.LabelTTF.create(table[game.home_team].country, "STHeitiTC-Medium", 20);
             homeTeamName.setAnchorPoint(cc.p(0.5, 0));
             homeTeamName.setPosition(cc.p(75, y + 130));
             scrollViewLayer.addChild(homeTeamName);
 
-            var visitingTeamIcon = cc.Sprite.create(main_scene_image["country" + (i + 2) * 4]);
+            var visitingTeamIcon = cc.Sprite.create(main_scene_image[table[game.visiting_team].url]);
             visitingTeamIcon.setAnchorPoint(cc.p(0.5, 0));
             visitingTeamIcon.setPosition(cc.p(450, y + 84));
             scrollViewLayer.addChild(visitingTeamIcon);
 
-            var visitingTeamName = cc.LabelTTF.create("巴西", "STHeitiTC-Medium", 20);
+            var visitingTeamName = cc.LabelTTF.create(table[game.visiting_team].country, "STHeitiTC-Medium", 20);
             visitingTeamName.setAnchorPoint(cc.p(0.5, 0));
             visitingTeamName.setPosition(cc.p(560, y + 130));
             scrollViewLayer.addChild(visitingTeamName);
@@ -161,20 +185,30 @@ var WorldCupLayer = cc.Layer.extend({
                 var answerItem = cc.MenuItemImage.create(
                     main_scene_image[url],
                     main_scene_image[url],
-                    this._onClickChoose(i, j),
+                    this._onClickChoose(game.id, j),
                     this
                 );
                 answerItem.setAnchorPoint(cc.p(0.5, 0));
                 answerItem.setPosition(cc.p(160 * j + (j - 2) * 20, y));
+
+                if (game.answer) {
+                    answerItem.setEnabled(false);
+                }
+
                 answerMenu.addChild(answerItem);
             }
 
             var selectIcon = cc.Sprite.create(main_scene_image.worldCupIcon7);
             selectIcon.setAnchorPoint(cc.p(0.5, 0));
-            selectIcon.setPosition(cc.p(110, y + 15));
+
+            if (game.answer) {
+                selectIcon.setPosition(cc.p(110 + 180 * (game.answer - 1), y + 15));
+            } else {
+                selectIcon.setPosition(cc.p(-600, y + 15));
+            }
             scrollViewLayer.addChild(selectIcon);
 
-            this._selectIcons[i] = selectIcon;
+            this._selectIcons[game.id] = selectIcon;
         }
 
         this._scrollView = cc.ScrollView.create(this._worldCupLayerFit.scrollViewSize, scrollViewLayer);
@@ -194,12 +228,22 @@ var WorldCupLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
+
+        if (!that._reward) {
+            TipLayer.tip("当前没有奖励");
+            return;
+        }
+
         GiftBagLayer.pop({
-            reward: {gold: 100},
+            reward: that._reward,
             type: GET_GIFT_BAG,
             titleType: TYPE_LOOK_REWARD,
             cb: function () {
-
+                gameData.activity.getWorldCupReward(function () {
+                    lz.tipReward(that._reward);
+                    that._reward = null;
+                    that.update();
+                });
             }
         });
 
@@ -214,15 +258,15 @@ var WorldCupLayer = cc.Layer.extend({
         WorldCupHistoryLabel.pop();
     },
 
-    _onClickChoose: function (index, answer) {
+    _onClickChoose: function (id, answer) {
         var that = this;
         return function () {
-            cc.log("WorldCupLayer _onClickChoose: index = " + index + " answer = " + answer);
+            cc.log("WorldCupLayer _onClickChoose: id = " + id + " answer = " + answer);
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            var point = that._selectIcons[index].getPosition();
-            that._selectIcons[index].setPosition(cc.p(110 + 180 * (answer - 1), point.y));
-            that._answers[index] = answer;
+            var point = that._selectIcons[id].getPosition();
+            that._selectIcons[id].setPosition(cc.p(110 + 180 * (answer - 1), point.y));
+            that._answers[id] = answer;
         }
     },
 
@@ -233,14 +277,16 @@ var WorldCupLayer = cc.Layer.extend({
 
         var len = Object.keys(this._answers).length;
 
-        if(len < this._teamLen) {
+        if (len < this._teamLen) {
             TipLayer.tip("请先选满结果");
             return;
         }
 
         var that = this;
         AdvancedTipsLabel.pop(TYPE_WORLD_CUP_TIPS, function () {
-
+            gameData.activity.submitAnswer(that._answers, function (isSuccess) {
+                that.update();
+            });
         });
 
     }

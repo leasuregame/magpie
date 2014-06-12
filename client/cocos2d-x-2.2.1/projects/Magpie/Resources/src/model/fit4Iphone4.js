@@ -1540,6 +1540,7 @@ var fit4Iphone4 = {
         "worldCupLayer": {
             "bgSpritePoint": cc.p(40, -96),
             "tipLabelPoint": cc.p(360, 690),
+            "timeLabelPoint": cc.p(360, 650),
             "rewardEffectPoint": cc.p(190, 690),
             "showRewardItemPoint": cc.p(190, 690),
             "historyItemPoint": cc.p(530, 690),

@@ -47,7 +47,17 @@ var playerRecord = function(app) {
         return statsResArr;
     }
 
-	app.all('/admin/getWastageRateOnLv', function(req, res) {
+    app.get('/admin/playerWastageRateOnLv', filter.authorize, function (req, res) {
+        res.render('playerWastageRateOnLv', {
+            menu: 'playerWastageRateOnLv',
+            title: '玩家等级分布',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        })
+    });
+
+	app.all('/admin/getWastageRateOnLv', filter.authorize, function(req, res) {
 
         var reqData = req.body;
         var areaId = reqData.areaId;
@@ -99,15 +109,17 @@ var playerRecord = function(app) {
         }
 	});
 
-    app.get('/admin/playerWastageRateOnLv', filter.authorize, function (req, res) {
-        res.render('playerWastageRateOnLv', {
-            menu: 'playerWastageRateOnLv',
-            title: '玩家等级流失率',
+    app.get('/admin/playerConsumption', filter.authorize, function (req, res) {
+        res.render('playerConsumption', {
+            menu: 'playerConsumption',
+            title: '魔石使用占比',
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
         })
     });
+
+    app.get('/admin/getPlayerConsumption', function(req, res){});
 };
 
 module.exports = playerRecord;

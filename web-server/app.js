@@ -70,6 +70,7 @@ app.get('/admin/areaeditor', filter.authorize, area.editor);
 app.post('/admin/areaeditor/save', filter.authorize, area.save);
 app.all('/admin/actorCards', filter.authorize, gameData.getActorCards);
 app.all('/admin/cardLv', filter.authorize, gameData.getCardLvLimit);
+app.all('/admin/consumeSource', filter.authorize, gameData.getConsumptionSourceName);
 
 app.get('/admin/stats/onlineuser', filter.authorize, stats.onlineUser);
 

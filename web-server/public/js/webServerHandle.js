@@ -6,12 +6,14 @@
     var API = {
         ACTOR_CARDS : API_BASE_PATH + 'actorCards',
         CARD_LV_LIMIT : API_BASE_PATH + 'cardLv',
+        CONSUME_SOURCE : API_BASE_PATH + 'consumeSource',
         PLAYER_NAMES : API_BASE_PATH + 'playerNames',
         PLAYER_IDS : API_BASE_PATH + 'playerId',
         RECORD_MSG_OPT : API_BASE_PATH + 'recordMsgOpt',
         GET_MSG_OPT : API_BASE_PATH + 'getSysMsgOpt',
         SYS_MSG : API_BASE_PATH + 'sysMsg',
-        WASTAGE_RATE_ON_LV : API_BASE_PATH + 'getWastageRateOnLv'
+        WASTAGE_RATE_ON_LV : API_BASE_PATH + 'getWastageRateOnLv',
+        PLAYER_CONSUMPTION : API_BASE_PATH + 'getPlayerConsumption'
     };
 
     var webAPI = {};
@@ -30,6 +32,14 @@
      */
     webAPI.getCardLvLimit = function (cb) {
         ajax(API.CARD_LV_LIMIT, cb);
+    };
+
+    /**
+     * 获得消费魔石来源的配置
+     * @param cb
+     */
+    webAPI.getConsumeSource = function (cb) {
+        ajax(API.CONSUME_SOURCE, cb);
     };
 
     /**
@@ -125,6 +135,21 @@
             createTime : createTime
         };
         ajax(API.WASTAGE_RATE_ON_LV, param, scb, ecb);
+    };
+
+    /**
+     * 获取魔石使用占比
+     * @param areaId
+     * @param createTime
+     * @param scb
+     * @param ecb
+     */
+    webAPI.getConsumptionRate = function (areaId, createTime, scb, ecb) {
+        var param = {
+            areaId : areaId,
+            createTime : createTime
+        };
+        ajax(API.PLAYER_CONSUMPTION, param, scb, ecb);
     };
 
     function ajax(url, data, successCb, errorCb) {

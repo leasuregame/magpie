@@ -1,4 +1,5 @@
 var tableData = require('../data/table.json');
+var CONSUMPTION_SOURCE_NAME = require('../data/record').CONSUMPTION_SOURCE_NAME;
 
 var datakeys = {
     CARDS : 'cards',
@@ -47,3 +48,7 @@ exports.getCardLvLimit = function (req, res) {
     var cllTable = getGameData(datakeys.CARD_LV_LIMIT);
     res.send(cllTable);
 };
+
+exports.getConsumptionSourceName = function (req, res) {
+    res.send(CONSUMPTION_SOURCE_NAME);
+}

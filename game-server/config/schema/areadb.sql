@@ -18,10 +18,10 @@ CREATE TABLE IF NOT EXISTS `player` (
   `money` INT(10) UNSIGNED DEFAULT '0',
   `gold`INT(10) UNSIGNED DEFAULT '0',
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',
-  `lineUp` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
+  `lineUp` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `ability` INT(10) UNSIGNED DEFAULT '0',
-  `task` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
-  `pass` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
+  `task` TEXT COLLATE utf8_unicode_ci DEFAULT '',
+  `pass` TEXT COLLATE utf8_unicode_ci DEFAULT '',
   `passLayer` SMALLINT(5) DEFAULT '0',
   `dailyGift` TEXT COLLATE utf8_unicode_ci, -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
-  `signIn` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
+  `signIn` TEXT COLLATE utf8_unicode_ci DEFAULT '',
   `achievement` TEXT COLLATE utf8_unicode_ci,
   `cardBook` TEXT COLLATE utf8_unicode_ci,
   `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',-- 好友上限
@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS `player` (
   `highDrawCardCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡次数
   `cardsCount` SMALLINT(5) UNSIGNED DEFAULT '0', -- 卡牌数量上限
   `resetDate` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
-  `firstTime` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
+  `firstTime` VARCHAR(5000) COLLATE utf8_unicode_ci DEFAULT '',
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `teachingStep` SMALLINT(3) DEFAULT '0',
   `exchangeCards` VARCHAR(50) DEFAULT '',
-  `activities` VARCHAR(1500) DEFAULT '',
+  `activities` TEXT DEFAULT '',
   `initRate` VARCHAR(100) DEFAULT '{}',
   `speaker` INT(3) DEFAULT '0',
   `honor` INT(10) DEFAULT '0',
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `greeting` (
   `id` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `playerId` INT(10) UNSIGNED,
   `playerName` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
-  `content` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  `content` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
   `created` DATETIME,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -114,8 +114,8 @@ CREATE TABLE IF NOT EXISTS `message` (
   `sender` BIGINT(20),
   `receiver` BIGINT(20),
   `type` SMALLINT(2) UNSIGNED DEFAULT '0',
-  `options` VARCHAR(1024) COLLATE utf8_unicode_ci DEFAULT '',
-  `content` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
+  `options` TEXT COLLATE utf8_unicode_ci DEFAULT '',
+  `content` TEXT COLLATE utf8_unicode_ci DEFAULT '',
   `status` SMALLINT(2) UNSIGNED DEFAULT '0',
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `validDate` DATETIME,
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirHpCrit` INT(10) UNSIGNED DEFAULT '0',
   `elixirAtkCrit` INT(10) UNSIGNED DEFAULT '0',
-  `passiveSkills` VARCHAR(2500) COLLATE utf8_unicode_ci DEFAULT '',
+  `passiveSkills` TEXT COLLATE utf8_unicode_ci DEFAULT '',
   `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
   `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量
   `potentialLv` INT(2) DEFAULT '0', -- 潜能等级
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `battleLog` (
   `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `own` INT(10) UNSIGNED NOT NULL,
   `enemy` INT(10) UNSIGNED DEFAULT '0',
-  `battleLog` VARCHAR(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `battleLog` TEXT COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
   `winStreakCount` INT(10) UNSIGNED DEFAULT '0',
   `winningStreak` INT(10) UNSIGNED DEFAULT '0',
-  `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
+  `recentChallenger` TEXT COLLATE utf8_unicode_ci DEFAULT '',
   `historyRanking` INT(10) UNSIGNED DEFAULT '0',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`)
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
-  `receiptData` VARCHAR(5000) COLLATE utf8_unicode_ci,
+  `receiptData` TEXT COLLATE utf8_unicode_ci,
   `verifyResult` TEXT,
   `qty` INT(10) UNSIGNED DEFAULT '0',
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
@@ -293,6 +293,19 @@ CREATE TABLE IF NOT EXISTS `bossFriendReward` (
   `money` INT(10) DEFAULT '0',
   `honor` INT(5) DEFAULT '0',
   `got` SMALLINT(2) DEFAULT '0',
+  `created` DATETIME,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+----------------------------
+CREATE TABLE IF NOT EXISTS `worldCup` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `gameDate` Date,
+  `answer` VARCHAR(250) DEFAULT '',
+  `got` SMALLINT(2) DEFAULT '0',
+  `bingo` SMALLINT(2) DEFAULT '0',
   `created` DATETIME,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

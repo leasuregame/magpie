@@ -210,11 +210,20 @@ isRightResult = (row) ->
   return true if data?.result is row.answer[data?.id]
   false
 
+timeForADay = () ->
+  time12 = new Date(2014, 6, 13, 12)
+  dts = 1000 * 60 * 5
+  nowtime = new Date()
+
+  days = (nowtime.getTime() - time12.getTime())/dts
+  time12.setDate(time12.getDate()+days)
+  time12
+
 today = () ->
-  utility.dateFormat(new Date(), 'yyyy-MM-dd')
+  utility.dateFormat(timeForADay(), 'yyyy-MM-dd')
 
 tomorrow = () ->
-  now = new Date()
+  now = timeForADay()
   now.setDate(now.getDate()+1)
   utility.dateFormat(now, 'yyyy-MM-dd')
 

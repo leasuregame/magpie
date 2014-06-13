@@ -22,7 +22,6 @@ var area = require('./routes/area');
 var messgae = require('./routes/message');
 var optRecord = require('./routes/optRecord');
 
-var playerRecord = require('./routes/playerRecord');
 var upload = require('./routes/upload');
 
 var app = express();
@@ -80,7 +79,6 @@ sendReward(app);
 messgae(app);
 optRecord(app);
 
-playerRecord(app);
 upload(app);
 
 app.get('/api/:platform/notice', notice.notice);

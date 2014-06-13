@@ -23,6 +23,7 @@ Handler::todayGames = (msg, session, next) ->
   if not items or items.length is 0
     return next(null, {code:200, msg: games: [], isCanAnswer: isCanAnswer, reward: reward})
 
+  items = JSON.parse JSON.stringify(items)
   async.waterfall [
     (cb) =>
       checkRewardThatNotReceive @app, playerId, cb

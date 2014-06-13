@@ -1,0 +1,22 @@
+extends adminLayout
+
+extends adminLayout
+block head
+    script(type='text/javascript', src='/js/serverAPI.js')
+    script(type='text/javascript', src='/js/lib/build/build.js')
+    script.
+        require('boot');
+    style.
+        .center {text-align: center;}
+
+
+block content
+    .form-horizontal(role='form', action='#')
+        hr
+        form.form-group(method='post' enctype='multipart/form-data' action='/admin/uploadWorldCupConfig')
+            #createTime.form-group.paramSet(name='createTime')
+                label.col-sm-3.control-label
+                .col-sm-5
+                    input.form-control#area(type='file' name='configFile')
+                .col-sm-2.center
+                    input(type='submit')

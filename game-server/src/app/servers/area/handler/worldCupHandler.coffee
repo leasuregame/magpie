@@ -212,7 +212,7 @@ isRightResult = (row) ->
   false
 
 timeForADay = () ->
-  time12 = new Date(2014, 6, 13, 12)
+  time12 = new Date(2014, 5, 13, 12)
   dts = 1000 * 60 * 5
   nowtime = new Date()
 

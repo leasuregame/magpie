@@ -8,7 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-06-11T09:54:44Z</Created>
-  <LastSaved>2014-06-11T11:59:31Z</LastSaved>
+  <LastSaved>2014-06-13T04:38:17Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,8 +16,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11420</WindowHeight>
-  <WindowWidth>23160</WindowWidth>
+  <WindowHeight>15860</WindowHeight>
+  <WindowWidth>22280</WindowWidth>
   <WindowTopX>4640</WindowTopX>
   <WindowTopY>240</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -155,7 +155,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="DateTime">2014-06-14T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">科特迪瓦</Data></Cell>
     <Cell><Data ss:Type="String">日本</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">4:2</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
@@ -201,7 +201,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="DateTime">2014-06-17T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">伊朗</Data></Cell>
     <Cell><Data ss:Type="String">尼日利亚</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">4:1</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
@@ -246,7 +246,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="DateTime">2014-06-19T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">澳大利亚</Data></Cell>
     <Cell><Data ss:Type="String">荷兰</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">2:0</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
@@ -274,7 +274,7 @@
     <Cell><Data ss:Type="String">哥伦比亚</Data></Cell>
     <Cell><Data ss:Type="String">科特迪瓦</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">3:2</Data></Cell>
+    <Cell><Data ss:Type="String">3:4</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -291,7 +291,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="DateTime">2014-06-20T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">日本</Data></Cell>
     <Cell><Data ss:Type="String">希腊</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">4:1</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
@@ -336,7 +336,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="DateTime">2014-06-22T00:00:00.000</Data></Cell>
     <Cell><Data ss:Type="String">德国</Data></Cell>
     <Cell><Data ss:Type="String">加纳</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">2:0</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
@@ -364,7 +364,7 @@
     <Cell><Data ss:Type="String">韩国</Data></Cell>
     <Cell><Data ss:Type="String">阿尔及利亚</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">3:2</Data></Cell>
+    <Cell><Data ss:Type="String">3:5</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -382,7 +382,7 @@
     <Cell><Data ss:Type="String">澳大利亚</Data></Cell>
     <Cell><Data ss:Type="String">西班牙</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">4:1</Data></Cell>
+    <Cell><Data ss:Type="String">4:5</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -427,7 +427,7 @@
     <Cell><Data ss:Type="String">哥斯达黎加</Data></Cell>
     <Cell><Data ss:Type="String">英格兰</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">2:0</Data></Cell>
+    <Cell><Data ss:Type="String">2:4</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -454,7 +454,7 @@
     <Cell><Data ss:Type="String">尼日利亚</Data></Cell>
     <Cell><Data ss:Type="String">阿根廷</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">3:2</Data></Cell>
+    <Cell><Data ss:Type="String">3:5</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -472,7 +472,7 @@
     <Cell><Data ss:Type="String">洪都拉斯</Data></Cell>
     <Cell><Data ss:Type="String">瑞士</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">4:1</Data></Cell>
+    <Cell><Data ss:Type="String">4:6</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -517,7 +517,7 @@
     <Cell><Data ss:Type="String">阿尔及利亚</Data></Cell>
     <Cell><Data ss:Type="String">俄罗斯</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">2:0</Data></Cell>
+    <Cell><Data ss:Type="String">2:7</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
   </Table>
@@ -531,11 +531,10 @@
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
-   <TopRowVisible>27</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>51</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>

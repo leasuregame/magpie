@@ -33,6 +33,7 @@ Handler::todayGames = (msg, session, next) ->
         else
           cb(err, res)
     (record, cb) ->
+      console.log '-a-a-a-', record, JSON.stringify(items)
       if record
         answer = record.answer
         if answer

@@ -47,3 +47,7 @@ exports.getCardLvLimit = function (req, res) {
     var cllTable = getGameData(datakeys.CARD_LV_LIMIT);
     res.send(cllTable);
 };
+
+exports.getConsumptionSourceName = function (req, res) {
+    res.send(CONSUMPTION_SOURCE_NAME);
+};

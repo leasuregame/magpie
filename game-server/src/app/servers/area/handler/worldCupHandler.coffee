@@ -42,7 +42,7 @@ Handler::todayGames = (msg, session, next) ->
         if answer
           reward = checkAnswerAndCountReward(items, answer)
       else
-        isCanAnswer = true
+        isCanAnswer = if items.length > 0 then true else false
 
       cb()
     (cb) =>

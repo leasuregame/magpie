@@ -88,9 +88,9 @@ var WorldCupHistoryLabel = LazyLayer.extend({
         }
 
         var result = {
-            1: "赢",
+            1: "胜",
             2: "平",
-            3: "输"
+            3: "负"
         };
 
         var table = outputTables.country_list.rows;

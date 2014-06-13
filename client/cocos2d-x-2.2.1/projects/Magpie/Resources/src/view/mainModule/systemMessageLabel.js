@@ -113,11 +113,12 @@ var SystemMessageLabel = LazyLayer.extend({
                     index++;
                 }
             } else {
-                x = 67 + (index % 5 ) * 92;
-                y = 212 + 170 - parseInt(index / 5) * 100;
+                x = 25 + (index % 5 ) * 92;
+                y = 170 - parseInt(index / 5) * 100;
 
                 var goods = giftBagGoods[key];
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
+                goodsSprite.setAnchorPoint(cc.p(0, 0));
                 goodsSprite.setPosition(cc.p(x, y));
                 rewardsBgLabel.addChild(goodsSprite);
 

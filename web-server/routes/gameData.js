@@ -51,4 +51,4 @@ exports.getCardLvLimit = function (req, res) {
 
 exports.getConsumptionSourceName = function (req, res) {
     res.send(CONSUMPTION_SOURCE_NAME);
-}
+};

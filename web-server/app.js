@@ -22,6 +22,7 @@ var area = require('./routes/area');
 var messgae = require('./routes/message');
 var optRecord = require('./routes/optRecord');
 var playerRecord = require('./routes/playerRecord');
+var upload = require('./routes/upload');
 
 var app = express();
 
@@ -79,6 +80,7 @@ sendReward(app);
 messgae(app);
 optRecord(app);
 playerRecord(app);
+upload(app);
 
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);
@@ -88,6 +90,22 @@ app.get('/api/:platform/update/:version', version.update);
 app.get('/api/actor-cards', gameData.getActorCards);
 app.get('/api/card-lv', gameData.getCardLvLimit);
 
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+// watch changes of world cup config
+var fs = require('fs');
+fs.watch(path.join(__dirname,'..','game-server','data','share','world_cup'), function(event, filename){
+
+    var commandParam = path.join(__dirname,'..','game-server','bin','convertXmlToJson.js');
+
+    var spawn = require('child_process').spawn,
+        command = spawn('node', [commandParam]);
+    command.stdout.on('end', function() {
+        console.log('run command node convertXmlToJson.js completed');
+    });
+
+});
+

@@ -131,8 +131,7 @@ var WorldCupHistoryLabel = LazyLayer.extend({
             visitingTeamName.setColor(cc.c3b(251, 250, 183));
             this._historyLabel.addChild(visitingTeamName);
 
-            var index = ((i + 1) % 3 == 0) ? 3 : (i + 1) % 3;
-            var resultLabel = StrokeLabel.create(result[index], "STHeitiTC-Medium", 30);
+            var resultLabel = StrokeLabel.create(result[game.answer], "STHeitiTC-Medium", 30);
             resultLabel.setColor(cc.c3b(255, 0, 0));
             resultLabel.setBgColor(cc.c3b(255, 255, 255));
             resultLabel.setPosition(cc.p(220, y));

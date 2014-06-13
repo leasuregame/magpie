@@ -2,6 +2,7 @@ table = require '../../../manager/table'
 utility = require '../../../common/utility'
 playerManager = require('pomelo').app.get('playerManager')
 async = require 'async'
+job = require '../../../dao/job'
 _ = require 'underscore'
 
 module.exports = (app) ->
@@ -15,7 +16,7 @@ Handler::todayGames = (msg, session, next) ->
   reward = null
 
   date_for = tomorrow()
-  items = table.getTable('against_time_list')?.filter (id, row) -> 
+  items = _.clone table.getTable('against_time_list')?.filter (id, row) -> 
     game_date = utility.dateFormat(new Date(row.date), 'yyyy-MM-dd')
     game_date is date_for
 
@@ -106,17 +107,43 @@ Handler::submitAnswer = (msg, session, next) ->
 Handler::getReward = (msg, session, next) ->
   playerId = session.get('playerId')
   
-  getRewardThatNotReceive @app, playerId, (err, reward) ->
+  getRewardThatNotReceive @app, playerId, (err, reward, row_ids) ->
     if reward and not _.isEmpty(reward)
       playerManager.getPlayerInfo pid: playerId, (err, player) ->
         if not err and player
           player.increase 'gold', reward.gold
-          player.save()
-          return next(null, {code: 200, msg: gold: player.gold})
+          updatePlayerAndWorldCup player, row_ids, (err, res) ->
+            if err
+              return next(null, {code: err.code or 500, msg: err.msg or ''})
+            else
+              return next(null, {code: 200, msg: gold: player.gold})
         else
           return next(null, {code: err.code or 500, msg: err.msg or ''})
     else
       return next(null, {code: 501, msg: '没有奖励可领取'})
+
+updatePlayerAndWorldCup = (player, row_ids, callback) ->
+  jobs = [
+    {
+      type: 'update'
+      options: 
+        table: 'player'
+        where: id: player.id
+        data: gold: player.gold
+    },
+    {
+      type: 'update'
+      options:
+        table: 'worldCup'
+        where: " id in (#{row_ids.toString()}) "
+        data: got: 1
+    }
+  ]
+  job.multJobs jobs, callback
+
+  # entityUtil.updateEntities ['update', 'player', player], ['delete', 'worldCup', row_ids], (err, res) ->
+  #   console.log 'update data: ', err, res
+  #   callback err, res
 
 getRewardForLastDayGame = (app, playerId, callback) ->
   _date = today()
@@ -160,22 +187,22 @@ checkRewardThatNotReceive = (app, playerId, callback) ->
 
 getRewardThatNotReceive = (app, playerId, callback) ->
   reward = {}
+  ids = []
   app.get('dao').worldCup.fetchMany where: {
     playerId: playerId,
     got: 0,
     bingo: 1
   }, (err, rows) ->
     if not err and rows.length > 0
-      console.log 'rows:', rows
       rows.forEach (r) ->
-
+        ids.push r.id
         if _.isObject(r.answer)
           _.keys(r.answer).forEach (k) ->
             d = table.getTableItem('against_time_list', k)
             if d?.result is r.answer[k]
               reward['gold'] = (reward['gold'] or 0) + d.reward_gold
 
-    callback null, reward
+    callback null, reward, ids
 
 isRightResult = (row) ->
   data = table.getTableItem('against_time_list', row.tableId)

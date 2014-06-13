@@ -140,6 +140,10 @@ module.exports =
       cb(null, [])
 
   updateEntities: (groups..., cb) ->
+    ###
+    groups ['optionName', 'tableName', entityObject], ...
+    e.g. ['update', 'player', player], ['update', 'card', cards], ['delete', 'card', cards], ...
+    ###
     jobs = []
     groups.forEach (group) ->
       if _.isArray(group) and group.length >= 2
@@ -164,7 +168,7 @@ module.exports =
               else if _.isString(ent)
                 action.options.where = ent
               else
-                action.options.where = ''
+                action.options.where = '1=2'
             when 'insert'
               action.options.data = ent
             else

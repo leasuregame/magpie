@@ -3,7 +3,7 @@ var main_scene_path = "res/main/";
 
 var effect_scene_path = "res/effect/";
 
-var world_cup_path = "res/worldCup/"
+var world_cup_path = "res/worldCup/";
 
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",

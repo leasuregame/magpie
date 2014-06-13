@@ -194,7 +194,6 @@ var WorldCupLayer = cc.Layer.extend({
                 if (game.answer) {
                     answerItem.setEnabled(false);
                 }
-
                 answerMenu.addChild(answerItem);
             }
 
@@ -285,6 +284,9 @@ var WorldCupLayer = cc.Layer.extend({
         var that = this;
         AdvancedTipsLabel.pop(TYPE_WORLD_CUP_TIPS, function () {
             gameData.activity.submitAnswer(that._answers, function (isSuccess) {
+                if(isSuccess) {
+                    TipLayer.tip("提交成功");
+                }
                 that.update();
             });
         });

@@ -12,7 +12,7 @@ class Component
 
   start: (cb) ->
     console.log 'start -notice-------------------------------------------------------'
-    schedule.scheduleJob("0/10 * * * * *", noticeRewardToReceive, @app)
+    schedule.scheduleJob("0/50 * * * * *", noticeRewardToReceive, @app)
     process.nextTick cb
 
   afterStart: (cb) ->

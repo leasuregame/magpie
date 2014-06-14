@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
+var home = require('./routes/index');
 var notice = require('./routes/notice');
 var version = require('./routes/version');
 var cdkey = require('./routes/cdkey');
@@ -49,46 +49,21 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', filter.authorize, routes.index);
-app.get('/login', routes.login);
-app.post('/login', routes.doLogin);
-app.get('/logout', routes.doLogout);
-app.get('/admin/notice', filter.authorize, notice.noticeList);
-app.post('/admin/notice', filter.authorize, notice.newNotice);
-app.get('/admin/notice/:platform', filter.authorize, notice.getNotice);
-app.delete('/admin/notice/:platform', filter.authorize, notice.delNotice);
-app.post('/admin/notice/:platform', filter.authorize, notice.saveNotice);
-app.get('/admin/version', filter.authorize, version.manage);
-app.post('/admin/version', filter.authorize, version.updateVersion);
-app.get('/admin/version/details/:version', filter.authorize, version.versionDetails);
-app.get('/admin/cdkey', filter.authorize, cdkey.manage);
-app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
-app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
-app.get('/admin/cdkey/search', filter.authorize, cdkey.search);
-app.all('/admin/playerId',  player.get);
-app.all('/admin/playerNames',  player.getPlayerNames);
-app.get('/admin/areaeditor', filter.authorize, area.editor);
-app.post('/admin/areaeditor/save', filter.authorize, area.save);
-app.all('/admin/actorCards', filter.authorize, gameData.getActorCards);
-app.all('/admin/cardLv', filter.authorize, gameData.getCardLvLimit);
-app.all('/admin/consumeSource', filter.authorize, gameData.getConsumptionSourceName);
-
 app.get('/admin/stats/onlineuser', filter.authorize, stats.onlineUser);
 
+home(app);
+notice(app);
+version(app);
+cdkey(app);
+area(app);
+player(app);
+gameData(app);
 pushMessage(app);
 sendReward(app);
 messgae(app);
 optRecord(app);
 playerRecord(app);
 upload(app);
-
-app.get('/api/:platform/notice', notice.notice);
-app.get('/api/:platform/version', version.version);
-app.get('/api/:platform/update', version.update);
-app.get('/api/:platform/update/:version', version.update);
-
-app.get('/api/actor-cards', gameData.getActorCards);
-app.get('/api/card-lv', gameData.getCardLvLimit);
 
 
 http.createServer(app).listen(app.get('port'), function(){

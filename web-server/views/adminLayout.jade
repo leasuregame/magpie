@@ -32,18 +32,26 @@ html
               a(href='/admin/msgPush') 消息推送
             li(class=menu=='reward' ? 'active':'')
               a(href='/admin/sendReward') 奖励发放
-            li(class=menu=='sysMsgRecord' ? 'active':'')
-              a(href='/admin/sysMsgRecord') 系统消息记录
-            li(class=menu=='msgOptRecord' ? 'active':'')
-              a(href='/admin/msgOptRecord') 消息操作记录
-            li(class=menu=='playerWastageRateOnLv' ? 'active':'')
-              a(href='/admin/playerWastageRateOnLv') 等级流失率
-            li(class=menu=='playerConsumption' ? 'active':'')
-              a(href='/admin/playerConsumption') 魔石使用占比
+            li.dropdown
+              a.dropdown-toggle(data-toggle='dropdown' href='#') 消息相关记录
+                b.caret
+              ul.dropdown-menu
+                li(class=menu=='sysMsgRecord' ? 'active':'')
+                  a(href='/admin/sysMsgRecord') 系统消息记录
+                li(class=menu=='msgOptRecord' ? 'active':'')
+                  a(href='/admin/msgOptRecord') 消息操作记录
+            li.dropdown
+              a.dropdown-toggle(data-toggle='dropdown' href='#') 数据统计
+                b.caret
+              ul.dropdown-menu
+                li(class=menu=='playerWastageRateOnLv' ? 'active':'')
+                  a(href='/admin/playerWastageRateOnLv') 等级流失率
+                li(class=menu=='playerConsumption' ? 'active':'')
+                  a(href='/admin/playerConsumption') 魔石使用占比
             li(class=menu=='area' ? 'active':'')
               a(href='/admin/areaeditor') 区服管理
             li(class=menu=='upload' ? 'active':'')
-              a(href='/upload') 上传世界杯赛果
+              a(href='/admin/uploadWCConfig') 世界杯赛果上传
 
           p.navbar-text.navbar-right
             a.navbar-link(href='/logout') 注销

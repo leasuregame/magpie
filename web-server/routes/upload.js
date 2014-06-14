@@ -1,20 +1,21 @@
 var Url = require('url');
 var filter = require('../util/filter');
 var path = require('path');
+var _ = require('underscore');
 
 var upload = function(app) {
 
-    app.get('/upload', function(req, res) {
+    app.get('/admin/uploadWCConfig', function(req, res) {
         res.render('upload', {
             menu: 'upload',
-            title: 'upload',
+            title: '世界杯赛果上传',
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()
         });
     });
 
-    app.all('/admin/uploadWorldCupConfig', function(req, res) {
+    app.all('/admin/doUploadWorldCupConfig', function(req, res) {
         var fs = require('fs');
 
         // 获得文件的临时路径
@@ -25,14 +26,13 @@ var upload = function(app) {
 
         // 移动文件
         fs.rename(tmp_path, target_path, function(err) {
-            if (err) throw err;
+            if (err) return res.status(500).send('上传失败!')
             // 删除临时文件夹文件,
             fs.unlink(tmp_path, function() {
-                if (err) throw err;
-                res.send('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
+                if (err) return res.status(500).send('上传失败!')
             });
         });
-        res.send([req.body, req.files]);
+        res.send(["成功上传配置文件,详细信息如下", _.omit(req.files.configFile, 'ws')]);
     });
 
 };

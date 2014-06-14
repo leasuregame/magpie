@@ -15,6 +15,9 @@ var DEF_LV_DATA = {
 
 var playerRecord = function(app) {
 
+    /**
+     * render statistics -- player wastage rate on lv
+     */
     app.get('/admin/playerWastageRateOnLv', filter.authorize, function (req, res) {
         res.render('playerWastageRateOnLv', {
             menu: 'playerWastageRateOnLv',
@@ -25,7 +28,10 @@ var playerRecord = function(app) {
         })
     });
 
-	app.all('/admin/getWastageRateOnLv', filter.authorize, function(req, res) {
+    /**
+     * get data of  player wastage rate on lv
+     */
+	app.all('/admin/api/getWastageRateOnLv', filter.authorize, function(req, res) {
 
         /**
          * 对查询结果进行统计
@@ -116,6 +122,9 @@ var playerRecord = function(app) {
         }
 	});
 
+    /**
+     * render statistics -- player consumption rate
+     */
     app.get('/admin/playerConsumption', filter.authorize, function (req, res) {
         res.render('playerConsumption', {
             menu: 'playerConsumption',
@@ -126,7 +135,10 @@ var playerRecord = function(app) {
         })
     });
 
-    app.all('/admin/getPlayerConsumption', filter.authorize, function(req, res){
+    /**
+     * get data of  player consumption rate
+     */
+    app.all('/admin/api/getPlayerConsumption', filter.authorize, function(req, res){
 
         /**
          * 对查询结果进行统计

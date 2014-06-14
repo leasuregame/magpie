@@ -4,6 +4,9 @@ var recordDao = require('../dao/OptRecordDao');
 
 var optRecord = function(app) {
 
+    /**
+     * render message option record
+     */
     app.get('/admin/msgOptRecord', filter.authorize, function(req, res) {
         res.render('msgOptRecord', {
             menu: 'msgOptRecord',
@@ -14,7 +17,10 @@ var optRecord = function(app) {
         })
     });
 
-	app.post('/admin/recordMsgOpt', filter.authorize, function(req, res) {
+    /**
+     * create a message option record
+     */
+	app.post('/admin/api/recordMsgOpt', filter.authorize, function(req, res) {
 
 		var reqParam = req.body;
 		var operator = req.session.user.user_name;
@@ -27,7 +33,10 @@ var optRecord = function(app) {
         });
 	});
 
-    app.all('/admin/getSysMsgOpt', filter.authorize, function (req, res) {
+    /**
+     * get system message options
+     */
+    app.all('/admin/api/getSysMsgOpt', filter.authorize, function (req, res) {
         var queryWhere = {
             createTime : req.body['createTime']
         };

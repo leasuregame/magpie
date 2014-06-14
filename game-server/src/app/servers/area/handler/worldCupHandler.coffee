@@ -41,7 +41,7 @@ Handler::todayGames = (msg, session, next) ->
         if answer
           reward = checkAnswerAndCountReward(items, answer)
       else
-        isCanAnswer = true
+        isCanAnswer = if items.length > 0 then true else false
 
       cb()
     (cb) =>
@@ -78,7 +78,7 @@ Handler::submitAnswer = (msg, session, next) ->
   playerId = session.get('playerId')
   answer = msg.answer
 
-  if not _.isObject(answer)
+  if not _.isObject(answer) or _.isEmpty(answer)
     return next(null, {code: 200, msg: '参数错误'})
 
   ids = _.keys(answer)

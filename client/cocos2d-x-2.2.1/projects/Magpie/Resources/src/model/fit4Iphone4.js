@@ -434,6 +434,12 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 755),
             "scrollViewPoint": cc.p(40, 115)
         },
+        "dailyInstancesLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
+            "scrollViewSize": cc.size(640, 740),
+            "scrollViewPoint": cc.p(40, 122)
+        },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(360, 934),
             "bgSpriteSize": cc.size(650, 809),
@@ -656,7 +662,7 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 874),
             "taskLayerItemPoint": cc.p(111, 914),
             "passLayerItemPoint": cc.p(254, 914),
-            "searchImmortalLayerItemPoint": cc.p(402, 914)
+            "dailyInstancesLayerItemPoint": cc.p(402, 914)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -1250,7 +1256,7 @@ var fit4Iphone4 = {
             "cardEvolutionItemOffset": cc.p(0, -2)
         },
         "summonLayer": {
-            "headIconPoint": cc.p(40, 872),
+            "headIconPoint": cc.p(40, 874),
             "lotteryLayerItemPoint": cc.p(111, 911),
             "exChangeLayerItemPoint": cc.p(254, 911),
             "treasureHuntLayerItemPoint": cc.p(403, 911)

@@ -558,7 +558,7 @@ var Activity = Entity.extend({
 
                 that.set("worldCupCanAnswer", data.msg.isCanAnswer);
 
-                if (data.reward && data.reward.gold) {
+                if (data.msg.reward && data.msg.reward.gold) {
                     that.set("worldCupReward", true);
                 } else {
                     that.set("worldCupReward", false);

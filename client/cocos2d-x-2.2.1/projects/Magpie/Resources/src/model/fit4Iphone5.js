@@ -434,6 +434,12 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 930),
             "scrollViewPoint": cc.p(0, 115)
         },
+        "dailyInstancesLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 865),
+            "scrollViewSize": cc.size(640, 865),
+            "scrollViewPoint": cc.p(0, 122)
+        },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(320, 1100),
             "bgSpriteSize": cc.size(650, 985),
@@ -460,6 +466,8 @@ var fit4Iphone5 = {
             "rankBgIconPoint": cc.p(320, 630),
             "rankBgIconSize": cc.size(600, 620),
             "thisWeekItemPoint": cc.p(120, 960),
+
+
             "lastWeekItemPoint": cc.p(270, 960),
             "showRewardItemPoint": cc.p(480, 140),
             "closeItemPoint": cc.p(610, 1055),
@@ -655,7 +663,7 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1050),
             "taskLayerItemPoint": cc.p(71, 1090),
             "passLayerItemPoint": cc.p(214, 1090),
-            "searchImmortalLayerItemPoint": cc.p(362, 1090)
+            "dailyInstancesLayerItemPoint": cc.p(362, 1090)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -1252,7 +1260,7 @@ var fit4Iphone5 = {
             "cardEvolutionItemOffset": cc.p(0, -2)
         },
         "summonLayer": {
-            "headIconPoint": cc.p(0, 1048),
+            "headIconPoint": cc.p(0, 1050),
             "lotteryLayerItemPoint": cc.p(71, 1087),
             "exChangeLayerItemPoint": cc.p(214, 1087),
             "treasureHuntLayerItemPoint": cc.p(363, 1087)

@@ -171,6 +171,8 @@
             'src/view/mainModule/cardUpgradeLabel.js',
             'src/view/mainModule/tipsLayer.js',
             'src/view/mainModule/configLayer.js',
+            'src/view/mainModule/expInstanceLayer.js',
+            'src/view/mainModule/dailyInstancesLayer.js',
             'src/view/mainModule/damageRankHelpLabel.js',
             'src/view/mainModule/damageRankLayer.js',
             'src/view/mainModule/elixirRankHelpLabel.js',

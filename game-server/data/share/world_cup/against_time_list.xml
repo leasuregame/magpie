@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -10,15 +11,15 @@
   <Created>2014-06-11T09:54:44Z</Created>
   <LastSaved>2014-06-13T02:54:37Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
-  <Version>14.0</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>15980</WindowHeight>
+  <WindowHeight>15975</WindowHeight>
   <WindowWidth>22320</WindowWidth>
-  <WindowTopX>2540</WindowTopX>
+  <WindowTopX>2535</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -27,8 +28,7 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -42,10 +42,10 @@
  </Styles>
  <Worksheet ss:Name="世界杯每日比赛场次">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="49" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="155"/>
-   <Column ss:Index="4" ss:Width="116"/>
-   <Column ss:Width="100"/>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="155.25"/>
+   <Column ss:Index="4" ss:Width="116.25"/>
+   <Column ss:Width="99.75"/>
    <Column ss:Index="7" ss:StyleID="s62" ss:AutoFitWidth="0"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">序号</Data></Cell>
@@ -53,22 +53,22 @@
     <Cell><Data ss:Type="String">主队</Data></Cell>
     <Cell><Data ss:Type="String">客队</Data></Cell>
     <Cell><Data ss:Type="String">魔石奖励</Data></Cell>
-    <Cell><Data ss:Type="String">结果</Data><Comment ss:Author="arthur wu"><Data><Font
-        html:Size="10" html:Color="#000000"
-        xmlns="http://www.w3.org/TR/REC-html40">比赛结果：&#13;1 = 胜&#13;2 = 平&#13;3 = 败&#13;</Font></Data></Comment></Cell>
-    <Cell><Data ss:Type="String">比分</Data><Comment ss:Author="arthur wu"><Data><Font
-        html:Size="10" html:Color="#000000"
-        xmlns="http://www.w3.org/TR/REC-html40">比分结果：&#13;主队进球数：客队进球数&#13;例如：3:2</Font></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">结果</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
+        html:Color="#000000">比赛结果：&#13;1 = 胜&#13;2 = 平&#13;3 = 败&#13;</Font></ss:Data></Comment></Cell>
+    <Cell><Data ss:Type="String">比分</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
+        html:Color="#000000">比分结果：&#13;主队进球数：客队进球数&#13;例如：3:2</Font></ss:Data></Comment></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
-    <Cell><Data ss:Type="String">home_team</Data><Comment ss:Author="arthur wu"><Data><Font
-        html:Size="10" html:Color="#000000"
-        xmlns="http://www.w3.org/TR/REC-html40">国家列表|country|id&#13;</Font></Data></Comment></Cell>
-    <Cell><Data ss:Type="String">visiting_team</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">国家列表|country|id</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">home_team</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
+        html:Color="#000000">国家列表|country|id&#13;</Font></ss:Data></Comment></Cell>
+    <Cell><Data ss:Type="String">visiting_team</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">国家列表|country|id</Font></B></ss:Data></Comment></Cell>
     <Cell><Data ss:Type="String">reward_gold</Data></Cell>
     <Cell><Data ss:Type="String">result</Data></Cell>
     <Cell><Data ss:Type="String">score</Data></Cell>
@@ -79,6 +79,8 @@
     <Cell><Data ss:Type="String">墨西哥</Data></Cell>
     <Cell><Data ss:Type="String">喀麦隆</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">1:0</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -86,6 +88,8 @@
     <Cell><Data ss:Type="String">西班牙</Data></Cell>
     <Cell><Data ss:Type="String">荷兰</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">1:5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -93,6 +97,8 @@
     <Cell><Data ss:Type="String">智利</Data></Cell>
     <Cell><Data ss:Type="String">澳大利亚</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">3:1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
@@ -412,24 +418,24 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Column ss:Width="156"/>
-   <Column ss:Width="148"/>
+   <Column ss:Width="147.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
@@ -448,7 +454,6 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -458,6 +463,7 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

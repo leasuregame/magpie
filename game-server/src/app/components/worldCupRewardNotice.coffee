@@ -24,7 +24,7 @@ class Component
 noticeRewardToReceive = (app) ->
   console.log '-notice-------------------------------------------------------'
   app.get('dao').worldCup.fetchMany where: {
-    gameDate__le: utility.dateFormat(new Date(), 'yyyy-MM-hh')
+    gameDate__le: utility.dateFormat(new Date(), 'yyyy-MM-dd')
     got: 0
   }, (err, rows) ->
     console.log 'rows length: ', rows

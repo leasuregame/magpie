@@ -32,7 +32,6 @@ var upload = function(app) {
                 res.send('File uploaded to: ' + target_path + ' - ' + file.size + ' bytes');
             });
         });
-        res.send([req.body, req.files]);
     });
 
 };

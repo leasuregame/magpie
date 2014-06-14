@@ -243,8 +243,12 @@ var MainLayer = cc.Layer.extend({
             this
         );
         worldCupLayerItem.setPosition(this._mainLayerFit.worldCupLayerItemPoint);
+        this._worldCupMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._worldCupMark.setPosition(cc.p(75, 80));
+        worldCupLayerItem.addChild(this._worldCupMark);
 
         var menu = cc.Menu.create(
+            worldCupLayerItem,
             lotteryLayerItem,
             smeltLayerItem,
             strengthenLayerItem,
@@ -256,8 +260,7 @@ var MainLayer = cc.Layer.extend({
             friendLayerItem,
             messageItem,
             configLayerItem,
-            greetingLabelItem,
-            worldCupLayerItem
+            greetingLabelItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
@@ -310,6 +313,7 @@ var MainLayer = cc.Layer.extend({
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
         this._lotteryMark.setVisible(gameMark.getSummonMark());
+        this._worldCupMark.setVisible(gameMark.getWorldCupMark());
     },
 
     updateGuide: function () {

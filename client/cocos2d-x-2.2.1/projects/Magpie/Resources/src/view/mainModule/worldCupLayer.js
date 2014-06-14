@@ -31,7 +31,7 @@ var WorldCupLayer = cc.Layer.extend({
         bgSprite.setPosition(this._worldCupLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var tipLabel = cc.LabelTTF.create("结果将在次日十二点揭晓", "STHeitiTC-Medium", 22);
+        var tipLabel = cc.LabelTTF.create("结果将在次日十三点揭晓", "STHeitiTC-Medium", 22);
         tipLabel.setPosition(this._worldCupLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
@@ -78,6 +78,7 @@ var WorldCupLayer = cc.Layer.extend({
             this
         );
         this._submitItem.setPosition(this._worldCupLayerFit.submitItemPoint);
+        this._submitItem.setVisible(false);
         menu.addChild(this._submitItem);
 
         this._submittedItem = cc.MenuItemImage.createWithIcon(
@@ -89,7 +90,13 @@ var WorldCupLayer = cc.Layer.extend({
             this
         );
         this._submittedItem.setPosition(this._worldCupLayerFit.submitItemPoint);
+        this._submittedItem.setVisible(false);
         menu.addChild(this._submittedItem);
+
+        this._noGamesTips = cc.Sprite.create(main_scene_image.worldCupIcon12);
+        this._noGamesTips.setPosition(gameFit.GAME_MIDPOINT);
+        this._noGamesTips.setVisible(false);
+        this.addChild(this._noGamesTips);
 
         return true;
     },
@@ -111,8 +118,10 @@ var WorldCupLayer = cc.Layer.extend({
                 that._timeLabel.setString(data.gameDate);
             }
 
-            that._submitItem.setVisible(data.isCanAnswer);
-            that._submittedItem.setVisible(!data.isCanAnswer);
+            var len = data.games.length;
+
+            that._submitItem.setVisible(data.isCanAnswer && len > 0);
+            that._submittedItem.setVisible(!data.isCanAnswer && len > 0);
             that._addScrollView(data.games);
         });
 
@@ -126,12 +135,18 @@ var WorldCupLayer = cc.Layer.extend({
             this._scrollView = null;
         }
 
+        this._teamLen = games.length;
+        this._noGamesTips.setVisible(this._teamLen == 0);
+
+        if (this._teamLen == 0) {
+            return;
+        }
+
         var scrollViewLayer = MarkLayer.create(this._worldCupLayerFit.scrollViewLayerRect);
         var answerMenu = LazyMenu.create();
         answerMenu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(answerMenu);
 
-        this._teamLen = games.length;
         var scrollViewHeight = this._teamLen * 240;
         var table = outputTables.country_list.rows;
 
@@ -284,7 +299,7 @@ var WorldCupLayer = cc.Layer.extend({
         var that = this;
         AdvancedTipsLabel.pop(TYPE_WORLD_CUP_TIPS, function () {
             gameData.activity.submitAnswer(that._answers, function (isSuccess) {
-                if(isSuccess) {
+                if (isSuccess) {
                     TipLayer.tip("提交成功");
                 }
                 that.update();

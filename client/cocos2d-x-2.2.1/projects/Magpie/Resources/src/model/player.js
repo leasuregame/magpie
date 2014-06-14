@@ -258,6 +258,8 @@ var Player = Entity.extend({
 
             gameData.friend.sync();
 
+            gameData.activity.todayGames();
+
             MainScene.getInstance().updateMark();
         });
     },

@@ -39,6 +39,9 @@ var Activity = Entity.extend({
     _vipLoginReward: false,
     _growthPlan: null,
 
+    _worldCupReward: false,
+    _worldCupCanAnswer: false,
+
     init: function () {
         cc.log("Activity init");
 
@@ -50,6 +53,9 @@ var Activity = Entity.extend({
         this._isBuyPlan = false;
         this._vipLoginReward = false;
         this._growthPlan = {};
+
+        this._worldCupCanAnswer = false;
+        this._worldCupReward = false;
 
         var rows = outputTables.player_upgrade_reward.rows;
         var index = 0;
@@ -117,6 +123,8 @@ var Activity = Entity.extend({
             },
             true
         );
+
+        this.todayGames();
     },
 
     setListener: function () {
@@ -144,6 +152,14 @@ var Activity = Entity.extend({
 
             that.updateRechargeFlag(data.msg.flag);
             gameMark.updateNewYearMark(false);
+        });
+
+        lz.server.on("onWorldCupReward", function (data) {
+            cc.log("***** on onWorldCupReward:");
+            cc.log(data);
+
+            that.set("worldCupReward", true);
+            gameMark.updateWorldCupMark(false);
         });
     },
 
@@ -528,20 +544,38 @@ var Activity = Entity.extend({
     todayGames: function (cb) {
         cc.log("Activity todayGames");
 
+        var isNotWait = true;
+        if (cb) {
+            isNotWait = false;
+        }
+
+        var that = this;
         lz.server.request("area.worldCupHandler.todayGames", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
                 cc.log("todayGames success");
 
-                cb(data.msg);
+                that.set("worldCupCanAnswer", data.msg.isCanAnswer);
+
+                if (data.reward && data.reward.gold) {
+                    that.set("worldCupReward", true);
+                } else {
+                    that.set("worldCupReward", false);
+                }
+
+                gameMark.updateWorldCupMark(false);
+
+                if (cb) {
+                    cb(data.msg);
+                }
 
             } else {
                 cc.log("todayGames fail");
                 TipLayer.tip(data.msg);
             }
 
-        });
+        }, isNotWait);
     },
 
     lastGames: function (cb) {
@@ -577,6 +611,9 @@ var Activity = Entity.extend({
             if (data.code == 200) {
                 cc.log("submitAnswer success");
 
+                that.set("worldCupCanAnswer", false);
+                gameMark.updateWorldCupMark(false);
+
                 cb(true);
 
             } else {
@@ -591,6 +628,7 @@ var Activity = Entity.extend({
     getWorldCupReward: function (cb) {
         cc.log("Activity getWorldCupReward");
 
+        var that = this;
         lz.server.request("area.worldCupHandler.getReward", {}, function (data) {
             cc.log(data);
 
@@ -598,6 +636,10 @@ var Activity = Entity.extend({
                 cc.log("getWorldCupReward success");
 
                 gameData.player.set("gold", data.msg.gold);
+
+                that.set("worldCupReward", false);
+                gameMark.updateWorldCupMark(false);
+
                 cb();
 
             } else {
@@ -710,6 +752,6 @@ Activity.ActivityIsMarkHandler = {
         return false;
     },
     worldCupLayer: function () {
-        return false;
+        return gameMark.getWorldCupMark();
     }
 };

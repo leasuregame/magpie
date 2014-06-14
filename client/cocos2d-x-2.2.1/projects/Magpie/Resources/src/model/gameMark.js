@@ -31,6 +31,7 @@ var gameMark = {
     _newAreaReward: false,
     _growthPlan: false,
     _vipDailyReward: false,
+    _worldCup: false,
 
     init: function () {
         cc.log("gameMark init");
@@ -57,6 +58,7 @@ var gameMark = {
         this._newAreaReward = false;
         this._growthPlan = false;
         this._vipDailyReward = false;
+        this._worldCup = false;
     },
 
     getActivityMark: function () {
@@ -65,7 +67,8 @@ var gameMark = {
         if (!this._activity) {
             this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
                 this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() ||
-                this.getNewAreaRewardMark() || this.getGrowthPlanMark() || this.getVipDailyRewardMark();
+                this.getNewAreaRewardMark() || this.getGrowthPlanMark() || this.getVipDailyRewardMark() ||
+                this.getWorldCupMark();
         }
 
         return this._activity;
@@ -580,6 +583,27 @@ var gameMark = {
         cc.log("gameMark updateVipDailyRewardMark");
 
         this._vipDailyReward = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getWorldCupMark: function () {
+        cc.log("gameMark getWorldCupMark");
+
+        if (!this._worldCup) {
+            var activity = gameData.activity;
+            if (activity.get("worldCupReward") || activity.get("worldCupCanAnswer")) {
+                this._worldCup = true;
+            }
+        }
+
+        return this._worldCup;
+    },
+
+    updateWorldCupMark: function (mark) {
+        cc.log("gameMark updateWorldCupMark");
+
+        this._worldCup = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }

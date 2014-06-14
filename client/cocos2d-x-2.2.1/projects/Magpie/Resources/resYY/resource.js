@@ -1381,7 +1381,7 @@ var main_scene_image = {
     worldCupIcon9: world_cup_path + "worldCupIcon9.png",
     worldCupIcon10: world_cup_path + "worldCupIcon10.png",
     worldCupIcon11: world_cup_path + "worldCupIcon11.png",
-
+    worldCupIcon12: world_cup_path + "worldCupIcon12.png",
 
     worldCupButton1: world_cup_path + "worldCupButton1.png",
     worldCupButton1s: world_cup_path + "worldCupButton1s.png",

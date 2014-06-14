@@ -38,7 +38,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('arthur wu'));
 app.use(express.session());
-app.use(express.bodyParser());
+app.use(express.bodyParser({uploadDir:'./uploads'}));
 app.use(expressValidator());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -95,7 +95,15 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 // watch changes of world cup config
+
 var fs = require('fs');
+
+var upload_dir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(upload_dir)) {
+  fs.mkdirSync(upload_dir);
+}
+ 
+
 fs.watch(path.join(__dirname,'..','game-server','data','share','world_cup'), function(event, filename){
 
     var commandParam = path.join(__dirname,'..','game-server','bin','convertXmlToJson.js');

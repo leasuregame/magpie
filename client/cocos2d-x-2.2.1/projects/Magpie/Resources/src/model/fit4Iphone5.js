@@ -436,8 +436,8 @@ var fit4Iphone5 = {
         },
         "dailyInstancesLayer": {
             "bgSpritePoint": cc.p(0, 106),
-            "scrollViewLayerRect": cc.rect(0, 0, 640, 865),
-            "scrollViewSize": cc.size(640, 865),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
+            "scrollViewSize": cc.size(640, 900),
             "scrollViewPoint": cc.p(0, 122)
         },
         "elixirRankHelpLabel": {
@@ -531,6 +531,21 @@ var fit4Iphone5 = {
             "tipPoint": cc.p(320, 608),
             "okItemPoint": cc.p(230, 522),
             "closeItemPoint": cc.p(410, 522)
+        },
+        "expInstanceLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1056),
+            "titleLabelPoint": cc.p(320, 1096),
+            "topLabelPoint": cc.p(320, 1026),
+            "powerIconPoint": cc.p(500, 1026),
+            "powerLabelPoint": cc.p(520, 1021),
+            "timesBgLabelPoint": cc.p(320, 160),
+            "remainTimesLabelPoint": cc.p(310, 160),
+            "timesLabelPoint": cc.p(360, 160),
+            "buyCountItemPoint": cc.p(450, 160),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 776),
+            "scrollViewSize": cc.size(640, 776),
+            "scrollViewPoint": cc.p(0, 200)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(0, 106),

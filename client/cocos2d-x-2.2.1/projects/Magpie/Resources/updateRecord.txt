@@ -5,8 +5,24 @@
 
 新加资源：
 res/main/icon468.png
+res/main/icon469.png
+res/main/icon470.png
+res/main/icon471.png
+res/main/icon472.png
+res/main/icon473.png
+res/main/icon474.png
+res/main/icon475.png
+res/main/icon476.png
 
 resYY/main/icon468.png
+resYY/main/icon469.png
+resYY/main/icon470.png
+resYY/main/icon471.png
+resYY/main/icon472.png
+resYY/main/icon473.png
+resYY/main/icon474.png
+resYY/main/icon475.png
+resYY/main/icon476.png
 ----------v1.5.2版本----------------------------------------------------------------------------------------------------
 
 ----------v1.5.1版本----------------------------------------------------------------------------------------------------

@@ -531,6 +531,21 @@ var fit4Iphone4 = {
             "okItemPoint": cc.p(270, 429),
             "closeItemPoint": cc.p(450, 429)
         },
+        "expInstanceLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleLabelPoint": cc.p(360, 920),
+            "topLabelPoint": cc.p(360, 850),
+            "powerIconPoint": cc.p(540, 850),
+            "powerLabelPoint": cc.p(560, 845),
+            "timesBgLabelPoint": cc.p(360, 160),
+            "remainTimesLabelPoint": cc.p(350, 160),
+            "timesLabelPoint": cc.p(400, 160),
+            "buyCountItemPoint": cc.p(490, 160),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 600),
+            "scrollViewSize": cc.size(640, 600),
+            "scrollViewPoint": cc.p(40, 200)
+        },
         "exploreLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headIconPoint": cc.p(40, 880),

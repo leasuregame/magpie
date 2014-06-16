@@ -29,7 +29,11 @@ var optRecord = function(app) {
 		var options = JSON.stringify(reqParam['options']);
 		var status = reqParam['status'];
 
-        recordDao.addRecord([operator, areaId, playerNames, options, status], function (err, res){
+        console.log('recordMsgOpt ', [operator, areaId, playerNames, options, status]);
+
+        recordDao.addRecord([operator, areaId, playerNames, options, status], function (err){
+            if(err) res.status(500).send('error when selecting record, ' + err);
+            res.send('record succeeded');
         });
 	});
 
@@ -43,7 +47,7 @@ var optRecord = function(app) {
 
         recordDao.getRecords(queryWhere, function(err, rows){
             if (err) {
-                res.status(500).send('error when selecting record, ' + err);
+                return res.status(500).send('error when selecting record, ' + err);
             }
             res.send(rows);
         });

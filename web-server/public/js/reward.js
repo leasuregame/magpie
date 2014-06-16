@@ -379,7 +379,7 @@ function doSubmit(mail) {
                 }
             }, function (data) {
                 if(data.status == 404) {
-                    showQueryPlayerBoxAlert('发送失败! 玩家不存在,请确认');
+                    showQueryPlayerBoxError(data.responseText);
                     $('#playerName').focus();
                 }
             });

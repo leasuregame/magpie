@@ -192,7 +192,7 @@ function rewardJson2Str(reward) {
             if (key == 'cardArray') {
                 var qty = 0;
                 $.each(val, function (idx, val) {
-                    qty += val.qty;
+                    qty += val.qty * 1;
                     var card = configCards[val.tableId + ""];
                     ret += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + ';\n';
                 });

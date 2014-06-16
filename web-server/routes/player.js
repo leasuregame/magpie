@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var filter = require('../util/filter');
 var db = require('../dao/db/db');
 var playerDao = require('../dao/playerDao');
@@ -20,23 +21,36 @@ var player = function(app) {
             nameWhere = nameWhere.substr(0, nameWhere.length - 1);
         }
 
-        var sql = "select id from player where name in (" + nameWhere + ") and areaId = " + areaId;
+        var sql = "select id, name from player where name in (" + nameWhere + ") and areaId = " + areaId;
 
-        db(areaId).query(sql, [], function (err, row) {
+        db(areaId).query(sql, [], function (err, rows) {
             if (err) {
                 res.status(500).send('error when select playerId, ' + err);
+                return;
             }
 
-            if (!!row && row.length > 0) {
+            if(rows.length < names.length) {
+                var nameNotExist = [];
+                var rowNames = [];
+                for (var i in rows) {
+                    rowNames.push(rows[i].name);
+                }
+                for (var i in names) {
+                    if(_.indexOf(rowNames, names[i]) == -1) {
+                        nameNotExist.push(names[i]);
+                    }
+                }
+                res.status(404).send('以下玩家不存在 : ' + nameNotExist.toString());
+                return;
+            }
+
+            if (!!rows && rows.length > 0) {
                 var id = [];
-                for (var i in row) {
-                    id.push(row[i].id);
+                for (var i in rows) {
+                    id.push(rows[i].id);
                 }
                 res.send({id: id});
-            } else {
-                res.status(404).send('can not find player id');
             }
-
         });
     });
 
@@ -66,7 +80,7 @@ var player = function(app) {
             if (buyRecordWhere.amount || buyRecordWhere.payTime) {
                 buyRecordDao.getAllPlayerId(buyRecordWhere.amount, buyRecordWhere.payTime, areaId, function (err, rows) {
                     if (err) {
-                        res.status(500).send(err);
+                        return res.status(500).send(err);
                     } else {
                         // rows = [{playerId:number},{playerId:number}...]
                         var pids = [],

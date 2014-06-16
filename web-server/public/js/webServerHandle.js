@@ -128,11 +128,11 @@
      * @param scb
      * @param ecb
      */
-    webAPI.getLvWastageRate = function (areaId, created, createTime, scb, ecb) {
+    webAPI.getLvWastageRate = function (areaId, created, recordDate, scb, ecb) {
         var param = {
             areaId : areaId,
             created : created, // player创建时间
-            createTime : createTime
+            recordDate : recordDate
         };
         ajax(API.WASTAGE_RATE_ON_LV, param, scb, ecb);
     };

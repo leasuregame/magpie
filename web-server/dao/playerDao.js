@@ -11,9 +11,9 @@ var _ = require('underscore');
  */
 exports.getPlayers = function(fields, where, areaId, cb) {
     if (arguments.length == 3) {
-        where = fields;
-        areaId = where;
         cb = areaId;
+        areaId = where;
+        where = fields;
         fields = {};
     }
 

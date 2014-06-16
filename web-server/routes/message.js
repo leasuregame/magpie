@@ -53,8 +53,7 @@ var message = function(app) {
         var servMsgs = [];
 
         if(!areaId) {
-            res.status(500).send('error when selecting message, areaId is required');
-            return;
+            return res.status(500).send('error when selecting message, areaId is required');
         }
 
         // 查询单个服务器与查询多个服务器分开操作

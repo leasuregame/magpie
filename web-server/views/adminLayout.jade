@@ -32,7 +32,7 @@ html
               a(href='/admin/msgPush') 消息推送
             li(class=menu=='reward' ? 'active':'')
               a(href='/admin/sendReward') 奖励发放
-            li.dropdown
+            li.dropdown(class=menu=='sysMsgRecord' || menu=='msgOptRecord' ? 'active':'')
               a.dropdown-toggle(data-toggle='dropdown' href='#') 消息相关记录
                 b.caret
               ul.dropdown-menu
@@ -40,7 +40,7 @@ html
                   a(href='/admin/sysMsgRecord') 系统消息记录
                 li(class=menu=='msgOptRecord' ? 'active':'')
                   a(href='/admin/msgOptRecord') 消息操作记录
-            li.dropdown
+            li.dropdown(class=menu=='playerWastageRateOnLv' || menu=='playerConsumption' ? 'active':'')
               a.dropdown-toggle(data-toggle='dropdown' href='#') 数据统计
                 b.caret
               ul.dropdown-menu

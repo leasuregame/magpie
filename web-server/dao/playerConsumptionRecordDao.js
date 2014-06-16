@@ -9,8 +9,8 @@ var sqlUtil = require('./util/sqlUtil');
  */
 exports.getRecords = function(where, areaId, cb) {
     if (arguments.length == 2) {
-        areaId = where;
         cb = areaId;
+        areaId = where;
         where = {};
     }
 

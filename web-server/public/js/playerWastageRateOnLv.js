@@ -42,17 +42,17 @@ function initAreasList(cb) {
 }
 
 function getDateInputData($input) {
-    var lowerCreateTime = $input.find('.low').val();
-    var upperCreateTime = $input.find('.up').val();
+    var lowerDate = $input.find('.low').val();
+    var upperDate = $input.find('.up').val();
 
-    if(lowerCreateTime.length == 0) {
-        lowerCreateTime = '1970-1-1';
+    if(lowerDate.length == 0) {
+        lowerDate = '1970-1-1';
     }
-    if(upperCreateTime.length == 0) {
+    if(upperDate.length == 0) {
         var now = new Date();
-        upperCreateTime = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+        upperDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
     }
-    return [lowerCreateTime + ' 00:00:00', upperCreateTime + ' 23:59:59'];
+    return [lowerDate, upperDate];
 }
 
 
@@ -61,7 +61,7 @@ function getDateInputData($input) {
  * @returns {{areaId: (*|jQuery), playerNames: *, createTime: *[]}}
  */
 function getInputData() {
-    var retData,areaId,createTime;
+    var retData, areaId, recordDate, playerCreateTime;
 
     areaId = $('#area').val();
     if(areaId == AREAID_ALL && servers) {
@@ -71,13 +71,14 @@ function getInputData() {
         }
     }
 
-    var createTime = getDateInputData($('#createTime'));
-    var playerCreateTime = getDateInputData($('#playerCreateTime'));
+    recordDate = getDateInputData($('#recordDate'));
+    playerCreateTime = getDateInputData($('#playerCreateTime'));
+    playerCreateTime = [playerCreateTime[0] + ' 00:00:00', playerCreateTime[1] + ' 23:59:59'];
 
     retData = {
         areaId : areaId,
         playerCreateTime : playerCreateTime,
-        createTime : createTime
+        recordDate : recordDate
     };
 
     return retData;
@@ -94,7 +95,7 @@ function doRequest(reqData) {
     $(tipAlertId.LOADING).removeClass('hide');
     $('#submitCheck').attr('disabled', true);
 
-    window.webAPI.getLvWastageRate(reqData.areaId, reqData.playerCreateTime, reqData.createTime, function(data){
+    window.webAPI.getLvWastageRate(reqData.areaId, reqData.playerCreateTime, reqData.recordDate, function(data){
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
         lastReqData = data;

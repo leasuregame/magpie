@@ -52,6 +52,8 @@ div(id='queryPlayerBox')
                 span.totalPlayers 0
         div.form-group
             label.col-sm-3.control-label
-                span.alert.alert-danger.hide(id='queryPlayerAlert' style='padding:8px 15px;font-weight:normal')
             div.col-sm-7
                 textarea.form-control(type='text', id='playerName' name='playerName')
+                span#queryPlayerAlertCntr(style='font-weight:normal')
+script#alertTemp.hide(type='text/template')
+    span.help-block#queryPlayerAlert

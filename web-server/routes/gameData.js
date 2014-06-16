@@ -1,5 +1,6 @@
 var tableData = require('../data/table.json');
 var filter = require('../util/filter');
+var CONSUMPTION_SOURCE_NAME = require('../data/record').CONSUMPTION_SOURCE_NAME;
 
 var datakeys = {
     CARDS : 'cards',
@@ -17,7 +18,7 @@ var gameData = function(app) {
 
     var getExpCardData = function () {
         return getGameData(datakeys.CARDS)['' + EXP_CARD_TABLEID];
-    }
+    };
 
     /**
      * 获取所有角色(神仙+经验元灵)卡

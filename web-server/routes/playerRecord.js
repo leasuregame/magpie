@@ -77,14 +77,13 @@ var playerRecord = function(app) {
         var criticalTime = (reqData.criticalDays ? reqData.criticalDays : 3) * 24 * 60 * 60 * 1000;
 
         if(!areaId) {
-            res.status(500).send('ERROR : areaId is required');
-            return;
+            return res.status(500).send('ERROR : areaId is required');
         }
 
-        var criticalDate = new Date(new Date(reqData.createTime[1]).getTime() - criticalTime);
+        var criticalDate = new Date(new Date(reqData.recordDate[1]).getTime() - criticalTime);
         var recWhere = {
             created : reqData.created,
-            createTime : reqData.createTime
+            recordDate : reqData.recordDate
         };
         if(!(areaId instanceof Array)) {
             // 从DB获取时间段内每个player的最后一次离线记录
@@ -198,8 +197,7 @@ var playerRecord = function(app) {
             }
             async.parallel(tasks, function(err, rs){
                 if(err){
-                    res.status(500).send('error when executing getPlayerConsumption, ' + err);
-                    return;
+                    return res.status(500).send('error when executing getPlayerConsumption, ' + err);
                 }
                 var rows = rs[0];
                 for(var i = 1; i < rs.length; i++) {

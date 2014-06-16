@@ -11,8 +11,7 @@ class Component
   @name = '__worldCupRewardNotice__'
 
   start: (cb) ->
-    console.log 'start -notice-------------------------------------------------------'
-    schedule.scheduleJob("0/50 * * * * *", noticeRewardToReceive, @app)
+    schedule.scheduleJob("0 0 12 * 5-8 *", noticeRewardToReceive, @app)
     process.nextTick cb
 
   afterStart: (cb) ->
@@ -22,16 +21,13 @@ class Component
     process.nextTick cb
 
 noticeRewardToReceive = (app) ->
-  console.log '-notice-------------------------------------------------------'
   app.get('dao').worldCup.fetchMany where: {
-    gameDate__le: utility.dateFormat(new Date(), 'yyyy-MM-hh')
+    gameDate__le: utility.dateFormat(new Date(), 'yyyy-MM-dd')
     got: 0
   }, (err, rows) ->
-    console.log 'rows length: ', rows
     if not err and rows
       player_ids = processRows(rows)
       player_ids = _.uniq player_ids
-      console.log 'player ids: ', player_ids
       sendMessageTo app, player_ids
 
 processRows = (rows) ->

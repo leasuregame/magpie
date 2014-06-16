@@ -53,8 +53,7 @@ var message = function(app) {
         var servMsgs = [];
 
         if(!areaId) {
-            res.status(500).send('error when selecting message, areaId is required');
-            return;
+            return res.status(500).send('error when selecting message, areaId is required');
         }
 
         // 查询单个服务器与查询多个服务器分开操作
@@ -120,7 +119,20 @@ var message = function(app) {
         }
     }
 
-	app.all('/admin/sysMsg', filter.authorize, function(req, res) {
+    /**
+     * render sysMsgRecord
+     */
+    app.get('/admin/sysMsgRecord', filter.authorize, function (req, res) {
+        res.render('sysMsgRecord', {
+            menu: 'sysMsgRecord',
+            title: '系统消息记录',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        })
+    });
+
+	app.all('/admin/api/getSysMsg', filter.authorize, function(req, res) {
 
         var areaId = req.body.areaId;
 
@@ -132,15 +144,6 @@ var message = function(app) {
         queryMsg(msgWhere, areaId, res);
 	});
 
-    app.get('/admin/sysMsgRecord', filter.authorize, function (req, res) {
-        res.render('sysMsgRecord', {
-            menu: 'sysMsgRecord',
-            title: '系统消息记录',
-            user: req.session.user,
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString()
-        })
-    });
 };
 
 module.exports = message;

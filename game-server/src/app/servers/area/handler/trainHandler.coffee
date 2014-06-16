@@ -1,4 +1,6 @@
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 lottery = require '../../../manager/lottery'
 async = require 'async'
 dao = require('pomelo').app.get('dao')
@@ -152,6 +154,16 @@ Handler::luckyCard = (msg, session, next) ->
   level = msg.level or LOW_LUCKYCARD
   type = if msg.type? then msg.type else LOTTERY_BY_GOLD
   times = if msg.times? then msg.times else 1
+
+  # 用于记录操作日志
+  if (level is LOW_LUCKYCARD and times is 1)
+    luckyCardSource = SOURCE.LOW_LUCKY_CARD_ONE
+  else if (level is LOW_LUCKYCARD and times is 10)
+    luckyCardSource = SOURCE.LOW_LUCKY_CARD_TEN
+  else if (level is HIGH_LUCKYCARD and times is 1)
+    luckyCardSource = SOURCE.HIGH_LUCKY_CARD_ONE
+  else if (level is HIGH_LUCKYCARD and times is 10)
+    luckyCardSource = SOURCE.HIGH_LUCKY_CARD_TEN
 
   typeMapping = {}
   typeMapping[LOTTERY_BY_GOLD] = 'gold'
@@ -313,6 +325,7 @@ Handler::luckyCard = (msg, session, next) ->
 
       if type is LOTTERY_BY_GOLD
         player.decrease('gold', totalConsume)
+        # todo record here
 
       if type is LOTTERY_BY_ENERGY
         player.decrease('energy', totalConsume)
@@ -328,6 +341,9 @@ Handler::luckyCard = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
 
     player.save()
+    if(type is LOTTERY_BY_GOLD)
+      recordManager.createConsumptionRecord player.id, luckyCardSource, {expense : totalConsume}
+
     next(null, {
       code: 200, 
       msg:
@@ -698,6 +714,10 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       player.updateAbility()
     
     player.save()
+    console.log(type, configData.passSkill.TYPE.GOLD, type is configData.passSkill.TYPE.GOLD, _pros[type])
+    if type is configData.passSkill.TYPE.GOLD
+      recordManager.createConsumptionRecord player.id, SOURCE.AFRESH_PASS_SKILL, {expense : consumeVal}
+
     # 拥有了百分之10的被动属性成就
     if (card.getPsGroup(groupId).getItems(ids).filter (ps) -> parseInt(ps.value) >= 10).length > 0
       achieve.psTo10(player)

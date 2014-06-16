@@ -18,12 +18,15 @@ function getInputPlayerNames() {
     return playerNames;
 }
 
-function showQueryPlayerBoxAlert(tips) {
-    $('#queryPlayerAlert').text(tips).removeClass('hide');
+function showQueryPlayerBoxError(tips) {
+    $('#playerBox').addClass('has-error');
+    var $alert = $($('#alertTemp').html()).text(tips);
+    $('#queryPlayerAlertCntr').append($alert);
 }
 
-function hideQueryPlayerBoxAlert() {
-    $('#queryPlayerAlert').addClass('hide');
+function hideQueryPlayerBoxError() {
+    $('#playerBox').removeClass('has-error');
+    $('#queryPlayerAlert').remove();
 }
 
 /**
@@ -99,6 +102,8 @@ function queryPlayer() {
             text += data[i] += PLAYER_NAME_SEPARATOR;
         }
         $('#playerName').val(text).change();
+    }, function(err){
+        showQueryPlayerBoxError(err);
     });
 }
 
@@ -118,6 +123,6 @@ $(document).ready(function() {
         var $this = $(this);
         var total = getInputPlayerNames().length;
         $this.closest('#playerBox').find('.totalPlayers').text(total);
-        hideQueryPlayerBoxAlert();
+        hideQueryPlayerBoxError();
     });
 });

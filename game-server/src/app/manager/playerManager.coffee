@@ -1,6 +1,8 @@
 Cache = require '../common/cache'
 async = require 'async'
 area = require('../domain/area/area')
+table = require('./table')
+configData = require('../../config/data')
 _ = require 'underscore'
 
 class Manager 
@@ -96,14 +98,22 @@ class Manager
       _ranks[r.playerId] = r.ranking for r in ranks
       cb(null, players, _ranks)
 
-  addExpCardFor: (player, qty, cb) ->
+  addExpCardFor: (player, qty, star, cb) ->
+    if not cb?
+      cb = star
+      star = 1
+
+    exp = table.getTableItem('exp_card_exp', star)?.exp or 0
+    tableId = configData.card.EXP_CARD_ID + star
+
     async.times(
       qty
     , (n, callback) =>
       @app.get('dao').card.createExpCard data: {
         playerId: player.id,
-        lv: 7,
-        exp: 19
+        tableId: tableId,
+        star: star,
+        exp: exp
       }, callback
     , (err, cards) ->
       if err

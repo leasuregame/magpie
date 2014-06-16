@@ -130,7 +130,7 @@ module.exports =
       player.addPower(data.power)
       
     if typeof data.exp_card != 'undefined' and data.exp_card > 0
-      playerManager.addExpCardFor player, data.exp_card, cb
+      playerManager.addExpCardFor player, data.exp_card, 2, cb
     else if typeof data.card_id != 'undefined' and data.card_id > 0
       this.createCard {
         playerId: player.id

@@ -11,12 +11,17 @@ block head
 
 
 block content
+    h1.text-center=title
+    hr
     .form-horizontal(role='form', action='#')
         hr
-        form.form-group(method='post' enctype='multipart/form-data' action='/admin/uploadWorldCupConfig')
+        form.form-group(method='post' enctype='multipart/form-data' target='rsRrame' action='/admin/doUploadWorldCupConfig')
             #createTime.form-group.paramSet(name='createTime')
                 label.col-sm-3.control-label
                 .col-sm-5
                     input.form-control#area(type='file' name='configFile')
                 .col-sm-2.center
                     input(type='submit')
+            .form-group.text-center
+                .control-label.col-sm-3
+                iframe.col-sm-7(name='rsRrame' style='border:none;height:300px')

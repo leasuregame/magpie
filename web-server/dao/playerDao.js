@@ -4,17 +4,18 @@ var _ = require('underscore');
 
 /**
  * 根据where返回
- * @param cols 所需筛选的column eg : ['id', 'name'] , 若为 [] 则按 select * 进行查询
+ * @param fields 所需筛选的column eg : ['id', 'name'] , 若为 [] 则按 select * 进行查询
  * @param where
  * @param areaId
  * @param cb
  */
-exports.getPlayers = function(cols, where, areaId, cb) {
+
+exports.getPlayers = function(fields, where, areaId, cb) {
     if (arguments.length == 3) {
-        where = cols;
-        areaId = where;
         cb = areaId;
-        cols = {};
+        areaId = where;
+        where = fields;
+        fields = {};
     }
 
     var queryWhere = '1 = 1';
@@ -27,10 +28,10 @@ exports.getPlayers = function(cols, where, areaId, cb) {
     }
 
     var selColStr = "";
-    if(_.isEmpty(cols)) {
+    if(_.isEmpty(fields)) {
         selColStr = '*';
     } else {
-        selColStr = cols.toString();
+        selColStr = fields.toString();
     }
 
     var sql = 'select ' + selColStr + ' from player where ' + queryWhere;

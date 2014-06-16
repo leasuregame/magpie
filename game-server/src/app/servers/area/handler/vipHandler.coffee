@@ -1,5 +1,7 @@
 dao = require('pomelo').app.get('dao')
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
@@ -185,6 +187,7 @@ openVipBox = (player, boxInfo, next) ->
   player.vipBox = vb
   player.decrease 'gold', boxInfo.price
   player.save()
+  recordManager.createConsumptionRecord player.id, SOURCE.BUY_VIP_BOX, {expense : boxInfo.price}
   
   if _.has boxInfo, 'exp_card'
     playerManager.addExpCardFor player, boxInfo.exp_card, (err, cards) ->

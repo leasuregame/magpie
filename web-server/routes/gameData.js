@@ -1,4 +1,5 @@
 var tableData = require('../data/table.json');
+var filter = require('../util/filter');
 
 var datakeys = {
     CARDS : 'cards',

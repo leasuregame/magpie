@@ -22,6 +22,8 @@ var area = require('./routes/area');
 var messgae = require('./routes/message');
 var optRecord = require('./routes/optRecord');
 
+var upload = require('./routes/upload');
+
 var app = express();
 
 // all environments
@@ -36,7 +38,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('arthur wu'));
 app.use(express.session());
-app.use(express.bodyParser());
+app.use(express.bodyParser({uploadDir:'./uploads'}));
 app.use(expressValidator());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -77,6 +79,8 @@ sendReward(app);
 messgae(app);
 optRecord(app);
 
+upload(app);
+
 app.get('/api/:platform/notice', notice.notice);
 app.get('/api/:platform/version', version.version);
 app.get('/api/:platform/update', version.update);
@@ -85,6 +89,30 @@ app.get('/api/:platform/update/:version', version.update);
 app.get('/api/actor-cards', gameData.getActorCards);
 app.get('/api/card-lv', gameData.getCardLvLimit);
 
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+// watch changes of world cup config
+
+var fs = require('fs');
+
+var upload_dir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(upload_dir)) {
+  fs.mkdirSync(upload_dir);
+}
+ 
+
+fs.watch(path.join(__dirname,'..','game-server','data','share','world_cup'), function(event, filename){
+
+    var commandParam = path.join(__dirname,'..','game-server','bin','convertXmlToJson.js');
+
+    var spawn = require('child_process').spawn,
+        command = spawn('node', [commandParam]);
+    command.stdout.on('end', function() {
+        console.log('run command node convertXmlToJson.js completed');
+    });
+
+});
+

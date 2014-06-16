@@ -1,6 +1,4 @@
-var filter = require('../util/filter');
 var tableData = require('../data/table.json');
-var CONSUMPTION_SOURCE_NAME = require('../data/record').CONSUMPTION_SOURCE_NAME;
 
 var datakeys = {
     CARDS : 'cards',

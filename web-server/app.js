@@ -71,7 +71,14 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 // watch changes of world cup config
+
 var fs = require('fs');
+
+var upload_dir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(upload_dir)) {
+    fs.mkdirSync(upload_dir);
+}
+
 fs.watch(path.join(__dirname,'..','game-server','data','share','world_cup'), function(event, filename){
 
     var commandParam = path.join(__dirname,'..','game-server','bin','convertXmlToJson.js');
@@ -83,4 +90,3 @@ fs.watch(path.join(__dirname,'..','game-server','data','share','world_cup'), fun
     });
 
 });
-

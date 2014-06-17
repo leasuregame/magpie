@@ -151,6 +151,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
 onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
+    
   app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
       appUtil.errHandler(err)

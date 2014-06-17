@@ -59,7 +59,7 @@ loadUnVerifyRecordFromDB = (app) ->
       logger.error('faild to fetch buyRecord.', err)
 
     if !!res and res.length > 0
-      app.get('verifyQueue').init(res)
+      res.forEach (i) -> app.get('verifyQueue').push(i)
 
 executeVerify = (app, queue) ->
   return if queue.len() is 0

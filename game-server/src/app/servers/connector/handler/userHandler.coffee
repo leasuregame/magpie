@@ -156,11 +156,10 @@ onUserLeave = (app, session, reason) ->
     return
   async.waterfall [
     (cb) ->
-      app.rpc.area.playerRecordRemote.createLogoutRecord session, session.get('playerId'), cb
+      app.rpc.area.playerRecordRemote.createLogoutRecord session, session.get('playerId'), (err, res)
 
-    (cb) ->
-      app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
-        cb(err)
+    (res, cb) ->
+      app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), cb
   ], (err) ->
     appUtil.errHandler(err) if err
 

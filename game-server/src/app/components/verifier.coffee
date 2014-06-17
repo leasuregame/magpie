@@ -5,6 +5,7 @@ async = require 'async'
 table = require '../manager/table'
 utility = require '../common/utility'
 Queue = require '../common/verifyQueue'
+schedule = require 'pomelo-schedule'
 
 SANBOX_URL = 'https://sandbox.itunes.apple.com/verifyReceipt'
 VERIFY_URL = 'https://buy.itunes.apple.com/verifyReceipt'
@@ -31,21 +32,14 @@ class Component
   constructor: (app, opts={}) ->
     @app = app
     @timerId = null
+    @jobId = null
     @interval = 1000
     @app.set('verifyQueue', new Queue())
 
   @name = '__verify__'
 
   start: (cb) ->
-    @app.get('dao').buyRecord.fetchMany {
-      where: "isVerify = 0 and (status is null or status = 21005)"
-    }, (err, res) =>
-      if err
-        logger.error('faild to fetch buyRecord.', err)
-
-      if !!res and res.length > 0
-        @app.get('verifyQueue').init(res)
-
+    @jobId = schedule.scheduleJob("0 0 * * * *", loadUnVerifyRecordFromDB, @app)
     process.nextTick cb
 
   afterStart: (cb) ->
@@ -54,7 +48,18 @@ class Component
 
   stop: (cb) ->
     clearInterval @timerId
+    schedule.cancelJob(@jobId)
     process.nextTick cb
+
+loadUnVerifyRecordFromDB = (app) ->
+  app.get('dao').buyRecord.fetchMany {
+    where: "isVerify = 0 and (status is null or status = 21005)"
+  }, (err, res) =>
+    if err
+      logger.error('faild to fetch buyRecord.', err)
+
+    if !!res and res.length > 0
+      app.get('verifyQueue').init(res)
 
 executeVerify = (app, queue) ->
   return if queue.len() is 0
@@ -75,7 +80,7 @@ executeVerify = (app, queue) ->
           logger.error('faild to verify app store receipt.', err)
           return done()
 
-        #logger.info 'verify result: ', reqUrl, body
+        logger.info 'verify result: ', reqUrl, body
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
           return updatePlayer(app, item, body, done)

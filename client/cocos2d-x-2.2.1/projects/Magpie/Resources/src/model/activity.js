@@ -690,7 +690,7 @@ Activity.create = function () {
     return null;
 };
 
-Activity.ActivityIsShowHandler = {
+Activity.IsShowHandler = {
     newAreaRewardLayer: function () {
         var table = outputTables.login_count_reward.rows;
         for (var id in table) {
@@ -726,7 +726,7 @@ Activity.ActivityIsShowHandler = {
     }
 };
 
-Activity.ActivityIsMarkHandler = {
+Activity.IsMarkHandler = {
     newAreaRewardLayer: function () {
         return gameMark.getNewAreaRewardMark();
     },

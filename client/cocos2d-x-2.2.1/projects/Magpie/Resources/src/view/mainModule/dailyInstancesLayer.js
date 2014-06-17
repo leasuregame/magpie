@@ -38,6 +38,10 @@ var DailyInstancesLayer = cc.Layer.extend({
             var layer = this._layers[i];
             var y = scrollViewHeight - 200 * index - 200;
 
+            if (!DailyInstances.IsShowHandler[layer.nameString]()) {
+                continue;
+            }
+
             var item = cc.MenuItemImage.create(
                 main_scene_image[layer.titleIcon],
                 null,

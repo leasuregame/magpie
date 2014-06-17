@@ -48,6 +48,7 @@
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
+                <file name="src/model/dailyInstances.js"/>
                 <file name="src/model/lineUp.js"/>
                 <file name="src/model/task.js"/>
                 <file name="src/model/pass.js"/>

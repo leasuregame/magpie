@@ -71,6 +71,7 @@
             'src/model/player.js',
             'src/model/card.js',
             'src/model/cardList.js',
+            'src/model/dailyInstances.js',
             'src/model/lineUp.js',
             'src/model/task.js',
             'src/model/pass.js',

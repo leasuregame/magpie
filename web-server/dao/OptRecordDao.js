@@ -19,7 +19,7 @@ exports.getRecords = function(where, cb) {
         }
     }
 
-    var sql = util.format('select * from %s where %s', TAB_NAME, queryWhere);
+    var sql = util.format('select * from %s where %s order by createTime desc', TAB_NAME, queryWhere);
     db.query(sql, cb);
 };
 
@@ -39,8 +39,6 @@ exports.addRecord = function (param, cb) {
         param.splice(0, 0, null);
         param.push(new Date().getTime());
     }
-
-    console.log("param", param);
 
     db.insert(TAB_NAME, param, cb);
 };

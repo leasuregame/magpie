@@ -1,0 +1,40 @@
+exp = module.exports = {
+	CONSUMPTION_SOURCE: {
+		LOW_LUCKY_CARD_ONE: 1,
+		LOW_LUCKY_CARD_TEN: 2,
+        HIGH_LUCKY_CARD_ONE: 3,
+        HIGH_LUCKY_CARD_TEN: 4,
+		LOTTERY: 5,
+		BUY_MONEY: 6,
+		BUY_SPEAKER: 7,
+        BUY_POWER: 8,
+		BUY_CARD_COUNT: 9,
+		BUY_CHALLENGE_COUNT: 10,
+        RE_SIGN_IN: 11,
+        AFRESH_PASS_SKILL: 12,
+        COLLECT_DOUBLE_SPIRIT: 13,
+        BUY_VIP_BOX: 14,
+        RESET_PASS_MARK: 15,
+        RESET_BOSS_CD: 16,
+        INSPIRE_ON_ATTACK_BOSS: 17
+	},
+    CONSUMPTION_SOURCE_NAME: {
+        "1":'低级抽卡',
+        "2":'低级十连抽',
+        "3":'高级抽卡',
+        "4":'高级十连抽',
+        "5":'寻宝',
+        "6":'购买仙币',
+        "7":'购买喇叭',
+        "8":'购买体力',
+        "9":'扩展卡牌仓库',
+        "10":'购买有奖竞技次数',
+        "11":'补签',
+        "12":'被动洗练',
+        "13":'双倍灵气',
+        "14":'购买VIP礼包',
+        "15":'重置天道',
+        "16":'重置降魔CD',
+        "17":'购买降魔BUFF'
+    }
+};

@@ -130,7 +130,7 @@ module.exports =
       player.addPower(data.power)
       
     if typeof data.exp_card != 'undefined' and data.exp_card > 0
-      playerManager.addExpCardFor player, data.exp_card, cb
+      playerManager.addExpCardFor player, data.exp_card, 2, cb
     else if typeof data.card_id != 'undefined' and data.card_id > 0
       this.createCard {
         playerId: player.id
@@ -140,6 +140,10 @@ module.exports =
       cb(null, [])
 
   updateEntities: (groups..., cb) ->
+    ###
+    groups ['optionName', 'tableName', entityObject], ...
+    e.g. ['update', 'player', player], ['update', 'card', cards], ['delete', 'card', cards], ...
+    ###
     jobs = []
     groups.forEach (group) ->
       if _.isArray(group) and group.length >= 2
@@ -164,7 +168,7 @@ module.exports =
               else if _.isString(ent)
                 action.options.where = ent
               else
-                action.options.where = ''
+                action.options.where = '1=2'
             when 'insert'
               action.options.data = ent
             else

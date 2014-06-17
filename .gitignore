@@ -48,3 +48,4 @@ shared/whiteList.json
 
 
 game-server/src/app/servers/*/*/*.js
+web-server/uploads

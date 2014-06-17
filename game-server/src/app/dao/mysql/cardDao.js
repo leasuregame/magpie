@@ -78,15 +78,7 @@ var CardDao = (function(_super) {
 	};
 
 	CardDao.createExpCard = function(options, cb) {
-		var exp_card_id = require('../../../config/data').card.EXP_CARD_ID;
-
-		return CardDao.create({data: {
-			playerId: options.data.playerId,
-			tableId: exp_card_id,
-			star: 1,
-			lv: options.data.lv || 1,
-			exp: options.data.exp || 0
-		}}, cb);
+		return CardDao.create(options, cb);
 	};
 
 	CardDao.totalCount = function(cb) {

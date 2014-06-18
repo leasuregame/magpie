@@ -225,17 +225,17 @@ var Message = Entity.extend({
 
                     message.status = HANDLED_STATUS;
 
-                    for(var key in msg) {
+                    for (var key in msg) {
                         var k = lz.getKeyStr(key);
-                        if(k) {
+                        if (k) {
                             gameData.player.add(k, msg[key]);
                         } else {
-                            if(key == "spirit") {
+                            if (key == "spirit") {
                                 gameData.spirit.add("exp", msg[key]);
-                            } else if(key == "cardArray") {
+                            } else if (key == "cardArray") {
                                 var cards = msg[key];
                                 var len = cards.length;
-                                for(var i = 0;i < len;i++) {
+                                for (var i = 0; i < len; i++) {
                                     var card = Card.create(cards[i]);
                                     gameData.cardList.push(card);
                                 }
@@ -247,7 +247,6 @@ var Message = Entity.extend({
                     }
 
                     lz.tipReward(msg);
-
                     cb();
 
                     lz.um.event("event_handle_sys_message");
@@ -259,6 +258,39 @@ var Message = Entity.extend({
         } else {
             TipLayer.tip("找不到这个消息");
         }
+    },
+
+    handleSysMsg: function (msgId) {
+        cc.log("Message handleSysMsg: " + msgId);
+
+        var len = this._systemMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._systemMessage[i].id == msgId) {
+                message = this._systemMessage[i];
+                break;
+            }
+        }
+
+        if (message) {
+            message.status = HANDLED_STATUS;
+
+            lz.server.request("area.messageHandler.handleSysMsg", {
+                msgId: msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+                if (data.code == 200) {
+                    cc.log("handleSysMsg success");
+                } else {
+                    cc.log("receive fail");
+                    TipLayer.tip(data.msg);
+                }
+            }, true);
+        } else {
+            TipLayer.tip("找不到这个消息");
+        }
+
     },
 
     playback: function (id) {

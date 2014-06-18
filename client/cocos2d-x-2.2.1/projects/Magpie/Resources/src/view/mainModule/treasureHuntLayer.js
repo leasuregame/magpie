@@ -75,14 +75,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         titleIcon.setPosition(this._treasureHuntLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._treasureHuntLayerFit.backItemPoint);
-
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(this._treasureHuntLayerFit.headLabelPoint);
         this.addChild(headLabel);
@@ -154,7 +146,7 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         helpItem.setPosition(this._treasureHuntLayerFit.helpItemPoint);
 
-        var menu = cc.Menu.create(backItem, this._treasureHuntItem, helpItem);
+        var menu = cc.Menu.create(this._treasureHuntItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -193,8 +185,8 @@ var TreasureHuntLayer = cc.Layer.extend({
         var count = treasureHunt.get("count");
         var freeCount = treasureHunt.get("freeCount");
 
-        this._countLabel.setString("今天还可寻宝:  " + count);
-        this._freeCountLabel.setString("当前免费次数:  " + freeCount);
+        this._countLabel.setString("魔石寻宝次数:  " + count);
+        this._freeCountLabel.setString("免费寻宝次数:  " + freeCount);
 
         this._treasureHuntIcon.setVisible(freeCount <= 0);
     },
@@ -258,12 +250,7 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._nowSlideNum++;
         this._index = (this._index + 1) % MAX_TREASURE_HUNT_COUNT;
 
-
         this.schedule(this._playAStep, this._interval, 1);
-
-//        if (this._nowSlideNum <= TREASURE_HUNT_BUFFER_LEN) {
-//            this._interval -= TREASURE_HUNT_ACCELERATION;
-//        }
 
         if (this._nowSlideNum + TREASURE_HUNT_BUFFER_LEN + 1 >= this._slideCount) {
             this._interval += TREASURE_HUNT_ACCELERATION;
@@ -320,14 +307,6 @@ var TreasureHuntLayer = cc.Layer.extend({
                 that._treasureHuntItem.setEnabled(true);
             }
         });
-    },
-
-    _onClickBack: function () {
-        cc.log("TreasureHuntLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        MainScene.getInstance().switchLayer(MainLayer);
     },
 
     _onClickHelp: function () {

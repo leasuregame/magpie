@@ -46,6 +46,7 @@ var POWER_BUY_COUNT = dgTabRow.power_buy_count;
 var CHALLENGE_COUNT = dgTabRow.challenge_count;
 var CHALLENGE_BUY_COUNT = dgTabRow.challenge_buy_count;
 var EXP_CARD_COUNT = dgTabRow.exp_card_count;
+var EXP_PASS_COUNT = dgTabRow.exp_pass_count;
 
 var KNEELCOUNT_DEFAULT = 3
 
@@ -306,6 +307,7 @@ var Player = (function(_super) {
             resetTimes: 1
         },
         dailyGift: {
+            expPassFreeCount: EXP_PASS_COUNT,
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT, // 每日免费抽奖次数
             lotteryCountUsed: 0,
@@ -401,7 +403,16 @@ var Player = (function(_super) {
         pill: 0
     };
 
-    Player.prototype.updateUseCardCoun = function(star, val) {
+
+    Player.prototype.expPassCount = function() {
+        if (typeof this.dailyGift.expPassFreeCount == 'undefined') {
+            this.updateGift('expPassFreeCount', EXP_PASS_COUNT)
+        }
+
+        return this.dailyGift.expPassFreeCount;
+    };
+
+    Player.prototype.updateUseCardCount = function(star, val) {
         var ucc = utility.deepCopy(this.useCardCount);
         ucc['star' + star] = val;
         this.useCardCount = ucc;
@@ -472,6 +483,7 @@ var Player = (function(_super) {
         var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
 
         var dg = {
+            expPassFreeCount: EXP_PASS_COUNT + vipPrivilege.exp_pass_free_count,
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             lotteryCountUsed: 0,

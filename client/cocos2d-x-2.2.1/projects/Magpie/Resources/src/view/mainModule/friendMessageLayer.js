@@ -107,7 +107,7 @@ var FriendMessageLayer = cc.Layer.extend({
 
                 var timeLabel = cc.LabelTTF.create(
                     lz.getTimeStr({
-                        time: that._friendMessageList[i].createTime,
+                        time: message.createTime,
                         fmt: "yyyy.MM.dd hh:mm"
                     }),
                     "STHeitiTC-Medium",
@@ -163,7 +163,7 @@ var FriendMessageLayer = cc.Layer.extend({
                         hasBeenAcceptIcon.setVisible(false);
                     }
                 } else if (type == LEAVE_MESSAGE) {
-                    var name = that._friendMessageList[i].senderName;
+                    var name = message.senderName;
 
                     if (!gameData.friend.getFriend(name)) {
                         var addFriendItem = cc.MenuItemImage.createWithIcon(

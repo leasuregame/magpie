@@ -52,10 +52,9 @@ Handler::messageList = (msg, session, next) ->
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and (
-          (type = #{configData.message.MESSAGETYPE.SYSTEM} and DATE(validDate) >= '#{today}') or 
-          (type = #{configData.message.MESSAGETYPE.MESSAGE})
-        )"
+        where: " receiver = #{playerId} and 
+          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
+          status <> #{configData.message.MESSAGESTATUS.ASKING} and DATE(validDate) >= '#{today}'"
         orderby: ' createTime DESC '
       }, cb
 
@@ -701,6 +700,8 @@ changeGroupNameAndSort = (messages) ->
     items.sort (x, y) -> y.createTime - x.createTime
     if n is 'system'
       items.sort (x, y) -> x.status - y.status
+      console.log('system message: ', items.length)
+      console.log(items)
     else if n is 'friend'
       copyItems = _.clone(items)
       newItems = []

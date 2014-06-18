@@ -19,6 +19,10 @@ class VirtualHero extends Hero
     if not card
       throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")
 
+    ### 经验卡Id转换 ###
+    if  50000 < @card_id < 50010
+      @card_id = card.id
+
     @name = card.name
     @init_atk = @atk = parseInt(card_config.atk)
     @init_hp = @hp = parseInt(card_config.hp)

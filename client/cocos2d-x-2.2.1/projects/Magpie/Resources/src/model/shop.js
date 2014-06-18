@@ -63,6 +63,11 @@ var Shop = Entity.extend({
 
             var player = gameData.player;
 
+            // YY数据收集
+            if (typeof(yyAdapter) != "undefined" && yyAdapter.YYGameConsumeOnServer) {
+                yyAdapter.YYGameConsumeOnServer("s" + gameData.user.get("area"), msg.cash - player.get("cash"));
+            }
+
             player.set("gold", msg.gold);
             player.set("cash", msg.cash);
 

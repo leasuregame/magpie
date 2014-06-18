@@ -69,9 +69,17 @@ var User = Entity.extend({
                 version = cc.AssetsManager.getInstance().getVersion();
             }
 
+            var appVersion = lz.platformConfig.VERSION;
+            if (typeof(cc.Application.getInstance().getAppVersion) != "undefined") {
+                appVersion = cc.Application.getInstance().getAppVersion();
+            }
+
+
             cc.log("=================================================");
             cc.log(version);
+            cc.log(appVersion);
             cc.log("=================================================");
+
 
             lz.server.connectGameServer(function () {
                 lz.server.request("connector.userHandler.loginTB", {
@@ -79,7 +87,8 @@ var User = Entity.extend({
                     userId: tbAdapter.TBUserID(),
                     sessionId: tbAdapter.TBSessionID(),
                     areaId: that._area,
-                    version: version
+                    version: version,
+                    appVersion: appVersion
                 }, function (data) {
                     cc.log(data);
 

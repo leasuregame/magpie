@@ -426,7 +426,7 @@ var Server = Entity.extend({
 
         var areaId = gameData.user.get("area");
 
-        if (this._areaList) {
+        if (this._areaList && this._areaList.length > 0) {
             var len = this._areaList.length;
 
             for (var i = 0; i < len; ++i) {

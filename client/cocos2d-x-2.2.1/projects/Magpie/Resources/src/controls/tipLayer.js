@@ -77,7 +77,7 @@ var TipLayer = {
         var url = "uiEffect66";
         var texture = lz.getTexture(main_scene_image[icon]);
 
-        if(isDouble) {
+        if (isDouble) {
             url = "uiEffect86";
         }
 
@@ -86,7 +86,7 @@ var TipLayer = {
         var controller = effect.controller;
         controller.ccbGoodsLabel.setString(str);
 
-        if(isDouble) {
+        if (isDouble) {
             controller.ccbGoodsIcon1.setTexture(texture);
             controller.ccbGoodsIcon2.setTexture(texture);
             controller.ccbGoodsIcon3.setTexture(texture);
@@ -100,6 +100,32 @@ var TipLayer = {
         });
 
         cc.Director.getInstance().getRunningScene().addChild(effect, TIP_LAYER_Z_ORDER);
+    },
+
+    tipCard: function (tableId, str) {
+        cc.log("tipCard: " + tableId + " " + str);
+
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect117, this);
+        var controller = effect.controller;
+        controller.ccbLabel.setString(str);
+
+        var card = Card.create({
+            tableId: tableId,
+            lv: 1,
+            skillLv: 1
+        });
+        var cardItem = CardHeadNode.create(card);
+        cardItem.setScale(0.5);
+        cardItem.setAnchorPoint(cc.p(0.5, 0.5));
+        controller.ccbCardNode.addChild(cardItem);
+
+        effect.setPosition(gameFit.GAME_MIDPOINT);
+        effect.animationManager.setCompletedAnimationCallback(this, function () {
+            effect.removeFromParent();
+        });
+
+        cc.Director.getInstance().getRunningScene().addChild(effect, TIP_LAYER_Z_ORDER);
+
     },
 
     tipAbility: function (value) {

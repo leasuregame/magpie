@@ -509,7 +509,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if is_upgrade
         ### 成功进阶，对应星级初始概率置为0 ###
         player.setInitRate(card.star, 0)
-        player.updateUseCardCoun(card.star, 0)
+        player.updateUseCardCount(card.star, 0)
 
         card.increase('star')
         card.increase('tableId')

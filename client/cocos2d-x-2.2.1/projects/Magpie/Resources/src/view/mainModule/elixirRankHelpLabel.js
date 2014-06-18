@@ -130,56 +130,42 @@ var ElixirRankHelpLabel = LazyLayer.extend({
                 scrollViewLayer.addChild(moneyLabel);
             }
 
-            if (reward.energy && reward.energy > 0) {
-                var energyIcon = cc.Sprite.create(main_scene_image.icon154);
-                energyIcon.setAnchorPoint(cc.p(0, 0.5));
-                energyIcon.setPosition(cc.p(207, y + 30));
-                scrollViewLayer.addChild(energyIcon);
-
-                var energyLabel = cc.LabelTTF.create(reward.energy, "STHeitiTC-Medium", 22);
-                energyLabel.setAnchorPoint(cc.p(0, 0.5));
-                energyLabel.setColor(cc.c3b(108, 41, 41));
-                energyLabel.setPosition(cc.p(253, y + 28));
-                scrollViewLayer.addChild(energyLabel);
-            }
-
-
             if (reward.elixir && reward.elixir > 0) {
                 var elixirIcon = cc.Sprite.create(main_scene_image.icon151);
                 elixirIcon.setAnchorPoint(cc.p(0, 0.5));
-                elixirIcon.setPosition(cc.p(316, y + 30));
+                elixirIcon.setPosition(cc.p(206, y + 30));
                 scrollViewLayer.addChild(elixirIcon);
 
                 var elixirLabel = cc.LabelTTF.create(reward.elixir, "STHeitiTC-Medium", 22);
                 elixirLabel.setAnchorPoint(cc.p(0, 0.5));
                 elixirLabel.setColor(cc.c3b(108, 41, 41));
-                elixirLabel.setPosition(cc.p(362, y + 28));
+                elixirLabel.setPosition(cc.p(252, y + 28));
                 scrollViewLayer.addChild(elixirLabel);
             }
 
             if (reward.power && reward.power > 0) {
                 var powerIcon = cc.Sprite.create(main_scene_image.icon150);
                 powerIcon.setAnchorPoint(cc.p(0, 0.5));
-                powerIcon.setPosition(cc.p(420, y + 30));
+                powerIcon.setPosition(cc.p(310, y + 30));
                 scrollViewLayer.addChild(powerIcon);
 
                 var powerLabel = cc.LabelTTF.create(reward.power, "STHeitiTC-Medium", 22);
                 powerLabel.setAnchorPoint(cc.p(0, 0.5));
                 powerLabel.setColor(cc.c3b(108, 41, 41));
-                powerLabel.setPosition(cc.p(463, y + 28));
+                powerLabel.setPosition(cc.p(353, y + 28));
                 scrollViewLayer.addChild(powerLabel);
             }
 
             if (reward.exp_card && reward.exp_card > 0) {
                 var expCardIcon = cc.Sprite.create(main_scene_image.icon316);
                 expCardIcon.setAnchorPoint(cc.p(0, 0.5));
-                expCardIcon.setPosition(cc.p(500, y + 30));
+                expCardIcon.setPosition(cc.p(390, y + 30));
                 scrollViewLayer.addChild(expCardIcon);
 
                 var expCardLabel = cc.LabelTTF.create(reward.exp_card, "STHeitiTC-Medium", 22);
                 expCardLabel.setAnchorPoint(cc.p(0, 0.5));
                 expCardLabel.setColor(cc.c3b(108, 41, 41));
-                expCardLabel.setPosition(cc.p(550, y + 28));
+                expCardLabel.setPosition(cc.p(440, y + 28));
                 scrollViewLayer.addChild(expCardLabel);
             }
         }

@@ -22,15 +22,26 @@ var FUNCTION_OPEN = {
     "3": {
         "tableName": "lottery",
         "tip": "寻宝已开启，现在可回到首页参与该功能。",
-        "name": "treasureHuntGuide"
+        "name": "lotteryGuide",
+        "childName": "treasureHuntGuide"
     },
 
     "4": {
         "tableName": "ranking_list",
         "tip": "排行榜已开放，现在可回到首页，进行查询。",
         "name": "rankGuide"
+    },
+    "5": {
+        "tableName": "card_smelt",
+        "tip": "觉醒已开启，现在可回到首页参与该功能。",
+        "name": "smeltGuide"
+    },
+    "6": {
+        "tableName": "use_pill",
+        "tip": "觉醒已开启，现在可回到首页参与该功能。",
+        "name": "smeltGuide",
+        "childName": "usePillGuide"
     }
-
 };
 
 var CARD_LINEUP_LIMIT = [
@@ -105,6 +116,8 @@ var gameGuide = {
     _lotteryGuide: false,
     _bossGuide: false,
     _succorCardsGuide: false,
+    _cardSmeltGuide: false,
+    _usePillGuide: false,
 
     init: function () {
         cc.log("gameGuide init");
@@ -121,6 +134,8 @@ var gameGuide = {
         this._lotteryGuide = false;
         this._bossGuide = false;
         this._succorCardsGuide = false;
+        this._cardSmeltGuide = false;
+        this._usePillGuide = false;
     },
 
     updateGuide: function () {
@@ -141,7 +156,6 @@ var gameGuide = {
         if (lv == table["pass_skillafresh"]) {
             this.set("isFirstPassiveSkillAfresh", true);
         }
-
 
         //卡槽开放
         len = CARD_LINEUP_LIMIT.length;

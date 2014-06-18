@@ -24,6 +24,7 @@ Handler::attack = (msg, session, next) ->
 
   player = null
   battle_log = null
+  isWin = false
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
@@ -36,39 +37,56 @@ Handler::attack = (msg, session, next) ->
       if player.power.value < passData.power_consume
         return cb({code: 501, msg: '体力不足'})
 
+      if player.expPassCount() <= 0
+        return cb({code: 501, msg: '今日免费次数已用完'})
+
       fightManager.pve {pid: player.id, tableId: passId, table: 'exp_pass_config'}, cb
 
     (bl, cb) ->
       battle_log = bl
-      addExpCards player, caculateExpCardReward(bl, passData), cb
+      isWin = bl.winner is 'own'
 
-    (cards, cb) ->
-      entityUtil.upgradePlayer player, passData.player_exp, (isUpgrade, level9Box, rewards) ->
-        cb(null, cards, isUpgrade, level9Box, rewards)
+      if isWin
+        addExpCards player, bl, caculateExpCardReward(passData), cb
+      else 
+        cb(null)
 
-  ], (err, cards, isUpgrade, level9Box, rewards) ->
+    (cb) ->
+      if isWin
+        player.updateGift 'expPassFreeCount', player.dailyGift.expPassFreeCount-1
+        entityUtil.upgradePlayer player, passData.player_exp, (isUpgrade, level9Box, rewards) ->
+          if isUpgrade
+            upgradeInfo = {
+              lv: player.lv
+              rewards: rew
+              friendsCount: player.friendsCount
+            }
+          else 
+            upgradeInfo = null
+
+          cb(null, isUpgrade, level9Box, upgradeInfo)
+      else
+        cb(null, false)
+
+  ], (err, isUpgrade, level9Box, upgradeInfo) ->
     if err
-      logger.error(err)
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    player.consumePower(passData.power_consume)
+    player.consumePower(if isWin then passData.power_consume else 1)
     player.save()
     next(null, {
       code: 200
       msg: 
-        battleLog: battle_log 
-        cards: cards
         exp: passData.player_exp
         power: player.power
         isUpgrade: isUpgrade
         level9Box: level9Box if isUpgrade
-        rewards: rewards if isUpgrade
+        upgradeInfo: upgradeInfo if isUpgrade
+        battleLog: battle_log 
       }
     )
 
-
-caculateExpCardReward = (bl, passData) ->
-  return if bl.winner is 'enemy'
+caculateExpCardReward = (passData) ->
 
   [c1, c2] = passData.total_count_scope?.split(',')
   [c3, c4] = passData.litle_count_scope?.split(',')
@@ -86,9 +104,10 @@ caculateExpCardReward = (bl, passData) ->
   ]
 
 
-addExpCards = (player, items, cb) ->
+addExpCards = (player, bl, items, cb) ->
+  bl.rewards.cards = []
   if not items or items.length is 0
-    return cb(null, [])
+    return cb(null)
   
   async.map items, (item, done) ->
     if item[1] > 0
@@ -99,4 +118,5 @@ addExpCards = (player, items, cb) ->
     cards = cards.reduce(
       (x, y) -> x.concat(y)
     , [])
-    cb(null, cards)
+    bl.rewards.cards = cards
+    cb(null)

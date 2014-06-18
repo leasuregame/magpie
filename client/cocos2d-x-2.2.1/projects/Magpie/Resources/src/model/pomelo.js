@@ -1658,11 +1658,13 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         };
 
         var onData = function (data) {
-            var msg = data;
-            if (decode) {
-                msg = decode(msg);
+            if (data) {
+                var msg = data;
+                if (decode) {
+                    msg = decode(msg);
+                }
+                processMessage(pomelo, msg);
             }
-            processMessage(pomelo, msg);
         };
 
         var onKick = function (data) {
@@ -1679,6 +1681,8 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         };
 
         var processMessage = function (pomelo, msg) {
+            if (!msg) return;
+
             if (!msg.id) {
                 // server push message
                 pomelo.emit(msg.route, msg.body);

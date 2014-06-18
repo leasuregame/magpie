@@ -189,6 +189,30 @@ var CardList = Entity.extend({
                 cc.log("upgrade fail");
             }
         });
+    },
+
+    dissolveCard: function (ids, cb) {
+        cc.log("Card dissolveCard: " + ids);
+
+        var that = this;
+        lz.server.request("area.convertorHandler.dissolveCard", {
+            cardIds: ids
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cc.log("dissolveCard success");
+
+                var msg = data.msg;
+                gameData.player.adds(msg);
+                that.deleteById(ids);
+
+                cb(msg);
+            } else {
+                cc.log("dissolveCard fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
     }
 });
 

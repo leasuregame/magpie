@@ -5,7 +5,6 @@ describe("Area Server", function() {
         doAjax('/loaddata/csv', {}, function() {});
       });
 
-
       describe("当玩家可以攻打经验副本时", function() {
         describe('攻击成功', function() {
 
@@ -100,7 +99,7 @@ describe("Area Server", function() {
               value: 100
             },
             dailyGift: {
-              freeExpPassCount: 0
+              expPassFreeCount: 0
             }
           }, function(res) {
             loginWith('arthur', '1', 1);

@@ -20,7 +20,8 @@ var vipPrivilegeDescription = {
     give_bless_count: "每日送出祝福次数",
     receive_bless_count: "每日接受祝福次数",
     challenge_buy_count: "每日有奖竞技购买次数",
-    spirit_collect_count: "每日灵气采集次数"
+    spirit_collect_count: "每日灵气采集次数",
+    exp_instance_count: "每日仙灵山谷购买次数"
 };
 
 var VipPrivilegeLayer = LazyLayer.extend({
@@ -78,7 +79,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     color: cc.c3b(255, 248, 69)
                 },
                 {
-                    string: "再冲",
+                    string: "再充",
                     fontName: "STHeitiTC-Medium",
                     fontSize: 23
                 },
@@ -134,6 +135,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         var vipTable = outputTables.vip.rows;
         var vipPrivilegeLabel, vipPrivilegeIcon;
+        var index;
 
         for (var i = 0; i < len; ++i) {
 
@@ -144,6 +146,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
             var bgSpriteUrl = main_scene_image.icon169;
             if (vip == vipPrivilege.id) {
                 bgSpriteUrl = main_scene_image.icon168;
+                index = i;
             }
 
             var bgIcon = cc.Sprite.create(bgSpriteUrl);
@@ -254,16 +257,8 @@ var VipPrivilegeLayer = LazyLayer.extend({
         this.addChild(scrollView);
 
         scrollView.setContentSize(cc.size(500, scrollViewHeight));
-
-        var size = this._vipPrivilegeLayerFit.scrollViewSize;
-
-        if (vip > 0) {
-            offsetY = (vip - 1) * -440 + (size.height - 440);
-            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
-        } else {
-            offsetY = scrollView.minContainerOffset().y;
-        }
-
+        
+        offsetY = Math.min(scrollView.minContainerOffset().y + 440 * (index || 0), 0);
         scrollView.setContentOffset(cc.p(0, offsetY));
 
         return true;

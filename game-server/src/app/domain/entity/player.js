@@ -486,7 +486,7 @@ var Player = (function(_super) {
 
         var dg = {
             expPassCount: EXP_PASS_COUNT,
-            expPassBuyCount: EXP_PASS_BUY_COUNT + vipPrivilege.exp_instance_count
+            expPassBuyCount: EXP_PASS_BUY_COUNT + vipPrivilege.exp_instance_count,
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             lotteryCountUsed: 0,

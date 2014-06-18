@@ -51,7 +51,7 @@ Handler::getTurnReward = (msg, session, next) ->
       player.addPower base_reward.powerValue
       data.money = base_reward.money
       data.power = base_reward.powerValue
-      playerManager.addExpCardFor player, base_reward.exp_card, cb
+      playerManager.addExpCardFor player, base_reward.exp_card, 2, cb
   ], (err, cards) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})

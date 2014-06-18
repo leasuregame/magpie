@@ -20,6 +20,7 @@ var Card = require("../../domain/entity/card");
 var async = require('async');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
+var table = require('../../manager/table');
 
 var CardDao = (function(_super) {
 	utility.extends(CardDao, _super);
@@ -78,15 +79,19 @@ var CardDao = (function(_super) {
 	};
 
 	CardDao.createExpCard = function(options, cb) {
-		var exp_card_id = require('../../../config/data').card.EXP_CARD_ID;
+		if (typeof options.data.tableId == 'undefined') {
+			var star = options.data.star;
+			var item = table.getTable('exp_cards').findOne(function(id, row) {
+				return parseInt(row.star) == parseInt(star);
+			});
+	    var exp = item.exp || 0
+	    var tableId = item.id || (configData.card.EXP_CARD_ID + star);
 
-		return CardDao.create({data: {
-			playerId: options.data.playerId,
-			tableId: exp_card_id,
-			star: 1,
-			lv: options.data.lv || 1,
-			exp: options.data.exp || 0
-		}}, cb);
+	    options.data.exp = exp;
+	    options.data.tableId = tableId;
+	  }
+
+		return CardDao.create(options, cb);
 	};
 
 	CardDao.totalCount = function(cb) {

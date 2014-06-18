@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>arthur wu</Author>
+  <LastAuthor>arthur wu</LastAuthor>
+  <Created>2014-06-11T08:11:57Z</Created>
+  <LastSaved>2014-06-17T11:17:45Z</LastSaved>
+  <Company>le zhi of zhuhai</Company>
+  <Version>14.0</Version>
+ </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <KSOProductBuildVer dt:dt="string">2052-9.1.0.4636</KSOProductBuildVer>
+ </CustomDocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>10700</WindowHeight>
+  <WindowWidth>35680</WindowWidth>
+  <WindowTopX>280</WindowTopX>
+  <WindowTopY>2320</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s65">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="经验副本配置表">
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s65" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="17">
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="130" ss:Span="1"/>
+   <Column ss:Index="3" ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="270"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="338"/>
+   <Column ss:Index="8" ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="86"/>
+   <Column ss:Index="12" ss:StyleID="s65" ss:Width="93"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="183"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="185" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s66">
+    <Cell><Data ss:Type="String">经验副本等级序号</Data></Cell>
+    <Cell><Data ss:Type="String">开启等级</Data></Cell>
+    <Cell><Data ss:Type="String">所有卡牌id</Data></Cell>
+    <Cell><Data ss:Type="String">阵型</Data></Cell>
+    <Cell><Data ss:Type="String">位置是否随机</Data></Cell>
+    <Cell><Data ss:Type="String">boss卡牌id</Data></Cell>
+    <Cell><Data ss:Type="String">boss暴击率</Data></Cell>
+    <Cell><Data ss:Type="String">boss闪避率</Data></Cell>
+    <Cell><Data ss:Type="String">boos技能触发概率</Data></Cell>
+    <Cell><Data ss:Type="String">boos技能加成效果</Data></Cell>
+    <Cell><Data ss:Type="String">BOSS攻击加成</Data></Cell>
+    <Cell><Data ss:Type="String">BOSS生命加成</Data></Cell>
+    <Cell><Data ss:Type="String">经验卡掉落总是范围</Data></Cell>
+    <Cell><Data ss:Type="String">小额数量卡牌掉落范围</Data></Cell>
+    <Cell><Data ss:Type="String">获得经验卡牌的星级</Data></Cell>
+    <Cell><Data ss:Type="String">玩家获得的经验</Data></Cell>
+    <Cell><Data ss:Type="String">消耗体力值</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s66">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">limit_lv</Data></Cell>
+    <Cell><Data ss:Type="String">cards</Data></Cell>
+    <Cell><Data ss:Type="String">formation</Data></Cell>
+    <Cell><Data ss:Type="String">is_random</Data></Cell>
+    <Cell><Data ss:Type="String">boss_id</Data></Cell>
+    <Cell><Data ss:Type="String">boss_crit</Data></Cell>
+    <Cell><Data ss:Type="String">boss_dodge</Data></Cell>
+    <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
+    <Cell><Data ss:Type="String">boss_attr</Data></Cell>
+    <Cell><Data ss:Type="String">atk_inc</Data></Cell>
+    <Cell><Data ss:Type="String">hp_inc</Data></Cell>
+    <Cell><Data ss:Type="String">total_count_scope</Data></Cell>
+    <Cell><Data ss:Type="String">litle_count_scope</Data></Cell>
+    <Cell><Data ss:Type="String">exp_card_stars</Data></Cell>
+    <Cell><Data ss:Type="String">player_exp</Data></Cell>
+    <Cell><Data ss:Type="String">power_consume</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="String">50001#50001#50001#50001#50002</Data></Cell>
+    <Cell><Data ss:Type="String">1:50001,2:50002,3:50001,4:50001,6:50001</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s66"><Data ss:Type="Number">50002</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">93</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="String">9,11</Data></Cell>
+    <Cell><Data ss:Type="String">0,2</Data></Cell>
+    <Cell><Data ss:Type="String">1,2,3</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">35</Data></Cell>
+    <Cell><Data ss:Type="String">50003#50003#50003#50003#50004</Data></Cell>
+    <Cell><Data ss:Type="String">1:50003,2:50004,3:50003,4:50003,6:50003</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s66"><Data ss:Type="Number">50004</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">93</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="String">9,11</Data></Cell>
+    <Cell><Data ss:Type="String">0,2</Data></Cell>
+    <Cell><Data ss:Type="String">2,3,4</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell><Data ss:Type="String">50005#50005#50005#50005#50006</Data></Cell>
+    <Cell><Data ss:Type="String">1:50005,2:50006,3:50005,4:50005,6:50005</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s66"><Data ss:Type="Number">50006</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">86</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="String">9,11</Data></Cell>
+    <Cell><Data ss:Type="String">0,2</Data></Cell>
+    <Cell><Data ss:Type="String">3,4,5</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="6" ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="6" ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <LeftColumnVisible>11</LeftColumnVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>16</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="export">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s65" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="17">
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="135"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="136"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="128"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">merge_to</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">经验副本配置表</Data></Cell>
+    <Cell><Data ss:Type="String">exp_pass_config</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

@@ -192,7 +192,7 @@ products =
       if _.keys(player.cards).length + times > player.cardsCount
         return next(null, {code: 501, msg: '卡库容量不足'})
 
-      playerManager.addExpCardFor player, times, (err, cards) ->
+      playerManager.addExpCardFor player, times, 3, (err, cards) ->
         if err
           return next(null, err)
 

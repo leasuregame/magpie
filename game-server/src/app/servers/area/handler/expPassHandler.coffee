@@ -77,7 +77,7 @@ Handler::attack = (msg, session, next) ->
     next(null, {
       code: 200
       msg: 
-        exp: passData.player_exp
+        exp: player.exp
         power: player.power
         isUpgrade: isUpgrade
         level9Box: level9Box if isUpgrade

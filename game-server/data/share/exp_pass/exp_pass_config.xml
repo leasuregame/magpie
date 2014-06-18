@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -12,7 +11,7 @@
   <Created>2014-06-11T08:11:57Z</Created>
   <LastSaved>2014-06-17T03:27:41Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
-  <Version>15.00</Version>
+  <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <KSOProductBuildVer dt:dt="string">2052-9.1.0.4636</KSOProductBuildVer>
@@ -21,10 +20,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9210</WindowHeight>
-  <WindowWidth>25065</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>11760</WindowHeight>
+  <WindowWidth>33360</WindowWidth>
+  <WindowTopX>3520</WindowTopX>
+  <WindowTopY>280</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -54,14 +53,14 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="经验副本配置表">
-  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="96.75"
-   ss:DefaultRowHeight="17.0625">
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="17">
    <Column ss:Index="2" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="270"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="337.5"/>
-   <Column ss:Index="7" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="85.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="338"/>
+   <Column ss:Index="7" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="86"/>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">经验副本等级序号</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">所有卡牌id</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">阵型</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">位置是否随机</Data></Cell>
@@ -72,9 +71,15 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">boos技能加成效果</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">BOSS攻击加成</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">BOSS生命加成</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">开启等级</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">经验卡掉落总是范围</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">小额数量卡牌掉落范围</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">获得经验卡牌的星级</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">玩家获得的经验</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">消耗体力值</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">cards</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">formation</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">is_random</Data></Cell>
@@ -85,6 +90,12 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">boss_attr</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">atk_inc</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">hp_inc</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">limit_lv</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">total_count_scope</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">litle_count_scope</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">exp_card_stars</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">player_exp</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">power_consume</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -97,6 +108,12 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">93</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="String">9,11</Data></Cell>
+    <Cell><Data ss:Type="String">0,2</Data></Cell>
+    <Cell><Data ss:Type="String">1,2,3</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -109,6 +126,12 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">93</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">35</Data></Cell>
+    <Cell><Data ss:Type="String">9,11</Data></Cell>
+    <Cell><Data ss:Type="String">0,2</Data></Cell>
+    <Cell><Data ss:Type="String">2,3,4</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -121,6 +144,12 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">86</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell><Data ss:Type="String">9,11</Data></Cell>
+    <Cell><Data ss:Type="String">0,2</Data></Cell>
+    <Cell><Data ss:Type="String">3,4,5</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="5" ss:StyleID="s63"/>
@@ -147,12 +176,19 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
-   <LeftColumnVisible>2</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>11</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -161,11 +197,11 @@
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="96.75"
-   ss:DefaultRowHeight="17.0625">
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="17">
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="128.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="136"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="128"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">export_name</Data></Cell>
@@ -182,6 +218,7 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>

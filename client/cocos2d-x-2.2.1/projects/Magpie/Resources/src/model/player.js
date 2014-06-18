@@ -186,6 +186,10 @@ var Player = Entity.extend({
         gameData.exchange.init(data.exchangeCards);
         gameData.boss.init(data.bossInfo);
 
+        gameData.dailyInstances.init({
+            "expInstanceCount": data.dailyGift.expPassFreeCount
+        });
+
         this.set("ability", this.getAbility());
     },
 
@@ -245,6 +249,10 @@ var Player = Entity.extend({
             gameData.lottery.update({
                 goldLuckyCard10: msg.dailyGift.goldLuckyCard10,
                 goldLuckyCardForFragment: msg.dailyGift.goldLuckyCardForFragment
+            });
+
+            gameData.dailyInstances.update({
+                "expInstanceCount": msg.dailyGift.expPassFreeCount
             });
 
             if (msg.goldCards) {

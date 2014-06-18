@@ -25,8 +25,6 @@ var nameChanged = {
     "仙丹配置表": "elixir",
     "resource_cards": "资源卡牌配置表",
     "资源卡牌配置表": "resource_cards",
-    "exp_card_exp": "经验卡经验配置表",
-    "经验卡经验配置表": "exp_card_exp",
     "factors": "基础属性成长表",
     "基础属性成长表": "factors",
     "new_card_id_map": "卡牌新旧配置表ID对应关系表",
@@ -35,6 +33,8 @@ var nameChanged = {
     "高星级卡牌进阶概率配置表": "star_upgrade_rate",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "exp_pass_config": "经验副本配置表",
+    "经验副本配置表": "exp_pass_config",
     "login_count_reward": "开服累计登陆奖励配置表",
     "开服累计登陆奖励配置表": "login_count_reward",
     "new_year_rechage": "新年充值奖励",
@@ -75,10 +75,6 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
-    "exp_pass_cards": "经验副本卡牌配置表",
-    "经验副本卡牌配置表": "exp_pass_cards",
-    "exp_pass_config": "经验副本配置表",
-    "经验副本配置表": "exp_pass_config",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -11716,61 +11712,41 @@ var outputTables = {
                 "id": 50001,
                 "exp": 500,
                 "price": 100,
+                "star": 1,
+                "lv": 1,
                 "remark": "1星经验卡"
             },
             "50002": {
                 "id": 50002,
                 "exp": 1000,
                 "price": 100,
+                "star": 2,
+                "lv": 1,
                 "remark": "2星经验卡"
             },
             "50003": {
                 "id": 50003,
                 "exp": 2000,
                 "price": 100,
+                "star": 3,
+                "lv": 1,
                 "remark": "3星经验卡"
             },
             "50004": {
                 "id": 50004,
                 "exp": 4000,
                 "price": 100,
+                "star": 4,
+                "lv": 1,
                 "remark": "4星经验卡"
             },
             "50005": {
                 "id": 50005,
                 "exp": 7000,
                 "price": 100,
+                "star": 5,
+                "lv": 1,
                 "remark": "5星经验卡"
-            }
-        }
-    },
-    "exp_card_exp": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp": 500
-            },
-            "2": {
-                "id": 2,
-                "lv": 1,
-                "exp": 1000
-            },
-            "3": {
-                "id": 3,
-                "lv": 1,
-                "exp": 2000
-            },
-            "4": {
-                "id": 4,
-                "lv": 1,
-                "exp": 4000
-            },
-            "5": {
-                "id": 5,
-                "lv": 1,
-                "exp": 7000
             }
         }
     },
@@ -13174,6 +13150,65 @@ var outputTables = {
             }
         }
     },
+    "exp_pass_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "limit_lv": 15,
+                "cards": "50001#50001#50001#50001#50002",
+                "formation": "1:50001,2:50002,3:50001,4:50001,6:50001",
+                "boss_id": 50002,
+                "boss_crit": 10,
+                "boss_dodge": 10,
+                "trigger_rate": 35,
+                "boss_attr": 93,
+                "atk_inc": 0,
+                "hp_inc": 50,
+                "total_count_scope": "9,11",
+                "litle_count_scope": "0,2",
+                "exp_card_stars": "1,2,3",
+                "player_exp": 20,
+                "power_consume": 10
+            },
+            "2": {
+                "id": 2,
+                "limit_lv": 35,
+                "cards": "50003#50003#50003#50003#50004",
+                "formation": "1:50003,2:50004,3:50003,4:50003,6:50003",
+                "boss_id": 50004,
+                "boss_crit": 10,
+                "boss_dodge": 10,
+                "trigger_rate": 40,
+                "boss_attr": 93,
+                "atk_inc": 0,
+                "hp_inc": 50,
+                "total_count_scope": "9,11",
+                "litle_count_scope": "0,2",
+                "exp_card_stars": "2,3,4",
+                "player_exp": 50,
+                "power_consume": 10
+            },
+            "3": {
+                "id": 3,
+                "limit_lv": 60,
+                "cards": "50005#50005#50005#50005#50006",
+                "formation": "1:50005,2:50006,3:50005,4:50005,6:50005",
+                "boss_id": 50006,
+                "boss_crit": 10,
+                "boss_dodge": 10,
+                "trigger_rate": 40,
+                "boss_attr": 86,
+                "atk_inc": 0,
+                "hp_inc": 50,
+                "total_count_scope": "9,11",
+                "litle_count_scope": "0,2",
+                "exp_card_stars": "3,4,5",
+                "player_exp": 100,
+                "power_consume": 10
+            }
+        }
+    },
     "login_count_reward": {
         "colComment": {},
         "rows": {
@@ -13543,7 +13578,8 @@ var outputTables = {
                 "challenge_count": 10,
                 "challenge_buy_count": 5,
                 "collect_count": 15,
-                "exp_card_count": 40
+                "exp_card_count": 40,
+                "exp_pass_count": 5
             }
         }
     },
@@ -13926,142 +13962,6 @@ var outputTables = {
                 "id": "damageOfRankHonorGap",
                 "value": 3000,
                 "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
-            }
-        }
-    },
-    "exp_pass_cards": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "50001": {
-                "id": 50001,
-                "card_id": "1星经验元灵",
-                "atk": 1339.2,
-                "hp": 4687.2,
-                "dodge_rate": 5,
-                "crit_rate": 5
-            },
-            "50002": {
-                "id": 50002,
-                "card_id": "2星经验元灵",
-                "atk": 2042.4,
-                "hp": 7148.400000000001,
-                "dodge_rate": 5,
-                "crit_rate": 5
-            },
-            "50003": {
-                "id": 50003,
-                "card_id": "2星经验元灵",
-                "atk": 3287.7,
-                "hp": 11506.949999999999,
-                "dodge_rate": 5,
-                "crit_rate": 5
-            },
-            "50004": {
-                "id": 50004,
-                "card_id": "3星经验元灵",
-                "atk": 5083,
-                "hp": 17790.5,
-                "dodge_rate": 10,
-                "crit_rate": 10
-            },
-            "50005": {
-                "id": 50005,
-                "card_id": "3星经验元灵",
-                "atk": 7163,
-                "hp": 25070.5,
-                "dodge_rate": 5,
-                "crit_rate": 5
-            },
-            "50006": {
-                "id": 50006,
-                "card_id": "4星经验元灵",
-                "atk": 9838.4,
-                "hp": 34434.4,
-                "dodge_rate": 10,
-                "crit_rate": 10
-            },
-            "50007": {
-                "id": 50007,
-                "card_id": "4星经验元灵",
-                "atk": 12542.4,
-                "hp": 43898.4,
-                "dodge_rate": 5,
-                "crit_rate": 5
-            },
-            "50008": {
-                "id": 50008,
-                "card_id": "5星经验元灵",
-                "atk": 14058.2,
-                "hp": 49203.700000000004,
-                "dodge_rate": 10,
-                "crit_rate": 10
-            }
-        }
-    },
-    "exp_pass_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "cards": "50001#50001#50001#50001#50002",
-                "boss_id": 50002,
-                "boss_crit": 15,
-                "boss_dodge": 0,
-                "trigger_rate": 40,
-                "boss_attr": 180,
-                "atk_inc": 50,
-                "hp_inc": 50
-            },
-            "2": {
-                "id": 2,
-                "cards": "50002#50002#50002#50002#50003",
-                "boss_id": 50003,
-                "boss_crit": 16,
-                "boss_dodge": 1,
-                "trigger_rate": 41,
-                "boss_attr": 181,
-                "atk_inc": 51,
-                "hp_inc": 51
-            },
-            "3": {
-                "id": 3,
-                "cards": "50003#50003#50003#50003#50004",
-                "boss_id": 50004,
-                "boss_crit": 17,
-                "boss_dodge": 2,
-                "trigger_rate": 42,
-                "boss_attr": 182,
-                "atk_inc": 52,
-                "hp_inc": 52
-            },
-            "4": {
-                "id": 4,
-                "cards": "50004#50004#50004#50004#50005",
-                "boss_id": 50005,
-                "boss_crit": 18,
-                "boss_dodge": 3,
-                "trigger_rate": 43,
-                "boss_attr": 183,
-                "atk_inc": 53,
-                "hp_inc": 53
-            },
-            "5": {
-                "id": 5,
-                "cards": "50004#50004#50004#50004#50005",
-                "boss_id": 50005,
-                "boss_crit": 19,
-                "boss_dodge": 4,
-                "trigger_rate": 44,
-                "boss_attr": 184,
-                "atk_inc": 54,
-                "hp_inc": 54
             }
         }
     },
@@ -31489,6 +31389,7 @@ var outputTables = {
                 "layer": 5,
                 "card_count": 3,
                 "cards": "20000#20000#20001",
+                "formation": "1:20001,2:20000,3:20000",
                 "boss_id": 20001,
                 "boss_crit": 15,
                 "boss_dodge": 0,
@@ -31526,6 +31427,7 @@ var outputTables = {
                 "layer": 10,
                 "card_count": 4,
                 "cards": "20001#20001#20001#20002",
+                "formation": "2:20002,3:20001,3:20001,4:20001",
                 "boss_id": 20002,
                 "boss_crit": 20,
                 "boss_dodge": 0,
@@ -31563,6 +31465,7 @@ var outputTables = {
                 "layer": 15,
                 "card_count": 5,
                 "cards": "20002#20002#20002#20002#20003",
+                "formation": "3:20003,1:20002,2:20002,4:20002,5:20002",
                 "boss_id": 20003,
                 "boss_crit": 20,
                 "boss_dodge": 0,
@@ -31600,6 +31503,7 @@ var outputTables = {
                 "layer": 20,
                 "card_count": 5,
                 "cards": "20003#20003#20003#20003#20004",
+                "formation": "4:20004,1:20003,2:20003,3:20003,5:20003",
                 "boss_id": 20004,
                 "boss_crit": 20,
                 "boss_dodge": 0,
@@ -31637,6 +31541,7 @@ var outputTables = {
                 "layer": 25,
                 "card_count": 5,
                 "cards": "20004#20004#20004#20004#20005",
+                "formation": "5:20005,1:20004,2:20004,3:20004,6:20004",
                 "boss_id": 20005,
                 "boss_crit": 20,
                 "boss_dodge": 5,
@@ -31674,6 +31579,7 @@ var outputTables = {
                 "layer": 30,
                 "card_count": 5,
                 "cards": "20005#20005#20005#20005#20006",
+                "formation": "2:20006,1:20005,3:20005,4:20005,6:20005",
                 "boss_id": 20006,
                 "boss_crit": 20,
                 "boss_dodge": 5,
@@ -31711,6 +31617,7 @@ var outputTables = {
                 "layer": 35,
                 "card_count": 5,
                 "cards": "20006#20006#20006#20006#20007",
+                "formation": "5:20007,1:20006,3:20006,4:20006,6:20006",
                 "boss_id": 20007,
                 "boss_crit": 20,
                 "boss_dodge": 5,
@@ -43489,6 +43396,54 @@ var outputTables = {
                 "hp": 226417.5,
                 "dodge_rate": 10,
                 "crit_rate": 10
+            },
+            "50001": {
+                "id": 50001,
+                "card_id": "1星经验元灵",
+                "atk": 1339.2,
+                "hp": 4687.2,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50002": {
+                "id": 50002,
+                "card_id": "2星经验元灵",
+                "atk": 2042.4,
+                "hp": 7148.400000000001,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50003": {
+                "id": 50003,
+                "card_id": "2星经验元灵",
+                "atk": 3287.7,
+                "hp": 11506.949999999999,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50004": {
+                "id": 50004,
+                "card_id": "3星经验元灵",
+                "atk": 5083,
+                "hp": 17790.5,
+                "dodge_rate": 10,
+                "crit_rate": 10
+            },
+            "50005": {
+                "id": 50005,
+                "card_id": "3星经验元灵",
+                "atk": 7163,
+                "hp": 25070.5,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50006": {
+                "id": 50006,
+                "card_id": "4星经验元灵",
+                "atk": 9838.4,
+                "hp": 34434.4,
+                "dodge_rate": 10,
+                "crit_rate": 10
             }
         }
     },
@@ -52835,7 +52790,8 @@ var outputTables = {
                 "spirit_collect_count": 0,
                 "challenge_buy_count": 0,
                 "exp_instance_count": 0,
-                "friend_count": 0
+                "friend_count": 0,
+                "exp_pass_free_count": 0
             },
             "1": {
                 "id": 1,
@@ -52846,7 +52802,8 @@ var outputTables = {
                 "spirit_collect_count": 0,
                 "challenge_buy_count": 0,
                 "exp_instance_count": 0,
-                "friend_count": 0
+                "friend_count": 0,
+                "exp_pass_free_count": 0
             },
             "2": {
                 "id": 2,
@@ -52857,7 +52814,8 @@ var outputTables = {
                 "spirit_collect_count": 1,
                 "challenge_buy_count": 0,
                 "exp_instance_count": 0,
-                "friend_count": 0
+                "friend_count": 0,
+                "exp_pass_free_count": 0
             },
             "3": {
                 "id": 3,
@@ -52868,7 +52826,8 @@ var outputTables = {
                 "spirit_collect_count": 2,
                 "challenge_buy_count": 5,
                 "exp_instance_count": 0,
-                "friend_count": 0
+                "friend_count": 0,
+                "exp_pass_free_count": 0
             },
             "4": {
                 "id": 4,
@@ -52879,7 +52838,8 @@ var outputTables = {
                 "spirit_collect_count": 3,
                 "challenge_buy_count": 10,
                 "exp_instance_count": 1,
-                "friend_count": 5
+                "friend_count": 5,
+                "exp_pass_free_count": 1
             },
             "5": {
                 "id": 5,
@@ -52890,7 +52850,8 @@ var outputTables = {
                 "spirit_collect_count": 4,
                 "challenge_buy_count": 15,
                 "exp_instance_count": 1,
-                "friend_count": 10
+                "friend_count": 10,
+                "exp_pass_free_count": 1
             },
             "6": {
                 "id": 6,
@@ -52901,7 +52862,8 @@ var outputTables = {
                 "spirit_collect_count": 5,
                 "challenge_buy_count": 20,
                 "exp_instance_count": 2,
-                "friend_count": 15
+                "friend_count": 15,
+                "exp_pass_free_count": 2
             },
             "7": {
                 "id": 7,
@@ -52912,7 +52874,8 @@ var outputTables = {
                 "spirit_collect_count": 6,
                 "challenge_buy_count": 25,
                 "exp_instance_count": 2,
-                "friend_count": 20
+                "friend_count": 20,
+                "exp_pass_free_count": 2
             },
             "8": {
                 "id": 8,
@@ -52923,7 +52886,8 @@ var outputTables = {
                 "spirit_collect_count": 7,
                 "challenge_buy_count": 30,
                 "exp_instance_count": 3,
-                "friend_count": 25
+                "friend_count": 25,
+                "exp_pass_free_count": 3
             },
             "9": {
                 "id": 9,
@@ -52934,7 +52898,8 @@ var outputTables = {
                 "spirit_collect_count": 8,
                 "challenge_buy_count": 35,
                 "exp_instance_count": 4,
-                "friend_count": 30
+                "friend_count": 30,
+                "exp_pass_free_count": 4
             },
             "10": {
                 "id": 10,
@@ -52945,7 +52910,8 @@ var outputTables = {
                 "spirit_collect_count": 9,
                 "challenge_buy_count": 40,
                 "exp_instance_count": 5,
-                "friend_count": 35
+                "friend_count": 35,
+                "exp_pass_free_count": 5
             },
             "11": {
                 "id": 11,
@@ -52956,7 +52922,8 @@ var outputTables = {
                 "spirit_collect_count": 10,
                 "challenge_buy_count": 45,
                 "exp_instance_count": 5,
-                "friend_count": 40
+                "friend_count": 40,
+                "exp_pass_free_count": 5
             },
             "12": {
                 "id": 12,
@@ -52967,7 +52934,8 @@ var outputTables = {
                 "spirit_collect_count": 11,
                 "challenge_buy_count": 50,
                 "exp_instance_count": 5,
-                "friend_count": 45
+                "friend_count": 45,
+                "exp_pass_free_count": 5
             }
         }
     },

@@ -166,7 +166,7 @@ lz.format2 = function (str, fontName, fontSize, strSize) {
         var size = 0;
         var index = 0;
 
-        if(len2 == 0) {
+        if (len2 == 0) {
             strList.push(temStr);
             continue;
         }
@@ -178,7 +178,7 @@ lz.format2 = function (str, fontName, fontSize, strSize) {
                 index = j - 1;
                 j--;
                 size = 0;
-            } else if(j == len2 - 1){
+            } else if (j == len2 - 1) {
                 strList.push(temStr.substring(index, len2));
             }
         }
@@ -384,21 +384,28 @@ lz.getRewardString = function (data) {
                 var cards = data[key];
                 var count = {};
                 var len = cards.length;
-                var table;
+                var tableId;
 
                 for (var i = 0; i < len; ++i) {
                     if (cards[i]) {
-                        table = cards[i].table;
-                        count[table] = count[table] ? count[table] + 1 : 1;
+                        tableId = cards[i].tableId;
+                        count[tableId] = count[tableId] ? count[tableId] + 1 : 1;
                     }
                 }
 
-                for (table in count) {
-                    if (count[table]) {
+                for (tableId in count) {
+                    if (count[tableId]) {
+                        var card = Card.create({
+                            tableId: tableId,
+                            lv: 1,
+                            skillLv: 1
+                        });
                         str.push({
-                            str: reward.name + " : " + count[table],
+                            str: card.get("name") + " : " + count[tableId],
                             color: reward.color,
-                            icon: reward.icon
+                            card: CardHeadNode.create(
+                                card
+                            )
                         });
                     }
                 }

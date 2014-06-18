@@ -88,13 +88,15 @@ var ExpInstanceLayer = cc.Layer.extend({
         this._powerLabel.setString(player.get("power") + "/" + player.get("maxPower"));
 
         var lv = player.get("lv");
-        var table = outputTables.exp_instance_limit.rows;
+        var table = outputTables.exp_pass_config.rows;
 
-        for (var i = 0; i < 3; i++) {
-            this._tipLabels[i].setVisible(lv >= table[i + 1].open_lv);
-            this._subdueItems[i].setEnabled(lv >= table[i + 1].open_lv);
-            this._openLvLabels[i].setVisible(lv < table[i + 1].open_lv);
-            this._shadeLabels[i].setVisible(lv < table[i + 1].open_lv);
+        for(var key in table) {
+            var limitLv = table[key].limit_lv;
+            var id = table[key].id;
+            this._tipLabels[id].setVisible(lv >= limitLv);
+            this._subdueItems[id].setEnabled(lv >= limitLv);
+            this._openLvLabels[id].setVisible(lv < limitLv);
+            this._shadeLabels[id].setVisible(lv < limitLv);
         }
 
     },
@@ -109,24 +111,22 @@ var ExpInstanceLayer = cc.Layer.extend({
         this._openLvLabels = [];
         this._shadeLabels = [];
 
-        var scrollViewHeight = 3 * 230;
-        var table = outputTables.exp_instance_limit.rows;
+        var table = outputTables.exp_pass_config.rows;
+        var len = Object.keys(table).length;
 
-        var expCardList = [
-            [50001, 50002, 50003],
-            [50002, 50003, 50004],
-            [50003, 50004, 50005]
-        ];
+        var scrollViewHeight = len * 230;
+        var index = 0;
 
-        for (var i = 0; i < 3; i++) {
-            var y = scrollViewHeight - 230 * i - 230;
+        for (var id in table) {
+            var y = scrollViewHeight - 230 * index - 230;
+            var config = table[id];
 
             var bgLabel = cc.Sprite.create(main_scene_image.icon470);
             bgLabel.setAnchorPoint(cc.p(0.5, 0));
             bgLabel.setPosition(cc.p(320, y));
             scrollViewLayer.addChild(bgLabel);
 
-            var difficultyIcon = cc.Sprite.create(main_scene_image["icon" + (473 + i)]);
+            var difficultyIcon = cc.Sprite.create(main_scene_image["icon" + (472 + config.id)]);
             difficultyIcon.setAnchorPoint(cc.p(0, 0));
             difficultyIcon.setPosition(cc.p(35, 152));
             bgLabel.addChild(difficultyIcon);
@@ -143,7 +143,7 @@ var ExpInstanceLayer = cc.Layer.extend({
                     spacing: -2
                 },
                 {
-                    string: "10",
+                    string: config.power_consume,
                     fontName: "STHeitiTC-Medium",
                     fontSize: 22
                 }
@@ -152,16 +152,16 @@ var ExpInstanceLayer = cc.Layer.extend({
             tipLabel.setPosition(cc.p(480, 175));
             bgLabel.addChild(tipLabel);
 
-            this._tipLabels[i] = tipLabel;
+            this._tipLabels[id] = tipLabel;
 
-            var openLvLabel = StrokeLabel.create(table[i + 1].open_lv + "级开放", "STHeitiTC-Medium", 22);
+            var openLvLabel = StrokeLabel.create(config.limit_lv + "级开放", "STHeitiTC-Medium", 22);
             openLvLabel.setColor(cc.c3b(232, 48, 48));
             openLvLabel.setBgColor(cc.c3b(0, 0, 0));
             openLvLabel.setAnchorPoint(cc.p(0, 0));
             openLvLabel.setPosition(cc.p(480, 165));
             bgLabel.addChild(openLvLabel);
 
-            this._openLvLabels[i] = openLvLabel;
+            this._openLvLabels[id] = openLvLabel;
 
             var descLabel = cc.LabelTTF.create("我的使命是：无私贡献！不求回报！", "STHeitiTC-Medium", 22);
             descLabel.setColor(cc.c3b(108, 48, 25));
@@ -169,11 +169,12 @@ var ExpInstanceLayer = cc.Layer.extend({
             descLabel.setPosition(cc.p(30, 120));
             bgLabel.addChild(descLabel);
 
-            var cards = expCardList[i];
+            var cards = config.exp_card_stars.split(",");
+            cc.log(cards);
             var len2 = cards.length;
             for (var j = 0; j < len2; j++) {
                 var card = Card.create({
-                    tableId: cards[j],
+                    tableId: parseInt(cards[j]) + 50000,
                     lv: 1,
                     skillLv: 1
                 });
@@ -190,7 +191,7 @@ var ExpInstanceLayer = cc.Layer.extend({
                 main_scene_image.button9s,
                 main_scene_image.button9d,
                 main_scene_image.icon471,
-                this._onClickSubdue(i + 1),
+                this._onClickSubdue(config.id),
                 this
             );
             subdueItem.setAnchorPoint(cc.p(0, 0));
@@ -200,14 +201,16 @@ var ExpInstanceLayer = cc.Layer.extend({
             menu.setPosition(cc.p(0, 0));
             bgLabel.addChild(menu);
 
-            this._subdueItems[i] = subdueItem;
+            this._subdueItems[config.id] = subdueItem;
 
             var shadeLabel = cc.Sprite.create(main_scene_image.icon476);
             shadeLabel.setAnchorPoint(cc.p(0.5, 0));
             shadeLabel.setPosition(cc.p(320, y));
             scrollViewLayer.addChild(shadeLabel);
 
-            this._shadeLabels[i] = shadeLabel;
+            this._shadeLabels[config.id] = shadeLabel;
+
+            index++;
         }
 
         var scrollView = cc.ScrollView.create(this._expInstanceLayerFit.scrollViewSize, scrollViewLayer);

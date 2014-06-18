@@ -4,12 +4,20 @@
 
 var DailyInstances = Entity.extend({
 
-    init: function () {
+    _expInstanceCount: null,
+
+    init: function (data) {
         cc.log("DailyInstances init");
+
+        this._expInstanceCount = 0;
+
+        this.update(data);
     },
 
-    update: function () {
+    update: function (data) {
         cc.log("DailyInstances update");
+
+        this.set("expInstanceCount", data.expInstanceCount);
     },
 
     sync: function () {

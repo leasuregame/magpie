@@ -883,7 +883,7 @@ var Player = (function(_super) {
             return;
         }
         var power = _.clone(this.power);
-        power.value += value;
+        power.value = parseInt(power.value) +  value;
         power.time = Date.now();
         this.updatePower(power);
     };

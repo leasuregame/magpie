@@ -58,7 +58,7 @@ Handler::attack = (msg, session, next) ->
           if isUpgrade
             upgradeInfo = {
               lv: player.lv
-              rewards: rew
+              rewards: rewards
               friendsCount: player.friendsCount
             }
           else 
@@ -71,8 +71,7 @@ Handler::attack = (msg, session, next) ->
   ], (err, isUpgrade, level9Box, upgradeInfo) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
-
-    player.consumePower(if isWin then passData.power_consume else 1)
+    player.consumePower(if isWin then parseInt(passData.power_consume) else 1)
     player.save()
     next(null, {
       code: 200

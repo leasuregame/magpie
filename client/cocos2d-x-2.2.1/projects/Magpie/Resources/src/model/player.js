@@ -64,6 +64,7 @@ var Player = Entity.extend({
 
     _honor: 0,              // 荣誉
     _superHonor: 0,         // 精元
+    _pill: 0,               // 觉醒玉
 
     _noviceTeachStep: OVER_NOVICE_STEP, //进行新手教程步骤
 
@@ -139,6 +140,7 @@ var Player = Entity.extend({
         this.set("vip", data.vip);
         this.set("honor", data.honor);
         this.set("superHonor", data.superHonor);
+        this.set("pill", data.pill);
 
         if (data.speaker) {
             this.set("speaker", data.speaker);
@@ -240,6 +242,10 @@ var Player = Entity.extend({
                 challengeBuyCount: msg.dailyGift.challengeBuyCount,
                 expCardBuyCount: msg.dailyGift.expCardCount
             });
+            gameData.lottery.update({
+                goldLuckyCard10: msg.dailyGift.goldLuckyCard10,
+                goldLuckyCardForFragment: msg.dailyGift.goldLuckyCardForFragment
+            });
 
             if (msg.goldCards) {
                 that.set("goldCards", msg.goldCards);
@@ -247,6 +253,12 @@ var Player = Entity.extend({
 
             gameData.activity.set("vipLoginReward", msg.vipLoginReward);
             gameData.activity.updateLoginCountFlag(msg.loginInfo);
+
+            gameData.boss.update(msg.bossInfo);
+
+            gameData.friend.sync();
+
+            gameData.activity.todayGames();
 
             MainScene.getInstance().updateMark();
         });
@@ -349,11 +361,7 @@ var Player = Entity.extend({
     _energyChangeEvent: function () {
         cc.log("Player _energyChangeEvent");
 
-        if (this._energy >= LOTTERY_ENOUGH) {
-            gameMark.updateLotteryMark(true);
-        } else {
-            gameMark.updateLotteryMark(false);
-        }
+        gameMark.updateLotteryMark(false);
     },
 
     _vipChangeEvent: function () {
@@ -371,7 +379,7 @@ var Player = Entity.extend({
             if (this._power < this._maxPower) {
                 var time = Math.ceil((this._maxPower - this._power) / 5) * 10 * 60;
 
-                lz.NotificationHelp.push("哥，在干啥呢，体力恢复满了，再不用就浪费了。", time, POWER_NOTIFICATION_KEY);
+                lz.NotificationHelp.push("大神，你的体力都流了一地啦，白骨精看了都浑身发热，你赶紧把她收了吧！", time, POWER_NOTIFICATION_KEY);
             }
         }
     },

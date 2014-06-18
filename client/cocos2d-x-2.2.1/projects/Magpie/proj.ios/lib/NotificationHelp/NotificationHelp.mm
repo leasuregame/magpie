@@ -35,7 +35,7 @@ void NotificationHelp::end()
         powerNotification1.fireDate = [formatter dateFromString : @"11:00:00"];
         powerNotification1.timeZone = [NSTimeZone defaultTimeZone];
         powerNotification1.repeatInterval = NSDayCalendarUnit;
-        powerNotification1.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力了。"];
+        powerNotification1.alertBody = [NSString stringWithUTF8String : "大神，玉帝邀您共进午餐。他说...他说...记得带上肥皂哟！"];
         powerNotification1.soundName = UILocalNotificationDefaultSoundName;
         powerNotification1.applicationIconBadgeNumber = 1;
         
@@ -58,7 +58,7 @@ void NotificationHelp::end()
         powerNotification2.fireDate = [formatter dateFromString : @"17:00:00"];
         powerNotification2.timeZone = [NSTimeZone defaultTimeZone];
         powerNotification2.repeatInterval = NSDayCalendarUnit;
-        powerNotification2.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，到点了，该领取体力了。"];
+        powerNotification2.alertBody = [NSString stringWithUTF8String : "大神，王母娘娘邀您共进晚餐。只是...只是...吃个晚餐哟！"];
         powerNotification2.soundName = UILocalNotificationDefaultSoundName;
         powerNotification2.applicationIconBadgeNumber = 1;
         
@@ -111,7 +111,7 @@ void NotificationHelp::end()
             notification.fireDate = [time dateByAddingTimeInterval : timeInterval];
             notification.timeZone = [NSTimeZone defaultTimeZone];
             notification.repeatInterval = NSWeekCalendarUnit;
-            notification.alertBody = [NSString stringWithUTF8String : "哥，在干啥呢，已经好久没登陆游戏了。"];
+            notification.alertBody = [NSString stringWithUTF8String : "大神，大神，你的嫦娥，你的织女，你的...，都被妖怪掳走啦，赶紧回来吧！"];
             notification.soundName = UILocalNotificationDefaultSoundName;
             notification.applicationIconBadgeNumber = 1;
             

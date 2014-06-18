@@ -11,28 +11,38 @@ var nameChanged = {
     "Boss怪物卡牌配置表": "boss_card",
     "boss_rank_reward": "伤害排行榜奖励配置表",
     "伤害排行榜奖励配置表": "boss_rank_reward",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
+    "card_pill_dissolve": "卡牌熔炼配置表",
+    "卡牌熔炼配置表": "card_pill_dissolve",
+    "card_pill_use": "卡牌潜能升级配置表",
+    "卡牌潜能升级配置表": "card_pill_use",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
     "神仙卡牌配置表": "cards",
     "elixir": "仙丹配置表",
     "仙丹配置表": "elixir",
+    "resource_cards": "资源卡牌配置表",
+    "资源卡牌配置表": "resource_cards",
+    "exp_card_exp": "经验卡经验配置表",
+    "经验卡经验配置表": "exp_card_exp",
     "factors": "基础属性成长表",
     "基础属性成长表": "factors",
     "new_card_id_map": "卡牌新旧配置表ID对应关系表",
     "卡牌新旧配置表ID对应关系表": "new_card_id_map",
+    "star_upgrade_rate": "高星级卡牌进阶概率配置表",
+    "高星级卡牌进阶概率配置表": "star_upgrade_rate",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
-    "cdkey": "激活码配置表",
-    "激活码配置表": "cdkey",
     "login_count_reward": "开服累计登陆奖励配置表",
     "开服累计登陆奖励配置表": "login_count_reward",
     "new_year_rechage": "新年充值奖励",
     "新年充值奖励": "new_year_rechage",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
+    "cdkey": "激活码配置表",
+    "激活码配置表": "cdkey",
     "daily_gift": "每日重置数据配置表",
     "每日重置数据配置表": "daily_gift",
     "first_card": "首抽卡牌配置表",
@@ -43,26 +53,32 @@ var nameChanged = {
     "接收祝福次数配置表": "receive_bless_config",
     "give_bless_config": "祝福次数配置表",
     "祝福次数配置表": "give_bless_config",
+    "exp_instance_limit": "经验副本开放等级",
+    "经验副本开放等级": "exp_instance_limit",
+    "card_lineup_limit": "卡槽开放等级配置表",
+    "卡槽开放等级配置表": "card_lineup_limit",
+    "function_limit": "功能开放等级限制",
+    "功能开放等级限制": "function_limit",
+    "lv_limit": "等级限制表",
+    "等级限制表": "lv_limit",
+    "card_lv_limit": "卡牌等级限制表",
+    "卡牌等级限制表": "card_lv_limit",
     "passive_skill_config": "被动洗练配置表",
     "被动洗练配置表": "passive_skill_config",
     "elixir_limit": "仙丹培养限制表",
     "仙丹培养限制表": "elixir_limit",
     "resource_limit": "资源限制表",
     "资源限制表": "resource_limit",
-    "card_lineup_limit": "卡槽开放等级配置表",
-    "卡槽开放等级配置表": "card_lineup_limit",
-    "function_limit": "功能开放等级限制",
-    "功能开放等级限制": "function_limit",
     "daily_signin_rewards": "每日签到奖励",
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "lv_limit": "等级限制表",
-    "等级限制表": "lv_limit",
-    "card_lv_limit": "卡牌等级限制表",
-    "卡牌等级限制表": "card_lv_limit",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
+    "exp_pass_cards": "经验副本卡牌配置表",
+    "经验副本卡牌配置表": "exp_pass_cards",
+    "exp_pass_config": "经验副本配置表",
+    "经验副本配置表": "exp_pass_config",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -71,6 +87,8 @@ var nameChanged = {
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
+    "elixir_ranking_reward": "竞技仙丹排行版奖励",
+    "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_list": "竞技排名配置表",
@@ -79,10 +97,16 @@ var nameChanged = {
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
-    "elixir_ranking_reward": "竞技仙丹排行版奖励",
-    "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "product": "道具配置表",
     "道具配置表": "product",
+    "scope": "卡牌范围表",
+    "卡牌范围表": "scope",
+    "skill_type": "技能类型表",
+    "技能类型表": "skill_type",
+    "skill_upgrade": "卡牌技能升级表",
+    "卡牌技能升级表": "skill_upgrade",
+    "skills": "技能配置表",
+    "技能配置表": "skills",
     "passFailSpiritSpeak": "爬塔失败喊话配置表",
     "爬塔失败喊话配置表": "passFailSpiritSpeak",
     "passWinSpiritSpeak": "爬塔胜利喊话配置表",
@@ -93,26 +117,18 @@ var nameChanged = {
     "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
     "灵气池配置表": "spirit_pool",
-    "scope": "卡牌范围表",
-    "卡牌范围表": "scope",
-    "skill_type": "技能类型表",
-    "技能类型表": "skill_type",
-    "skill_upgrade": "卡牌技能升级表",
-    "卡牌技能升级表": "skill_upgrade",
-    "skills": "技能配置表",
-    "技能配置表": "skills",
+    "chapter": "大章表",
+    "大章表": "chapter",
+    "chapter_title": "总章表",
+    "总章表": "chapter_title",
     "mystical_pass_reward": "神秘关卡奖励配置表",
     "神秘关卡奖励配置表": "mystical_pass_reward",
     "mystical_pass_config": "神秘关卡配置表",
     "神秘关卡配置表": "mystical_pass_config",
     "pass_config": "关卡卡牌配置表",
     "关卡卡牌配置表": "pass_config",
-    "chapter": "大章表",
-    "大章表": "chapter",
     "pass_reward": "关卡产出表",
     "关卡产出表": "pass_reward",
-    "chapter_title": "总章表",
-    "总章表": "chapter_title",
     "player_upgrade": "玩家升级经验表",
     "玩家升级经验表": "player_upgrade",
     "task": "任务奖励表",
@@ -131,20 +147,24 @@ var nameChanged = {
     "每轮基础奖励": "turn_reward_base",
     "wipe_out": "任务扫荡产出表",
     "任务扫荡产出表": "wipe_out",
+    "first_recharge_box": "首次充值赠送礼包",
+    "首次充值赠送礼包": "first_recharge_box",
+    "growth_plan": "成长计划",
+    "成长计划": "growth_plan",
     "recharge": "充值类型",
     "充值类型": "recharge",
     "vip": "vip等级配置表",
     "vip等级配置表": "vip",
-    "first_recharge_box": "首次充值赠送礼包",
-    "首次充值赠送礼包": "first_recharge_box",
     "vip_box": "vip礼包赠品",
     "vip礼包赠品": "vip_box",
-    "growth_plan": "成长计划",
-    "成长计划": "growth_plan",
     "vip_daily_reward": "vip每日登陆奖励",
     "vip每日登陆奖励": "vip_daily_reward",
     "vip_privilege": "vip特权",
-    "vip特权": "vip_privilege"
+    "vip特权": "vip_privilege",
+    "against_time_list": "世界杯每日比赛场次",
+    "世界杯每日比赛场次": "against_time_list",
+    "country_list": "国家列表",
+    "国家列表": "country_list"
 };
 var outputTables = {
     "achievement": {
@@ -290,7 +310,7 @@ var outputTables = {
                 "method": "psTo10",
                 "need": 1,
                 "name": "但求最好",
-                "desc": "拥有1个10%的被动属性",
+                "desc": "拥有1个10%以上的被动属性",
                 "gold": 100,
                 "energy": 100
             },
@@ -910,19 +930,22 @@ var outputTables = {
                 "id": 1,
                 "rate": 55,
                 "name": "蓝卡",
-                "reward_inc": 0
+                "reward_inc": 0,
+                "rate_activity": 10
             },
             "2": {
                 "id": 2,
                 "rate": 30,
                 "name": "紫卡",
-                "reward_inc": 50
+                "reward_inc": 50,
+                "rate_activity": 55
             },
             "3": {
                 "id": 3,
                 "rate": 15,
                 "name": "金卡",
-                "reward_inc": 150
+                "reward_inc": 150,
+                "rate_activity": 35
             }
         }
     },
@@ -1035,53 +1058,32 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "honor": 12000,
-                "money": 500000,
-                "energy": 8000
+                "honor": 18000,
+                "money": 500000
             },
             "2": {
                 "id": 2,
-                "honor": 10800,
-                "money": 450000,
-                "energy": 7000
+                "honor": 16000,
+                "money": 450000
             },
             "3": {
                 "id": 3,
-                "honor": 9600,
-                "money": 400000,
-                "energy": 6000
+                "honor": 14000,
+                "money": 400000
             },
             "4": {
                 "id": 4,
-                "honor": 8400,
-                "money": 350000,
-                "energy": 5000
+                "honor": 12000,
+                "money": 350000
             },
             "5": {
                 "id": 5,
-                "honor": 7200,
-                "money": 300000,
-                "energy": 4000
+                "honor": 10000,
+                "money": 300000
             },
             "6": {
                 "id": 6,
-                "honor": 5000
-            }
-        }
-    },
-    "card_price": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "grow_per_lv": 0,
-                "star1": 100,
-                "star2": 500,
-                "star3": 5000,
-                "star4": 20000,
-                "star5": 200000,
-                "star6": 500000,
-                "star7": 1000000
+                "honor": 8000
             }
         }
     },
@@ -1587,6 +1589,102 @@ var outputTables = {
             }
         }
     },
+    "card_pill_dissolve": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "pill": 20,
+                "money": 50
+            },
+            "2": {
+                "id": 2,
+                "pill": 40,
+                "money": 250
+            },
+            "3": {
+                "id": 3,
+                "pill": 200,
+                "money": 2500
+            },
+            "4": {
+                "id": 4,
+                "pill": 1000,
+                "money": 10000
+            },
+            "5": {
+                "id": 5,
+                "pill": 8000,
+                "money": 100000
+            },
+            "6": {
+                "id": 6,
+                "pill": 30000,
+                "money": 250000
+            },
+            "7": {
+                "id": 7,
+                "pill": 50000,
+                "money": 500000
+            }
+        }
+    },
+    "card_pill_use": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "pill": 8000,
+                "grow_percent": 5
+            },
+            "2": {
+                "id": 2,
+                "pill": 10000,
+                "grow_percent": 10
+            },
+            "3": {
+                "id": 3,
+                "pill": 12000,
+                "grow_percent": 15
+            },
+            "4": {
+                "id": 4,
+                "pill": 14000,
+                "grow_percent": 20
+            },
+            "5": {
+                "id": 5,
+                "pill": 16000,
+                "grow_percent": 25
+            },
+            "6": {
+                "id": 6,
+                "pill": 18000,
+                "grow_percent": 30
+            },
+            "7": {
+                "id": 7,
+                "pill": 20000,
+                "grow_percent": 35
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 0,
+                "star1": 100,
+                "star2": 500,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000,
+                "star6": 500000,
+                "star7": 1000000
+            }
+        }
+    },
     "cards": {
         "colComment": {
             "skill_id": {
@@ -1603,8 +1701,8 @@ var outputTables = {
                 "name": "猪刚鬣·猪八戒",
                 "star": 1,
                 "lv": 1,
-                "atk": 45,
-                "hp": 196,
+                "atk": 50,
+                "hp": 200,
                 "normal_atk_id": 8,
                 "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
                 "url": 2
@@ -1615,8 +1713,8 @@ var outputTables = {
                 "name": "高庄主·猪八戒",
                 "star": 2,
                 "lv": 1,
-                "atk": 91,
-                "hp": 418,
+                "atk": 100,
+                "hp": 400,
                 "normal_atk_id": 8,
                 "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
                 "url": 2
@@ -1627,8 +1725,8 @@ var outputTables = {
                 "name": "二师兄·猪八戒",
                 "star": 3,
                 "lv": 1,
-                "atk": 142,
-                "hp": 605,
+                "atk": 150,
+                "hp": 600,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1642,8 +1740,8 @@ var outputTables = {
                 "name": "净坛使者·猪八戒",
                 "star": 4,
                 "lv": 1,
-                "atk": 182,
-                "hp": 825,
+                "atk": 200,
+                "hp": 800,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1657,8 +1755,8 @@ var outputTables = {
                 "name": "天蓬元帅·猪八戒",
                 "star": 5,
                 "lv": 1,
-                "atk": 255,
-                "hp": 1084,
+                "atk": 270,
+                "hp": 1080,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1673,7 +1771,7 @@ var outputTables = {
                 "star": 6,
                 "lv": 1,
                 "atk": 350,
-                "hp": 1330,
+                "hp": 1400,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1688,7 +1786,7 @@ var outputTables = {
                 "star": 7,
                 "lv": 1,
                 "atk": 440,
-                "hp": 1672,
+                "hp": 1760,
                 "skill_name": "倒打一耙",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -1702,8 +1800,8 @@ var outputTables = {
                 "name": "流沙河·沙悟净",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 185,
+                "atk": 53,
+                "hp": 188,
                 "normal_atk_id": 9,
                 "description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
                 "url": 3
@@ -1714,8 +1812,8 @@ var outputTables = {
                 "name": "骷髅九·沙悟净",
                 "star": 2,
                 "lv": 1,
-                "atk": 97,
-                "hp": 374,
+                "atk": 103,
+                "hp": 388,
                 "normal_atk_id": 9,
                 "description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
                 "url": 3
@@ -1726,8 +1824,8 @@ var outputTables = {
                 "name": "沙和尚·沙悟净",
                 "star": 3,
                 "lv": 1,
-                "atk": 148,
-                "hp": 565,
+                "atk": 153,
+                "hp": 588,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1741,8 +1839,8 @@ var outputTables = {
                 "name": "卷帘大将·沙悟净",
                 "star": 4,
                 "lv": 1,
-                "atk": 202,
-                "hp": 787,
+                "atk": 203,
+                "hp": 788,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1757,7 +1855,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 273,
-                "hp": 1024,
+                "hp": 1068,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1771,8 +1869,8 @@ var outputTables = {
                 "name": "和为贵·沙悟净",
                 "star": 6,
                 "lv": 1,
-                "atk": 365,
-                "hp": 1321,
+                "atk": 353,
+                "hp": 1388,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1786,8 +1884,8 @@ var outputTables = {
                 "name": "一心向佛·沙悟净",
                 "star": 7,
                 "lv": 1,
-                "atk": 452,
-                "hp": 1683,
+                "atk": 443,
+                "hp": 1748,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -1801,8 +1899,8 @@ var outputTables = {
                 "name": "唐僧·金蝉子",
                 "star": 1,
                 "lv": 1,
-                "atk": 99,
-                "hp": 246,
+                "atk": 125,
+                "hp": 500,
                 "normal_atk_id": 10,
                 "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
                 "url": 5
@@ -1813,8 +1911,8 @@ var outputTables = {
                 "name": "普渡众佛·金蝉子",
                 "star": 2,
                 "lv": 1,
-                "atk": 156,
-                "hp": 426,
+                "atk": 175,
+                "hp": 700,
                 "normal_atk_id": 10,
                 "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
                 "url": 5
@@ -1825,8 +1923,8 @@ var outputTables = {
                 "name": "燃灯道人·金蝉子",
                 "star": 3,
                 "lv": 1,
-                "atk": 232,
-                "hp": 623,
+                "atk": 225,
+                "hp": 900,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "normal_atk_id": 10,
@@ -1840,8 +1938,8 @@ var outputTables = {
                 "name": "功德佛·金蝉子",
                 "star": 4,
                 "lv": 1,
-                "atk": 305,
-                "hp": 856,
+                "atk": 275,
+                "hp": 1100,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "normal_atk_id": 10,
@@ -1855,8 +1953,8 @@ var outputTables = {
                 "name": "真身·金蝉子",
                 "star": 5,
                 "lv": 1,
-                "atk": 425,
-                "hp": 1210,
+                "atk": 345,
+                "hp": 1380,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "normal_atk_id": 10,
@@ -1870,8 +1968,8 @@ var outputTables = {
                 "name": "组织部长·金蝉子",
                 "star": 6,
                 "lv": 1,
-                "atk": 509,
-                "hp": 1492,
+                "atk": 425,
+                "hp": 1700,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "normal_atk_id": 10,
@@ -1885,8 +1983,8 @@ var outputTables = {
                 "name": "女儿情·金蝉子",
                 "star": 7,
                 "lv": 1,
-                "atk": 603,
-                "hp": 1638,
+                "atk": 515,
+                "hp": 2060,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "normal_atk_id": 10,
@@ -1900,8 +1998,8 @@ var outputTables = {
                 "name": "天将·巨灵神",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 190,
+                "atk": 49,
+                "hp": 204,
                 "normal_atk_id": 2,
                 "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
                 "url": 7
@@ -1912,8 +2010,8 @@ var outputTables = {
                 "name": "门卫·巨灵神",
                 "star": 2,
                 "lv": 1,
-                "atk": 101,
-                "hp": 382,
+                "atk": 99,
+                "hp": 404,
                 "normal_atk_id": 2,
                 "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
                 "url": 7
@@ -1924,8 +2022,8 @@ var outputTables = {
                 "name": "搬山救民·巨灵神",
                 "star": 3,
                 "lv": 1,
-                "atk": 151,
-                "hp": 564,
+                "atk": 149,
+                "hp": 604,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
@@ -1939,8 +2037,8 @@ var outputTables = {
                 "name": "急先锋·巨灵神",
                 "star": 4,
                 "lv": 1,
-                "atk": 205,
-                "hp": 789,
+                "atk": 199,
+                "hp": 804,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
@@ -1954,8 +2052,8 @@ var outputTables = {
                 "name": "神斧·巨灵神",
                 "star": 5,
                 "lv": 1,
-                "atk": 277,
-                "hp": 1029,
+                "atk": 269,
+                "hp": 1084,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
@@ -1969,8 +2067,8 @@ var outputTables = {
                 "name": "转世·巨灵神",
                 "star": 6,
                 "lv": 1,
-                "atk": 362,
-                "hp": 1350,
+                "atk": 349,
+                "hp": 1404,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
@@ -1984,8 +2082,8 @@ var outputTables = {
                 "name": "逆袭·巨灵神",
                 "star": 7,
                 "lv": 1,
-                "atk": 462,
-                "hp": 1702,
+                "atk": 439,
+                "hp": 1764,
                 "skill_name": "雷霆之怒",
                 "skill_id": 6,
                 "normal_atk_id": 2,
@@ -1999,8 +2097,8 @@ var outputTables = {
                 "name": "神二代·红孩儿",
                 "star": 1,
                 "lv": 1,
-                "atk": 49,
-                "hp": 185,
+                "atk": 64,
+                "hp": 144,
                 "normal_atk_id": 11,
                 "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
                 "url": 8
@@ -2011,8 +2109,8 @@ var outputTables = {
                 "name": "火云洞·红孩儿",
                 "star": 2,
                 "lv": 1,
-                "atk": 100,
-                "hp": 377,
+                "atk": 114,
+                "hp": 344,
                 "normal_atk_id": 11,
                 "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
                 "url": 8
@@ -2023,8 +2121,8 @@ var outputTables = {
                 "name": "三味真火·红孩儿",
                 "star": 3,
                 "lv": 1,
-                "atk": 145,
-                "hp": 572,
+                "atk": 164,
+                "hp": 544,
                 "skill_name": "三味真火",
                 "skill_id": 2,
                 "normal_atk_id": 11,
@@ -2038,8 +2136,8 @@ var outputTables = {
                 "name": "圣婴大王·红孩儿",
                 "star": 4,
                 "lv": 1,
-                "atk": 206,
-                "hp": 789,
+                "atk": 214,
+                "hp": 744,
                 "skill_name": "三味真火",
                 "skill_id": 2,
                 "normal_atk_id": 11,
@@ -2053,8 +2151,8 @@ var outputTables = {
                 "name": "善财童子·红孩儿",
                 "star": 5,
                 "lv": 1,
-                "atk": 273,
-                "hp": 1020,
+                "atk": 284,
+                "hp": 1024,
                 "skill_name": "三味真火",
                 "skill_id": 2,
                 "normal_atk_id": 11,
@@ -2068,8 +2166,8 @@ var outputTables = {
                 "name": "凡尘苦楚·红孩儿",
                 "star": 6,
                 "lv": 1,
-                "atk": 342,
-                "hp": 1350,
+                "atk": 364,
+                "hp": 1344,
                 "skill_name": "三味真火",
                 "skill_id": 2,
                 "normal_atk_id": 11,
@@ -2083,8 +2181,8 @@ var outputTables = {
                 "name": "火云邪神·红孩儿",
                 "star": 7,
                 "lv": 1,
-                "atk": 431,
-                "hp": 1699,
+                "atk": 454,
+                "hp": 1704,
                 "skill_name": "三味真火",
                 "skill_id": 2,
                 "normal_atk_id": 11,
@@ -2098,8 +2196,8 @@ var outputTables = {
                 "name": "冀州侯·黄飞虎",
                 "star": 1,
                 "lv": 1,
-                "atk": 43,
-                "hp": 172,
+                "atk": 58,
+                "hp": 168,
                 "normal_atk_id": 3,
                 "description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
                 "url": 9
@@ -2110,8 +2208,8 @@ var outputTables = {
                 "name": "夜奔·黄飞虎",
                 "star": 2,
                 "lv": 1,
-                "atk": 106,
-                "hp": 371,
+                "atk": 108,
+                "hp": 368,
                 "normal_atk_id": 3,
                 "description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
                 "url": 9
@@ -2122,8 +2220,8 @@ var outputTables = {
                 "name": "复仇·黄飞虎",
                 "star": 3,
                 "lv": 1,
-                "atk": 156,
-                "hp": 564,
+                "atk": 158,
+                "hp": 568,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2137,8 +2235,8 @@ var outputTables = {
                 "name": "武成王·黄飞虎",
                 "star": 4,
                 "lv": 1,
-                "atk": 204,
-                "hp": 798,
+                "atk": 208,
+                "hp": 768,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2153,7 +2251,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 278,
-                "hp": 1034,
+                "hp": 1048,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2167,8 +2265,8 @@ var outputTables = {
                 "name": "成仁·黄飞虎",
                 "star": 6,
                 "lv": 1,
-                "atk": 370,
-                "hp": 1390,
+                "atk": 358,
+                "hp": 1368,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2182,8 +2280,8 @@ var outputTables = {
                 "name": "威行天下·黄飞虎",
                 "star": 7,
                 "lv": 1,
-                "atk": 460,
-                "hp": 1650,
+                "atk": 448,
+                "hp": 1728,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -2197,8 +2295,8 @@ var outputTables = {
                 "name": "阿哥·雷震子",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 181,
+                "atk": 59,
+                "hp": 164,
                 "normal_atk_id": 11,
                 "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
                 "url": 10
@@ -2209,8 +2307,8 @@ var outputTables = {
                 "name": "羽人·雷震子",
                 "star": 2,
                 "lv": 1,
-                "atk": 103,
-                "hp": 371,
+                "atk": 109,
+                "hp": 364,
                 "normal_atk_id": 11,
                 "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
                 "url": 10
@@ -2221,8 +2319,8 @@ var outputTables = {
                 "name": "救父·雷震子",
                 "star": 3,
                 "lv": 1,
-                "atk": 151,
-                "hp": 567,
+                "atk": 159,
+                "hp": 564,
                 "skill_name": "雷音破",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2236,8 +2334,8 @@ var outputTables = {
                 "name": "出五关·雷震子",
                 "star": 4,
                 "lv": 1,
-                "atk": 206,
-                "hp": 789,
+                "atk": 209,
+                "hp": 764,
                 "skill_name": "雷音破",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2251,8 +2349,8 @@ var outputTables = {
                 "name": "金刚·雷震子",
                 "star": 5,
                 "lv": 1,
-                "atk": 281,
-                "hp": 990,
+                "atk": 279,
+                "hp": 1044,
                 "skill_name": "雷音破",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2266,8 +2364,8 @@ var outputTables = {
                 "name": "不死·雷震子",
                 "star": 6,
                 "lv": 1,
-                "atk": 368,
-                "hp": 1388,
+                "atk": 359,
+                "hp": 1364,
                 "skill_name": "雷音破",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2281,8 +2379,8 @@ var outputTables = {
                 "name": "归圣·雷震子",
                 "star": 7,
                 "lv": 1,
-                "atk": 459,
-                "hp": 1710,
+                "atk": 449,
+                "hp": 1724,
                 "skill_name": "雷音破",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2296,8 +2394,8 @@ var outputTables = {
                 "name": "隐士·姜子牙",
                 "star": 1,
                 "lv": 1,
-                "atk": 60,
-                "hp": 184,
+                "atk": 35,
+                "hp": 260,
                 "normal_atk_id": 1,
                 "description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
                 "url": 12
@@ -2308,8 +2406,8 @@ var outputTables = {
                 "name": "渔者·姜子牙",
                 "star": 2,
                 "lv": 1,
-                "atk": 115,
-                "hp": 395,
+                "atk": 85,
+                "hp": 460,
                 "normal_atk_id": 1,
                 "description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
                 "url": 12
@@ -2320,8 +2418,8 @@ var outputTables = {
                 "name": "占卜师·姜子牙",
                 "star": 3,
                 "lv": 1,
-                "atk": 162,
-                "hp": 562,
+                "atk": 135,
+                "hp": 660,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -2335,8 +2433,8 @@ var outputTables = {
                 "name": "尚父·姜子牙",
                 "star": 4,
                 "lv": 1,
-                "atk": 219,
-                "hp": 793,
+                "atk": 185,
+                "hp": 860,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -2350,8 +2448,8 @@ var outputTables = {
                 "name": "齐祖·姜子牙",
                 "star": 5,
                 "lv": 1,
-                "atk": 285,
-                "hp": 1029,
+                "atk": 255,
+                "hp": 1140,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -2365,8 +2463,8 @@ var outputTables = {
                 "name": "雷锋·姜子牙",
                 "star": 6,
                 "lv": 1,
-                "atk": 365,
-                "hp": 1352,
+                "atk": 335,
+                "hp": 1460,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -2380,8 +2478,8 @@ var outputTables = {
                 "name": "太公·姜子牙",
                 "star": 7,
                 "lv": 1,
-                "atk": 462,
-                "hp": 1788,
+                "atk": 425,
+                "hp": 1820,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -2395,8 +2493,8 @@ var outputTables = {
                 "name": "总兵·李靖",
                 "star": 1,
                 "lv": 1,
-                "atk": 62,
-                "hp": 198,
+                "atk": 65,
+                "hp": 140,
                 "normal_atk_id": 11,
                 "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
                 "url": 13
@@ -2407,8 +2505,8 @@ var outputTables = {
                 "name": "人父·李靖",
                 "star": 2,
                 "lv": 1,
-                "atk": 113,
-                "hp": 394,
+                "atk": 115,
+                "hp": 340,
                 "normal_atk_id": 11,
                 "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
                 "url": 13
@@ -2419,8 +2517,8 @@ var outputTables = {
                 "name": "降魔大元帅·李靖",
                 "star": 3,
                 "lv": 1,
-                "atk": 155,
-                "hp": 578,
+                "atk": 165,
+                "hp": 540,
                 "skill_name": "塔锁封禁",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2434,8 +2532,8 @@ var outputTables = {
                 "name": "保卫天庭·李靖",
                 "star": 4,
                 "lv": 1,
-                "atk": 219,
-                "hp": 804,
+                "atk": 215,
+                "hp": 740,
                 "skill_name": "塔锁封禁",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2449,8 +2547,8 @@ var outputTables = {
                 "name": "托塔天王·李靖",
                 "star": 5,
                 "lv": 1,
-                "atk": 288,
-                "hp": 1034,
+                "atk": 285,
+                "hp": 1020,
                 "skill_name": "塔锁封禁",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2464,8 +2562,8 @@ var outputTables = {
                 "name": "风火轮之爹·李靖",
                 "star": 6,
                 "lv": 1,
-                "atk": 371,
-                "hp": 1372,
+                "atk": 365,
+                "hp": 1340,
                 "skill_name": "塔锁封禁",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2479,8 +2577,8 @@ var outputTables = {
                 "name": "妇女之友·李靖",
                 "star": 7,
                 "lv": 1,
-                "atk": 476,
-                "hp": 1699,
+                "atk": 455,
+                "hp": 1700,
                 "skill_name": "塔锁封禁",
                 "skill_id": 6,
                 "normal_atk_id": 11,
@@ -2494,8 +2592,8 @@ var outputTables = {
                 "name": "瞬移·土行孙",
                 "star": 1,
                 "lv": 1,
-                "atk": 49,
-                "hp": 182,
+                "atk": 45,
+                "hp": 220,
                 "normal_atk_id": 11,
                 "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
                 "url": 16
@@ -2506,8 +2604,8 @@ var outputTables = {
                 "name": "遁神·土行孙",
                 "star": 2,
                 "lv": 1,
-                "atk": 103,
-                "hp": 375,
+                "atk": 95,
+                "hp": 420,
                 "normal_atk_id": 11,
                 "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
                 "url": 16
@@ -2518,8 +2616,8 @@ var outputTables = {
                 "name": "捆仙绳·土行孙",
                 "star": 3,
                 "lv": 1,
-                "atk": 156,
-                "hp": 578,
+                "atk": 145,
+                "hp": 620,
                 "skill_name": "土遁飞剑",
                 "skill_id": 4,
                 "normal_atk_id": 11,
@@ -2533,8 +2631,8 @@ var outputTables = {
                 "name": "地行仙·土行孙",
                 "star": 4,
                 "lv": 1,
-                "atk": 210,
-                "hp": 790,
+                "atk": 195,
+                "hp": 820,
                 "skill_name": "土遁飞剑",
                 "skill_id": 4,
                 "normal_atk_id": 11,
@@ -2548,8 +2646,8 @@ var outputTables = {
                 "name": "土府星君·土行孙",
                 "star": 5,
                 "lv": 1,
-                "atk": 277,
-                "hp": 1035,
+                "atk": 265,
+                "hp": 1100,
                 "skill_name": "土遁飞剑",
                 "skill_id": 4,
                 "normal_atk_id": 11,
@@ -2563,8 +2661,8 @@ var outputTables = {
                 "name": "三界屌丝·土行孙",
                 "star": 6,
                 "lv": 1,
-                "atk": 351,
-                "hp": 1328,
+                "atk": 345,
+                "hp": 1420,
                 "skill_name": "土遁飞剑",
                 "skill_id": 4,
                 "normal_atk_id": 11,
@@ -2578,8 +2676,8 @@ var outputTables = {
                 "name": "精神领袖·土行孙",
                 "star": 7,
                 "lv": 1,
-                "atk": 429,
-                "hp": 1650,
+                "atk": 435,
+                "hp": 1780,
                 "skill_name": "土遁飞剑",
                 "skill_id": 4,
                 "normal_atk_id": 11,
@@ -2593,8 +2691,8 @@ var outputTables = {
                 "name": "青城山·白素贞",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 199,
+                "atk": 44,
+                "hp": 224,
                 "normal_atk_id": 4,
                 "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
                 "url": 18
@@ -2605,8 +2703,8 @@ var outputTables = {
                 "name": "断桥·白素贞",
                 "star": 2,
                 "lv": 1,
-                "atk": 106,
-                "hp": 386,
+                "atk": 94,
+                "hp": 424,
                 "normal_atk_id": 4,
                 "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
                 "url": 18
@@ -2617,8 +2715,8 @@ var outputTables = {
                 "name": "盗草·白素贞",
                 "star": 3,
                 "lv": 1,
-                "atk": 143,
-                "hp": 561,
+                "atk": 144,
+                "hp": 624,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -2632,8 +2730,8 @@ var outputTables = {
                 "name": "水漫金山·白素贞",
                 "star": 4,
                 "lv": 1,
-                "atk": 206,
-                "hp": 796,
+                "atk": 194,
+                "hp": 824,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -2647,8 +2745,8 @@ var outputTables = {
                 "name": "紫微星·白素贞",
                 "star": 5,
                 "lv": 1,
-                "atk": 265,
-                "hp": 1047,
+                "atk": 264,
+                "hp": 1104,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -2662,8 +2760,8 @@ var outputTables = {
                 "name": "雷峰塔·白素贞",
                 "star": 6,
                 "lv": 1,
-                "atk": 342,
-                "hp": 1300,
+                "atk": 344,
+                "hp": 1424,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -2677,8 +2775,8 @@ var outputTables = {
                 "name": "白娘子·白素贞",
                 "star": 7,
                 "lv": 1,
-                "atk": 431,
-                "hp": 1640,
+                "atk": 434,
+                "hp": 1784,
                 "skill_name": "千年修",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -2692,8 +2790,8 @@ var outputTables = {
                 "name": "青蛇·小青",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 192,
+                "atk": 48,
+                "hp": 208,
                 "normal_atk_id": 5,
                 "description": "我修行了一千年，孤独了一千年。",
                 "url": 19
@@ -2704,8 +2802,8 @@ var outputTables = {
                 "name": "变身·小青",
                 "star": 2,
                 "lv": 1,
-                "atk": 106,
-                "hp": 371,
+                "atk": 98,
+                "hp": 408,
                 "normal_atk_id": 5,
                 "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
                 "url": 19
@@ -2716,8 +2814,8 @@ var outputTables = {
                 "name": "斗法海·小青",
                 "star": 3,
                 "lv": 1,
-                "atk": 152,
-                "hp": 565,
+                "atk": 148,
+                "hp": 608,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -2731,8 +2829,8 @@ var outputTables = {
                 "name": "烧塔·小青",
                 "star": 4,
                 "lv": 1,
-                "atk": 203,
-                "hp": 783,
+                "atk": 198,
+                "hp": 808,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -2747,7 +2845,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 268,
-                "hp": 1029,
+                "hp": 1088,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -2761,8 +2859,8 @@ var outputTables = {
                 "name": "姐妹情深·小青",
                 "star": 6,
                 "lv": 1,
-                "atk": 331,
-                "hp": 1311,
+                "atk": 348,
+                "hp": 1408,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -2776,8 +2874,8 @@ var outputTables = {
                 "name": "二次元·小青",
                 "star": 7,
                 "lv": 1,
-                "atk": 421,
-                "hp": 1721,
+                "atk": 438,
+                "hp": 1768,
                 "skill_name": "黯然销魂",
                 "skill_id": 3,
                 "normal_atk_id": 5,
@@ -2791,8 +2889,8 @@ var outputTables = {
                 "name": "秀姑·何仙姑",
                 "star": 1,
                 "lv": 1,
-                "atk": 60,
-                "hp": 179,
+                "atk": 38,
+                "hp": 248,
                 "normal_atk_id": 6,
                 "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
                 "url": 20
@@ -2803,8 +2901,8 @@ var outputTables = {
                 "name": "辟谷·何仙姑",
                 "star": 2,
                 "lv": 1,
-                "atk": 111,
-                "hp": 363,
+                "atk": 88,
+                "hp": 448,
                 "normal_atk_id": 6,
                 "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
                 "url": 20
@@ -2815,8 +2913,8 @@ var outputTables = {
                 "name": "凌风驾云·何仙姑",
                 "star": 3,
                 "lv": 1,
-                "atk": 161,
-                "hp": 562,
+                "atk": 138,
+                "hp": 648,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -2830,8 +2928,8 @@ var outputTables = {
                 "name": "风凰台·何仙姑",
                 "star": 4,
                 "lv": 1,
-                "atk": 221,
-                "hp": 793,
+                "atk": 188,
+                "hp": 848,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -2845,8 +2943,8 @@ var outputTables = {
                 "name": "碧波仙子·何仙姑",
                 "star": 5,
                 "lv": 1,
-                "atk": 290,
-                "hp": 1006,
+                "atk": 258,
+                "hp": 1128,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -2860,8 +2958,8 @@ var outputTables = {
                 "name": "八仙之女·何仙姑",
                 "star": 6,
                 "lv": 1,
-                "atk": 380,
-                "hp": 1360,
+                "atk": 338,
+                "hp": 1448,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -2872,11 +2970,11 @@ var outputTables = {
             "387": {
                 "id": 387,
                 "number": 20,
-                "name": "铁拐李之梦·何仙姑",
+                "name": "及时雨·何仙姑",
                 "star": 7,
                 "lv": 1,
-                "atk": 462,
-                "hp": 1692,
+                "atk": 428,
+                "hp": 1808,
                 "skill_name": "莲花心经",
                 "skill_id": 10,
                 "normal_atk_id": 6,
@@ -2890,8 +2988,8 @@ var outputTables = {
                 "name": "神游·铁拐李",
                 "star": 1,
                 "lv": 1,
-                "atk": 56,
-                "hp": 208,
+                "atk": 50,
+                "hp": 200,
                 "normal_atk_id": 7,
                 "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
                 "url": 22
@@ -2902,8 +3000,8 @@ var outputTables = {
                 "name": "借尸还魂·铁拐李",
                 "star": 2,
                 "lv": 1,
-                "atk": 111,
-                "hp": 366,
+                "atk": 100,
+                "hp": 400,
                 "normal_atk_id": 7,
                 "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
                 "url": 22
@@ -2914,8 +3012,8 @@ var outputTables = {
                 "name": "化龙·铁拐李",
                 "star": 3,
                 "lv": 1,
-                "atk": 159,
-                "hp": 544,
+                "atk": 150,
+                "hp": 600,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -2929,8 +3027,8 @@ var outputTables = {
                 "name": "呼风唤雨·铁拐李",
                 "star": 4,
                 "lv": 1,
-                "atk": 221,
-                "hp": 784,
+                "atk": 200,
+                "hp": 800,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -2944,8 +3042,8 @@ var outputTables = {
                 "name": "东华教主·铁拐李",
                 "star": 5,
                 "lv": 1,
-                "atk": 276,
-                "hp": 1038,
+                "atk": 270,
+                "hp": 1080,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -2959,8 +3057,8 @@ var outputTables = {
                 "name": "横扫千军·铁拐李",
                 "star": 6,
                 "lv": 1,
-                "atk": 365,
-                "hp": 1352,
+                "atk": 350,
+                "hp": 1400,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -2974,8 +3072,8 @@ var outputTables = {
                 "name": "地动山摇·铁拐李",
                 "star": 7,
                 "lv": 1,
-                "atk": 442,
-                "hp": 1670,
+                "atk": 440,
+                "hp": 1760,
                 "skill_name": "流星拐",
                 "skill_id": 4,
                 "normal_atk_id": 7,
@@ -2989,8 +3087,8 @@ var outputTables = {
                 "name": "不羁·韩湘子",
                 "star": 1,
                 "lv": 1,
-                "atk": 41,
-                "hp": 198,
+                "atk": 53,
+                "hp": 188,
                 "normal_atk_id": 2,
                 "description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
                 "url": 25
@@ -3001,8 +3099,8 @@ var outputTables = {
                 "name": "天花引·韩湘子",
                 "star": 2,
                 "lv": 1,
-                "atk": 92,
-                "hp": 418,
+                "atk": 103,
+                "hp": 388,
                 "normal_atk_id": 2,
                 "description": "我一辈子只写了这一曲，却流传了几辈子。",
                 "url": 25
@@ -3013,8 +3111,8 @@ var outputTables = {
                 "name": "点化·韩湘子",
                 "star": 3,
                 "lv": 1,
-                "atk": 144,
-                "hp": 593,
+                "atk": 153,
+                "hp": 588,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -3028,8 +3126,8 @@ var outputTables = {
                 "name": "箫中情·韩湘子",
                 "star": 4,
                 "lv": 1,
-                "atk": 179,
-                "hp": 845,
+                "atk": 203,
+                "hp": 788,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -3043,8 +3141,8 @@ var outputTables = {
                 "name": "尸解仙·韩湘子",
                 "star": 5,
                 "lv": 1,
-                "atk": 255,
-                "hp": 1067,
+                "atk": 273,
+                "hp": 1068,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -3058,8 +3156,8 @@ var outputTables = {
                 "name": "多情种子·韩湘子",
                 "star": 6,
                 "lv": 1,
-                "atk": 338,
-                "hp": 1392,
+                "atk": 353,
+                "hp": 1388,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -3073,8 +3171,8 @@ var outputTables = {
                 "name": "八仙之首·韩湘子",
                 "star": 7,
                 "lv": 1,
-                "atk": 421,
-                "hp": 1710,
+                "atk": 443,
+                "hp": 1748,
                 "skill_name": "天籁之音",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -3088,8 +3186,8 @@ var outputTables = {
                 "name": "女红·织女",
                 "star": 1,
                 "lv": 1,
-                "atk": 42,
-                "hp": 185,
+                "atk": 40,
+                "hp": 240,
                 "normal_atk_id": 1,
                 "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。",
                 "url": 28
@@ -3100,8 +3198,8 @@ var outputTables = {
                 "name": "天浴·织女",
                 "star": 2,
                 "lv": 1,
-                "atk": 92,
-                "hp": 398,
+                "atk": 90,
+                "hp": 440,
                 "normal_atk_id": 1,
                 "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。",
                 "url": 28
@@ -3112,8 +3210,8 @@ var outputTables = {
                 "name": "天伦·织女",
                 "star": 3,
                 "lv": 1,
-                "atk": 132,
-                "hp": 581,
+                "atk": 140,
+                "hp": 640,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -3127,8 +3225,8 @@ var outputTables = {
                 "name": "七仙姑·织女",
                 "star": 4,
                 "lv": 1,
-                "atk": 182,
-                "hp": 839,
+                "atk": 190,
+                "hp": 840,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -3142,8 +3240,8 @@ var outputTables = {
                 "name": "七星娘娘·织女",
                 "star": 5,
                 "lv": 1,
-                "atk": 242,
-                "hp": 1082,
+                "atk": 260,
+                "hp": 1120,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -3157,8 +3255,8 @@ var outputTables = {
                 "name": "鹊桥泪·织女",
                 "star": 6,
                 "lv": 1,
-                "atk": 346,
-                "hp": 1368,
+                "atk": 340,
+                "hp": 1440,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -3172,8 +3270,8 @@ var outputTables = {
                 "name": "牛郎情·织女",
                 "star": 7,
                 "lv": 1,
-                "atk": 445,
-                "hp": 1699,
+                "atk": 430,
+                "hp": 1800,
                 "skill_name": "鹊桥泪",
                 "skill_id": 7,
                 "normal_atk_id": 1,
@@ -3187,8 +3285,8 @@ var outputTables = {
                 "name": "决斗·吴刚",
                 "star": 1,
                 "lv": 1,
-                "atk": 33,
-                "hp": 187,
+                "atk": 36,
+                "hp": 256,
                 "normal_atk_id": 12,
                 "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！",
                 "url": 29
@@ -3199,8 +3297,8 @@ var outputTables = {
                 "name": "刺配·吴刚",
                 "star": 2,
                 "lv": 1,
-                "atk": 83,
-                "hp": 400,
+                "atk": 86,
+                "hp": 456,
                 "normal_atk_id": 12,
                 "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。",
                 "url": 29
@@ -3211,8 +3309,8 @@ var outputTables = {
                 "name": "樵夫·吴刚",
                 "star": 3,
                 "lv": 1,
-                "atk": 133,
-                "hp": 582,
+                "atk": 136,
+                "hp": 656,
                 "skill_name": "半月斩",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3226,8 +3324,8 @@ var outputTables = {
                 "name": "逆袭·吴刚",
                 "star": 4,
                 "lv": 1,
-                "atk": 183,
-                "hp": 841,
+                "atk": 186,
+                "hp": 856,
                 "skill_name": "半月斩",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3241,8 +3339,8 @@ var outputTables = {
                 "name": "桂花仙·吴刚",
                 "star": 5,
                 "lv": 1,
-                "atk": 243,
-                "hp": 1069,
+                "atk": 256,
+                "hp": 1136,
                 "skill_name": "半月斩",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3256,8 +3354,8 @@ var outputTables = {
                 "name": "玉兔泪·吴刚",
                 "star": 6,
                 "lv": 1,
-                "atk": 368,
-                "hp": 1352,
+                "atk": 336,
+                "hp": 1456,
                 "skill_name": "半月斩",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3271,8 +3369,8 @@ var outputTables = {
                 "name": "嫦娥梦·吴刚",
                 "star": 7,
                 "lv": 1,
-                "atk": 462,
-                "hp": 1682,
+                "atk": 426,
+                "hp": 1816,
                 "skill_name": "半月斩",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3286,8 +3384,8 @@ var outputTables = {
                 "name": "天书·鬼谷子",
                 "star": 1,
                 "lv": 1,
-                "atk": 46,
-                "hp": 202,
+                "atk": 43,
+                "hp": 228,
                 "normal_atk_id": 8,
                 "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！",
                 "url": 30
@@ -3298,8 +3396,8 @@ var outputTables = {
                 "name": "纵横术·鬼谷子",
                 "star": 2,
                 "lv": 1,
-                "atk": 95,
-                "hp": 398,
+                "atk": 93,
+                "hp": 428,
                 "normal_atk_id": 8,
                 "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！",
                 "url": 30
@@ -3310,8 +3408,8 @@ var outputTables = {
                 "name": "鬼谷井·鬼谷子",
                 "star": 3,
                 "lv": 1,
-                "atk": 145,
-                "hp": 585,
+                "atk": 143,
+                "hp": 628,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -3325,8 +3423,8 @@ var outputTables = {
                 "name": "斩草撒豆·鬼谷子",
                 "star": 4,
                 "lv": 1,
-                "atk": 188,
-                "hp": 845,
+                "atk": 193,
+                "hp": 828,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -3340,8 +3438,8 @@ var outputTables = {
                 "name": "玄微真人·鬼谷子",
                 "star": 5,
                 "lv": 1,
-                "atk": 244,
-                "hp": 1096,
+                "atk": 263,
+                "hp": 1108,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -3355,8 +3453,8 @@ var outputTables = {
                 "name": "冥界丧神·鬼谷子",
                 "star": 6,
                 "lv": 1,
-                "atk": 367,
-                "hp": 1349,
+                "atk": 343,
+                "hp": 1428,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -3370,8 +3468,8 @@ var outputTables = {
                 "name": "阎罗无极·鬼谷子",
                 "star": 7,
                 "lv": 1,
-                "atk": 455,
-                "hp": 1679,
+                "atk": 433,
+                "hp": 1788,
                 "skill_name": "鬼脚七",
                 "skill_id": 1,
                 "normal_atk_id": 8,
@@ -3385,8 +3483,8 @@ var outputTables = {
                 "name": "生老病死·黑无常",
                 "star": 1,
                 "lv": 1,
-                "atk": 50,
-                "hp": 199,
+                "atk": 55,
+                "hp": 180,
                 "normal_atk_id": 5,
                 "description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？",
                 "url": 31
@@ -3397,8 +3495,8 @@ var outputTables = {
                 "name": "爱别离·黑无常",
                 "star": 2,
                 "lv": 1,
-                "atk": 102,
-                "hp": 424,
+                "atk": 105,
+                "hp": 380,
                 "normal_atk_id": 5,
                 "description": "我能想到最浪漫的事，就是和你一起卖卖电脑。",
                 "url": 31
@@ -3409,8 +3507,8 @@ var outputTables = {
                 "name": "怨憎会·黑无常",
                 "star": 3,
                 "lv": 1,
-                "atk": 149,
-                "hp": 575,
+                "atk": 155,
+                "hp": 580,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -3424,8 +3522,8 @@ var outputTables = {
                 "name": "求不得·黑无常",
                 "star": 4,
                 "lv": 1,
-                "atk": 201,
-                "hp": 834,
+                "atk": 205,
+                "hp": 780,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -3439,8 +3537,8 @@ var outputTables = {
                 "name": "五阴盛·黑无常",
                 "star": 5,
                 "lv": 1,
-                "atk": 265,
-                "hp": 1093,
+                "atk": 275,
+                "hp": 1060,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -3454,8 +3552,8 @@ var outputTables = {
                 "name": "恶鬼道·黑无常",
                 "star": 6,
                 "lv": 1,
-                "atk": 357,
-                "hp": 1342,
+                "atk": 355,
+                "hp": 1380,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -3469,8 +3567,8 @@ var outputTables = {
                 "name": "非洲梦·黑无常",
                 "star": 7,
                 "lv": 1,
-                "atk": 421,
-                "hp": 1688,
+                "atk": 445,
+                "hp": 1740,
                 "skill_name": "招魂蟠",
                 "skill_id": 6,
                 "normal_atk_id": 5,
@@ -3484,8 +3582,8 @@ var outputTables = {
                 "name": "地狱道·白无常",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 192,
+                "atk": 42,
+                "hp": 232,
                 "normal_atk_id": 7,
                 "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。",
                 "url": 32
@@ -3496,8 +3594,8 @@ var outputTables = {
                 "name": "恶鬼道·白无常",
                 "star": 2,
                 "lv": 1,
-                "atk": 105,
-                "hp": 421,
+                "atk": 92,
+                "hp": 432,
                 "normal_atk_id": 7,
                 "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！",
                 "url": 32
@@ -3508,8 +3606,8 @@ var outputTables = {
                 "name": "畜生道·白无常",
                 "star": 3,
                 "lv": 1,
-                "atk": 154,
-                "hp": 561,
+                "atk": 142,
+                "hp": 632,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -3523,8 +3621,8 @@ var outputTables = {
                 "name": "阿修罗道·白无常",
                 "star": 4,
                 "lv": 1,
-                "atk": 206,
-                "hp": 845,
+                "atk": 192,
+                "hp": 832,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -3538,8 +3636,8 @@ var outputTables = {
                 "name": "人间道·白无常",
                 "star": 5,
                 "lv": 1,
-                "atk": 266,
-                "hp": 1012,
+                "atk": 262,
+                "hp": 1112,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -3554,7 +3652,7 @@ var outputTables = {
                 "star": 6,
                 "lv": 1,
                 "atk": 342,
-                "hp": 1356,
+                "hp": 1432,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -3568,8 +3666,8 @@ var outputTables = {
                 "name": "亚洲梦·白无常",
                 "star": 7,
                 "lv": 1,
-                "atk": 451,
-                "hp": 1685,
+                "atk": 432,
+                "hp": 1792,
                 "skill_name": "哭丧棒",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -3583,8 +3681,8 @@ var outputTables = {
                 "name": "科员·日游神",
                 "star": 1,
                 "lv": 1,
-                "atk": 62,
-                "hp": 190,
+                "atk": 48,
+                "hp": 208,
                 "normal_atk_id": 12,
                 "description": "我怎么也是个有编制的神，可不是临时工。",
                 "url": 33
@@ -3595,8 +3693,8 @@ var outputTables = {
                 "name": "副科长·日游神",
                 "star": 2,
                 "lv": 1,
-                "atk": 112,
-                "hp": 371,
+                "atk": 98,
+                "hp": 408,
                 "normal_atk_id": 12,
                 "description": "终于走上领导岗位了，虽然还是要整天出来巡街。",
                 "url": 33
@@ -3607,8 +3705,8 @@ var outputTables = {
                 "name": "科长·日游神",
                 "star": 3,
                 "lv": 1,
-                "atk": 159,
-                "hp": 568,
+                "atk": 148,
+                "hp": 608,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3622,8 +3720,8 @@ var outputTables = {
                 "name": "副处长·日游神",
                 "star": 4,
                 "lv": 1,
-                "atk": 222,
-                "hp": 789,
+                "atk": 198,
+                "hp": 808,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3638,7 +3736,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 268,
-                "hp": 1017,
+                "hp": 1088,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3652,8 +3750,8 @@ var outputTables = {
                 "name": "科长·日游神",
                 "star": 6,
                 "lv": 1,
-                "atk": 333,
-                "hp": 1342,
+                "atk": 348,
+                "hp": 1408,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3667,8 +3765,8 @@ var outputTables = {
                 "name": "部长·日游神",
                 "star": 7,
                 "lv": 1,
-                "atk": 425,
-                "hp": 1666,
+                "atk": 438,
+                "hp": 1768,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "normal_atk_id": 12,
@@ -3682,8 +3780,8 @@ var outputTables = {
                 "name": "士官·夜游神",
                 "star": 1,
                 "lv": 1,
-                "atk": 60,
-                "hp": 185,
+                "atk": 51,
+                "hp": 196,
                 "normal_atk_id": 9,
                 "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。",
                 "url": 34
@@ -3694,8 +3792,8 @@ var outputTables = {
                 "name": "中尉·夜游神",
                 "star": 2,
                 "lv": 1,
-                "atk": 115,
-                "hp": 374,
+                "atk": 101,
+                "hp": 396,
                 "normal_atk_id": 9,
                 "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
                 "url": 34
@@ -3706,8 +3804,8 @@ var outputTables = {
                 "name": "少校·夜游神",
                 "star": 3,
                 "lv": 1,
-                "atk": 162,
-                "hp": 567,
+                "atk": 151,
+                "hp": 596,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -3721,8 +3819,8 @@ var outputTables = {
                 "name": "上校·夜游神",
                 "star": 4,
                 "lv": 1,
-                "atk": 223,
-                "hp": 783,
+                "atk": 201,
+                "hp": 796,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -3736,8 +3834,8 @@ var outputTables = {
                 "name": "大校·夜游神",
                 "star": 5,
                 "lv": 1,
-                "atk": 279,
-                "hp": 1015,
+                "atk": 271,
+                "hp": 1076,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -3751,8 +3849,8 @@ var outputTables = {
                 "name": "少将·夜游神",
                 "star": 6,
                 "lv": 1,
-                "atk": 372,
-                "hp": 1321,
+                "atk": 351,
+                "hp": 1396,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -3766,8 +3864,8 @@ var outputTables = {
                 "name": "中将·夜游神",
                 "star": 7,
                 "lv": 1,
-                "atk": 462,
-                "hp": 1652,
+                "atk": 441,
+                "hp": 1756,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "normal_atk_id": 9,
@@ -3781,8 +3879,8 @@ var outputTables = {
                 "name": "公主驾到·精卫",
                 "star": 1,
                 "lv": 1,
-                "atk": 45,
-                "hp": 207,
+                "atk": 41,
+                "hp": 236,
                 "normal_atk_id": 4,
                 "description": "虽然咱们部落没多少人，但我也算是个公主呀！",
                 "url": 36
@@ -3793,8 +3891,8 @@ var outputTables = {
                 "name": "海泳·精卫",
                 "star": 2,
                 "lv": 1,
-                "atk": 106,
-                "hp": 392,
+                "atk": 91,
+                "hp": 436,
                 "normal_atk_id": 4,
                 "description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。",
                 "url": 36
@@ -3805,8 +3903,8 @@ var outputTables = {
                 "name": "东海遇·精卫",
                 "star": 3,
                 "lv": 1,
-                "atk": 151,
-                "hp": 579,
+                "atk": 141,
+                "hp": 636,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -3820,8 +3918,8 @@ var outputTables = {
                 "name": "逼婚·精卫",
                 "star": 4,
                 "lv": 1,
-                "atk": 200,
-                "hp": 815,
+                "atk": 191,
+                "hp": 836,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -3835,8 +3933,8 @@ var outputTables = {
                 "name": "化鸟·精卫",
                 "star": 5,
                 "lv": 1,
-                "atk": 280,
-                "hp": 1096,
+                "atk": 261,
+                "hp": 1116,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -3850,8 +3948,8 @@ var outputTables = {
                 "name": "生死恋·精卫",
                 "star": 6,
                 "lv": 1,
-                "atk": 373,
-                "hp": 1329,
+                "atk": 341,
+                "hp": 1436,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -3865,8 +3963,8 @@ var outputTables = {
                 "name": "东海卫士·精卫",
                 "star": 7,
                 "lv": 1,
-                "atk": 468,
-                "hp": 1659,
+                "atk": 431,
+                "hp": 1796,
                 "skill_name": "碧波滔天",
                 "skill_id": 8,
                 "normal_atk_id": 4,
@@ -3880,8 +3978,8 @@ var outputTables = {
                 "name": "箭客·后羿",
                 "star": 1,
                 "lv": 1,
-                "atk": 44,
-                "hp": 214,
+                "atk": 52,
+                "hp": 192,
                 "normal_atk_id": 2,
                 "description": "我喜欢射，我喜欢箭，我是箭客！",
                 "url": 38
@@ -3892,8 +3990,8 @@ var outputTables = {
                 "name": "失嫦娥·后羿",
                 "star": 2,
                 "lv": 1,
-                "atk": 93,
-                "hp": 397,
+                "atk": 102,
+                "hp": 392,
                 "normal_atk_id": 2,
                 "description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。",
                 "url": 38
@@ -3904,8 +4002,8 @@ var outputTables = {
                 "name": "七弦·后羿",
                 "star": 3,
                 "lv": 1,
-                "atk": 144,
-                "hp": 590,
+                "atk": 152,
+                "hp": 592,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -3919,8 +4017,8 @@ var outputTables = {
                 "name": "射日·后羿",
                 "star": 4,
                 "lv": 1,
-                "atk": 205,
-                "hp": 822,
+                "atk": 202,
+                "hp": 792,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -3934,8 +4032,8 @@ var outputTables = {
                 "name": "宗布神·后羿",
                 "star": 5,
                 "lv": 1,
-                "atk": 277,
-                "hp": 1108,
+                "atk": 272,
+                "hp": 1072,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -3949,8 +4047,8 @@ var outputTables = {
                 "name": "偶像·后羿",
                 "star": 6,
                 "lv": 1,
-                "atk": 375,
-                "hp": 1341,
+                "atk": 352,
+                "hp": 1392,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -3964,8 +4062,8 @@ var outputTables = {
                 "name": "笑看风云·后羿",
                 "star": 7,
                 "lv": 1,
-                "atk": 462,
-                "hp": 1679,
+                "atk": 442,
+                "hp": 1752,
                 "skill_name": "穿云箭",
                 "skill_id": 3,
                 "normal_atk_id": 2,
@@ -3979,8 +4077,8 @@ var outputTables = {
                 "name": "郎才女貌·嫦娥",
                 "star": 1,
                 "lv": 1,
-                "atk": 62,
-                "hp": 185,
+                "atk": 56,
+                "hp": 176,
                 "normal_atk_id": 5,
                 "description": "后羿是个神射手，嫁给他我很幸福，你懂的。",
                 "url": 39
@@ -3991,8 +4089,8 @@ var outputTables = {
                 "name": "奔月·嫦娥",
                 "star": 2,
                 "lv": 1,
-                "atk": 105,
-                "hp": 354,
+                "atk": 106,
+                "hp": 376,
                 "normal_atk_id": 5,
                 "description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。",
                 "url": 39
@@ -4003,8 +4101,8 @@ var outputTables = {
                 "name": "捣药·嫦娥",
                 "star": 3,
                 "lv": 1,
-                "atk": 159,
-                "hp": 535,
+                "atk": 156,
+                "hp": 576,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -4018,8 +4116,8 @@ var outputTables = {
                 "name": "真爱·嫦娥",
                 "star": 4,
                 "lv": 1,
-                "atk": 212,
-                "hp": 763,
+                "atk": 206,
+                "hp": 776,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -4033,8 +4131,8 @@ var outputTables = {
                 "name": "月光女神·嫦娥",
                 "star": 5,
                 "lv": 1,
-                "atk": 290,
-                "hp": 983,
+                "atk": 276,
+                "hp": 1056,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -4048,8 +4146,8 @@ var outputTables = {
                 "name": "梦中情人·嫦娥",
                 "star": 6,
                 "lv": 1,
-                "atk": 385,
-                "hp": 1290,
+                "atk": 356,
+                "hp": 1376,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -4063,8 +4161,8 @@ var outputTables = {
                 "name": "桂花泪·嫦娥",
                 "star": 7,
                 "lv": 1,
-                "atk": 475,
-                "hp": 1610,
+                "atk": 446,
+                "hp": 1736,
                 "skill_name": "天音玄",
                 "skill_id": 4,
                 "normal_atk_id": 5,
@@ -4079,7 +4177,7 @@ var outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 51,
-                "hp": 184,
+                "hp": 196,
                 "normal_atk_id": 6,
                 "description": "嫁给河伯是我一生最大的错。",
                 "url": 43
@@ -4091,7 +4189,7 @@ var outputTables = {
                 "star": 2,
                 "lv": 1,
                 "atk": 101,
-                "hp": 382,
+                "hp": 396,
                 "normal_atk_id": 6,
                 "description": "我献出洛书，只是想离开这个人。",
                 "url": 43
@@ -4103,7 +4201,7 @@ var outputTables = {
                 "star": 3,
                 "lv": 1,
                 "atk": 151,
-                "hp": 564,
+                "hp": 596,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -4118,7 +4216,7 @@ var outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 201,
-                "hp": 792,
+                "hp": 796,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -4133,7 +4231,7 @@ var outputTables = {
                 "star": 5,
                 "lv": 1,
                 "atk": 271,
-                "hp": 1020,
+                "hp": 1076,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -4147,8 +4245,8 @@ var outputTables = {
                 "name": "爱爱女神·宓妃",
                 "star": 6,
                 "lv": 1,
-                "atk": 348,
-                "hp": 1328,
+                "atk": 351,
+                "hp": 1396,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -4162,8 +4260,8 @@ var outputTables = {
                 "name": "笑傲天庭·宓妃",
                 "star": 7,
                 "lv": 1,
-                "atk": 439,
-                "hp": 1676,
+                "atk": 441,
+                "hp": 1756,
                 "skill_name": "水乳之欢",
                 "skill_id": 9,
                 "normal_atk_id": 6,
@@ -4177,8 +4275,8 @@ var outputTables = {
                 "name": "长生之道·张道陵",
                 "star": 1,
                 "lv": 1,
-                "atk": 49,
-                "hp": 192,
+                "atk": 46,
+                "hp": 216,
                 "normal_atk_id": 7,
                 "description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。",
                 "url": 44
@@ -4189,8 +4287,8 @@ var outputTables = {
                 "name": "神医·张道陵",
                 "star": 2,
                 "lv": 1,
-                "atk": 106,
-                "hp": 377,
+                "atk": 96,
+                "hp": 416,
                 "normal_atk_id": 7,
                 "description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？",
                 "url": 44
@@ -4201,8 +4299,8 @@ var outputTables = {
                 "name": "授术·张道陵",
                 "star": 3,
                 "lv": 1,
-                "atk": 158,
-                "hp": 568,
+                "atk": 146,
+                "hp": 616,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -4216,8 +4314,8 @@ var outputTables = {
                 "name": "五斗米·张道陵",
                 "star": 4,
                 "lv": 1,
-                "atk": 203,
-                "hp": 807,
+                "atk": 196,
+                "hp": 816,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -4231,8 +4329,8 @@ var outputTables = {
                 "name": "天师·张道陵",
                 "star": 5,
                 "lv": 1,
-                "atk": 274,
-                "hp": 1031,
+                "atk": 266,
+                "hp": 1096,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -4246,8 +4344,8 @@ var outputTables = {
                 "name": "三界·张道陵",
                 "star": 6,
                 "lv": 1,
-                "atk": 335,
-                "hp": 1341,
+                "atk": 346,
+                "hp": 1416,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -4261,8 +4359,8 @@ var outputTables = {
                 "name": "无极·张道陵",
                 "star": 7,
                 "lv": 1,
-                "atk": 428,
-                "hp": 1668,
+                "atk": 436,
+                "hp": 1776,
                 "skill_name": "无米之炊",
                 "skill_id": 2,
                 "normal_atk_id": 7,
@@ -4276,8 +4374,8 @@ var outputTables = {
                 "name": "异人·哪吒",
                 "star": 1,
                 "lv": 1,
-                "atk": 46,
-                "hp": 213,
+                "atk": 60,
+                "hp": 160,
                 "normal_atk_id": 3,
                 "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？",
                 "url": 49
@@ -4288,8 +4386,8 @@ var outputTables = {
                 "name": "小仙·哪吒",
                 "star": 2,
                 "lv": 1,
-                "atk": 92,
-                "hp": 441,
+                "atk": 110,
+                "hp": 360,
                 "normal_atk_id": 3,
                 "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。",
                 "url": 49
@@ -4300,8 +4398,8 @@ var outputTables = {
                 "name": "神臂·哪吒",
                 "star": 3,
                 "lv": 1,
-                "atk": 141,
-                "hp": 623,
+                "atk": 160,
+                "hp": 560,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -4315,8 +4413,8 @@ var outputTables = {
                 "name": "擒龙·哪吒",
                 "star": 4,
                 "lv": 1,
-                "atk": 192,
-                "hp": 851,
+                "atk": 210,
+                "hp": 760,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -4330,8 +4428,8 @@ var outputTables = {
                 "name": "不死·哪吒",
                 "star": 5,
                 "lv": 1,
-                "atk": 262,
-                "hp": 1094,
+                "atk": 280,
+                "hp": 1040,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -4345,8 +4443,8 @@ var outputTables = {
                 "name": "龙骨枪·哪吒",
                 "star": 6,
                 "lv": 1,
-                "atk": 325,
-                "hp": 1396,
+                "atk": 360,
+                "hp": 1360,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -4360,8 +4458,8 @@ var outputTables = {
                 "name": "风火轮·哪吒",
                 "star": 7,
                 "lv": 1,
-                "atk": 421,
-                "hp": 1710,
+                "atk": 450,
+                "hp": 1720,
                 "skill_name": "风火轮",
                 "skill_id": 1,
                 "normal_atk_id": 3,
@@ -4375,8 +4473,8 @@ var outputTables = {
                 "name": "灯芯·紫霞",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 207,
+                "atk": 47,
+                "hp": 212,
                 "normal_atk_id": 2,
                 "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。",
                 "url": 50
@@ -4387,8 +4485,8 @@ var outputTables = {
                 "name": "盘丝大仙·紫霞",
                 "star": 2,
                 "lv": 1,
-                "atk": 91,
-                "hp": 441,
+                "atk": 97,
+                "hp": 412,
                 "normal_atk_id": 2,
                 "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。",
                 "url": 50
@@ -4399,8 +4497,8 @@ var outputTables = {
                 "name": "紫青宝剑·紫霞",
                 "star": 3,
                 "lv": 1,
-                "atk": 141,
-                "hp": 623,
+                "atk": 147,
+                "hp": 612,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -4414,8 +4512,8 @@ var outputTables = {
                 "name": "月光宝盒·紫霞",
                 "star": 4,
                 "lv": 1,
-                "atk": 185,
-                "hp": 845,
+                "atk": 197,
+                "hp": 812,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -4429,8 +4527,8 @@ var outputTables = {
                 "name": "七色云彩·紫霞",
                 "star": 5,
                 "lv": 1,
-                "atk": 255,
-                "hp": 1102,
+                "atk": 267,
+                "hp": 1092,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -4444,8 +4542,8 @@ var outputTables = {
                 "name": "至尊情·紫霞",
                 "star": 6,
                 "lv": 1,
-                "atk": 326,
-                "hp": 1380,
+                "atk": 347,
+                "hp": 1412,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -4459,8 +4557,8 @@ var outputTables = {
                 "name": "诀别·紫霞",
                 "star": 7,
                 "lv": 1,
-                "atk": 429,
-                "hp": 1688,
+                "atk": 437,
+                "hp": 1772,
                 "skill_name": "月光宝盒",
                 "skill_id": 5,
                 "normal_atk_id": 2,
@@ -4474,8 +4572,8 @@ var outputTables = {
                 "name": "智慧·文曲星",
                 "star": 1,
                 "lv": 1,
-                "atk": 46,
-                "hp": 205,
+                "atk": 50,
+                "hp": 200,
                 "normal_atk_id": 5,
                 "description": "天生智商300多，这不是我的错。",
                 "url": 51
@@ -4486,8 +4584,8 @@ var outputTables = {
                 "name": "凡尘·文曲星",
                 "star": 2,
                 "lv": 1,
-                "atk": 110,
-                "hp": 391,
+                "atk": 100,
+                "hp": 400,
                 "normal_atk_id": 5,
                 "description": "不能老呆天上，该下凡尘时，必须得下去走一趟。",
                 "url": 51
@@ -4498,8 +4596,8 @@ var outputTables = {
                 "name": "状元·文曲星",
                 "star": 3,
                 "lv": 1,
-                "atk": 152,
-                "hp": 581,
+                "atk": 150,
+                "hp": 600,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -4513,8 +4611,8 @@ var outputTables = {
                 "name": "了然缘·文曲星",
                 "star": 4,
                 "lv": 1,
-                "atk": 201,
-                "hp": 813,
+                "atk": 200,
+                "hp": 800,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -4528,8 +4626,8 @@ var outputTables = {
                 "name": "慧心三界·文曲星",
                 "star": 5,
                 "lv": 1,
-                "atk": 281,
-                "hp": 1097,
+                "atk": 270,
+                "hp": 1080,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -4543,8 +4641,8 @@ var outputTables = {
                 "name": "虚空·文曲星",
                 "star": 6,
                 "lv": 1,
-                "atk": 368,
-                "hp": 1391,
+                "atk": 350,
+                "hp": 1400,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -4558,8 +4656,8 @@ var outputTables = {
                 "name": "无恒·文曲星",
                 "star": 7,
                 "lv": 1,
-                "atk": 462,
-                "hp": 1718,
+                "atk": 440,
+                "hp": 1760,
                 "skill_name": "慧眼诀",
                 "skill_id": 2,
                 "normal_atk_id": 5,
@@ -11348,17 +11446,6 @@ var outputTables = {
                 "effect_id": 301,
                 "url": 10047
             },
-            "30000": {
-                "id": 30000,
-                "number": 30000,
-                "name": "经验元灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
-                "url": 30000
-            },
             "30001": {
                 "id": 30001,
                 "number": 30001,
@@ -11553,6 +11640,61 @@ var outputTables = {
                 "hp": 10,
                 "normal_atk_id": 7,
                 "url": 10050
+            },
+            "50001": {
+                "id": 50001,
+                "number": 50001,
+                "name": "1星经验元灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "url": 30000
+            },
+            "50002": {
+                "id": 50002,
+                "number": 50002,
+                "name": "2星经验元灵",
+                "star": 2,
+                "lv": 1,
+                "atk": 6,
+                "hp": 11,
+                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "url": 30000
+            },
+            "50003": {
+                "id": 50003,
+                "number": 50003,
+                "name": "3星经验元灵",
+                "star": 3,
+                "lv": 1,
+                "atk": 7,
+                "hp": 12,
+                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "url": 30000
+            },
+            "50004": {
+                "id": 50004,
+                "number": 50004,
+                "name": "4星经验元灵",
+                "star": 4,
+                "lv": 1,
+                "atk": 8,
+                "hp": 13,
+                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "url": 30000
+            },
+            "50005": {
+                "id": 50005,
+                "number": 50005,
+                "name": "5星经验元灵",
+                "star": 5,
+                "lv": 1,
+                "atk": 9,
+                "hp": 14,
+                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "url": 30000
             }
         }
     },
@@ -11564,6 +11706,71 @@ var outputTables = {
                 "elixir": 20,
                 "atk": 1,
                 "hp": 2
+            }
+        }
+    },
+    "resource_cards": {
+        "colComment": {},
+        "rows": {
+            "50001": {
+                "id": 50001,
+                "exp": 500,
+                "price": 100,
+                "remark": "1星经验卡"
+            },
+            "50002": {
+                "id": 50002,
+                "exp": 1000,
+                "price": 100,
+                "remark": "2星经验卡"
+            },
+            "50003": {
+                "id": 50003,
+                "exp": 2000,
+                "price": 100,
+                "remark": "3星经验卡"
+            },
+            "50004": {
+                "id": 50004,
+                "exp": 4000,
+                "price": 100,
+                "remark": "4星经验卡"
+            },
+            "50005": {
+                "id": 50005,
+                "exp": 7000,
+                "price": 100,
+                "remark": "5星经验卡"
+            }
+        }
+    },
+    "exp_card_exp": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp": 500
+            },
+            "2": {
+                "id": 2,
+                "lv": 1,
+                "exp": 1000
+            },
+            "3": {
+                "id": 3,
+                "lv": 1,
+                "exp": 2000
+            },
+            "4": {
+                "id": 4,
+                "lv": 1,
+                "exp": 4000
+            },
+            "5": {
+                "id": 5,
+                "lv": 1,
+                "exp": 7000
             }
         }
     },
@@ -12597,6 +12804,311 @@ var outputTables = {
             }
         }
     },
+    "star_upgrade_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 0.3,
+                "factor": 0.3
+            },
+            "2": {
+                "id": 2,
+                "rate": 1,
+                "factor": 0.305
+            },
+            "3": {
+                "id": 3,
+                "rate": 1,
+                "factor": 0.31
+            },
+            "4": {
+                "id": 4,
+                "rate": 1,
+                "factor": 0.315
+            },
+            "5": {
+                "id": 5,
+                "rate": 2,
+                "factor": 0.32
+            },
+            "6": {
+                "id": 6,
+                "rate": 2,
+                "factor": 0.325
+            },
+            "7": {
+                "id": 7,
+                "rate": 2,
+                "factor": 0.33
+            },
+            "8": {
+                "id": 8,
+                "rate": 3,
+                "factor": 0.335
+            },
+            "9": {
+                "id": 9,
+                "rate": 3,
+                "factor": 0.34
+            },
+            "10": {
+                "id": 10,
+                "rate": 3,
+                "factor": 0.34500000000000003
+            },
+            "11": {
+                "id": 11,
+                "rate": 4,
+                "factor": 0.35000000000000003
+            },
+            "12": {
+                "id": 12,
+                "rate": 4,
+                "factor": 0.35500000000000004
+            },
+            "13": {
+                "id": 13,
+                "rate": 5,
+                "factor": 0.36000000000000004
+            },
+            "14": {
+                "id": 14,
+                "rate": 5,
+                "factor": 0.36500000000000005
+            },
+            "15": {
+                "id": 15,
+                "rate": 6,
+                "factor": 0.37000000000000005
+            },
+            "16": {
+                "id": 16,
+                "rate": 6,
+                "factor": 0.37500000000000006
+            },
+            "17": {
+                "id": 17,
+                "rate": 6,
+                "factor": 0.38000000000000006
+            },
+            "18": {
+                "id": 18,
+                "rate": 7,
+                "factor": 0.38500000000000006
+            },
+            "19": {
+                "id": 19,
+                "rate": 7,
+                "factor": 0.39000000000000007
+            },
+            "20": {
+                "id": 20,
+                "rate": 8,
+                "factor": 0.3980000000000001
+            },
+            "21": {
+                "id": 21,
+                "rate": 9,
+                "factor": 0.4060000000000001
+            },
+            "22": {
+                "id": 22,
+                "rate": 9,
+                "factor": 0.4140000000000001
+            },
+            "23": {
+                "id": 23,
+                "rate": 10,
+                "factor": 0.4220000000000001
+            },
+            "24": {
+                "id": 24,
+                "rate": 10,
+                "factor": 0.4300000000000001
+            },
+            "25": {
+                "id": 25,
+                "rate": 11,
+                "factor": 0.4380000000000001
+            },
+            "26": {
+                "id": 26,
+                "rate": 12,
+                "factor": 0.4460000000000001
+            },
+            "27": {
+                "id": 27,
+                "rate": 12,
+                "factor": 0.4540000000000001
+            },
+            "28": {
+                "id": 28,
+                "rate": 13,
+                "factor": 0.46200000000000013
+            },
+            "29": {
+                "id": 29,
+                "rate": 14,
+                "factor": 0.47000000000000014
+            },
+            "30": {
+                "id": 30,
+                "rate": 14,
+                "factor": 0.47800000000000015
+            },
+            "31": {
+                "id": 31,
+                "rate": 15,
+                "factor": 0.48600000000000015
+            },
+            "32": {
+                "id": 32,
+                "rate": 16,
+                "factor": 0.49400000000000016
+            },
+            "33": {
+                "id": 33,
+                "rate": 17,
+                "factor": 0.5020000000000001
+            },
+            "34": {
+                "id": 34,
+                "rate": 17,
+                "factor": 0.5100000000000001
+            },
+            "35": {
+                "id": 35,
+                "rate": 18,
+                "factor": 0.5180000000000001
+            },
+            "36": {
+                "id": 36,
+                "rate": 19,
+                "factor": 0.5260000000000001
+            },
+            "37": {
+                "id": 37,
+                "rate": 20,
+                "factor": 0.5340000000000001
+            },
+            "38": {
+                "id": 38,
+                "rate": 21,
+                "factor": 0.5420000000000001
+            },
+            "39": {
+                "id": 39,
+                "rate": 21,
+                "factor": 0.5500000000000002
+            },
+            "40": {
+                "id": 40,
+                "rate": 22,
+                "factor": 0.5600000000000002
+            },
+            "41": {
+                "id": 41,
+                "rate": 23,
+                "factor": 0.5700000000000002
+            },
+            "42": {
+                "id": 42,
+                "rate": 24,
+                "factor": 0.5800000000000002
+            },
+            "43": {
+                "id": 43,
+                "rate": 25,
+                "factor": 0.5900000000000002
+            },
+            "44": {
+                "id": 44,
+                "rate": 26,
+                "factor": 0.6000000000000002
+            },
+            "45": {
+                "id": 45,
+                "rate": 27,
+                "factor": 0.6100000000000002
+            },
+            "46": {
+                "id": 46,
+                "rate": 29,
+                "factor": 0.6200000000000002
+            },
+            "47": {
+                "id": 47,
+                "rate": 30,
+                "factor": 0.6300000000000002
+            },
+            "48": {
+                "id": 48,
+                "rate": 31,
+                "factor": 0.6400000000000002
+            },
+            "49": {
+                "id": 49,
+                "rate": 32,
+                "factor": 0.6580000000000003
+            },
+            "50": {
+                "id": 50,
+                "rate": 34,
+                "factor": 0.6760000000000003
+            },
+            "51": {
+                "id": 51,
+                "rate": 35,
+                "factor": 0.6940000000000003
+            },
+            "52": {
+                "id": 52,
+                "rate": 37,
+                "factor": 0.7120000000000003
+            },
+            "53": {
+                "id": 53,
+                "rate": 39,
+                "factor": 0.7300000000000003
+            },
+            "54": {
+                "id": 54,
+                "rate": 40,
+                "factor": 0.7480000000000003
+            },
+            "55": {
+                "id": 55,
+                "rate": 42,
+                "factor": 0.7660000000000003
+            },
+            "56": {
+                "id": 56,
+                "rate": 44,
+                "factor": 0.7840000000000004
+            },
+            "57": {
+                "id": 57,
+                "rate": 46,
+                "factor": 0.8020000000000004
+            },
+            "58": {
+                "id": 58,
+                "rate": 48,
+                "factor": 0.8200000000000004
+            },
+            "59": {
+                "id": 59,
+                "rate": 49,
+                "factor": 0.8380000000000004
+            },
+            "60": {
+                "id": 60,
+                "rate": 51,
+                "factor": 0.8560000000000004
+            }
+        }
+    },
     "star_upgrade": {
         "colComment": {},
         "rows": {
@@ -12625,8 +13137,8 @@ var outputTables = {
                 "star": 3,
                 "source_card_star": 3,
                 "money_need": 20000,
-                "rate_per_card": 7,
-                "max_num": 15,
+                "rate_per_card": 4,
+                "max_num": 25,
                 "no_work_count": 0,
                 "super_honor": 0
             },
@@ -12638,7 +13150,7 @@ var outputTables = {
                 "rate_per_card": 6,
                 "max_num": 17,
                 "no_work_count": 10,
-                "super_honor": 2
+                "super_honor": 4
             },
             "5": {
                 "id": 5,
@@ -12647,7 +13159,7 @@ var outputTables = {
                 "money_need": 100000,
                 "rate_per_card": 35,
                 "max_num": 3,
-                "no_work_count": 1,
+                "no_work_count": 0,
                 "super_honor": 15
             },
             "6": {
@@ -12657,43 +13169,8 @@ var outputTables = {
                 "money_need": 200000,
                 "rate_per_card": 15,
                 "max_num": 7,
-                "no_work_count": 3,
+                "no_work_count": 0,
                 "super_honor": 40
-            }
-        }
-    },
-    "cdkey": {
-        "colComment": {},
-        "rows": {
-            "TB1-": {
-                "id": "TB1-",
-                "gold": 100,
-                "money": 100000,
-                "energy": 5000,
-                "fragments": 5,
-                "card_ids": 144,
-                "card_lvs": 20,
-                "card_qtys": 1
-            },
-            "911-": {
-                "id": "911-",
-                "gold": 100,
-                "money": 100000,
-                "energy": 5000,
-                "fragments": 5,
-                "card_ids": 144,
-                "card_lvs": 20,
-                "card_qtys": 1
-            },
-            "PP1-": {
-                "id": "PP1-",
-                "gold": 100,
-                "money": 100000,
-                "energy": 5000,
-                "fragments": 5,
-                "card_ids": 144,
-                "card_lvs": 20,
-                "card_qtys": 1
             }
         }
     },
@@ -13020,6 +13497,41 @@ var outputTables = {
             }
         }
     },
+    "cdkey": {
+        "colComment": {},
+        "rows": {
+            "TB1-": {
+                "id": "TB1-",
+                "gold": 100,
+                "money": 100000,
+                "energy": 5000,
+                "fragments": 5,
+                "card_ids": 144,
+                "card_lvs": 20,
+                "card_qtys": 1
+            },
+            "911-": {
+                "id": "911-",
+                "gold": 100,
+                "money": 100000,
+                "energy": 5000,
+                "fragments": 5,
+                "card_ids": 144,
+                "card_lvs": 20,
+                "card_qtys": 1
+            },
+            "PP1-": {
+                "id": "PP1-",
+                "gold": 100,
+                "money": 100000,
+                "energy": 5000,
+                "fragments": 5,
+                "card_ids": 144,
+                "card_lvs": 20,
+                "card_qtys": 1
+            }
+        }
+    },
     "daily_gift": {
         "colComment": {},
         "rows": {
@@ -13105,6 +13617,109 @@ var outputTables = {
             "71": {
                 "id": 71,
                 "count": 20
+            }
+        }
+    },
+    "exp_instance_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "open_lv": 1
+            },
+            "2": {
+                "id": 2,
+                "open_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "open_lv": 65
+            }
+        }
+    },
+    "card_lineup_limit": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "card_1": 1,
+                "card_2": 1,
+                "card_3": 6,
+                "card_4": 15,
+                "card_5": 35
+            },
+            "1": {
+                "id": 1,
+                "card_1": 55,
+                "card_2": 65,
+                "card_3": 75,
+                "card_4": 80,
+                "card_5": 85
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "card3_position": 6,
+                "pass": 10,
+                "skill_upgrade": 10,
+                "card4_position": 15,
+                "ranking_list": 45,
+                "lottery": 18,
+                "card5_position": 35,
+                "boss": 40,
+                "pass_skillafresh": 20,
+                "card_smelt": 25,
+                "use_pill": 50
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            },
+            "6": {
+                "id": 6,
+                "max_lv": 65
+            },
+            "7": {
+                "id": 7,
+                "max_lv": 70
             }
         }
     },
@@ -13195,45 +13810,6 @@ var outputTables = {
             }
         }
     },
-    "card_lineup_limit": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "card_1": 1,
-                "card_2": 1,
-                "card_3": 6,
-                "card_4": 15,
-                "card_5": 35
-            },
-            "1": {
-                "id": 1,
-                "card_1": 55,
-                "card_2": 65,
-                "card_3": 75,
-                "card_4": 80,
-                "card_5": 85
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "card3_position": 6,
-                "pass": 10,
-                "skill_upgrade": 10,
-                "card4_position": 15,
-                "ranking_list": 45,
-                "lottery": 18,
-                "card5_position": 35,
-                "boss": 40,
-                "pass_skillafresh": 20
-            }
-        }
-    },
     "daily_signin_rewards": {
         "colComment": {},
         "rows": {
@@ -13308,51 +13884,6 @@ var outputTables = {
             }
         }
     },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            },
-            "6": {
-                "id": 6,
-                "max_lv": 65
-            },
-            "7": {
-                "id": 7,
-                "max_lv": 70
-            }
-        }
-    },
     "values": {
         "colComment": {},
         "rows": {
@@ -13395,6 +13926,142 @@ var outputTables = {
                 "id": "damageOfRankHonorGap",
                 "value": 3000,
                 "desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
+            }
+        }
+    },
+    "exp_pass_cards": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "50001": {
+                "id": 50001,
+                "card_id": "1星经验元灵",
+                "atk": 1339.2,
+                "hp": 4687.2,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50002": {
+                "id": 50002,
+                "card_id": "2星经验元灵",
+                "atk": 2042.4,
+                "hp": 7148.400000000001,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50003": {
+                "id": 50003,
+                "card_id": "2星经验元灵",
+                "atk": 3287.7,
+                "hp": 11506.949999999999,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50004": {
+                "id": 50004,
+                "card_id": "3星经验元灵",
+                "atk": 5083,
+                "hp": 17790.5,
+                "dodge_rate": 10,
+                "crit_rate": 10
+            },
+            "50005": {
+                "id": 50005,
+                "card_id": "3星经验元灵",
+                "atk": 7163,
+                "hp": 25070.5,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50006": {
+                "id": 50006,
+                "card_id": "4星经验元灵",
+                "atk": 9838.4,
+                "hp": 34434.4,
+                "dodge_rate": 10,
+                "crit_rate": 10
+            },
+            "50007": {
+                "id": 50007,
+                "card_id": "4星经验元灵",
+                "atk": 12542.4,
+                "hp": 43898.4,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "50008": {
+                "id": 50008,
+                "card_id": "5星经验元灵",
+                "atk": 14058.2,
+                "hp": 49203.700000000004,
+                "dodge_rate": 10,
+                "crit_rate": 10
+            }
+        }
+    },
+    "exp_pass_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "cards": "50001#50001#50001#50001#50002",
+                "boss_id": 50002,
+                "boss_crit": 15,
+                "boss_dodge": 0,
+                "trigger_rate": 40,
+                "boss_attr": 180,
+                "atk_inc": 50,
+                "hp_inc": 50
+            },
+            "2": {
+                "id": 2,
+                "cards": "50002#50002#50002#50002#50003",
+                "boss_id": 50003,
+                "boss_crit": 16,
+                "boss_dodge": 1,
+                "trigger_rate": 41,
+                "boss_attr": 181,
+                "atk_inc": 51,
+                "hp_inc": 51
+            },
+            "3": {
+                "id": 3,
+                "cards": "50003#50003#50003#50003#50004",
+                "boss_id": 50004,
+                "boss_crit": 17,
+                "boss_dodge": 2,
+                "trigger_rate": 42,
+                "boss_attr": 182,
+                "atk_inc": 52,
+                "hp_inc": 52
+            },
+            "4": {
+                "id": 4,
+                "cards": "50004#50004#50004#50004#50005",
+                "boss_id": 50005,
+                "boss_crit": 18,
+                "boss_dodge": 3,
+                "trigger_rate": 43,
+                "boss_attr": 183,
+                "atk_inc": 53,
+                "hp_inc": 53
+            },
+            "5": {
+                "id": 5,
+                "cards": "50004#50004#50004#50004#50005",
+                "boss_id": 50005,
+                "boss_crit": 19,
+                "boss_dodge": 4,
+                "trigger_rate": 44,
+                "boss_attr": 184,
+                "atk_inc": 54,
+                "hp_inc": 54
             }
         }
     },
@@ -27978,6 +28645,365 @@ var outputTables = {
             }
         }
     },
+    "elixir_ranking_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "elixir": 60000,
+                "money": 600000,
+                "power": 200,
+                "exp_card": 50
+            },
+            "2": {
+                "id": 2,
+                "elixir": 58000,
+                "money": 585000,
+                "power": 190,
+                "exp_card": 47
+            },
+            "3": {
+                "id": 3,
+                "elixir": 56000,
+                "money": 570000,
+                "power": 180,
+                "exp_card": 44
+            },
+            "4": {
+                "id": 4,
+                "elixir": 54000,
+                "money": 555000,
+                "power": 170,
+                "exp_card": 41
+            },
+            "5": {
+                "id": 5,
+                "elixir": 52000,
+                "money": 540000,
+                "power": 160,
+                "exp_card": 38
+            },
+            "6": {
+                "id": 6,
+                "elixir": 50000,
+                "money": 525000,
+                "power": 150,
+                "exp_card": 35
+            },
+            "7": {
+                "id": 7,
+                "elixir": 48000,
+                "money": 510000,
+                "power": 140,
+                "exp_card": 32
+            },
+            "8": {
+                "id": 8,
+                "elixir": 46000,
+                "money": 495000,
+                "power": 130,
+                "exp_card": 29
+            },
+            "9": {
+                "id": 9,
+                "elixir": 44000,
+                "money": 480000,
+                "power": 120,
+                "exp_card": 26
+            },
+            "10": {
+                "id": 10,
+                "elixir": 42000,
+                "money": 465000,
+                "power": 110,
+                "exp_card": 23
+            },
+            "11": {
+                "id": 11,
+                "elixir": 41500,
+                "money": 460000,
+                "power": 105,
+                "exp_card": 0
+            },
+            "12": {
+                "id": 12,
+                "elixir": 41000,
+                "money": 455000,
+                "power": 100,
+                "exp_card": 0
+            },
+            "13": {
+                "id": 13,
+                "elixir": 40500,
+                "money": 450000,
+                "power": 95,
+                "exp_card": 0
+            },
+            "14": {
+                "id": 14,
+                "elixir": 40000,
+                "money": 445000,
+                "power": 90,
+                "exp_card": 0
+            },
+            "15": {
+                "id": 15,
+                "elixir": 39500,
+                "money": 440000,
+                "power": 85,
+                "exp_card": 0
+            },
+            "16": {
+                "id": 16,
+                "elixir": 39000,
+                "money": 435000,
+                "power": 80,
+                "exp_card": 0
+            },
+            "17": {
+                "id": 17,
+                "elixir": 38500,
+                "money": 430000,
+                "power": 75,
+                "exp_card": 0
+            },
+            "18": {
+                "id": 18,
+                "elixir": 38000,
+                "money": 425000,
+                "power": 70,
+                "exp_card": 0
+            },
+            "19": {
+                "id": 19,
+                "elixir": 37500,
+                "money": 420000,
+                "power": 65,
+                "exp_card": 0
+            },
+            "20": {
+                "id": 20,
+                "elixir": 37000,
+                "money": 415000,
+                "power": 60,
+                "exp_card": 0
+            },
+            "21": {
+                "id": 21,
+                "elixir": 36500,
+                "money": 410000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "22": {
+                "id": 22,
+                "elixir": 36000,
+                "money": 405000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "23": {
+                "id": 23,
+                "elixir": 35500,
+                "money": 400000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "24": {
+                "id": 24,
+                "elixir": 35000,
+                "money": 395000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "25": {
+                "id": 25,
+                "elixir": 34500,
+                "money": 390000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "26": {
+                "id": 26,
+                "elixir": 34000,
+                "money": 385000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "27": {
+                "id": 27,
+                "elixir": 33500,
+                "money": 380000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "28": {
+                "id": 28,
+                "elixir": 33000,
+                "money": 375000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "29": {
+                "id": 29,
+                "elixir": 32500,
+                "money": 370000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "30": {
+                "id": 30,
+                "elixir": 32000,
+                "money": 365000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "31": {
+                "id": 31,
+                "elixir": 31500,
+                "money": 360000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "32": {
+                "id": 32,
+                "elixir": 31000,
+                "money": 355000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "33": {
+                "id": 33,
+                "elixir": 30500,
+                "money": 350000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "34": {
+                "id": 34,
+                "elixir": 30000,
+                "money": 345000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "35": {
+                "id": 35,
+                "elixir": 29500,
+                "money": 340000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "36": {
+                "id": 36,
+                "elixir": 29000,
+                "money": 335000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "37": {
+                "id": 37,
+                "elixir": 28500,
+                "money": 330000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "38": {
+                "id": 38,
+                "elixir": 28000,
+                "money": 325000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "39": {
+                "id": 39,
+                "elixir": 27500,
+                "money": 320000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "40": {
+                "id": 40,
+                "elixir": 27000,
+                "money": 315000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "41": {
+                "id": 41,
+                "elixir": 26500,
+                "money": 310000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "42": {
+                "id": 42,
+                "elixir": 26000,
+                "money": 305000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "43": {
+                "id": 43,
+                "elixir": 25500,
+                "money": 300000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "44": {
+                "id": 44,
+                "elixir": 25000,
+                "money": 295000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "45": {
+                "id": 45,
+                "elixir": 24500,
+                "money": 290000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "46": {
+                "id": 46,
+                "elixir": 24000,
+                "money": 285000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "47": {
+                "id": 47,
+                "elixir": 23500,
+                "money": 280000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "48": {
+                "id": 48,
+                "elixir": 23000,
+                "money": 275000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "49": {
+                "id": 49,
+                "elixir": 22500,
+                "money": 270000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "50": {
+                "id": 50,
+                "elixir": 22000,
+                "money": 265000,
+                "power": 0,
+                "exp_card": 0
+            },
+            "51": {
+                "id": 51,
+                "elixir": 20000
+            }
+        }
+    },
     "rank": {
         "colComment": {},
         "rows": {
@@ -29150,415 +30176,6 @@ var outputTables = {
             }
         }
     },
-    "elixir_ranking_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 600000,
-                "energy": 10000,
-                "elixir": 60000,
-                "power": 200,
-                "exp_card": 50
-            },
-            "2": {
-                "id": 2,
-                "money": 585000,
-                "energy": 9700,
-                "elixir": 57500,
-                "power": 190,
-                "exp_card": 47
-            },
-            "3": {
-                "id": 3,
-                "money": 570000,
-                "energy": 9400,
-                "elixir": 55000,
-                "power": 180,
-                "exp_card": 44
-            },
-            "4": {
-                "id": 4,
-                "money": 555000,
-                "energy": 9100,
-                "elixir": 52500,
-                "power": 170,
-                "exp_card": 41
-            },
-            "5": {
-                "id": 5,
-                "money": 540000,
-                "energy": 8800,
-                "elixir": 50000,
-                "power": 160,
-                "exp_card": 38
-            },
-            "6": {
-                "id": 6,
-                "money": 525000,
-                "energy": 8500,
-                "elixir": 47500,
-                "power": 150,
-                "exp_card": 35
-            },
-            "7": {
-                "id": 7,
-                "money": 510000,
-                "energy": 8200,
-                "elixir": 45000,
-                "power": 140,
-                "exp_card": 32
-            },
-            "8": {
-                "id": 8,
-                "money": 495000,
-                "energy": 7900,
-                "elixir": 42500,
-                "power": 130,
-                "exp_card": 29
-            },
-            "9": {
-                "id": 9,
-                "money": 480000,
-                "energy": 7600,
-                "elixir": 40000,
-                "power": 120,
-                "exp_card": 26
-            },
-            "10": {
-                "id": 10,
-                "money": 465000,
-                "energy": 7300,
-                "elixir": 37500,
-                "power": 110,
-                "exp_card": 23
-            },
-            "11": {
-                "id": 11,
-                "money": 460000,
-                "energy": 7150,
-                "elixir": 36380,
-                "power": 105,
-                "exp_card": 0
-            },
-            "12": {
-                "id": 12,
-                "money": 455000,
-                "energy": 7000,
-                "elixir": 35260,
-                "power": 100,
-                "exp_card": 0
-            },
-            "13": {
-                "id": 13,
-                "money": 450000,
-                "energy": 6850,
-                "elixir": 34140,
-                "power": 95,
-                "exp_card": 0
-            },
-            "14": {
-                "id": 14,
-                "money": 445000,
-                "energy": 6700,
-                "elixir": 33020,
-                "power": 90,
-                "exp_card": 0
-            },
-            "15": {
-                "id": 15,
-                "money": 440000,
-                "energy": 6550,
-                "elixir": 31900,
-                "power": 85,
-                "exp_card": 0
-            },
-            "16": {
-                "id": 16,
-                "money": 435000,
-                "energy": 6400,
-                "elixir": 30780,
-                "power": 80,
-                "exp_card": 0
-            },
-            "17": {
-                "id": 17,
-                "money": 430000,
-                "energy": 6250,
-                "elixir": 29660,
-                "power": 75,
-                "exp_card": 0
-            },
-            "18": {
-                "id": 18,
-                "money": 425000,
-                "energy": 6100,
-                "elixir": 28540,
-                "power": 70,
-                "exp_card": 0
-            },
-            "19": {
-                "id": 19,
-                "money": 420000,
-                "energy": 5950,
-                "elixir": 27420,
-                "power": 65,
-                "exp_card": 0
-            },
-            "20": {
-                "id": 20,
-                "money": 415000,
-                "energy": 5800,
-                "elixir": 26300,
-                "power": 60,
-                "exp_card": 0
-            },
-            "21": {
-                "id": 21,
-                "money": 410000,
-                "energy": 5650,
-                "elixir": 25180,
-                "power": 0,
-                "exp_card": 0
-            },
-            "22": {
-                "id": 22,
-                "money": 405000,
-                "energy": 5500,
-                "elixir": 24060,
-                "power": 0,
-                "exp_card": 0
-            },
-            "23": {
-                "id": 23,
-                "money": 400000,
-                "energy": 5350,
-                "elixir": 22940,
-                "power": 0,
-                "exp_card": 0
-            },
-            "24": {
-                "id": 24,
-                "money": 395000,
-                "energy": 5200,
-                "elixir": 21820,
-                "power": 0,
-                "exp_card": 0
-            },
-            "25": {
-                "id": 25,
-                "money": 390000,
-                "energy": 5050,
-                "elixir": 20700,
-                "power": 0,
-                "exp_card": 0
-            },
-            "26": {
-                "id": 26,
-                "money": 385000,
-                "energy": 4900,
-                "elixir": 19580,
-                "power": 0,
-                "exp_card": 0
-            },
-            "27": {
-                "id": 27,
-                "money": 380000,
-                "energy": 4750,
-                "elixir": 18460,
-                "power": 0,
-                "exp_card": 0
-            },
-            "28": {
-                "id": 28,
-                "money": 375000,
-                "energy": 4600,
-                "elixir": 17340,
-                "power": 0,
-                "exp_card": 0
-            },
-            "29": {
-                "id": 29,
-                "money": 370000,
-                "energy": 4450,
-                "elixir": 16220,
-                "power": 0,
-                "exp_card": 0
-            },
-            "30": {
-                "id": 30,
-                "money": 365000,
-                "energy": 4300,
-                "elixir": 15100,
-                "power": 0,
-                "exp_card": 0
-            },
-            "31": {
-                "id": 31,
-                "money": 360000,
-                "energy": 4150,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "32": {
-                "id": 32,
-                "money": 355000,
-                "energy": 4000,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "33": {
-                "id": 33,
-                "money": 350000,
-                "energy": 3850,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "34": {
-                "id": 34,
-                "money": 345000,
-                "energy": 3700,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "35": {
-                "id": 35,
-                "money": 340000,
-                "energy": 3550,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "36": {
-                "id": 36,
-                "money": 335000,
-                "energy": 3400,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "37": {
-                "id": 37,
-                "money": 330000,
-                "energy": 3250,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "38": {
-                "id": 38,
-                "money": 325000,
-                "energy": 3100,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "39": {
-                "id": 39,
-                "money": 320000,
-                "energy": 2950,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "40": {
-                "id": 40,
-                "money": 315000,
-                "energy": 2800,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "41": {
-                "id": 41,
-                "money": 310000,
-                "energy": 2750,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "42": {
-                "id": 42,
-                "money": 305000,
-                "energy": 2700,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "43": {
-                "id": 43,
-                "money": 300000,
-                "energy": 2650,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "44": {
-                "id": 44,
-                "money": 295000,
-                "energy": 2600,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "45": {
-                "id": 45,
-                "money": 290000,
-                "energy": 2550,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "46": {
-                "id": 46,
-                "money": 285000,
-                "energy": 2500,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "47": {
-                "id": 47,
-                "money": 280000,
-                "energy": 2450,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "48": {
-                "id": 48,
-                "money": 275000,
-                "energy": 2400,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "49": {
-                "id": 49,
-                "money": 270000,
-                "energy": 2350,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "50": {
-                "id": 50,
-                "money": 265000,
-                "energy": 2300,
-                "elixir": 0,
-                "power": 0,
-                "exp_card": 0
-            },
-            "51": {
-                "id": 51,
-                "money": 200000
-            }
-        }
-    },
     "product": {
         "colComment": {},
         "rows": {
@@ -29572,7 +30189,7 @@ var outputTables = {
                 "consume": 7500,
                 "obtain_type": "card",
                 "obtain": 1,
-                "isVisible": 1
+                "isVisible": 0
             },
             "2": {
                 "id": 2,
@@ -29657,6 +30274,414 @@ var outputTables = {
                 "isVisible": 1,
                 "discount_num": 10,
                 "discount": 8
+            },
+            "9": {
+                "id": 9,
+                "order": 9,
+                "method": "expInstanceCount",
+                "name": "经验副本次数",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "expInstanceCount",
+                "obtain": 1,
+                "isVisible": 0
+            }
+        }
+    },
+    "scope": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "default",
+                "value": 1,
+                "desc": "默认出手顺序"
+            },
+            "2": {
+                "id": 2,
+                "name": "crosswaysFront",
+                "value": 2,
+                "desc": "前排所有"
+            },
+            "3": {
+                "id": 3,
+                "name": "crosswaysBack",
+                "value": 3,
+                "desc": "后排所有"
+            },
+            "4": {
+                "id": 4,
+                "name": "lengthways",
+                "value": 4,
+                "desc": "纵向所有"
+            },
+            "5": {
+                "id": 5,
+                "name": "random",
+                "value": 5,
+                "desc": "随机卡牌"
+            },
+            "6": {
+                "id": 6,
+                "name": "all",
+                "value": 6,
+                "desc": "所有卡牌"
+            },
+            "7": {
+                "id": 7,
+                "name": "hp_min",
+                "value": 7,
+                "desc": "血量最低卡牌"
+            }
+        }
+    },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            }
+        }
+    },
+    "skill_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": 8000,
+                "star4": 20000,
+                "star5": 50000,
+                "star6": 100000,
+                "star7": 200000
+            },
+            "2": {
+                "id": 2,
+                "star3": 15000,
+                "star4": 50000,
+                "star5": 100000,
+                "star6": 200000,
+                "star7": 450000
+            },
+            "3": {
+                "id": 3,
+                "star3": 22000,
+                "star4": 80000,
+                "star5": 180000,
+                "star6": 350000,
+                "star7": 600000
+            },
+            "4": {
+                "id": 4,
+                "star3": 35000,
+                "star4": 150000,
+                "star5": 300000,
+                "star6": 650000,
+                "star7": 1200000
+            },
+            "5": {
+                "id": 5,
+                "star3": 50000,
+                "star4": 230000,
+                "star5": 500000,
+                "star6": 1000000,
+                "star7": 2100000
+            }
+        }
+    },
+    "skills": {
+        "colComment": {
+            "type": {
+                "table": "技能类型表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            },
+            "scope": {
+                "table": "卡牌范围表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "description": "单体攻击，对敌方卡牌造成大量伤害。",
+                "type": 1,
+                "scope": 1,
+                "star3_inc_min": 145,
+                "star3_inc_max": 150,
+                "star3_grow": 5,
+                "rate3": 30,
+                "star4_inc_min": 155,
+                "star4_inc_max": 160,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star5_inc_min": 165,
+                "star5_inc_max": 170,
+                "star5_grow": 5,
+                "rate5": 40,
+                "star6_inc_min": 175,
+                "star6_inc_max": 180,
+                "star6_grow": 5,
+                "rate6": 45,
+                "star7_inc_min": 185,
+                "star7_inc_max": 190,
+                "star7_grow": 5,
+                "rate7": 50
+            },
+            "2": {
+                "id": 2,
+                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 2,
+                "star3_inc_min": 77,
+                "star3_inc_max": 80,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 82,
+                "star4_inc_max": 85,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 87,
+                "star5_inc_max": 90,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 92,
+                "star6_inc_max": 95,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 97,
+                "star7_inc_max": 100,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "3": {
+                "id": 3,
+                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 3,
+                "star3_inc_min": 75,
+                "star3_inc_max": 78,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 80,
+                "star4_inc_max": 83,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 85,
+                "star5_inc_max": 88,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 90,
+                "star6_inc_max": 93,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 95,
+                "star7_inc_max": 98,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "4": {
+                "id": 4,
+                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 4,
+                "star3_inc_min": 85,
+                "star3_inc_max": 88,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 90,
+                "star4_inc_max": 93,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 95,
+                "star5_inc_max": 98,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 100,
+                "star6_inc_max": 103,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 105,
+                "star7_inc_max": 108,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "5": {
+                "id": 5,
+                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 2,
+                "star3_inc_min": 80,
+                "star3_inc_max": 83,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 85,
+                "star4_inc_max": 88,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 90,
+                "star5_inc_max": 93,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 95,
+                "star6_inc_max": 98,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 100,
+                "star7_inc_max": 103,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
+                "star3_inc_min": 70,
+                "star3_inc_max": 73,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 75,
+                "star4_inc_max": 78,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 80,
+                "star5_inc_max": 83,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 85,
+                "star6_inc_max": 88,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 90,
+                "star7_inc_max": 93,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "7": {
+                "id": 7,
+                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 3,
+                "scope": 7,
+                "star3_inc_min": 30,
+                "star3_inc_max": 33,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 35,
+                "star4_inc_max": 38,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 40,
+                "star5_inc_max": 43,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 45,
+                "star6_inc_max": 48,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 50,
+                "star7_inc_max": 53,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "8": {
+                "id": 8,
+                "description": "为前排每张卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 2,
+                "star3_inc_min": 10,
+                "star3_inc_max": 13,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 15,
+                "star4_inc_max": 18,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 20,
+                "star5_inc_max": 23,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 25,
+                "star6_inc_max": 28,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 30,
+                "star7_inc_max": 33,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "9": {
+                "id": 9,
+                "description": "为后排每张卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 3,
+                "star3_inc_min": 10,
+                "star3_inc_max": 13,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 15,
+                "star4_inc_max": 18,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 20,
+                "star5_inc_max": 23,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 25,
+                "star6_inc_max": 28,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 30,
+                "star7_inc_max": 33,
+                "star7_grow": 3,
+                "rate7": 50
+            },
+            "10": {
+                "id": 10,
+                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的生命值。",
+                "type": 4,
+                "scope": 6,
+                "star3_inc_min": 5,
+                "star3_inc_max": 8,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 5,
+                "star4_inc_max": 8,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 10,
+                "star5_inc_max": 13,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 15,
+                "star6_inc_max": 18,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 20,
+                "star7_inc_max": 23,
+                "star7_grow": 3,
+                "rate7": 50
             }
         }
     },
@@ -30067,400 +31092,253 @@ var outputTables = {
             }
         }
     },
-    "scope": {
+    "chapter": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "name": "default",
-                "value": 1,
-                "desc": "默认出手顺序"
+                "chapter": "鬼门关"
             },
             "2": {
                 "id": 2,
-                "name": "crosswaysFront",
-                "value": 2,
-                "desc": "前排所有"
+                "chapter": "炼狱谷"
             },
             "3": {
                 "id": 3,
-                "name": "crosswaysBack",
-                "value": 3,
-                "desc": "后排所有"
+                "chapter": "噬心峰"
             },
             "4": {
                 "id": 4,
-                "name": "lengthways",
-                "value": 4,
-                "desc": "纵向所有"
+                "chapter": "绝情池"
             },
             "5": {
                 "id": 5,
-                "name": "random",
-                "value": 5,
-                "desc": "随机卡牌"
+                "chapter": "哭丧岩"
             },
             "6": {
                 "id": 6,
-                "name": "all",
-                "value": 6,
-                "desc": "所有卡牌"
+                "chapter": "杏花村"
             },
             "7": {
                 "id": 7,
-                "name": "hp_min",
-                "value": 7,
-                "desc": "血量最低卡牌"
-            }
-        }
-    },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
-            }
-        }
-    },
-    "skill_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": 8000,
-                "star4": 20000,
-                "star5": 50000,
-                "star6": 100000,
-                "star7": 200000
-            },
-            "2": {
-                "id": 2,
-                "star3": 15000,
-                "star4": 50000,
-                "star5": 100000,
-                "star6": 200000,
-                "star7": 450000
-            },
-            "3": {
-                "id": 3,
-                "star3": 22000,
-                "star4": 80000,
-                "star5": 180000,
-                "star6": 350000,
-                "star7": 600000
-            },
-            "4": {
-                "id": 4,
-                "star3": 35000,
-                "star4": 150000,
-                "star5": 300000,
-                "star6": 650000,
-                "star7": 1200000
-            },
-            "5": {
-                "id": 5,
-                "star3": 50000,
-                "star4": 230000,
-                "star5": 500000,
-                "star6": 1000000,
-                "star7": 2100000
-            }
-        }
-    },
-    "skills": {
-        "colComment": {
-            "type": {
-                "table": "技能类型表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            },
-            "scope": {
-                "table": "卡牌范围表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "description": "单体攻击，对敌方卡牌造成大量伤害。",
-                "type": 1,
-                "scope": 1,
-                "star3_inc_min": 145,
-                "star3_inc_max": 150,
-                "star3_grow": 5,
-                "rate3": 30,
-                "star4_inc_min": 155,
-                "star4_inc_max": 160,
-                "star4_grow": 5,
-                "rate4": 35,
-                "star5_inc_min": 165,
-                "star5_inc_max": 170,
-                "star5_grow": 5,
-                "rate5": 40,
-                "star6_inc_min": 175,
-                "star6_inc_max": 180,
-                "star6_grow": 5,
-                "rate6": 45,
-                "star7_inc_min": 185,
-                "star7_inc_max": 190,
-                "star7_grow": 5,
-                "rate7": 50
-            },
-            "2": {
-                "id": 2,
-                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 2,
-                "star3_inc_min": 75,
-                "star3_inc_max": 78,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 80,
-                "star4_inc_max": 83,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 85,
-                "star5_inc_max": 88,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 90,
-                "star6_inc_max": 93,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 95,
-                "star7_inc_max": 98,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "3": {
-                "id": 3,
-                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 3,
-                "star3_inc_min": 75,
-                "star3_inc_max": 78,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 80,
-                "star4_inc_max": 83,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 85,
-                "star5_inc_max": 88,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 90,
-                "star6_inc_max": 93,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 95,
-                "star7_inc_max": 98,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "4": {
-                "id": 4,
-                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 4,
-                "star3_inc_min": 85,
-                "star3_inc_max": 88,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 90,
-                "star4_inc_max": 93,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 95,
-                "star5_inc_max": 98,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 100,
-                "star6_inc_max": 103,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 105,
-                "star7_inc_max": 108,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "5": {
-                "id": 5,
-                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 2,
-                "star3_inc_min": 80,
-                "star3_inc_max": 83,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 85,
-                "star4_inc_max": 88,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 90,
-                "star5_inc_max": 93,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 95,
-                "star6_inc_max": 98,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 100,
-                "star7_inc_max": 103,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
-                "star3_inc_min": 70,
-                "star3_inc_max": 73,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 75,
-                "star4_inc_max": 78,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 80,
-                "star5_inc_max": 83,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 85,
-                "star6_inc_max": 88,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 90,
-                "star7_inc_max": 93,
-                "star7_grow": 3,
-                "rate7": 50
-            },
-            "7": {
-                "id": 7,
-                "description": "为血量最低的卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 3,
-                "scope": 7,
-                "star3_inc_min": 30,
-                "star3_inc_max": 33,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 35,
-                "star4_inc_max": 38,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 40,
-                "star5_inc_max": 43,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 45,
-                "star6_inc_max": 48,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 50,
-                "star7_inc_max": 53,
-                "star7_grow": 3,
-                "rate7": 50
+                "chapter": "窦娥冢"
             },
             "8": {
                 "id": 8,
-                "description": "为前排每张卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 4,
-                "scope": 2,
-                "star3_inc_min": 10,
-                "star3_inc_max": 13,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 15,
-                "star4_inc_max": 18,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 20,
-                "star5_inc_max": 23,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 25,
-                "star6_inc_max": 28,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 30,
-                "star7_inc_max": 33,
-                "star7_grow": 3,
-                "rate7": 50
+                "chapter": "柳风堂"
             },
             "9": {
                 "id": 9,
-                "description": "为后排每张卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 4,
-                "scope": 3,
-                "star3_inc_min": 10,
-                "star3_inc_max": 13,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 15,
-                "star4_inc_max": 18,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 20,
-                "star5_inc_max": 23,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 25,
-                "star6_inc_max": 28,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 30,
-                "star7_inc_max": 33,
-                "star7_grow": 3,
-                "rate7": 50
+                "chapter": "陶然居"
             },
             "10": {
                 "id": 10,
-                "description": "为所有上阵卡牌恢复生命。治疗量取决于你的生命值。",
-                "type": 4,
-                "scope": 6,
-                "star3_inc_min": 5,
-                "star3_inc_max": 8,
-                "star3_grow": 3,
-                "rate3": 30,
-                "star4_inc_min": 5,
-                "star4_inc_max": 8,
-                "star4_grow": 3,
-                "rate4": 35,
-                "star5_inc_min": 10,
-                "star5_inc_max": 13,
-                "star5_grow": 3,
-                "rate5": 40,
-                "star6_inc_min": 15,
-                "star6_inc_max": 18,
-                "star6_grow": 3,
-                "rate6": 45,
-                "star7_inc_min": 20,
-                "star7_inc_max": 23,
-                "star7_grow": 3,
-                "rate7": 50
+                "chapter": "忘情河"
+            },
+            "11": {
+                "id": 11,
+                "chapter": "南天门"
+            },
+            "12": {
+                "id": 12,
+                "chapter": "凌霄殿"
+            },
+            "13": {
+                "id": 13,
+                "chapter": "冷月宫"
+            },
+            "14": {
+                "id": 14,
+                "chapter": "蟠桃园"
+            },
+            "15": {
+                "id": 15,
+                "chapter": "王母峰"
+            },
+            "16": {
+                "id": 16,
+                "chapter": "流沙河"
+            },
+            "17": {
+                "id": 17,
+                "chapter": "五指山"
+            },
+            "18": {
+                "id": 18,
+                "chapter": "女儿国"
+            },
+            "19": {
+                "id": 19,
+                "chapter": "曲女城"
+            },
+            "20": {
+                "id": 20,
+                "chapter": "天竺寺"
+            },
+            "21": {
+                "id": 21,
+                "chapter": "圣女峰"
+            },
+            "22": {
+                "id": 22,
+                "chapter": "空灵泉"
+            },
+            "23": {
+                "id": 23,
+                "chapter": "莲花池"
+            },
+            "24": {
+                "id": 24,
+                "chapter": "极乐界"
+            },
+            "25": {
+                "id": 25,
+                "chapter": "苦难谷"
+            },
+            "26": {
+                "id": 26,
+                "chapter": "盘丝洞"
+            },
+            "27": {
+                "id": 27,
+                "chapter": "斗战堂"
+            },
+            "28": {
+                "id": 28,
+                "chapter": "圣佛村"
+            },
+            "29": {
+                "id": 29,
+                "chapter": "紫霞谷"
+            },
+            "30": {
+                "id": 30,
+                "chapter": "思念池"
+            },
+            "31": {
+                "id": 31,
+                "chapter": "五华山"
+            },
+            "32": {
+                "id": 32,
+                "chapter": "尘缘地"
+            },
+            "33": {
+                "id": 33,
+                "chapter": "了然原"
+            },
+            "34": {
+                "id": 34,
+                "chapter": "那烂陀"
+            },
+            "35": {
+                "id": 35,
+                "chapter": "生死场"
+            },
+            "36": {
+                "id": 36,
+                "chapter": "龙须地"
+            },
+            "37": {
+                "id": 37,
+                "chapter": "南华峰"
+            },
+            "38": {
+                "id": 38,
+                "chapter": "黑虎山"
+            },
+            "39": {
+                "id": 39,
+                "chapter": "妖风洞"
+            },
+            "40": {
+                "id": 40,
+                "chapter": "大乘愚"
+            },
+            "41": {
+                "id": 41,
+                "chapter": "普陀寺"
+            },
+            "42": {
+                "id": 42,
+                "chapter": "三界门"
+            },
+            "43": {
+                "id": 43,
+                "chapter": "七尘斋"
+            },
+            "44": {
+                "id": 44,
+                "chapter": "众生琅"
+            },
+            "45": {
+                "id": 45,
+                "chapter": "万年羲"
+            },
+            "46": {
+                "id": 46,
+                "chapter": "玲珑痷"
+            },
+            "47": {
+                "id": 47,
+                "chapter": "相生殿"
+            },
+            "48": {
+                "id": 48,
+                "chapter": "罗汉堂"
+            },
+            "49": {
+                "id": 49,
+                "chapter": "七仙居"
+            },
+            "50": {
+                "id": 50,
+                "chapter": "封神山"
+            }
+        }
+    },
+    "chapter_title": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "苦寒地狱"
+            },
+            "2": {
+                "id": 2,
+                "name": "凄凉人间"
+            },
+            "3": {
+                "id": 3,
+                "name": "南天之门"
+            },
+            "4": {
+                "id": 4,
+                "name": "西天取经"
+            },
+            "5": {
+                "id": 5,
+                "name": "莲花加持"
+            },
+            "6": {
+                "id": 6,
+                "name": "千年之修"
+            },
+            "7": {
+                "id": 7,
+                "name": "斩妖除魔"
+            },
+            "8": {
+                "id": 8,
+                "name": "降龙伏虎"
+            },
+            "9": {
+                "id": 9,
+                "name": "普度众生"
+            },
+            "10": {
+                "id": 10,
+                "name": "尊者之身"
             }
         }
     },
@@ -30641,9 +31519,7 @@ var outputTables = {
                 "id": 9,
                 "layer": 9,
                 "card_count": 4,
-                "cards": "20001#20001#20001#20001",
-                "boss_crit": 20,
-                "boss_dodge": 0
+                "cards": "20001#20001#20001#20001"
             },
             "10": {
                 "id": 10,
@@ -30651,6 +31527,8 @@ var outputTables = {
                 "card_count": 4,
                 "cards": "20001#20001#20001#20002",
                 "boss_id": 20002,
+                "boss_crit": 20,
+                "boss_dodge": 0,
                 "trigger_rate": 40,
                 "boss_attr": 80,
                 "atk_inc": 50,
@@ -31324,211 +32202,6 @@ var outputTables = {
             }
         }
     },
-    "chapter": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "chapter": "鬼门关"
-            },
-            "2": {
-                "id": 2,
-                "chapter": "炼狱谷"
-            },
-            "3": {
-                "id": 3,
-                "chapter": "噬心峰"
-            },
-            "4": {
-                "id": 4,
-                "chapter": "绝情池"
-            },
-            "5": {
-                "id": 5,
-                "chapter": "哭丧岩"
-            },
-            "6": {
-                "id": 6,
-                "chapter": "杏花村"
-            },
-            "7": {
-                "id": 7,
-                "chapter": "窦娥冢"
-            },
-            "8": {
-                "id": 8,
-                "chapter": "柳风堂"
-            },
-            "9": {
-                "id": 9,
-                "chapter": "陶然居"
-            },
-            "10": {
-                "id": 10,
-                "chapter": "忘情河"
-            },
-            "11": {
-                "id": 11,
-                "chapter": "南天门"
-            },
-            "12": {
-                "id": 12,
-                "chapter": "凌霄殿"
-            },
-            "13": {
-                "id": 13,
-                "chapter": "冷月宫"
-            },
-            "14": {
-                "id": 14,
-                "chapter": "蟠桃园"
-            },
-            "15": {
-                "id": 15,
-                "chapter": "王母峰"
-            },
-            "16": {
-                "id": 16,
-                "chapter": "流沙河"
-            },
-            "17": {
-                "id": 17,
-                "chapter": "五指山"
-            },
-            "18": {
-                "id": 18,
-                "chapter": "女儿国"
-            },
-            "19": {
-                "id": 19,
-                "chapter": "曲女城"
-            },
-            "20": {
-                "id": 20,
-                "chapter": "天竺寺"
-            },
-            "21": {
-                "id": 21,
-                "chapter": "圣女峰"
-            },
-            "22": {
-                "id": 22,
-                "chapter": "空灵泉"
-            },
-            "23": {
-                "id": 23,
-                "chapter": "莲花池"
-            },
-            "24": {
-                "id": 24,
-                "chapter": "极乐界"
-            },
-            "25": {
-                "id": 25,
-                "chapter": "苦难谷"
-            },
-            "26": {
-                "id": 26,
-                "chapter": "盘丝洞"
-            },
-            "27": {
-                "id": 27,
-                "chapter": "斗战堂"
-            },
-            "28": {
-                "id": 28,
-                "chapter": "圣佛村"
-            },
-            "29": {
-                "id": 29,
-                "chapter": "紫霞谷"
-            },
-            "30": {
-                "id": 30,
-                "chapter": "思念池"
-            },
-            "31": {
-                "id": 31,
-                "chapter": "五华山"
-            },
-            "32": {
-                "id": 32,
-                "chapter": "尘缘地"
-            },
-            "33": {
-                "id": 33,
-                "chapter": "了然原"
-            },
-            "34": {
-                "id": 34,
-                "chapter": "那烂陀"
-            },
-            "35": {
-                "id": 35,
-                "chapter": "生死场"
-            },
-            "36": {
-                "id": 36,
-                "chapter": "龙须地"
-            },
-            "37": {
-                "id": 37,
-                "chapter": "南华峰"
-            },
-            "38": {
-                "id": 38,
-                "chapter": "黑虎山"
-            },
-            "39": {
-                "id": 39,
-                "chapter": "妖风洞"
-            },
-            "40": {
-                "id": 40,
-                "chapter": "大乘愚"
-            },
-            "41": {
-                "id": 41,
-                "chapter": "普陀寺"
-            },
-            "42": {
-                "id": 42,
-                "chapter": "三界门"
-            },
-            "43": {
-                "id": 43,
-                "chapter": "七尘斋"
-            },
-            "44": {
-                "id": 44,
-                "chapter": "众生琅"
-            },
-            "45": {
-                "id": 45,
-                "chapter": "万年羲"
-            },
-            "46": {
-                "id": 46,
-                "chapter": "玲珑痷"
-            },
-            "47": {
-                "id": 47,
-                "chapter": "相生殿"
-            },
-            "48": {
-                "id": 48,
-                "chapter": "罗汉堂"
-            },
-            "49": {
-                "id": 49,
-                "chapter": "七仙居"
-            },
-            "50": {
-                "id": 50,
-                "chapter": "封神山"
-            }
-        }
-    },
     "pass_reward": {
         "colComment": {},
         "rows": {
@@ -32134,51 +32807,6 @@ var outputTables = {
             }
         }
     },
-    "chapter_title": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "苦寒地狱"
-            },
-            "2": {
-                "id": 2,
-                "name": "凄凉人间"
-            },
-            "3": {
-                "id": 3,
-                "name": "南天之门"
-            },
-            "4": {
-                "id": 4,
-                "name": "西天取经"
-            },
-            "5": {
-                "id": 5,
-                "name": "莲花加持"
-            },
-            "6": {
-                "id": 6,
-                "name": "千年之修"
-            },
-            "7": {
-                "id": 7,
-                "name": "斩妖除魔"
-            },
-            "8": {
-                "id": 8,
-                "name": "降龙伏虎"
-            },
-            "9": {
-                "id": 9,
-                "name": "普度众生"
-            },
-            "10": {
-                "id": 10,
-                "name": "尊者之身"
-            }
-        }
-    },
     "player_upgrade": {
         "colComment": {},
         "rows": {
@@ -32186,900 +32814,900 @@ var outputTables = {
                 "id": 1,
                 "exp": 40,
                 "money": 10000,
-                "elixir": 1000,
-                "skillPoint": 800,
-                "energy": 30,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "2": {
                 "id": 2,
                 "exp": 44,
-                "money": 10100,
-                "elixir": 1020,
-                "skillPoint": 810,
-                "energy": 35,
+                "money": 10500,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "3": {
                 "id": 3,
                 "exp": 49,
-                "money": 10200,
-                "elixir": 1040,
-                "skillPoint": 820,
-                "energy": 40,
+                "money": 11000,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "4": {
                 "id": 4,
                 "exp": 54,
-                "money": 10300,
-                "elixir": 1060,
-                "skillPoint": 830,
-                "energy": 45,
+                "money": 11500,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "5": {
                 "id": 5,
                 "exp": 60,
-                "money": 10400,
-                "elixir": 1080,
-                "skillPoint": 840,
-                "energy": 50,
+                "money": 12000,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "6": {
                 "id": 6,
                 "exp": 66,
-                "money": 10500,
-                "elixir": 1100,
-                "skillPoint": 850,
-                "energy": 55,
+                "money": 12500,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "7": {
                 "id": 7,
                 "exp": 73,
-                "money": 10600,
-                "elixir": 1120,
-                "skillPoint": 860,
-                "energy": 60,
+                "money": 13000,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "8": {
                 "id": 8,
                 "exp": 81,
-                "money": 10700,
-                "elixir": 1140,
-                "skillPoint": 870,
-                "energy": 65,
+                "money": 13500,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "9": {
                 "id": 9,
                 "exp": 90,
-                "money": 10800,
-                "elixir": 1160,
-                "skillPoint": 880,
-                "energy": 70,
+                "money": 14000,
+                "elixir": 0,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 10
             },
             "10": {
                 "id": 10,
                 "exp": 100,
-                "money": 10900,
-                "elixir": 1180,
-                "skillPoint": 890,
-                "energy": 75,
-                "power": 10
+                "money": 14500,
+                "elixir": 1000,
+                "skillPoint": 0,
+                "energy": 0,
+                "power": 20
             },
             "11": {
                 "id": 11,
                 "exp": 112,
-                "money": 11000,
-                "elixir": 1200,
-                "skillPoint": 900,
-                "energy": 80,
+                "money": 15000,
+                "elixir": 1020,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "12": {
                 "id": 12,
                 "exp": 125,
-                "money": 11100,
-                "elixir": 1220,
-                "skillPoint": 910,
-                "energy": 85,
+                "money": 15500,
+                "elixir": 1040,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "13": {
                 "id": 13,
                 "exp": 139,
-                "money": 11200,
-                "elixir": 1240,
-                "skillPoint": 920,
-                "energy": 90,
+                "money": 16000,
+                "elixir": 1060,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "14": {
                 "id": 14,
                 "exp": 155,
-                "money": 11300,
-                "elixir": 1260,
-                "skillPoint": 930,
-                "energy": 95,
+                "money": 16500,
+                "elixir": 1080,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "15": {
                 "id": 15,
                 "exp": 173,
-                "money": 11400,
-                "elixir": 1280,
-                "skillPoint": 940,
-                "energy": 100,
+                "money": 17000,
+                "elixir": 1100,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "16": {
                 "id": 16,
                 "exp": 193,
-                "money": 11500,
-                "elixir": 1300,
-                "skillPoint": 950,
-                "energy": 105,
+                "money": 17500,
+                "elixir": 1120,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "17": {
                 "id": 17,
                 "exp": 215,
-                "money": 11600,
-                "elixir": 1320,
-                "skillPoint": 960,
-                "energy": 110,
+                "money": 18000,
+                "elixir": 1140,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "18": {
                 "id": 18,
                 "exp": 240,
-                "money": 11700,
-                "elixir": 1340,
-                "skillPoint": 970,
-                "energy": 115,
+                "money": 18500,
+                "elixir": 1160,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "19": {
                 "id": 19,
                 "exp": 268,
-                "money": 11800,
-                "elixir": 1360,
-                "skillPoint": 980,
-                "energy": 120,
+                "money": 19000,
+                "elixir": 1180,
+                "skillPoint": 0,
+                "energy": 0,
                 "power": 20
             },
             "20": {
                 "id": 20,
                 "exp": 299,
-                "money": 11900,
-                "elixir": 1380,
-                "skillPoint": 990,
-                "energy": 125,
-                "power": 20
+                "money": 19500,
+                "elixir": 1200,
+                "skillPoint": 800,
+                "energy": 0,
+                "power": 30
             },
             "21": {
                 "id": 21,
                 "exp": 333,
-                "money": 12000,
-                "elixir": 1400,
-                "skillPoint": 1000,
-                "energy": 130,
+                "money": 20000,
+                "elixir": 1220,
+                "skillPoint": 810,
+                "energy": 0,
                 "power": 30
             },
             "22": {
                 "id": 22,
                 "exp": 371,
-                "money": 12100,
-                "elixir": 1420,
-                "skillPoint": 1010,
-                "energy": 135,
+                "money": 20500,
+                "elixir": 1240,
+                "skillPoint": 820,
+                "energy": 0,
                 "power": 30
             },
             "23": {
                 "id": 23,
                 "exp": 414,
-                "money": 12200,
-                "elixir": 1440,
-                "skillPoint": 1020,
-                "energy": 140,
+                "money": 21000,
+                "elixir": 1260,
+                "skillPoint": 830,
+                "energy": 0,
                 "power": 30
             },
             "24": {
                 "id": 24,
                 "exp": 462,
-                "money": 12300,
-                "elixir": 1460,
-                "skillPoint": 1030,
-                "energy": 145,
+                "money": 21500,
+                "elixir": 1280,
+                "skillPoint": 840,
+                "energy": 0,
                 "power": 30
             },
             "25": {
                 "id": 25,
                 "exp": 515,
-                "money": 12400,
-                "elixir": 1480,
-                "skillPoint": 1040,
-                "energy": 150,
+                "money": 22000,
+                "elixir": 1300,
+                "skillPoint": 850,
+                "energy": 0,
                 "power": 30
             },
             "26": {
                 "id": 26,
                 "exp": 574,
-                "money": 12500,
-                "elixir": 1500,
-                "skillPoint": 1050,
-                "energy": 155,
+                "money": 22500,
+                "elixir": 1320,
+                "skillPoint": 860,
+                "energy": 0,
                 "power": 30
             },
             "27": {
                 "id": 27,
                 "exp": 640,
-                "money": 12600,
-                "elixir": 1520,
-                "skillPoint": 1060,
-                "energy": 160,
+                "money": 23000,
+                "elixir": 1340,
+                "skillPoint": 870,
+                "energy": 0,
                 "power": 30
             },
             "28": {
                 "id": 28,
                 "exp": 714,
-                "money": 12700,
-                "elixir": 1540,
-                "skillPoint": 1070,
-                "energy": 165,
+                "money": 23500,
+                "elixir": 1360,
+                "skillPoint": 880,
+                "energy": 0,
                 "power": 30
             },
             "29": {
                 "id": 29,
                 "exp": 796,
-                "money": 12800,
-                "elixir": 1560,
-                "skillPoint": 1080,
-                "energy": 170,
+                "money": 24000,
+                "elixir": 1380,
+                "skillPoint": 890,
+                "energy": 0,
                 "power": 30
             },
             "30": {
                 "id": 30,
                 "exp": 888,
-                "money": 12900,
-                "elixir": 1580,
-                "skillPoint": 1090,
-                "energy": 175,
-                "power": 30
+                "money": 24500,
+                "elixir": 1400,
+                "skillPoint": 900,
+                "energy": 100,
+                "power": 40
             },
             "31": {
                 "id": 31,
                 "exp": 990,
-                "money": 13000,
-                "elixir": 1600,
-                "skillPoint": 1100,
-                "energy": 180,
+                "money": 25000,
+                "elixir": 1420,
+                "skillPoint": 910,
+                "energy": 105,
                 "power": 40
             },
             "32": {
                 "id": 32,
                 "exp": 1104,
-                "money": 13100,
-                "elixir": 1620,
-                "skillPoint": 1110,
-                "energy": 185,
+                "money": 25500,
+                "elixir": 1440,
+                "skillPoint": 920,
+                "energy": 110,
                 "power": 40
             },
             "33": {
                 "id": 33,
                 "exp": 1231,
-                "money": 13200,
-                "elixir": 1640,
-                "skillPoint": 1120,
-                "energy": 190,
+                "money": 26000,
+                "elixir": 1460,
+                "skillPoint": 930,
+                "energy": 115,
                 "power": 40
             },
             "34": {
                 "id": 34,
                 "exp": 1373,
-                "money": 13300,
-                "elixir": 1660,
-                "skillPoint": 1130,
-                "energy": 195,
+                "money": 26500,
+                "elixir": 1480,
+                "skillPoint": 940,
+                "energy": 120,
                 "power": 40
             },
             "35": {
                 "id": 35,
                 "exp": 1531,
-                "money": 13400,
-                "elixir": 1680,
-                "skillPoint": 1140,
-                "energy": 200,
+                "money": 27000,
+                "elixir": 1500,
+                "skillPoint": 950,
+                "energy": 125,
                 "power": 40
             },
             "36": {
                 "id": 36,
                 "exp": 1707,
-                "money": 13500,
-                "elixir": 1700,
-                "skillPoint": 1150,
-                "energy": 205,
+                "money": 27500,
+                "elixir": 1520,
+                "skillPoint": 960,
+                "energy": 130,
                 "power": 40
             },
             "37": {
                 "id": 37,
                 "exp": 1903,
-                "money": 13600,
-                "elixir": 1720,
-                "skillPoint": 1160,
-                "energy": 210,
+                "money": 28000,
+                "elixir": 1540,
+                "skillPoint": 970,
+                "energy": 135,
                 "power": 40
             },
             "38": {
                 "id": 38,
                 "exp": 2122,
-                "money": 13700,
-                "elixir": 1740,
-                "skillPoint": 1170,
-                "energy": 215,
+                "money": 28500,
+                "elixir": 1560,
+                "skillPoint": 980,
+                "energy": 140,
                 "power": 40
             },
             "39": {
                 "id": 39,
                 "exp": 2366,
-                "money": 13800,
-                "elixir": 1760,
-                "skillPoint": 1180,
-                "energy": 220,
+                "money": 29000,
+                "elixir": 1580,
+                "skillPoint": 990,
+                "energy": 145,
                 "power": 40
             },
             "40": {
                 "id": 40,
                 "exp": 2638,
-                "money": 13900,
-                "elixir": 1780,
-                "skillPoint": 1190,
-                "energy": 225,
-                "power": 40
+                "money": 29500,
+                "elixir": 1600,
+                "skillPoint": 1000,
+                "energy": 150,
+                "power": 50
             },
             "41": {
                 "id": 41,
                 "exp": 2941,
-                "money": 14000,
-                "elixir": 1800,
-                "skillPoint": 1200,
-                "energy": 230,
+                "money": 30000,
+                "elixir": 1620,
+                "skillPoint": 1010,
+                "energy": 155,
                 "power": 50
             },
             "42": {
                 "id": 42,
                 "exp": 3279,
-                "money": 14100,
-                "elixir": 1820,
-                "skillPoint": 1210,
-                "energy": 235,
+                "money": 30500,
+                "elixir": 1640,
+                "skillPoint": 1020,
+                "energy": 160,
                 "power": 50
             },
             "43": {
                 "id": 43,
                 "exp": 3656,
-                "money": 14200,
-                "elixir": 1840,
-                "skillPoint": 1220,
-                "energy": 240,
+                "money": 31000,
+                "elixir": 1660,
+                "skillPoint": 1030,
+                "energy": 165,
                 "power": 50
             },
             "44": {
                 "id": 44,
                 "exp": 4076,
-                "money": 14300,
-                "elixir": 1860,
-                "skillPoint": 1230,
-                "energy": 245,
+                "money": 31500,
+                "elixir": 1680,
+                "skillPoint": 1040,
+                "energy": 170,
                 "power": 50
             },
             "45": {
                 "id": 45,
                 "exp": 4545,
-                "money": 14400,
-                "elixir": 1880,
-                "skillPoint": 1240,
-                "energy": 250,
+                "money": 32000,
+                "elixir": 1700,
+                "skillPoint": 1050,
+                "energy": 175,
                 "power": 50
             },
             "46": {
                 "id": 46,
                 "exp": 5068,
-                "money": 14500,
-                "elixir": 1900,
-                "skillPoint": 1250,
-                "energy": 255,
+                "money": 32500,
+                "elixir": 1720,
+                "skillPoint": 1060,
+                "energy": 180,
                 "power": 50
             },
             "47": {
                 "id": 47,
                 "exp": 5651,
-                "money": 14600,
-                "elixir": 1920,
-                "skillPoint": 1260,
-                "energy": 260,
+                "money": 33000,
+                "elixir": 1740,
+                "skillPoint": 1070,
+                "energy": 185,
                 "power": 50
             },
             "48": {
                 "id": 48,
                 "exp": 6301,
-                "money": 14700,
-                "elixir": 1940,
-                "skillPoint": 1270,
-                "energy": 265,
+                "money": 33500,
+                "elixir": 1760,
+                "skillPoint": 1080,
+                "energy": 190,
                 "power": 50
             },
             "49": {
                 "id": 49,
                 "exp": 7026,
-                "money": 14800,
-                "elixir": 1960,
-                "skillPoint": 1280,
-                "energy": 270,
+                "money": 34000,
+                "elixir": 1780,
+                "skillPoint": 1090,
+                "energy": 195,
                 "power": 50
             },
             "50": {
                 "id": 50,
                 "exp": 7834,
-                "money": 14900,
-                "elixir": 1980,
-                "skillPoint": 1290,
-                "energy": 275,
-                "power": 50
+                "money": 34500,
+                "elixir": 1800,
+                "skillPoint": 1100,
+                "energy": 200,
+                "power": 60
             },
             "51": {
                 "id": 51,
                 "exp": 8735,
-                "money": 15000,
-                "elixir": 2000,
-                "skillPoint": 1300,
-                "energy": 280,
+                "money": 35000,
+                "elixir": 1820,
+                "skillPoint": 1110,
+                "energy": 205,
                 "power": 60
             },
             "52": {
                 "id": 52,
                 "exp": 9740,
-                "money": 15100,
-                "elixir": 2020,
-                "skillPoint": 1310,
-                "energy": 285,
+                "money": 35500,
+                "elixir": 1840,
+                "skillPoint": 1120,
+                "energy": 210,
                 "power": 60
             },
             "53": {
                 "id": 53,
                 "exp": 10860,
-                "money": 15200,
-                "elixir": 2040,
-                "skillPoint": 1320,
-                "energy": 290,
+                "money": 36000,
+                "elixir": 1860,
+                "skillPoint": 1130,
+                "energy": 215,
                 "power": 60
             },
             "54": {
                 "id": 54,
                 "exp": 12109,
-                "money": 15300,
-                "elixir": 2060,
-                "skillPoint": 1330,
-                "energy": 295,
+                "money": 36500,
+                "elixir": 1880,
+                "skillPoint": 1140,
+                "energy": 220,
                 "power": 60
             },
             "55": {
                 "id": 55,
                 "exp": 13502,
-                "money": 15400,
-                "elixir": 2080,
-                "skillPoint": 1340,
-                "energy": 300,
+                "money": 37000,
+                "elixir": 1900,
+                "skillPoint": 1150,
+                "energy": 225,
                 "power": 60
             },
             "56": {
                 "id": 56,
                 "exp": 15055,
-                "money": 15500,
-                "elixir": 2100,
-                "skillPoint": 1350,
-                "energy": 305,
+                "money": 37500,
+                "elixir": 1920,
+                "skillPoint": 1160,
+                "energy": 230,
                 "power": 60
             },
             "57": {
                 "id": 57,
                 "exp": 16786,
-                "money": 15600,
-                "elixir": 2120,
-                "skillPoint": 1360,
-                "energy": 310,
+                "money": 38000,
+                "elixir": 1940,
+                "skillPoint": 1170,
+                "energy": 235,
                 "power": 60
             },
             "58": {
                 "id": 58,
                 "exp": 18716,
-                "money": 15700,
-                "elixir": 2140,
-                "skillPoint": 1370,
-                "energy": 315,
+                "money": 38500,
+                "elixir": 1960,
+                "skillPoint": 1180,
+                "energy": 240,
                 "power": 60
             },
             "59": {
                 "id": 59,
                 "exp": 20868,
-                "money": 15800,
-                "elixir": 2160,
-                "skillPoint": 1380,
-                "energy": 320,
+                "money": 39000,
+                "elixir": 1980,
+                "skillPoint": 1190,
+                "energy": 245,
                 "power": 60
             },
             "60": {
                 "id": 60,
                 "exp": 23268,
-                "money": 15900,
-                "elixir": 2180,
-                "skillPoint": 1390,
-                "energy": 325,
-                "power": 60
+                "money": 39500,
+                "elixir": 2000,
+                "skillPoint": 1200,
+                "energy": 250,
+                "power": 70
             },
             "61": {
                 "id": 61,
                 "exp": 25944,
-                "money": 16000,
-                "elixir": 2200,
-                "skillPoint": 1400,
-                "energy": 330,
+                "money": 40000,
+                "elixir": 2020,
+                "skillPoint": 1210,
+                "energy": 255,
                 "power": 70
             },
             "62": {
                 "id": 62,
                 "exp": 28928,
-                "money": 16100,
-                "elixir": 2220,
-                "skillPoint": 1410,
-                "energy": 335,
+                "money": 40500,
+                "elixir": 2040,
+                "skillPoint": 1220,
+                "energy": 260,
                 "power": 70
             },
             "63": {
                 "id": 63,
                 "exp": 32255,
-                "money": 16200,
-                "elixir": 2240,
-                "skillPoint": 1420,
-                "energy": 340,
+                "money": 41000,
+                "elixir": 2060,
+                "skillPoint": 1230,
+                "energy": 265,
                 "power": 70
             },
             "64": {
                 "id": 64,
                 "exp": 35964,
-                "money": 16300,
-                "elixir": 2260,
-                "skillPoint": 1430,
-                "energy": 345,
+                "money": 41500,
+                "elixir": 2080,
+                "skillPoint": 1240,
+                "energy": 270,
                 "power": 70
             },
             "65": {
                 "id": 65,
                 "exp": 40100,
-                "money": 16400,
-                "elixir": 2280,
-                "skillPoint": 1440,
-                "energy": 350,
+                "money": 42000,
+                "elixir": 2100,
+                "skillPoint": 1250,
+                "energy": 275,
                 "power": 70
             },
             "66": {
                 "id": 66,
                 "exp": 44712,
-                "money": 16500,
-                "elixir": 2300,
-                "skillPoint": 1450,
-                "energy": 355,
+                "money": 42500,
+                "elixir": 2120,
+                "skillPoint": 1260,
+                "energy": 280,
                 "power": 70
             },
             "67": {
                 "id": 67,
                 "exp": 49854,
-                "money": 16600,
-                "elixir": 2320,
-                "skillPoint": 1460,
-                "energy": 360,
+                "money": 43000,
+                "elixir": 2140,
+                "skillPoint": 1270,
+                "energy": 285,
                 "power": 70
             },
             "68": {
                 "id": 68,
                 "exp": 55587,
-                "money": 16700,
-                "elixir": 2340,
-                "skillPoint": 1470,
-                "energy": 365,
+                "money": 43500,
+                "elixir": 2160,
+                "skillPoint": 1280,
+                "energy": 290,
                 "power": 70
             },
             "69": {
                 "id": 69,
                 "exp": 61980,
-                "money": 16800,
-                "elixir": 2360,
-                "skillPoint": 1480,
-                "energy": 370,
+                "money": 44000,
+                "elixir": 2180,
+                "skillPoint": 1290,
+                "energy": 295,
                 "power": 70
             },
             "70": {
                 "id": 70,
                 "exp": 69108,
-                "money": 16900,
-                "elixir": 2380,
-                "skillPoint": 1490,
-                "energy": 375,
-                "power": 70
+                "money": 44500,
+                "elixir": 2200,
+                "skillPoint": 1300,
+                "energy": 300,
+                "power": 80
             },
             "71": {
                 "id": 71,
                 "exp": 77055,
-                "money": 17000,
-                "elixir": 2400,
-                "skillPoint": 1500,
-                "energy": 380,
+                "money": 45000,
+                "elixir": 2220,
+                "skillPoint": 1310,
+                "energy": 305,
                 "power": 80
             },
             "72": {
                 "id": 72,
                 "exp": 85916,
-                "money": 17100,
-                "elixir": 2420,
-                "skillPoint": 1510,
-                "energy": 385,
+                "money": 45500,
+                "elixir": 2240,
+                "skillPoint": 1320,
+                "energy": 310,
                 "power": 80
             },
             "73": {
                 "id": 73,
                 "exp": 95796,
-                "money": 17200,
-                "elixir": 2440,
-                "skillPoint": 1520,
-                "energy": 390,
+                "money": 46000,
+                "elixir": 2260,
+                "skillPoint": 1330,
+                "energy": 315,
                 "power": 80
             },
             "74": {
                 "id": 74,
                 "exp": 106813,
-                "money": 17300,
-                "elixir": 2460,
-                "skillPoint": 1530,
-                "energy": 395,
+                "money": 46500,
+                "elixir": 2280,
+                "skillPoint": 1340,
+                "energy": 320,
                 "power": 80
             },
             "75": {
                 "id": 75,
                 "exp": 119096,
-                "money": 17400,
-                "elixir": 2480,
-                "skillPoint": 1540,
-                "energy": 400,
+                "money": 47000,
+                "elixir": 2300,
+                "skillPoint": 1350,
+                "energy": 325,
                 "power": 80
             },
             "76": {
                 "id": 76,
                 "exp": 132792,
-                "money": 17500,
-                "elixir": 2500,
-                "skillPoint": 1550,
-                "energy": 405,
+                "money": 47500,
+                "elixir": 2320,
+                "skillPoint": 1360,
+                "energy": 330,
                 "power": 80
             },
             "77": {
                 "id": 77,
                 "exp": 148063,
-                "money": 17600,
-                "elixir": 2520,
-                "skillPoint": 1560,
-                "energy": 410,
+                "money": 48000,
+                "elixir": 2340,
+                "skillPoint": 1370,
+                "energy": 335,
                 "power": 80
             },
             "78": {
                 "id": 78,
                 "exp": 165090,
-                "money": 17700,
-                "elixir": 2540,
-                "skillPoint": 1570,
-                "energy": 415,
+                "money": 48500,
+                "elixir": 2360,
+                "skillPoint": 1380,
+                "energy": 340,
                 "power": 80
             },
             "79": {
                 "id": 79,
                 "exp": 184075,
-                "money": 17800,
-                "elixir": 2560,
-                "skillPoint": 1580,
-                "energy": 420,
+                "money": 49000,
+                "elixir": 2380,
+                "skillPoint": 1390,
+                "energy": 345,
                 "power": 80
             },
             "80": {
                 "id": 80,
                 "exp": 205244,
-                "money": 17900,
-                "elixir": 2580,
-                "skillPoint": 1590,
-                "energy": 425,
+                "money": 49500,
+                "elixir": 2400,
+                "skillPoint": 1400,
+                "energy": 350,
                 "power": 80
             },
             "81": {
                 "id": 81,
                 "exp": 228847,
-                "money": 18000,
-                "elixir": 2600,
-                "skillPoint": 1600,
-                "energy": 430,
+                "money": 50000,
+                "elixir": 2420,
+                "skillPoint": 1410,
+                "energy": 355,
                 "power": 90
             },
             "82": {
                 "id": 82,
                 "exp": 255164,
-                "money": 18100,
-                "elixir": 2620,
-                "skillPoint": 1610,
-                "energy": 435,
+                "money": 50500,
+                "elixir": 2440,
+                "skillPoint": 1420,
+                "energy": 360,
                 "power": 90
             },
             "83": {
                 "id": 83,
                 "exp": 284508,
-                "money": 18200,
-                "elixir": 2640,
-                "skillPoint": 1620,
-                "energy": 440,
+                "money": 51000,
+                "elixir": 2460,
+                "skillPoint": 1430,
+                "energy": 365,
                 "power": 90
             },
             "84": {
                 "id": 84,
                 "exp": 317226,
-                "money": 18300,
-                "elixir": 2660,
-                "skillPoint": 1630,
-                "energy": 445,
+                "money": 51500,
+                "elixir": 2480,
+                "skillPoint": 1440,
+                "energy": 370,
                 "power": 90
             },
             "85": {
                 "id": 85,
                 "exp": 353707,
-                "money": 18400,
-                "elixir": 2680,
-                "skillPoint": 1640,
-                "energy": 450,
+                "money": 52000,
+                "elixir": 2500,
+                "skillPoint": 1450,
+                "energy": 375,
                 "power": 90
             },
             "86": {
                 "id": 86,
                 "exp": 394383,
-                "money": 18500,
-                "elixir": 2700,
-                "skillPoint": 1650,
-                "energy": 455,
+                "money": 52500,
+                "elixir": 2520,
+                "skillPoint": 1460,
+                "energy": 380,
                 "power": 90
             },
             "87": {
                 "id": 87,
                 "exp": 439737,
-                "money": 18600,
-                "elixir": 2720,
-                "skillPoint": 1660,
-                "energy": 460,
+                "money": 53000,
+                "elixir": 2540,
+                "skillPoint": 1470,
+                "energy": 385,
                 "power": 90
             },
             "88": {
                 "id": 88,
                 "exp": 490307,
-                "money": 18700,
-                "elixir": 2740,
-                "skillPoint": 1670,
-                "energy": 465,
+                "money": 53500,
+                "elixir": 2560,
+                "skillPoint": 1480,
+                "energy": 390,
                 "power": 90
             },
             "89": {
                 "id": 89,
                 "exp": 546692,
-                "money": 18800,
-                "elixir": 2760,
-                "skillPoint": 1680,
-                "energy": 470,
+                "money": 54000,
+                "elixir": 2580,
+                "skillPoint": 1490,
+                "energy": 395,
                 "power": 90
             },
             "90": {
                 "id": 90,
                 "exp": 609562,
-                "money": 18900,
-                "elixir": 2780,
-                "skillPoint": 1690,
-                "energy": 475,
-                "power": 90
+                "money": 54500,
+                "elixir": 2600,
+                "skillPoint": 1500,
+                "energy": 400,
+                "power": 100
             },
             "91": {
                 "id": 91,
                 "exp": 679662,
-                "money": 19000,
-                "elixir": 2800,
-                "skillPoint": 1700,
-                "energy": 480,
+                "money": 55000,
+                "elixir": 2620,
+                "skillPoint": 1510,
+                "energy": 405,
                 "power": 100
             },
             "92": {
                 "id": 92,
                 "exp": 757823,
-                "money": 19100,
-                "elixir": 2820,
-                "skillPoint": 1710,
-                "energy": 485,
+                "money": 55500,
+                "elixir": 2640,
+                "skillPoint": 1520,
+                "energy": 410,
                 "power": 100
             },
             "93": {
                 "id": 93,
                 "exp": 844973,
-                "money": 19200,
-                "elixir": 2840,
-                "skillPoint": 1720,
-                "energy": 490,
+                "money": 56000,
+                "elixir": 2660,
+                "skillPoint": 1530,
+                "energy": 415,
                 "power": 100
             },
             "94": {
                 "id": 94,
                 "exp": 942145,
-                "money": 19300,
-                "elixir": 2860,
-                "skillPoint": 1730,
-                "energy": 495,
+                "money": 56500,
+                "elixir": 2680,
+                "skillPoint": 1540,
+                "energy": 420,
                 "power": 100
             },
             "95": {
                 "id": 95,
                 "exp": 1050492,
-                "money": 19400,
-                "elixir": 2880,
-                "skillPoint": 1740,
-                "energy": 500,
+                "money": 57000,
+                "elixir": 2700,
+                "skillPoint": 1550,
+                "energy": 425,
                 "power": 100
             },
             "96": {
                 "id": 96,
                 "exp": 1171299,
-                "money": 19500,
-                "elixir": 2900,
-                "skillPoint": 1750,
-                "energy": 505,
+                "money": 57500,
+                "elixir": 2720,
+                "skillPoint": 1560,
+                "energy": 430,
                 "power": 100
             },
             "97": {
                 "id": 97,
                 "exp": 1305998,
-                "money": 19600,
-                "elixir": 2920,
-                "skillPoint": 1760,
-                "energy": 510,
+                "money": 58000,
+                "elixir": 2740,
+                "skillPoint": 1570,
+                "energy": 435,
                 "power": 100
             },
             "98": {
                 "id": 98,
                 "exp": 1456188,
-                "money": 19700,
-                "elixir": 2940,
-                "skillPoint": 1770,
-                "energy": 515,
+                "money": 58500,
+                "elixir": 2760,
+                "skillPoint": 1580,
+                "energy": 440,
                 "power": 100
             },
             "99": {
                 "id": 99,
                 "exp": 1623650,
-                "money": 19800,
-                "elixir": 2960,
-                "skillPoint": 1780,
-                "energy": 520,
+                "money": 59000,
+                "elixir": 2780,
+                "skillPoint": 1590,
+                "energy": 445,
                 "power": 100
             },
             "100": {
                 "id": 100,
                 "exp": 1810370,
-                "money": 19900,
-                "elixir": 2980,
-                "skillPoint": 1790,
-                "energy": 525,
+                "money": 59500,
+                "elixir": 2800,
+                "skillPoint": 1600,
+                "energy": 450,
                 "power": 100
             }
         }
@@ -33136,7 +33764,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 5,
                 "coins_obtain": 104,
-                "description": "沙僧问八戒，二师兄，大师兄为什么对女人一点兴趣都没有呢？二师兄你告诉我嘛。八戒瞪了他一眼说，早压断了。"
+                "description": "二郎神为了体察民情，派哮天犬下凡，他从事各个职业以后，最终选择了一个非常有前途的职业：小区保安"
             },
             "5": {
                 "id": 5,
@@ -33213,7 +33841,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 9,
                 "coins_obtain": 160,
-                "description": "最近水质污染比较严重，几个龙王总觉得这样下去龙体迟早会烂掉。所以他们打算申请集体搬到天上的银河去。"
+                "description": "牛郎兴奋地跟织女说：“我昨晚梦到你啦！”“呵呵，梦到我们在干嘛？”牛郎：“没干，只是一起牵着手！” 织女：“。。。”"
             },
             "12": {
                 "id": 12,
@@ -33378,7 +34006,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 12,
                 "coins_obtain": 280,
-                "description": "七夕没有鹊，更没有桥，连个船都没有，牛郎都是游过去的。因为很远，所以到那边打个招呼基本上就得往回游了。"
+                "description": "每次唐僧有艳遇，深恋唐僧的悟空心中都在滴血啊！因此，每次孙悟空都会在唐僧和美女最关键的时刻，掏出棒子，棒打鸳鸯！"
             },
             "27": {
                 "id": 27,
@@ -33389,7 +34017,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 12,
                 "coins_obtain": 288,
-                "description": "作为仙界唯一的无头勇士，唯一与黄帝单挑过的纯爷们真汉子，一个永不止息的战神，他是凡人心中真正的守护神。"
+                "description": "唐僧师徒取经归来，皇帝大喜，分别派人带八戒、白龙马、悟空和沙僧去吃喝赌抽，自己陪着唐僧去……"
             },
             "28": {
                 "id": 28,
@@ -33411,7 +34039,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 12,
                 "coins_obtain": 304,
-                "description": "铁扇公主的那把扇子其实并没有藏到嘴里，而是藏到女人最深的那个地方，这是牛魔王亲口说的。"
+                "description": "对于唐僧师徒四人历经九九八十一难还虐不死的剧情，如来是这样评价的：“汝甚屌，汝亲属可知否？”"
             },
             "30": {
                 "id": 30,
@@ -33422,7 +34050,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 12,
                 "coins_obtain": 312,
-                "description": "十八罗汉中，有一名女罗汉。"
+                "description": "玉帝问如来：“这几百年来的修行，你到底坚持了些什么？”如来斩钉截铁地说：“单身！”"
             },
             "31": {
                 "id": 31,
@@ -33532,7 +34160,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 12,
                 "coins_obtain": 392,
-                "description": "其实许多神仙都对嫦娥有想法，但极少有人敢去尝试，据说是因为嫦娥的玉兔特别狠，只要看到棍状物，啊呜一口就咬掉了。"
+                "description": "土行孙今天买了两个包子吃，可是一口咬下居然没有馅儿，于是问老板，老板说：“我们还没有掌握核心科技。。”"
             },
             "41": {
                 "id": 41,
@@ -33587,7 +34215,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 21,
                 "coins_obtain": 432,
-                "description": "其实白素贞被压在雷锋塔下的日子并没有那么糟糕，每周法海都会找个时间叫上许仙和小青，四个人在塔顶热闹那么一回。"
+                "description": "其实白素贞被关在雷锋塔里的日子并没有那么糟糕，每周法海都会找个时间叫上许仙和小青，四个人在塔顶打麻将。"
             },
             "46": {
                 "id": 46,
@@ -33686,7 +34314,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 21,
                 "coins_obtain": 504,
-                "description": "八仙从来就没有过海的行为，事实上他们几乎都没有到过海边。因为他们八个人中，有七个人先天怕水，看到水波就头晕恶心。"
+                "description": "八仙从来就没有过海的行为，事实上他们几乎都没有到过海边。因为他们八人中，有七人先天怕水，看到水波就头晕恶心。"
             },
             "55": {
                 "id": 55,
@@ -33939,7 +34567,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 50,
                 "coins_obtain": 688,
-                "description": "作为游走于天地的降龙尊者，济公羡煞了众神仙。主要是因为他到地面吃喝嫖赌啥都可以干，而且玉帝还不怪他，爽爆了。"
+                "description": "作为游走于天地的降龙尊者，济公羡煞了众神仙。主要是因为他到地面吃的喝的啥都可以，而且玉帝还不怪他，爽爆了。"
             },
             "78": {
                 "id": 78,
@@ -33950,7 +34578,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 50,
                 "coins_obtain": 696,
-                "description": "冷面判官作为地狱的行刑官，他无论在鬼界还是仙界都是一个风云人物，主要是因为他长的非常俊秀，像陈冠希。"
+                "description": "冷面判官作为地狱的行刑官，他无论在鬼界还是仙界都是一个风云人物，主要是因为他长的非常俊秀，像陈老师。"
             },
             "79": {
                 "id": 79,
@@ -34401,7 +35029,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 80,
                 "coins_obtain": 1024,
-                "description": "和日游神相比，夜游神总是比较烦躁。因为在夜里巡游的时候，他经常遇到许多打野战的散仙，弄的他很尴尬。"
+                "description": "和日游神相比，夜游神总是比较烦躁。因为在夜里巡游的时候，他经常遇到许多谈情说爱的散仙，弄的他很尴尬。"
             },
             "120": {
                 "id": 120,
@@ -34412,7 +35040,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 80,
                 "coins_obtain": 1032,
-                "description": "为了整顿仙风，玉帝今日发布了禁肖令。所有神仙夜里无事一律不能出来，有事也不能随便出来，那些打野战的，该消停了。"
+                "description": "为了整顿仙风，玉帝今日发布了禁肖令。所有神仙夜里无事一律不能出来，有事也不能随便出来，那些夜猫子们，该消停了。"
             },
             "121": {
                 "id": 121,
@@ -34423,7 +35051,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 85,
                 "coins_obtain": 1040,
-                "description": "每年春秋两个季节，玉帝都会组织众仙进行集体旅游，他认为这有助于更好的修行。今年他初步打算去一个叫东莞的地方。"
+                "description": "唐僧显然对于那些有拖延症的妖怪们受够了，每次抓到他，那些怪一定会说：大王，你看要不等抓到那孙猴子，再吃唐僧肉？"
             },
             "122": {
                 "id": 122,
@@ -34434,7 +35062,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 85,
                 "coins_obtain": 1048,
-                "description": "贪污受贿不仅仅是人间的一个正常情况，在仙界也是如此。作为玉帝身边的红人，太白金星家中堆满了各路神仙送来的Q币。"
+                "description": "贪污受贿不仅仅是人间的一个正常情况，在仙界也是如此。作为玉帝身边的红人，太白金星家中堆满了各路神仙送来的仙币。"
             },
             "123": {
                 "id": 123,
@@ -34445,7 +35073,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 85,
                 "coins_obtain": 1056,
-                "description": "托塔天王李靖最近离婚了，这在仙界引起了不小的震撼。按李天王自己的说法，是不行了腻了没感觉了必须换一个了。"
+                "description": "托塔天王李靖最近离婚了，这在仙界引起了不小的震撼。按李天王自己的说法，是妻子太强势了。"
             },
             "124": {
                 "id": 124,
@@ -34478,7 +35106,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 85,
                 "coins_obtain": 1080,
-                "description": "作为玉帝最宠爱的仙界勇士，二郎神飞扬跋扈到了极致。他的口头禅是：告啊，接着告啊，老子上面有人你知道不？"
+                "description": "作为玉帝最宠爱的仙界勇士，二郎神飞扬跋扈到了极致。他的口头禅是：我的底盘我做主！"
             },
             "127": {
                 "id": 127,
@@ -34566,7 +35194,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 90,
                 "coins_obtain": 1144,
-                "description": "凌霄宝殿没有我们想象中的那么开阔，甚至可以说面积挺小的，满打满算大概也就九十平。之所以搞这么小据说是玉帝的意思。"
+                "description": "凌霄宝殿没有我们想象中的那么开阔，甚至面积挺小的，满打满算大概也就九十平。之所以搞这么小据说是玉帝的意思。"
             },
             "135": {
                 "id": 135,
@@ -34632,7 +35260,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 90,
                 "coins_obtain": 1192,
-                "description": "玉帝一直不太相信人间的地沟油有那么大的危害，他特地让文曲星下凡体验了一回，结果文曲星差点拉肚子拉死在人间。"
+                "description": "玉帝一直不太相信地沟油有那么大的危害，他特地让文曲星下凡体验了一回，结果文曲星差点拉肚子拉死在人间。"
             },
             "141": {
                 "id": 141,
@@ -34643,7 +35271,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 95,
                 "coins_obtain": 1200,
-                "description": "关于人间房价一直过高的这个事儿，玉帝隔三差五的就着急众仙进行讨论，但每次结果都很一致，那就是，绝逼不会降下来的。"
+                "description": "关于人间房价一直过高的这个事儿，玉帝隔三差五的就着急众仙进行讨论，但每次结果都很一致，那就是，绝不会降下来的。"
             },
             "142": {
                 "id": 142,
@@ -34698,7 +35326,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 95,
                 "coins_obtain": 1240,
-                "description": "一千个人的眼中有一千个汉姆雷特。一千个神仙的眼中有一千个嫦娥。"
+                "description": "一千个人的眼中有一千个哈姆雷特。一千个神仙的眼中有一千个嫦娥。"
             },
             "147": {
                 "id": 147,
@@ -34709,7 +35337,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 95,
                 "coins_obtain": 1248,
-                "description": "按照商纣王的说法，妲己人美，活儿更好。只是不知道纣王说的这个活儿更好是啥意思，不明白。"
+                "description": "“现在想想还是包办婚姻好，自由恋爱根本就没人要啊！”赤脚大仙拖着他散发着脚气的大脚，哀叹道。。。"
             },
             "148": {
                 "id": 148,
@@ -34764,7 +35392,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 100,
                 "coins_obtain": 1288,
-                "description": "黑山老妖其实没有我们想象中的那么坏，也不是个什么阴阳人。他其实是一个道行高深的真正的大神，特点是下体很硬。"
+                "description": "八戒问悟净：“你猜猜我口袋里有多少颗糖，猜对了我两颗都给你吃！”悟净顿了顿：“五…五颗！”"
             },
             "153": {
                 "id": 153,
@@ -34962,7 +35590,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 105,
                 "coins_obtain": 1432,
-                "description": "传闻二郎神的哮天犬与南极仙翁的那只仙鹤有染，双方一见钟情，惺惺相惜，情不自禁。祝它们能够白头偕老。"
+                "description": "土行孙发朋友圈：我在南天门公厕忘记带纸巾啦，谁来救我？玉帝看到此信息，不慌不忙，默默地点了个赞！"
             },
             "171": {
                 "id": 171,
@@ -35094,7 +35722,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 115,
                 "coins_obtain": 1528,
-                "description": "铁拐李很喜欢画画，尤喜画裸女图，只不过每次那女的看起来都很像何仙姑。这让吕洞宾很不爽，你这是把老子完全忽略了么。"
+                "description": "铁拐李很喜欢画画，尤喜画美女图，只不过每次那女的看起来都很像何仙姑。这让吕洞宾很不爽，你这是把老子完全忽略了么。"
             },
             "183": {
                 "id": 183,
@@ -35105,7 +35733,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 115,
                 "coins_obtain": 1536,
-                "description": "关于人间主要的娱乐活动，玉帝召集众仙经过慎重讨论，得出如下结论：第一是足球，第二是篮球，第三是嫖娼。"
+                "description": "关于人间主要的娱乐活动，玉帝召集众仙经过慎重讨论，得出如下结论：第一是足球，第二是篮球，第三是躺尸。"
             },
             "184": {
                 "id": 184,
@@ -35116,7 +35744,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 115,
                 "coins_obtain": 1544,
-                "description": "无花大仙是仙界最为特殊的一位大仙，因为他只有下半身，而且平日里都是保持全裸状态。玉帝一直怀疑他是露阴癖。"
+                "description": "无花大仙是仙界最为特殊的一位大仙，因为他只有下半身，而且平日里都是穿肉色丝袜。玉帝一直觉得哪里不对劲。。。"
             },
             "185": {
                 "id": 185,
@@ -35226,7 +35854,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 120,
                 "coins_obtain": 1624,
-                "description": "宓妃是仙女当中另一位绝色佳人，其美貌程度不亚于嫦娥。据说后羿当年经常在梦中与宓妃爱爱。我们由此想象宓妃之美。"
+                "description": "宓妃是仙女当中另一位绝色佳人，其美貌程度不亚于嫦娥。据说当时帮她整容的那个医生已经被灭口。"
             },
             "195": {
                 "id": 195,
@@ -35270,7 +35898,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 120,
                 "coins_obtain": 1656,
-                "description": "最近龟神有些烦，因饭量日益增加，再加上头部吸收营养能力过强，导致他的龟头越来越大。现在晚上睡觉都缩不回去了。"
+                "description": "最近龟神有些烦，因饭量日益增加，再加上头部吸收营养能力过强，导致他的头越来越大。现在晚上睡觉都缩不回去了。"
             },
             "199": {
                 "id": 199,
@@ -35281,7 +35909,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 120,
                 "coins_obtain": 1664,
-                "description": "神仙中对于男欢女爱之事最上瘾的大概莫过于巫山神女了，基本上只要有机会她就会巫山云雨一把。搞过的都说她活儿很不错。"
+                "description": "哪吒的风火轮因为使用频率过高，所以已经被彻底烧坏了，现在基本上也就是当个旱冰鞋来穿。"
             },
             "200": {
                 "id": 200,
@@ -35369,7 +35997,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 125,
                 "coins_obtain": 1728,
-                "description": "天庭今日发布了堪称有史以来最为严厉的一道新规：为了保证纯洁性，任何神仙不得潜规则仙女，谁潜，就干谁。"
+                "description": "凌霄殿的豆腐渣工程最近才被发现，主要是因为蜘蛛侠发射出来的蜘蛛丝抠下了一大块墙皮，华丽丽的摔死了。。"
             },
             "208": {
                 "id": 208,
@@ -35699,7 +36327,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 140,
                 "coins_obtain": 1968,
-                "description": "作为仙界的乐官，五音大仙最近创作了一首叫做《干！干！干！》的歌曲。此歌节奏明快，旋律优美，深得众仙的喜爱。"
+                "description": "作为仙界的乐官，五音大仙最近创作了一首叫做《最美仙侠风》的歌曲。此歌节奏明快，旋律优美，深得众仙的喜爱。"
             },
             "238": {
                 "id": 238,
@@ -35710,7 +36338,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 140,
                 "coins_obtain": 1976,
-                "description": "作为仙界最具艺术才华的仙子，文曲星最近创作了一首叫做《你们都去死吧！》的诗词，该诗以感情强烈而迅速风靡仙界。"
+                "description": "作为仙界最具艺术才华的仙子，文曲星最近创作了一首叫做《欧巴江南赛》的诗词，该诗以感情强烈而迅速风靡仙界。"
             },
             "239": {
                 "id": 239,
@@ -35754,7 +36382,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 145,
                 "coins_obtain": 2008,
-                "description": "最近经常有神仙偷偷下凡去炒股，玉帝觉得很恼火，下令一旦发现这种神仙就地处决。他觉得股市这个东西摆明就是黑钱的。"
+                "description": "最近经常有神仙偷偷下凡去炒股，玉帝对此觉得很恼火，其实是因为他炒股输光了积蓄。。。"
             },
             "243": {
                 "id": 243,
@@ -35765,7 +36393,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 145,
                 "coins_obtain": 2016,
-                "description": "下一届奥运会，王母打算亲临现场看一看，她很喜欢看游泳，尤其喜欢那个美国飞鱼菲尔普斯。"
+                "description": "下一届奥运会，王母打算亲临现场看一看，她很喜欢看游泳，尤其喜欢那个龙王三太子。"
             },
             "244": {
                 "id": 244,
@@ -35831,7 +36459,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 145,
                 "coins_obtain": 2064,
-                "description": "曾有神仙向玉帝提出在人间弄一个常驻办事处，玉帝听了忍不住哈哈大笑，笑完之后他说好这个提议不错，完了我们研究下。"
+                "description": "曾有神仙向玉帝提出在人间弄一个常驻办事处，玉帝听了忍不住哈哈大笑，笑完之后他说好这个提议不错，洗洗睡吧。"
             },
             "250": {
                 "id": 250,
@@ -35941,7 +36569,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 150,
                 "coins_obtain": 2144,
-                "description": "最近一届“女人我最美”大赛，南华仙子夺冠。评委主席李靖对她的评价是：肉质好皮肤白，整体给人相当强烈的蹂躏欲望。"
+                "description": "别人问二郎神有没有女朋友，他总说：“现在没有。”这样的回答显然机智地掩盖了过去也没有的事实。。。"
             },
             "260": {
                 "id": 260,
@@ -35952,7 +36580,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 150,
                 "coins_obtain": 2152,
-                "description": "最近一届“雄起，男人”大赛，吴刚不负众望，勇夺桂冠。评委主席嫦娥对他的评价是：整个下体一如既往的出色。"
+                "description": "织女开了一家网店，一开始生意不好，后来经过不断努力向身边的人发各种广告，终于有一天，她被所有人拉黑了。"
             },
             "261": {
                 "id": 261,
@@ -36128,7 +36756,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 160,
                 "coins_obtain": 2280,
-                "description": "每个神仙都羡慕孙悟空有一根可长可短可粗可细的棒子。"
+                "description": "大家都在说六耳猕猴非常凶猛，上天入地，无所不能，悟空听后只能用两个字形容他的感受：“呵呵”"
             },
             "277": {
                 "id": 277,
@@ -36139,7 +36767,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 160,
                 "coins_obtain": 2288,
-                "description": "那吒不仅会喷火，其实他也很爱喝水。"
+                "description": "哪吒不仅会喷火，其实他也很爱喝水。"
             },
             "278": {
                 "id": 278,
@@ -36172,7 +36800,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 160,
                 "coins_obtain": 2312,
-                "description": "唐僧从来不吃肉，他最喜欢吃黑木耳。"
+                "description": "唐僧从来不吃肉，直到有一天他也为了长生不老偷偷抠下自己的脚皮吃下。。。"
             },
             "281": {
                 "id": 281,
@@ -36205,7 +36833,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 165,
                 "coins_obtain": 2336,
-                "description": "珠海乐之科技有限公司是当年托塔天王和天蓬元帅为了泡妹子而成立的俱乐部。"
+                "description": "上天是公平的，它给了你很丑的外表，一定也会给你很低的智商，以免让你看起来显得不协调。"
             },
             "284": {
                 "id": 284,
@@ -36238,7 +36866,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 165,
                 "coins_obtain": 2360,
-                "description": "神仙买苹果从来不买一颗两颗，他们告诉凡人，买苹果要买4代五代。"
+                "description": "神仙买苹果从来不买一颗两颗，他们告诉凡人，买苹果要买四袋五袋。"
             },
             "287": {
                 "id": 287,
@@ -36249,7 +36877,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 165,
                 "coins_obtain": 2368,
-                "description": "王母娘娘发现现在的人类人人携带苹果，为了断绝这种现象，她创建了一个新的族群，叫魅族。"
+                "description": "玉帝终于在南海深处发现几百年前不明失踪的那匹龙马，而遗体旁边貌似是一架飞机的残骸。玉帝好像明白了什么。。。"
             },
             "288": {
                 "id": 288,
@@ -36271,7 +36899,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 165,
                 "coins_obtain": 2384,
-                "description": "牛郎和织女在分开了千千万万年之后，牛郎终于铁杵磨成绣花针。"
+                "description": "牛郎和织女在分开了千千万万年之后，牛郎终于练就了超级无敌右手。"
             },
             "290": {
                 "id": 290,
@@ -36282,7 +36910,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 165,
                 "coins_obtain": 2392,
-                "description": "白骨精从小爱吃泡菜，因此悟空特别喜欢她，有一天白骨精问他：“为什么你那么喜欢我？”悟空告诉她：“因为你是棒子”。"
+                "description": "白骨精从小爱吃泡菜，因此悟空特别喜欢她，有天白骨精问他：“为什么你那么喜欢我？”悟空告诉她：“因为你是棒子”。"
             },
             "291": {
                 "id": 291,
@@ -36337,7 +36965,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 170,
                 "coins_obtain": 2432,
-                "description": "对于人间最近流行的小米手机，玉帝和王母其实都知道这个事情，也私底下试用过，用过之后他们的结论是，这玩意也能火？"
+                "description": "对于人间最近流行的XX手机，玉帝和王母其实都知道这个事情，也私底下试用过，用过之后他们的结论是，这玩意也能火？"
             },
             "296": {
                 "id": 296,
@@ -36359,7 +36987,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 170,
                 "coins_obtain": 2448,
-                "description": "为了看看自己在凡间究竟有多大的人气，玉帝来到凡间参加非诚勿扰。当他说出我是玉帝时，孟非看了他一眼说，你丫傻逼吧。"
+                "description": "为了看看在凡间究竟有多大的人气，玉帝来到凡间参加相亲节目。当他说出我是玉帝时，所有人都灭灯了。。。"
             },
             "298": {
                 "id": 298,
@@ -36370,7 +36998,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 170,
                 "coins_obtain": 2456,
-                "description": "对于人间流行的女神这个称号，王母觉得有些不可思议，波大一点，皮肤白一点，腿细一点，穿的少一点，就可以叫女神了？"
+                "description": "一乞丐哭道：可怜下我吧，我都记不清上次吃饭是什么时候了！济公看着可怜，安慰道：“别急，慢慢想，一定可以想起来的”"
             },
             "299": {
                 "id": 299,
@@ -36392,7 +37020,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 170,
                 "coins_obtain": 2472,
-                "description": "作为仙界真正的爱爱女神，洛神宓妃每年据说要下凡与男性爱爱上万次，平均每天三百多次。这就是她修仙的方式，羡煞旁人也。"
+                "description": "八戒很质疑的问悟空为啥可以大闹天宫如今却打不赢小怪？悟空瞪道：“你TM账号被封500年试试。”"
             },
             "301": {
                 "id": 301,
@@ -36414,7 +37042,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 175,
                 "coins_obtain": 2488,
-                "description": "关于最近人间流行的各种车震门事件，众仙经过讨论后，一致认为，如果把车窗摇下来，体验上可能会更好一些。"
+                "description": "张果老问铁拐李，这个世界上男女之间有纯粹的友谊吗？铁拐李说：“只要长得丑，四海皆朋友！”"
             },
             "303": {
                 "id": 303,
@@ -36425,7 +37053,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 175,
                 "coins_obtain": 2496,
-                "description": "针对人间有关慈善方面的情况，玉帝提议，封郭美美为至尊女神。理由是：她的出现，彻底颠覆了人们在特定领域的特定价值观。"
+                "description": "如来问唐僧：“如果用二十年的寿命换取一个愿望，你会许什么愿？”唐僧：“请让我长生不老吧！”"
             },
             "304": {
                 "id": 304,
@@ -36447,7 +37075,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 175,
                 "coins_obtain": 2512,
-                "description": "人间霸王李刚近日上天受封，鉴于他儿子独特的开创性的表现，玉帝决定封他为：少年之爹。"
+                "description": "人间霸王李爸爸近日上天受封，鉴于他儿子独特的开创性的表现，玉帝决定封他为：少年之爹。"
             },
             "306": {
                 "id": 306,
@@ -36458,7 +37086,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 175,
                 "coins_obtain": 2520,
-                "description": "风流少年陈冠希近日上天受封，鉴于他在男女关系方面所作出的有益探索，玉帝决定封他为：妇女之友。"
+                "description": "风流少年陈老师近日上天受封，鉴于他在男女关系方面所作出的有益探索，玉帝决定封他为：妇女之友。"
             },
             "307": {
                 "id": 307,
@@ -36502,7 +37130,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 175,
                 "coins_obtain": 2552,
-                "description": "为了进一步刺激仙界经济的发展，财神决定再次增发三万亿Q币，以此来平衡市场相对紧张的供需关系。"
+                "description": "为了进一步刺激仙界经济的发展，财神决定再次增发三万亿仙币，以此来平衡市场相对紧张的供需关系。"
             },
             "311": {
                 "id": 311,
@@ -36513,7 +37141,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 180,
                 "coins_obtain": 2560,
-                "description": "马化腾近日入狱受罚，鉴于他在IT界一贯的坚定的卓有成效的垄断行为，阎王决定，放了他，让他返回人间，继续垄断下去。"
+                "description": "马老大近日入狱受罚，鉴于他在IT界一贯的坚定的卓有成效的垄断行为，阎王决定，放了他，让他返回人间，继续垄断下去。"
             },
             "312": {
                 "id": 312,
@@ -36524,7 +37152,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 180,
                 "coins_obtain": 2568,
-                "description": "许多神仙最近也都有了自己的微博帐号。有些还加了V。二郎神叫我与狗，巨灵神叫下体很硬，蓬莱仙女叫深不可测。"
+                "description": "巨灵神再也熬不了天上的生活了，他想要实现自我价值，经过一番考虑，终于去参加了狂野格斗比赛。"
             },
             "313": {
                 "id": 313,
@@ -36590,7 +37218,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 180,
                 "coins_obtain": 2616,
-                "description": "针对近日人间发生的海天盛筵事件，二郎神表示，将会仔细研究录像，进入深入的调查取证，必要时自会下凡进行处理。"
+                "description": "土行孙经过种种的路线计划，终于遁地潜进一家银行，面对几千万的现金，土行孙因为密集恐惧症而突然冷静了下来。。。"
             },
             "319": {
                 "id": 319,
@@ -36634,7 +37262,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 185,
                 "coins_obtain": 2648,
-                "description": "关于人间垄断企业相关的争议，神仙们表达了一个基本的观点，那就是：垄断死全家。"
+                "description": "关于人间垄断企业相关的争议，神仙们表达了一个基本的观点，那就是：干得漂亮！"
             },
             "323": {
                 "id": 323,
@@ -36656,7 +37284,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 185,
                 "coins_obtain": 2664,
-                "description": "对于人间潜规则这个行规，通灵大仙的观点是：潜的力度还不够，应该进一步加强，争取做到全民参潜的效应。"
+                "description": "玉帝今日打款给二郎神，手一抖不小心多打了个0，玉帝着急地叫二郎神把多打的钱还给他，结果二郎神果断把他拉黑了。。。"
             },
             "325": {
                 "id": 325,
@@ -36766,7 +37394,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 190,
                 "coins_obtain": 2744,
-                "description": "第七届中国好声音冠军鲁一发，演唱曲目《我不是黄蓉》，他撕心裂肺般的嗓音震的几位导师当场休克。他其实是巨灵的化身。"
+                "description": "第七届仙界好嗓音冠军鲁一发，演唱曲目《死了都要唱》，他撕心裂肺般的嗓音震的几位导师当场休克。他其实是巨灵的化身。"
             },
             "335": {
                 "id": 335,
@@ -36810,7 +37438,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 190,
                 "coins_obtain": 2776,
-                "description": "针对近日人间发生的领土争议，玉帝表示其他的我可以不管，但是，钓鱼岛一定是中国的，希望鬼子不要逼他触发天庭之怒。"
+                "description": "有一种神仙，一生中只有在买东西的时候才会被叫“帅哥”，他就是张果老。。。"
             },
             "339": {
                 "id": 339,
@@ -36821,7 +37449,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 190,
                 "coins_obtain": 2784,
-                "description": "在足球方面，玉帝对于亚洲近来风头正劲的恒大球队赞赏有加，他说，搞足球就得这么干，猛砸钱，狂砸钱，往死里砸钱。"
+                "description": "仙界想举办足球大赛，但是土行孙被禁止参加，他很郁闷：“最多我不用土遁可以了吧？”"
             },
             "340": {
                 "id": 340,
@@ -36832,7 +37460,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 190,
                 "coins_obtain": 2792,
-                "description": "财神手下火焰大仙近日携带近5亿的Q币潜逃至西方极乐世界。这一事件在仙界引起了极大的震动。玉帝批示，务必要彻查此事。"
+                "description": "财神手下火焰大仙近日携带近5亿的仙币潜逃至西方极乐世界。这事件在仙界引起了极大震动。玉帝批示，务必要彻查此事。"
             },
             "341": {
                 "id": 341,
@@ -36854,7 +37482,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 195,
                 "coins_obtain": 2808,
-                "description": "仙界工资最高的是玉帝身边的红人太白金星，传闻他一年的工资达到8000多万Q币。"
+                "description": "仙界工资最高的是玉帝身边的红人太白金星，很多人都想认这个老头做干儿子！"
             },
             "343": {
                 "id": 343,
@@ -36865,7 +37493,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 195,
                 "coins_obtain": 2816,
-                "description": "在神仙面前，马克思主义变成了浮云。事实上，当马克思上天之后，他也意识到了确实还存在这么一个纯粹的意识世界。"
+                "description": "都说男人有钱就变坏，吴刚这才领悟到当时嫦娥跟他说的话：“你是个好人！”"
             },
             "344": {
                 "id": 344,
@@ -36942,7 +37570,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 195,
                 "coins_obtain": 2872,
-                "description": "太白金星向玉帝建议，以后搞个签到制度，凡是不来上朝的，一律扣Q币。玉帝打了个呵欠说，算了吧，我自己都懒得上朝。"
+                "description": "太白金星向玉帝建议，以后搞个签到制度，凡是不来上朝的，一律扣仙币。玉帝打了个呵欠说，算了吧，我自己都懒得上朝。"
             },
             "351": {
                 "id": 351,
@@ -36975,7 +37603,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 200,
                 "coins_obtain": 2896,
-                "description": "作为仙界首富，财神赵公明的总资产已经达到了7800亿Q币，这相当于整个人间500年的总产值。"
+                "description": "作为仙界首富，财神赵公明的总资产已经达到了7800亿仙币，这相当于整个人间500年的总产值。"
             },
             "354": {
                 "id": 354,
@@ -37030,7 +37658,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 200,
                 "coins_obtain": 2936,
-                "description": "日游神最近从人间收集到了许多明星的不雅照。最近他打算在仙界办这样一个展览，名字都想好了，叫：丑陋的人性。"
+                "description": "日游神最近从人间收集到了许多明星的靓照。最近他打算在仙界开一间整容医院，照片作为整容后的照片打广告。"
             },
             "359": {
                 "id": 359,
@@ -37074,7 +37702,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 205,
                 "coins_obtain": 2968,
-                "description": "二郎神最近出版了一本写真画册，名为《我与哮天犬》。该画册受到了众仙的热捧，因为大家都想知道他们是怎么搞的。"
+                "description": "二郎神最近出版了一本写真画册，名为《我与哮天犬》。该画册受到了众仙的热捧，因为大家都想知道他们是怎么生活的。"
             },
             "363": {
                 "id": 363,
@@ -37129,7 +37757,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 205,
                 "coins_obtain": 3008,
-                "description": "周星驰很久不拍片了，这让众神仙非常遗憾，昔日的济癫，何时才能够回来呢？"
+                "description": "星爷很久不拍片了，这让众神仙非常遗憾，昔日的济癫，何时才能够回来呢？"
             },
             "368": {
                 "id": 368,
@@ -37250,7 +37878,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 210,
                 "coins_obtain": 3096,
-                "description": "玉帝最近很喜欢看《舌尖上的中国》这个栏目，他寻思着是不是找个时间组织众仙下凡一趟，按照节目上说的挨个尝一遍。"
+                "description": "后羿坐在窗边，仰望月空，曾经的山盟海誓是如此的深刻，你若下嫁他人，我必袈裟裹体。"
             },
             "379": {
                 "id": 379,
@@ -37294,7 +37922,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 215,
                 "coins_obtain": 3128,
-                "description": "玉帝最近喜欢上了人间的一款叫《英雄联盟》游戏，没事的时候他总会拉上太白金星太上老君一起组队撸两把。"
+                "description": "玉帝最近喜欢上了人间的一款叫《撸啊撸》游戏，没事的时候他总会拉上太白金星太上老君一起组队撸两把。"
             },
             "383": {
                 "id": 383,
@@ -37371,7 +37999,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 215,
                 "coins_obtain": 3184,
-                "description": "洛神宓妃作为仙界爱爱女神，她从来没有觉得这有什么不妥，因为这原本就是她的修行方式。"
+                "description": "一直以来，太上老君都偷偷地把仙丹卖给凡间，还特意包装成一种叫巧克力的玩意。。。"
             },
             "390": {
                 "id": 390,
@@ -37690,7 +38318,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 230,
                 "coins_obtain": 3416,
-                "description": "由于憋了数百年了，能量过大。所以人间的后羿近日腰疼的厉害，医生说悠着点兄弟，别太猛了，肾快被你搞烂了。"
+                "description": "由于憋了数百年了，能量过大。所以人间的后羿近日腰疼的厉害，医生说悠着点兄弟，别太猛了。。"
             },
             "419": {
                 "id": 419,
@@ -37756,7 +38384,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 235,
                 "coins_obtain": 3464,
-                "description": "近日人间传出干露露和她娘以及她妹干毛毛三人共吃香蕉的照片，这让众仙大开眼界，连如来都忍不住赞了一句，真猛。"
+                "description": "铁拐李最近被查出颈部以上瘫痪，张果老问其是什么病症，铁拐李说:“就是脑残，没得治。。。”"
             },
             "425": {
                 "id": 425,
@@ -37833,7 +38461,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 240,
                 "coins_obtain": 3520,
-                "description": "人类福音苍井空近日受邀上天做客，并在宴席上进行了现场演示。演示完毕后，众仙做了简单点评并对苍姐提出了更高的要求。"
+                "description": "文曲星创业了，发明了一种叫复读机的玩意，有了他，玉帝再也不用担心众仙的学习了。。。"
             },
             "432": {
                 "id": 432,
@@ -37976,7 +38604,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 245,
                 "coins_obtain": 3624,
-                "description": "在砍了八万年的桂树之后，吴刚近日终于向玉帝提出，要下凡去疯狂的发泄。他说，我无法忍受这份煎熬了，我已经到极限了。"
+                "description": "在砍了八万年的桂树之后，吴刚近日终于向玉帝提出，要下凡去。他说，我无法忍受这份煎熬了，我已经到极限了。"
             },
             "445": {
                 "id": 445,
@@ -37987,7 +38615,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 245,
                 "coins_obtain": 3632,
-                "description": "近日被批准下凡的吴刚传来了消息，一夜之间，他踏遍了人间的夜总会KTV按摩店，他让所有的姐妹们彻底虚脱。"
+                "description": "被批准下凡的吴刚传来了消息，一夜之间，凡间的森林绿地都夷为平地。显然他已经砍树砍上瘾了，根本停不下来。"
             },
             "446": {
                 "id": 446,
@@ -37998,7 +38626,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 245,
                 "coins_obtain": 3640,
-                "description": "对于吴刚近日在人间所取得的成绩，爱爱女神洛神宓妃大感震惊。她表示，等刚哥上来了一定要与他战个三天三夜。"
+                "description": "女人想发脾气的时候你真的不得不服，就拿织女来说，就因为西红柿炒蛋是要先吃蛋还是先吃西红柿这个话题也能吵起来。"
             },
             "447": {
                 "id": 447,
@@ -38009,7 +38637,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 245,
                 "coins_obtain": 3648,
-                "description": "仙界最近天气炎热，大家提议一起到银河系来个集体裸游，让嫦娥仙子为大家当场示范28个裸游动作。玉帝当场拍板表示赞成。"
+                "description": "仙界最近天气炎热，大家提议一起到银河系来个集体游泳，让嫦娥仙子为大家当场示范28个游泳动作。玉帝当场拍板表示赞成。"
             },
             "448": {
                 "id": 448,
@@ -38031,7 +38659,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 245,
                 "coins_obtain": 3664,
-                "description": "神仙中QQ号码最多的是黑煞神，他最大的爱好就是注册QQ，每天没事就在那疯狂的注册号码。这一度导致腾讯的服务器崩溃。"
+                "description": "天上存在一个神。它能上天遁地，脱离物理定律的束缚，拥有惊人的质量与速度，这就是以后用在凡间教科书上面的“小滑块”。"
             },
             "450": {
                 "id": 450,
@@ -38042,7 +38670,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 245,
                 "coins_obtain": 3672,
-                "description": "神仙中QQ号码最牛的是二郎神，他的QQ号是：888，可以说是QQ号中的元老号，而且让如来佛开过光。不过最近被人盗了。"
+                "description": "龙王因为悟空大闹龙宫抢走金箍棒的事情留下了很大的心理阴影，求阴影的面积。"
             },
             "451": {
                 "id": 451,
@@ -38064,7 +38692,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 250,
                 "coins_obtain": 3688,
-                "description": "作为第一位拥有iphone手机的神仙，九天杀童一直没有告诉大家，其实这是乔布斯亲自送给他的见面礼物。"
+                "description": "王母感慨凡间的女子都被各种奢侈品给迷惑了。“真是悲哀啊！”王母拿起身边的LV包包，站起来走了。。"
             },
             "453": {
                 "id": 453,
@@ -38108,7 +38736,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 250,
                 "coins_obtain": 3720,
-                "description": "“没有人xx你的内在美，和一个男人讲内涵，不如直接告诉他你允许xx更有吸引力。”这是爱爱女神洛神宓妃的口头禅。"
+                "description": "善财童子在天庭上学期间可是一个学霸来的，年年拿奖学金，于是一毕业就被保送到观音的单位下工作！"
             },
             "457": {
                 "id": 457,
@@ -38218,7 +38846,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 255,
                 "coins_obtain": 3800,
-                "description": "雷震子最近染上了毒瘾，每天都要吸几百公斤大麻。每次吸完之后，他都会仰天长啸，这真是太TM爽了，果然是飘飘欲仙啊。"
+                "description": "雷震子最近不小心被自己电死了，原因是他在泡澡的时候过于激动，于是用力过猛不小心发电了。。。"
             },
             "467": {
                 "id": 467,
@@ -38240,7 +38868,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 255,
                 "coins_obtain": 3816,
-                "description": "当上海的法官们想拼命甩掉＂嫖客＂身份的时候，李双江梦鸽夫妇在竭力为孩子争取一个＂嫖客＂的名份! 人活着要知足。"
+                "description": "南天门的那条路被装上了红绿灯，那些飙车党，以后你们就乖乖的慢慢飞吧！"
             },
             "469": {
                 "id": 469,
@@ -38284,7 +38912,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 260,
                 "coins_obtain": 3848,
-                "description": "包二奶，找情人是道德问题，卖淫嫖娼就是违法行为。难道结账方式就真的这么重要么。天尊对人间的这些事越来越看不懂了。"
+                "description": "天尊下凡在一家高级餐馆吃了一颗茶叶蛋，没有钱还，被拽进派出所。"
             },
             "473": {
                 "id": 473,
@@ -38427,7 +39055,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 265,
                 "coins_obtain": 3952,
-                "description": "作为昔日在人间一起嫖过的炮友，吴刚与后羿之间有着一种我们常人难以理解的情感，他们是真兄弟。"
+                "description": "作为那些年一起住过的基友，吴刚与后羿之间有着一种我们常人难以理解的情感，他们是真兄弟。"
             },
             "486": {
                 "id": 486,
@@ -38460,7 +39088,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 265,
                 "coins_obtain": 3976,
-                "description": "为了节约开支，财神最近制定了一条新规：神仙到人间出差，差旅费一律不能超过300Q币，否则不给报。"
+                "description": "为了节约开支，财神最近制定了一条新规：神仙到人间出差，差旅费一律不能超过300仙币，否则不给报。"
             },
             "489": {
                 "id": 489,
@@ -38559,7 +39187,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 270,
                 "coins_obtain": 4048,
-                "description": "在人间的年轻作家中，二郎神最欣赏的是郭敬明和韩寒，他也一直幻想着这两个小青年有朝一日能够出柜。"
+                "description": "唐僧取经结束后，写了一本书，叫《那些天一起上过的西天》，但是这本书被一个叫西天的人告了！"
             },
             "498": {
                 "id": 498,
@@ -42633,47 +43261,47 @@ var outputTables = {
             "20002": {
                 "id": 20002,
                 "card_id": "长矛鼠怪504",
-                "atk": 1116,
-                "hp": 2789,
+                "atk": 1339.2,
+                "hp": 3346.8,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20003": {
                 "id": 20003,
                 "card_id": "小狗怪505",
-                "atk": 1702,
-                "hp": 4251,
+                "atk": 2042.4,
+                "hp": 5101.2,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20004": {
                 "id": 20004,
                 "card_id": "大狗怪506",
-                "atk": 2529,
-                "hp": 6320,
+                "atk": 3287.7,
+                "hp": 8216,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20005": {
                 "id": 20005,
                 "card_id": "蝙蝠怪507",
-                "atk": 3910,
-                "hp": 9773,
+                "atk": 5083,
+                "hp": 12704.9,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20006": {
                 "id": 20006,
                 "card_id": "火魔王508",
-                "atk": 5510,
-                "hp": 13761,
+                "atk": 7163,
+                "hp": 17889.3,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20007": {
                 "id": 20007,
                 "card_id": "独臂铲子怪509",
-                "atk": 7568,
+                "atk": 9838.4,
                 "hp": 18901,
                 "dodge_rate": 10,
                 "crit_rate": 10
@@ -42681,184 +43309,184 @@ var outputTables = {
             "20008": {
                 "id": 20008,
                 "card_id": "黄袍老怪510",
-                "atk": 9648,
-                "hp": 24094,
+                "atk": 12542.4,
+                "hp": 31322.2,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20009": {
                 "id": 20009,
                 "card_id": "金角大王511",
-                "atk": 10814,
-                "hp": 28084,
+                "atk": 14058.2,
+                "hp": 36509.2,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20010": {
                 "id": 20010,
                 "card_id": "银角大王512",
-                "atk": 12417,
-                "hp": 32247,
+                "atk": 16142.1,
+                "hp": 41921.1,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20011": {
                 "id": 20011,
                 "card_id": "长眉老怪513",
-                "atk": 15656,
-                "hp": 40666,
+                "atk": 21918.4,
+                "hp": 56932.4,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20012": {
                 "id": 20012,
                 "card_id": "黑山巫妖514",
-                "atk": 19426,
-                "hp": 50462,
+                "atk": 27196.4,
+                "hp": 70646.8,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20013": {
                 "id": 20013,
                 "card_id": "半头魔王515",
-                "atk": 23718,
-                "hp": 61610,
+                "atk": 33205.2,
+                "hp": 86254,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20014": {
                 "id": 20014,
                 "card_id": "三条胳膊怪516",
-                "atk": 27450,
-                "hp": 71301,
+                "atk": 38430,
+                "hp": 99821.4,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20015": {
                 "id": 20015,
                 "card_id": "巨斧怪517",
-                "atk": 32307,
-                "hp": 81000,
+                "atk": 45229.8,
+                "hp": 113400,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20016": {
                 "id": 20016,
                 "card_id": "双刀怪518",
-                "atk": 38899,
-                "hp": 97528,
+                "atk": 58348.5,
+                "hp": 146292,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20017": {
                 "id": 20017,
                 "card_id": "巨剑怪519",
-                "atk": 46089,
-                "hp": 115552,
+                "atk": 69133.5,
+                "hp": 173328,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20018": {
                 "id": 20018,
                 "card_id": "弓箭怪520",
-                "atk": 52117,
-                "hp": 130667,
+                "atk": 78175.5,
+                "hp": 196000.5,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20019": {
                 "id": 20019,
                 "card_id": "锤子怪521",
-                "atk": 58384,
-                "hp": 146383,
+                "atk": 87576,
+                "hp": 219574.5,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "20020": {
                 "id": 20020,
                 "card_id": "石巨人522",
-                "atk": 60745,
-                "hp": 150945,
+                "atk": 91117.5,
+                "hp": 226417.5,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30001": {
                 "id": 30001,
                 "card_id": "蝙蝠怪523",
-                "atk": 3910,
-                "hp": 9773,
+                "atk": 5083,
+                "hp": 12704.9,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30002": {
                 "id": 30002,
                 "card_id": "火魔王524",
-                "atk": 4060,
-                "hp": 9923,
+                "atk": 7163,
+                "hp": 17889.3,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30003": {
                 "id": 30003,
                 "card_id": "金角大王525",
-                "atk": 10814,
-                "hp": 28084,
+                "atk": 14058.2,
+                "hp": 36509.2,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30004": {
                 "id": 30004,
                 "card_id": "银角大王526",
-                "atk": 10964,
-                "hp": 28234,
+                "atk": 16142.1,
+                "hp": 41921.1,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30005": {
                 "id": 30005,
                 "card_id": "半头魔王527",
-                "atk": 23718,
-                "hp": 61610,
+                "atk": 33205.2,
+                "hp": 86254,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30006": {
                 "id": 30006,
                 "card_id": "三条胳膊怪528",
-                "atk": 24038,
-                "hp": 61760,
+                "atk": 38430,
+                "hp": 99821.4,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30007": {
                 "id": 30007,
                 "card_id": "双刀怪529",
-                "atk": 46089,
-                "hp": 115552,
+                "atk": 58348.5,
+                "hp": 146292,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30008": {
                 "id": 30008,
                 "card_id": "巨剑怪530",
-                "atk": 46249,
-                "hp": 115712,
+                "atk": 69133.5,
+                "hp": 173328,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30009": {
                 "id": 30009,
                 "card_id": "锤子怪531",
-                "atk": 58384,
-                "hp": 146383,
+                "atk": 87576,
+                "hp": 219574.5,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30010": {
                 "id": 30010,
                 "card_id": "石巨人532",
-                "atk": 60745,
-                "hp": 150945,
+                "atk": 91117.5,
+                "hp": 226417.5,
                 "dodge_rate": 10,
                 "crit_rate": 10
             }
@@ -51366,31 +51994,31 @@ var outputTables = {
                 "id": 1,
                 "type": "fragments",
                 "num_min": 1,
-                "num_max": 2
+                "num_max": 1
             },
             "2": {
                 "id": 2,
                 "type": "gold",
-                "num_min": 50,
-                "num_max": 100
+                "num_min": 30,
+                "num_max": 50
             },
             "3": {
                 "id": 3,
                 "type": "elixir",
-                "num_min": 20000,
-                "num_max": 30000
+                "num_min": 5000,
+                "num_max": 7000
             },
             "4": {
                 "id": 4,
                 "type": "superHonor",
                 "num_min": 1,
-                "num_max": 2
+                "num_max": 1
             },
             "5": {
                 "id": 5,
                 "type": "energy",
-                "num_min": 5000,
-                "num_max": 7000
+                "num_min": 1500,
+                "num_max": 2000
             }
         }
     },
@@ -51723,6 +52351,82 @@ var outputTables = {
             }
         }
     },
+    "first_recharge_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 8000,
+                "money": 80000,
+                "elixir": 10000,
+                "skillPoint": 10000,
+                "spirit": 1000,
+                "power": 100,
+                "card_id": 765,
+                "card_lv": 1
+            }
+        }
+    },
+    "growth_plan": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 25,
+                "gold": 100
+            },
+            "2": {
+                "id": 2,
+                "lv": 30,
+                "gold": 150
+            },
+            "3": {
+                "id": 3,
+                "lv": 35,
+                "gold": 200
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 250
+            },
+            "5": {
+                "id": 5,
+                "lv": 45,
+                "gold": 300
+            },
+            "6": {
+                "id": 6,
+                "lv": 50,
+                "gold": 350
+            },
+            "7": {
+                "id": 7,
+                "lv": 55,
+                "gold": 400
+            },
+            "8": {
+                "id": 8,
+                "lv": 60,
+                "gold": 450
+            },
+            "9": {
+                "id": 9,
+                "lv": 65,
+                "gold": 500
+            },
+            "10": {
+                "id": 10,
+                "lv": 70,
+                "gold": 550
+            },
+            "11": {
+                "id": 11,
+                "lv": 75,
+                "gold": 630
+            }
+        }
+    },
     "recharge": {
         "colComment": {},
         "rows": {
@@ -51893,216 +52597,140 @@ var outputTables = {
             }
         }
     },
-    "first_recharge_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 8000,
-                "money": 80000,
-                "elixir": 10000,
-                "skillPoint": 10000,
-                "spirit": 1000,
-                "power": 100,
-                "card_id": 764,
-                "card_lv": 20
-            }
-        }
-    },
     "vip_box": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "energy": 5000,
+                "energy": 3000,
                 "money": 100000,
                 "skillPoint": 0,
                 "elixir": 0,
-                "fragments": 2,
+                "fragments": 0,
                 "exp_card": 0,
                 "price": 18,
                 "true_price": 66
             },
             "2": {
                 "id": 2,
-                "energy": 6000,
+                "energy": 4000,
                 "money": 150000,
                 "skillPoint": 10000,
                 "elixir": 0,
-                "fragments": 3,
+                "fragments": 0,
                 "exp_card": 0,
                 "price": 58,
                 "true_price": 195
             },
             "3": {
                 "id": 3,
-                "energy": 7000,
+                "energy": 5000,
                 "money": 200000,
                 "skillPoint": 20000,
-                "elixir": 20000,
-                "fragments": 4,
-                "exp_card": 40,
+                "elixir": 10000,
+                "fragments": 1,
+                "exp_card": 10,
                 "price": 88,
                 "true_price": 246
             },
             "4": {
                 "id": 4,
-                "energy": 8000,
+                "energy": 6000,
                 "money": 250000,
                 "skillPoint": 30000,
-                "elixir": 40000,
-                "fragments": 5,
-                "exp_card": 50,
+                "elixir": 20000,
+                "fragments": 2,
+                "exp_card": 20,
                 "price": 188,
                 "true_price": 569
             },
             "5": {
                 "id": 5,
-                "energy": 9000,
+                "energy": 7000,
                 "money": 300000,
                 "skillPoint": 40000,
-                "elixir": 60000,
-                "fragments": 6,
-                "exp_card": 60,
+                "elixir": 30000,
+                "fragments": 3,
+                "exp_card": 30,
                 "price": 288,
                 "true_price": 726
             },
             "6": {
                 "id": 6,
-                "energy": 10000,
+                "energy": 8000,
                 "money": 350000,
                 "skillPoint": 50000,
-                "elixir": 80000,
-                "fragments": 7,
-                "exp_card": 70,
+                "elixir": 40000,
+                "fragments": 4,
+                "exp_card": 40,
                 "price": 388,
                 "true_price": 1080
             },
             "7": {
                 "id": 7,
-                "energy": 11000,
+                "energy": 9000,
                 "money": 400000,
                 "skillPoint": 60000,
-                "elixir": 100000,
-                "fragments": 8,
-                "exp_card": 80,
+                "elixir": 50000,
+                "fragments": 5,
+                "exp_card": 50,
                 "price": 488,
                 "true_price": 1368
             },
             "8": {
                 "id": 8,
-                "energy": 12000,
+                "energy": 10000,
                 "money": 450000,
                 "skillPoint": 70000,
-                "elixir": 120000,
-                "fragments": 9,
-                "exp_card": 90,
+                "elixir": 60000,
+                "fragments": 6,
+                "exp_card": 60,
                 "price": 588,
                 "true_price": 1989
             },
             "9": {
                 "id": 9,
-                "energy": 13000,
+                "energy": 11000,
                 "money": 500000,
                 "skillPoint": 80000,
-                "elixir": 140000,
-                "fragments": 10,
-                "exp_card": 100,
+                "elixir": 70000,
+                "fragments": 7,
+                "exp_card": 70,
                 "price": 688,
                 "true_price": 2366
             },
             "10": {
                 "id": 10,
-                "energy": 14000,
+                "energy": 12000,
                 "money": 550000,
                 "skillPoint": 90000,
-                "elixir": 160000,
-                "fragments": 11,
-                "exp_card": 110,
+                "elixir": 80000,
+                "fragments": 8,
+                "exp_card": 80,
                 "price": 788,
                 "true_price": 2899
             },
             "11": {
                 "id": 11,
-                "energy": 15000,
+                "energy": 13000,
                 "money": 600000,
                 "skillPoint": 100000,
-                "elixir": 180000,
-                "fragments": 12,
-                "exp_card": 120,
+                "elixir": 90000,
+                "fragments": 9,
+                "exp_card": 90,
                 "price": 888,
                 "true_price": 3288
             },
             "12": {
                 "id": 12,
-                "energy": 16000,
+                "energy": 14000,
                 "money": 650000,
                 "skillPoint": 110000,
-                "elixir": 200000,
-                "fragments": 13,
-                "exp_card": 130,
+                "elixir": 100000,
+                "fragments": 10,
+                "exp_card": 100,
                 "price": 999,
                 "true_price": 3986
-            }
-        }
-    },
-    "growth_plan": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 25,
-                "gold": 100
-            },
-            "2": {
-                "id": 2,
-                "lv": 30,
-                "gold": 150
-            },
-            "3": {
-                "id": 3,
-                "lv": 35,
-                "gold": 200
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 250
-            },
-            "5": {
-                "id": 5,
-                "lv": 45,
-                "gold": 300
-            },
-            "6": {
-                "id": 6,
-                "lv": 50,
-                "gold": 350
-            },
-            "7": {
-                "id": 7,
-                "lv": 55,
-                "gold": 400
-            },
-            "8": {
-                "id": 8,
-                "lv": 60,
-                "gold": 450
-            },
-            "9": {
-                "id": 9,
-                "lv": 65,
-                "gold": 500
-            },
-            "10": {
-                "id": 10,
-                "lv": 70,
-                "gold": 550
-            },
-            "11": {
-                "id": 11,
-                "lv": 75,
-                "gold": 630
             }
         }
     },
@@ -52111,87 +52739,87 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "money": 10000,
+                "money": 20000,
                 "elixir": 3000,
-                "energy": 500,
-                "exp_card": 20
+                "energy": 0,
+                "exp_card": 10
             },
             "2": {
                 "id": 2,
-                "money": 30000,
+                "money": 40000,
                 "elixir": 4000,
-                "energy": 800,
-                "exp_card": 25
+                "energy": 200,
+                "exp_card": 15
             },
             "3": {
                 "id": 3,
-                "money": 50000,
+                "money": 60000,
                 "elixir": 5000,
-                "energy": 1100,
-                "exp_card": 30
+                "energy": 400,
+                "exp_card": 20
             },
             "4": {
                 "id": 4,
-                "money": 70000,
+                "money": 80000,
                 "elixir": 6000,
-                "energy": 1400,
-                "exp_card": 35
+                "energy": 600,
+                "exp_card": 25
             },
             "5": {
                 "id": 5,
-                "money": 90000,
+                "money": 100000,
                 "elixir": 7000,
-                "energy": 1700,
-                "exp_card": 40
+                "energy": 800,
+                "exp_card": 30
             },
             "6": {
                 "id": 6,
-                "money": 110000,
+                "money": 120000,
                 "elixir": 8000,
-                "energy": 2000,
-                "exp_card": 45
+                "energy": 1000,
+                "exp_card": 35
             },
             "7": {
                 "id": 7,
-                "money": 130000,
+                "money": 140000,
                 "elixir": 9000,
-                "energy": 2300,
-                "exp_card": 50
+                "energy": 1200,
+                "exp_card": 40
             },
             "8": {
                 "id": 8,
-                "money": 150000,
+                "money": 160000,
                 "elixir": 10000,
-                "energy": 2600,
-                "exp_card": 55
+                "energy": 1400,
+                "exp_card": 45
             },
             "9": {
                 "id": 9,
-                "money": 170000,
+                "money": 180000,
                 "elixir": 11000,
-                "energy": 2900,
-                "exp_card": 60
+                "energy": 1600,
+                "exp_card": 50
             },
             "10": {
                 "id": 10,
-                "money": 190000,
+                "money": 200000,
                 "elixir": 12000,
-                "energy": 3200,
-                "exp_card": 65
+                "energy": 1800,
+                "exp_card": 55
             },
             "11": {
                 "id": 11,
-                "money": 210000,
+                "money": 220000,
                 "elixir": 13000,
-                "energy": 3500,
-                "exp_card": 70
+                "energy": 2000,
+                "exp_card": 60
             },
             "12": {
                 "id": 12,
-                "money": 230000,
+                "money": 240000,
                 "elixir": 14000,
-                "energy": 3800,
-                "exp_card": 75
+                "energy": 2200,
+                "exp_card": 65
             }
         }
     },
@@ -52201,145 +52829,663 @@ var outputTables = {
             "0": {
                 "id": 0,
                 "lottery_free_count": 0,
-                "exp_card_count": 0,
                 "buy_power_count": 0,
                 "give_bless_count": 0,
                 "receive_bless_count": 0,
                 "spirit_collect_count": 0,
                 "challenge_buy_count": 0,
+                "exp_instance_count": 0,
                 "friend_count": 0
             },
             "1": {
                 "id": 1,
                 "lottery_free_count": 1,
-                "exp_card_count": 40,
                 "buy_power_count": 1,
                 "give_bless_count": 0,
                 "receive_bless_count": 0,
                 "spirit_collect_count": 0,
                 "challenge_buy_count": 0,
+                "exp_instance_count": 0,
                 "friend_count": 0
             },
             "2": {
                 "id": 2,
-                "lottery_free_count": 2,
-                "exp_card_count": 80,
+                "lottery_free_count": 1,
                 "buy_power_count": 2,
                 "give_bless_count": 1,
                 "receive_bless_count": 1,
-                "spirit_collect_count": 0,
+                "spirit_collect_count": 1,
                 "challenge_buy_count": 0,
+                "exp_instance_count": 0,
                 "friend_count": 0
             },
             "3": {
                 "id": 3,
-                "lottery_free_count": 3,
-                "exp_card_count": 120,
+                "lottery_free_count": 2,
                 "buy_power_count": 3,
                 "give_bless_count": 2,
                 "receive_bless_count": 2,
-                "spirit_collect_count": 1,
+                "spirit_collect_count": 2,
                 "challenge_buy_count": 5,
+                "exp_instance_count": 0,
                 "friend_count": 0
             },
             "4": {
                 "id": 4,
-                "lottery_free_count": 4,
-                "exp_card_count": 160,
+                "lottery_free_count": 2,
                 "buy_power_count": 4,
                 "give_bless_count": 3,
                 "receive_bless_count": 3,
-                "spirit_collect_count": 2,
+                "spirit_collect_count": 3,
                 "challenge_buy_count": 10,
+                "exp_instance_count": 1,
                 "friend_count": 5
             },
             "5": {
                 "id": 5,
-                "lottery_free_count": 5,
-                "exp_card_count": 200,
+                "lottery_free_count": 3,
                 "buy_power_count": 5,
                 "give_bless_count": 4,
                 "receive_bless_count": 4,
-                "spirit_collect_count": 3,
+                "spirit_collect_count": 4,
                 "challenge_buy_count": 15,
+                "exp_instance_count": 1,
                 "friend_count": 10
             },
             "6": {
                 "id": 6,
-                "lottery_free_count": 6,
-                "exp_card_count": 240,
+                "lottery_free_count": 4,
                 "buy_power_count": 6,
                 "give_bless_count": 5,
                 "receive_bless_count": 5,
-                "spirit_collect_count": 4,
+                "spirit_collect_count": 5,
                 "challenge_buy_count": 20,
+                "exp_instance_count": 2,
                 "friend_count": 15
             },
             "7": {
                 "id": 7,
-                "lottery_free_count": 7,
-                "exp_card_count": 280,
+                "lottery_free_count": 5,
                 "buy_power_count": 7,
                 "give_bless_count": 6,
                 "receive_bless_count": 6,
-                "spirit_collect_count": 5,
+                "spirit_collect_count": 6,
                 "challenge_buy_count": 25,
+                "exp_instance_count": 2,
                 "friend_count": 20
             },
             "8": {
                 "id": 8,
-                "lottery_free_count": 8,
-                "exp_card_count": 320,
+                "lottery_free_count": 6,
                 "buy_power_count": 8,
                 "give_bless_count": 7,
                 "receive_bless_count": 7,
-                "spirit_collect_count": 6,
+                "spirit_collect_count": 7,
                 "challenge_buy_count": 30,
+                "exp_instance_count": 3,
                 "friend_count": 25
             },
             "9": {
                 "id": 9,
-                "lottery_free_count": 9,
-                "exp_card_count": 360,
+                "lottery_free_count": 7,
                 "buy_power_count": 9,
                 "give_bless_count": 8,
                 "receive_bless_count": 8,
-                "spirit_collect_count": 7,
+                "spirit_collect_count": 8,
                 "challenge_buy_count": 35,
+                "exp_instance_count": 4,
                 "friend_count": 30
             },
             "10": {
                 "id": 10,
-                "lottery_free_count": 10,
-                "exp_card_count": 400,
+                "lottery_free_count": 8,
                 "buy_power_count": 10,
                 "give_bless_count": 9,
                 "receive_bless_count": 9,
-                "spirit_collect_count": 8,
+                "spirit_collect_count": 9,
                 "challenge_buy_count": 40,
+                "exp_instance_count": 5,
                 "friend_count": 35
             },
             "11": {
                 "id": 11,
-                "lottery_free_count": 11,
-                "exp_card_count": 440,
+                "lottery_free_count": 9,
                 "buy_power_count": 11,
                 "give_bless_count": 10,
                 "receive_bless_count": 10,
-                "spirit_collect_count": 9,
+                "spirit_collect_count": 10,
                 "challenge_buy_count": 45,
+                "exp_instance_count": 5,
                 "friend_count": 40
             },
             "12": {
                 "id": 12,
-                "lottery_free_count": 12,
-                "exp_card_count": 480,
+                "lottery_free_count": 10,
                 "buy_power_count": 12,
                 "give_bless_count": 11,
                 "receive_bless_count": 11,
-                "spirit_collect_count": 10,
+                "spirit_collect_count": 11,
                 "challenge_buy_count": 50,
+                "exp_instance_count": 5,
                 "friend_count": 45
+            }
+        }
+    },
+    "against_time_list": {
+        "colComment": {
+            "home_team": {
+                "table": "国家列表",
+                "key_index": "country",
+                "value_index": "id",
+                "withPound": false
+            },
+            "visiting_team": {
+                "table": "国家列表",
+                "key_index": "country",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "date": "2014-06-14T00:00:00.000",
+                "home_team": "墨西哥",
+                "visiting_team": "喀麦隆",
+                "reward_gold": 20,
+                "result": 1,
+                "score": "1:0"
+            },
+            "2": {
+                "id": 2,
+                "date": "2014-06-14T00:00:00.000",
+                "home_team": "西班牙",
+                "visiting_team": "荷兰",
+                "reward_gold": 20,
+                "result": 3,
+                "score": "1:5"
+            },
+            "3": {
+                "id": 3,
+                "date": "2014-06-14T00:00:00.000",
+                "home_team": "智利",
+                "visiting_team": "澳大利亚",
+                "reward_gold": 20,
+                "result": 1,
+                "score": "3:1"
+            },
+            "4": {
+                "id": 4,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "哥伦比亚",
+                "visiting_team": "希腊",
+                "reward_gold": 20
+            },
+            "5": {
+                "id": 5,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "乌拉圭",
+                "visiting_team": "哥斯达黎加",
+                "reward_gold": 20
+            },
+            "6": {
+                "id": 6,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "英格兰",
+                "visiting_team": "意大利",
+                "reward_gold": 20
+            },
+            "7": {
+                "id": 7,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "科特迪瓦",
+                "visiting_team": "日本",
+                "reward_gold": 20
+            },
+            "8": {
+                "id": 8,
+                "date": "2014-06-16T00:00:00.000",
+                "home_team": "瑞士",
+                "visiting_team": "厄瓜多尔",
+                "reward_gold": 20
+            },
+            "9": {
+                "id": 9,
+                "date": "2014-06-16T00:00:00.000",
+                "home_team": "法国",
+                "visiting_team": "洪都拉斯",
+                "reward_gold": 20
+            },
+            "10": {
+                "id": 10,
+                "date": "2014-06-16T00:00:00.000",
+                "home_team": "阿根廷",
+                "visiting_team": "波黑",
+                "reward_gold": 20
+            },
+            "11": {
+                "id": 11,
+                "date": "2014-06-17T00:00:00.000",
+                "home_team": "德国",
+                "visiting_team": "葡萄牙",
+                "reward_gold": 20
+            },
+            "12": {
+                "id": 12,
+                "date": "2014-06-17T00:00:00.000",
+                "home_team": "伊朗",
+                "visiting_team": "尼日利亚",
+                "reward_gold": 20
+            },
+            "13": {
+                "id": 13,
+                "date": "2014-06-17T00:00:00.000",
+                "home_team": "加纳",
+                "visiting_team": "美国",
+                "reward_gold": 20
+            },
+            "14": {
+                "id": 14,
+                "date": "2014-06-18T00:00:00.000",
+                "home_team": "比利时",
+                "visiting_team": "阿尔及利亚",
+                "reward_gold": 20
+            },
+            "15": {
+                "id": 15,
+                "date": "2014-06-18T00:00:00.000",
+                "home_team": "巴西",
+                "visiting_team": "墨西哥",
+                "reward_gold": 20
+            },
+            "16": {
+                "id": 16,
+                "date": "2014-06-18T00:00:00.000",
+                "home_team": "俄罗斯",
+                "visiting_team": "韩国",
+                "reward_gold": 20
+            },
+            "17": {
+                "id": 17,
+                "date": "2014-06-19T00:00:00.000",
+                "home_team": "澳大利亚",
+                "visiting_team": "荷兰",
+                "reward_gold": 20
+            },
+            "18": {
+                "id": 18,
+                "date": "2014-06-19T00:00:00.000",
+                "home_team": "西班牙",
+                "visiting_team": "智利",
+                "reward_gold": 20
+            },
+            "19": {
+                "id": 19,
+                "date": "2014-06-19T00:00:00.000",
+                "home_team": "喀麦隆",
+                "visiting_team": "克罗地亚",
+                "reward_gold": 20
+            },
+            "20": {
+                "id": 20,
+                "date": "2014-06-20T00:00:00.000",
+                "home_team": "哥伦比亚",
+                "visiting_team": "科特迪瓦",
+                "reward_gold": 20
+            },
+            "21": {
+                "id": 21,
+                "date": "2014-06-20T00:00:00.000",
+                "home_team": "乌拉圭",
+                "visiting_team": "英格兰",
+                "reward_gold": 20
+            },
+            "22": {
+                "id": 22,
+                "date": "2014-06-20T00:00:00.000",
+                "home_team": "日本",
+                "visiting_team": "希腊",
+                "reward_gold": 20
+            },
+            "23": {
+                "id": 23,
+                "date": "2014-06-21T00:00:00.000",
+                "home_team": "意大利",
+                "visiting_team": "哥斯达黎加",
+                "reward_gold": 20
+            },
+            "24": {
+                "id": 24,
+                "date": "2014-06-21T00:00:00.000",
+                "home_team": "瑞士",
+                "visiting_team": "法国",
+                "reward_gold": 20
+            },
+            "25": {
+                "id": 25,
+                "date": "2014-06-21T00:00:00.000",
+                "home_team": "洪都拉斯",
+                "visiting_team": "厄瓜多尔",
+                "reward_gold": 20
+            },
+            "26": {
+                "id": 26,
+                "date": "2014-06-22T00:00:00.000",
+                "home_team": "阿根廷",
+                "visiting_team": "伊朗",
+                "reward_gold": 20
+            },
+            "27": {
+                "id": 27,
+                "date": "2014-06-22T00:00:00.000",
+                "home_team": "德国",
+                "visiting_team": "加纳",
+                "reward_gold": 20
+            },
+            "28": {
+                "id": 28,
+                "date": "2014-06-22T00:00:00.000",
+                "home_team": "尼日利亚",
+                "visiting_team": "波黑",
+                "reward_gold": 20
+            },
+            "29": {
+                "id": 29,
+                "date": "2014-06-23T00:00:00.000",
+                "home_team": "比利时",
+                "visiting_team": "俄罗斯",
+                "reward_gold": 20
+            },
+            "30": {
+                "id": 30,
+                "date": "2014-06-23T00:00:00.000",
+                "home_team": "韩国",
+                "visiting_team": "阿尔及利亚",
+                "reward_gold": 20
+            },
+            "31": {
+                "id": 31,
+                "date": "2014-06-23T00:00:00.000",
+                "home_team": "美国",
+                "visiting_team": "葡萄牙",
+                "reward_gold": 20
+            },
+            "32": {
+                "id": 32,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "澳大利亚",
+                "visiting_team": "西班牙",
+                "reward_gold": 20
+            },
+            "33": {
+                "id": 33,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "荷兰",
+                "visiting_team": "智利",
+                "reward_gold": 20
+            },
+            "34": {
+                "id": 34,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "喀麦隆",
+                "visiting_team": "巴西",
+                "reward_gold": 20
+            },
+            "35": {
+                "id": 35,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "克罗地亚",
+                "visiting_team": "墨西哥",
+                "reward_gold": 20
+            },
+            "36": {
+                "id": 36,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "意大利",
+                "visiting_team": "乌拉圭",
+                "reward_gold": 20
+            },
+            "37": {
+                "id": 37,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "哥斯达黎加",
+                "visiting_team": "英格兰",
+                "reward_gold": 20
+            },
+            "38": {
+                "id": 38,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "日本",
+                "visiting_team": "哥伦比亚",
+                "reward_gold": 20
+            },
+            "39": {
+                "id": 39,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "希腊",
+                "visiting_team": "科特迪瓦",
+                "reward_gold": 20
+            },
+            "40": {
+                "id": 40,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "尼日利亚",
+                "visiting_team": "阿根廷",
+                "reward_gold": 20
+            },
+            "41": {
+                "id": 41,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "波黑",
+                "visiting_team": "伊朗",
+                "reward_gold": 20
+            },
+            "42": {
+                "id": 42,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "洪都拉斯",
+                "visiting_team": "瑞士",
+                "reward_gold": 20
+            },
+            "43": {
+                "id": 43,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "厄瓜多尔",
+                "visiting_team": "法国",
+                "reward_gold": 20
+            },
+            "44": {
+                "id": 44,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "美国",
+                "visiting_team": "德国",
+                "reward_gold": 20
+            },
+            "45": {
+                "id": 45,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "葡萄牙",
+                "visiting_team": "加纳",
+                "reward_gold": 20
+            },
+            "46": {
+                "id": 46,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "韩国",
+                "visiting_team": "比利时",
+                "reward_gold": 20
+            },
+            "47": {
+                "id": 47,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "阿尔及利亚",
+                "visiting_team": "俄罗斯",
+                "reward_gold": 20
+            }
+        }
+    },
+    "country_list": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "country": "巴西",
+                "url": "country1"
+            },
+            "2": {
+                "id": 2,
+                "country": "西班牙",
+                "url": "country2"
+            },
+            "3": {
+                "id": 3,
+                "country": "哥伦比亚",
+                "url": "country3"
+            },
+            "4": {
+                "id": 4,
+                "country": "乌拉圭",
+                "url": "country4"
+            },
+            "5": {
+                "id": 5,
+                "country": "瑞士",
+                "url": "country5"
+            },
+            "6": {
+                "id": 6,
+                "country": "阿根廷",
+                "url": "country6"
+            },
+            "7": {
+                "id": 7,
+                "country": "德国",
+                "url": "country7"
+            },
+            "8": {
+                "id": 8,
+                "country": "比利时",
+                "url": "country8"
+            },
+            "9": {
+                "id": 9,
+                "country": "喀麦隆",
+                "url": "country9"
+            },
+            "10": {
+                "id": 10,
+                "country": "智利",
+                "url": "country10"
+            },
+            "11": {
+                "id": 11,
+                "country": "科特迪瓦",
+                "url": "country11"
+            },
+            "12": {
+                "id": 12,
+                "country": "英格兰",
+                "url": "country12"
+            },
+            "13": {
+                "id": 13,
+                "country": "厄瓜多尔",
+                "url": "country13"
+            },
+            "14": {
+                "id": 14,
+                "country": "尼日利亚",
+                "url": "country14"
+            },
+            "15": {
+                "id": 15,
+                "country": "加纳",
+                "url": "country15"
+            },
+            "16": {
+                "id": 16,
+                "country": "阿尔及利亚",
+                "url": "country16"
+            },
+            "17": {
+                "id": 17,
+                "country": "墨西哥",
+                "url": "country17"
+            },
+            "18": {
+                "id": 18,
+                "country": "澳大利亚",
+                "url": "country18"
+            },
+            "19": {
+                "id": 19,
+                "country": "日本",
+                "url": "country19"
+            },
+            "20": {
+                "id": 20,
+                "country": "哥斯达黎加",
+                "url": "country20"
+            },
+            "21": {
+                "id": 21,
+                "country": "洪都拉斯",
+                "url": "country21"
+            },
+            "22": {
+                "id": 22,
+                "country": "伊朗",
+                "url": "country22"
+            },
+            "23": {
+                "id": 23,
+                "country": "美国",
+                "url": "country23"
+            },
+            "24": {
+                "id": 24,
+                "country": "韩国",
+                "url": "country24"
+            },
+            "25": {
+                "id": 25,
+                "country": "克罗地亚",
+                "url": "country25"
+            },
+            "26": {
+                "id": 26,
+                "country": "荷兰",
+                "url": "country26"
+            },
+            "27": {
+                "id": 27,
+                "country": "希腊",
+                "url": "country27"
+            },
+            "28": {
+                "id": 28,
+                "country": "意大利",
+                "url": "country28"
+            },
+            "29": {
+                "id": 29,
+                "country": "法国",
+                "url": "country29"
+            },
+            "30": {
+                "id": 30,
+                "country": "波黑",
+                "url": "country30"
+            },
+            "31": {
+                "id": 31,
+                "country": "葡萄牙",
+                "url": "country31"
+            },
+            "32": {
+                "id": 32,
+                "country": "俄罗斯",
+                "url": "country32"
             }
         }
     }

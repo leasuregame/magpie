@@ -79,6 +79,12 @@ var Pass = Entity.extend({
         return this._canReset;
     },
 
+    getResetNeedConsume: function() {
+        cc.log("Pass getResetNeedConsume");
+
+        return 200;
+    },
+
     isBossPass: function (index) {
         cc.log("Pass isBossPass: " + index);
 

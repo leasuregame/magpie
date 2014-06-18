@@ -108,7 +108,13 @@ var MainScene = cc.Scene.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
-            this.switchTo(runLayer.create());
+            if(runLayer.parentLayer) {
+                var layer = runLayer.parentLayer().create();
+                this.switchTo(layer);
+                layer.switchLayer(runLayer);
+            } else {
+                this.switchTo(runLayer.create());
+            }
         }
     },
 

@@ -70,6 +70,11 @@ var giftBagGoods = {
     superHonor: {
         name: "精元",
         url: "icon411"
+    },
+
+    speaker: {
+        name: "喇叭",
+        url: "icon144"
     }
 };
 
@@ -166,7 +171,7 @@ var GiftBagLayer = LazyLayer.extend({
             },
             this
         );
-        var point = (type == GET_GIFT_BAG_NO_CLOSE) ? this._giftBagLayerFit.okItemPoint : this._giftBagLayerFit.buyItemPoint;
+        point = (type == GET_GIFT_BAG_NO_CLOSE) ? this._giftBagLayerFit.okItemPoint : this._giftBagLayerFit.buyItemPoint;
         getItem.setPosition(point);
         getItem.setVisible(type == GET_GIFT_BAG || type == GET_GIFT_BAG_NO_CLOSE);
 

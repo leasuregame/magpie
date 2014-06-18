@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11500</WindowHeight>
-  <WindowWidth>25600</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>11060</WindowHeight>
+  <WindowWidth>24240</WindowWidth>
+  <WindowTopX>5140</WindowTopX>
+  <WindowTopY>1200</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -44,22 +44,24 @@
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
   </Style>
  </Styles>
- <Worksheet ss:Name="经验卡配置表">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="7" x:FullColumns="1"
+ <Worksheet ss:Name="资源卡牌配置表">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">卡牌ID</Data></Cell>
     <Cell><Data ss:Type="String">经验</Data></Cell>
     <Cell><Data ss:Type="String">售价</Data></Cell>
-    <Cell><Data ss:Type="String">等级</Data></Cell>
     <Cell><Data ss:Type="String">星级</Data></Cell>
+    <Cell><Data ss:Type="String">等级</Data></Cell>
+    <Cell><Data ss:Type="String">备注</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">exp</Data></Cell>
     <Cell><Data ss:Type="String">price</Data></Cell>
-    <Cell><Data ss:Type="String">lv</Data></Cell>
     <Cell><Data ss:Type="String">star</Data></Cell>
+    <Cell><Data ss:Type="String">lv</Data></Cell>
+    <Cell><Data ss:Type="String">remark</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50001</Data></Cell>
@@ -67,45 +69,56 @@
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">1星经验卡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50002</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">2星经验卡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50003</Data></Cell>
     <Cell><Data ss:Type="Number">2000</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">3星经验卡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50004</Data></Cell>
     <Cell><Data ss:Type="Number">4000</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">4星经验卡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50005</Data></Cell>
     <Cell><Data ss:Type="Number">7000</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">5星经验卡</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -115,23 +128,31 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="116"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">export_name</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">经验卡配置表</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">exp_cards</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">资源卡牌配置表</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">resource_cards</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

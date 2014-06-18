@@ -21,10 +21,8 @@ var cardLvLimit = {};
 var formErrTips = {
     RW_WRONG_TYPE : "请输入数字",
     RW_EMPTY : "请选填一项奖励",
-    RW_NEGATIVE : "请勿输入负数",
-    RW_OVERFLOW : "输入超出上限,已转为最大值",
-    RW_CARDS_TOO_MANY : "输入超出上限,已转为最大值"
-};
+    RW_NEGATIVE : "请勿输入负数"
+}
 /**
  * 提示框ID
  * @type {{baseRW: string, cardRW: string}}
@@ -32,7 +30,7 @@ var formErrTips = {
 var formTipAlertId = {
     baseRW : '#baseRewardAlert',
     cardRW : '#cardRewardAlert'
-};
+}
 var baseRewardNames = {
     gold : '魔石',
     money : '仙币',
@@ -64,7 +62,8 @@ function initCardOpt() {
         cardOptDom = window.wsUtil.buildSelOpts(names, tableIds);
         // 加入到初始卡牌选项中
         $('.cardReward.cName').html(cardOptDom);
-        cardTmp = $('#cardOptTemp').html();
+        // 加入到模板中
+        cardTmp = $('#cardOptTemp').text().replace(CARD_OPT_REPLACE_MARK, cardOptDom);
     });
 }
 
@@ -93,7 +92,7 @@ function removeErrors() {
     $('.has-error').removeClass('has-error');
     $('.help-block').remove();
     $('.alert-danger').addClass('hide');
-    $('.limitTag, .form-control').removeAttr('style');
+    $('.limitTag').removeAttr('style');
 }
 
 /**
@@ -122,38 +121,28 @@ function showRsAlert(text, isSuccess) {
  * 新增一行卡牌选项
  */
 function addCardOpt() {
-    $('#cardBox').append(cardTmp);
+    $('#cardGroup').append(cardTmp);
 }
 
 /**
- * 高亮传入的控件
- * @param $tag
+ * 高亮传入奖励上限提示
+ * @param $limitTag
  */
-function highLightTag($tag) {
-
-    if($tag instanceof Array) {
-        for(var i in $tag) {
-            highLightTag($tag[i]);
-        }
-    } else {
-        $tag.css({
-            'color' : '#a94442',
-            'border-color' : '#a94442'
-        });
-
-    }
+function highLightLimit($limitTag) {
+    $limitTag.css('color', '#a94442');
 }
 
 /**
  * 弹出确认提交弹窗
- * @param msg @returns {{areaId: Number, playerNames: string, content: string, validDate: string, options: {title: string, sender: string, rewards: {}}}} 包含页面所有信息
+ * @param msg @returns {{areaId: Number, playerId: string, content: string, validDate: string, options: {title: string, sender: string, rewards: {}}}} 包含页面所有信息
  */
 function showModal(msg) {
 
+    // todo
     var modalForm = $('#actionConfirm');
     var contentArea = modalForm.find('.modal-content');
     contentArea.find('.area .text').text($('#area').find('option:selected').text());
-    contentArea.find('.receiver .text').text(msg.playerNames);
+    contentArea.find('.receiver .text').text(msg.playerId);
     contentArea.find('.author .text').text(msg.options.sender);
     contentArea.find('.title .text').text(msg.options.title);
     contentArea.find('.content .text').val(msg.content).change();
@@ -163,8 +152,6 @@ function showModal(msg) {
     var rewardDom = '';
     $.each(msg.options.rewards, function (key, val) {
         if(key == 'cardArray') {
-
-            rewardDom += '<br>卡牌 : <br>';
             var qty = 0;
             
             $.each(val, function (idx, val) {
@@ -177,6 +164,7 @@ function showModal(msg) {
             rewardDom += baseRewardNames[key] + ' x ' + val + ' <br>';
         }
     });
+
 
     contentArea.find('.reward .text').html(rewardDom);
 
@@ -218,13 +206,12 @@ function getRewardOptData() {
     });
 
     // 处理卡牌奖励
-    var cards = [];
+    var cards = []
     $('.cardTag').each(function() {
         var $this = $(this);
-        var lv = $this.find('.cLv').val() * 1;
-        var qty = $this.find('.cQty').val() * 1;
+        var qty = $this.find('.cQty').val();
 
-        if(qty > 0 && lv > 0) {
+        if(qty > 0) {
             var card = {
                 tableId : $this.find('.cName').val() * 1,
                 qty : $this.find('.cQty').val() * 1,
@@ -238,6 +225,7 @@ function getRewardOptData() {
     }
 
     return data;
+
 }
 
 /**
@@ -271,13 +259,14 @@ function submit() {
     var $author = $("#author");
     var $expDate = $('#expDate');
 
+
     // 校验输入合法性
     if (isNaN(areaId)) {
         $('#area').closest('.form-group').addClass('has-error');
         $('#area').parent().append('<span class="help-block">请选择服务器</span>');
         return;
     }
-    if ((isNaN(areaId) || areaId == AREAID_ALL) && playerNames.length > 0) {
+    if ((isNaN(areaId) || areaId == AREAID_ALL) && playerName != '') {
         $('#area').closest('.form-group').addClass('has-error');
         $('#area').parent().append('<span class="help-block">必须指定玩家所在的具体服务器</span>');
         return;
@@ -305,21 +294,6 @@ function submit() {
     };
 
     showModal(globalReqData);
-}
-
-/**
- * 根据id获得area信息
- * @param id
- * @returns {*}
- */
-function getAreaById(id) {
-    for (var key in servers) {
-        var area = servers[key];
-        if (area.id = id) {
-            return area;
-        }
-    }
-    return null;
 }
 
 /**
@@ -359,7 +333,7 @@ function doSubmit(mail) {
         );
 
     } else { //指定服务器
-        if (playerNames.length == 0) {
+        if (playerName == '') {
             dealAll(areaId, mail, function(err) {
                 if (err) {
                     console.log("err = ", err);
@@ -482,18 +456,16 @@ var evtAfterChanged = function () {
      * 使数值合理化
      * @param val 当前输入
      * @param limitVal 上限值
-     * @param $highLightTag 应高亮的控件
-     * @param alertId 提示框ID
+     * @param $limitTag 应高亮的控件
      * @returns {num} 合理化后的输入
      */
-    function makeValAdaptLimit(val, limitVal, $highLightTag, alertId) {
+    function makeValAdaptLimit(val, limitVal, $limitTag) {
         if(val < 0) {
             val = 0;
-            showErrorAlert(alertId, formErrTips.RW_NEGATIVE);
+            showErrorAlert(formErrTips.RW_NEGATIVE);
         } else if(val > limitVal * 1) {
             val = limitVal * 1;
-            highLightTag($highLightTag);
-            showErrorAlert(alertId, formErrTips.RW_OVERFLOW);
+            highLightLimit($limitTag);
         }
         return val;
     }
@@ -516,7 +488,7 @@ var evtAfterChanged = function () {
         }
 
         var $limitTag = getLimitTag($input);
-        inputVal = makeValAdaptLimit(inputVal, $limitTag.attr('limit'), [$limitTag, $input], alertId);
+        inputVal = makeValAdaptLimit(inputVal, $limitTag.attr('limit'), $limitTag);
         $input.val(inputVal);
     }
 

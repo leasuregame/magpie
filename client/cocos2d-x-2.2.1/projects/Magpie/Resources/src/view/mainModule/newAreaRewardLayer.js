@@ -33,7 +33,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
         var activity = gameData.activity;
         var index = 0;
 
-        var currentId = -1;
+        var currentId;
 
         for (var id in table) {
             var y = scrollViewHeight - 153 - index * 153;
@@ -48,7 +48,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
             dayLabel.setPosition(cc.p(35, y + 120));
             scrollViewLayer.addChild(dayLabel);
 
-            var x = 60;
+            var x = 102;
             var rewards = table[id];
             for (var key in rewards) {
 
@@ -63,15 +63,13 @@ var NewAreaRewardLayer = cc.Layer.extend({
                         skillLv: 1
                     });
                     var cardItem = CardHeadNode.getCardHeadItem(card);
-                    cardItem.setAnchorPoint(cc.p(0, 0));
                     cardItem.setScale(0.8);
-                    cardItem.setPosition(cc.p(x, y + 20));
+                    cardItem.setPosition(cc.p(x, y + 62));
                     cardMenu.addChild(cardItem);
                 } else {
                     var goods = giftBagGoods[key];
                     var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                    goodsSprite.setAnchorPoint(cc.p(0, 0));
-                    goodsSprite.setPosition(cc.p(x, y + 20));
+                    goodsSprite.setPosition(cc.p(x, y + 62));
                     scrollViewLayer.addChild(goodsSprite);
 
                     var goodsLabel = cc.LabelTTF.create("+" + rewards[key], "STHeitiTC-Medium", 16);
@@ -96,8 +94,8 @@ var NewAreaRewardLayer = cc.Layer.extend({
             btnGetReward.setEnabled(state == NOT_GOT_REWARD);
             btnGetReward.setVisible(!(state == ALREADY_GOT_REWARD));
 
-            if (state == NOT_GOT_REWARD && currentId == -1) {
-                currentId = index;
+            if (state != ALREADY_GOT_REWARD && currentId == undefined) {
+                currentId = (0 == index) ? index : index - 1;
             }
 
             var menu = cc.Menu.create(btnGetReward);
@@ -125,15 +123,7 @@ var NewAreaRewardLayer = cc.Layer.extend({
 
         this.addChild(scrollView);
 
-        var size = this._newAreaRewardLayerFit.scrollViewSize;
-        var offsetY;
-
-        if (currentId > 0) {
-            offsetY = -1 * (len - currentId) * 153 + size.height;
-            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
-        } else {
-            offsetY = scrollView.minContainerOffset().y;
-        }
+        var offsetY = Math.min(scrollView.minContainerOffset().y + 153 * (currentId || 0), 0);
 
         scrollView.setContentOffset(cc.p(0, offsetY));
 

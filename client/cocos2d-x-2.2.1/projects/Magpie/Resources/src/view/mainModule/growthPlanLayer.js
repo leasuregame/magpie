@@ -119,7 +119,7 @@ var GrowthPlanLayer = cc.Layer.extend({
         var scrollViewHeight = len * 112;
 
         var lv = gameData.player.get("lv");
-        var currentId = -1;
+        var currentId;
 
         for (var id in rewards) {
             var y = scrollViewHeight - 112 * id;
@@ -176,8 +176,8 @@ var GrowthPlanLayer = cc.Layer.extend({
             rewardItem.setEnabled(lv >= reward.lv);
             rewardItem.setVisible(state != ALREADY_GOT_REWARD);
 
-            if(state == NOT_GOT_REWARD && currentId == -1) {
-                currentId = id;
+            if (state != ALREADY_GOT_REWARD && currentId == undefined) {
+                currentId = (0 == id - 1) ? id - 1 : id - 2;
             }
 
             this._getRewardItems[reward.id] = rewardItem;
@@ -200,16 +200,7 @@ var GrowthPlanLayer = cc.Layer.extend({
 
         scrollView.setContentSize(cc.size(600, scrollViewHeight));
 
-        var size = this._growthPlanLayerFit.scrollViewSize;
-        var offsetY;
-
-        if (currentId > 0) {
-            offsetY = -1 * (len - currentId + 1) * 112 + size.height;
-            offsetY = Math.max(scrollView.minContainerOffset().y, offsetY);
-        } else {
-            offsetY = scrollView.minContainerOffset().y;
-        }
-
+        var offsetY = Math.min(scrollView.minContainerOffset().y + 112 * (currentId|| 0), 0);
         scrollView.setContentOffset(cc.p(0, offsetY));
 
     },
@@ -234,7 +225,7 @@ var GrowthPlanLayer = cc.Layer.extend({
         }
 
         var that = this;
-        AdvancedTipsLabel.pop(TYPE_BUY_GROWTH_PLAN, function () {
+        AdvancedTipsLabel.pop(TYPE_BUY_GROWTH_PLAN_TIPS, function () {
             gameData.activity.buyPlan(function () {
                 that.update();
             });

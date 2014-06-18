@@ -26,17 +26,21 @@ var LoginBgLayer = cc.Layer.extend({
         bgEffect.setPosition(this._loginBgLayerFit.bgEffectPoint);
         this.addChild(bgEffect);
 
-        var application = cc.Application.getInstance();
-        if (typeof (application.getAppVersion) != "undefined") {
-            var appVersionLabel = StrokeLabel.create(
-                application.getAppVersion(),
-                "STHeitiTC-Medium",
-                25
-            );
-            appVersionLabel.setAnchorPoint(cc.p(1, 1));
-            appVersionLabel.setPosition(this._loginBgLayerFit.appVersionLabelPoint);
-            this.addChild(appVersionLabel);
+        var version = lz.platformConfig.VERSION;
+
+        if (typeof(cc.AssetsManager) != "undefined") {
+            version = cc.AssetsManager.getInstance().getVersion();
         }
+
+        var appVersionLabel = StrokeLabel.create(
+            version,
+            "STHeitiTC-Medium",
+            25
+        );
+        appVersionLabel.setAnchorPoint(cc.p(1, 1));
+        appVersionLabel.setPosition(this._loginBgLayerFit.appVersionLabelPoint);
+        this.addChild(appVersionLabel);
+
 
         return true;
     }

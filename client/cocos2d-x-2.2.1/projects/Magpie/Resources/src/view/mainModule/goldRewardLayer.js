@@ -76,7 +76,7 @@ var GoldRewardLayer = cc.Layer.extend({
         this.addChild(this._scrollView);
 
         var playerLv = gameData.player.get('lv');
-        var currentId = -1;
+        var currentId;
 
         for (var i = 0; i < len; ++i) {
 
@@ -137,8 +137,8 @@ var GoldRewardLayer = cc.Layer.extend({
             scrollViewLayer.addChild(menu);
             btnGetReward.setVisible(type != GOLD_RECEIVE);
 
-            if (currentId == -1 && playerLv >= goldRewards[i].lv && type != GOLD_RECEIVE) {
-                currentId = i;
+            if (currentId == undefined && type != GOLD_RECEIVE) {
+                currentId = (0 == i) ? i : i - 1;
             }
 
             var hasBeenGainIcon = cc.Sprite.create(main_scene_image.icon138);
@@ -154,16 +154,7 @@ var GoldRewardLayer = cc.Layer.extend({
 
         this._scrollView.setContentSize(cc.size(600, scrollViewHeight));
 
-        var size = this._goldRewardLayerFit.scrollViewSize;
-        var offsetY;
-
-        if (currentId > 0) {
-            offsetY = -1 * (len - currentId) * 135 + size.height;
-            offsetY = Math.max(this._scrollView.minContainerOffset().y, offsetY);
-        } else {
-            offsetY = this._scrollView.minContainerOffset().y;
-        }
-
+        var offsetY = Math.min(this._scrollView.minContainerOffset().y + 135 * (currentId || 0), 0);
         this._scrollView.setContentOffset(cc.p(0, offsetY));
 
     },

@@ -7,6 +7,7 @@ var InstancesLayer = cc.Layer.extend({
 
     _taskLayerItem: null,
     _passLayerItem: null,
+    _dailyInstancesLayerItem: null,
     _passGuide: null,
 
     onEnter: function () {
@@ -59,15 +60,30 @@ var InstancesLayer = cc.Layer.extend({
         this._passLayerItem.setPosition(this._instancesLayerFit.passLayerItemPoint);
         this._passLayerItem.setOffset(cc.p(0, -5));
 
+        this._dailyInstancesLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button23,
+            main_scene_image.button23s,
+            main_scene_image.button23d,
+            main_scene_image.icon466,
+            this._onClickDailyInstancesLayer,
+            this
+        );
+
+        this._dailyInstancesLayerItem.setPosition(this._instancesLayerFit.dailyInstancesLayerItemPoint);
+        this._dailyInstancesLayerItem.setOffset(cc.p(0, -5));
+
+
         var menu = cc.Menu.create(
             this._taskLayerItem,
-            this._passLayerItem
+            this._passLayerItem,
+            this._dailyInstancesLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         this._taskLayerItem.setEnabled(false);
         this._passLayerItem.setEnabled(true);
+        this._dailyInstancesLayerItem.setEnabled(true);
         this.switchLayer(TaskLayer);
 
         return true;
@@ -84,18 +100,19 @@ var InstancesLayer = cc.Layer.extend({
     },
 
     _onClickTaskLayer: function () {
-        cc.log("ShopLayer _onClickVipLayer");
+        cc.log("InstancesLayer _onClickVipLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._taskLayerItem.setEnabled(false);
         this._passLayerItem.setEnabled(true);
+        this._dailyInstancesLayerItem.setEnabled(true);
 
         this.switchLayer(TaskLayer);
     },
 
     _onClickPassLayer: function () {
-        cc.log("ShopLayer _onClickPropsLayer");
+        cc.log("InstancesLayer _onClickPropsLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -108,7 +125,20 @@ var InstancesLayer = cc.Layer.extend({
         if (this.switchLayer(PassLayer)) {
             this._taskLayerItem.setEnabled(true);
             this._passLayerItem.setEnabled(false);
+            this._dailyInstancesLayerItem.setEnabled(true);
         }
+    },
+
+    _onClickDailyInstancesLayer: function() {
+        cc.log("InstancesLayer _onClickDailyInstancesLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this._taskLayerItem.setEnabled(true);
+        this._passLayerItem.setEnabled(true);
+        this._dailyInstancesLayerItem.setEnabled(false);
+
+        this.switchLayer(DailyInstancesLayer)
     },
 
     switchLayer: function (runLayer) {

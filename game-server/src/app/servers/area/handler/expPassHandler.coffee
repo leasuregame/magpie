@@ -53,7 +53,7 @@ Handler::attack = (msg, session, next) ->
 
     (cb) ->
       if isWin
-        player.updateGift 'expPassFreeCount', player.dailyGift.expPassFreeCount-1
+        player.updateGift 'expPassCount', player.dailyGift.expPassCount-1
         entityUtil.upgradePlayer player, passData.player_exp, (isUpgrade, level9Box, rewards) ->
           if isUpgrade
             upgradeInfo = {
@@ -82,6 +82,7 @@ Handler::attack = (msg, session, next) ->
         level9Box: level9Box if isUpgrade
         upgradeInfo: upgradeInfo if isUpgrade
         battleLog: battle_log 
+        expPassCount: player.expPassCount()
       }
     )
 

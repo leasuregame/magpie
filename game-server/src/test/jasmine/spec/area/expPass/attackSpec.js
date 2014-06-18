@@ -48,7 +48,7 @@ describe("Area Server", function() {
               doAjax('/player/100', function(res) {
                 expect(res.data.exp).toEqual(before_player.exp + 100);
                 expect(JSON.parse(res.data.power).value).toEqual(JSON.parse(before_player.power).value - 10);
-                expect(JSON.parse(res.data.dailyGift).expPassFreeCount).toEqual(4);
+                expect(JSON.parse(res.data.dailyGift).expPassCount).toEqual(4);
               });
 
             });
@@ -96,7 +96,7 @@ describe("Area Server", function() {
               doAjax('/player/2', function(res) {
                 expect(res.data.exp).toEqual(before_player.exp);
                 expect(JSON.parse(res.data.power).value).toEqual(JSON.parse(before_player.power).value - 1);
-                expect(JSON.parse(res.data.dailyGift).expPassFreeCount).toEqual(5);
+                expect(JSON.parse(res.data.dailyGift).expPassCount).toEqual(5);
               });
             });
 
@@ -182,7 +182,7 @@ describe("Area Server", function() {
             doAjax('/player/101', function(res) {
               expect(res.data.exp).toEqual(17);
               expect(JSON.parse(res.data.power).value).toEqual(JSON.parse(before_player.power).value - 10 + 20);
-              expect(JSON.parse(res.data.dailyGift).expPassFreeCount).toEqual(4);
+              expect(JSON.parse(res.data.dailyGift).expPassCount).toEqual(4);
             });
           });
 
@@ -251,7 +251,7 @@ describe("Area Server", function() {
               value: 100
             },
             dailyGift: {
-              expPassFreeCount: 0
+              expPassCount: 0
             }
           }, function(res) {
             loginWith('arthur', '1', 1);

@@ -55,7 +55,7 @@ createMysqlPool = function(app, configKey) {
         },
         max: 10,
         idleTimeoutMillis: 30000,
-        log: true
+        log: false
     });
 };
 

@@ -311,16 +311,15 @@ checkFindBoss = (count) ->
 
 saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
   results = []
-  async.times count
-    , (n, callback) ->
-      lv = if firstWin then 15 else parseInt genCardLv(playerLv)
-      dao.card.createExpCard(
-        data: {
-          playerId: playerId,
-          lv: lv
-        }, callback
-      )
-    , cb
+  async.times count, (n, callback) ->
+    star = if firstWin then 4 else 2
+    dao.card.createExpCard(
+      data: {
+        playerId: playerId,
+        star: star
+      }, callback
+    )
+  , cb
 
 genCardLv = (playerLv) ->
   CD = configData.taskRate.CARD_DROP

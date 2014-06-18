@@ -103,8 +103,9 @@ class Manager
       cb = star
       star = 1
 
-    exp = table.getTableItem('exp_card_exp', star)?.exp or 0
-    tableId = configData.card.EXP_CARD_ID + star
+    item = table.getTable('exp_cards').findOne (id, row) -> parseInt(row.star) is parseInt(star)
+    exp = item?.exp or 0
+    tableId = item?.id or (configData.card.EXP_CARD_ID + star)
 
     async.times(
       qty

@@ -15,10 +15,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11500</WindowHeight>
+  <WindowHeight>5220</WindowHeight>
   <WindowWidth>25600</WindowWidth>
-  <WindowTopX>11100</WindowTopX>
-  <WindowTopY>2460</WindowTopY>
+  <WindowTopX>7140</WindowTopX>
+  <WindowTopY>4000</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -40,17 +40,19 @@
    <Protection/>
   </Style>
   <Style ss:ID="s63">
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s65" ss:Parent="s62">
-   <Alignment ss:Vertical="Bottom"/>
-   <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
+  <Style ss:ID="s66">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
   </Style>
   <Style ss:ID="s67">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <NumberFormat ss:Format="0_ "/>
+  </Style>
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
@@ -58,15 +60,8 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s68">
-   <Alignment ss:Vertical="Center"/>
-  </Style>
   <Style ss:ID="s69">
-   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
-   <NumberFormat ss:Format="0_ "/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="经验副本卡牌配置表">
@@ -75,8 +70,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">卡牌名称</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">攻击力</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">生命值</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">攻击力</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">生命值</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">闪避率</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">暴击率</Data></Cell>
    </Row>
@@ -85,74 +80,74 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">card_id</Data><Comment
       ss:Author="arthur wu"><Data><Font html:Size="12"
         xmlns="http://www.w3.org/TR/REC-html40">怪物卡牌配置表|name|id</Font></Data></Comment></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">atk</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">hp</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">atk</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">hp</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">dodge_rate</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">crit_rate</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50001</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">1星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">1339.2</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">4687.2</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50001</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">1星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">1339.2</Data></Cell>
+    <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">4687.2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50002</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">2星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">2042.4</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">7148.4000000000005</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50002</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">2星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">2042.4</Data></Cell>
+    <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">7148.4000000000005</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50003</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">2星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">3287.7</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">11506.949999999999</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50003</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">2星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">3287.7</Data></Cell>
+    <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">11506.949999999999</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50004</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">3星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">5083</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">17790.5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50004</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">3星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">5083</Data></Cell>
+    <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">17790.5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50005</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">3星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">7163</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">25070.5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50005</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">3星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">7163</Data></Cell>
+    <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">25070.5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50006</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">4星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">9838.4</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">34434.400000000001</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50006</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">4星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">9838.4</Data></Cell>
+    <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">34434.400000000001</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50007</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">4星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">12542.4</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">43898.400000000001</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50008</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">5星经验元灵</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">14058.2</Data></Cell>
-    <Cell ss:StyleID="s69" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">49203.700000000004</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -163,7 +158,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -173,14 +167,17 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="2" ss:Width="107"/>
+   <Column ss:AutoFitWidth="0" ss:Width="108"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">merge_to</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s63"><Data ss:Type="String">经验副本卡牌配置表</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">exp_pass_cards</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">经验副本卡牌配置表</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">exp_pass_cards</Data></Cell>
+    <Cell><Data ss:Type="String">task_card</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -189,8 +186,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

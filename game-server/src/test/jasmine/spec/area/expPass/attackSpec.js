@@ -7,9 +7,13 @@ describe("Area Server", function() {
 
       describe("当玩家可以攻打经验副本时", function() {
         describe('攻击成功', function() {
+          var before_player;
 
           beforeEach(function() {
-            loginWith('arthur', '1', 1);
+            doAjax('/player/100', function(res) {
+              before_player = res.data;
+              loginWith('arthur', '1', 1);
+            });            
           });
 
           it("返回正确的结果，并得到正确经验卡奖励", function() {
@@ -17,7 +21,26 @@ describe("Area Server", function() {
               id: 3
             }, function(data) {
               console.log(data);
-              expect(data).toEqual([]);
+              expect(data.code).toEqual(200);
+              result = data.msg;
+
+              expect(result.isUpgrade).toEqual(false);
+              expect(result.level9Box).toEqual(null);
+              expect(result.upgradeInfo).toEqual(null);
+              expect(result.exp).toEqual(1100);
+
+              //expect(result.battleLog).toBeBattleLog();
+
+              cards = result.battleLog.rewards.cards;
+              epxect(cards.length >= 9 && cards.length <= 11).toEqual(true);
+              var tids = cards.map(function(c) {return c.tableId});
+
+              doAjax('/player/100', function(res) {
+                expect(res.data.exp).toEqual(before_player.exp+100);
+                epxect(res.data.power.value).toEqual(before_player.power.value-10);
+                epxect(res.data.dailyGift.expPassFreeCount).toEqual(4);
+              });
+
             });
 
           });
@@ -63,6 +86,14 @@ describe("Area Server", function() {
             })
           });
         });
+
+      });
+
+      describe('当玩家升级时', function(){
+
+      });
+
+      describe('当玩家升级到9级时，获得9级礼包', function(){
 
       });
 

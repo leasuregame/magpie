@@ -155,6 +155,8 @@ var playerRecord = function(app) {
                 var row = rows[j];
                 row.expenseRate = (row.expense / totalExpense).toFixed(4);
                 row.playersRate = (row.playerCounts / totalPlayers).toFixed(4);
+                row.expensePerPlayer = (row.expense / totalPlayers).toFixed(2);
+                row.buyCountsPerPlayer = (row.buyCounts / totalPlayers).toFixed(4);
             }
             return rows;
         }

@@ -23,12 +23,10 @@ exports.getRecords = function(where, areaId, cb) {
         }
     }
 
-    var sql = 'SELECT source, SUM(expense) as expense, COUNT(distinct playerId) as playerCounts ' +
+    var sql = 'SELECT source, SUM(expense) as expense, COUNT(distinct playerId) as playerCounts, COUNT(playerId) as buyCounts ' +
         ' from playerConsumptionRecord' +
         ' where ' + queryWhere +
         ' group by source order by source';
-
-    console.log(sql);
 
     db(areaId).query(sql, cb);
 };

@@ -13,6 +13,7 @@ res/main/icon473.png
 res/main/icon474.png
 res/main/icon475.png
 res/main/icon476.png
+res/main/icon477.png
 
 resYY/main/icon468.png
 resYY/main/icon469.png
@@ -23,6 +24,7 @@ resYY/main/icon473.png
 resYY/main/icon474.png
 resYY/main/icon475.png
 resYY/main/icon476.png
+resYY/main/icon477.png
 ----------v1.5.3版本----------------------------------------------------------------------------------------------------
 
 ----------v1.5.2版本----------------------------------------------------------------------------------------------------

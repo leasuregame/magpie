@@ -11,6 +11,7 @@
  * battle card node
  * */
 
+var BOSS_NODE_SCALE = 1.3;
 
 var BattleCardNode = cc.Node.extend({
     _index: 0,
@@ -59,6 +60,10 @@ var BattleCardNode = cc.Node.extend({
             this._ccbNode = cc.BuilderReader.load(main_scene_image[this._url], this);
         } else {
             this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
+
+            if (this._boss) {
+                this._ccbNode.setScale(BOSS_NODE_SCALE);
+            }
 
             var frameSpriteTexture;
 
@@ -290,7 +295,7 @@ var BattleCardNode = cc.Node.extend({
     },
 
     isLeadCard: function () {
-        return (this._tableId < 10000 || this._tableId == 30000);
+        return (this._tableId < 10000 || (this._tableId >= 50001 && this._tableId <= 50005));
     },
 
     isBossCard: function () {

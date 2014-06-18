@@ -51,8 +51,7 @@ var ExpInstanceLayer = cc.Layer.extend({
         this._powerLabel.setPosition(this._expInstanceLayerFit.powerLabelPoint);
         this.addChild(this._powerLabel);
 
-        var timesBgLabel = cc.Sprite.create(main_scene_image.icon117);
-        timesBgLabel.setScaleX(1.6);
+        var timesBgLabel = cc.Sprite.create(main_scene_image.icon477);
         timesBgLabel.setPosition(this._expInstanceLayerFit.timesBgLabelPoint);
         this.addChild(timesBgLabel);
 
@@ -70,7 +69,7 @@ var ExpInstanceLayer = cc.Layer.extend({
             this._onClickBuyCount,
             this
         );
-        buyCountItem.setScale(1.22);
+        buyCountItem.setScale(1.3);
         buyCountItem.setPosition(this._expInstanceLayerFit.buyCountItemPoint);
 
         var menu = cc.Menu.create(buyCountItem);
@@ -108,6 +107,7 @@ var ExpInstanceLayer = cc.Layer.extend({
         this._shadeLabels = [];
 
         var scrollViewHeight = 3 * 230;
+        var table = outputTables.exp_instance_limit.rows;
 
         for (var i = 0; i < 3; i++) {
             var y = scrollViewHeight - 230 * i - 230;
@@ -145,7 +145,7 @@ var ExpInstanceLayer = cc.Layer.extend({
 
             this._tipLabels[i] = tipLabel;
 
-            var openLvLabel = StrokeLabel.create("40级开放", "STHeitiTC-Medium", 22);
+            var openLvLabel = StrokeLabel.create(table[i + 1].open_lv + "级开放", "STHeitiTC-Medium", 22);
             openLvLabel.setColor(cc.c3b(232, 48, 48));
             openLvLabel.setBgColor(cc.c3b(0, 0, 0));
             openLvLabel.setAnchorPoint(cc.p(0, 0));

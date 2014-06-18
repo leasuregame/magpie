@@ -542,7 +542,7 @@ var fit4Iphone5 = {
             "timesBgLabelPoint": cc.p(320, 160),
             "remainTimesLabelPoint": cc.p(310, 160),
             "timesLabelPoint": cc.p(360, 160),
-            "buyCountItemPoint": cc.p(450, 160),
+            "buyCountItemPoint": cc.p(445, 160),
             "scrollViewLayerRect": cc.rect(0, 0, 640, 776),
             "scrollViewSize": cc.size(640, 776),
             "scrollViewPoint": cc.p(0, 200)

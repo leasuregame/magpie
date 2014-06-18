@@ -982,7 +982,7 @@ var Card = Entity.extend({
     },
 
     isExpCard: function () {
-        return this._tableId == 30000;
+        return this._tableId >= 50001 && this._tableId <= 50005;
     },
 
     isLeadCard: function () {

@@ -541,7 +541,7 @@ var fit4Iphone4 = {
             "timesBgLabelPoint": cc.p(360, 160),
             "remainTimesLabelPoint": cc.p(350, 160),
             "timesLabelPoint": cc.p(400, 160),
-            "buyCountItemPoint": cc.p(490, 160),
+            "buyCountItemPoint": cc.p(485, 160),
             "scrollViewLayerRect": cc.rect(0, 0, 640, 600),
             "scrollViewSize": cc.size(640, 600),
             "scrollViewPoint": cc.p(40, 200)

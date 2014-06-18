@@ -165,7 +165,7 @@ var ExpInstanceLayer = cc.Layer.extend({
                 main_scene_image.button9s,
                 main_scene_image.button9d,
                 main_scene_image.icon471,
-                this._onClickSubdue(i),
+                this._onClickSubdue(i + 1),
                 this
             );
             subdueItem.setAnchorPoint(cc.p(0, 0));
@@ -209,6 +209,17 @@ var ExpInstanceLayer = cc.Layer.extend({
             cc.log("ExpInstanceLayer _onClickSubdue: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var cb = function() {
+
+            };
+
+            gameData.dailyInstances.expInstance(id, function (battleLogId) {
+                BattlePlayer.getInstance().play({
+                    cb: cb,
+                    id: battleLogId
+                });
+            });
         }
     }
 

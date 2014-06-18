@@ -384,19 +384,19 @@ lz.getRewardString = function (data) {
                 var cards = data[key];
                 var count = {};
                 var len = cards.length;
-                var lv;
+                var table;
 
                 for (var i = 0; i < len; ++i) {
                     if (cards[i]) {
-                        lv = cards[i].lv;
-                        count[lv] = count[lv] ? count[lv] + 1 : 1;
+                        table = cards[i].table;
+                        count[table] = count[table] ? count[table] + 1 : 1;
                     }
                 }
 
-                for (lv in count) {
-                    if (count[lv]) {
+                for (table in count) {
+                    if (count[table]) {
                         str.push({
-                            str: lv + "级" + reward.name + " : " + count[lv],
+                            str: reward.name + " : " + count[table],
                             color: reward.color,
                             icon: reward.icon
                         });

@@ -32,9 +32,24 @@ var TYPE_CRIT_SMALL = 1;
 var TYPE_CRIT_MIDDLE = 2;
 var TYPE_CTIT_BIG = 3;
 
+var LEAD_CARD_TABLE_ID = {
+    begin: 0,
+    end: 9999
+};
+
 var BOSS_CARD_TABLE_ID = {
     begin: 40000,
     end: 40002
+};
+
+var MONSTER_CARD_TABLE_ID = {
+    begin: 10000,
+    end: 39999
+};
+
+var RESOURCE_CARD_TABLE_ID = {
+    begin: 50001,
+    end: 50005
 };
 
 var passiveSkillDescription = {
@@ -986,10 +1001,20 @@ var Card = Entity.extend({
     },
 
     isLeadCard: function () {
-        return (this._tableId < 10000 || this._tableId == 30000);
+        return this._tableId >= LEAD_CARD_TABLE_ID.begin && this._tableId <= LEAD_CARD_TABLE_ID.end;
+    },
+
+    isMonsterCard: function () {
+        return this._tableId >= MONSTER_CARD_TABLE_ID.begin && this._tableId <= MONSTER_CARD_TABLE_ID.end;
+    },
+
+    isResourceCard: function () {
+        return this._tableId >= RESOURCE_CARD_TABLE_ID.begin && this._tableId <= RESOURCE_CARD_TABLE_ID.end;
     },
 
     isBossCard: function () {
+        cc.log(this._tableId);
+
         return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
     }
 });

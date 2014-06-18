@@ -66,15 +66,19 @@ var BattleCardNode = cc.Node.extend({
             }
 
             var frameSpriteTexture;
+            var cardSpriteTexture;
 
             if (this.isLeadCard()) {
                 frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
-            } else {
+                var num = this._star > 2 ? Math.min(this._star - 2, 3) : 1;
+                cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
+            } else if(this.isResourceCard()){
+                frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+                cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half1"]);
+            } else if(this.isMonsterCard()) {
                 frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
+                cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half1"]);
             }
-
-            var num = this._star > 2 ? Math.min(this._star - 2, 3) : 1;
-            var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
 
             var iconSpriteTexture = lz.getTexture(this.getCardIcon());
 
@@ -295,7 +299,15 @@ var BattleCardNode = cc.Node.extend({
     },
 
     isLeadCard: function () {
-        return (this._tableId < 10000 || (this._tableId >= 50001 && this._tableId <= 50005));
+        return this._tableId >= LEAD_CARD_TABLE_ID.begin && this._tableId <= LEAD_CARD_TABLE_ID.end;
+    },
+
+    isMonsterCard: function () {
+        return this._tableId >= MONSTER_CARD_TABLE_ID.begin && this._tableId <= MONSTER_CARD_TABLE_ID.end;
+    },
+
+    isResourceCard: function () {
+        return this._tableId >= RESOURCE_CARD_TABLE_ID.begin && this._tableId <= RESOURCE_CARD_TABLE_ID.end;
     },
 
     isBossCard: function () {

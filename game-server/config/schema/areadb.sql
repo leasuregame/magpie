@@ -298,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `bossFriendReward` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-----------------------------
+DROP TABLE IF EXISTS `worldCup`;
 CREATE TABLE IF NOT EXISTS `worldCup` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `playerId` INT(10) UNSIGNED NOT NULL,

@@ -46,7 +46,7 @@ var ExpInstanceLayer = cc.Layer.extend({
         powerIcon.setPosition(this._expInstanceLayerFit.powerIconPoint);
         this.addChild(powerIcon);
 
-        this._powerLabel = cc.LabelTTF.create(gameData.player.get("power") + "/150", "STHeitiTC-Medium", 25);
+        this._powerLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 25);
         this._powerLabel.setAnchorPoint(cc.p(0, 0.5));
         this._powerLabel.setPosition(this._expInstanceLayerFit.powerLabelPoint);
         this.addChild(this._powerLabel);
@@ -84,14 +84,17 @@ var ExpInstanceLayer = cc.Layer.extend({
     update: function () {
         cc.log("ExpInstanceLayer update");
 
-        var lv = gameData.player.get("lv");
+        var player = gameData.player;
+        this._powerLabel.setString(player.get("power") + "/" + player.get("maxPower"));
 
-        var lvs = [0, 40, 65];
+        var lv = player.get("lv");
+        var table = outputTables.exp_instance_limit.rows;
+
         for (var i = 0; i < 3; i++) {
-            this._tipLabels[i].setVisible(lv >= lvs[i]);
-            this._subdueItems[i].setEnabled(lv >= lvs[i]);
-            this._openLvLabels[i].setVisible(lv < lvs[i]);
-            this._shadeLabels[i].setVisible(lv < lvs[i]);
+            this._tipLabels[i].setVisible(lv >= table[i + 1].open_lv);
+            this._subdueItems[i].setEnabled(lv >= table[i + 1].open_lv);
+            this._openLvLabels[i].setVisible(lv < table[i + 1].open_lv);
+            this._shadeLabels[i].setVisible(lv < table[i + 1].open_lv);
         }
 
     },
@@ -108,6 +111,12 @@ var ExpInstanceLayer = cc.Layer.extend({
 
         var scrollViewHeight = 3 * 230;
         var table = outputTables.exp_instance_limit.rows;
+
+        var expCardList = [
+            [50001, 50002, 50003],
+            [50002, 50003, 50004],
+            [50003, 50004, 50005]
+        ];
 
         for (var i = 0; i < 3; i++) {
             var y = scrollViewHeight - 230 * i - 230;
@@ -134,7 +143,7 @@ var ExpInstanceLayer = cc.Layer.extend({
                     spacing: -2
                 },
                 {
-                    string: "20",
+                    string: "10",
                     fontName: "STHeitiTC-Medium",
                     fontSize: 22
                 }
@@ -159,6 +168,22 @@ var ExpInstanceLayer = cc.Layer.extend({
             descLabel.setAnchorPoint(cc.p(0, 0));
             descLabel.setPosition(cc.p(30, 120));
             bgLabel.addChild(descLabel);
+
+            var cards = expCardList[i];
+            var len2 = cards.length;
+            for (var j = 0; j < len2; j++) {
+                var card = Card.create({
+                    tableId: cards[j],
+                    lv: 1,
+                    skillLv: 1
+                });
+
+                var cardIcon = CardHeadNode.create(card);
+                cardIcon.setScale(0.75);
+                cardIcon.setAnchorPoint(cc.p(0, 0));
+                cardIcon.setPosition(cc.p(140 + j * 100, 30));
+                bgLabel.addChild(cardIcon);
+            }
 
             var subdueItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
@@ -205,20 +230,70 @@ var ExpInstanceLayer = cc.Layer.extend({
 
     _onClickSubdue: function (id) {
 
+        var that = this;
+
         return function () {
             cc.log("ExpInstanceLayer _onClickSubdue: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            var cb = function() {
+            if (gameData.cardList.isFull()) {
+                CardListFullTipLayer.pop();
+                return;
+            }
 
-            };
+            gameData.dailyInstances.expInstance(id, function (data) {
+                cc.log(data);
 
-            gameData.dailyInstances.expInstance(id, function (battleLogId) {
-                BattlePlayer.getInstance().play({
-                    cb: cb,
-                    id: battleLogId
-                });
+                if (data) {
+                    var battleLogId = data.battleLogId;
+                    var upgradeReward = data.upgradeReward || null;
+                    var level9Box = data.level9Box || null;
+                    var isWin = false;
+                    var next = function () {
+                        gameCombo.next();
+                    };
+
+                    gameCombo.push([
+                        function () {
+                            isWin = BattlePlayer.getInstance().play({
+                                cb: next,
+                                id: battleLogId
+                            });
+                        },
+                        function () {
+                            that.update();
+                        },
+                        function () {
+                            if (upgradeReward) {
+                                PlayerUpgradeLayer.pop({
+                                    cb: next,
+                                    reward: upgradeReward
+                                });
+                            } else {
+                                next();
+                            }
+                        },
+                        function () {
+                            if (level9Box) {
+                                Level9BoxLayer.pop({
+                                    cb: next,
+                                    reward: level9Box
+                                });
+                            } else {
+                                next();
+                            }
+                        },
+                        function () {
+                            if (upgradeReward) {
+                                gameGuide.updateGuide();
+                            }
+                            next();
+                        }
+                    ]);
+                } else {
+                    that.update();
+                }
             });
         }
     }

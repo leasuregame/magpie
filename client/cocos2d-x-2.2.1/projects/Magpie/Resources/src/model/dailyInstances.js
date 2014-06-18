@@ -32,14 +32,34 @@ var DailyInstances = Entity.extend({
                 var cbData = {};
                 var upgradeInfo = msg.upgradeInfo;
 
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                if (msg.level9Box) {
+                    var box = {
+                        money: msg.level9Box.money,
+                        skillPoint: msg.level9Box.skillPoint,
+                        energy: msg.level9Box.energy,
+                        power: msg.level9Box.powerValue,
+                        gold: msg.level9Box.gold
+                    };
+
+                    player.adds(box);
+
+                    cbData.level9Box = box;
+                }
+
                 player.sets({
                     power: msg.power.value,
                     powerTimestamp: msg.power.time,
                     exp: msg.exp
                 });
 
-                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
-                cb(battleLogId);
+                cbData.battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
+
+                cb(cbData);
 
             } else {
                 cc.log("expInstance fail");

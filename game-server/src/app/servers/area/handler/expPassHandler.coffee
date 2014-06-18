@@ -31,7 +31,7 @@ Handler::attack = (msg, session, next) ->
     (res, cb) ->
       player = res
       if player.lv < passData.limit_lv
-        return cb({code: 501, msg: "#{passData.limit_lv级开放}"})
+        return cb({code: 501, msg: "#{passData.limit_lv}级开放"})
 
       if player.power.value < passData.power_consume
         return cb({code: 501, msg: '体力不足'})
@@ -48,7 +48,7 @@ Handler::attack = (msg, session, next) ->
 
   ], (err, cards, isUpgrade, level9Box, rewards) ->
     if err
-      console.log err
+      logger.error(err)
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     player.consumePower(passData.power_consume)
@@ -56,7 +56,7 @@ Handler::attack = (msg, session, next) ->
     next(null, {
       code: 200
       msg: 
-        battle_log: battle_log 
+        battleLog: battle_log 
         cards: cards
         exp: passData.player_exp
         power: player.power
@@ -87,6 +87,9 @@ caculateExpCardReward = (bl, passData) ->
 
 
 addExpCards = (player, items, cb) ->
+  if not items or items.length is 0
+    return cb(null, [])
+  
   async.map items, (item, done) ->
     if item[1] > 0
       playerManager.addExpCardFor player, item[1], item[0], done

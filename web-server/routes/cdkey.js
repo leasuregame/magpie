@@ -59,7 +59,8 @@ var cdkey = function(app) {
                         r.endDate = localDateString(r.endDate);
                         r.area = r.area != null && typeof r.area == 'string' ? areaString(JSON.parse(r.area)) : '所有';
                         return r;
-                    })
+                    }),
+                    user: req.session.user
                 });
             });
         });

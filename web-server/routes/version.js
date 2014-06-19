@@ -18,7 +18,8 @@ var version = function(app) {
     app.get('/admin/version', filter.authorize, function (req, res) {
         res.render('manage', {
             menu: 'version',
-            version: helper.versionData()
+            version: helper.versionData(),
+            user: req.session.user
         });
     });
 
@@ -70,7 +71,8 @@ var version = function(app) {
                         created: localDateString(r.created).split(' ')[0],
                         num: r.num
                     };
-                })
+                }),
+                user: req.session.user
             });
         });
     });

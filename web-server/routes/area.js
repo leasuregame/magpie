@@ -13,7 +13,8 @@ var area = function(app) {
         if (!fs.existsSync(AREA_PATH)) {
             res.render('areaEditor', {
                 error: '找不到区服列表信息',
-                menu: 'area'
+                menu: 'area',
+                user: req.session.user
             });
         } else {
             var areas = fs.readFileSync(AREA_PATH, 'utf8');
@@ -23,7 +24,8 @@ var area = function(app) {
             res.render('areaEditor', {
                 areas: areas,
                 whiteList: JSON.stringify(whiteList),
-                menu: 'area'
+                menu: 'area',
+                user: req.session.user
             });
         }
     });

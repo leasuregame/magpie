@@ -32,7 +32,8 @@ var notice = function(app) {
         res.render('admin', {
             title: '公告编辑',
             menu: 'notice',
-            content: readFile('notice.html')
+            content: readFile('notice.html'),
+            user: req.session.user
         });
     };
 
@@ -42,7 +43,8 @@ var notice = function(app) {
     app.get('/admin/notice', filter.authorize, function (req, res) {
         res.render('noticeList', {
             notices: dataUtil.getJson('notice'),
-            menu: 'notice'
+            menu: 'notice',
+            user: req.session.user
         });
     });
 
@@ -58,7 +60,8 @@ var notice = function(app) {
         var item = {
             'name': req.body.inputName,
             'platform': req.body.inputPlatform,
-            'filename': req.body.inputPlatform + '_notice.html'
+            'filename': req.body.inputPlatform + '_notice.html',
+            user: req.session.user
         };
         data.push(item);
         dataUtil.setJson('notice', data);
@@ -85,7 +88,8 @@ var notice = function(app) {
             title: '公告编辑',
             menu: 'notice',
             platform: platform,
-            content: dataUtil.html(platform + '_notice')
+            content: dataUtil.html(platform + '_notice'),
+            user: req.session.user
         });
     });
 
@@ -145,7 +149,8 @@ var notice = function(app) {
         res.render('notice', {
             title: platform + '公告',
             content: dataUtil.html(platform + '_notice'),
-            size: SIZE_MAP[key] || '12px'
+            size: SIZE_MAP[key] || '12px',
+            user: req.session.user
         });
     });
 

@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -10,16 +9,16 @@
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2014-06-11T08:48:53Z</Created>
   <Company>le zhi of zhuhai</Company>
-  <Version>15.00</Version>
+  <Version>14.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9210</WindowHeight>
-  <WindowWidth>25065</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>5460</WindowHeight>
+  <WindowWidth>25060</WindowWidth>
+  <WindowTopX>16020</WindowTopX>
+  <WindowTopY>6300</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -67,7 +66,7 @@
  </Styles>
  <Worksheet ss:Name="经验副本卡牌配置表">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="10" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">卡牌名称</Data></Cell>
@@ -78,9 +77,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">card_id</Data><Comment
-      ss:Author="arthur wu"><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><Font
-        html:Size="12">怪物卡牌配置表|name|id</Font></ss:Data></Comment></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">card_id</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">atk</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">hp</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">dodge_rate</Data></Cell>
@@ -88,7 +85,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">50001</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">1星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50001</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">446</Data></Cell>
     <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">1561</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
@@ -96,7 +93,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">50002</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">2星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50002</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">2042.4</Data></Cell>
     <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">7148.4000000000005</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
@@ -104,7 +101,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">50003</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">2星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50002</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">3287.7</Data></Cell>
     <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">11506.949999999999</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
@@ -112,7 +109,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">50004</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">3星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50003</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">5083</Data></Cell>
     <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">17790.5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
@@ -120,7 +117,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">50005</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">3星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50003</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">7163</Data></Cell>
     <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">25070.5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
@@ -128,7 +125,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s66"><Data ss:Type="Number">50006</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">4星经验元灵</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50004</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">9838.4</Data></Cell>
     <Cell ss:StyleID="s67" ss:Formula="=RC[-1]*3.5"><Data ss:Type="Number">34434.400000000001</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
@@ -153,23 +150,23 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
-   <Column ss:Index="2" ss:Width="107.25"/>
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="2" ss:Width="107"/>
    <Column ss:AutoFitWidth="0" ss:Width="108"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">sheet_name</Data></Cell>
@@ -184,6 +181,7 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -193,7 +191,6 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

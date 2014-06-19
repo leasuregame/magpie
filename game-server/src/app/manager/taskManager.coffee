@@ -312,7 +312,7 @@ checkFindBoss = (count) ->
 saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
   results = []
   async.times count, (n, callback) ->
-    star = if firstWin then 4 else 2
+    star = if firstWin then 4 else genCardStar(playerLv)
     dao.card.createExpCard(
       data: {
         playerId: playerId,
@@ -321,7 +321,7 @@ saveExpCardsInfo = (playerId, playerLv, count, firstWin, cb) ->
     )
   , cb
 
-genCardLv = (playerLv) ->
+genCardStar = (playerLv) ->
   CD = configData.taskRate.CARD_DROP
   lvs = _.keys(CD).sort (x, y) -> parseInt(y) - parseInt(x)
   

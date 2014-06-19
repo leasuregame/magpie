@@ -47,7 +47,7 @@ var MONSTER_CARD_TABLE_ID = {
     end: 39999
 };
 
-var RESOURCE_CARD_TABLE_ID = {
+var EXP_CARD_TABLE_ID = {
     begin: 50001,
     end: 50005
 };
@@ -997,7 +997,7 @@ var Card = Entity.extend({
     },
 
     isExpCard: function () {
-        return this._tableId >= 50001 && this._tableId <= 50005;
+        return this._tableId >= EXP_CARD_TABLE_ID.begin && this._tableId <= EXP_CARD_TABLE_ID.end;
     },
 
     isLeadCard: function () {
@@ -1009,7 +1009,7 @@ var Card = Entity.extend({
     },
 
     isResourceCard: function () {
-        return this._tableId >= RESOURCE_CARD_TABLE_ID.begin && this._tableId <= RESOURCE_CARD_TABLE_ID.end;
+        return this.isExpCard();
     },
 
     isBossCard: function () {

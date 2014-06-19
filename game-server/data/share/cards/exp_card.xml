@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11060</WindowHeight>
+  <WindowHeight>7300</WindowHeight>
   <WindowWidth>24240</WindowWidth>
-  <WindowTopX>5140</WindowTopX>
-  <WindowTopY>1200</WindowTopY>
+  <WindowTopX>14600</WindowTopX>
+  <WindowTopY>11120</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -73,7 +73,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50002</Data></Cell>
-    <Cell><Data ss:Type="Number">1000</Data></Cell>
+    <Cell><Data ss:Type="Number">1060</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -81,7 +81,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50003</Data></Cell>
-    <Cell><Data ss:Type="Number">2000</Data></Cell>
+    <Cell><Data ss:Type="Number">2080</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -89,7 +89,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50004</Data></Cell>
-    <Cell><Data ss:Type="Number">4000</Data></Cell>
+    <Cell><Data ss:Type="Number">4240</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -117,7 +117,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

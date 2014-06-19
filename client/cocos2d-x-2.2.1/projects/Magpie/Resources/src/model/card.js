@@ -251,7 +251,7 @@ var Card = Entity.extend({
         // 读取星级上限表
         var cardLvLimitTable = outputTables.card_lv_limit.rows[this._star];
 
-        this._maxLv = cardLvLimitTable.max_lv;
+        this._maxLv = (this.isLeadCard()) ? cardLvLimitTable.max_lv : 1;
     },
 
     _loadSkillTable: function () {
@@ -458,7 +458,7 @@ var Card = Entity.extend({
     canUpgrade: function () {
         cc.log("Card canUpgrade");
 
-        return (this._lv < this._maxLv);
+        return (this._lv < this._maxLv && this.isLeadCard());
     },
 
     upgrade: function (cb, cardIdList) {
@@ -505,7 +505,7 @@ var Card = Entity.extend({
     canUpgradeSkill: function () {
         cc.log("Card canUpgradeSkill");
 
-        return (this._star > 2 && (this._skillLv < this._skillMaxLv));
+        return (this._star > 2 && (this._skillLv < this._skillMaxLv) && this.isLeadCard());
     },
 
     getUpgradeNeedSKillPoint: function () {
@@ -575,7 +575,7 @@ var Card = Entity.extend({
     canAfreshPassiveSkill: function () {
         cc.log("Card canAfreshPassiveSkill");
 
-        return (this._star > 2);
+        return (this._star > 2 && this.isLeadCard());
     },
 
     getActivePassiveSkill: function () {
@@ -729,7 +729,7 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._star < MAX_CARD_STAR));
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._star < MAX_CARD_STAR) && this.isLeadCard());
     },
 
     getPreCardRate: function () {
@@ -826,7 +826,7 @@ var Card = Entity.extend({
     canTrain: function () {
         cc.log("Card canTrain");
 
-        return (this._star > 2);
+        return (this._star > 2 && this.isLeadCard());
     },
 
     train: function (cb, trainCount, trainType) {
@@ -943,7 +943,7 @@ var Card = Entity.extend({
     canUsePill: function () {
         cc.log("Card canUsePill");
 
-        return this._star >= 4;
+        return (this._star >= 4 && this.isLeadCard());
     },
 
     canUpgradePotentialLv: function () {

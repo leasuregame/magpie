@@ -366,6 +366,16 @@ var gameGoodsName = {
     }
 };
 
+var cardNameColor = {
+    "1": cc.c3b(255, 244, 156),
+    "2": cc.c3b(128, 239, 54),
+    "3": cc.c3b(45, 213, 255),
+    "4": cc.c3b(255, 246, 8),
+    "5": cc.c3b(253, 62, 255),
+    "6": cc.c3b(0, 255, 198),
+    "7": cc.c3b(255, 102, 0)
+};
+
 lz.getGoodsNameByKey = function (key) {
     return gameGoodsName[key] || {
         name: key,
@@ -402,7 +412,7 @@ lz.getRewardString = function (data) {
                         });
                         str.push({
                             str: card.get("name") + " : " + count[tableId],
-                            color: reward.color,
+                            color: cardNameColor[card.get("star")],
                             card: CardHeadNode.create(
                                 card
                             )

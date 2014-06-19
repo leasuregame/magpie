@@ -4,12 +4,12 @@
 
 var DailyInstances = Entity.extend({
 
-    _expInstanceCount: null,
+    _expPassCount: null,
 
     init: function (data) {
         cc.log("DailyInstances init");
 
-        this._expInstanceCount = 0;
+        this._expPassCount = 0;
 
         this.update(data);
     },
@@ -17,15 +17,29 @@ var DailyInstances = Entity.extend({
     update: function (data) {
         cc.log("DailyInstances update");
 
-        this.set("expInstanceCount", data.expInstanceCount);
+        this.set("expPassCount", data.expPassCount);
     },
 
     sync: function () {
         cc.log("DailyInstances sync");
     },
 
+    buyExpCountNeedVip: function () {
+        cc.log("DailyInstances buyExpCountNeedVip");
+
+        var table = outputTables.vip_privilege.rows;
+
+        for (var id in table) {
+            if (table[id].exp_pass_count > 0) {
+                return table[id].id;
+            }
+        }
+    },
+
     expInstance: function (id, cb) {
         cc.log("DailyInstances expInstance");
+
+        var that = this;
 
         lz.server.request("area.expPassHandler.attack", {
             id: id
@@ -64,6 +78,8 @@ var DailyInstances = Entity.extend({
                     powerTimestamp: msg.power.time,
                     exp: msg.exp
                 });
+
+                that.set("expPassCount", msg.expPassCount);
 
                 cbData.battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
 

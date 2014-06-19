@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>arthur wu</LastAuthor>
+  <LastAuthor>junyu lu</LastAuthor>
   <Created>2014-04-24T09:49:47Z</Created>
-  <LastSaved>2014-05-08T03:14:39Z</LastSaved>
+  <LastSaved>2014-06-19T03:05:48Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -20,8 +20,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12520</WindowHeight>
-  <WindowWidth>36720</WindowWidth>
+  <WindowHeight>12620</WindowHeight>
+  <WindowWidth>38280</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -181,11 +181,11 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell><Data ss:Type="String">expInstanceCount</Data></Cell>
+    <Cell><Data ss:Type="String">expPassCount</Data></Cell>
     <Cell><Data ss:Type="String">经验副本次数</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
-    <Cell><Data ss:Type="String">expInstanceCount</Data></Cell>
+    <Cell><Data ss:Type="String">expPassCount</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
@@ -207,8 +207,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>16</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -234,6 +234,12 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>

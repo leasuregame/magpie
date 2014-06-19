@@ -59,7 +59,7 @@ var ExpInstanceLayer = cc.Layer.extend({
         remainTimesLabel.setPosition(this._expInstanceLayerFit.remainTimesLabelPoint);
         this.addChild(remainTimesLabel);
 
-        this._timesLabel = cc.LabelTTF.create("10", "STHeitiTC-Medium", 28);
+        this._timesLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 28);
         this._timesLabel.setPosition(this._expInstanceLayerFit.timesLabelPoint);
         this.addChild(this._timesLabel);
 
@@ -87,10 +87,12 @@ var ExpInstanceLayer = cc.Layer.extend({
         var player = gameData.player;
         this._powerLabel.setString(player.get("power") + "/" + player.get("maxPower"));
 
+        this._timesLabel.setString(gameData.dailyInstances.get("expPassCount"));
+
         var lv = player.get("lv");
         var table = outputTables.exp_pass_config.rows;
 
-        for(var key in table) {
+        for (var key in table) {
             var limitLv = table[key].limit_lv;
             var id = table[key].id;
             this._tipLabels[id].setVisible(lv >= limitLv);
@@ -229,6 +231,41 @@ var ExpInstanceLayer = cc.Layer.extend({
         cc.log("ExpInstanceLayer _onClickBuyCount");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var vip = gameData.player.get("vip");
+
+        var needVip = gameData.dailyInstances.buyExpCountNeedVip();
+
+        if (vip < needVip) {
+            AdvancedTipsLabel.pop(TYPE_EXP_INSTANCES_TIPS);
+            return;
+        }
+
+        if (gameData.shop.get("expPassBuyCount") <= 0) {
+            var tipVip = gameData.player.get("vip") + 1;
+
+            tipVip = Math.max(tipVip, needVip);
+            tipVip = Math.min(tipVip, 12);
+
+            GoPaymentLayer.pop({
+                title: "购买次数已用完",
+                msg: "成为VIP" + tipVip + "，每日即可获得更多购买次数"
+            });
+            return;
+        }
+
+        var id = 9;
+        var product = gameData.shop.getProduct(id);
+
+        cc.log(product);
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyCount(id, count);
+            },
+            product
+        );
     },
 
     _onClickSubdue: function (id) {

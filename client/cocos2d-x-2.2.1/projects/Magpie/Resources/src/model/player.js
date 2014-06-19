@@ -176,7 +176,8 @@ var Player = Entity.extend({
             useVipBoxList: data.vipBox,
             powerBuyCount: data.dailyGift.powerBuyCount,
             challengeBuyCount: data.dailyGift.challengeBuyCount,
-            expCardBuyCount: data.dailyGift.expCardCount
+            expCardBuyCount: data.dailyGift.expCardCount,
+            expPassBuyCount: data.dailyGift.expPassBuyCount
         });
         gameData.lottery.init({
             firstTime: data.firstTime,
@@ -187,7 +188,7 @@ var Player = Entity.extend({
         gameData.boss.init(data.bossInfo);
 
         gameData.dailyInstances.init({
-            "expInstanceCount": data.dailyGift.expPassFreeCount
+            "expPassCount": data.dailyGift.expPassCount
         });
 
         this.set("ability", this.getAbility());
@@ -252,7 +253,7 @@ var Player = Entity.extend({
             });
 
             gameData.dailyInstances.update({
-                "expInstanceCount": msg.dailyGift.expPassFreeCount
+                "expPassCount": msg.dailyGift.expPassCount
             });
 
             if (msg.goldCards) {

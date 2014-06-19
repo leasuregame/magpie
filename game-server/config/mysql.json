@@ -3,14 +3,21 @@
 		"1": {
 			"host": "127.0.0.1",
 			"port": "3306",
-			"database": "magpie_area_3",
+			"database": "magpie_area_1",
 			"user": "dev",
 			"password": "1"
 		},
 		"2": {
 			"host": "127.0.0.1",
 			"port": "3306",
-			"database": "magpie_area_4",
+			"database": "magpie_area_2",
+			"user": "dev",
+			"password": "1"
+		},
+		"3": {
+			"host": "127.0.0.1",
+			"port": "3306",
+			"database": "magpie_area_3",
 			"user": "dev",
 			"password": "1"
 		},
@@ -42,6 +49,13 @@
 			"host": "127.0.0.1",
 			"port": "3306",
 			"database": "yy_db_area_2",
+			"user": "yy_leasuregame",
+			"password": "leasure405GAME"
+		},
+		"3": {
+			"host": "127.0.0.1",
+			"port": "3306",
+			"database": "yy_db_area_3",
 			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		},

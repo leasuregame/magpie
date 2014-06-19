@@ -8,6 +8,8 @@ block head
         require('boot');
     style.
         .center {text-align: center;}
+        .left {text-align: left;}
+        .right {text-align: right;}
         #paginatorCntr li {cursor: pointer;}
         #rsTableCntr {min-height: 430px;}
         #rsTableCntr table {table-layout:fixed;}
@@ -43,26 +45,35 @@ block content
                 table#rsTable.table.center
                     thead(onselectstart='return false;')
                         tr
-                            th.center.sortBtn(style='width:18%' sortKey='source') 功能
+                            th.center.sortBtn.left(style='width:13%' sortKey='source') 功能
                                 span.sortMark
-                            th.center.sortBtn(style='width:13%' sortKey='playerCounts') 消费角色数
+                            th.center.sortBtn.right(style='width:10%' sortKey='playerCounts') 消费角色数
                                 span.sortMark
-                            th.center.sortBtn(style='width:13%' sortKey='playersRate') 消费角色比率
+                            th.center.sortBtn.right(style='width:13%' sortKey='playersRate') 消费角色比率
                                 span.sortMark
-                            th.center.sortBtn(style='width:18%' sortKey='expense') 消费魔石
+                            th.center.sortBtn.right(style='width:13%' sortKey='buyCounts') 购买次数
                                 span.sortMark
-                            th.center.sortBtn(style='width:18%' sortKey='expenseRate') 魔石消费比率
+                            th.center.sortBtn.right(style='width:13%' sortKey='buyCountsPerPlayer') 人均购买次数
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:13%' sortKey='expense') 消费魔石
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:13%' sortKey='expenseRate') 魔石消费比率
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:12%' sortKey='expensePerPlayer') 人均消费魔石
                                 span.sortMark
                     tbody
                 #loadingAlert.alert.alert-info.center.hide loading..
                 #noRsAlert.alert.alert-warning.center Ooooops! No such record.. ╮(╯▽╰)╭
         script#rowTemp.hide(type='text/template')
             tr
-                td.source
-                td.playerCounts
-                td.playersRate
-                td.expense
-                td.expenseRate
+                td.source.left
+                td.playerCounts.right
+                td.playersRate.right
+                td.buyCounts.right
+                td.buyCountsPerPlayer.right
+                td.expense.right
+                td.expenseRate.right
+                td.expensePerPlayer.right
 
     script(type='text/javascript', src='/js/webServerHandle.js')
     script(type='text/javascript', src='/js/playerConsumption.js')

@@ -156,7 +156,7 @@ function showModal(msg) {
             var qty = 0;
             
             $.each(val, function (idx, val) {
-                qty += val.qty;
+                qty += val.qty * 1;
                 var card = configCards[val.tableId + ""];
                 rewardDom += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + '<br>';
             });

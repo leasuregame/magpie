@@ -308,8 +308,8 @@ var Player = (function(_super) {
             resetTimes: 1
         },
         dailyGift: {
-            expPassCount: EXP_PASS_COUNT,
-            expPassBuyCount: EXP_PASS_BUY_COUNT,
+            expPassCount: EXP_PASS_COUNT, // 每日免费经验副本攻击次数
+            expPassBuyCount: EXP_PASS_BUY_COUNT, // 每日可购买经验副本攻击次数
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT, // 每日免费抽奖次数
             lotteryCountUsed: 0,
@@ -411,7 +411,7 @@ var Player = (function(_super) {
             this.updateGift('expPassCount', EXP_PASS_COUNT)
         }
 
-        return this.dailyGift.expPassCount;
+        return parseInt(this.dailyGift.expPassCount);
     };
 
     Player.prototype.updateUseCardCount = function(star, val) {

@@ -72,7 +72,15 @@ var ExpInstanceLayer = cc.Layer.extend({
         buyCountItem.setScale(1.3);
         buyCountItem.setPosition(this._expInstanceLayerFit.buyCountItemPoint);
 
-        var menu = cc.Menu.create(buyCountItem);
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(this._expInstanceLayerFit.backItemPoint);
+
+        var menu = cc.Menu.create(buyCountItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -119,14 +127,19 @@ var ExpInstanceLayer = cc.Layer.extend({
         var scrollViewHeight = len * 230;
         var index = 0;
 
+        var slideLabel = [];
+
         for (var id in table) {
             var y = scrollViewHeight - 230 * index - 230;
             var config = table[id];
 
+            slideLabel[index] = cc.Node.create();
+            slideLabel[index].setPosition(cc.p(0, 0));
+
             var bgLabel = cc.Sprite.create(main_scene_image.icon470);
             bgLabel.setAnchorPoint(cc.p(0.5, 0));
             bgLabel.setPosition(cc.p(320, y));
-            scrollViewLayer.addChild(bgLabel);
+            slideLabel[index].addChild(bgLabel);
 
             var difficultyIcon = cc.Sprite.create(main_scene_image["icon" + (472 + config.id)]);
             difficultyIcon.setAnchorPoint(cc.p(0, 0));
@@ -160,8 +173,8 @@ var ExpInstanceLayer = cc.Layer.extend({
             openLvLabel.setColor(cc.c3b(232, 48, 48));
             openLvLabel.setBgColor(cc.c3b(0, 0, 0));
             openLvLabel.setAnchorPoint(cc.p(0, 0));
-            openLvLabel.setPosition(cc.p(480, 165));
-            bgLabel.addChild(openLvLabel);
+            openLvLabel.setPosition(cc.p(480, y + 165));
+            slideLabel[index].addChild(openLvLabel, 2);
 
             this._openLvLabels[id] = openLvLabel;
 
@@ -208,9 +221,11 @@ var ExpInstanceLayer = cc.Layer.extend({
             var shadeLabel = cc.Sprite.create(main_scene_image.icon476);
             shadeLabel.setAnchorPoint(cc.p(0.5, 0));
             shadeLabel.setPosition(cc.p(320, y));
-            scrollViewLayer.addChild(shadeLabel);
+            slideLabel[index].addChild(shadeLabel);
 
             this._shadeLabels[config.id] = shadeLabel;
+
+            scrollViewLayer.addChild(slideLabel[index]);
 
             index++;
         }
@@ -225,6 +240,11 @@ var ExpInstanceLayer = cc.Layer.extend({
         scrollView.setContentSize(cc.size(640, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());
 
+        var slideLayer = SlideLayer.create({
+            labels: slideLabel
+        });
+
+        slideLayer.showSlide();
     },
 
     _onClickBuyCount: function () {
@@ -266,6 +286,19 @@ var ExpInstanceLayer = cc.Layer.extend({
             },
             product
         );
+    },
+
+    _buyCount: function (id, count) {
+        cc.log("ExpInstanceLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that.update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     },
 
     _onClickSubdue: function (id) {
@@ -336,8 +369,15 @@ var ExpInstanceLayer = cc.Layer.extend({
                 }
             });
         }
-    }
+    },
 
+    _onClickBack: function () {
+        cc.log("ExploreLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        MainScene.getInstance().switchLayer(InstancesLayer);
+    }
 });
 
 ExpInstanceLayer.create = function () {

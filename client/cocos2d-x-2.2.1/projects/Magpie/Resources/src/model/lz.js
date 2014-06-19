@@ -337,6 +337,10 @@ var gameGoodsName = {
         name: "有奖竞技次数",
         color: cc.c3b(255, 239, 131)
     },
+    "expPassCount": {
+        name: "经验副本次数",
+        color: cc.c3b(255, 239, 131)
+    },
     "cardsCount": {
         name: "卡库位置",
         color: cc.c3b(255, 239, 131)

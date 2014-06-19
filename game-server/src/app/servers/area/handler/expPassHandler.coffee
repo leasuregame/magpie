@@ -53,12 +53,12 @@ Handler::attack = (msg, session, next) ->
 
     (cb) ->
       if isWin
-        player.updateGift 'expPassFreeCount', player.dailyGift.expPassFreeCount-1
+        player.updateGift 'expPassCount', player.dailyGift.expPassCount-1
         entityUtil.upgradePlayer player, passData.player_exp, (isUpgrade, level9Box, rewards) ->
           if isUpgrade
             upgradeInfo = {
               lv: player.lv
-              rewards: rew
+              rewards: rewards
               friendsCount: player.friendsCount
             }
           else 
@@ -71,18 +71,18 @@ Handler::attack = (msg, session, next) ->
   ], (err, isUpgrade, level9Box, upgradeInfo) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
-
-    player.consumePower(if isWin then passData.power_consume else 1)
+    player.consumePower(if isWin then parseInt(passData.power_consume) else 1)
     player.save()
     next(null, {
       code: 200
       msg: 
-        exp: passData.player_exp
+        exp: player.exp
         power: player.power
         isUpgrade: isUpgrade
         level9Box: level9Box if isUpgrade
         upgradeInfo: upgradeInfo if isUpgrade
         battleLog: battle_log 
+        expPassCount: player.expPassCount()
       }
     )
 

@@ -252,6 +252,10 @@ var Card = (function(_super) {
         this.passiveSkills = this.passiveSkills || [];
     };
 
+    Card.prototype.isExpCard = function() {
+        return this.tableId > 50000 && this.tableId <= 50005;
+    };
+
     Card.prototype.canUsePill = function(){
         return this.potentialLv < this.star;
     };

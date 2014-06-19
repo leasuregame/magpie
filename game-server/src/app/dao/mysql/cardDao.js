@@ -81,7 +81,7 @@ var CardDao = (function(_super) {
 	CardDao.createExpCard = function(options, cb) {
 		if (typeof options.data.tableId == 'undefined') {
 			var star = options.data.star;
-			var item = table.getTable('exp_cards').findOne(function(id, row) {
+			var item = table.getTable('resource_cards').findOne(function(id, row) {
 				return parseInt(row.star) == parseInt(star);
 			});
 	    var exp = item.exp || 0

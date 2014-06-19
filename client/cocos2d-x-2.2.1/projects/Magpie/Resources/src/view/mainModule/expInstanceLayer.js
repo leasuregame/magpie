@@ -374,9 +374,9 @@ var ExpInstanceLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        MainScene.getInstance().switchLayer(InstancesLayer);
+        var instancesLayer = InstancesLayer.create();
+        instancesLayer._onClickDailyInstancesLayer();
+        MainScene.getInstance().switchTo(instancesLayer);
     }
 });
 

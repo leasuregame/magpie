@@ -30,7 +30,7 @@ class Manager
         battleLog.clear()
         
         playerEntity = _playerEntity
-        defender = new VirtualPlayer(taskData)
+        defender = new VirtualPlayer(taskData, is_need_boos_in_bl: false if tableName is 'task_config')
         attacker = new Player(playerEntity, is_attacker: true)
 
         battle = new Battle(attacker, defender)

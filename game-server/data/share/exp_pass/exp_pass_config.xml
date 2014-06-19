@@ -20,10 +20,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>13140</WindowHeight>
-  <WindowWidth>31200</WindowWidth>
-  <WindowTopX>3520</WindowTopX>
-  <WindowTopY>280</WindowTopY>
+  <WindowHeight>5300</WindowHeight>
+  <WindowWidth>38400</WindowWidth>
+  <WindowTopX>-80</WindowTopX>
+  <WindowTopY>840</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -53,13 +53,11 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="经验副本配置表">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="97"
-   ss:DefaultRowHeight="17">
-   <Column ss:Index="2" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="270"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="338"/>
-   <Column ss:Index="7" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="86"/>
-   <Row ss:AutoFitHeight="0">
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="2" ss:Width="211"/>
+   <Column ss:Width="281"/>
+   <Row>
     <Cell ss:StyleID="s63"><Data ss:Type="String">经验副本等级序号</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">所有卡牌id</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">阵型</Data></Cell>
@@ -77,8 +75,9 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">获得经验卡牌的星级</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">玩家获得的经验</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">消耗体力值</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">关卡描述</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell ss:StyleID="s63"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">cards</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">formation</Data></Cell>
@@ -96,99 +95,77 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">exp_card_stars</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">player_exp</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">power_consume</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">description</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">50001#50001#50002</Data></Cell>
-    <Cell><Data ss:Type="String">1:50001,5:50002,3:50001</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s63"><Data ss:Type="Number">50002</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">50001#50001#50002</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">1:50001,5:50002,3:50001</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">50002</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">35</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">93</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">15</Data></Cell>
-    <Cell><Data ss:Type="String">9,11</Data></Cell>
-    <Cell><Data ss:Type="String">0,2</Data></Cell>
-    <Cell><Data ss:Type="String">1,2,3</Data></Cell>
-    <Cell><Data ss:Type="Number">20</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">9,11</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">0,2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">1,2,3</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">我是使命是：无私奉献！不求回报！</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">50003#50003#50003#50003#50004</Data></Cell>
-    <Cell><Data ss:Type="String">1:50003,5:50004,3:50003,4:50003,6:50003</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s63"><Data ss:Type="Number">50004</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">50003#50003#50003#50003#50004</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">1:50003,5:50004,3:50003,4:50003,6:50003</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">50004</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">93</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
-    <Cell><Data ss:Type="Number">35</Data></Cell>
-    <Cell><Data ss:Type="String">9,11</Data></Cell>
-    <Cell><Data ss:Type="String">0,2</Data></Cell>
-    <Cell><Data ss:Type="String">2,3,4</Data></Cell>
-    <Cell><Data ss:Type="Number">50</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">9,11</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">0,2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">2,3,4</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">官人虐我千百遍，我待官人如初恋！</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">50005#50005#50005#50005#50006</Data></Cell>
-    <Cell><Data ss:Type="String">1:50005,5:50006,3:50005,4:50005,6:50005</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s63"><Data ss:Type="Number">50006</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">50005#50005#50005#50005#50006</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">1:50005,5:50006,3:50005,4:50005,6:50005</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">50006</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">86</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
-    <Cell><Data ss:Type="Number">60</Data></Cell>
-    <Cell><Data ss:Type="String">9,11</Data></Cell>
-    <Cell><Data ss:Type="String">0,2</Data></Cell>
-    <Cell><Data ss:Type="String">3,4,5</Data></Cell>
-    <Cell><Data ss:Type="Number">100</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="5" ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="5" ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
-    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">9,11</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">0,2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">3,4,5</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">呵呵，没想到你居然打到这了,求虐！</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageSetup>
-    <Header x:Margin="0.51180555555555596"/>
-    <Footer x:Margin="0.51180555555555596"/>
-   </PageSetup>
-   <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <PaperSizeIndex>9</PaperSizeIndex>
-    <HorizontalResolution>-4</HorizontalResolution>
-    <VerticalResolution>-4</VerticalResolution>
-   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

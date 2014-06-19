@@ -146,14 +146,23 @@ doLogin  = (type, app, msg, session, platform, next) ->
     if user?.roles.length > 1 or player?.teachingStep >= 17
       delete player.teachingStep if player?
 
+    # 记录该登录操作, 是否应该放到filter?
+    app.rpc.area.playerRecordRemote.createLoginRecord session, player, (err) ->
+      appUtil.errHandler(err) if err
     next(null, {code: 200, msg: {user: user, player: player}})
 
 onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
-  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
-    if err
-      appUtil.errHandler(err)
+  async.waterfall [
+    (cb) ->
+      app.rpc.area.playerRecordRemote.createLogoutRecord session, session.get('playerId'), cb
+      
+    (res, cb) ->
+      app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), cb
+  ], (err) ->
+    appUtil.errHandler(err) if err
+
 
 authParams = (type, msg, app) ->
   keyMap = 

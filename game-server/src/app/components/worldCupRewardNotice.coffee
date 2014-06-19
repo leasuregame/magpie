@@ -7,17 +7,19 @@ module.exports = (app, opts) ->
 
 class Component
   constructor: (@app, opts={}) ->
+    @jobId = null
 
   @name = '__worldCupRewardNotice__'
 
   start: (cb) ->
-    schedule.scheduleJob("0 0 12 * 5-8 *", noticeRewardToReceive, @app)
+    @jobId = schedule.scheduleJob("0 0 12 * 5-8 *", noticeRewardToReceive, @app)
     process.nextTick cb
 
   afterStart: (cb) ->
     process.nextTick cb
 
   stop: (force, cb) ->
+    schedule.cancelJob(@jobId)
     process.nextTick cb
 
 noticeRewardToReceive = (app) ->

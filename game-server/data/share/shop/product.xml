@@ -41,7 +41,7 @@
  <Worksheet ss:Name="道具配置表">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="136"/>
+   <Column ss:Index="3" ss:Width="140"/>
    <Column ss:AutoFitWidth="0" ss:Width="109"/>
    <Column ss:AutoFitWidth="0" ss:Width="321"/>
    <Column ss:AutoFitWidth="0" ss:Width="108"/>

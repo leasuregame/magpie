@@ -4,20 +4,42 @@
 
 var DailyInstances = Entity.extend({
 
-    init: function () {
+    _expPassCount: null,
+
+    init: function (data) {
         cc.log("DailyInstances init");
+
+        this._expPassCount = 0;
+
+        this.update(data);
     },
 
-    update: function () {
+    update: function (data) {
         cc.log("DailyInstances update");
+
+        this.set("expPassCount", data.expPassCount);
     },
 
     sync: function () {
         cc.log("DailyInstances sync");
     },
 
+    buyExpCountNeedVip: function () {
+        cc.log("DailyInstances buyExpCountNeedVip");
+
+        var table = outputTables.vip_privilege.rows;
+
+        for (var id in table) {
+            if (table[id].exp_pass_count > 0) {
+                return table[id].id;
+            }
+        }
+    },
+
     expInstance: function (id, cb) {
         cc.log("DailyInstances expInstance");
+
+        var that = this;
 
         lz.server.request("area.expPassHandler.attack", {
             id: id
@@ -32,14 +54,36 @@ var DailyInstances = Entity.extend({
                 var cbData = {};
                 var upgradeInfo = msg.upgradeInfo;
 
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                if (msg.level9Box) {
+                    var box = {
+                        money: msg.level9Box.money,
+                        skillPoint: msg.level9Box.skillPoint,
+                        energy: msg.level9Box.energy,
+                        power: msg.level9Box.powerValue,
+                        gold: msg.level9Box.gold
+                    };
+
+                    player.adds(box);
+
+                    cbData.level9Box = box;
+                }
+
                 player.sets({
                     power: msg.power.value,
                     powerTimestamp: msg.power.time,
                     exp: msg.exp
                 });
 
-                var battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
-                cb(battleLogId);
+                that.set("expPassCount", msg.expPassCount);
+
+                cbData.battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
+
+                cb(cbData);
 
             } else {
                 cc.log("expInstance fail");

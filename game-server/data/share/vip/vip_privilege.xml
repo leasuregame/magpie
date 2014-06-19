@@ -20,8 +20,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10340</WindowHeight>
-  <WindowWidth>32560</WindowWidth>
+  <WindowHeight>10080</WindowHeight>
+  <WindowWidth>35380</WindowWidth>
   <WindowTopX>2100</WindowTopX>
   <WindowTopY>700</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -31,7 +31,8 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -41,14 +42,13 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="vip特权">
-  <Table ss:ExpandedColumnCount="12" ss:ExpandedRowCount="15" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="15" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="213" ss:Span="1"/>
    <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="156"/>
    <Column ss:AutoFitWidth="0" ss:Width="218" ss:Span="1"/>
    <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="184" ss:Span="1"/>
    <Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="108"/>
-   <Column ss:Width="164"/>
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:AutoFitWidth="0" ss:Width="181"/>
    <Row ss:AutoFitHeight="0">
@@ -61,7 +61,6 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">每日有奖竞技购买次数+</Data></Cell>
     <Cell><Data ss:Type="String">每日经验副本购买次数</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">好友上限+</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">每日挑战经验副本次数+</Data></Cell>
     <Cell><Data ss:Type="String">描述信息</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -72,9 +71,8 @@
     <Cell><Data ss:Type="String">receive_bless_count</Data></Cell>
     <Cell><Data ss:Type="String">spirit_collect_count</Data></Cell>
     <Cell><Data ss:Type="String">challenge_buy_count</Data></Cell>
-    <Cell><Data ss:Type="String">exp_instance_count</Data></Cell>
+    <Cell><Data ss:Type="String">exp_pass_count</Data></Cell>
     <Cell><Data ss:Type="String">friend_count</Data></Cell>
-    <Cell><Data ss:Type="String">exp_pass_free_count</Data></Cell>
     <Cell><Data ss:Type="String">description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -87,13 +85,11 @@
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
@@ -108,7 +104,6 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
@@ -121,7 +116,6 @@
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
@@ -135,7 +129,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -147,7 +140,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">15</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
@@ -159,7 +151,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">15</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
@@ -171,7 +162,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">25</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">20</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
@@ -183,7 +173,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">25</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
@@ -195,7 +184,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">35</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">4</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
@@ -207,7 +195,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">35</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">11</Data></Cell>
@@ -219,7 +206,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">45</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">40</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">12</Data></Cell>
@@ -231,7 +217,6 @@
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:Formula="=R[-1]C+5"><Data ss:Type="Number">45</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -248,10 +233,11 @@
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
+   <LeftColumnVisible>3</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>

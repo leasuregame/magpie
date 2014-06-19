@@ -1,4 +1,6 @@
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 configData = require '../../../../config/data'
@@ -44,6 +46,8 @@ Handler::collect = (msg, session, next) ->
     player.incSpirit(spirit_obtain)
     player.incSpiritPoolExp(configData.spirit.EXP_PER_COLLECT)
     player.save()
+    if isGold
+      recordManager.createConsumptionRecord player.id, SOURCE.COLLECT_DOUBLE_SPIRIT, {expense : configData.spirit.BUY_SPIRIT_GOLD}
     next(null, {code: 200, msg: {
       spirit_obtain: spirit_obtain
       isDouble: isDouble

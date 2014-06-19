@@ -32,7 +32,7 @@ Handler::simulatePassSkillAfresh = (msg,session,next)->
   }
   c = new card
   c.star = 3;
-  c.afreshPassiveSkill(type,ps)
+  #c.afreshPassiveSkill(type,ps)
   next null,{code:200,msg:c.passiveSkills}
 
 Handler::sendSysMessage = (msg,session,next)->

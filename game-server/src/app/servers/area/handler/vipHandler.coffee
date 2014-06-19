@@ -1,5 +1,7 @@
 dao = require('pomelo').app.get('dao')
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
@@ -38,7 +40,7 @@ Handler::dailyReward = (msg, session, next) ->
     player.increase('energy', reward.energy)
     player.updateGift('vipReward', 1)
     player.save()
-    playerManager.addExpCardFor player, reward.exp_card, 2, (err, cards) ->
+    playerManager.addExpCardFor player, reward.exp_card_count, reward.exp_card_star, (err, cards) ->
       if err
         next(null, {code: 501, msg: '经验卡领取出错'})
       else
@@ -185,9 +187,10 @@ openVipBox = (player, boxInfo, next) ->
   player.vipBox = vb
   player.decrease 'gold', boxInfo.price
   player.save()
+  recordManager.createConsumptionRecord player.id, SOURCE.BUY_VIP_BOX, {expense : boxInfo.price}
   
-  if _.has boxInfo, 'exp_card'
-    playerManager.addExpCardFor player, boxInfo.exp_card, 2, (err, cards) ->
+  if _.has boxInfo, 'exp_card_count' and boxInfo.exp_card_count > 0
+    playerManager.addExpCardFor player, boxInfo.exp_card_count, boxInfo.exp_card_star, (err, cards) ->
       return next(null, {code: err.code or 500, msg: err.msg or err}) if err
 
       next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})

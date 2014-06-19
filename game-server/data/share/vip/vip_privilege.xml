@@ -20,8 +20,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7540</WindowHeight>
-  <WindowWidth>35240</WindowWidth>
+  <WindowHeight>10080</WindowHeight>
+  <WindowWidth>35380</WindowWidth>
   <WindowTopX>2100</WindowTopX>
   <WindowTopY>700</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -31,7 +31,8 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -70,7 +71,7 @@
     <Cell><Data ss:Type="String">receive_bless_count</Data></Cell>
     <Cell><Data ss:Type="String">spirit_collect_count</Data></Cell>
     <Cell><Data ss:Type="String">challenge_buy_count</Data></Cell>
-    <Cell><Data ss:Type="String">exp_instance_count</Data></Cell>
+    <Cell><Data ss:Type="String">exp_pass_count</Data></Cell>
     <Cell><Data ss:Type="String">friend_count</Data></Cell>
     <Cell><Data ss:Type="String">description</Data></Cell>
    </Row>
@@ -236,9 +237,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>7</ActiveCol>
-     <RangeSelection>R3C8:R15C8</RangeSelection>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

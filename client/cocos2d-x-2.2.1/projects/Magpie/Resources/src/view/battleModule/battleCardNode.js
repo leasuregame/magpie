@@ -298,6 +298,10 @@ var BattleCardNode = cc.Node.extend({
         }
     },
 
+    isExpCard: function () {
+        return this._tableId >= EXP_CARD_TABLE_ID.begin && this._tableId <= EXP_CARD_TABLE_ID.end;
+    },
+
     isLeadCard: function () {
         return this._tableId >= LEAD_CARD_TABLE_ID.begin && this._tableId <= LEAD_CARD_TABLE_ID.end;
     },
@@ -307,7 +311,7 @@ var BattleCardNode = cc.Node.extend({
     },
 
     isResourceCard: function () {
-        return this._tableId >= RESOURCE_CARD_TABLE_ID.begin && this._tableId <= RESOURCE_CARD_TABLE_ID.end;
+        return this.isExpCard();
     },
 
     isBossCard: function () {

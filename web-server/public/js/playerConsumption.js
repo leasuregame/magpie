@@ -129,8 +129,11 @@ function buildResTable(data){
         $tmpRow.find('.source').text(consumeSourceConfig[rowData.source]);
         $tmpRow.find('.playerCounts').text(rowData.playerCounts);
         $tmpRow.find('.playersRate').text(Math.round(rowData.playersRate * 10000)/100 + '%');
+        $tmpRow.find('.buyCounts').text(rowData.buyCounts);
+        $tmpRow.find('.buyCountsPerPlayer').text(rowData.buyCountsPerPlayer);
         $tmpRow.find('.expense').text(rowData.expense);
         $tmpRow.find('.expenseRate').text(Math.round(rowData.expenseRate * 10000)/100 + '%');
+        $tmpRow.find('.expensePerPlayer').text(rowData.expensePerPlayer);
         tabBody.append($tmpRow);
     }
 }

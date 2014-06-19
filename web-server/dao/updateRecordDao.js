@@ -27,4 +27,4 @@ exports.getUserCount = function(cb) {
   userDb.query('select count(*) as num from user', function(err, res) {
     cb(err, res);
   });
-}
+};

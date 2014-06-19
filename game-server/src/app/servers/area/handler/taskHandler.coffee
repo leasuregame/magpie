@@ -1,4 +1,6 @@
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 taskManager = require '../../../manager/taskManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
@@ -325,6 +327,7 @@ Handler::resetPassMark = (msg, session, next) ->
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
     player.save()
+    recordManager.createConsumptionRecord player.id, SOURCE.RESET_PASS_MARK, {expense : goldResume}
 
     next(null, {code: 200, msg: {
       canReset: if player.pass.resetTimes > 0 then true else false

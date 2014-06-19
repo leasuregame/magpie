@@ -171,7 +171,7 @@ Handler::handleSysMsg = (msg, session, next) ->
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
     obj.incSpirit(data.spirit) if _.has(data, 'spirit')
-    # todo add exp card with entityUtil
+
     if _.has(data, 'cardArray') and data.cardArray.length > 0
       data.cardArray.forEach (c) -> c.playerId = obj.id
       eUtil.createCards data.cardArray, (err, cards) ->

@@ -52,9 +52,17 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="经验副本配置表">
-  <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="12" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="96.75"
    ss:DefaultRowHeight="17.0625">
    <Column ss:Index="2" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="270"/>
@@ -72,6 +80,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">boos技能加成效果</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">BOSS攻击加成</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">BOSS生命加成</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">关卡描述</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -85,6 +94,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">boss_attr</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">atk_inc</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">hp_inc</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -97,6 +107,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">93</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="String">我是使命是：无私奉献！不求回报！</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -109,6 +120,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">93</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="String">官人虐我千百遍，我待官人如初恋！</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -121,6 +133,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="Number">86</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">0</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="String">呵呵，没想到你居然打到这了,求虐！</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="5" ss:StyleID="s63"/>
@@ -148,11 +161,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <LeftColumnVisible>2</LeftColumnVisible>
+   <LeftColumnVisible>8</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>11</ActiveCol>
+     <ActiveRow>12</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

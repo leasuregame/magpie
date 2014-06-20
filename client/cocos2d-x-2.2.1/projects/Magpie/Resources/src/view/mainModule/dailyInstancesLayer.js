@@ -104,3 +104,16 @@ DailyInstancesLayer.create = function () {
     return null;
 
 };
+
+DailyInstancesLayer.canEnter = function () {
+    var limitLv = outputTables.exp_pass_config.rows[1].limit_lv;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("搜仙" + limitLv + "级开放");
+
+    return false;
+};

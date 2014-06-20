@@ -13921,7 +13921,7 @@ var outputTables = {
                 "boss_attr": 93,
                 "atk_inc": 0,
                 "hp_inc": 0,
-                "limit_lv": 15,
+                "limit_lv": 16,
                 "total_count_scope": "9,11",
                 "litle_count_scope": "0,2",
                 "exp_card_stars": "1,2,3",

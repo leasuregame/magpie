@@ -108,9 +108,8 @@ module.exports =
       if utility.hitRate configData.card.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
       else
-        #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
-        lightUpIds = filterTableId lightUpIds if star is 5
-        id = generateCardId star, lightUpIds
+        filtered = filterTableId star, lightUpIds
+        id = generateCardId star, filtered
         vstar = cardStar(id)
         id += star - vstar if star isnt vstar
     else
@@ -183,7 +182,10 @@ setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'g
   player.increase att, val for att, val of data when att in attrs and val > 0
   return
 
-filterTableId = (ids) ->
+filterTableId = (star, ids) ->
+  if star isnt 5
+    return ids
+
   # 过滤掉5星卡牌及与其同一系列的所有卡牌
   exceptIds = []
   ids.forEach (i) ->
@@ -192,7 +194,9 @@ filterTableId = (ids) ->
       e = i+15
       exceptIds = exceptIds.concat [s..e]
   
-  ids.filter (i) -> i not in exceptIds
+  results = ids.filter (i) -> i not in exceptIds
+  if results.length > 0 then results else ids
+
 
 generateCardId = (star, tableIds, exceptIds) ->
   ### 

@@ -51,7 +51,8 @@ var home = function(app) {
                     c.percent = ((c.num / userNum) * 100).toFixed(1);
                     return c;
                 }),
-                users: convertData(users)
+                users: convertData(users),
+                user: req.session.user
             });
         });
     });

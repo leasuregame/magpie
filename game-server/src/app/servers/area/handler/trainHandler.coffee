@@ -215,7 +215,7 @@ Handler::luckyCard = (msg, session, next) ->
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
 
-    cards.forEach (c) -> lids.push c.id if c.star is 5
+    cards.forEach (c) -> lids.push c.tableId if c.star is 5
     
     cards4 = cards.filter (c) -> 
       _tid = c.tableId + 5 - c.star

@@ -24,7 +24,7 @@ class Record
     consumptionDao.createRecord record, cb
 
   # 新建player登入登出记录,主要记录playerId, playerLv, loginCount, recordDate
-  makeAPlayerDailyRecord : (app, player, isLogin, cb) ->
+  makeAPlayerDailyRecord = (app, player, isLogin, cb) ->
     playerManager = app.get('playerManager')
     dailyLvDao = app.get('dao').playerDailyLvRecord
 

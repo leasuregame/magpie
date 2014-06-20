@@ -9,6 +9,7 @@ var InstancesLayer = cc.Layer.extend({
     _passLayerItem: null,
     _dailyInstancesLayerItem: null,
     _passGuide: null,
+    _dailyInstancesGuide: null,
 
     onEnter: function () {
         this._super();
@@ -38,16 +39,16 @@ var InstancesLayer = cc.Layer.extend({
         this._taskLayerItem.setPosition(this._instancesLayerFit.taskLayerItemPoint);
         this._taskLayerItem.setOffset(cc.p(-6, -5));
 
-        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
-            this._passLayerItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.icon390,
-                this._onClickPassLayer,
-                this
-            );
-        } else {
+//        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
+//            this._passLayerItem = cc.MenuItemImage.createWithIcon(
+//                main_scene_image.button23h,
+//                main_scene_image.button23h,
+//                main_scene_image.button23h,
+//                main_scene_image.icon390,
+//                this._onClickPassLayer,
+//                this
+//            );
+//        } else {
             this._passLayerItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button23,
                 main_scene_image.button23s,
@@ -56,7 +57,7 @@ var InstancesLayer = cc.Layer.extend({
                 this._onClickPassLayer,
                 this
             );
-        }
+//        }
         this._passLayerItem.setPosition(this._instancesLayerFit.passLayerItemPoint);
         this._passLayerItem.setOffset(cc.p(0, -5));
 
@@ -97,6 +98,13 @@ var InstancesLayer = cc.Layer.extend({
             this._passGuide.setPosition(this._instancesLayerFit.passLayerItemPoint);
             this.addChild(this._passGuide, 2);
         }
+
+        if (gameGuide.get("dailyInstancesGuide") && !this._dailyInstancesGuide) {
+            this._dailyInstancesGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._dailyInstancesGuide.setPosition(this._instancesLayerFit.dailyInstancesLayerItemPoint);
+            this.addChild(this._dailyInstancesGuide, 2);
+        }
+
     },
 
     _onClickTaskLayer: function () {
@@ -129,16 +137,22 @@ var InstancesLayer = cc.Layer.extend({
         }
     },
 
-    _onClickDailyInstancesLayer: function() {
+    _onClickDailyInstancesLayer: function () {
         cc.log("InstancesLayer _onClickDailyInstancesLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._taskLayerItem.setEnabled(true);
-        this._passLayerItem.setEnabled(true);
-        this._dailyInstancesLayerItem.setEnabled(false);
+        if (this._dailyInstancesGuide) {
+            this._dailyInstancesGuide.removeFromParent();
+            this._dailyInstancesGuide = null;
+            gameGuide.set("dailyInstancesGuide", false);
+        }
 
-        this.switchLayer(DailyInstancesLayer)
+        if (this.switchLayer(DailyInstancesLayer)) {
+            this._taskLayerItem.setEnabled(true);
+            this._passLayerItem.setEnabled(true);
+            this._dailyInstancesLayerItem.setEnabled(false);
+        }
     },
 
     switchLayer: function (runLayer) {

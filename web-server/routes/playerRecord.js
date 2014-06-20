@@ -218,6 +218,7 @@ var playerRecord = function(app) {
                             } else {
                                 baseRow.expense += tmpRow.expense;
                                 baseRow.playerCounts += tmpRow.playerCounts;
+                                baseRow.buyCounts += tmpRow.buyCounts;
                                 rows = rows.concat(baseRows.splice(0, 1));
                                 tmpRows.splice(0, 1)
                             }

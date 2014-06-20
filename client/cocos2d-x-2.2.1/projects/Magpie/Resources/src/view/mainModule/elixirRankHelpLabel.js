@@ -97,6 +97,10 @@ var ElixirRankHelpLabel = LazyLayer.extend({
         var len = Object.keys(rewardList).length - 1;
         var scrollViewHeight = len * 75;
 
+        var cardMenu = cc.Menu.create();
+        cardMenu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(cardMenu, 2);
+
         for (var i = 0; i < len; i++) {
             var y = scrollViewHeight - 65 - 75 * i;
             var reward = rewardList[i + 1];
@@ -156,16 +160,23 @@ var ElixirRankHelpLabel = LazyLayer.extend({
                 scrollViewLayer.addChild(powerLabel);
             }
 
-            if (reward.exp_card && reward.exp_card > 0) {
-                var expCardIcon = cc.Sprite.create(main_scene_image.icon316);
-                expCardIcon.setAnchorPoint(cc.p(0, 0.5));
-                expCardIcon.setPosition(cc.p(390, y + 30));
-                scrollViewLayer.addChild(expCardIcon);
+            if (reward.exp_card_count && reward.exp_card_count > 0) {
+                var expCardItem = CardHeadNode.getCardHeadItem(
+                    Card.create({
+                        tableId: reward.exp_card_star + 50000,
+                        skillLv: 1,
+                        lv: 1
+                    })
+                );
+                expCardItem.setScale(0.46);
+                expCardItem.setAnchorPoint(cc.p(0, 0.5));
+                expCardItem.setPosition(cc.p(400, y + 30));
+                cardMenu.addChild(expCardItem);
 
-                var expCardLabel = cc.LabelTTF.create(reward.exp_card, "STHeitiTC-Medium", 22);
+                var expCardLabel = cc.LabelTTF.create(reward.exp_card_count, "STHeitiTC-Medium", 22);
                 expCardLabel.setAnchorPoint(cc.p(0, 0.5));
                 expCardLabel.setColor(cc.c3b(108, 41, 41));
-                expCardLabel.setPosition(cc.p(440, y + 28));
+                expCardLabel.setPosition(cc.p(460, y + 28));
                 scrollViewLayer.addChild(expCardLabel);
             }
         }

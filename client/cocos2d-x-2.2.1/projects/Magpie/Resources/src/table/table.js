@@ -11640,56 +11640,56 @@ var outputTables = {
             "50001": {
                 "id": 50001,
                 "number": 50001,
-                "name": "1星经验元灵",
+                "name": "经验元灵",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "description": "经验卡牌，不可强化与进阶，卡牌蕴含500点经验",
                 "url": 30000
             },
             "50002": {
                 "id": 50002,
                 "number": 50002,
-                "name": "2星经验元灵",
+                "name": "经验元灵",
                 "star": 2,
                 "lv": 1,
                 "atk": 6,
                 "hp": 11,
-                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "description": "经验卡牌，不可强化与进阶，卡牌蕴含1060点经验",
                 "url": 30000
             },
             "50003": {
                 "id": 50003,
                 "number": 50003,
-                "name": "3星经验元灵",
+                "name": "经验元灵",
                 "star": 3,
                 "lv": 1,
                 "atk": 7,
                 "hp": 12,
-                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "description": "经验卡牌，不可强化与进阶，卡牌蕴含2080点经验",
                 "url": 30000
             },
             "50004": {
                 "id": 50004,
                 "number": 50004,
-                "name": "4星经验元灵",
+                "name": "经验元灵",
                 "star": 4,
                 "lv": 1,
                 "atk": 8,
                 "hp": 13,
-                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "description": "经验卡牌，不可强化与进阶，卡牌蕴含4240点经验",
                 "url": 30000
             },
             "50005": {
                 "id": 50005,
                 "number": 50005,
-                "name": "5星经验元灵",
+                "name": "经验元灵",
                 "star": 5,
                 "lv": 1,
                 "atk": 9,
                 "hp": 14,
-                "description": "经验卡牌，不可进阶，主要作为卡牌升级所用。",
+                "description": "经验卡牌，不可强化与进阶，卡牌蕴含7000点经验",
                 "url": 30000
             }
         }
@@ -11718,7 +11718,7 @@ var outputTables = {
             },
             "50002": {
                 "id": 50002,
-                "exp": 1000,
+                "exp": 1060,
                 "price": 100,
                 "star": 2,
                 "lv": 1,
@@ -11726,7 +11726,7 @@ var outputTables = {
             },
             "50003": {
                 "id": 50003,
-                "exp": 2000,
+                "exp": 2080,
                 "price": 100,
                 "star": 3,
                 "lv": 1,
@@ -11734,7 +11734,7 @@ var outputTables = {
             },
             "50004": {
                 "id": 50004,
-                "exp": 4000,
+                "exp": 4240,
                 "price": 100,
                 "star": 4,
                 "lv": 1,
@@ -13921,12 +13921,13 @@ var outputTables = {
                 "boss_attr": 93,
                 "atk_inc": 0,
                 "hp_inc": 0,
-                "limit_lv": 15,
+                "limit_lv": 16,
                 "total_count_scope": "9,11",
                 "litle_count_scope": "0,2",
                 "exp_card_stars": "1,2,3",
                 "player_exp": 20,
-                "power_consume": 10
+                "power_consume": 10,
+                "description": "我是使命是：无私奉献！不求回报！"
             },
             "2": {
                 "id": 2,
@@ -13944,7 +13945,8 @@ var outputTables = {
                 "litle_count_scope": "0,2",
                 "exp_card_stars": "2,3,4",
                 "player_exp": 50,
-                "power_consume": 10
+                "power_consume": 10,
+                "description": "官人虐我千百遍，我待官人如初恋！"
             },
             "3": {
                 "id": 3,
@@ -13962,7 +13964,8 @@ var outputTables = {
                 "litle_count_scope": "0,2",
                 "exp_card_stars": "3,4,5",
                 "player_exp": 100,
-                "power_consume": 10
+                "power_consume": 10,
+                "description": "呵呵，没想到你居然打到这了,求虐！"
             }
         }
     },
@@ -28554,350 +28557,360 @@ var outputTables = {
                 "elixir": 60000,
                 "money": 600000,
                 "power": 200,
-                "exp_card": 50
+                "exp_card_count": 30,
+                "exp_card_star": 3
             },
             "2": {
                 "id": 2,
                 "elixir": 58000,
                 "money": 585000,
                 "power": 190,
-                "exp_card": 47
+                "exp_card_count": 28,
+                "exp_card_star": 3
             },
             "3": {
                 "id": 3,
                 "elixir": 56000,
                 "money": 570000,
                 "power": 180,
-                "exp_card": 44
+                "exp_card_count": 26,
+                "exp_card_star": 3
             },
             "4": {
                 "id": 4,
                 "elixir": 54000,
                 "money": 555000,
                 "power": 170,
-                "exp_card": 41
+                "exp_card_count": 24,
+                "exp_card_star": 3
             },
             "5": {
                 "id": 5,
                 "elixir": 52000,
                 "money": 540000,
                 "power": 160,
-                "exp_card": 38
+                "exp_card_count": 22,
+                "exp_card_star": 3
             },
             "6": {
                 "id": 6,
                 "elixir": 50000,
                 "money": 525000,
                 "power": 150,
-                "exp_card": 35
+                "exp_card_count": 20,
+                "exp_card_star": 3
             },
             "7": {
                 "id": 7,
                 "elixir": 48000,
                 "money": 510000,
                 "power": 140,
-                "exp_card": 32
+                "exp_card_count": 18,
+                "exp_card_star": 3
             },
             "8": {
                 "id": 8,
                 "elixir": 46000,
                 "money": 495000,
                 "power": 130,
-                "exp_card": 29
+                "exp_card_count": 16,
+                "exp_card_star": 3
             },
             "9": {
                 "id": 9,
                 "elixir": 44000,
                 "money": 480000,
                 "power": 120,
-                "exp_card": 26
+                "exp_card_count": 14,
+                "exp_card_star": 3
             },
             "10": {
                 "id": 10,
                 "elixir": 42000,
                 "money": 465000,
                 "power": 110,
-                "exp_card": 23
+                "exp_card_count": 12,
+                "exp_card_star": 3
             },
             "11": {
                 "id": 11,
                 "elixir": 41500,
                 "money": 460000,
                 "power": 105,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "12": {
                 "id": 12,
                 "elixir": 41000,
                 "money": 455000,
                 "power": 100,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "13": {
                 "id": 13,
                 "elixir": 40500,
                 "money": 450000,
                 "power": 95,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "14": {
                 "id": 14,
                 "elixir": 40000,
                 "money": 445000,
                 "power": 90,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "15": {
                 "id": 15,
                 "elixir": 39500,
                 "money": 440000,
                 "power": 85,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "16": {
                 "id": 16,
                 "elixir": 39000,
                 "money": 435000,
                 "power": 80,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "17": {
                 "id": 17,
                 "elixir": 38500,
                 "money": 430000,
                 "power": 75,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "18": {
                 "id": 18,
                 "elixir": 38000,
                 "money": 425000,
                 "power": 70,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "19": {
                 "id": 19,
                 "elixir": 37500,
                 "money": 420000,
                 "power": 65,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "20": {
                 "id": 20,
                 "elixir": 37000,
                 "money": 415000,
                 "power": 60,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "21": {
                 "id": 21,
                 "elixir": 36500,
                 "money": 410000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "22": {
                 "id": 22,
                 "elixir": 36000,
                 "money": 405000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "23": {
                 "id": 23,
                 "elixir": 35500,
                 "money": 400000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "24": {
                 "id": 24,
                 "elixir": 35000,
                 "money": 395000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "25": {
                 "id": 25,
                 "elixir": 34500,
                 "money": 390000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "26": {
                 "id": 26,
                 "elixir": 34000,
                 "money": 385000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "27": {
                 "id": 27,
                 "elixir": 33500,
                 "money": 380000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "28": {
                 "id": 28,
                 "elixir": 33000,
                 "money": 375000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "29": {
                 "id": 29,
                 "elixir": 32500,
                 "money": 370000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "30": {
                 "id": 30,
                 "elixir": 32000,
                 "money": 365000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "31": {
                 "id": 31,
                 "elixir": 31500,
                 "money": 360000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "32": {
                 "id": 32,
                 "elixir": 31000,
                 "money": 355000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "33": {
                 "id": 33,
                 "elixir": 30500,
                 "money": 350000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "34": {
                 "id": 34,
                 "elixir": 30000,
                 "money": 345000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "35": {
                 "id": 35,
                 "elixir": 29500,
                 "money": 340000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "36": {
                 "id": 36,
                 "elixir": 29000,
                 "money": 335000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "37": {
                 "id": 37,
                 "elixir": 28500,
                 "money": 330000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "38": {
                 "id": 38,
                 "elixir": 28000,
                 "money": 325000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "39": {
                 "id": 39,
                 "elixir": 27500,
                 "money": 320000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "40": {
                 "id": 40,
                 "elixir": 27000,
                 "money": 315000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "41": {
                 "id": 41,
                 "elixir": 26500,
                 "money": 310000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "42": {
                 "id": 42,
                 "elixir": 26000,
                 "money": 305000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "43": {
                 "id": 43,
                 "elixir": 25500,
                 "money": 300000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "44": {
                 "id": 44,
                 "elixir": 25000,
                 "money": 295000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "45": {
                 "id": 45,
                 "elixir": 24500,
                 "money": 290000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "46": {
                 "id": 46,
                 "elixir": 24000,
                 "money": 285000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "47": {
                 "id": 47,
                 "elixir": 23500,
                 "money": 280000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "48": {
                 "id": 48,
                 "elixir": 23000,
                 "money": 275000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "49": {
                 "id": 49,
                 "elixir": 22500,
                 "money": 270000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "50": {
                 "id": 50,
                 "elixir": 22000,
                 "money": 265000,
                 "power": 0,
-                "exp_card": 0
+                "exp_card_count": 0
             },
             "51": {
                 "id": 51,
@@ -43400,7 +43413,7 @@ var outputTables = {
             },
             "50001": {
                 "id": 50001,
-                "card_id": "1星经验元灵",
+                "card_id": 50001,
                 "atk": 446,
                 "hp": 1561,
                 "dodge_rate": 5,
@@ -43408,7 +43421,7 @@ var outputTables = {
             },
             "50002": {
                 "id": 50002,
-                "card_id": "2星经验元灵",
+                "card_id": 50002,
                 "atk": 2042.4,
                 "hp": 7148.400000000001,
                 "dodge_rate": 5,
@@ -43416,7 +43429,7 @@ var outputTables = {
             },
             "50003": {
                 "id": 50003,
-                "card_id": "2星经验元灵",
+                "card_id": 50002,
                 "atk": 3287.7,
                 "hp": 11506.949999999999,
                 "dodge_rate": 5,
@@ -43424,7 +43437,7 @@ var outputTables = {
             },
             "50004": {
                 "id": 50004,
-                "card_id": "3星经验元灵",
+                "card_id": 50003,
                 "atk": 5083,
                 "hp": 17790.5,
                 "dodge_rate": 10,
@@ -43432,7 +43445,7 @@ var outputTables = {
             },
             "50005": {
                 "id": 50005,
-                "card_id": "3星经验元灵",
+                "card_id": 50003,
                 "atk": 7163,
                 "hp": 25070.5,
                 "dodge_rate": 5,
@@ -43440,7 +43453,7 @@ var outputTables = {
             },
             "50006": {
                 "id": 50006,
-                "card_id": "4星经验元灵",
+                "card_id": 50004,
                 "atk": 9838.4,
                 "hp": 34434.4,
                 "dodge_rate": 10,
@@ -51985,120 +51998,137 @@ var outputTables = {
                 "id": 1,
                 "lv": 20,
                 "money": 5000,
-                "exp_card": 10,
-                "powerValue": 10
+                "powerValue": 10,
+                "exp_card_count": 10,
+                "exp_card_star": 2
             },
             "2": {
                 "id": 2,
                 "lv": 25,
                 "money": 10000,
-                "exp_card": 11,
-                "powerValue": 10
+                "powerValue": 10,
+                "exp_card_count": 11,
+                "exp_card_star": 2
             },
             "3": {
                 "id": 3,
                 "lv": 30,
                 "money": 15000,
-                "exp_card": 12,
-                "powerValue": 10
+                "powerValue": 10,
+                "exp_card_count": 12,
+                "exp_card_star": 2
             },
             "4": {
                 "id": 4,
                 "lv": 35,
                 "money": 20000,
-                "exp_card": 13,
-                "powerValue": 10
+                "powerValue": 10,
+                "exp_card_count": 13,
+                "exp_card_star": 2
             },
             "5": {
                 "id": 5,
                 "lv": 40,
                 "money": 25000,
-                "exp_card": 14,
-                "powerValue": 10
+                "powerValue": 10,
+                "exp_card_count": 14,
+                "exp_card_star": 2
             },
             "6": {
                 "id": 6,
                 "lv": 45,
                 "money": 30000,
-                "exp_card": 15,
-                "powerValue": 15
+                "powerValue": 15,
+                "exp_card_count": 15,
+                "exp_card_star": 2
             },
             "7": {
                 "id": 7,
                 "lv": 50,
                 "money": 35000,
-                "exp_card": 16,
-                "powerValue": 15
+                "powerValue": 15,
+                "exp_card_count": 16,
+                "exp_card_star": 2
             },
             "8": {
                 "id": 8,
                 "lv": 55,
                 "money": 40000,
-                "exp_card": 17,
-                "powerValue": 15
+                "powerValue": 15,
+                "exp_card_count": 17,
+                "exp_card_star": 2
             },
             "9": {
                 "id": 9,
                 "lv": 60,
                 "money": 45000,
-                "exp_card": 18,
-                "powerValue": 15
+                "powerValue": 15,
+                "exp_card_count": 18,
+                "exp_card_star": 2
             },
             "10": {
                 "id": 10,
                 "lv": 65,
                 "money": 50000,
-                "exp_card": 19,
-                "powerValue": 15
+                "powerValue": 15,
+                "exp_card_count": 19,
+                "exp_card_star": 2
             },
             "11": {
                 "id": 11,
                 "lv": 70,
                 "money": 55000,
-                "exp_card": 20,
-                "powerValue": 20
+                "powerValue": 20,
+                "exp_card_count": 20,
+                "exp_card_star": 2
             },
             "12": {
                 "id": 12,
                 "lv": 75,
                 "money": 60000,
-                "exp_card": 21,
-                "powerValue": 20
+                "powerValue": 20,
+                "exp_card_count": 21,
+                "exp_card_star": 2
             },
             "13": {
                 "id": 13,
                 "lv": 80,
                 "money": 65000,
-                "exp_card": 22,
-                "powerValue": 20
+                "powerValue": 20,
+                "exp_card_count": 22,
+                "exp_card_star": 2
             },
             "14": {
                 "id": 14,
                 "lv": 85,
                 "money": 70000,
-                "exp_card": 23,
-                "powerValue": 20
+                "powerValue": 20,
+                "exp_card_count": 23,
+                "exp_card_star": 2
             },
             "15": {
                 "id": 15,
                 "lv": 90,
                 "money": 75000,
-                "exp_card": 24,
-                "powerValue": 20
+                "powerValue": 20,
+                "exp_card_count": 24,
+                "exp_card_star": 2
             },
             "16": {
                 "id": 16,
                 "lv": 95,
                 "money": 80000,
-                "exp_card": 25,
-                "powerValue": 30
+                "powerValue": 30,
+                "exp_card_count": 25,
+                "exp_card_star": 2
             },
             "17": {
                 "id": 17,
                 "lv": 100,
                 "money": 85000,
-                "exp_card": 26,
-                "powerValue": 30
+                "powerValue": 30,
+                "exp_card_count": 26,
+                "exp_card_star": 2
             }
         }
     },
@@ -52563,7 +52593,8 @@ var outputTables = {
                 "skillPoint": 0,
                 "elixir": 0,
                 "fragments": 0,
-                "exp_card": 0,
+                "exp_card_count": 0,
+                "exp_card_star": 0,
                 "price": 18,
                 "true_price": 66
             },
@@ -52574,7 +52605,8 @@ var outputTables = {
                 "skillPoint": 10000,
                 "elixir": 0,
                 "fragments": 0,
-                "exp_card": 0,
+                "exp_card_count": 0,
+                "exp_card_star": 0,
                 "price": 58,
                 "true_price": 195
             },
@@ -52585,7 +52617,8 @@ var outputTables = {
                 "skillPoint": 20000,
                 "elixir": 10000,
                 "fragments": 1,
-                "exp_card": 10,
+                "exp_card_count": 10,
+                "exp_card_star": 2,
                 "price": 88,
                 "true_price": 246
             },
@@ -52596,7 +52629,8 @@ var outputTables = {
                 "skillPoint": 30000,
                 "elixir": 20000,
                 "fragments": 2,
-                "exp_card": 20,
+                "exp_card_count": 10,
+                "exp_card_star": 3,
                 "price": 188,
                 "true_price": 569
             },
@@ -52607,7 +52641,8 @@ var outputTables = {
                 "skillPoint": 40000,
                 "elixir": 30000,
                 "fragments": 3,
-                "exp_card": 30,
+                "exp_card_count": 15,
+                "exp_card_star": 3,
                 "price": 288,
                 "true_price": 726
             },
@@ -52618,7 +52653,8 @@ var outputTables = {
                 "skillPoint": 50000,
                 "elixir": 40000,
                 "fragments": 4,
-                "exp_card": 40,
+                "exp_card_count": 10,
+                "exp_card_star": 4,
                 "price": 388,
                 "true_price": 1080
             },
@@ -52629,7 +52665,8 @@ var outputTables = {
                 "skillPoint": 60000,
                 "elixir": 50000,
                 "fragments": 5,
-                "exp_card": 50,
+                "exp_card_count": 12,
+                "exp_card_star": 4,
                 "price": 488,
                 "true_price": 1368
             },
@@ -52640,7 +52677,8 @@ var outputTables = {
                 "skillPoint": 70000,
                 "elixir": 60000,
                 "fragments": 6,
-                "exp_card": 60,
+                "exp_card_count": 15,
+                "exp_card_star": 4,
                 "price": 588,
                 "true_price": 1989
             },
@@ -52651,7 +52689,8 @@ var outputTables = {
                 "skillPoint": 80000,
                 "elixir": 70000,
                 "fragments": 7,
-                "exp_card": 70,
+                "exp_card_count": 10,
+                "exp_card_star": 5,
                 "price": 688,
                 "true_price": 2366
             },
@@ -52662,7 +52701,8 @@ var outputTables = {
                 "skillPoint": 90000,
                 "elixir": 80000,
                 "fragments": 8,
-                "exp_card": 80,
+                "exp_card_count": 12,
+                "exp_card_star": 5,
                 "price": 788,
                 "true_price": 2899
             },
@@ -52673,7 +52713,8 @@ var outputTables = {
                 "skillPoint": 100000,
                 "elixir": 90000,
                 "fragments": 9,
-                "exp_card": 90,
+                "exp_card_count": 13,
+                "exp_card_star": 5,
                 "price": 888,
                 "true_price": 3288
             },
@@ -52684,7 +52725,8 @@ var outputTables = {
                 "skillPoint": 110000,
                 "elixir": 100000,
                 "fragments": 10,
-                "exp_card": 100,
+                "exp_card_count": 15,
+                "exp_card_star": 5,
                 "price": 999,
                 "true_price": 3986
             }
@@ -52698,84 +52740,96 @@ var outputTables = {
                 "money": 20000,
                 "elixir": 3000,
                 "energy": 0,
-                "exp_card": 10
+                "exp_card_count": 6,
+                "exp_card_star": 3
             },
             "2": {
                 "id": 2,
                 "money": 40000,
                 "elixir": 4000,
                 "energy": 200,
-                "exp_card": 15
+                "exp_card_count": 9,
+                "exp_card_star": 3
             },
             "3": {
                 "id": 3,
                 "money": 60000,
                 "elixir": 5000,
                 "energy": 400,
-                "exp_card": 20
+                "exp_card_count": 12,
+                "exp_card_star": 3
             },
             "4": {
                 "id": 4,
                 "money": 80000,
                 "elixir": 6000,
                 "energy": 600,
-                "exp_card": 25
+                "exp_card_count": 15,
+                "exp_card_star": 3
             },
             "5": {
                 "id": 5,
                 "money": 100000,
                 "elixir": 7000,
                 "energy": 800,
-                "exp_card": 30
+                "exp_card_count": 18,
+                "exp_card_star": 3
             },
             "6": {
                 "id": 6,
                 "money": 120000,
                 "elixir": 8000,
                 "energy": 1000,
-                "exp_card": 35
+                "exp_card_count": 21,
+                "exp_card_star": 3
             },
             "7": {
                 "id": 7,
                 "money": 140000,
                 "elixir": 9000,
                 "energy": 1200,
-                "exp_card": 40
+                "exp_card_count": 24,
+                "exp_card_star": 3
             },
             "8": {
                 "id": 8,
                 "money": 160000,
                 "elixir": 10000,
                 "energy": 1400,
-                "exp_card": 45
+                "exp_card_count": 27,
+                "exp_card_star": 3
             },
             "9": {
                 "id": 9,
                 "money": 180000,
                 "elixir": 11000,
                 "energy": 1600,
-                "exp_card": 50
+                "exp_card_count": 30,
+                "exp_card_star": 3
             },
             "10": {
                 "id": 10,
                 "money": 200000,
                 "elixir": 12000,
                 "energy": 1800,
-                "exp_card": 55
+                "exp_card_count": 33,
+                "exp_card_star": 3
             },
             "11": {
                 "id": 11,
                 "money": 220000,
                 "elixir": 13000,
                 "energy": 2000,
-                "exp_card": 60
+                "exp_card_count": 36,
+                "exp_card_star": 3
             },
             "12": {
                 "id": 12,
                 "money": 240000,
                 "elixir": 14000,
                 "energy": 2200,
-                "exp_card": 65
+                "exp_card_count": 39,
+                "exp_card_star": 3
             }
         }
     },

@@ -26,17 +26,19 @@ var DailyInstancesLayer = cc.Layer.extend({
         this.addChild(bgSprite);
 
         var scrollViewLayer = MarkLayer.create(this._dailyInstancesLayerFit.scrollViewLayerRect);
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
 
         var index = 0;
         var len = this._layers.length;
         var scrollViewHeight = len * 200;
 
+        var slideLabel = [];
+
         for (var i = 0; i < len; i++) {
             var layer = this._layers[i];
             var y = scrollViewHeight - 200 * index - 200;
+
+            slideLabel[index] = cc.Node.create();
+            slideLabel[index].setPosition(cc.p(0, 0));
 
             if (!DailyInstances.IsShowHandler[layer.nameString]()) {
                 continue;
@@ -51,7 +53,12 @@ var DailyInstancesLayer = cc.Layer.extend({
 
             item.setAnchorPoint(cc.p(0.5, 0));
             item.setPosition(cc.p(320, y));
-            menu.addChild(item);
+
+            var menu = LazyMenu.create(item);
+            menu.setPosition(cc.p(0, 0));
+            slideLabel[index].addChild(menu);
+
+            scrollViewLayer.addChild(slideLabel[index]);
 
             index++;
         }
@@ -65,6 +72,12 @@ var DailyInstancesLayer = cc.Layer.extend({
 
         scrollView.setContentSize(cc.size(640, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());
+
+        var slideLayer = SlideLayer.create({
+            labels: slideLabel
+        });
+
+        slideLayer.showSlide();
 
         return true;
     },
@@ -90,4 +103,17 @@ DailyInstancesLayer.create = function () {
     }
     return null;
 
+};
+
+DailyInstancesLayer.canEnter = function () {
+    var limitLv = outputTables.exp_pass_config.rows[1].limit_lv;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("搜仙" + limitLv + "级开放");
+
+    return false;
 };

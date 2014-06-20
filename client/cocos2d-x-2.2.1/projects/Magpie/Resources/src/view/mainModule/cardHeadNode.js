@@ -32,7 +32,7 @@ var CardHeadNode = cc.Node.extend({
         } else if (this._card) {
             star = this._card.get("star");
 
-            if (this._card.isLeadCard()) {
+            if (this._card.isLeadCard() || this._card.isBossCard()) {
                 url = this._card.get("url") + "_head" + (star > 2 ? Math.min(star - 2, 3) : 1);
             } else if (this._card.isResourceCard()) {
                 url = this._card.get("url") + "_head1";

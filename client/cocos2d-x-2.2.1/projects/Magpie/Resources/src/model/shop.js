@@ -263,7 +263,8 @@ var Shop = Entity.extend({
                     skillPoint: table.skillPoint || 0,
                     elixir: table.elixir || 0,
                     fragment: table.fragments || 0,
-                    cards: table.exp_card || 0
+                    exp_card_star: table.exp_card_star || null,
+                    exp_card_count: table.exp_card_count || 0
                 });
 
                 lz.um.event("event_buy_vip_box", id);

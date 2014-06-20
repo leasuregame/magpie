@@ -401,7 +401,8 @@ var Task = Entity.extend({
                             gameData.cardList.push(Card.create(card));
                         }
 
-                        cbData[key] = len;
+                        cbData["exp_card_star"] = card.tableId % 20;
+                        cbData["exp_card_count"] = len;
 
                     } else {
                         gameData.player.add(key, reward[key]);

@@ -1,6 +1,7 @@
 var tableData = require('../data/table.json');
 var filter = require('../util/filter');
 var CONSUMPTION_SOURCE_NAME = require('../data/record').CONSUMPTION_SOURCE_NAME;
+var _ = require('underscore');
 
 var datakeys = {
     CARDS : 'cards',
@@ -8,7 +9,7 @@ var datakeys = {
 };
 
 var ACTOR_CARD_TV = 10000;
-var EXP_CARD_TABLEID = 30000;
+var EXP_CARD_TABLEIDS = [50001,50002,50003,50004,50005];
 
 var gameData = function(app) {
 
@@ -17,7 +18,12 @@ var gameData = function(app) {
     };
 
     var getExpCardData = function () {
-        return getGameData(datakeys.CARDS)['' + EXP_CARD_TABLEID];
+        var result = {};
+        var cards = getGameData(datakeys.CARDS);
+        EXP_CARD_TABLEIDS.forEach(function(id) {
+            result[id] = cards['' + id];
+        });
+        return result;
     };
 
     /**
@@ -29,7 +35,7 @@ var gameData = function(app) {
         var cardsTable = getGameData(datakeys.CARDS);
         var retCards = {};
         // 加入经验卡
-        retCards['' + EXP_CARD_TABLEID] = getExpCardData();
+        _.extend(retCards, getExpCardData());
         // 加入神仙卡
         for (var key in cardsTable) {
             key *= 1;

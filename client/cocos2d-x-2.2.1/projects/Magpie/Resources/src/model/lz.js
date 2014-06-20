@@ -337,6 +337,10 @@ var gameGoodsName = {
         name: "有奖竞技次数",
         color: cc.c3b(255, 239, 131)
     },
+    "expPassCount": {
+        name: "经验副本次数",
+        color: cc.c3b(255, 239, 131)
+    },
     "cardsCount": {
         name: "卡库位置",
         color: cc.c3b(255, 239, 131)
@@ -451,7 +455,7 @@ lz.getRewardString = function (data) {
         for (var key in reward) {
             if (!reward[key]) continue;
 
-            if (key == "cardArray") {
+            if (key == "cardArray" || key == "exp_card_count" || key == "exp_card_star") {
                 continue;
             }
 
@@ -473,6 +477,22 @@ lz.getRewardString = function (data) {
             var delay = (lastTimestamp - now) / 1000;
 
             lz.scheduleOnce(fn, delay);
+        }
+
+        //经验元灵奖励
+        if (reward["exp_card_star"]) {
+            var fn1 = (function () {
+                return function () {
+                    TipLayer.tipCard(reward["exp_card_star"] + 50000, " +" + reward["exp_card_count"]);
+                }
+            })();
+
+            now = Date.now();
+            lastTimestamp += TIP_INTERVAL;
+            lastTimestamp = Math.max(lastTimestamp, now);
+            delay = (lastTimestamp - now) / 1000;
+
+            lz.scheduleOnce(fn1, delay);
         }
 
         //卡牌奖励

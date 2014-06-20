@@ -33,12 +33,15 @@ var giftBagGoods = {
         url: "icon145"
     },
 
-    exp_card: {
-        name: "经验元灵",
-        url: "icon146"
+    exp_card_count: {
+        name: "经验元灵"
     },
 
-    gold: {
+    exp_card: {
+        name: "经验元灵"
+    },
+
+   gold: {
         name: "魔石",
         url: "icon112"
     },
@@ -269,6 +272,40 @@ var GiftBagLayer = LazyLayer.extend({
 
         for (var i = 0; i < len; i++) {
             var key = keys[i];
+
+            if(key == "exp_card_count" && reward[key] > 0) {
+                var y = scrollViewHeight - index * 110 - 60;
+
+                var card = Card.create({
+                    tableId: 50000 + reward.exp_card_star,
+                    skillLv: 1,
+                    lv: 1
+                });
+
+                var cardItem = CardHeadNode.getCardHeadItem(card);
+                cardItem.setScale(0.82);
+                cardItem.setPosition(cc.p(x - 10, y));
+                cardMenu.addChild(cardItem);
+
+                var nameLabel = StrokeLabel.create(card.get("name"), "STHeitiTC-Medium", 25);
+                nameLabel.setColor(cc.c3b(255, 252, 175));
+                nameLabel.setAnchorPoint(cc.p(0, 0.5));
+                nameLabel.setPosition(cc.p(x + 50, y + 20));
+                scrollViewLayer.addChild(nameLabel);
+
+                var countBgIcon = cc.Sprite.create(main_scene_image.icon334);
+                countBgIcon.setPosition(cc.p(x + 170, y - 20));
+                scrollViewLayer.addChild(countBgIcon);
+
+                var countLabel = StrokeLabel.create("数量    " + reward.exp_card_count, "STHeitiTC-Medium", 25);
+                countLabel.setAnchorPoint(cc.p(0, 0.5));
+                countLabel.setPosition(cc.p(x + 50, y - 20));
+                scrollViewLayer.addChild(countLabel);
+                index++;
+
+                continue;
+            }
+
             if (giftBagGoods[key] != undefined && (reward[key] > 0 || reward[key].length > 0)) {
 
                 if (giftBagGoods[key].name == "cardArray") {

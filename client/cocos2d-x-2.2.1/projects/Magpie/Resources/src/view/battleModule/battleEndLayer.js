@@ -83,7 +83,7 @@ var BattleEndLayer = cc.Layer.extend({
                 label.addChild(rewardIcon);
             } else if (str[i].card) {
                 var card = str[i].card;
-                card.setScale(0.5);
+                card.setScale(0.47);
                 card.setAnchorPoint(cc.p(0.5, 0.5));
                 card.setPosition(cc.p(-70, offsetY - 12));
                 label.addChild(card);

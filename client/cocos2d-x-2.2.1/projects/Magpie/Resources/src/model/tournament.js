@@ -203,7 +203,8 @@ var Tournament = Entity.extend({
                     var len = cardIdList.length;
                     var cardData = msg.card;
 
-                    reward["exp_card"] = len;
+                    reward["exp_card_star"] = cardData.tableId % 20;
+                    reward["exp_card_count"] = len;
 
                     for (var i = 0; i < len; ++i) {
                         cardData.id = cardIdList[i];

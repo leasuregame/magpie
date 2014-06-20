@@ -136,6 +136,7 @@ var CardDetails = LazyLayer.extend({
 
         var potentialLvIcon = cc.Sprite.create(main_scene_image.icon462);
         potentialLvIcon.setPosition(this._cardDetailsFit.potentialLvIconPoint);
+        potentialLvIcon.setVisible(this._card.isLeadCard());
         this.addChild(potentialLvIcon);
 
         var potentialLvLabel = StrokeLabel.create(potentialLv, "STHeitiTC-Medium", 28);

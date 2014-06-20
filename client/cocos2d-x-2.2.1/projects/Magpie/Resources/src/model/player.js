@@ -245,7 +245,8 @@ var Player = Entity.extend({
             gameData.shop.update({
                 powerBuyCount: msg.dailyGift.powerBuyCount,
                 challengeBuyCount: msg.dailyGift.challengeBuyCount,
-                expCardBuyCount: msg.dailyGift.expCardCount
+                expCardBuyCount: msg.dailyGift.expCardCount,
+                expPassBuyCount: msg.dailyGift.expPassBuyCount
             });
             gameData.lottery.update({
                 goldLuckyCard10: msg.dailyGift.goldLuckyCard10,

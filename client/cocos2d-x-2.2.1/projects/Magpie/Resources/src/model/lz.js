@@ -455,7 +455,7 @@ lz.getRewardString = function (data) {
         for (var key in reward) {
             if (!reward[key]) continue;
 
-            if (key == "cardArray") {
+            if (key == "cardArray" || key == "exp_card_count" || key == "exp_card_star") {
                 continue;
             }
 
@@ -477,6 +477,22 @@ lz.getRewardString = function (data) {
             var delay = (lastTimestamp - now) / 1000;
 
             lz.scheduleOnce(fn, delay);
+        }
+
+        //经验元灵奖励
+        if (reward["exp_card_star"]) {
+            var fn1 = (function () {
+                return function () {
+                    TipLayer.tipCard(reward["exp_card_star"] + 50000, " +" + reward["exp_card_count"]);
+                }
+            })();
+
+            now = Date.now();
+            lastTimestamp += TIP_INTERVAL;
+            lastTimestamp = Math.max(lastTimestamp, now);
+            delay = (lastTimestamp - now) / 1000;
+
+            lz.scheduleOnce(fn1, delay);
         }
 
         //卡牌奖励

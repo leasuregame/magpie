@@ -510,17 +510,18 @@ var Activity = Entity.extend({
                 var table = outputTables.vip_daily_reward.rows[player.get("vip")];
                 var rewards = {};
 
+                var card = data.msg.card;
+                var ids = data.msg.cardIds;
+                var len = ids.length;
+                for (var i = 0; i < len; i++) {
+                    card.id = ids[i];
+                    gameData.cardList.push(Card.create(card));
+                }
+
                 for (var key in table) {
                     if (key != "id") {
-                        if (key == "exp_card") {
-                            var card = data.msg.card;
-                            var ids = data.msg.cardIds;
-                            var len = ids.length;
-                            for (var i = 0; i < len; i++) {
-                                card.id = ids[i];
-                                gameData.cardList.push(Card.create(card));
-                            }
-
+                        if (key == "exp_card_star" || key == "exp_card_count") {
+                            continue;
                         } else {
                             player.add(key, table[key]);
                         }

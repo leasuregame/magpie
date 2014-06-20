@@ -178,7 +178,7 @@ var ExpInstanceLayer = cc.Layer.extend({
 
             this._openLvLabels[id] = openLvLabel;
 
-            var descLabel = cc.LabelTTF.create("我的使命是：无私贡献！不求回报！", "STHeitiTC-Medium", 22);
+            var descLabel = cc.LabelTTF.create(config.description, "STHeitiTC-Medium", 22);
             descLabel.setColor(cc.c3b(108, 48, 25));
             descLabel.setAnchorPoint(cc.p(0, 0));
             descLabel.setPosition(cc.p(30, 120));

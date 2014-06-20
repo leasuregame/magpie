@@ -179,7 +179,7 @@ Handler::handleSysMsg = (msg, session, next) ->
           done(err)
         else
           obj.addCards cards
-          data.cardArray = cards.map (c) -> c.toJson()
+          data.cardArray = cards
           done(null, data)
     else
       done(null, data)
@@ -244,9 +244,10 @@ Handler::handleSysMsg = (msg, session, next) ->
       if _.isArray(data.cardArray) and data.cardArray.length > 0
         data.cardArray.forEach (c) ->
           star = c.tableId%20 || 20
-          achieve.star5card(player) if star is 5
-          achieve.star6card(player) if star is 6
-          achieve.star7card(player) if star is 7
+          if not c.isExpCard()
+            achieve.star5card(player) if star is 5
+            achieve.star6card(player) if star is 6
+            achieve.star7card(player) if star is 7
 
       cb(null, data)
   ],(err, data)->
@@ -254,6 +255,7 @@ Handler::handleSysMsg = (msg, session, next) ->
       next(null, {code: err.code or 500, msg: err.msg or err})
 
     player.save()
+    data.cardArray = data.cardArray.map (c) -> c.toJson()
     next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->

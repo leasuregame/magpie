@@ -447,6 +447,11 @@ var Card = (function(_super) {
     };
 
     Card.prototype.price = function() {
+        if (this.isExpCard()) {
+            var rc = table.getTableItem('resource_cards', this.tableId);
+            return rc != null ? rc.price : 100;
+        }
+
         var curLv = this.lv;
         var cfg = table.getTableItem('card_price', 1);
         var lv_money = table.getTable('card_grow').filter(function(id, item) {

@@ -152,7 +152,7 @@ checkSystemOptions = (options, cb) ->
 
   rewardTypes = ['gold', 'money', 'spirit', 'skillPoint', 'energy',
     'fragments', 'elixir', 'superHonor', 'powerValue', 'cardArray'
-    'speaker', 'honor']
+    'speaker', 'honor', 'pill']
   wrongKeys = _.keys(options.rewards).filter (k) -> k not in rewardTypes
   hasRightRewards = wrongKeys.length == 0 if isObject and hasRightProperties
   

@@ -20,8 +20,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9210</WindowHeight>
-  <WindowWidth>25065</WindowWidth>
+  <WindowHeight>10410</WindowHeight>
+  <WindowWidth>26685</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -8257,9 +8257,9 @@
     <Cell ss:StyleID="s67"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">805</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">经验卡牌，不可强化与进阶，卡牌蕴含500点经验</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">30000</Data></Cell>
    </Row>
@@ -8272,9 +8272,9 @@
     <Cell ss:StyleID="s67"><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">701</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">经验卡牌，不可强化与进阶，卡牌蕴含1060点经验</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">30000</Data></Cell>
    </Row>
@@ -8287,9 +8287,9 @@
     <Cell ss:StyleID="s67"><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">12</Data></Cell>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">402</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">经验卡牌，不可强化与进阶，卡牌蕴含2080点经验</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">30000</Data></Cell>
    </Row>
@@ -8302,9 +8302,9 @@
     <Cell ss:StyleID="s67"><Data ss:Type="Number">8</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">13</Data></Cell>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">400</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">经验卡牌，不可强化与进阶，卡牌蕴含4240点经验</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">30000</Data></Cell>
    </Row>
@@ -8317,9 +8317,9 @@
     <Cell ss:StyleID="s67"><Data ss:Type="Number">9</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">14</Data></Cell>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="Number">600</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">经验卡牌，不可强化与进阶，卡牌蕴含7000点经验</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">30000</Data></Cell>
    </Row>
@@ -8348,7 +8348,7 @@
    <SplitHorizontal>2</SplitHorizontal>
    <TopRowBottomPane>526</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>2</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -8356,7 +8356,6 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
@@ -8364,8 +8363,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>546</ActiveRow>
-     <ActiveCol>11</ActiveCol>
+     <ActiveRow>551</ActiveRow>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

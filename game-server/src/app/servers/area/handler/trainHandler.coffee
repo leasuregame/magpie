@@ -714,7 +714,6 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       player.updateAbility()
     
     player.save()
-    console.log(type, configData.passSkill.TYPE.GOLD, type is configData.passSkill.TYPE.GOLD, _pros[type])
     if type is configData.passSkill.TYPE.GOLD
       recordManager.createConsumptionRecord player.id, SOURCE.AFRESH_PASS_SKILL, {expense : consumeVal}
 

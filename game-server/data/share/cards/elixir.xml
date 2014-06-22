@@ -17,10 +17,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8120</WindowHeight>
+  <WindowHeight>4360</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>3320</WindowTopX>
-  <WindowTopY>6460</WindowTopY>
+  <WindowTopX>10320</WindowTopX>
+  <WindowTopY>7400</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -33,7 +33,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s62">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
@@ -41,7 +41,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
   </Style>
@@ -49,10 +49,10 @@
  <Worksheet ss:Name="仙丹配置表">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="14.25">
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Span="1"/>
-   <Column ss:Index="3" ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="83"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="108"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="188" ss:Span="2"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Span="1"/>
+   <Column ss:Index="3" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="83"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="188" ss:Span="2"/>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">仙丹数量</Data></Cell>
@@ -69,7 +69,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -84,8 +84,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -98,14 +98,14 @@
    <Column ss:AutoFitWidth="0" ss:Width="69"/>
    <Column ss:AutoFitWidth="0" ss:Width="76"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">merge_to</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s65"><Data ss:Type="String">仙丹配置表</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">elixir</Data></Cell>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">仙丹配置表</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">elixir</Data></Cell>
+    <Cell ss:StyleID="s62"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

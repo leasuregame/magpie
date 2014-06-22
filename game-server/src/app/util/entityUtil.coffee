@@ -108,9 +108,8 @@ module.exports =
       if utility.hitRate configData.card.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
       else
-        #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
-        lightUpIds = filterTableId lightUpIds if star is 5
-        id = generateCardId star, lightUpIds
+        filtered = filterTableId star, lightUpIds
+        id = generateCardId star, filtered
         vstar = cardStar(id)
         id += star - vstar if star isnt vstar
     else
@@ -129,8 +128,8 @@ module.exports =
     if typeof data.power != 'undefined' and data.power > 0
       player.addPower(data.power)
       
-    if typeof data.exp_card != 'undefined' and data.exp_card > 0
-      playerManager.addExpCardFor player, data.exp_card, cb
+    if typeof data.exp_card_count != 'undefined' and data.exp_card_count > 0
+      playerManager.addExpCardFor player, data.exp_card_count, data.exp_card_star, cb
     else if typeof data.card_id != 'undefined' and data.card_id > 0
       this.createCard {
         playerId: player.id
@@ -140,6 +139,10 @@ module.exports =
       cb(null, [])
 
   updateEntities: (groups..., cb) ->
+    ###
+    groups ['optionName', 'tableName', entityObject], ...
+    e.g. ['update', 'player', player], ['update', 'card', cards], ['delete', 'card', cards], ...
+    ###
     jobs = []
     groups.forEach (group) ->
       if _.isArray(group) and group.length >= 2
@@ -164,7 +167,7 @@ module.exports =
               else if _.isString(ent)
                 action.options.where = ent
               else
-                action.options.where = ''
+                action.options.where = '1=2'
             when 'insert'
               action.options.data = ent
             else
@@ -179,7 +182,10 @@ setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'g
   player.increase att, val for att, val of data when att in attrs and val > 0
   return
 
-filterTableId = (ids) ->
+filterTableId = (star, ids) ->
+  if star isnt 5
+    return ids
+
   # 过滤掉5星卡牌及与其同一系列的所有卡牌
   exceptIds = []
   ids.forEach (i) ->
@@ -188,7 +194,9 @@ filterTableId = (ids) ->
       e = i+15
       exceptIds = exceptIds.concat [s..e]
   
-  ids.filter (i) -> i not in exceptIds
+  results = ids.filter (i) -> i not in exceptIds
+  if results.length > 0 then results else ids
+
 
 generateCardId = (star, tableIds, exceptIds) ->
   ### 

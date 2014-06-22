@@ -133,7 +133,7 @@ function submit() {
             }
         }, function (data) {
             if(data.status == 404) {
-                showQueryPlayerBoxAlert('发送失败! 玩家不存在,请确认');
+                showQueryPlayerBoxError('发送失败! 玩家不存在,请确认');
                 $('#playerName').focus();
             }
         });
@@ -191,7 +191,7 @@ function rewardJson2Str(reward) {
             if (key == 'cardArray') {
                 var qty = 0;
                 $.each(val, function (idx, val) {
-                    qty += val.qty;
+                    qty += val.qty * 1;
                     var card = configCards[val.tableId + ""];
                     ret += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + ';\n';
                 });

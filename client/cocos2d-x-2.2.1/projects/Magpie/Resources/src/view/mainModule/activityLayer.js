@@ -125,7 +125,7 @@ var ActivityLayer = cc.Layer.extend({
 
             var layer = this._layers[i];
 
-            if (!Activity.ActivityIsShowHandler[layer.nameString]()) {
+            if (!Activity.IsShowHandler[layer.nameString]()) {
                 continue;
             }
 
@@ -216,10 +216,10 @@ var ActivityLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
             var layer = this._layers[i];
-            if (!Activity.ActivityIsShowHandler[layer.nameString]()) {
+            if (!Activity.IsShowHandler[layer.nameString]()) {
                 continue;
             }
-            this._mark[i].setVisible(Activity.ActivityIsMarkHandler[layer.nameString]());
+            this._mark[i].setVisible(Activity.IsMarkHandler[layer.nameString]());
         }
     }
 });

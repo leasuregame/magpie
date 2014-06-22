@@ -25,7 +25,6 @@ var FUNCTION_OPEN = {
         "name": "lotteryGuide",
         "childName": "treasureHuntGuide"
     },
-
     "4": {
         "tableName": "ranking_list",
         "tip": "排行榜已开放，现在可回到首页，进行查询。",
@@ -91,6 +90,12 @@ var CARD_LINEUP_LIMIT = [
     }
 ];
 
+var DAILY_INSTANCES_LAYER_LIMIT = {
+    "tip": "搜仙已开启，现在可参与。",
+    "name": "instancesGuide",
+    "childName": "dailyInstancesGuide"
+};
+
 var EXPLAIN = {
     "rank": {
         effect: "uiEffect71"
@@ -118,6 +123,7 @@ var gameGuide = {
     _succorCardsGuide: false,
     _cardSmeltGuide: false,
     _usePillGuide: false,
+    _dailyInstancesGuide: false,
 
     init: function () {
         cc.log("gameGuide init");
@@ -136,6 +142,7 @@ var gameGuide = {
         this._succorCardsGuide = false;
         this._cardSmeltGuide = false;
         this._usePillGuide = false;
+
     },
 
     updateGuide: function () {
@@ -170,6 +177,11 @@ var gameGuide = {
                     break;
                 }
             }
+        }
+
+        var limit_lv = outputTables.exp_pass_config.rows[1].limit_lv;
+        if(lv == limit_lv) {
+            this._addGuide(DAILY_INSTANCES_LAYER_LIMIT);
         }
     },
 

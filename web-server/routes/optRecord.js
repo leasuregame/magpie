@@ -4,6 +4,9 @@ var recordDao = require('../dao/OptRecordDao');
 
 var optRecord = function(app) {
 
+    /**
+     * render message option record
+     */
     app.get('/admin/msgOptRecord', filter.authorize, function(req, res) {
         res.render('msgOptRecord', {
             menu: 'msgOptRecord',
@@ -14,7 +17,10 @@ var optRecord = function(app) {
         })
     });
 
-	app.post('/admin/recordMsgOpt', filter.authorize, function(req, res) {
+    /**
+     * create a message option record
+     */
+	app.post('/admin/api/recordMsgOpt', filter.authorize, function(req, res) {
 
 		var reqParam = req.body;
 		var operator = req.session.user.user_name;
@@ -23,19 +29,25 @@ var optRecord = function(app) {
 		var options = JSON.stringify(reqParam['options']);
 		var status = reqParam['status'];
 
-        recordDao.addRecord([operator, areaId, playerNames, options, status], function (err, res){
-            console.log("addRecord", arguments);
+        console.log('recordMsgOpt ', [operator, areaId, playerNames, options, status]);
+
+        recordDao.addRecord([operator, areaId, playerNames, options, status], function (err){
+            if(err) res.status(500).send('error when selecting record, ' + err);
+            res.send('record succeeded');
         });
 	});
 
-    app.all('/admin/getSysMsgOpt', filter.authorize, function (req, res) {
+    /**
+     * get system message options
+     */
+    app.all('/admin/api/getSysMsgOpt', filter.authorize, function (req, res) {
         var queryWhere = {
             createTime : req.body['createTime']
         };
 
         recordDao.getRecords(queryWhere, function(err, rows){
             if (err) {
-                res.status(500).send('error when selecting record, ' + err);
+                return res.status(500).send('error when selecting record, ' + err);
             }
             res.send(rows);
         });

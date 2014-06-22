@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS `player` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',
   `lineUp` VARCHAR(1000) COLLATE utf8_unicode_ci DEFAULT '',
   `ability` INT(10) UNSIGNED DEFAULT '0',
-  `task` TEXT COLLATE utf8_unicode_ci DEFAULT '',
-  `pass` TEXT COLLATE utf8_unicode_ci DEFAULT '',
+  `task` TEXT COLLATE utf8_unicode_ci,
+  `pass` TEXT COLLATE utf8_unicode_ci,
   `passLayer` SMALLINT(5) DEFAULT '0',
   `dailyGift` TEXT COLLATE utf8_unicode_ci, -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
-  `signIn` TEXT COLLATE utf8_unicode_ci DEFAULT '',
+  `signIn` TEXT COLLATE utf8_unicode_ci,
   `achievement` TEXT COLLATE utf8_unicode_ci,
   `cardBook` TEXT COLLATE utf8_unicode_ci,
   `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',-- 好友上限
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `teachingStep` SMALLINT(3) DEFAULT '0',
   `exchangeCards` VARCHAR(50) DEFAULT '',
-  `activities` TEXT DEFAULT '',
+  `activities` TEXT,
   `initRate` VARCHAR(100) DEFAULT '{}',
   `speaker` INT(3) DEFAULT '0',
   `honor` INT(10) DEFAULT '0',
@@ -114,8 +114,8 @@ CREATE TABLE IF NOT EXISTS `message` (
   `sender` BIGINT(20),
   `receiver` BIGINT(20),
   `type` SMALLINT(2) UNSIGNED DEFAULT '0',
-  `options` TEXT COLLATE utf8_unicode_ci DEFAULT '',
-  `content` TEXT COLLATE utf8_unicode_ci DEFAULT '',
+  `options` TEXT COLLATE utf8_unicode_ci,
+  `content` TEXT COLLATE utf8_unicode_ci,
   `status` SMALLINT(2) UNSIGNED DEFAULT '0',
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `validDate` DATETIME,
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirHpCrit` INT(10) UNSIGNED DEFAULT '0',
   `elixirAtkCrit` INT(10) UNSIGNED DEFAULT '0',
-  `passiveSkills` TEXT COLLATE utf8_unicode_ci DEFAULT '',
+  `passiveSkills` TEXT COLLATE utf8_unicode_ci,
   `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
   `psGroupCount` INT(2) DEFAULT '3', -- 被动技能组合的数量
   `potentialLv` INT(2) DEFAULT '0', -- 潜能等级
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
   `winStreakCount` INT(10) UNSIGNED DEFAULT '0',
   `winningStreak` INT(10) UNSIGNED DEFAULT '0',
-  `recentChallenger` TEXT COLLATE utf8_unicode_ci DEFAULT '',
+  `recentChallenger` TEXT COLLATE utf8_unicode_ci,
   `historyRanking` INT(10) UNSIGNED DEFAULT '0',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`)
@@ -298,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `bossFriendReward` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-----------------------------
+DROP TABLE IF EXISTS `worldCup`;
 CREATE TABLE IF NOT EXISTS `worldCup` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `playerId` INT(10) UNSIGNED NOT NULL,
@@ -309,3 +309,35 @@ CREATE TABLE IF NOT EXISTS `worldCup` (
   `created` DATETIME,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ---------------------------------------------------------
+-- 数据收集相关表
+-- ---------------------------------------------------------
+
+-- ---------------------------------------------------------
+-- 用于统计等级流失率
+-- ---------------------------------------------------------
+DROP TABLE IF EXISTS `playerDailyLvRecord`;
+CREATE TABLE `playerDailyLvRecord` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `recordDate` DATE DEFAULT NULL ,
+  `playerLv` SMALLINT(5) UNSIGNED DEFAULT '0',
+  `loginCount` SMALLINT(6) UNSIGNED DEFAULT '1' ,
+  `createTime` DATETIME,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ---------------------------------------------------------
+-- 用于统计玩家资源消费
+-- ---------------------------------------------------------
+DROP TABLE IF EXISTS `playerConsumptionRecord`;
+CREATE TABLE `playerConsumptionRecord` (
+  `id`  int(20) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `playerId`  int(20) UNSIGNED NOT NULL,
+  `resourceType`  smallint(6) UNSIGNED DEFAULT NULL ,
+  `expense`  smallint(6) UNSIGNED DEFAULT NULL ,
+  `source`  tinyint(4) UNSIGNED DEFAULT NULL ,
+  `createTime`  DATETIME,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

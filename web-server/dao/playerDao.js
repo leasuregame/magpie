@@ -1,16 +1,20 @@
 var db = require('./db/db');
 var sqlUtil = require('./util/sqlUtil');
+var _ = require('underscore');
 
 /**
  * 根据where返回
+ * @param fields 所需筛选的column eg : ['id', 'name'] , 若为 [] 则按 select * 进行查询
  * @param where
  * @param areaId
  * @param cb
  */
-exports.getPlayers = function(where, areaId, cb) {
-    if (arguments.length == 2) {
+exports.getPlayers = function(fields, where, areaId, cb) {
+    if (arguments.length == 3) {
         cb = areaId;
-        areaId = 1;
+        areaId = where;
+        where = fields;
+        fields = {};
     }
 
     var queryWhere = '1 = 1';
@@ -22,7 +26,14 @@ exports.getPlayers = function(where, areaId, cb) {
         }
     }
 
-    var sql = 'select * from player where ' + queryWhere;
+    var selColStr = "";
+    if(_.isEmpty(fields)) {
+        selColStr = '*';
+    } else {
+        selColStr = fields.toString();
+    }
+
+    var sql = 'select ' + selColStr + ' from player where ' + queryWhere;
 
     db(areaId).query(sql, cb);
 };

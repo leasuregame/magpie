@@ -1,7 +1,9 @@
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 msgQueue = require '../../../common/msgQueue'
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 DAILY_LOTTERY_COUNT = table.getTableItem('daily_gift', 1).lottery_count
 
 
@@ -54,6 +56,8 @@ Handler::lottery = (msg, session, next) ->
       player.increase(resource.type, resource.value*times)
 
     player.save()
+    if(goldResume > 0)
+      recordManager.createConsumptionRecord player.id, SOURCE.LOTTERY, {expense : goldResume}
 
     if isMaxReward resource.id
       msgContent = {
@@ -124,6 +128,7 @@ Handler::reSignIn = (msg, session, next) ->
     player.increase('energy', sdata.energy)
     player.increase('money', sdata.money)
     player.save()
+    recordManager.createConsumptionRecord player.id, SOURCE.RE_SIGN_IN, {expense : goldResume}
     
     next(null, {
       code: 200

@@ -1,6 +1,8 @@
 async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
 table = require '../../../manager/table'
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 RESOURE_LIMIT = table.getTableItem('resource_limit', 1)
 
 module.exports = (app) ->
@@ -12,7 +14,13 @@ Handler = (@app) ->
 Handler::buyProduct = (msg, session, next)->
   playerId = session.get('playerId')
   productId = msg.id
-  times = if msg.times? then msg.times else 1
+  times = (if msg.times? then msg.times else 1) * 1
+
+  if(isNaN(times))
+    next null, {
+      code: 501,
+      msg: '传入参数错误'
+    }
 
   product = table.getTableItem('product',productId)
   if product and products[product.method]
@@ -48,6 +56,7 @@ products =
             money = RESOURE_LIMIT.money - player.money
           player.increase 'money', money
           player.decrease 'gold', gold
+          recordManager.createConsumptionRecord player.id, SOURCE.BUY_MONEY, {expense : gold}
           cb()
 
     ],(err) ->
@@ -94,6 +103,7 @@ products =
         player.updateGift 'powerBuyCount', player.dailyGift.powerBuyCount - times
         player.addPower powerValue
         player.decrease 'gold', totalGold
+        recordManager.createConsumptionRecord player.id, SOURCE.BUY_POWER, {expense : totalGold}
         cb()
 
     ],(err) ->
@@ -141,6 +151,7 @@ products =
         player.updateGift 'challengeBuyCount', player.dailyGift.challengeBuyCount - times
         player.updateGift 'challengeCount' , player.dailyGift.challengeCount + buyCount
         player.decrease 'gold', totalGold
+        recordManager.createConsumptionRecord player.id, SOURCE.BUY_CHALLENGE_COUNT, {expense : totalGold}
         cb()
 
     ],(err) ->
@@ -181,7 +192,7 @@ products =
       if _.keys(player.cards).length + times > player.cardsCount
         return next(null, {code: 501, msg: '卡库容量不足'})
 
-      playerManager.addExpCardFor player, times, (err, cards) ->
+      playerManager.addExpCardFor player, times, 3, (err, cards) ->
         if err
           return next(null, err)
 
@@ -217,6 +228,7 @@ products =
       player.decrease(product.consume_type, totalGold)
       player.increase('cardsCount', obtain)
       player.save()
+      recordManager.createConsumptionRecord player.id, SOURCE.BUY_CARD_COUNT, {expense : totalGold}
 
       next(null, {
         code: 200, 
@@ -242,12 +254,43 @@ products =
       player.decrease(product.consume_type, totalGold)
       player.increase('speaker', obtain)
       player.save()
+      recordManager.createConsumptionRecord player.id, SOURCE.BUY_SPEAKER, {expense : totalGold}
 
       next(null, {
         code: 200
         msg: 
           consume: key: product.consume_type, value: player.gold
           speaker: player.speaker
+      })
+
+  expPassCount: (playerId, product, times, next) ->
+    obtain = parseInt product.obtain * times
+    consumeValue = parseInt product.consume*times*discount(product, times)/10
+
+    playerManager.getPlayerInfo pid: playerId, (err, player) ->
+      if err
+        return next(null, {code: err.code or 500, msg: err.msg or err})
+
+      buyCount = player.dailyGift.expPassBuyCount or 0
+      if buyCount <= 0
+        return next(null, {code: 501, msg: '没有可购买次数，请充值VIP获取更多'})
+
+      if buyCount < obtain
+        return next(null, {code: 501, msg: '可购买次数不足'})
+
+      if player[product.consume_type] < consumeValue
+        return next(null, {code: 501, msg: '资源不足，不能购买'})
+
+      player.decrease product.consume_type, consumeValue
+      player.updateGift product.obtain_type, player.expPassCount() + obtain
+      player.updateGift 'expPassBuyCount', (player.dailyGift.expPassBuyCount or 1) - obtain
+      player.save()
+
+      next(null, {
+        code: 200,
+        msg: 
+          consume: key: product.consume_type, value: player[product.consume_type]
+          expPassCount: player.expPassCount()
       })
 
 discount = (product, times) ->

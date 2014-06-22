@@ -434,6 +434,12 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 755),
             "scrollViewPoint": cc.p(40, 115)
         },
+        "dailyInstancesLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
+            "scrollViewSize": cc.size(640, 740),
+            "scrollViewPoint": cc.p(40, 122)
+        },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(360, 934),
             "bgSpriteSize": cc.size(650, 809),
@@ -524,6 +530,22 @@ var fit4Iphone4 = {
             "tipPoint": cc.p(360, 515),
             "okItemPoint": cc.p(270, 429),
             "closeItemPoint": cc.p(450, 429)
+        },
+        "expInstanceLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleLabelPoint": cc.p(360, 920),
+            "topLabelPoint": cc.p(360, 850),
+            "powerIconPoint": cc.p(540, 850),
+            "powerLabelPoint": cc.p(560, 845),
+            "timesBgLabelPoint": cc.p(360, 160),
+            "remainTimesLabelPoint": cc.p(350, 160),
+            "timesLabelPoint": cc.p(400, 160),
+            "backItemPoint": cc.p(100, 920),
+            "buyCountItemPoint": cc.p(485, 160),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 600),
+            "scrollViewSize": cc.size(640, 600),
+            "scrollViewPoint": cc.p(40, 200)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -656,7 +678,7 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 874),
             "taskLayerItemPoint": cc.p(111, 914),
             "passLayerItemPoint": cc.p(254, 914),
-            "searchImmortalLayerItemPoint": cc.p(402, 914)
+            "dailyInstancesLayerItemPoint": cc.p(402, 914)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -1250,7 +1272,7 @@ var fit4Iphone4 = {
             "cardEvolutionItemOffset": cc.p(0, -2)
         },
         "summonLayer": {
-            "headIconPoint": cc.p(40, 872),
+            "headIconPoint": cc.p(40, 874),
             "lotteryLayerItemPoint": cc.p(111, 911),
             "exChangeLayerItemPoint": cc.p(254, 911),
             "treasureHuntLayerItemPoint": cc.p(403, 911)

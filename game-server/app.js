@@ -13,7 +13,11 @@ var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
 var verifier = require('./app/components/verifier');
+
+var worldCupRewardNotice = require('./app/components/worldCupRewardNotice');
+
 var PlayerManager = require('./app/manager/playerManager');
+var RecordManager = require('./app/manager/recordManager');
 var appUtil = require('./app/util/appUtil');
 var fs = require('fs');
 var path = require('path');
@@ -105,6 +109,7 @@ app.configure('production|development', 'connector|auth', function() {
 app.configure('production|development', 'area', function() {
   app.set('messageService', new MessageService(app));
   app.set('playerManager', new PlayerManager(app));
+  app.set('recordManager', new RecordManager(app));
 
   area.init({
     app: app
@@ -127,6 +132,7 @@ app.configure('production|development', 'area', function() {
 
   app.load(counter);
   app.load(verifier);
+  app.load(worldCupRewardNotice);
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

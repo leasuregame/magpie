@@ -213,14 +213,21 @@ generateCardId = (star, tableIds, exceptIds) ->
   idx = _.random(0, tableIds.length-1)
   tableIds[idx]
 
-getCardIdsByStar = (stars, exceptIds = []) ->
+getCardIdsByStar = (stars, exceptIds = [], isContainsRare=false) ->
+  if isContainsRare
+    rare_card_filter = (row) -> true
+  else
+    rare_card_filter = (row) -> (row.is_rare) isnt 1
+
   items = table.getTable('cards')
-  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars)
+  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars and rare_card_filter(row)) 
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
 
   if items.length is 0 and exceptIds.length > 0
     return exceptIds.filter (i) -> cardStar(i) in stars
+
+  console.log 'cardIds:', items
   items
 
 cardStar = (tid) ->

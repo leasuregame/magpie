@@ -341,6 +341,7 @@ var ExpInstanceLayer = cc.Layer.extend({
                         },
                         function () {
                             that.update();
+                            next();
                         },
                         function () {
                             if (upgradeReward) {

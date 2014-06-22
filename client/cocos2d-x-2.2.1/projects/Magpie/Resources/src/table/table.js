@@ -1893,6 +1893,7 @@ var outputTables = {
                 "id": 81,
                 "number": 5,
                 "name": "唐僧·金蝉子",
+                "is_rare": 1,
                 "star": 1,
                 "lv": 1,
                 "atk": 125,
@@ -1905,6 +1906,7 @@ var outputTables = {
                 "id": 82,
                 "number": 5,
                 "name": "普渡众佛·金蝉子",
+                "is_rare": 1,
                 "star": 2,
                 "lv": 1,
                 "atk": 175,
@@ -1917,6 +1919,7 @@ var outputTables = {
                 "id": 83,
                 "number": 5,
                 "name": "燃灯道人·金蝉子",
+                "is_rare": 1,
                 "star": 3,
                 "lv": 1,
                 "atk": 225,
@@ -1932,6 +1935,7 @@ var outputTables = {
                 "id": 84,
                 "number": 5,
                 "name": "功德佛·金蝉子",
+                "is_rare": 1,
                 "star": 4,
                 "lv": 1,
                 "atk": 275,
@@ -1947,6 +1951,7 @@ var outputTables = {
                 "id": 85,
                 "number": 5,
                 "name": "真身·金蝉子",
+                "is_rare": 1,
                 "star": 5,
                 "lv": 1,
                 "atk": 345,
@@ -1962,6 +1967,7 @@ var outputTables = {
                 "id": 86,
                 "number": 5,
                 "name": "组织部长·金蝉子",
+                "is_rare": 1,
                 "star": 6,
                 "lv": 1,
                 "atk": 425,
@@ -1977,6 +1983,7 @@ var outputTables = {
                 "id": 87,
                 "number": 5,
                 "name": "女儿情·金蝉子",
+                "is_rare": 1,
                 "star": 7,
                 "lv": 1,
                 "atk": 515,
@@ -11701,7 +11708,7 @@ var outputTables = {
                 "id": 1,
                 "elixir": 20,
                 "atk": 1,
-                "hp": 2
+                "hp": 4
             }
         }
     },
@@ -13927,7 +13934,7 @@ var outputTables = {
                 "exp_card_stars": "1,2,3",
                 "player_exp": 20,
                 "power_consume": 10,
-                "description": "我是使命是：无私奉献！不求回报！"
+                "description": "我的使命是：无私奉献！不求回报！"
             },
             "2": {
                 "id": 2,
@@ -13958,7 +13965,7 @@ var outputTables = {
                 "trigger_rate": 40,
                 "boss_attr": 86,
                 "atk_inc": 0,
-                "hp_inc": 50,
+                "hp_inc": 100,
                 "limit_lv": 60,
                 "total_count_scope": "9,11",
                 "litle_count_scope": "0,2",
@@ -43430,32 +43437,32 @@ var outputTables = {
             "50003": {
                 "id": 50003,
                 "card_id": 50002,
-                "atk": 3287.7,
-                "hp": 11506.949999999999,
+                "atk": 9838,
+                "hp": 34433,
                 "dodge_rate": 5,
                 "crit_rate": 5
             },
             "50004": {
                 "id": 50004,
                 "card_id": 50003,
-                "atk": 5083,
-                "hp": 17790.5,
+                "atk": 12542,
+                "hp": 43897,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "50005": {
                 "id": 50005,
                 "card_id": 50003,
-                "atk": 7163,
-                "hp": 25070.5,
+                "atk": 14058,
+                "hp": 49203,
                 "dodge_rate": 5,
                 "crit_rate": 5
             },
             "50006": {
                 "id": 50006,
                 "card_id": 50004,
-                "atk": 9838.4,
-                "hp": 34434.4,
+                "atk": 21918,
+                "hp": 76713,
                 "dodge_rate": 10,
                 "crit_rate": 10
             }

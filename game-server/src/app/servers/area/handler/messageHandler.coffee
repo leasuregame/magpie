@@ -52,10 +52,9 @@ Handler::messageList = (msg, session, next) ->
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and (
-          (type = #{configData.message.MESSAGETYPE.SYSTEM} and DATE(validDate) >= '#{today}') or 
-          (type = #{configData.message.MESSAGETYPE.MESSAGE})
-        )"
+        where: " receiver = #{playerId} and 
+          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
+          status <> #{configData.message.MESSAGESTATUS.ASKING} and DATE(validDate) >= '#{today}'"
         orderby: ' createTime DESC '
       }, cb
 
@@ -180,7 +179,7 @@ Handler::handleSysMsg = (msg, session, next) ->
           done(err)
         else
           obj.addCards cards
-          data.cardArray = cards.map (c) -> c.toJson()
+          data.cardArray = cards
           done(null, data)
     else
       done(null, data)
@@ -245,9 +244,10 @@ Handler::handleSysMsg = (msg, session, next) ->
       if _.isArray(data.cardArray) and data.cardArray.length > 0
         data.cardArray.forEach (c) ->
           star = c.tableId%20 || 20
-          achieve.star5card(player) if star is 5
-          achieve.star6card(player) if star is 6
-          achieve.star7card(player) if star is 7
+          if not c.isExpCard()
+            achieve.star5card(player) if star is 5
+            achieve.star6card(player) if star is 6
+            achieve.star7card(player) if star is 7
 
       cb(null, data)
   ],(err, data)->
@@ -255,6 +255,7 @@ Handler::handleSysMsg = (msg, session, next) ->
       next(null, {code: err.code or 500, msg: err.msg or err})
 
     player.save()
+    data.cardArray = data.cardArray.map (c) -> c.toJson()
     next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->
@@ -701,6 +702,8 @@ changeGroupNameAndSort = (messages) ->
     items.sort (x, y) -> y.createTime - x.createTime
     if n is 'system'
       items.sort (x, y) -> x.status - y.status
+      console.log('system message: ', items.length)
+      console.log(items)
     else if n is 'friend'
       copyItems = _.clone(items)
       newItems = []

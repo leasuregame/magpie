@@ -64,7 +64,7 @@ var BossListLayer = cc.Layer.extend({
         cdTimeIcon.setPosition(this._bossListLayerFit.cdTimeIconPoint);
         this.addChild(cdTimeIcon);
 
-        var tipLabel = cc.LabelTTF.create("最后一次攻击，奖励翻倍", "STHeitiTC-Medium", 18);
+        var tipLabel = cc.Sprite.create(main_scene_image.icon467);
         tipLabel.setPosition(this._bossListLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 

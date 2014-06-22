@@ -5,10 +5,10 @@ class Record
   constructor: (@app) ->
 
   createLoginRecord : (player, cb) ->
-    makeAPlayerDailyRecord(@app, player, true, cb)
+    @makeAPlayerDailyRecord(@app, player, true, cb)
 
   createLogoutRecord : (player, cb) ->
-    makeAPlayerDailyRecord(@app, player, false, cb)
+    @makeAPlayerDailyRecord(@app, player, false, cb)
 
   # 新建player消费记录,其中 bill : {resourceType, expense}
   createConsumptionRecord : (playerId, source, bill, cb) ->
@@ -24,7 +24,7 @@ class Record
     consumptionDao.createRecord record, cb
 
   # 新建player登入登出记录,主要记录playerId, playerLv, loginCount, recordDate
-  makeAPlayerDailyRecord = (app, player, isLogin, cb) ->
+  makeAPlayerDailyRecord: (app, player, isLogin, cb) ->
     playerManager = app.get('playerManager')
     dailyLvDao = app.get('dao').playerDailyLvRecord
 

@@ -45,6 +45,7 @@ DEFAULT_OPTIONS =
   inc_scale: 0
   is_attacker: false
   is_boss: false
+  is_need_boos_in_bl: true
 
 class Player extends Module
   init: (entity, options = {}) ->

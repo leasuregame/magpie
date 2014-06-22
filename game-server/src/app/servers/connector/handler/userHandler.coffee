@@ -159,8 +159,7 @@ onUserLeave = (app, session, reason) ->
       app.rpc.area.playerRecordRemote.createLogoutRecord session, session.get('playerId'), cb
       
     (res, cb) ->
-      app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
-        cb(err)
+      app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), cb
   ], (err) ->
     appUtil.errHandler(err) if err
 

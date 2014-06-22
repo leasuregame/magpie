@@ -499,21 +499,31 @@ var Boss = Entity.extend({
 
     removeCdNeedGold: function () {
         var needGold = 0;
-        if(this._rmTimerCount <= 10) {
+        if (this._rmTimerCount <= 10) {
             needGold = 20;
-        } else if(this._rmTimerCount <= 20) {
-            needGold = 30;
-        } else {
+        } else if (this._rmTimerCount <= 20) {
             needGold = 50;
+        } else {
+            needGold = 100;
         }
         return needGold;
     },
 
     _cdChangeEvent: function () {
         // 提示cd已经到了可以打BOSS
+
+        var mark = gameMark.getBossMark();
+
         if (this.get("cd") == 0) {
-            gameMark.updateBossMark(true);
+            if (!mark) {
+                gameMark.updateBossMark(true);
+            }
+        } else {
+            if (mark) {
+                gameMark.updateBossMark(false);
+            }
         }
+
     },
 
     _kneelCountChangeEvent: function () {

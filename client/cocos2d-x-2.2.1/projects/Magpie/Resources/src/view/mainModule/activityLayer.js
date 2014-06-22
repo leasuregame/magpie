@@ -11,52 +11,54 @@
  * activity layer
  * */
 
-
-//var titleIcons = ["icon429", "icon261", "icon344", "icon433", "icon262", "icon442", "icon263", "icon265"];
-
 var ActivityLayer = cc.Layer.extend({
     _activityLayerFit: null,
 
     _layers: [
         {
+            titleIcon: "worldCupIcon1",
+            layer: WorldCupLayer,
+            nameString: "worldCupLayer"
+        },
+        {
             titleIcon: "icon429",
             layer: NewAreaRewardLayer,
-            nameString: "NewAreaRewardLayer"
+            nameString: "newAreaRewardLayer"
         },
         {
             titleIcon: "icon261",
             layer: SignInLayer,
-            nameString: "SignInLayer"
+            nameString: "signInLayer"
         },
         {
             titleIcon: "icon344",
             layer: GoldCardsLayer,
-            nameString: "GoldCardsLayer"
+            nameString: "goldCardsLayer"
         },
         {
             titleIcon: "icon433",
             layer: GrowthPlanLayer,
-            nameString: "GrowthPlanLayer"
+            nameString: "growthPlanLayer"
         },
         {
             titleIcon: "icon262",
             layer: PowerRewardLayer,
-            nameString: "PowerRewardLayer"
+            nameString: "powerRewardLayer"
         },
         {
             titleIcon: "icon442",
             layer: VipDailyRewardLayer,
-            nameString: "VipDailyRewardLayer"
+            nameString: "vipDailyRewardLayer"
         },
         {
             titleIcon: "icon263",
             layer: GoldRewardLayer,
-            nameString: "GoldRewardLayer"
+            nameString: "goldRewardLayer"
         },
         {
             titleIcon: "icon265",
             layer: InvitationLayer,
-            nameString: "InvitationLayer"
+            nameString: "invitationLayer"
         }
     ],
     _selectIcon: null,
@@ -117,14 +119,13 @@ var ActivityLayer = cc.Layer.extend({
 
         var index = 0;
         var showIndex = -1;
-        var activity = gameData.activity;
         var len = this._layers.length;
 
         for (var i = 0; i < len; ++i) {
 
             var layer = this._layers[i];
 
-            if (!activity.ActivityIsShowHandler[layer.nameString]()) {
+            if (!Activity.IsShowHandler[layer.nameString]()) {
                 continue;
             }
 
@@ -145,7 +146,7 @@ var ActivityLayer = cc.Layer.extend({
             scrollViewLayer.addChild(this._mark[i], 2);
             mainMenu.addChild(this._item[i]);
 
-            if(showIndex == -1) {
+            if (showIndex == -1) {
                 showIndex = i;
             }
 
@@ -180,7 +181,6 @@ var ActivityLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            this._selectIcon.setPosition(this._item[index].getPosition());
             this.switchLayer(this._layers[index].layer);
         }
     },
@@ -191,23 +191,35 @@ var ActivityLayer = cc.Layer.extend({
 
         if (!(this._nowLayer instanceof runLayer)) {
             if (this._nowLayer != null) this.removeChild(this._nowLayer);
+
+            var index = 0;
+            var len = this._layers.length;
+            for (var i = 0; i < len; i++) {
+                if (this._layers[i].layer == runLayer) {
+                    cc.log(i);
+                    index = i;
+                    break;
+                }
+            }
+
             this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
+
+            this._selectIcon.setPosition(this._item[index].getPosition());
         }
     },
 
     updateMark: function () {
         cc.log("ActivityLayer updateMark");
 
-        var activity = gameData.activity;
         var len = this._layers.length;
 
         for (var i = 0; i < len; ++i) {
             var layer = this._layers[i];
-            if (!activity.ActivityIsShowHandler[layer.nameString]()) {
+            if (!Activity.IsShowHandler[layer.nameString]()) {
                 continue;
             }
-            this._mark[i].setVisible(activity.ActivityIsMarkHandler[layer.nameString]());
+            this._mark[i].setVisible(Activity.IsMarkHandler[layer.nameString]());
         }
     }
 });

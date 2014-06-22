@@ -387,13 +387,17 @@ var CardTrainLabel = cc.Layer.extend({
             return;
         }
 
-        var effect = cc.BuilderReader.load(main_scene_image[url[type - 1]], this);
-        effect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
-        effect.animationManager.setCompletedAnimationCallback(this, function () {
-            effect.removeFromParent();
-            effect = null;
+        if (this._critFffect != null) {
+            this._critFffect.removeFromParent();
+            this._critFffect = null;
+        }
+        this._critFffect = cc.BuilderReader.load(main_scene_image[url[type - 1]], this);
+        this._critFffect.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
+        this._critFffect.animationManager.setCompletedAnimationCallback(this, function () {
+            this._critFffect.removeFromParent();
+            this._critFffect = null;
         });
-        this.addChild(effect, 20);
+        this.addChild(this._critFffect, 20);
     },
 
     ccbFnExtract: function () {
@@ -476,6 +480,11 @@ var CardTrainLabel = cc.Layer.extend({
         if (this._extractEffect != null) {
             this._extractEffect.removeFromParent();
             this._extractEffect = null;
+        }
+
+        if (this._critFffect != null) {
+            this._critFffect.removeFromParent();
+            this._critFffect = null;
         }
 
         if (mandatoryTeachingLayer) {

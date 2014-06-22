@@ -984,13 +984,19 @@ var Card = Entity.extend({
     getSellCardMoney: function () {
         cc.log("Card getSellCardMoney");
 
-        var table = outputTables.card_price.rows[1];
+        var price = 0;
 
-        var price = table["star" + this._star];
+        if (this.isLeadCard()) {
+            var table = outputTables.card_price.rows[1];
 
-        var rows = outputTables.card_grow.rows;
-        for (var i = 1; i < this._lv; ++i) {
-            price += rows[i].money_need;
+            price = table["star" + this._star];
+
+            var rows = outputTables.card_grow.rows;
+            for (var i = 1; i < this._lv; ++i) {
+                price += rows[i].money_need;
+            }
+        } else if (this.isExpCard()) {
+            price = outputTables.resource_cards.rows[this._tableId].price;
         }
 
         return price;

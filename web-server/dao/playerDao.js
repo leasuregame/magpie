@@ -9,7 +9,6 @@ var _ = require('underscore');
  * @param areaId
  * @param cb
  */
-
 exports.getPlayers = function(fields, where, areaId, cb) {
     if (arguments.length == 3) {
         cb = areaId;

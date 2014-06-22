@@ -486,7 +486,7 @@ var Player = (function(_super) {
 
         var dg = {
             expPassCount: EXP_PASS_COUNT,
-            expPassBuyCount: EXP_PASS_BUY_COUNT + vipPrivilege.exp_instance_count,
+            expPassBuyCount: EXP_PASS_BUY_COUNT + vipPrivilege.exp_pass_count,
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             lotteryCountUsed: 0,
@@ -1805,7 +1805,7 @@ var recountVipPrivilege = function(player, oldVip) {
     player.friendsCount += curVipInfo.friend_count - oldVipInfo.friend_count;
     var dg = utility.deepCopy(player.dailyGift);
     
-    dg.expPassBuyCount += curVipInfo.exp_instance_count - oldVipInfo.exp_instance_count;
+    dg.expPassBuyCount += curVipInfo.exp_pass_count - oldVipInfo.exp_pass_count;
     dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;

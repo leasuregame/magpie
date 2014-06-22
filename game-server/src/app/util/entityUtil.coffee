@@ -213,7 +213,7 @@ generateCardId = (star, tableIds, exceptIds) ->
   idx = _.random(0, tableIds.length-1)
   tableIds[idx]
 
-getCardIdsByStar = (stars, exceptIds = [], isContainsRare=false) ->
+getCardIdsByStar = (stars, exceptIds = [], isContainsRare=true) ->
   if isContainsRare
     rare_card_filter = (row) -> true
   else

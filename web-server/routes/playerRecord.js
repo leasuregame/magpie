@@ -2,16 +2,18 @@ var Url = require('url');
 var filter = require('../util/filter');
 var async = require('async');
 var _ = require('underscore');
+var util = require('util');
+var path = require('path');
+var fs = require('fs');
 var logger = require('../util/logger').logger('reward');
 var lvRecDao = require('../dao/playerDailyLvRecordDao');
 var consumeRecDao = require('../dao/playerConsumptionRecordDao');
+var CONSUMPTION_SOURCE_NAME = require('../data/record').CONSUMPTION_SOURCE_NAME;
 
 var DEF_LV_DATA = {
     total : 0,
     wastage : 0
 };
-
-
 
 var playerRecord = function(app) {
 
@@ -31,7 +33,58 @@ var playerRecord = function(app) {
     /**
      * get data of  player wastage rate on lv
      */
-	app.all('/admin/api/getWastageRateOnLv', filter.authorize, function(req, res) {
+    app.all('/admin/api/getWastageRateOnLv', filter.authorize, function(req, res) {
+
+        var reqData = req.body;
+        var areaId = reqData.areaId;
+
+        if(!areaId) {
+            return res.status(500).send('ERROR : areaId is required');
+        }
+
+        queryWastageRateRows(areaId, reqData, function(err, rows) {
+            if (err) {
+                return res.status(500).send('error when getting WASTAGE RATE ON LV, ' + err);
+            }
+            res.send(rows);
+        });
+    });
+
+    app.all('/admin/api/download/wastageRateOnLv', function(req, res){
+        var reqData = req.body.length > 0 ? req.body : req.query;
+        var areaId = reqData.areaId;
+
+        if(!areaId) {
+            return res.status(500).send('ERROR : areaId is required');
+        }
+
+        queryWastageRateRows(areaId, reqData, function(err, rows) {
+            if (err) {
+                return res.status(500).send('error when getting WASTAGE RATE ON LV, ' + err);
+            }
+
+            createCSVFileByRows("等级,等级玩家数,等级玩家比例,等级流失玩家数,等级流失玩家比例,总流失玩家比例", rows,
+                function (row) {
+                    return util.format('%s,%s,%s,%s,%s,%s\n', row.lv, row.total, row.totalRate,
+                        row.wastage, row.wastageRate, row.totalWastageRate);
+                },
+                function (filePath) {
+                    var now = new Date();
+                    var outputName = util.format('player lv distribution %s-%s-%s.csv',
+                        now.getFullYear(), now.getMonth(), now.getDate());
+                    res.download(filePath, outputName, function(err){
+                        if(err) {
+                            return res.status(500).send('error when downloading file WASTAGE RATE ON LV, ' + err);
+                        } else {
+                            fs.unlinkSync(filePath);
+                        }
+                    });
+                }
+            );
+        });
+    });
+
+    function queryWastageRateRows(areaId, param, cb) {
 
         /**
          * 对查询结果进行统计
@@ -72,30 +125,26 @@ var playerRecord = function(app) {
             return statsResArr;
         }
 
-        var reqData = req.body;
-        var areaId = reqData.areaId;
-        var criticalTime = (reqData.criticalDays ? reqData.criticalDays : 3) * 24 * 60 * 60 * 1000;
-
-        if(!areaId) {
-            return res.status(500).send('ERROR : areaId is required');
+        var criticalTime = (param.criticalDays ? param.criticalDays : 3) * 24 * 60 * 60 * 1000;
+        if(param.recordDate && param.recordDate[1]) {
+            var criticalDate = new Date(new Date(param.recordDate[1]).getTime() - criticalTime);
+        } else {
+            var criticalDate = new Date(new Date().getTime() - criticalTime);
         }
-
-        var criticalDate = new Date(new Date(reqData.recordDate[1]).getTime() - criticalTime);
         var recWhere = {
-            created : reqData.created,
-            recordDate : reqData.recordDate
+            created : param.created,
+            recordDate : param.recordDate
         };
+
         if(!(areaId instanceof Array)) {
             // 从DB获取时间段内每个player的最后一次离线记录
             lvRecDao.getLastRecords(recWhere, areaId, function (err, rows) {
-                if (err) {
-                    res.status(500).send('error when executing getWastageRateOnLv, ' + err);
-                    return;
-                }
-                res.send(handleWastageRateRows(rows, criticalDate));
+                if (err) {return cb(err, null);}
+                cb(null, handleWastageRateRows(rows, criticalDate));
             });
         } else {
             var tasks = []; // 查询函数数组
+
             // 构造task,分别对应每个区的查询
             for(var i in areaId) {
                 (function(i){
@@ -108,18 +157,15 @@ var playerRecord = function(app) {
                 })(i);
             }
             async.parallel(tasks, function(err, rs){
-                if(err){
-                    res.status(500).send('error when executing getWastageRateOnLv, ' + err);
-                    return;
-                }
+                if (err) {return cb(err, null);}
                 var rows = rs[0];
                 for(var i = 1; i < rs.length; i++) {
                     rows = rows.concat(rs[i]);
                 }
-                res.send(handleWastageRateRows(rows, criticalDate));
+                cb(null, handleWastageRateRows(rows, criticalDate));
             });
         }
-	});
+    }
 
     /**
      * render statistics -- player consumption rate
@@ -138,6 +184,59 @@ var playerRecord = function(app) {
      * get data of  player consumption rate
      */
     app.all('/admin/api/getPlayerConsumption', filter.authorize, function(req, res){
+
+        var reqData = req.body;
+        var areaId = reqData.areaId;
+
+        if(!areaId) {
+          return res.status(500).send('ERROR : areaId is required');
+        }
+
+        queryPlayerConsumption(areaId, reqData, function(err, rows) {
+            if (err) {
+                return res.status(500).send('error when getting PLAYER CONSUMPTION, ' + err);
+            }
+            res.send(rows);
+        });
+    });
+
+    app.all('/admin/api/download/playerConsumption', function(req, res){
+        var reqData = req.query;
+        var areaId = reqData.areaId;
+
+        if(!areaId) {
+            return res.status(500).send('ERROR : areaId is required');
+        }
+
+        queryPlayerConsumption(areaId, reqData, function(err, rows) {
+            if (err) {
+                return res.status(500).send('error when getting WASTAGE RATE ON LV, ' + err);
+            }
+
+            createCSVFileByRows("功能,消费角色数,消费角色比例,购买次数,人均购买次数,消费魔石,魔石消费比例,人均消费魔石", rows,
+                function (row) {
+                    return util.format('%s,%s,%s,%s,%s,%s,%s,%s\n', CONSUMPTION_SOURCE_NAME[row.source],
+                        row.playerCounts, row.playersRate,
+                        row.buyCounts, row.buyCountsPerPlayer,
+                        row.expense, row.expenseRate, row.expensePerPlayer);
+                },
+                function (filePath) {
+                    var now = new Date();
+                    var outputName = util.format('player consumption %s-%s-%s.csv',
+                        now.getFullYear(), now.getMonth(), now.getDate());
+                    res.download(filePath, outputName, function(err){
+                        if(err) {
+                            return res.status(500).send('error when downloading file WASTAGE RATE ON LV, ' + err);
+                        } else {
+                            fs.unlinkSync(filePath);
+                        }
+                    });
+                }
+            );
+        });
+    });
+
+    function queryPlayerConsumption(areaId, param, cb) {
 
         /**
          * 对查询结果进行统计
@@ -161,28 +260,15 @@ var playerRecord = function(app) {
             return rows;
         }
 
-//        var reqData = req.query;
-        var reqData = req.body;
-        var areaId = reqData.areaId;
-
-        if(!areaId) {
-//            res.status(500).send('ERROR : areaId is required');
-//            return;
-            areaId = 1;
-        }
-
         var recWhere = {
-            created : reqData.created,
-            createTime : reqData.createTime
+            created : param.created,
+            createTime : param.createTime
         };
 
         if(!(areaId instanceof Array)) {
             consumeRecDao.getRecords(recWhere, areaId, function(err, rows){
-                if (err) {
-                    res.status(500).send('error when executing getPlayerConsumption, ' + err);
-                    return;
-                }
-                res.send(handleConsumptionRateRows(rows));
+                if(err){return cb(err, null);}
+                cb(null, handleConsumptionRateRows(rows));
             });
         } else {
             var tasks = []; // 查询函数数组
@@ -198,9 +284,7 @@ var playerRecord = function(app) {
                 })(i);
             }
             async.parallel(tasks, function(err, rs){
-                if(err){
-                    return res.status(500).send('error when executing getPlayerConsumption, ' + err);
-                }
+                if(err){return cb(err, null);}
                 var rows = rs[0];
                 for(var i = 1; i < rs.length; i++) {
                     var baseRows = rows.splice(0, rows.length);
@@ -218,6 +302,7 @@ var playerRecord = function(app) {
                             } else {
                                 baseRow.expense += tmpRow.expense;
                                 baseRow.playerCounts += tmpRow.playerCounts;
+                                baseRow.buyCounts += tmpRow.buyCounts;
                                 rows = rows.concat(baseRows.splice(0, 1));
                                 tmpRows.splice(0, 1)
                             }
@@ -229,10 +314,25 @@ var playerRecord = function(app) {
                         rows = rows.concat(tmpRows.splice(0, tmpRows.length));
                     }
                 }
-                res.send(handleConsumptionRateRows(rows));
+                cb(null, handleConsumptionRateRows(rows));
             });
         }
-    });
+    }
+
+    function createCSVFileByRows(head, rows, formatRow, cb) {
+        var fileData = head + '\n';
+        for(var i in rows) {
+            var row = rows[i];
+            fileData += formatRow(row);
+        }
+        var tmpDir = path.join(__dirname,'..', 'tmp');
+        if (!fs.existsSync(tmpDir)) {
+            fs.mkdirSync(tmpDir);
+        }
+        var filePath = path.join(tmpDir, parseInt(Math.random() * 100000000).toString(16));
+        fs.writeFileSync(filePath, fileData);
+        cb(filePath);
+    }
 };
 
 module.exports = playerRecord;

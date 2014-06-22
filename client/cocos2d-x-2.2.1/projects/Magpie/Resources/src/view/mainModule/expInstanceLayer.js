@@ -310,6 +310,11 @@ var ExpInstanceLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            if(gameData.dailyInstances.get("expPassCount") <= 0) {
+                TipLayer.tip("今日免费次数已用完");
+                return;
+            }
+
             if (gameData.cardList.isFull()) {
                 CardListFullTipLayer.pop();
                 return;

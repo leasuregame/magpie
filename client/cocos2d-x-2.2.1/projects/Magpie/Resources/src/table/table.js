@@ -11710,7 +11710,7 @@ var outputTables = {
         "rows": {
             "50001": {
                 "id": 50001,
-                "exp": 500,
+                "exp": 390,
                 "price": 100,
                 "star": 1,
                 "lv": 1,
@@ -11718,32 +11718,32 @@ var outputTables = {
             },
             "50002": {
                 "id": 50002,
-                "exp": 1060,
-                "price": 100,
+                "exp": 950,
+                "price": 200,
                 "star": 2,
                 "lv": 1,
                 "remark": "2星经验卡"
             },
             "50003": {
                 "id": 50003,
-                "exp": 2080,
-                "price": 100,
+                "exp": 1970,
+                "price": 300,
                 "star": 3,
                 "lv": 1,
                 "remark": "3星经验卡"
             },
             "50004": {
                 "id": 50004,
-                "exp": 4240,
-                "price": 100,
+                "exp": 4090,
+                "price": 400,
                 "star": 4,
                 "lv": 1,
                 "remark": "4星经验卡"
             },
             "50005": {
                 "id": 50005,
-                "exp": 7000,
-                "price": 100,
+                "exp": 6890,
+                "price": 500,
                 "star": 5,
                 "lv": 1,
                 "remark": "5星经验卡"

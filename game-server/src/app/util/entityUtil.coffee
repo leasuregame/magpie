@@ -188,7 +188,7 @@ module.exports =
 
           jobs.push action
 
-    console.log '-jobs-', JSON.stringify(jobs)
+    #console.log '-jobs-', JSON.stringify(jobs)
     job.multJobs jobs, cb
 
 setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
@@ -240,7 +240,6 @@ getCardIdsByStar = (stars, exceptIds = [], isContainsRare=true) ->
   if items.length is 0 and exceptIds.length > 0
     return exceptIds.filter (i) -> cardStar(i) in stars
 
-  console.log 'cardIds:', items
   items
 
 cardStar = (tid) ->

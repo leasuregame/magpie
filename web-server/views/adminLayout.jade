@@ -9,6 +9,7 @@ html
     link(rel='stylesheet', href='/css/main.css')
     script(type='text/javascript', src='/js/bootstrap.min.js')
     script(type='text/javascript', src='/js/util.js')
+    script(type='text/javascript', src='/js/common.js')
     block head
   body
     div(class='container')
@@ -20,7 +21,8 @@ html
             span.icon-bar
             span.icon-bar
           .dropdown
-            a.dropdown-toggle.navbar-brand(data-toggle='dropdown' href='/') LeasureGame
+            a#platformName.dropdown-toggle.navbar-brand(data-toggle='dropdown' href='/')
+              span LeasureGame
               b.caret
             ul.dropdown-menu(style="top:50px")
               li

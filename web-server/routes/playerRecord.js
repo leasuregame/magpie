@@ -130,8 +130,6 @@ var playerRecord = function(app) {
             return statsResArr;
         }
 
-        console.log(param);
-
         var criticalTime = (param.criticalDays ? param.criticalDays : 3) * 24 * 60 * 60 * 1000;
         if(param.recordDate && param.recordDate[1]) {
             var criticalDate = new Date(new Date(param.recordDate[1]).getTime() - criticalTime);

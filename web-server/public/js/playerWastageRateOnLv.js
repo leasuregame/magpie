@@ -105,7 +105,6 @@ function doRequest(reqData) {
             $(tipAlertId.NO_RS).removeClass('hide');
         }
     },function(data){
-        console.log(data);
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
     });

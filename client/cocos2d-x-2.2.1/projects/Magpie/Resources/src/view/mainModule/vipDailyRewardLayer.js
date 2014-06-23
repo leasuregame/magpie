@@ -88,7 +88,7 @@ var VipDailyRewardLayer = cc.Layer.extend({
                     expCardItem.setPosition(cc.p(x + 42, 142));
                     menu.addChild(expCardItem);
 
-                    var expCardLabel = StrokeLabel.create("+" + rewards.exp_card_count, "STHeitiTC-Medium", 16);
+                    var expCardLabel = StrokeLabel.create("+" + rewards.exp_card_count, "STHeitiTC-Medium", 20);
                     expCardLabel.setAnchorPoint(cc.p(1, 0));
                     expCardLabel.setPosition(cc.p(85, 8));
                     expCardLabel.setBgColor(cc.c3b(0, 0, 0));

@@ -339,7 +339,6 @@ isV587 = (bl) ->
       if k > 6 and _.isObject(v)
         enemyCardCount += 1
 
-  console.log ownCardCount, enemyCardCount
   return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->

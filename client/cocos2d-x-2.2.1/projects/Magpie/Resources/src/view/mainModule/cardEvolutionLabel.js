@@ -460,11 +460,36 @@ var CardEvolutionLabel = cc.Layer.extend({
             for (var i = 0; i < MAX_CARD_STAR; i++) {
                 this._oldStarIcon[i].setVisible(false);
             }
+
+            this._selectRetinueCardItem.setEnabled(false);
+            this._evolutionItem.setEnabled(false);
+            this._superHonorLabel.setString(gameData.player.get("superHonor") + "/" + 0);
+            this._moneyLabel.setString("0");
+            this._cardCountLabel.setString("0");
         } else {
             var star = this._leadCard.get("star");
             this._evolutionRateLabel.setString(gameData.player.getEvolutionRate(star) + "%");
             this._cardCountLabel.setString("0");
             this._evolutionItem.setEnabled(false);
+
+            var needMoney = this._leadCard.getEvolutionNeedMoney();
+            var needSuperHonor = this._leadCard.getEvolutionNeedSuperHonor();
+            var player = gameData.player;
+
+            this._moneyLabel.setString(needMoney);
+            this._superHonorLabel.setString(player.get("superHonor") + "/" + needSuperHonor);
+
+            if (needMoney > player.get("money")) {
+                this._moneyLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+            }
+
+            if (needSuperHonor > player.get("superHonor")) {
+                this._superHonorLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._superHonorLabel.setColor(cc.c3b(255, 255, 255));
+            }
         }
     },
 

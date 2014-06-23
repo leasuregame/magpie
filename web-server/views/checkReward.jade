@@ -8,6 +8,8 @@ block head
         require('boot');
 
 block content
+    h1.text-center=title
+    hr
     div.form-horizontal(role='form', action='#')
         include ./queryPlayerBox
         hr

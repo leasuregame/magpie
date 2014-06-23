@@ -3,6 +3,8 @@ dao = app.get('dao')
 _ = require 'underscore'
 async = require 'async'
 playerManager = require('pomelo').app.get('playerManager')
+recordManager = require('pomelo').app.get('recordManager')
+SOURCE = require('../../../../config/data').record.CONSUMPTION_SOURCE
 fightManager = require '../../../manager/fightManager'
 utility = require('../../../common/utility')
 entityUtil = require('../../../util/entityUtil')
@@ -228,6 +230,7 @@ Handler::removeTimer = (msg, session, next) ->
     player.removeCD()
     player.incRmTimerCount()
     player.save()
+    recordManager.createConsumptionRecord player.id, SOURCE.RESET_BOSS_CD, {expense : gold_resume}
 
     next(null, {code: 200, msg: {
       gold: player.gold
@@ -394,6 +397,8 @@ Handler::attack = (msg, session, next) ->
         week: utility.thisWeek()
       }, (err, dorObj) ->
         saveObjects(bl, boss, player, totalDamage, blObj.id, dorObj, cb)
+        if(gold_resume > 0)
+          recordManager.createConsumptionRecord player.id, SOURCE.INSPIRE_ON_ATTACK_BOSS, {expense : gold_resume}
   ], (err, bl, totalDamage) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err})

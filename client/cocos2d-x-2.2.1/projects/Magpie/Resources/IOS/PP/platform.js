@@ -13,7 +13,7 @@ var lz = lz || {};
 lz.platformConfig = {
     OS: "IOS",
     PLATFORM: "PP",
-    VERSION: "1.4.2",
+    VERSION: "1.5.0",
     APP_ID: 3183,
     APP_KEY: "27c09e4ed7f6c03851e26945a99d1c3f",
     GATE_SERVER_HOST: "115.29.12.178",
@@ -104,9 +104,8 @@ ppAdapter.PPSetCloseRechargeAlertMessage("当前关闭充值功能哦");
 ppAdapter.PPCheckGameUpdate();
 
 ppAdapter.token = "";
-ppAdapter._PPCurrentUserId = ppAdapter.PPCurrentUserId;
-ppAdapter.PPCurrentUserId = function () {
-    return parseInt(ppAdapter._PPCurrentUserId());
+ppAdapter.PPCurrentUserIdInt = function () {
+    return parseInt(ppAdapter.PPCurrentUserId());
 };
 
 // 充值回调
@@ -223,10 +222,10 @@ ppAdapter.PPLogOffCallBack = function () {
 
 lz.platformIsLogin = function () {
     cc.log("ppAdapter token: " + ppAdapter.token);
-    cc.log(ppAdapter.PPCurrentUserId());
+    cc.log(ppAdapter.PPCurrentUserIdInt());
     cc.log(ppAdapter.PPCurrentUserName());
 
-    return (ppAdapter.PPCurrentUserId() && ppAdapter.PPCurrentUserName());
+    return (ppAdapter.PPCurrentUserIdInt() && ppAdapter.PPCurrentUserName());
 };
 
 lz.platformLogout = function () {

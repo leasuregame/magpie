@@ -31,7 +31,12 @@ var CardHeadNode = cc.Node.extend({
             url = "icon12";
         } else if (this._card) {
             star = this._card.get("star");
-            url = this._card.get("url") + "_head" + (star > 2 ? Math.min(star - 2, 3) : 1);
+
+            if (this._card.isLeadCard() || this._card.isBossCard()) {
+                url = this._card.get("url") + "_head" + (star > 2 ? Math.min(star - 2, 3) : 1);
+            } else if (this._card.isResourceCard()) {
+                url = this._card.get("url") + "_head1";
+            }
         } else {
             var effect = cc.BuilderReader.load(main_scene_image.uiEffect61, this);
             effect.setPosition(cc.p(51, 57));

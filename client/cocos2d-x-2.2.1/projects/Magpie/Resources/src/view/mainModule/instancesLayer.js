@@ -7,7 +7,9 @@ var InstancesLayer = cc.Layer.extend({
 
     _taskLayerItem: null,
     _passLayerItem: null,
+    _dailyInstancesLayerItem: null,
     _passGuide: null,
+    _dailyInstancesGuide: null,
 
     onEnter: function () {
         this._super();
@@ -37,16 +39,16 @@ var InstancesLayer = cc.Layer.extend({
         this._taskLayerItem.setPosition(this._instancesLayerFit.taskLayerItemPoint);
         this._taskLayerItem.setOffset(cc.p(-6, -5));
 
-        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
-            this._passLayerItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.icon390,
-                this._onClickPassLayer,
-                this
-            );
-        } else {
+//        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
+//            this._passLayerItem = cc.MenuItemImage.createWithIcon(
+//                main_scene_image.button23h,
+//                main_scene_image.button23h,
+//                main_scene_image.button23h,
+//                main_scene_image.icon390,
+//                this._onClickPassLayer,
+//                this
+//            );
+//        } else {
             this._passLayerItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button23,
                 main_scene_image.button23s,
@@ -55,19 +57,34 @@ var InstancesLayer = cc.Layer.extend({
                 this._onClickPassLayer,
                 this
             );
-        }
+//        }
         this._passLayerItem.setPosition(this._instancesLayerFit.passLayerItemPoint);
         this._passLayerItem.setOffset(cc.p(0, -5));
 
+        this._dailyInstancesLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button23,
+            main_scene_image.button23s,
+            main_scene_image.button23d,
+            main_scene_image.icon466,
+            this._onClickDailyInstancesLayer,
+            this
+        );
+
+        this._dailyInstancesLayerItem.setPosition(this._instancesLayerFit.dailyInstancesLayerItemPoint);
+        this._dailyInstancesLayerItem.setOffset(cc.p(0, -5));
+
+
         var menu = cc.Menu.create(
             this._taskLayerItem,
-            this._passLayerItem
+            this._passLayerItem,
+            this._dailyInstancesLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         this._taskLayerItem.setEnabled(false);
         this._passLayerItem.setEnabled(true);
+        this._dailyInstancesLayerItem.setEnabled(true);
         this.switchLayer(TaskLayer);
 
         return true;
@@ -81,21 +98,29 @@ var InstancesLayer = cc.Layer.extend({
             this._passGuide.setPosition(this._instancesLayerFit.passLayerItemPoint);
             this.addChild(this._passGuide, 2);
         }
+
+        if (gameGuide.get("dailyInstancesGuide") && !this._dailyInstancesGuide) {
+            this._dailyInstancesGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._dailyInstancesGuide.setPosition(this._instancesLayerFit.dailyInstancesLayerItemPoint);
+            this.addChild(this._dailyInstancesGuide, 2);
+        }
+
     },
 
     _onClickTaskLayer: function () {
-        cc.log("ShopLayer _onClickVipLayer");
+        cc.log("InstancesLayer _onClickVipLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._taskLayerItem.setEnabled(false);
         this._passLayerItem.setEnabled(true);
+        this._dailyInstancesLayerItem.setEnabled(true);
 
         this.switchLayer(TaskLayer);
     },
 
     _onClickPassLayer: function () {
-        cc.log("ShopLayer _onClickPropsLayer");
+        cc.log("InstancesLayer _onClickPropsLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -108,6 +133,25 @@ var InstancesLayer = cc.Layer.extend({
         if (this.switchLayer(PassLayer)) {
             this._taskLayerItem.setEnabled(true);
             this._passLayerItem.setEnabled(false);
+            this._dailyInstancesLayerItem.setEnabled(true);
+        }
+    },
+
+    _onClickDailyInstancesLayer: function () {
+        cc.log("InstancesLayer _onClickDailyInstancesLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._dailyInstancesGuide) {
+            this._dailyInstancesGuide.removeFromParent();
+            this._dailyInstancesGuide = null;
+            gameGuide.set("dailyInstancesGuide", false);
+        }
+
+        if (this.switchLayer(DailyInstancesLayer)) {
+            this._taskLayerItem.setEnabled(true);
+            this._passLayerItem.setEnabled(true);
+            this._dailyInstancesLayerItem.setEnabled(false);
         }
     },
 

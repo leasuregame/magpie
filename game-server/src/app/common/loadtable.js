@@ -43,6 +43,7 @@ function analyzeTable(alltable, tablename) {
   var colNames = [];
   var colComment = {};
   var uniCol = null;
+  console.log(tablename);
   for (var i = 0; i < columns.length; i++) {
     var name = columns[i].Data['#'] || (columns[i].Data['Font'] && columns[i].Data['Font']['#']);
     //console.log(name,tablename,columns[i]);

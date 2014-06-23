@@ -192,7 +192,7 @@ products =
       if _.keys(player.cards).length + times > player.cardsCount
         return next(null, {code: 501, msg: '卡库容量不足'})
 
-      playerManager.addExpCardFor player, times, (err, cards) ->
+      playerManager.addExpCardFor player, times, 3, (err, cards) ->
         if err
           return next(null, err)
 
@@ -220,7 +220,6 @@ products =
 
       curCount = player.cardsCount - RESOURE_LIMIT.card_count_min + 1
       totalGold = countTotalGold curCount, product, times
-      console.log('consume: ', totalGold)
 
       if player.gold < totalGold
         return next(null, {code: 501, msg: "魔石不足"})
@@ -261,6 +260,36 @@ products =
         msg: 
           consume: key: product.consume_type, value: player.gold
           speaker: player.speaker
+      })
+
+  expPassCount: (playerId, product, times, next) ->
+    obtain = parseInt product.obtain * times
+    consumeValue = parseInt product.consume*times*discount(product, times)/10
+
+    playerManager.getPlayerInfo pid: playerId, (err, player) ->
+      if err
+        return next(null, {code: err.code or 500, msg: err.msg or err})
+
+      buyCount = player.dailyGift.expPassBuyCount or 0
+      if buyCount <= 0
+        return next(null, {code: 501, msg: '没有可购买次数，请充值VIP获取更多'})
+
+      if buyCount < obtain
+        return next(null, {code: 501, msg: '可购买次数不足'})
+
+      if player[product.consume_type] < consumeValue
+        return next(null, {code: 501, msg: '资源不足，不能购买'})
+
+      player.decrease product.consume_type, consumeValue
+      player.updateGift product.obtain_type, player.expPassCount() + obtain
+      player.updateGift 'expPassBuyCount', (player.dailyGift.expPassBuyCount or 1) - obtain
+      player.save()
+
+      next(null, {
+        code: 200,
+        msg: 
+          consume: key: product.consume_type, value: player[product.consume_type]
+          expPassCount: player.expPassCount()
       })
 
 discount = (product, times) ->

@@ -215,7 +215,7 @@ Handler::luckyCard = (msg, session, next) ->
   grainFiveStarCard = (cards, player) ->
     lids = player.lightUpCards()
 
-    cards.forEach (c) -> lids.push c.id if c.star is 5
+    cards.forEach (c) -> lids.push c.tableId if c.star is 5
     
     cards4 = cards.filter (c) -> 
       _tid = c.tableId + 5 - c.star
@@ -509,7 +509,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if is_upgrade
         ### 成功进阶，对应星级初始概率置为0 ###
         player.setInitRate(card.star, 0)
-        player.updateUseCardCoun(card.star, 0)
+        player.updateUseCardCount(card.star, 0)
 
         card.increase('star')
         card.increase('tableId')
@@ -714,7 +714,6 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       player.updateAbility()
     
     player.save()
-    console.log(type, configData.passSkill.TYPE.GOLD, type is configData.passSkill.TYPE.GOLD, _pros[type])
     if type is configData.passSkill.TYPE.GOLD
       recordManager.createConsumptionRecord player.id, SOURCE.AFRESH_PASS_SKILL, {expense : consumeVal}
 

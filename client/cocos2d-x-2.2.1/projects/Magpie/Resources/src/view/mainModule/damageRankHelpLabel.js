@@ -123,26 +123,15 @@ var DamageRankHelpLabel = LazyLayer.extend({
             moneyLabel.setPosition(cc.p(155, y + 28));
             rankView.addChild(moneyLabel);
 
-            var energyIcon = cc.Sprite.create(main_scene_image.icon154);
-            energyIcon.setAnchorPoint(cc.p(0, 0.5));
-            energyIcon.setPosition(cc.p(255, y + 30));
-            rankView.addChild(energyIcon);
-
-            var energyLabel = cc.LabelTTF.create(reward.energy, "STHeitiTC-Medium", 22);
-            energyLabel.setAnchorPoint(cc.p(0, 0.5));
-            energyLabel.setColor(cc.c3b(123, 76, 65));
-            energyLabel.setPosition(cc.p(305, y + 28));
-            rankView.addChild(energyLabel);
-
             var honorIcon = cc.Sprite.create(main_scene_image.icon405);
             honorIcon.setAnchorPoint(cc.p(0, 0.5));
-            honorIcon.setPosition(cc.p(405, y + 30));
+            honorIcon.setPosition(cc.p(255, y + 30));
             rankView.addChild(honorIcon);
 
             var honorLabel = cc.LabelTTF.create(reward.honor, "STHeitiTC-Medium", 22);
             honorLabel.setAnchorPoint(cc.p(0, 0.5));
             honorLabel.setColor(cc.c3b(123, 76, 65));
-            honorLabel.setPosition(cc.p(455, y + 28));
+            honorLabel.setPosition(cc.p(305, y + 28));
             rankView.addChild(honorLabel);
         }
 

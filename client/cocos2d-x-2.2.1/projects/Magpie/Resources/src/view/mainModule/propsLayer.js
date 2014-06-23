@@ -11,7 +11,7 @@
  * props layer
  * */
 
-var productUrl = ["icon283", "icon284", "icon374", "icon278", "icon279", "icon280"];
+var productUrl = ["icon284", "icon374", "icon278", "icon279", "icon280"];
 
 var PropsLayer = cc.Layer.extend({
     _propsLayerFit: null,

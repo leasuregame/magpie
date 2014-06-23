@@ -32,7 +32,7 @@ class VirtualPlayer extends Player
         tableId: c.card_id
         hp: c.init_hp
         atk: c.init_atk
-        boss: true if c.boss?
+        boss: true if c.boss? and @is_need_boos_in_bl
       }
     cobj
 

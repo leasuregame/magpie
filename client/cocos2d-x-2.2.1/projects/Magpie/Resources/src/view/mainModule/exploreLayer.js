@@ -610,287 +610,51 @@ var ExploreLayer = cc.Layer.extend({
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        var that = this;
         var task = gameData.task;
 
         var statue = task.canExplore();
 
-        if (statue == CAN_EXPLORE) {
-            this._lock();
-
-            var that = this;
-            gameData.task.explore(function (data) {
-                cc.log(data);
-
-                if (data) {
-                    var result = data.result;
-                    var battleLogId = data.battleLogId;
-                    var isFirstFight = data.isFirstFight;
-                    var card = data.card;
-                    var money = data.money;
-                    var exp = data.exp;
-                    var isDouble = data.isDouble;
-                    var power = data.power;
-                    var progress = data.progress;
-                    var toNext = data.toNext;
-                    var goldList = data.goldList;
-                    var upgradeReward = data.upgradeReward;
-                    var level9Box = data.level9Box;
-                    var throughReward = data.through_reward;
-                    var findBoss = data.findBoss;
-                    var isWin = false;
-
-                    var next = function () {
-                        gameCombo.next();
-                    };
-
-                    gameCombo.push([
-                        function () {
-                            that._playAnimation(next);
-                        },
-                        function () {
-                            if (result == "fight") {
-                                that._spiritNode.encounterBattle();
-
-                                that.scheduleOnce(function () {
-                                    that._spiritNode.normal();
-
-                                    isWin = BattlePlayer.getInstance().play({
-                                        cb: next,
-                                        id: battleLogId
-                                    });
-                                }, 1);
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (result == "box") {
-                                that._spiritNode.encounterBox();
-
-                                that.ccbFnOpenBox = function () {
-                                    cc.log("ExploreLayer ccbFnOpenBox");
-
-                                    ExploreCardLayer.pop({
-                                        cb: next,
-                                        card: card
-                                    });
-                                };
-
-                                that.scheduleOnce(function () {
-                                    that._spiritNode.normal();
-
-                                    var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, that);
-                                    boxEffect.setPosition(that._exploreLayerFit.openBoxSpritePoint);
-                                    that.addChild(boxEffect);
-
-                                    boxEffect.animationManager.setCompletedAnimationCallback(that, function () {
-                                        boxEffect.removeFromParent();
-                                    });
-                                }, 1);
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            that.update(1);
-                            that._updateCollect();
-
-                            if (!money || !exp) {
-                                next();
-                                return;
-                            }
-
-                            var action = cc.Spawn.create(
-                                cc.Sequence.create(
-                                    cc.FadeIn.create(0.3),
-                                    cc.DelayTime.create(0.6),
-                                    cc.FadeOut.create(0.1)
-                                ),
-                                cc.MoveBy.create(0.5, cc.p(0, 20)),
-                                cc.ScaleTo.create(0.5, 1.5, 1.5)
-                            );
-
-                            var x = 640 * (that._index - 1) + 320;
-                            if (power) {
-                                var powerLabel = cc.LabelTTF.create("-" + power, "STHeitiTC-Medium", 15);
-                                powerLabel.setPosition(cc.p(x, 365));
-                                that._scrollView.addChild(powerLabel, 2);
-                                powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
-                                powerLabel.runAction(action.clone());
-                            }
-
-                            if (exp) {
-                                var expLabel = cc.LabelTTF.create("+" + exp, "STHeitiTC-Medium", 15);
-                                expLabel.setPosition(cc.p(x, 324));
-                                that._scrollView.addChild(expLabel, 2);
-                                expLabel.setAnchorPoint(cc.p(0.5, 0.5));
-                                expLabel.runAction(action.clone());
-                            }
-
-                            if (progress) {
-                                var progressLabel = cc.LabelTTF.create("+" + progress, "STHeitiTC-Medium", 15);
-                                progressLabel.setPosition(cc.p(x, 283));
-                                that._scrollView.addChild(progressLabel, 2);
-                                progressLabel.setAnchorPoint(cc.p(0.5, 0.5));
-                                progressLabel.runAction(action);
-                            }
-
-                            that.scheduleOnce(function () {
-                                if (powerLabel) powerLabel.removeFromParent();
-                                if (expLabel) expLabel.removeFromParent();
-                                if (progressLabel) progressLabel.removeFromParent();
-                            }, 1);
-
-                            var url = "uiEffect48";
-                            var point = that._exploreLayerFit.rewardEffectPoint;
-
-                            if (isDouble) {
-                                url = "uiEffect87";
-                                var size = cc.size(640, 208);
-                                var y = that._exploreLayerFit.mapLabelBasePoint.y + size.height * that._exploreLayerFit.mapLabelScaleY / 2;
-                                point = cc.p(gameFit.GAME_MIDPOINT.x, y);
-                            }
-
-                            var rewardEffect = cc.BuilderReader.load(main_scene_image[url], that);
-                            rewardEffect.controller.ccbMoneyLabel.setString("+" + money);
-                            rewardEffect.controller.ccbExpLabel.setString("+" + exp);
-                            rewardEffect.setPosition(point);
-
-                            if (isDouble) {
-                                rewardEffect.animationManager.runAnimationsForSequenceNamedTweenDuration(
-                                    that._exploreLayerFit.rewardEffectUrl,
-                                    0
-                                );
-                            }
-
-                            that.addChild(rewardEffect);
-
-                            rewardEffect.animationManager.setCompletedAnimationCallback(that, function () {
-                                rewardEffect.removeFromParent();
-                            });
-
-                            var animationManager = rewardEffect.animationManager;
-                            var delay = animationManager.getSequenceDuration(
-                                animationManager.getRunningSequenceName()
-                            );
-
-                            that.scheduleOnce(function () {
-                                next();
-                            }, delay - 1);
-                        },
-                        function () {
-                            if (findBoss) {
-                                // 加入boss出现事件
-                                BossAppearLabel.pop(function () {
-                                    next();
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (toNext) {
-                                var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, that);
-                                passEffect.controller.ccbGoldLayer.setString(throughReward.money);
-                                passEffect.setPosition(that._exploreLayerFit.passEffectPoint);
-                                that.addChild(passEffect);
-
-                                passEffect.animationManager.setCompletedAnimationCallback(that, function () {
-                                    passEffect.removeFromParent();
-                                    that._index += 1;
-
-                                    if(that._pageIndex == that._getTaskId() - 1) {
-                                        that._pageIndex++;
-                                        that._updatePage();
-                                    }
-
-                                    next();
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (that._index > that._maxIndex) {
-                                that._sectionId = gameData.task.getSection();
-                                that._unlock();
-                                that._onClickBack();
-                                next();
-                            } else {
-                                that.update();
-
-                                that.scheduleOnce(function () {
-                                    next();
-
-                                    that.scheduleOnce(function () {
-                                        that._unlock();
-                                    }, 0.15);
-                                }, 0.2);
-                            }
-                        },
-                        function () {
-                            if (upgradeReward) {
-                                PlayerUpgradeLayer.pop({
-                                    cb: next,
-                                    reward: upgradeReward
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (level9Box) {
-                                Level9BoxLayer.pop({
-                                    cb: next,
-                                    reward: level9Box
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (goldList) {
-                                GoldLayer.pop({
-                                    cb: next,
-                                    goldList: goldList
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (isWin && isFirstFight) {
-                                MandatoryTeachingLayer.pop({
-                                    cb: next,
-                                    progress: FIRST_FIGHT
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (upgradeReward) {
-                                gameGuide.updateGuide();
-                            }
-                            next();
-                        }
-                    ]);
-                } else {
-                    that.update();
-                    that._unlock();
-                }
-            }, this._getTaskId());
-
-            if (noviceTeachingLayer.isNoviceTeaching()) {
-                noviceTeachingLayer.clearAndSave();
-                noviceTeachingLayer.next();
-            }
-        } else if (statue == POWER_NO_ENOUGH) {
+        if (statue == POWER_NO_ENOUGH) {
             this._onBuyPower();
+            this.unscheduleAllCallbacks();
         } else if (statue == CARD_FULL) {
             CardListFullTipLayer.pop();
+            this.unscheduleAllCallbacks();
+        } else {
+            gameData.task.explore(function (data) {
+
+                if (task.isCollectedAll()) {
+                    task.getTurnReward();
+                }
+
+                if (data) {
+                    if (data.goldList) {
+                        var len = data.goldList.length;
+                        var gold = 0;
+                        for (var i = 0; i < len; i++) {
+                            gold += data.goldList[i];
+                        }
+                        task.obtainGold(gold);
+                    }
+
+                    if (data.toNext) {
+                        that._index += 1;
+                    }
+
+                    if (that._index > that._maxIndex) {
+                        that._sectionId = task.getSection();
+                    }
+
+                    that.update();
+                    that._updateCollect();
+                }
+
+                that.scheduleOnce(function () {
+                    that._onClickExplore();
+                }, 3.5);
+            }, this._getTaskId());
         }
     },
 

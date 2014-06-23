@@ -274,7 +274,6 @@ checkWhiteList = (user) ->
     return false if !fs.existsSync(wpath)
     try
       list = JSON.parse fs.readFileSync(wpath)
-      console.log list, user.id, list.indexOf(user.id), list.indexOf(user.id) > -1
       return list.indexOf(user.id) > -1
     catch e
       logger.error(e)

@@ -1,5 +1,6 @@
 async = require 'async'
 _ = require 'underscore'
+logger = require('pomelo-logger').getLogger(__filename)
 
 class Record
   constructor: (@app) ->
@@ -20,7 +21,7 @@ class Record
         expense : bill.expense
         resourceType : if bill.resourceType then bill.resourceType else 1
     cb = if cb then cb else (err) ->
-      console.log "ERROR ON EXECUTING recordManager.createConsumptionRecord", err if err
+      logger.error "ERROR ON EXECUTING recordManager.createConsumptionRecord", err if err
     consumptionDao.createRecord record, cb
 
   # 新建player登入登出记录,主要记录playerId, playerLv, loginCount, recordDate

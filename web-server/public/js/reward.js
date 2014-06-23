@@ -44,7 +44,8 @@ var baseRewardNames = {
     fragments : '卡魂',
     superHonor : '精元',
     speaker : '喇叭',
-    honor : '荣誉点'
+    honor : '荣誉点',
+    pill : '觉醒玉'
 };
 
 // init
@@ -532,6 +533,10 @@ var evtAfterChanged = function () {
                         var val = $input.val();
                         var card = configCards[val + ''];
                         var lvLimit = cardLvLimit[card.star + ''].max_lv;
+                        if(card.id >= 50001 && card.id <=50005) {
+                            lvLimit = 1;
+                            $input.closest('.cardTag').find('.cLv').val(1);
+                        }
                         $input.closest('.cardTag').find('.cardLimit').attr('limit', lvLimit);
                         $input.closest('.cardTag').find('input').change();
                         break;

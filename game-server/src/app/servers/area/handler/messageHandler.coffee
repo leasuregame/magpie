@@ -52,9 +52,10 @@ Handler::messageList = (msg, session, next) ->
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and 
-          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
-          status <> #{configData.message.MESSAGESTATUS.ASKING} and DATE(validDate) >= '#{today}'"
+        where: " receiver = #{playerId} and (
+          (type = #{configData.message.MESSAGETYPE.SYSTEM} and DATE(validDate) >= '#{today}') or 
+          (type = #{configData.message.MESSAGETYPE.MESSAGE})
+        )"
         orderby: ' createTime DESC '
       }, cb
 

@@ -7,11 +7,14 @@ var SummonLayer = cc.Layer.extend({
 
     _lotteryLayerItem: null,
     _exchangeLayerItem: null,
+    _treasureHuntGuide: null,
 
     onEnter: function () {
         cc.log("SummonLayer onEnter");
 
         this._super();
+        this.updateGuide();
+
         lz.um.beginLogPageView("召唤界面");
     },
 
@@ -44,6 +47,11 @@ var SummonLayer = cc.Layer.extend({
         this._lotteryLayerItem.setPosition(this._summonLayerFit.lotteryLayerItemPoint);
         this._lotteryLayerItem.setOffset(cc.p(0, -5));
 
+        this._lotteryMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._lotteryMark.setPosition(cc.p(125, 50));
+        this._lotteryMark.setVisible(false);
+        this._lotteryLayerItem.addChild(this._lotteryMark, 3);
+
         this._exchangeLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
             main_scene_image.button23s,
@@ -55,18 +63,64 @@ var SummonLayer = cc.Layer.extend({
         this._exchangeLayerItem.setPosition(this._summonLayerFit.exChangeLayerItemPoint);
         this._exchangeLayerItem.setOffset(cc.p(-6, -5));
 
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].lottery) {
+            this._treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.icon456,
+                this._onClickTreasureHuntLayer,
+                this
+            );
+        } else {
+            this._treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23,
+                main_scene_image.button23s,
+                main_scene_image.button23d,
+                main_scene_image.icon456,
+                this._onClickTreasureHuntLayer,
+                this
+            );
+        }
+        this._treasureHuntLayerItem.setOffset(cc.p(-6, -5));
+        this._treasureHuntLayerItem.setPosition(this._summonLayerFit.treasureHuntLayerItemPoint);
+
+        this._treasureHuntMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+        this._treasureHuntMark.setPosition(cc.p(125, 50));
+        this._treasureHuntMark.setVisible(false);
+        this._treasureHuntLayerItem.addChild(this._treasureHuntMark, 3);
+
         var menu = cc.Menu.create(
+            this._exchangeLayerItem,
             this._lotteryLayerItem,
-            this._exchangeLayerItem
+            this._treasureHuntLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         this._lotteryLayerItem.setEnabled(false);
         this._exchangeLayerItem.setEnabled(true);
+        this._treasureHuntLayerItem.setEnabled(true);
         this.switchLayer(LotteryLayer);
 
         return true;
+    },
+
+    updateMark: function () {
+        cc.log("SummonLayer updateMark");
+        this._lotteryMark.setVisible(gameMark.getLotteryMark());
+        this._treasureHuntMark.setVisible(gameMark.getTreasureHuntMark());
+
+    },
+
+    updateGuide: function () {
+        cc.log("SummonLayer updateGuide");
+
+        if (gameGuide.get("treasureHuntGuide") && !this._treasureHuntGuide) {
+            this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._treasureHuntGuide.setPosition(this._summonLayerFit.treasureHuntLayerItemPoint);
+            this.addChild(this._treasureHuntGuide, 3);
+        }
     },
 
     _onClickLotteryLayer: function () {
@@ -76,6 +130,7 @@ var SummonLayer = cc.Layer.extend({
 
         this._lotteryLayerItem.setEnabled(false);
         this._exchangeLayerItem.setEnabled(true);
+        this._treasureHuntLayerItem.setEnabled(true);
 
         this.switchLayer(LotteryLayer);
     },
@@ -87,20 +142,44 @@ var SummonLayer = cc.Layer.extend({
 
         this._lotteryLayerItem.setEnabled(true);
         this._exchangeLayerItem.setEnabled(false);
+        this._treasureHuntLayerItem.setEnabled(true);
 
         this.switchLayer(ExchangeLayer);
     },
 
+    _onClickTreasureHuntLayer: function () {
+        cc.log("SummonLayer _onClickTreasureHuntLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._treasureHuntGuide) {
+            this._treasureHuntGuide.removeFromParent();
+            this._treasureHuntGuide = null;
+            gameGuide.set("treasureHuntGuide", false);
+        }
+
+        if (this.switchLayer(TreasureHuntLayer)) {
+            this._lotteryLayerItem.setEnabled(true);
+            this._exchangeLayerItem.setEnabled(true);
+            this._treasureHuntLayerItem.setEnabled(false);
+        }
+    },
 
     switchLayer: function (runLayer) {
         cc.log("SummonLayer switchMenu");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
+
+        if (runLayer.canEnter && !runLayer.canEnter()) {
+            return false;
+        }
 
         if (!(this._nowLayer instanceof runLayer)) {
             if (this._nowLayer != null) this.removeChild(this._nowLayer);
             this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
         }
+
+        return true;
     }
 
 });

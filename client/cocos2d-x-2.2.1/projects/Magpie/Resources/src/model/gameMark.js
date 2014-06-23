@@ -10,6 +10,7 @@
 var gameMark = {
 
     _activity: false,
+    _summon: false,
     _achievement: false,
     _cardLibrary: false,
     _friend: false,
@@ -30,11 +31,13 @@ var gameMark = {
     _newAreaReward: false,
     _growthPlan: false,
     _vipDailyReward: false,
+    _worldCup: false,
 
     init: function () {
         cc.log("gameMark init");
 
         this._activity = false;
+        this._summon = false;
         this._achievement = false;
         this._cardLibrary = false;
         this._friend = false;
@@ -55,6 +58,7 @@ var gameMark = {
         this._newAreaReward = false;
         this._growthPlan = false;
         this._vipDailyReward = false;
+        this._worldCup = false;
     },
 
     getActivityMark: function () {
@@ -63,7 +67,8 @@ var gameMark = {
         if (!this._activity) {
             this._activity = this.getSignInMark() || this.getGoldRewardMark() || this.getRechargeMark() ||
                 this.getPowerRewardMark() || this.getNewYearMark() || this.getGoldCardsMark() ||
-                this.getNewAreaRewardMark() || this.getGrowthPlanMark() || this.getVipDailyRewardMark();
+                this.getNewAreaRewardMark() || this.getGrowthPlanMark() || this.getVipDailyRewardMark() ||
+                this.getWorldCupMark();
         }
 
         return this._activity;
@@ -73,6 +78,23 @@ var gameMark = {
         cc.log("gameMark updateActivityMark");
 
         this._activity = mark;
+        MainScene.getInstance().updateMark();
+    },
+
+    getSummonMark: function () {
+        cc.log("gameMark getSummonMark");
+
+        if (!this._summon) {
+            this._summon = this.getLotteryMark() || this.getTreasureHuntMark();
+        }
+
+        return this._summon;
+    },
+
+    updateSummonMark: function (mark) {
+        cc.log("gameMark updateSummonMark");
+
+        this._summon = mark;
         MainScene.getInstance().updateMark();
     },
 
@@ -357,6 +379,7 @@ var gameMark = {
         cc.log("gameMark updateLotteryMark");
 
         this._lottery = mark;
+        this.updateSummonMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -395,9 +418,10 @@ var gameMark = {
         cc.log("gameMark getTreasureHuntMark");
 
         if (!this._treasureHunt) {
+            var limitLv = outputTables.function_limit.rows[1].lottery;
             var freeCount = gameData.treasureHunt.get("freeCount");
             var lv = gameData.player.get("lv");
-            if (freeCount > 0 && lv >= 25) {
+            if (freeCount > 0 && lv >= limitLv) {
                 this._treasureHunt = true;
             }
         }
@@ -409,6 +433,7 @@ var gameMark = {
         cc.log("gameMark updateTreasureHuntMark");
 
         this._treasureHunt = mark;
+        this.updateSummonMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -542,11 +567,11 @@ var gameMark = {
         MainScene.getInstance().updateMark();
     },
 
-    getVipDailyRewardMark: function() {
+    getVipDailyRewardMark: function () {
         cc.log("gameMark getVipDailyRewardMark");
 
-        if(!this._vipDailyReward) {
-            if(gameData.player.get("vip") > 0 && gameData.activity.get("vipLoginReward")) {
+        if (!this._vipDailyReward) {
+            if (gameData.player.get("vip") > 0 && gameData.activity.get("vipLoginReward")) {
                 this._vipDailyReward = true;
             }
         }
@@ -554,10 +579,31 @@ var gameMark = {
         return this._vipDailyReward;
     },
 
-    updateVipDailyRewardMark: function(mark) {
+    updateVipDailyRewardMark: function (mark) {
         cc.log("gameMark updateVipDailyRewardMark");
 
         this._vipDailyReward = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
+    },
+
+    getWorldCupMark: function () {
+        cc.log("gameMark getWorldCupMark");
+
+        if (!this._worldCup) {
+            var activity = gameData.activity;
+            if (activity.get("worldCupReward") || activity.get("worldCupCanAnswer")) {
+                this._worldCup = true;
+            }
+        }
+
+        return this._worldCup;
+    },
+
+    updateWorldCupMark: function (mark) {
+        cc.log("gameMark updateWorldCupMark");
+
+        this._worldCup = mark;
         this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     }

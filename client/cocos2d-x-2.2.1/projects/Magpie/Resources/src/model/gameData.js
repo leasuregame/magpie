@@ -38,6 +38,7 @@ var gameData = {
     activity: null,
     greeting: null,
     boss: null,
+    dailyInstances: null,
 
     gameStart: function (player) {
         cc.log("gameData init");
@@ -66,6 +67,7 @@ var gameData = {
         this.activity = Activity.create();
         this.greeting = Greeting.create();
         this.boss = Boss.create();
+        this.dailyInstances = DailyInstances.create();
 
         gameCombo.reset();
 

@@ -151,6 +151,45 @@ lz.format = function (str, length) {
     return strList;
 };
 
+lz.format2 = function (str, fontName, fontSize, strSize) {
+    cc.log("lz format2");
+
+    var strList = [];
+    var str2 = str.split("#");
+    var len = str2.length;
+
+    cc.log(str2);
+
+    for (var i = 0; i < len; i++) {
+        var temStr = str2[i];
+        var len2 = temStr.length;
+        var size = 0;
+        var index = 0;
+
+        if (len2 == 0) {
+            strList.push(temStr);
+            continue;
+        }
+
+        for (var j = 0; j < len2; j++) {
+            size += lz.getStrWidth(temStr.substr(j, 1), fontName, fontSize);
+            if (size > strSize) {
+                strList.push(temStr.substring(index, j - 1));
+                index = j - 1;
+                j--;
+                size = 0;
+            } else if (j == len2 - 1) {
+                strList.push(temStr.substring(index, len2));
+            }
+        }
+    }
+
+    cc.log(strList);
+
+    return strList;
+};
+
+
 lz.getStrWidth = function (str, fonName, fontSize) {
     var label = cc.LabelTTF.create(str, fonName, fontSize);
     return label.getContentSize().width;
@@ -207,7 +246,8 @@ var gameGoodsIcon = {
     "exp": "icon318",
     "speaker": "icon375",
     "honor": "icon405",
-    "superHonor": "icon406"
+    "superHonor": "icon406",
+    "pill": "icon459"
 };
 
 lz.getGoodsIconByKey = function (key) {
@@ -297,6 +337,10 @@ var gameGoodsName = {
         name: "有奖竞技次数",
         color: cc.c3b(255, 239, 131)
     },
+    "expPassCount": {
+        name: "经验副本次数",
+        color: cc.c3b(255, 239, 131)
+    },
     "cardsCount": {
         name: "卡库位置",
         color: cc.c3b(255, 239, 131)
@@ -318,7 +362,22 @@ var gameGoodsName = {
         name: "精元",
         color: cc.c3b(255, 239, 131),
         icon: gameGoodsIcon["superHonor"]
+    },
+    "pill": {
+        name: "觉醒玉",
+        color: cc.c3b(255, 239, 131),
+        icon: gameGoodsIcon["pill"]
     }
+};
+
+var cardNameColor = {
+    "1": cc.c3b(255, 244, 156),
+    "2": cc.c3b(128, 239, 54),
+    "3": cc.c3b(45, 213, 255),
+    "4": cc.c3b(255, 246, 8),
+    "5": cc.c3b(253, 62, 255),
+    "6": cc.c3b(0, 255, 198),
+    "7": cc.c3b(255, 102, 0)
 };
 
 lz.getGoodsNameByKey = function (key) {
@@ -339,21 +398,28 @@ lz.getRewardString = function (data) {
                 var cards = data[key];
                 var count = {};
                 var len = cards.length;
-                var lv;
+                var tableId;
 
                 for (var i = 0; i < len; ++i) {
                     if (cards[i]) {
-                        lv = cards[i].lv;
-                        count[lv] = count[lv] ? count[lv] + 1 : 1;
+                        tableId = cards[i].tableId;
+                        count[tableId] = count[tableId] ? count[tableId] + 1 : 1;
                     }
                 }
 
-                for (lv in count) {
-                    if (count[lv]) {
+                for (tableId in count) {
+                    if (count[tableId]) {
+                        var card = Card.create({
+                            tableId: tableId,
+                            lv: 1,
+                            skillLv: 1
+                        });
                         str.push({
-                            str: lv + "级" + reward.name + " : " + count[lv],
-                            color: reward.color,
-                            icon: reward.icon
+                            str: card.get("name") + " : " + count[tableId],
+                            color: cardNameColor[card.get("star")],
+                            card: CardHeadNode.create(
+                                card
+                            )
                         });
                     }
                 }
@@ -389,6 +455,10 @@ lz.getRewardString = function (data) {
         for (var key in reward) {
             if (!reward[key]) continue;
 
+            if (key == "cardArray" || key == "exp_card_count" || key == "exp_card_star") {
+                continue;
+            }
+
             var fn = (function (key) {
                 return function () {
                     var str = lz.getGoodsNameByKey(key);
@@ -396,17 +466,7 @@ lz.getRewardString = function (data) {
                     if (str.icon) {
                         TipLayer.tipWithIcon(str.icon, " +" + reward[key], isDouble || false);
                     } else {
-                        if (key == "cardArray") {
-                            var cards = reward[key];
-                            var len = cards.length;
-
-                            for (var i = 0; i < len; i++) {
-                                var card = Card.create(cards[i]);
-                                TipLayer.tipNoBg(card.get("name") + ": +1");
-                            }
-                        } else {
-                            TipLayer.tipNoBg(str.name + ": +" + reward[key]);
-                        }
+                        TipLayer.tipNoBg(str.name + ": +" + reward[key]);
                     }
                 }
             })(key);
@@ -418,7 +478,74 @@ lz.getRewardString = function (data) {
 
             lz.scheduleOnce(fn, delay);
         }
+
+        //经验元灵奖励
+        if (reward["exp_card_star"]) {
+            var fn1 = (function () {
+                return function () {
+                    TipLayer.tipCard(reward["exp_card_star"] + 50000, " +" + reward["exp_card_count"]);
+                }
+            })();
+
+            now = Date.now();
+            lastTimestamp += TIP_INTERVAL;
+            lastTimestamp = Math.max(lastTimestamp, now);
+            delay = (lastTimestamp - now) / 1000;
+
+            lz.scheduleOnce(fn1, delay);
+        }
+
+        //卡牌奖励
+        if (reward["cardArray"]) {
+            var cards = dealCardArray(reward[key]);
+            var len = cards.length;
+            for (var i = 0; i < len; i++) {
+                var fn2 = (function (i) {
+                    return function () {
+                        TipLayer.tipCard(cards[i].tableId, " +" + cards[i].qty);
+                    }
+                })(i);
+
+                now = Date.now();
+                lastTimestamp += TIP_INTERVAL;
+                lastTimestamp = Math.max(lastTimestamp, now);
+                delay = (lastTimestamp - now) / 1000;
+
+                lz.scheduleOnce(fn2, delay);
+            }
+        }
+
     };
+
+    var dealCardArray = function (cardArray) {
+
+        var len = cardArray.length;
+        var cbData = [];
+        var cardTable = outputTables.cards.rows;
+
+        for (var i = 0; i < len; i++) {
+            var cards = {
+                tableId: cardArray[i].tableId,
+                name: cardTable[cardArray[i].tableId].name,
+                qty: 1
+            };
+            var j = i + 1;
+            while (j < len) {
+                if (cardArray[i].tableId == cardArray[j].tableId) {
+                    cards.qty++;
+                    cardArray.splice(j, 1);
+                    len--;
+                } else {
+                    j++;
+                }
+            }
+
+            cbData.push(cards);
+        }
+
+        return cbData;
+    }
+
 })();
 
 
@@ -513,6 +640,7 @@ var keys2Key = {
     fragments: "fragment",
     fragment: "fragment",
     speaker: "speaker",
+    speakers: "speaker",
     honor: "honor",
     superHonor: "superHonor"
 };

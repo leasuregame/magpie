@@ -124,3 +124,16 @@
   border-left: 5px solid rgba(0,0,0,0.35);
   border-top-left-radius: 1px;
 }
+
+
+
+.navbar .nav > li .dropdown-menu {
+    margin: 0;
+}
+.navbar .nav > li:hover .dropdown-toggle {
+    color: #555;
+    background-color: #e7e7e7;
+}
+.navbar .nav > li:hover .dropdown-menu {
+    display: block;
+}

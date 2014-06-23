@@ -68,21 +68,44 @@ var VipDailyRewardLayer = cc.Layer.extend({
             var x = 88;
 
             for (var key in rewards) {
-                if (key == "id") {
+                if (key == "id" || key == "exp_card_star") {
                     continue;
                 }
 
-                var goods = giftBagGoods[key];
-                var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                goodsSprite.setAnchorPoint(cc.p(0, 0));
-                goodsSprite.setPosition(cc.p(x, 100));
-                rewardBgLabel.addChild(goodsSprite);
+                if (rewards[key] == 0) {
+                    continue;
+                }
 
-                var goodsLabel = StrokeLabel.create("+" + rewards[key], "STHeitiTC-Medium", 16);
-                goodsLabel.setAnchorPoint(cc.p(1, 0));
-                goodsLabel.setPosition(cc.p(73, 8));
-                goodsLabel.setBgColor(cc.c3b(0, 0, 0));
-                goodsSprite.addChild(goodsLabel);
+                if (key == "exp_card_count") {
+                    var expCardItem = CardHeadNode.getCardHeadItem(
+                        Card.create({
+                            tableId: rewards.exp_card_star + 50000,
+                            skillLv: 1,
+                            lv: 1
+                        })
+                    );
+                    expCardItem.setScale(0.8);
+                    expCardItem.setPosition(cc.p(x + 42, 142));
+                    menu.addChild(expCardItem);
+
+                    var expCardLabel = StrokeLabel.create("+" + rewards.exp_card_count, "STHeitiTC-Medium", 16);
+                    expCardLabel.setAnchorPoint(cc.p(1, 0));
+                    expCardLabel.setPosition(cc.p(85, 8));
+                    expCardLabel.setBgColor(cc.c3b(0, 0, 0));
+                    expCardItem.addChild(expCardLabel);
+                } else {
+                    var goods = giftBagGoods[key];
+                    var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
+                    goodsSprite.setAnchorPoint(cc.p(0, 0));
+                    goodsSprite.setPosition(cc.p(x, 100));
+                    rewardBgLabel.addChild(goodsSprite);
+
+                    var goodsLabel = StrokeLabel.create("+" + rewards[key], "STHeitiTC-Medium", 16);
+                    goodsLabel.setAnchorPoint(cc.p(1, 0));
+                    goodsLabel.setPosition(cc.p(73, 8));
+                    goodsLabel.setBgColor(cc.c3b(0, 0, 0));
+                    goodsSprite.addChild(goodsLabel);
+                }
 
                 x += 120;
             }

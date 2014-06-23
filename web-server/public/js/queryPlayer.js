@@ -13,17 +13,20 @@ function getInputAreaIds() {
 }
 
 function getInputPlayerNames() {
-    var playerNameTxt = $("#playerName").val();
+    var playerNameTxt = $("#playerName").val().replace(/；/g, PLAYER_NAME_SEPARATOR);
     var playerNames = playerNameTxt.length > 0 ? window.wsUtil.splitNoBlank(playerNameTxt, PLAYER_NAME_SEPARATOR) : '';
     return playerNames;
 }
 
-function showQueryPlayerBoxAlert(tips) {
-    $('#queryPlayerAlert').text(tips).removeClass('hide');
+function showQueryPlayerBoxError(tips) {
+    $('#playerBox').addClass('has-error');
+    var $alert = $($('#alertTemp').html()).text(tips);
+    $('#queryPlayerAlertCntr').append($alert);
 }
 
-function hideQueryPlayerBoxAlert() {
-    $('#queryPlayerAlert').addClass('hide');
+function hideQueryPlayerBoxError() {
+    $('#playerBox').removeClass('has-error');
+    $('#queryPlayerAlert').remove();
 }
 
 /**
@@ -99,6 +102,8 @@ function queryPlayer() {
             text += data[i] += PLAYER_NAME_SEPARATOR;
         }
         $('#playerName').val(text).change();
+    }, function(err){
+        showQueryPlayerBoxError(err);
     });
 }
 
@@ -116,8 +121,8 @@ $(document).ready(function() {
     });
     $('#playerName').change(function(){
         var $this = $(this);
-        var total = window.wsUtil.splitNoBlank($this.val(), PLAYER_NAME_SEPARATOR).length;
+        var total = getInputPlayerNames().length;
         $this.closest('#playerBox').find('.totalPlayers').text(total);
-        hideQueryPlayerBoxAlert();
+        hideQueryPlayerBoxError();
     });
 });

@@ -39,6 +39,9 @@ var Activity = Entity.extend({
     _vipLoginReward: false,
     _growthPlan: null,
 
+    _worldCupReward: false,
+    _worldCupCanAnswer: false,
+
     init: function () {
         cc.log("Activity init");
 
@@ -50,6 +53,9 @@ var Activity = Entity.extend({
         this._isBuyPlan = false;
         this._vipLoginReward = false;
         this._growthPlan = {};
+
+        this._worldCupCanAnswer = false;
+        this._worldCupReward = false;
 
         var rows = outputTables.player_upgrade_reward.rows;
         var index = 0;
@@ -117,6 +123,8 @@ var Activity = Entity.extend({
             },
             true
         );
+
+        this.todayGames();
     },
 
     setListener: function () {
@@ -144,6 +152,14 @@ var Activity = Entity.extend({
 
             that.updateRechargeFlag(data.msg.flag);
             gameMark.updateNewYearMark(false);
+        });
+
+        lz.server.on("onWorldCupReward", function (data) {
+            cc.log("***** on onWorldCupReward:");
+            cc.log(data);
+
+            that.set("worldCupReward", true);
+            gameMark.updateWorldCupMark(false);
         });
     },
 
@@ -494,17 +510,18 @@ var Activity = Entity.extend({
                 var table = outputTables.vip_daily_reward.rows[player.get("vip")];
                 var rewards = {};
 
+                var card = data.msg.card;
+                var ids = data.msg.cardIds;
+                var len = ids.length;
+                for (var i = 0; i < len; i++) {
+                    card.id = ids[i];
+                    gameData.cardList.push(Card.create(card));
+                }
+
                 for (var key in table) {
                     if (key != "id") {
-                        if (key == "exp_card") {
-                            var card = data.msg.card;
-                            var ids = data.msg.cardIds;
-                            var len = ids.length;
-                            for (var i = 0; i < len; i++) {
-                                card.id = ids[i];
-                                gameData.cardList.push(Card.create(card));
-                            }
-
+                        if (key == "exp_card_star" || key == "exp_card_count") {
+                            continue;
                         } else {
                             player.add(key, table[key]);
                         }
@@ -518,6 +535,119 @@ var Activity = Entity.extend({
                 cc.log("getVipDailyReward fail");
                 TipLayer.tip(data.msg);
             }
+        });
+    },
+
+    /*
+     * 世界杯活动
+     */
+
+    todayGames: function (cb) {
+        cc.log("Activity todayGames");
+
+        var isNotWait = true;
+        if (cb) {
+            isNotWait = false;
+        }
+
+        var that = this;
+        lz.server.request("area.worldCupHandler.todayGames", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("todayGames success");
+
+                that.set("worldCupCanAnswer", data.msg.isCanAnswer);
+
+                if (data.msg.reward && data.msg.reward.gold) {
+                    that.set("worldCupReward", true);
+                } else {
+                    that.set("worldCupReward", false);
+                }
+
+                gameMark.updateWorldCupMark(false);
+
+                if (cb) {
+                    cb(data.msg);
+                }
+
+            } else {
+                cc.log("todayGames fail");
+                TipLayer.tip(data.msg);
+            }
+
+        }, isNotWait);
+    },
+
+    lastGames: function (cb) {
+        cc.log("Activity lastGames");
+
+        var that = this;
+        lz.server.request("area.worldCupHandler.lastGames", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("lastGames success");
+
+                cb(data.msg);
+
+            } else {
+                cc.log("lastGames fail");
+                TipLayer.tip(data.msg);
+            }
+
+        });
+    },
+
+    submitAnswer: function (answers, cb) {
+        cc.log("Activity submitAnswer: ");
+        cc.log(answers);
+
+        var that = this;
+        lz.server.request("area.worldCupHandler.submitAnswer", {
+            answer: answers
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("submitAnswer success");
+
+                that.set("worldCupCanAnswer", false);
+                gameMark.updateWorldCupMark(false);
+
+                cb(true);
+
+            } else {
+                cc.log("submitAnswer fail");
+                TipLayer.tip(data.msg);
+                cb(false);
+            }
+
+        });
+    },
+
+    getWorldCupReward: function (cb) {
+        cc.log("Activity getWorldCupReward");
+
+        var that = this;
+        lz.server.request("area.worldCupHandler.getReward", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("getWorldCupReward success");
+
+                gameData.player.set("gold", data.msg.gold);
+
+                that.set("worldCupReward", false);
+                gameMark.updateWorldCupMark(false);
+
+                cb();
+
+            } else {
+                cc.log("getWorldCupReward fail");
+                TipLayer.tip(data.msg);
+            }
+
         });
     },
 
@@ -548,69 +678,6 @@ var Activity = Entity.extend({
             cc.log("类型出错！！！");
             return null;
         }
-    },
-
-    ActivityIsShowHandler: {
-        NewAreaRewardLayer: function () {
-            var table = outputTables.login_count_reward.rows;
-            for (var id in table) {
-                if (gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, id) != ALREADY_GOT_REWARD) {
-                    return true;
-                }
-            }
-            return false;
-        },
-        SignInLayer: function () {
-            return true;
-        },
-        GoldCardsLayer: function () {
-            return true;
-        },
-        GrowthPlanLayer: function () {
-            return true;
-        },
-        PowerRewardLayer: function () {
-            return true;
-        },
-        VipDailyRewardLayer: function () {
-            return true;
-        },
-        GoldRewardLayer: function () {
-            return true;
-        },
-        InvitationLayer: function () {
-            if (lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore") {
-                return false;
-            }
-            return true;
-        }
-    },
-
-    ActivityIsMarkHandler: {
-        NewAreaRewardLayer: function () {
-            return gameMark.getNewAreaRewardMark();
-        },
-        SignInLayer: function () {
-            return gameMark.getSignInMark();
-        },
-        GoldCardsLayer: function () {
-            return gameMark.getGoldCardsMark();
-        },
-        GrowthPlanLayer: function () {
-            return gameMark.getGrowthPlanMark();
-        },
-        PowerRewardLayer: function () {
-            return gameMark.getPowerRewardMark();
-        },
-        VipDailyRewardLayer: function () {
-            return gameMark.getVipDailyRewardMark();
-        },
-        GoldRewardLayer: function () {
-            return gameMark.getGoldRewardMark();
-        },
-        InvitationLayer: function () {
-            return false;
-        }
     }
 });
 
@@ -622,4 +689,70 @@ Activity.create = function () {
     }
 
     return null;
+};
+
+Activity.IsShowHandler = {
+    newAreaRewardLayer: function () {
+        var table = outputTables.login_count_reward.rows;
+        for (var id in table) {
+            if (gameData.activity.getStateById(TYPE_LOGIN_COUNT_REWARD, id) != ALREADY_GOT_REWARD) {
+                return true;
+            }
+        }
+        return false;
+    },
+    signInLayer: function () {
+        return true;
+    },
+    goldCardsLayer: function () {
+        return true;
+    },
+    growthPlanLayer: function () {
+        return true;
+    },
+    powerRewardLayer: function () {
+        return true;
+    },
+    vipDailyRewardLayer: function () {
+        return true;
+    },
+    goldRewardLayer: function () {
+        return true;
+    },
+    invitationLayer: function () {
+        return !(lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore");
+    },
+    worldCupLayer: function () {
+        return true;
+    }
+};
+
+Activity.IsMarkHandler = {
+    newAreaRewardLayer: function () {
+        return gameMark.getNewAreaRewardMark();
+    },
+    signInLayer: function () {
+        return gameMark.getSignInMark();
+    },
+    goldCardsLayer: function () {
+        return gameMark.getGoldCardsMark();
+    },
+    growthPlanLayer: function () {
+        return gameMark.getGrowthPlanMark();
+    },
+    powerRewardLayer: function () {
+        return gameMark.getPowerRewardMark();
+    },
+    vipDailyRewardLayer: function () {
+        return gameMark.getVipDailyRewardMark();
+    },
+    goldRewardLayer: function () {
+        return gameMark.getGoldRewardMark();
+    },
+    invitationLayer: function () {
+        return false;
+    },
+    worldCupLayer: function () {
+        return gameMark.getWorldCupMark();
+    }
 };

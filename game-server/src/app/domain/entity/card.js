@@ -252,6 +252,10 @@ var Card = (function(_super) {
         this.passiveSkills = this.passiveSkills || [];
     };
 
+    Card.prototype.isExpCard = function() {
+        return this.tableId > 50000 && this.tableId <= 50005;
+    };
+
     Card.prototype.canUsePill = function(){
         return this.potentialLv < this.star;
     };
@@ -364,31 +368,6 @@ var Card = (function(_super) {
         return parseInt(_abi);
     };
 
-    Card.prototype.addPassiveSkill = function(ps) {
-        var pss = _.clone(this.passiveSkills);
-        if (typeof ps.id !== 'undefined' && ps.id !== null) {
-            if (pss.length == this.star - 2) {
-                for (var i = 0; i < pss.length; i++) {
-                    if (pss[i].id == ps.id) {
-                        pss[i] = ps;
-                        break;
-                    }
-                }
-            } else if (pss.length < this.star - 2) {
-                pss[pss.length] = ps;
-            }
-            this.passiveSkills = pss;
-            this.emit('add.passiveSkill');
-        }
-    };
-
-    Card.prototype.addPassiveSkills = function(passiveSkills) {
-        self = this;
-        passiveSkills.forEach(function(ps) {
-            self.addPassiveSkill(ps);
-        });
-    };
-
     //产生被动技能
     Card.prototype.bornPassiveSkill = function() {
         var pss = _.clone(this.passiveSkills);
@@ -414,26 +393,6 @@ var Card = (function(_super) {
             group = new PassiveSkillGroup(group).create(star).toJson();
         });
         this.passiveSkills = pss;
-    };
-
-
-    Card.prototype.afreshPassiveSkill = function(type, ps) {
-        var born_rates = configData.passSkill.BORN_RATES;
-        var star = this.star >= 5 ? this.star : 5;
-        var value_obj = configData.passSkill.AFRESH.TYPE[type].STAR[star];
-
-        var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
-        var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));
-        var _ref = valueScope.split('~'),
-            start = _ref[0],
-            end = _ref[1];
-        var value = _.random(start * 100, end * 100);
-
-        var p = _.clone(ps);
-
-        p.name = name;
-        p.value = parseFloat((value / 100).toFixed(1));
-        this.addPassiveSkill(p);
     };
 
     Card.prototype.eatCards = function(cards) {
@@ -488,6 +447,11 @@ var Card = (function(_super) {
     };
 
     Card.prototype.price = function() {
+        if (this.isExpCard()) {
+            var rc = table.getTableItem('resource_cards', this.tableId);
+            return rc != null ? rc.price : 100;
+        }
+
         var curLv = this.lv;
         var cfg = table.getTableItem('card_price', 1);
         var lv_money = table.getTable('card_grow').filter(function(id, item) {

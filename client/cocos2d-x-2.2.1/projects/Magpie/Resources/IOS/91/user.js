@@ -69,8 +69,15 @@ var User = Entity.extend({
                 version = cc.AssetsManager.getInstance().getVersion();
             }
 
+            var appVersion = lz.platformConfig.VERSION;
+            if (typeof(cc.Application.getInstance().getAppVersion) != "undefined") {
+                appVersion = cc.Application.getInstance().getAppVersion();
+            }
+
+
             cc.log("=================================================");
             cc.log(version);
+            cc.log(appVersion);
             cc.log("=================================================");
 
             lz.server.connectGameServer(function () {
@@ -79,7 +86,8 @@ var User = Entity.extend({
                     uin: ndAdapter.NDLoginUin(),
                     appid: lz.platformConfig.APP_ID,
                     areaId: that._area,
-                    version: version
+                    version: version,
+                    appVersion: appVersion
                 }, function (data) {
                     cc.log(data);
 

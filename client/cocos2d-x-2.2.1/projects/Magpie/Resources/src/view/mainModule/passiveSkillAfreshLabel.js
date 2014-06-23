@@ -696,23 +696,34 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var star = this._leadCard.get("star");
         var table = outputTables.passive_skill_config.rows[star];
 
+        var isStop = false;
+
         if (isCanAfresh) {
             if (this._stopType == STOP_UNTIL_BLUE) {
                 if (maxValue >= table.yellow_attribute) {
                     TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
+                    isStop = true;
                     this._onClickStop();
                 } else if (maxValue >= table.blue_attribute) {
                     TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
+                    isStop = true;
                     this._onClickStop();
                 }
             } else if (this._stopType == STOP_UNTIL_YELLOW) {
                 if (maxValue >= table.yellow_attribute) {
                     TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
+                    isStop = true;
                     this._onClickStop();
                 }
             }
         } else {
+            isStop = true;
             this._onClickStop();
+        }
+
+        if (!isStop) {
+            this.scheduleOnce(this._repeatAfresh, 1);
+            this.scheduleOnce(this._setTip, 1);
         }
     },
 
@@ -899,7 +910,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         }
 
         var that = this;
-        var cb = function() {
+        var cb = function () {
             that._afresh();
         };
 
@@ -964,8 +975,10 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
             that._setTip();
 
-            that.schedule(that._repeatAfresh, 1);
-            that.schedule(that._setTip, 1);
+//            that.schedule(that._repeatAfresh, 1);
+//            that.schedule(that._setTip, 1);
+            that.scheduleOnce(that._repeatAfresh, 1);
+            that.scheduleOnce(that._setTip, 1);
         };
 
         if (isTip) {

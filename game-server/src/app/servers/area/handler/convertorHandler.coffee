@@ -106,7 +106,7 @@ Handler::dissolveCard = (msg, session, next) ->
 
 canDissoleve = (cards) ->
   cards.filter (c) ->
-    c.tableId is 30000
+    c.isExpCard()
   .length is 0
 
 doDissolveCard = (cards) ->

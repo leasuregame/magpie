@@ -17,6 +17,10 @@ var DEF_LV_DATA = {
 
 var playerRecord = function(app) {
 
+    function convertNum2Rate(num) {
+        return num * 100 + '%';
+    }
+
     /**
      * render statistics -- player wastage rate on lv
      */
@@ -65,8 +69,9 @@ var playerRecord = function(app) {
 
             createCSVFileByRows("等级,等级玩家数,等级玩家比例,等级流失玩家数,等级流失玩家比例,总流失玩家比例", rows,
                 function (row) {
-                    return util.format('%s,%s,%s,%s,%s,%s\n', row.lv, row.total, row.totalRate,
-                        row.wastage, row.wastageRate, row.totalWastageRate);
+                    return util.format('%s,%s,%s,%s,%s,%s\n', row.lv,
+                        row.total, convertNum2Rate(row.totalRate),
+                        row.wastage, convertNum2Rate(row.wastageRate), convertNum2Rate(row.totalWastageRate));
                 },
                 function (filePath) {
                     var now = new Date();
@@ -124,6 +129,8 @@ var playerRecord = function(app) {
             }
             return statsResArr;
         }
+
+        console.log(param);
 
         var criticalTime = (param.criticalDays ? param.criticalDays : 3) * 24 * 60 * 60 * 1000;
         if(param.recordDate && param.recordDate[1]) {
@@ -216,9 +223,9 @@ var playerRecord = function(app) {
             createCSVFileByRows("功能,消费角色数,消费角色比例,购买次数,人均购买次数,消费魔石,魔石消费比例,人均消费魔石", rows,
                 function (row) {
                     return util.format('%s,%s,%s,%s,%s,%s,%s,%s\n', CONSUMPTION_SOURCE_NAME[row.source],
-                        row.playerCounts, row.playersRate,
+                        row.playerCounts, convertNum2Rate(row.playersRate),
                         row.buyCounts, row.buyCountsPerPlayer,
-                        row.expense, row.expenseRate, row.expensePerPlayer);
+                        row.expense, convertNum2Rate(row.expenseRate), row.expensePerPlayer);
                 },
                 function (filePath) {
                     var now = new Date();

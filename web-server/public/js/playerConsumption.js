@@ -176,4 +176,10 @@ $(document).ready(function() {
     $('#submitCheck').click(function(){
         submit();
     });
+
+    $('#exportCSV').click(function(){
+        var url = window.webAPI.API.DOWNLOAD_PLAYER_CONSUMPTION + "?" + $.param(getInputData());
+        $(this).attr('href', url);
+        return true;
+    });
 });

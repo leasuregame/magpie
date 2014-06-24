@@ -104,7 +104,7 @@
     <Cell><Data ss:Type="Number">88</Data></Cell>
     <Cell><Data ss:Type="Number">100000</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">144</Data></Cell>
+    <Cell><Data ss:Type="Number">364</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
@@ -127,7 +127,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

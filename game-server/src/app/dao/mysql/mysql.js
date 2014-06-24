@@ -16,7 +16,7 @@ Mysql.prototype.query = function(sql, args, cb) {
         cb = args;
         args = [];
     }
-    //console.log('query:', sql, args);
+
     var self = this;
     return this._pool.acquire(function(err, client) {
         if ( !! err) {

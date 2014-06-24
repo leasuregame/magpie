@@ -397,10 +397,11 @@ Data.prototype.eachPlayer = function(execute) {
         sync: true,
         where: {id: id}
       }, function(err, player) {
+        var _old_abi = player.ability;
         var _abi = player.getAbility();
         player.ability = _abi;
         player.save()
-        console.log('update player ', player.name, "'s ability to " + _abi);
+        console.log('update player ', player.name, "'s ability "+_old_abi+" to " + _abi);
         finished += 1;
         next(err, player);
       });

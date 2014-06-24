@@ -4,17 +4,27 @@ var Data = require('./data');
 var _ = require('underscore');
 var pomelo = require('pomelo');
 var Mysql = require('../app/dao/mysql/mysql');
+var sync = require('pomelo-sync-plugin');
 var app = pomelo.createApp({
   base: path.join(__dirname, '..')
 });
 
 var genDao = function(key) {
   app.set('env', process.argv[3] || 'development');
-  //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-  app.set('mysql', require('../config/mysql')[process.argv[3] || 'development'][key]);
-  app.set('dbClient', new Mysql(app));
-  var dao = require('../app/dao').init('mysql');
+  app.set('mysql', require(app.getBase()+'/config/mysql')[process.argv[3] || 'development'][key]);
+  var dbClient = new Mysql(app);
+  app.set('dbClient', dbClient);
+  var dao = require(app.getBase()+'/app/dao').init('mysql');
   app.set('dao', dao);
+
+  app.use(sync, {
+    sync: {
+      path: app.getBase()+'/app/dao/mysql/mapping/area',
+      dbclient: dbClient,
+      interval: 60000
+    }
+  });
+
   return dao;
 };
 
@@ -67,6 +77,8 @@ var main = function() {
     case 'add-elixir-back': 
       quenues.push(gdata.addElixirToCard);
       break;
+    case 'each-player': "value", 
+      quenues.push(gdata.eachPlayer);
     default:
       console.log('not cmd execute!');
   }

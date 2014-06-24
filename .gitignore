@@ -48,3 +48,6 @@ shared/whiteList.json
 
 game-server/src/app/servers/*/*/*.js
 web-server/uploads
+web-server/sqlite
+web-server/tmp
+client/cocos2d-html5-v2.2

@@ -718,7 +718,7 @@ Activity.IsShowHandler = {
         return true;
     },
     invitationLayer: function () {
-        return !(lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore");
+        return !(lz.platformConfig.PLATFORM == "AppStore");
     },
     worldCupLayer: function () {
         return true;

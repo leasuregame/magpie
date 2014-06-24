@@ -20,10 +20,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>4360</WindowHeight>
+  <WindowHeight>4880</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>5860</WindowTopX>
-  <WindowTopY>2620</WindowTopY>
+  <WindowTopX>3100</WindowTopX>
+  <WindowTopY>520</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -101,9 +101,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">YY1-</Data></Cell>
-    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">88</Data></Cell>
     <Cell><Data ss:Type="Number">100000</Data></Cell>
-    <Cell><Data ss:Type="Number">5000</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">144</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
@@ -128,6 +127,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -57,6 +57,7 @@ $(function() {
         html += '<tr><td>' + data[i].code + '</td>';
         html += '<td>' + data[i].startDate + '</td>';
         html += '<td>' + data[i].endDate + '</td>';
+        html += '<td>' + data[i].area + '</td>';
         html += '<td>' + data[i].activate + '</td></tr>';
       }
 

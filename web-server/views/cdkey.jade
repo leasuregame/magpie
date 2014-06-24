@@ -5,7 +5,7 @@ block content
     div.form-group
       label.control-label 激活码前缀 
       br
-      input(type='text' class='form-control' style='width: 100px' id='cdkeyPrefix' placeholder='激活码前缀' required)
+      select.form-control(id='cdkeyPrefix' style='width: 100px' placeholder='激活码前缀' required)
     div.form-group
       label.control-label 区服
       br
@@ -46,15 +46,13 @@ block content
               div.radios
                 label
                   input.usedFilter(type='radio', value='1', name='used' )
-                  已使用
-                &nbsp;&nbsp;
+                  span 已使用&nbsp;&nbsp;
                 label
-                  input.usedFilter(type='radio', value='0', name='used' )
-                  未使用
-                &nbsp;&nbsp;
+                  input.usedFilter(type='radio', value='0', name='used')
+                  span 未使用&nbsp;&nbsp;
                 label
                   input.usedFilter(type='radio', value='-1', name='used' )
-                  全部
+                  span 全部
         tbody
           - each row in rows
             tr(class=row.activate?'success':'')

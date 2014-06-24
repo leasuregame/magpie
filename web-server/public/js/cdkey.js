@@ -66,4 +66,13 @@ $(function() {
     })
   });
 
+  $.get('/admin/api/cdkeytypes', function(data) {
+    var cdkeyEl = $('#cdkeyPrefix');
+    var options = '';
+    data.forEach(function(key) {
+      options += "<option value=" + key + '>' + key + '</option>';
+    });
+    cdkeyEl.append(options);
+  });
+
 });

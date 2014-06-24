@@ -32,7 +32,10 @@ var Message = (function(_super) {
     Message.prototype.toJson = function() {
         if (this.type == configData.message.MESSAGETYPE.BATTLENOTICE) {
             return this.toBattleLogMessage();
-        } else if (this.type == configData.message.MESSAGETYPE.MESSAGE) {
+        } else if (
+            this.type == configData.message.MESSAGETYPE.MESSAGE || 
+            this.type == configData.message.MESSAGETYPE.ADDFRIEND
+        ) {
             return this.toLeaveMessage();
         } else if (this.type == configData.message.MESSAGETYPE.SYSTEM) {
             return this.toSystemMessage()
@@ -64,7 +67,7 @@ var Message = (function(_super) {
             type: this.type,
             status: this.status,
             text: this.content,
-            content: util.format('%s 给你留言', this.options.playerName),
+            content: this.type == configData.message.MESSAGETYPE.MESSAGE ? '给你留言' : '发来请求',
             createTime: this.createTime
         };
     };
@@ -74,7 +77,7 @@ var Message = (function(_super) {
             id: this.id,
             defier: this.options.defier || '无名氏',
             isWin: this.options.isWin || false,
-            rank: this.options.curRank,
+            rank: this.options.oldRank != this.options.curRank ? this.options.curRank : void 0,
             type: this.type,
             battleLogId: this.options.battleLogId,
             createTime: this.createTime

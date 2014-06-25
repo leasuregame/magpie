@@ -211,7 +211,7 @@ generateCardId = (star, tableIds, exceptIds) ->
 
 getCardIdsByStar = (stars, exceptIds = []) ->
   items = table.getTable('cards')
-  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars)
+  .filter((id, row) -> parseInt(id) <= 1500 and parseInt(id) not in exceptIds and row.star in stars)
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
 

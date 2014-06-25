@@ -1011,7 +1011,7 @@ var Card = Entity.extend({
     },
 
     isMonsterCard: function () {
-        return this._tableId >= MONSTER_CARD_TABLE_ID.begin && this._tableId <= MONSTER_CARD_TABLE_ID.end;
+        return (this._tableId >= MONSTER_CARD_TABLE_ID.begin && this._tableId <= MONSTER_CARD_TABLE_ID.end) || (this._tableIdId >= 40003 && this._tableId <= 40005);
     },
 
     isResourceCard: function () {

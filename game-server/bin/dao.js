@@ -77,7 +77,7 @@ var main = function() {
     case 'add-elixir-back': 
       quenues.push(gdata.addElixirToCard);
       break;
-    case 'each-player': "value", 
+    case 'each-player':
       quenues.push(gdata.eachPlayer);
     default:
       console.log('not cmd execute!');

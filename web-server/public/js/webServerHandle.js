@@ -4,16 +4,18 @@
 
     var API_BASE_PATH = '/admin/api/';
     var API = {
-        ACTOR_CARDS : API_BASE_PATH + 'getActorCards',      //
-        CARD_LV_LIMIT : API_BASE_PATH + 'getCardLv',        //
-        CONSUME_SOURCE : API_BASE_PATH + 'getConsumeSource',//
-        PLAYER_NAMES : API_BASE_PATH + 'getPlayerNames',    //
-        PLAYER_IDS : API_BASE_PATH + 'getPlayerId',         //
-        RECORD_MSG_OPT : API_BASE_PATH + 'recordMsgOpt',    //
-        GET_MSG_OPT : API_BASE_PATH + 'getSysMsgOpt',       //
-        SYS_MSG : API_BASE_PATH + 'getSysMsg',              //
+        ACTOR_CARDS : API_BASE_PATH + 'getActorCards',
+        CARD_LV_LIMIT : API_BASE_PATH + 'getCardLv',
+        CONSUME_SOURCE : API_BASE_PATH + 'getConsumeSource',
+        PLAYER_NAMES : API_BASE_PATH + 'getPlayerNames',
+        PLAYER_IDS : API_BASE_PATH + 'getPlayerId',
+        RECORD_MSG_OPT : API_BASE_PATH + 'recordMsgOpt',
+        GET_MSG_OPT : API_BASE_PATH + 'getSysMsgOpt',
+        SYS_MSG : API_BASE_PATH + 'getSysMsg',
         WASTAGE_RATE_ON_LV : API_BASE_PATH + 'getWastageRateOnLv',
-        PLAYER_CONSUMPTION : API_BASE_PATH + 'getPlayerConsumption'
+        PLAYER_CONSUMPTION : API_BASE_PATH + 'getPlayerConsumption',
+        DOWNLOAD_PLAYER_CONSUMPTION : API_BASE_PATH + 'download/playerConsumption',
+        DOWNLOAD_WASTAGE_RATE_ON_LV : API_BASE_PATH + 'download/wastageRateOnLv'
     };
 
     var webAPI = {};
@@ -168,4 +170,5 @@
     }
 
     window.webAPI = webAPI;
+    window.webAPI.API = API;
 }());

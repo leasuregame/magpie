@@ -109,7 +109,6 @@ function doRequest(reqData) {
             $(tipAlertId.NO_RS).removeClass('hide');
         }
     },function(data){
-        console.log(data);
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
     });
@@ -175,5 +174,11 @@ $(document).ready(function() {
 
     $('#submitCheck').click(function(){
         submit();
+    });
+
+    $('#exportCSV').click(function(){
+        var url = window.webAPI.API.DOWNLOAD_PLAYER_CONSUMPTION + "?" + $.param(getInputData());
+        $(this).attr('href', url);
+        return true;
     });
 });

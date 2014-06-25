@@ -94,7 +94,7 @@ var sqlHelper = {
         where = stm.where == '' ? '' : ' where ' + stm.where;
         orderby = orderby == '' ? '' : ' order by ' + orderby;
         limit = limit == -1 ? '' : ' limit ' + limit;
-        var sql = "select * from " + table + where + orderby + limit;
+        var sql = "select "+fields+" from " + table + where + orderby + limit;
         return {
             sql: sql, 
             args: stm.args

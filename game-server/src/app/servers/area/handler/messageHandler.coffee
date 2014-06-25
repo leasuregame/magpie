@@ -256,7 +256,10 @@ Handler::handleSysMsg = (msg, session, next) ->
       next(null, {code: err.code or 500, msg: err.msg or err})
 
     player.save()
-    data.cardArray = data.cardArray.map (c) -> c.toJson()
+    
+    if data.cardArray and data.cardArray.length > 0
+      data.cardArray = data.cardArray.map (c) -> c.toJson()
+
     next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->

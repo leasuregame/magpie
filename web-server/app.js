@@ -23,6 +23,7 @@ var messgae = require('./routes/message');
 var optRecord = require('./routes/optRecord');
 var playerRecord = require('./routes/playerRecord');
 var upload = require('./routes/upload');
+var serverManager = require('./routes/serverManager');
 
 var app = express();
 
@@ -64,7 +65,7 @@ messgae(app);
 optRecord(app);
 playerRecord(app);
 upload(app);
-
+serverManager(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

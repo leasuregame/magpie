@@ -55,7 +55,7 @@
 
             'src/model/lz.js',
             'src/model/um.js',
-            'IOS/AppStore/platform.js',
+            'IOS/Test/platform.js',
             'src/model/pomelo.js',
             'src/model/server.js',
 

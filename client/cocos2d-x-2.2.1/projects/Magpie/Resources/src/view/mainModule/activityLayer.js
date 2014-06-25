@@ -36,14 +36,14 @@ var ActivityLayer = cc.Layer.extend({
             nameString: "goldCardsLayer"
         },
         {
-            titleIcon: "icon433",
-            layer: GrowthPlanLayer,
-            nameString: "growthPlanLayer"
-        },
-        {
             titleIcon: "icon262",
             layer: PowerRewardLayer,
             nameString: "powerRewardLayer"
+        },
+        {
+            titleIcon: "icon433",
+            layer: GrowthPlanLayer,
+            nameString: "growthPlanLayer"
         },
         {
             titleIcon: "icon442",

@@ -57,6 +57,7 @@ $(function() {
         html += '<tr><td>' + data[i].code + '</td>';
         html += '<td>' + data[i].startDate + '</td>';
         html += '<td>' + data[i].endDate + '</td>';
+        html += '<td>' + data[i].area + '</td>';
         html += '<td>' + data[i].activate + '</td></tr>';
       }
 
@@ -64,6 +65,15 @@ $(function() {
     }).error(function(data) {
       console.log('err', data);
     })
+  });
+
+  $.get('/admin/api/cdkeytypes', function(data) {
+    var cdkeyEl = $('#cdkeyPrefix');
+    var options = '';
+    data.forEach(function(key) {
+      options += "<option value=" + key + '>' + key + '</option>';
+    });
+    cdkeyEl.append(options);
   });
 
 });

@@ -10,14 +10,27 @@ _ = require 'underscore'
 
 MAX_PLAYER_LV = table.getTableItem('lv_limit', 1).player_lv_limit
 
+expCardDate = (data) ->
+  item = table.getTable('resource_cards').findOne (id, row) -> parseInt(row.star) is parseInt(data.star)
+  exp = item?.exp or 0
+  tableId = item?.id or (configData.card.EXP_CARD_ID + data.star)
+  data.exp = exp
+  data.tableId = tableId
+  data
+
+isExpCard = (tableId) -> parseInt(tableId) > 50000 and parseInt(tableId) <= 50005
+
 module.exports = 
   createCard: (data, done) ->
     unless data.star
       data.star = cardStar(data.tableId)
 
-    if data.star >= 3
+    if data.star >= 3 and not isExpCard(data.tableId)
       data.passiveSkills = initPassiveSkillGroup(data.star)
       genFactorForCard(data)
+
+    if isExpCard(data.tableId) 
+      data = expCardDate(data)
 
     dao.card.create data: data, (err, card) ->
       if err
@@ -175,7 +188,7 @@ module.exports =
 
           jobs.push action
 
-    console.log '-jobs-', JSON.stringify(jobs)
+    #console.log '-jobs-', JSON.stringify(jobs)
     job.multJobs jobs, cb
 
 setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
@@ -227,7 +240,6 @@ getCardIdsByStar = (stars, exceptIds = [], isContainsRare=true) ->
   if items.length is 0 and exceptIds.length > 0
     return exceptIds.filter (i) -> cardStar(i) in stars
 
-  console.log 'cardIds:', items
   items
 
 cardStar = (tid) ->

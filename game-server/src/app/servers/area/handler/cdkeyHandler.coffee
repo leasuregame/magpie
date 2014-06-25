@@ -35,7 +35,6 @@ Handler::verifyCdkey = (msg, session, next) ->
           cb(err, res)
     
     (row, cb) =>
-      console.log row
       if not row
         return cb({code: 501, msg: '激活码不存在'})
 

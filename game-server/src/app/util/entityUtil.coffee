@@ -233,7 +233,7 @@ getCardIdsByStar = (stars, exceptIds = [], isContainsRare=true) ->
     rare_card_filter = (row) -> (row.is_rare) isnt 1
 
   items = table.getTable('cards')
-  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars and rare_card_filter(row)) 
+  .filter((id, row) -> parseInt(id) <= 1500 and parseInt(id) not in exceptIds and row.star in stars and rare_card_filter(row)) 
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
 

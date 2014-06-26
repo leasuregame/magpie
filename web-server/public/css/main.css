@@ -127,13 +127,13 @@
 
 
 
-.navbar .nav > li .dropdown-menu {
+.navbar .nav > li .dropdown-menu, .dropdown .dropdown-menu {
     margin: 0;
 }
-.navbar .nav > li:hover .dropdown-toggle {
+.navbar .nav > li:hover .dropdown-toggle, .dropdown:hover .dropdown-toggle {
     color: #555;
     background-color: #e7e7e7;
 }
-.navbar .nav > li:hover .dropdown-menu {
+.navbar .nav > li:hover .dropdown-menu, .dropdown:hover .dropdown-menu  {
     display: block;
 }

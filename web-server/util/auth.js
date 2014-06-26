@@ -11,6 +11,12 @@ exports.checkUser = function(username, password, cb) {
           user_name: 'queryer',
           prvlg_lv: 2
       });
+  } else if (username = 'superuser' && password == '1') {
+    cb(null, {
+      user_id: 10,
+      user_name: 'superuser',
+      prvlg_lv: 3
+    });
   } else {
     cb('用户名或密码不正确');
   }

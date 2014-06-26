@@ -1,0 +1,53 @@
+extends adminLayout
+
+block head
+  style.
+    .btn-group-actions {padding-top: 50px}
+    .btn-group-actions button {margin: 5px 30px}
+
+block content
+  div.btn-group-actions.text-center
+    button.btn.btn-success.btn-lg(type='button', id="btn-restart")
+      span.glyphicon.glyphicon-refresh 
+      span 重启
+    button.btn.btn-primary.btn-lg(type='button', id="btn-start")
+      span.glyphicon.glyphicon-play 
+      span 启动
+    button.btn.btn-warning.btn-lg(type='button', id="btn-stop")
+      span.glyphicon.glyphicon-stop 
+      span 停止
+    button.btn.btn-danger.btn-lg(type='button', id="btn-stop-force")
+      span.glyphicon.glyphicon-stop 
+      span 强制停止
+
+  div.cmd-results.alert
+
+block footer
+  script.
+    $(function(){
+      $('#btn-start').click(function(e) {
+        $.get('/admin/api/server/start', handerResult);
+      });
+
+      $('#btn-stop').click(function(e) {
+        $.get('/admin/api/server/stop', handerResult);
+      });
+
+      $('#btn-stop-force').click(function(e) {
+        $.get('/admin/api/server/stop?force=true', handerResult);
+      });
+
+      $('#btn-restart').click(function(e) {
+        $.get('/admin/api/server/restart', handerResult);
+      });
+
+      function handerResult(data) {
+        if(data.code == 200) {
+          $('.cmd-results').removeClass('alert-danger alert-warning').addClass('alert-success').html(data.msg);
+        } else if (data.code == 300) {
+          $('.cmd-results').removeClass('alert-danger alert-success').addClass('alert-warning').html(data.msg + '<br>' + data.output.join('<br>'));
+        } else {
+          $('.cmd-results').removeClass('alert-success alert-warning').addClass('alert-danger').html(data.msg);
+        }
+      }
+    });

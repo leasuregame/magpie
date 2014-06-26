@@ -98,7 +98,11 @@ var home = function(app) {
             } else {
                 req.session.user_id = user.user_id;
                 req.session.user = user;
-                res.redirect("/");
+                if (user.user_name == 'superuser') {
+                    res.redirect('/admin/server/manager');
+                } else {
+                    res.redirect("/");    
+                }                
             }
 
         });

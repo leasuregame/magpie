@@ -663,6 +663,8 @@ var ExploreLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        cc.log("############################");
+        cc.log(this._sectionId);
         gameData.task.currentChapter = Math.ceil(this._sectionId / TASK_SECTION_COUNT);
 
         MainScene.getInstance().switchLayer(InstancesLayer);

@@ -20,11 +20,12 @@
     "pomelo-cli": "*",
     "request": "2.27",
     "coffee-script": "1.6.2",
-    "csv": "*",
+    "csv": "0.3.7",
     "pomelo-admin": "*",
     "ursa": "~0.8.0",
     "dotenv": "*",
-    "nodemailer": "~0.6.3"
+    "nodemailer": "~0.6.3",
+    "pomelo-schedule": "*"
   },
   "devDependencies": {
     "underscore": "1.4.4",

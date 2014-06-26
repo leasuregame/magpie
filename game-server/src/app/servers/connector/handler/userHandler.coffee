@@ -183,7 +183,7 @@ checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
   vData = app.get('versionConf')?[platform]
   if not vData
-    return cb({501, msg: "找不到#{platform}的版本信息"})
+    return cb({code: 501, msg: "找不到#{platform}的版本信息"})
 
   if msg.appVersion? and versionHandler.versionCompare(msg.appVersion, vData.forceUpdateVersion) < 0
     cb({code: 501, msg: '版本过低，请到发行商更新游戏'})

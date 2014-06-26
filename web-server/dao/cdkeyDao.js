@@ -28,8 +28,8 @@ exports.search = function(text, cb) {
   //   union \
   //   select * from cdkey where code = ? \
   // ";
-  var sql = 'select * from cdkey where code = ?';
-  var args = [text, text, text, text];
+  var sql = "select * from cdkey where code like '%"+text+"%'";
+  var args = [text];
 
   if (new Date(text).toString() != 'Invalid Date') {
     sql += 'union select * from cdkey where startDate = ? or endDate = ?';

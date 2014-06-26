@@ -5,7 +5,8 @@ var _ = require('underscore');
 
 var datakeys = {
     CARDS : 'cards',
-    CARD_LV_LIMIT : 'card_lv_limit'
+    CARD_LV_LIMIT : 'card_lv_limit',
+    CDKEY: 'cdkey'
 };
 
 var ACTOR_CARD_TV = 10000;
@@ -64,6 +65,15 @@ var gameData = function(app) {
     app.all('/admin/api/getConsumeSource', filter.authorize, function (req, res) {
         res.send(CONSUMPTION_SOURCE_NAME);
     });
+
+    /**
+     * 获取激活码类型
+     */
+    app.get('/admin/api/cdkeytypes', filter.authorize, function(req, res) {
+        var cdkeys = getGameData(datakeys.CDKEY);
+        res.send(cdkeys != 'undefined' ? _.keys(cdkeys) : []);
+    });
+
 
 };
 

@@ -52,9 +52,10 @@ Handler::messageList = (msg, session, next) ->
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and 
-          type in (#{configData.message.MESSAGETYPE.SYSTEM}, #{configData.message.MESSAGETYPE.MESSAGE}) and 
-          status <> #{configData.message.MESSAGESTATUS.ASKING} and DATE(validDate) >= '#{today}'"
+        where: " receiver = #{playerId} and (
+          (type = #{configData.message.MESSAGETYPE.SYSTEM} and DATE(validDate) >= '#{today}') or 
+          (type = #{configData.message.MESSAGETYPE.MESSAGE})
+        )"
         orderby: ' createTime DESC '
       }, cb
 
@@ -151,7 +152,7 @@ checkSystemOptions = (options, cb) ->
 
   rewardTypes = ['gold', 'money', 'spirit', 'skillPoint', 'energy',
     'fragments', 'elixir', 'superHonor', 'powerValue', 'cardArray'
-    'speaker', 'honor']
+    'speaker', 'honor', 'pill']
   wrongKeys = _.keys(options.rewards).filter (k) -> k not in rewardTypes
   hasRightRewards = wrongKeys.length == 0 if isObject and hasRightProperties
   
@@ -255,7 +256,10 @@ Handler::handleSysMsg = (msg, session, next) ->
       next(null, {code: err.code or 500, msg: err.msg or err})
 
     player.save()
-    data.cardArray = data.cardArray.map (c) -> c.toJson()
+    
+    if data.cardArray and data.cardArray.length > 0
+      data.cardArray = data.cardArray.map (c) -> c.toJson()
+
     next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->

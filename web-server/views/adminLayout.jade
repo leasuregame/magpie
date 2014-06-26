@@ -9,6 +9,7 @@ html
     link(rel='stylesheet', href='/css/main.css')
     script(type='text/javascript', src='/js/bootstrap.min.js')
     script(type='text/javascript', src='/js/util.js')
+    script(type='text/javascript', src='/js/common.js')
     block head
   body
     div(class='container')
@@ -19,7 +20,17 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a(class='navbar-brand', href='/') LeasureGame
+          .dropdown
+            a#platformName.dropdown-toggle.navbar-brand(data-toggle='dropdown' href='/')
+              span LeasureGame
+              b.caret
+            ul.dropdown-menu(style="top:50px")
+              li
+                a(href='http://125.90.93.74:9090', target='_blank') YY大神
+              li
+                a(href='http://115.29.12.178:9090', target='_blank') 越狱平台
+              li
+                a(href='http://115.29.243.80:9090', target='_blank') AppStore平台
         div(class='collapse navbar-collapse', id='nb-collapse')
           ul(class='nav navbar-nav')
             if user.prvlg_lv === 1

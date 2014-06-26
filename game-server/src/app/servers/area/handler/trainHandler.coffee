@@ -476,9 +476,19 @@ Handler::starUpgrade = (msg, session, next) ->
       if _.isEmpty(sourceCards)
         return cb({code: 501, msg: "找不到素材卡牌"})
 
-      badCardsCount = (sourceCards.filter (s) -> s.star isnt starUpgradeData.source_card_star).length
+      badCardsCount = 
+        sourceCards.filter (s) -> 
+          s.star isnt starUpgradeData.source_card_star
+        .length
       if badCardsCount > 0
         return cb({code: 501, msg: "素材卡牌必须为#{starUpgradeData.source_card_star}星"})
+
+      hasExpCards = 
+        sourceCards.filter (s) ->
+          s.isExpCard()
+        .length > 0
+      if hasExpCards
+        return cb({code: 501, msg: "经验元灵不能做为进阶的素材卡"})
 
       cb(null)
 

@@ -69,7 +69,7 @@ Handler::attack = (msg, session, next) ->
       else
         cb(null, false)
 
-  ], (err, isUpgrade, level9Box, upgradeInfo) ->
+  ], (err, isUpgrade, level9Box, upgradeInfo) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
     player.consumePower(if isWin then parseInt(passData.power_consume) else 1)
@@ -86,6 +86,17 @@ Handler::attack = (msg, session, next) ->
         expPassCount: player.expPassCount()
       }
     )
+
+    @app.get('dao').battleLog.create {
+      data: {
+        own: playerId
+        enemy: passId
+        type: 'pve_exppass'
+        battleLog: battle_log
+      }
+    }, (err, res) ->
+      if err
+        logger.error '[faild to save battleLog]', err
 
 caculateExpCardReward = (passData) ->
 

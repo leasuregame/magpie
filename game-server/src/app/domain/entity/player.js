@@ -1376,7 +1376,10 @@ var Player = (function(_super) {
     Player.prototype.lightUpCards = function() {
         var f = this.cardBookFlag.markPositions();
         var m = this.cardBookMark.markPositions();
-        return _.union(f, m);
+        var ids = _.union(f, m);
+        return ids.filter(function(id) {
+            return parseInt(id) < 1500;
+        });
     };
 
     Player.prototype.addGoldCard = function(gc) {
@@ -1541,6 +1544,9 @@ var Player = (function(_super) {
 
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
+
+        dailyGift.expPassCount = this.expPassCount();
+        dailyGift.expPassBuyCount = dailyGift.expPassBuyCount || 0;
 
         delete dailyGift.kneelCountLeft;
         delete dailyGift.kneelList;

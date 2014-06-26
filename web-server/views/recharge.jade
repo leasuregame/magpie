@@ -1,0 +1,63 @@
+extends adminLayout
+
+extends adminLayout
+block head
+    script(type='text/javascript', src='/js/serverAPI.js')
+    script(type='text/javascript', src='/js/lib/build/build.js')
+    script.
+        require('boot');
+    style.
+        .center {text-align: center;}
+        #paginatorCntr li {cursor: pointer;}
+        #rsTableCntr {min-height: 430px;}
+        #rsTableCntr table {table-layout:fixed;}
+        #rsTable td {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+
+block content
+    h1.text-center=title
+    hr
+    .form-horizontal(role='form', action='#')
+        include ./queryPlayerBox
+        hr
+        .form-group
+            #createTime.paramSet(name='createTime')
+                label.col-sm-3.control-label 发送时间
+                .col-sm-2
+                    input.form-control.low(type='date' name='ptLow')
+                .col-sm-1.center
+                    span.glyphicon.glyphicon-minus.control-label
+                .col-sm-2
+                    input.form-control.up(type='date' name='ptUp')
+            .col-sm-2.center
+                a#submitCheck.btn.btn-primary(href='javascript:void(0);') 查询
+        hr
+        .row
+            .col-sm-12#rsTableCntr
+                table#rsTable.table.table-hover
+                    thead
+                        tr
+                            th(style='width:13%') 服务器/玩家
+                            th(style='width:10%') 标题
+                            th(style='width:15%') 内容
+                            th(style='width:26%') 奖励
+                            th(style='width:8%') 状态
+                            th(style='width:14%') 发送时间
+                            th(style='width:14%') 有效时间
+                    tbody
+                #loadingAlert.alert.alert-info.center.hide loading..
+                #noRsAlert.alert.alert-warning.center Ooooops! No such record.. ╮(╯▽╰)╭
+            #paginatorCntr(style='float: right')
+        script#rowTemp.hide(type='text/template')
+            tr.hide
+                td.receiver
+                td.title
+                td.content
+                td.rewards
+                td.status
+                td.createTime
+                td.validDate
+
+    script(type='text/javascript', src='/js/webServerHandle.js')
+    script(type='text/javascript', src='/js/sysMsgRecord.js')
+    script(type='text/javascript', src='/js/queryPlayer.js')
+    script(type='text/javascript', src='/js/bootstrap-paginator.js')

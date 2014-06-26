@@ -32,6 +32,9 @@ var TYPE_CRIT_SMALL = 1;
 var TYPE_CRIT_MIDDLE = 2;
 var TYPE_CTIT_BIG = 3;
 
+var EXP_CARD_PRIORITY = 1;
+var LEAD_CARD_PRIORITY = 10;
+
 var LEAD_CARD_TABLE_ID = {
     begin: 0,
     end: 9999
@@ -132,7 +135,9 @@ var Card = Entity.extend({
     _pill: 0,               // 当前觉醒玉数量
     _potentialLv: 0,        // 当前觉醒等级
 
-    _newCardMark: false,
+    _newCardMark: false,    // 新卡标记
+
+    _priority: 0,           //卡牌优先级
 
     init: function (data) {
         cc.log("Card init");
@@ -145,6 +150,7 @@ var Card = Entity.extend({
         this.on("abilityChange", this._abilityChangeEvent);
 
         this._newCardMark = this._id && (lz.load("card_" + this._id + "_mark") || false);
+        this.set("priority", this.getCardPriority());
 
         return true;
     },
@@ -1022,6 +1028,19 @@ var Card = Entity.extend({
         cc.log(this._tableId);
 
         return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
+    },
+
+    getCardPriority: function () {
+        cc.log("Card getCardPriority");
+
+        if (this.isExpCard()) {
+            return EXP_CARD_PRIORITY;
+        } else if (this.isLeadCard()) {
+            return LEAD_CARD_PRIORITY;
+        }
+
+        return 0;
+
     }
 });
 

@@ -223,10 +223,10 @@ timeForADay = () ->
   time12
 
 today = () ->
-  utility.dateFormat(timeForADay(), 'yyyy-MM-dd')
+  utility.dateFormat(new Date(), 'yyyy-MM-dd')
 
 tomorrow = () ->
-  now = timeForADay()
+  now = new Date()
   now.setDate(now.getDate()+1)
   utility.dateFormat(now, 'yyyy-MM-dd')
 

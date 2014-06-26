@@ -45,7 +45,10 @@ block footer
         if(data.code == 200) {
           $('.cmd-results').removeClass('alert-danger alert-warning').addClass('alert-success').html(data.msg);
         } else if (data.code == 300) {
-          $('.cmd-results').removeClass('alert-danger alert-success').addClass('alert-warning').html(data.msg + '<br>' + data.output.join('<br>'));
+          $('.cmd-results').removeClass('alert-danger alert-success').addClass('alert-warning').html(
+            data.msg + '<br>' 
+            + data.output.map(function(o, i) {return '<strong>'+(i+1)+'. </strong>'+o}).join('<br>')
+          );
         } else {
           $('.cmd-results').removeClass('alert-success alert-warning').addClass('alert-danger').html(data.msg);
         }

@@ -18,8 +18,8 @@ var Manager = function(app) {
 
   app.get('/admin/api/server/start', filter.authorize, function(req, res) {
     exec('ps -ef | grep "game-server/app.js env="', function(error, stdout, stderr) {
-      if (!error && stdout.length > 3 && stderr == '') {
-        var output = stdout.split('\n');
+      var output = stdout.split('\n');
+      if (!error && output.length > 3) {        
         res.send({
           code: 300,
           msg: '服务已经正在运行了：<br>',
@@ -32,7 +32,6 @@ var Manager = function(app) {
           });
       }
     });
-
 
   });
 

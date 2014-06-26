@@ -67,9 +67,3 @@ Remote::playerLeave = (playerId, uid, serverId, callback) ->
 
 initPlayer = (player, callback) ->
   return callback(null, player)
-  
-  # playerManager.addExpCardFor player, 2, (err, res) ->
-  #   if err
-  #     return callback(err)
-
-  #   callback(null, player)

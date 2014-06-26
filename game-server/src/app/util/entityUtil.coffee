@@ -10,14 +10,27 @@ _ = require 'underscore'
 
 MAX_PLAYER_LV = table.getTableItem('lv_limit', 1).player_lv_limit
 
+expCardDate = (data) ->
+  item = table.getTable('resource_cards').findOne (id, row) -> parseInt(row.star) is parseInt(data.star)
+  exp = item?.exp or 0
+  tableId = item?.id or (configData.card.EXP_CARD_ID + data.star)
+  data.exp = exp
+  data.tableId = tableId
+  data
+
+isExpCard = (tableId) -> parseInt(tableId) > 50000 and parseInt(tableId) <= 50005
+
 module.exports = 
   createCard: (data, done) ->
     unless data.star
       data.star = cardStar(data.tableId)
 
-    if data.star >= 3
+    if data.star >= 3 and not isExpCard(data.tableId)
       data.passiveSkills = initPassiveSkillGroup(data.star)
       genFactorForCard(data)
+
+    if isExpCard(data.tableId) 
+      data = expCardDate(data)
 
     dao.card.create data: data, (err, card) ->
       if err
@@ -108,9 +121,8 @@ module.exports =
       if utility.hitRate configData.card.LUCKY_CARD_LIMIT.NEW
         id = generateCardId star, null, lightUpIds
       else
-        #filtered = lightUpIds.filter (i) -> (i%5 || 5) is star
-        lightUpIds = filterTableId lightUpIds if star is 5
-        id = generateCardId star, lightUpIds
+        filtered = filterTableId star, lightUpIds
+        id = generateCardId star, filtered
         vstar = cardStar(id)
         id += star - vstar if star isnt vstar
     else
@@ -129,8 +141,8 @@ module.exports =
     if typeof data.power != 'undefined' and data.power > 0
       player.addPower(data.power)
       
-    if typeof data.exp_card != 'undefined' and data.exp_card > 0
-      playerManager.addExpCardFor player, data.exp_card, cb
+    if typeof data.exp_card_count != 'undefined' and data.exp_card_count > 0
+      playerManager.addExpCardFor player, data.exp_card_count, data.exp_card_star, cb
     else if typeof data.card_id != 'undefined' and data.card_id > 0
       this.createCard {
         playerId: player.id
@@ -140,6 +152,10 @@ module.exports =
       cb(null, [])
 
   updateEntities: (groups..., cb) ->
+    ###
+    groups ['optionName', 'tableName', entityObject], ...
+    e.g. ['update', 'player', player], ['update', 'card', cards], ['delete', 'card', cards], ...
+    ###
     jobs = []
     groups.forEach (group) ->
       if _.isArray(group) and group.length >= 2
@@ -164,7 +180,7 @@ module.exports =
               else if _.isString(ent)
                 action.options.where = ent
               else
-                action.options.where = ''
+                action.options.where = '1=2'
             when 'insert'
               action.options.data = ent
             else
@@ -172,14 +188,17 @@ module.exports =
 
           jobs.push action
 
-    console.log '-jobs-', JSON.stringify(jobs)
+    #console.log '-jobs-', JSON.stringify(jobs)
     job.multJobs jobs, cb
 
 setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments', 'honor', 'superHonor']) ->
   player.increase att, val for att, val of data when att in attrs and val > 0
   return
 
-filterTableId = (ids) ->
+filterTableId = (star, ids) ->
+  if star isnt 5
+    return ids
+
   # 过滤掉5星卡牌及与其同一系列的所有卡牌
   exceptIds = []
   ids.forEach (i) ->
@@ -188,7 +207,9 @@ filterTableId = (ids) ->
       e = i+15
       exceptIds = exceptIds.concat [s..e]
   
-  ids.filter (i) -> i not in exceptIds
+  results = ids.filter (i) -> i not in exceptIds
+  if results.length > 0 then results else ids
+
 
 generateCardId = (star, tableIds, exceptIds) ->
   ### 
@@ -205,14 +226,20 @@ generateCardId = (star, tableIds, exceptIds) ->
   idx = _.random(0, tableIds.length-1)
   tableIds[idx]
 
-getCardIdsByStar = (stars, exceptIds = []) ->
+getCardIdsByStar = (stars, exceptIds = [], isContainsRare=true) ->
+  if isContainsRare
+    rare_card_filter = (row) -> true
+  else
+    rare_card_filter = (row) -> (row.is_rare) isnt 1
+
   items = table.getTable('cards')
-  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars)
+  .filter((id, row) -> id <= 1500 and parseInt(id) not in exceptIds and row.star in stars and rare_card_filter(row)) 
   .map((item) -> parseInt(item.id))
   .sort((x, y) -> x - y)
 
   if items.length is 0 and exceptIds.length > 0
     return exceptIds.filter (i) -> cardStar(i) in stars
+
   items
 
 cardStar = (tid) ->

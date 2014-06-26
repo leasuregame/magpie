@@ -55,7 +55,7 @@
 
             'src/model/lz.js',
             'src/model/um.js',
-            'IOS/AppStore/platform.js',
+            'IOS/Test/platform.js',
             'src/model/pomelo.js',
             'src/model/server.js',
 
@@ -71,6 +71,7 @@
             'src/model/player.js',
             'src/model/card.js',
             'src/model/cardList.js',
+            'src/model/dailyInstances.js',
             'src/model/lineUp.js',
             'src/model/task.js',
             'src/model/pass.js',
@@ -171,6 +172,8 @@
             'src/view/mainModule/cardUpgradeLabel.js',
             'src/view/mainModule/tipsLayer.js',
             'src/view/mainModule/configLayer.js',
+            'src/view/mainModule/expInstanceLayer.js',
+            'src/view/mainModule/dailyInstancesLayer.js',
             'src/view/mainModule/damageRankHelpLabel.js',
             'src/view/mainModule/damageRankLayer.js',
             'src/view/mainModule/elixirRankHelpLabel.js',

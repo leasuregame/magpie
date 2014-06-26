@@ -46,6 +46,8 @@ var POWER_BUY_COUNT = dgTabRow.power_buy_count;
 var CHALLENGE_COUNT = dgTabRow.challenge_count;
 var CHALLENGE_BUY_COUNT = dgTabRow.challenge_buy_count;
 var EXP_CARD_COUNT = dgTabRow.exp_card_count;
+var EXP_PASS_COUNT = dgTabRow.exp_pass_count;
+var EXP_PASS_BUY_COUNT = dgTabRow.exp_pass_buy_count;
 
 var KNEELCOUNT_DEFAULT = 3
 
@@ -127,7 +129,7 @@ var addEvents = function(player) {
             player.activeSpiritorEffect();
         }
 
-        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != configData.card.EXP_CARD_ID) {
+        if (!card.isExpCard() && !player.cardBookMark.hasMark(card.tableId)) {
             card.isNewLightUp = true;
             player.cardBookMark.mark(card.tableId);
             var cardBook = utility.deepCopy(player.cardBook);
@@ -306,6 +308,8 @@ var Player = (function(_super) {
             resetTimes: 1
         },
         dailyGift: {
+            expPassCount: EXP_PASS_COUNT, // 每日免费经验副本攻击次数
+            expPassBuyCount: EXP_PASS_BUY_COUNT, // 每日可购买经验副本攻击次数
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT, // 每日免费抽奖次数
             lotteryCountUsed: 0,
@@ -401,7 +405,16 @@ var Player = (function(_super) {
         pill: 0
     };
 
-    Player.prototype.updateUseCardCoun = function(star, val) {
+
+    Player.prototype.expPassCount = function() {
+        if (typeof this.dailyGift.expPassCount == 'undefined') {
+            this.updateGift('expPassCount', EXP_PASS_COUNT)
+        }
+
+        return parseInt(this.dailyGift.expPassCount);
+    };
+
+    Player.prototype.updateUseCardCount = function(star, val) {
         var ucc = utility.deepCopy(this.useCardCount);
         ucc['star' + star] = val;
         this.useCardCount = ucc;
@@ -472,6 +485,8 @@ var Player = (function(_super) {
         var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
 
         var dg = {
+            expPassCount: EXP_PASS_COUNT,
+            expPassBuyCount: EXP_PASS_BUY_COUNT + vipPrivilege.exp_pass_count,
             lotteryCount: DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: LOTTERY_FREE_COUNT + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             lotteryCountUsed: 0,
@@ -871,7 +886,7 @@ var Player = (function(_super) {
             return;
         }
         var power = _.clone(this.power);
-        power.value += value;
+        power.value = parseInt(power.value) +  value;
         power.time = Date.now();
         this.updatePower(power);
     };
@@ -1527,6 +1542,9 @@ var Player = (function(_super) {
     Player.prototype.getDailyGift = function() {
         var dailyGift = utility.deepCopy(this.dailyGift);
 
+        dailyGift.expPassCount = this.expPassCount();
+        dailyGift.expPassBuyCount = dailyGift.expPassBuyCount || 0;
+
         delete dailyGift.kneelCountLeft;
         delete dailyGift.kneelList;
         delete dailyGift.rmTimerCount;
@@ -1789,8 +1807,9 @@ var recountVipPrivilege = function(player, oldVip) {
 
     player.friendsCount += curVipInfo.friend_count - oldVipInfo.friend_count;
     var dg = utility.deepCopy(player.dailyGift);
+    
+    dg.expPassBuyCount += curVipInfo.exp_pass_count - oldVipInfo.exp_pass_count;
     dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
-
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
     dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;

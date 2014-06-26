@@ -48,6 +48,7 @@
                 <file name="src/model/player.js"/>
                 <file name="src/model/card.js"/>
                 <file name="src/model/cardList.js"/>
+                <file name="src/model/dailyInstances.js"/>
                 <file name="src/model/lineUp.js"/>
                 <file name="src/model/task.js"/>
                 <file name="src/model/pass.js"/>
@@ -149,6 +150,8 @@
                 <file name="src/view/mainModule/cardUpgradeLabel.js"/>
                 <file name="src/view/mainModule/tipsLayer.js"/>
                 <file name="src/view/mainModule/configLayer.js"/>
+                <file name="src/view/mainModule/expInstanceLayer.js"/>
+                <file name="src/view/mainModule/dailyInstancesLayer.js"/>
                 <file name="src/view/mainModule/damageRankHelpLabel.js"/>
                 <file name="src/view/mainModule/damageRankLayer.js"/>
                 <file name="src/view/mainModule/elixirRankHelpLabel.js"/>

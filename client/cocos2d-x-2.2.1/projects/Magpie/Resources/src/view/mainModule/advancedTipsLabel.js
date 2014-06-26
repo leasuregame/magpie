@@ -10,6 +10,7 @@ var TYPE_EXCHANGE_CARD_TIPS = 4;
 var TYPE_BUY_GROWTH_PLAN_TIPS = 5;
 var TYPE_PASS_RESET_TIPS = 6;
 var TYPE_WORLD_CUP_TIPS = 7;
+var TYPE_EXP_INSTANCES_TIPS = 8;
 
 var spendFailTip = {
     gold: "魔石不足",
@@ -50,25 +51,35 @@ var AdvancedTipsLabel = LazyLayer.extend({
         msgBgIcon.setScaleX(0.95);
         this._frameLayer.addChild(msgBgIcon);
 
-        var cancelItem = cc.MenuItemImage.createWithIcon(
+        this._cancelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon308,
             this._onClickCancel,
             this
         );
-        cancelItem.setPosition(cc.p(120, -60));
+        this._cancelItem.setPosition(cc.p(120, -60));
 
-        var continueItem = cc.MenuItemImage.createWithIcon(
+        this._continueItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon21,
             this._onClickContinue,
             this
         );
-        continueItem.setPosition(cc.p(-120, -60));
+        this._continueItem.setPosition(cc.p(-120, -60));
 
-        var menu = cc.Menu.create(cancelItem, continueItem);
+        this._paymentItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button21,
+            main_scene_image.button21s,
+            main_scene_image.icon159,
+            this._onClickGo2Payment,
+            this
+        );
+        this._paymentItem.setPosition(cc.p(-120, -60));
+        this._paymentItem.setVisible(false);
+
+        var menu = cc.Menu.create(this._cancelItem, this._continueItem, this._paymentItem);
         menu.setPosition(cc.p(0, 0));
         this._frameLayer.addChild(menu);
 
@@ -107,6 +118,9 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 break;
             case TYPE_WORLD_CUP_TIPS:
                 this._initWorldCupTips();
+                break;
+            case TYPE_EXP_INSTANCES_TIPS:
+                this._initExpInstancesTips();
                 break;
         }
     },
@@ -188,7 +202,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
 
     },
 
-    _initExchangeCardTips: function() {
+    _initExchangeCardTips: function () {
         cc.log("AdvancedTipsLabel _initExchangeCardTips");
 
         var needFragment = this._otherData.fragment;
@@ -250,7 +264,7 @@ var AdvancedTipsLabel = LazyLayer.extend({
         };
     },
 
-    _initPassResetTips: function() {
+    _initPassResetTips: function () {
         cc.log("AdvancedTipsLabel _initPassResetTips");
 
         var needGold = gameData.pass.getResetNeedConsume();
@@ -281,12 +295,25 @@ var AdvancedTipsLabel = LazyLayer.extend({
         };
     },
 
-    _initWorldCupTips: function() {
+    _initWorldCupTips: function () {
         cc.log("AdvancedTipsLabel _initWorldCupTips");
 
         var tipLabel = cc.LabelTTF.create("提交后无法修改竞猜结果，确定继续么", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         this._frameLayer.addChild(tipLabel);
+    },
+
+    _initExpInstancesTips: function () {
+        cc.log("AdvancedTipsLabel _initPassResetTips");
+
+        var needVip = gameData.dailyInstances.buyExpCountNeedVip();
+
+        var tipLabel = cc.LabelTTF.create("VIP" + needVip + "以上玩家才可以购买次数", "STHeitiTC-Medium", 25);
+        tipLabel.setPosition(cc.p(0, 30));
+        this._frameLayer.addChild(tipLabel);
+
+        this._continueItem.setVisible(false);
+        this._paymentItem.setVisible(true);
     },
 
     _onClickCancel: function () {
@@ -315,7 +342,14 @@ var AdvancedTipsLabel = LazyLayer.extend({
         if (this._cb) {
             this._cb();
         }
+    },
 
+    _onClickGo2Payment: function () {
+        cc.log("AdvancedTipsLabel _onClickGo2Payment");
+
+        var shopLayer = ShopLayer.create();
+        shopLayer._onClickVipLayer();
+        MainScene.getInstance().switchTo(shopLayer);
     }
 
 });

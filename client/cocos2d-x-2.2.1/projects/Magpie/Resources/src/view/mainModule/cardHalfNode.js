@@ -35,10 +35,15 @@ var CardHalfNode = cc.Node.extend({
 
             ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("def", 0);
         } else {
-            this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
-            this.addChild(this._frameSprite);
+            if (this._card.isLeadCard()) {
+                this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
+                this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
+            } else if (this._card.isResourceCard()) {
+                this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half1"]);
+                this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
+            }
 
-            this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
+            this.addChild(this._frameSprite);
             this.addChild(this._cardSprite);
 
             this._iconSprite = cc.Sprite.create(this._card.getCardIcon());

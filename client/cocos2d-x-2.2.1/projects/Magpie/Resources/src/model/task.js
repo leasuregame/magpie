@@ -230,6 +230,7 @@ var Task = Entity.extend({
 
                 if (msg.find_boss) {
                     cbData.findBoss = msg.find_boss;
+                    gameData.boss.set("isNewBoss", true);
                 }
 
                 if (msg.upgradeInfo) {
@@ -401,7 +402,8 @@ var Task = Entity.extend({
                             gameData.cardList.push(Card.create(card));
                         }
 
-                        cbData[key] = len;
+                        cbData["exp_card_star"] = card.tableId % 20;
+                        cbData["exp_card_count"] = len;
 
                     } else {
                         gameData.player.add(key, reward[key]);

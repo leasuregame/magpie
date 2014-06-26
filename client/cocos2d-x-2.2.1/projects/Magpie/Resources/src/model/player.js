@@ -176,7 +176,8 @@ var Player = Entity.extend({
             useVipBoxList: data.vipBox,
             powerBuyCount: data.dailyGift.powerBuyCount,
             challengeBuyCount: data.dailyGift.challengeBuyCount,
-            expCardBuyCount: data.dailyGift.expCardCount
+            expCardBuyCount: data.dailyGift.expCardCount,
+            expPassBuyCount: data.dailyGift.expPassBuyCount
         });
         gameData.lottery.init({
             firstTime: data.firstTime,
@@ -185,6 +186,10 @@ var Player = Entity.extend({
         });
         gameData.exchange.init(data.exchangeCards);
         gameData.boss.init(data.bossInfo);
+
+        gameData.dailyInstances.init({
+            "expPassCount": data.dailyGift.expPassCount
+        });
 
         this.set("ability", this.getAbility());
     },
@@ -240,11 +245,16 @@ var Player = Entity.extend({
             gameData.shop.update({
                 powerBuyCount: msg.dailyGift.powerBuyCount,
                 challengeBuyCount: msg.dailyGift.challengeBuyCount,
-                expCardBuyCount: msg.dailyGift.expCardCount
+                expCardBuyCount: msg.dailyGift.expCardCount,
+                expPassBuyCount: msg.dailyGift.expPassBuyCount
             });
             gameData.lottery.update({
                 goldLuckyCard10: msg.dailyGift.goldLuckyCard10,
                 goldLuckyCardForFragment: msg.dailyGift.goldLuckyCardForFragment
+            });
+
+            gameData.dailyInstances.update({
+                "expPassCount": msg.dailyGift.expPassCount
             });
 
             if (msg.goldCards) {
@@ -274,7 +284,7 @@ var Player = Entity.extend({
         for (var i = 0; i < len; ++i) {
             card = lineUpCardList[i];
             ability += card.get("ability");
-            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
+            ability += parseInt(card.get("initHp") / 4 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
         }
 
         return ability;

@@ -235,7 +235,16 @@ var CardListLayer = cc.Layer.extend({
 
         var flag = {};
 
-        var cardListIndex = gameData.cardList.sortCardList(SORT_CARD_LIST_BY_STAR);
+        var cardListIndex = [];
+
+        if (this._selectType == SELECT_TYPE_SELL) {
+            cardListIndex = gameData.cardList.sortCardListByType(SORT_TYPE_SELL);
+        } else if (this._selectType == SELECT_TYPE_CARD_UPGRADE_RETINUE) {
+            cardListIndex = gameData.cardList.sortCardListByType(SORT_TYPE_UPGRADE);
+        } else {
+            cardListIndex = gameData.cardList.sortCardListByType();
+        }
+
         var cardCount = cardListIndex.length;
 
         var canSelectCardListIndex = [];
@@ -690,7 +699,7 @@ var CardListLayer = cc.Layer.extend({
         var useCardStar = outputTables.star_upgrade.rows[leadCardStar].source_card_star;
 
         for (var key in cardList) {
-            if (cardList[key].get("star") != useCardStar) {
+            if (cardList[key].get("star") != useCardStar || !cardList[key].isLeadCard()) {
                 this._excludeList.push(key);
             }
         }
@@ -880,7 +889,7 @@ var CardListLayer = cc.Layer.extend({
         this._selectCallback();
     },
 
-    _initCardUsePillMaster: function() {
+    _initCardUsePillMaster: function () {
         cc.log("CardListLayer _initCardUsePillMaster");
 
         this._tipLabel.setString("4星以下卡牌无法觉醒");
@@ -1261,7 +1270,7 @@ var CardListLayer = cc.Layer.extend({
             var selectCardList = that._getSelectCardList();
             var len = selectCardList.length;
 
-            if(len == 0) {
+            if (len == 0) {
                 TipLayer.tip("没有满足条件的卡牌");
             }
         };

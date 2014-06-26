@@ -32,9 +32,27 @@ var TYPE_CRIT_SMALL = 1;
 var TYPE_CRIT_MIDDLE = 2;
 var TYPE_CTIT_BIG = 3;
 
+var EXP_CARD_PRIORITY = 1;
+var LEAD_CARD_PRIORITY = 10;
+
+var LEAD_CARD_TABLE_ID = {
+    begin: 0,
+    end: 9999
+};
+
 var BOSS_CARD_TABLE_ID = {
     begin: 40000,
     end: 40002
+};
+
+var MONSTER_CARD_TABLE_ID = {
+    begin: 10000,
+    end: 39999
+};
+
+var EXP_CARD_TABLE_ID = {
+    begin: 50001,
+    end: 50005
 };
 
 var passiveSkillDescription = {
@@ -117,7 +135,9 @@ var Card = Entity.extend({
     _pill: 0,               // 当前觉醒玉数量
     _potentialLv: 0,        // 当前觉醒等级
 
-    _newCardMark: false,
+    _newCardMark: false,    // 新卡标记
+
+    _priority: 0,           //卡牌优先级
 
     init: function (data) {
         cc.log("Card init");
@@ -130,6 +150,7 @@ var Card = Entity.extend({
         this.on("abilityChange", this._abilityChangeEvent);
 
         this._newCardMark = this._id && (lz.load("card_" + this._id + "_mark") || false);
+        this.set("priority", this.getCardPriority());
 
         return true;
     },
@@ -236,7 +257,7 @@ var Card = Entity.extend({
         // 读取星级上限表
         var cardLvLimitTable = outputTables.card_lv_limit.rows[this._star];
 
-        this._maxLv = cardLvLimitTable.max_lv;
+        this._maxLv = (this.isLeadCard()) ? cardLvLimitTable.max_lv : 1;
     },
 
     _loadSkillTable: function () {
@@ -443,7 +464,7 @@ var Card = Entity.extend({
     canUpgrade: function () {
         cc.log("Card canUpgrade");
 
-        return (this._lv < this._maxLv);
+        return (this._lv < this._maxLv && this.isLeadCard());
     },
 
     upgrade: function (cb, cardIdList) {
@@ -490,7 +511,7 @@ var Card = Entity.extend({
     canUpgradeSkill: function () {
         cc.log("Card canUpgradeSkill");
 
-        return (this._star > 2 && (this._skillLv < this._skillMaxLv));
+        return (this._star > 2 && (this._skillLv < this._skillMaxLv) && this.isLeadCard());
     },
 
     getUpgradeNeedSKillPoint: function () {
@@ -560,7 +581,7 @@ var Card = Entity.extend({
     canAfreshPassiveSkill: function () {
         cc.log("Card canAfreshPassiveSkill");
 
-        return (this._star > 2);
+        return (this._star > 2 && this.isLeadCard());
     },
 
     getActivePassiveSkill: function () {
@@ -714,7 +735,7 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._star < MAX_CARD_STAR));
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._star < MAX_CARD_STAR) && this.isLeadCard());
     },
 
     getPreCardRate: function () {
@@ -811,7 +832,7 @@ var Card = Entity.extend({
     canTrain: function () {
         cc.log("Card canTrain");
 
-        return (this._star > 2);
+        return (this._star > 2 && this.isLeadCard());
     },
 
     train: function (cb, trainCount, trainType) {
@@ -928,7 +949,7 @@ var Card = Entity.extend({
     canUsePill: function () {
         cc.log("Card canUsePill");
 
-        return this._star >= 4;
+        return (this._star >= 4 && this.isLeadCard());
     },
 
     canUpgradePotentialLv: function () {
@@ -969,28 +990,57 @@ var Card = Entity.extend({
     getSellCardMoney: function () {
         cc.log("Card getSellCardMoney");
 
-        var table = outputTables.card_price.rows[1];
+        var price = 0;
 
-        var price = table["star" + this._star];
+        if (this.isLeadCard()) {
+            var table = outputTables.card_price.rows[1];
 
-        var rows = outputTables.card_grow.rows;
-        for (var i = 1; i < this._lv; ++i) {
-            price += rows[i].money_need;
+            price = table["star" + this._star];
+
+            var rows = outputTables.card_grow.rows;
+            for (var i = 1; i < this._lv; ++i) {
+                price += rows[i].money_need;
+            }
+        } else if (this.isExpCard()) {
+            price = outputTables.resource_cards.rows[this._tableId].price;
         }
 
         return price;
     },
 
     isExpCard: function () {
-        return this._tableId == 30000;
+        return this._tableId >= EXP_CARD_TABLE_ID.begin && this._tableId <= EXP_CARD_TABLE_ID.end;
     },
 
     isLeadCard: function () {
-        return (this._tableId < 10000 || this._tableId == 30000);
+        return this._tableId >= LEAD_CARD_TABLE_ID.begin && this._tableId <= LEAD_CARD_TABLE_ID.end;
+    },
+
+    isMonsterCard: function () {
+        return (this._tableId >= MONSTER_CARD_TABLE_ID.begin && this._tableId <= MONSTER_CARD_TABLE_ID.end) || (this._tableIdId >= 40003 && this._tableId <= 40005);
+    },
+
+    isResourceCard: function () {
+        return this.isExpCard();
     },
 
     isBossCard: function () {
+        cc.log(this._tableId);
+
         return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
+    },
+
+    getCardPriority: function () {
+        cc.log("Card getCardPriority");
+
+        if (this.isExpCard()) {
+            return EXP_CARD_PRIORITY;
+        } else if (this.isLeadCard()) {
+            return LEAD_CARD_PRIORITY;
+        }
+
+        return 0;
+
     }
 });
 

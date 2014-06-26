@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
+var home = require('./routes/index');
 var notice = require('./routes/notice');
 var version = require('./routes/version');
 var cdkey = require('./routes/cdkey');
@@ -21,6 +21,8 @@ var stats = require('./routes/stats');
 var area = require('./routes/area');
 var messgae = require('./routes/message');
 var optRecord = require('./routes/optRecord');
+var playerRecord = require('./routes/playerRecord');
+var upload = require('./routes/upload');
 
 var app = express();
 
@@ -36,7 +38,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('arthur wu'));
 app.use(express.session());
-app.use(express.bodyParser());
+app.use(express.bodyParser({uploadDir:'./uploads'}));
 app.use(expressValidator());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -47,44 +49,43 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', filter.authorize, routes.index);
-app.get('/login', routes.login);
-app.post('/login', routes.doLogin);
-app.get('/logout', routes.doLogout);
-app.get('/admin/notice', filter.authorize, notice.noticeList);
-app.post('/admin/notice', filter.authorize, notice.newNotice);
-app.get('/admin/notice/:platform', filter.authorize, notice.getNotice);
-app.delete('/admin/notice/:platform', filter.authorize, notice.delNotice);
-app.post('/admin/notice/:platform', filter.authorize, notice.saveNotice);
-app.get('/admin/version', filter.authorize, version.manage);
-app.post('/admin/version', filter.authorize, version.updateVersion);
-app.get('/admin/version/details/:version', filter.authorize, version.versionDetails)
-app.get('/admin/cdkey', filter.authorize, cdkey.manage);
-app.get('/admin/cdkey/pregenerate', filter.authorize, cdkey.pregenerate);
-app.get('/admin/cdkey/generate', filter.authorize, cdkey.generate);
-app.get('/admin/cdkey/search', filter.authorize, cdkey.search);
-app.all('/admin/playerId',  player.get);
-app.all('/admin/playerNames',  player.getPlayerNames);
-app.get('/admin/areaeditor', filter.authorize, area.editor);
-app.post('/admin/areaeditor/save', filter.authorize, area.save);
-app.all('/admin/actor-cards', filter.authorize, gameData.getActorCards);
-app.all('/admin/card-lv', filter.authorize, gameData.getCardLvLimit);
-
 app.get('/admin/stats/onlineuser', filter.authorize, stats.onlineUser);
 
+home(app);
+notice(app);
+version(app);
+cdkey(app);
+area(app);
+player(app);
+gameData(app);
 pushMessage(app);
 sendReward(app);
 messgae(app);
 optRecord(app);
+playerRecord(app);
+upload(app);
 
-app.get('/api/:platform/notice', notice.notice);
-app.get('/api/:platform/version', version.version);
-app.get('/api/:platform/update', version.update);
-app.get('/api/:platform/update/:version', version.update);
-
-app.get('/api/actor-cards', gameData.getActorCards);
-app.get('/api/card-lv', gameData.getCardLvLimit);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+});
+
+// watch changes of world cup config
+var fs = require('fs');
+
+var upload_dir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(upload_dir)) {
+    fs.mkdirSync(upload_dir);
+}
+
+fs.watch(path.join(__dirname,'..','game-server','data','share','world_cup'), function(event, filename){
+
+    var commandParam = path.join(__dirname,'..','game-server','bin','convertXmlToJson.js');
+
+    var spawn = require('child_process').spawn,
+        command = spawn('node', [commandParam]);
+    command.stdout.on('end', function() {
+        console.log('run command node convertXmlToJson.js completed');
+    });
+
 });

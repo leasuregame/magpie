@@ -434,6 +434,12 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 930),
             "scrollViewPoint": cc.p(0, 115)
         },
+        "dailyInstancesLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
+            "scrollViewSize": cc.size(640, 900),
+            "scrollViewPoint": cc.p(0, 122)
+        },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(320, 1100),
             "bgSpriteSize": cc.size(650, 985),
@@ -460,6 +466,8 @@ var fit4Iphone5 = {
             "rankBgIconPoint": cc.p(320, 630),
             "rankBgIconSize": cc.size(600, 620),
             "thisWeekItemPoint": cc.p(120, 960),
+
+
             "lastWeekItemPoint": cc.p(270, 960),
             "showRewardItemPoint": cc.p(480, 140),
             "closeItemPoint": cc.p(610, 1055),
@@ -523,6 +531,22 @@ var fit4Iphone5 = {
             "tipPoint": cc.p(320, 608),
             "okItemPoint": cc.p(230, 522),
             "closeItemPoint": cc.p(410, 522)
+        },
+        "expInstanceLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1056),
+            "titleLabelPoint": cc.p(320, 1096),
+            "topLabelPoint": cc.p(320, 1026),
+            "powerIconPoint": cc.p(500, 1026),
+            "powerLabelPoint": cc.p(520, 1021),
+            "timesBgLabelPoint": cc.p(320, 160),
+            "remainTimesLabelPoint": cc.p(310, 160),
+            "timesLabelPoint": cc.p(360, 160),
+            "backItemPoint": cc.p(60, 1096),
+            "buyCountItemPoint": cc.p(445, 160),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 776),
+            "scrollViewSize": cc.size(640, 776),
+            "scrollViewPoint": cc.p(0, 200)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -655,7 +679,7 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1050),
             "taskLayerItemPoint": cc.p(71, 1090),
             "passLayerItemPoint": cc.p(214, 1090),
-            "searchImmortalLayerItemPoint": cc.p(362, 1090)
+            "dailyInstancesLayerItemPoint": cc.p(362, 1090)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -1252,7 +1276,7 @@ var fit4Iphone5 = {
             "cardEvolutionItemOffset": cc.p(0, -2)
         },
         "summonLayer": {
-            "headIconPoint": cc.p(0, 1048),
+            "headIconPoint": cc.p(0, 1050),
             "lotteryLayerItemPoint": cc.p(71, 1087),
             "exChangeLayerItemPoint": cc.p(214, 1087),
             "treasureHuntLayerItemPoint": cc.p(363, 1087)

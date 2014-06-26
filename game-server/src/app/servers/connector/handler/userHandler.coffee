@@ -94,7 +94,7 @@ doLogin  = (type, app, msg, session, platform, next) ->
       checkIsOpenServer app, cb
 
     (cb) ->
-      checkAreaServerStatus, app, areaId, cb
+      checkAreaServerStatus app, areaId, cb
       
     (cb) =>
       args = authParams(type, msg, app)

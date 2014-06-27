@@ -4834,11 +4834,11 @@ var BattleLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        if (player.get("lv") >= 10 && player.getRemainDays(MONTH_CARD) > 0) {
+      //  if (player.get("lv") >= 10 && player.getRemainDays(MONTH_CARD) > 0) {
             this.end();
-        } else {
-            TipLayer.tip("月卡玩家10级可跳过");
-        }
+      //  } else {
+      //      TipLayer.tip("月卡玩家10级可跳过");
+      //  }
     },
 
     _onClickChangePlaySpeed: function () {

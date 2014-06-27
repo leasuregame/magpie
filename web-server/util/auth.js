@@ -11,7 +11,7 @@ exports.checkUser = function(username, password, cb) {
           user_name: 'queryer',
           prvlg_lv: 2
       });
-  } else if (username = 'superuser' && password == '1') {
+  } else if (username = 'superuser' && password == '$nibuzhidaodeshi:haha:64#') {
     cb(null, {
       user_id: 10,
       user_name: 'superuser',

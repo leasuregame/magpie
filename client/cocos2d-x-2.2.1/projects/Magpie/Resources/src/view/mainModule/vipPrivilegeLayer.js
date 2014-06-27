@@ -21,7 +21,7 @@ var vipPrivilegeDescription = {
     receive_bless_count: "每日接受祝福次数",
     challenge_buy_count: "每日有奖竞技购买次数",
     spirit_collect_count: "每日灵气采集次数",
-    exp_instance_count: "每日仙灵山谷购买次数"
+    exp_pass_count: "每日仙灵山谷购买次数"
 };
 
 var VipPrivilegeLayer = LazyLayer.extend({

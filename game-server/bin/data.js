@@ -391,7 +391,7 @@ Data.prototype.eachPlayer = function(execute) {
     ids = ids.map(function(id) {return id.id;});
     totalCount = ids.length;
 
-    async.each(ids, function(id, next) {
+    async.eachSeries(ids, function(id, next) {
 
       playerDao.getPlayerInfo({
         sync: true,

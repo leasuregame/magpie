@@ -5782,6 +5782,9 @@
 					42AD2EC319597AF10088A51F = {
 						DevelopmentTeam = TJT2HAB95B;
 					};
+					902B07A11858C475003A2A49 = {
+						DevelopmentTeam = TJT2HAB95B;
+					};
 					9066003B18ED4A0300AAC9D8 = {
 						DevelopmentTeam = TJT2HAB95B;
 					};
@@ -5822,6 +5825,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					90F5361B1862EB3C008207BD = {
+						DevelopmentTeam = TJT2HAB95B;
 					};
 					A922753C1517C094001B78AA = {
 						DevelopmentTeam = TJT2HAB95B;
@@ -8980,6 +8986,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9036,6 +9043,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9886,6 +9894,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9941,6 +9950,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -48,6 +48,13 @@ util.loadAreaInfo = (app) ->
   setAreas app, serverConfigPath
   fs.watchFile serverConfigPath, () -> setAreas app, serverConfigPath
 
+  areaConfigPath = path.join app.getBase(), 'config', 'area.json'
+  setAreaConfig = (app, filepath) ->
+    app.set 'areaConfig', JSON.parse(fs.readFileSync(filepath))
+
+  setAreaConfig app, areaConfigPath
+  fs.watchFile areaConfigPath, () ->  setAreaConfig app, areaConfigPath
+
 util.loadDatabaseInfo = (app, type) ->
   mysqlPath = path.join app.getBase(), 'config', 'mysql.json'
   env = app.get('env')

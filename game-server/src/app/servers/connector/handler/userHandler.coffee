@@ -215,7 +215,7 @@ checkAreaServerStatus = (app, areaId, cb) ->
   areaInfo = app.get('areaConfig')
   currentArea = null
   for a in areaInfo
-    if parseInt(a.areaId) is parseInt(areaId)
+    if parseInt(a.id) is parseInt(areaId)
       currentArea = a
   if currentArea and parseInt(currentArea.status) is 40
     cb({code: 501, msg: '服务器正在维护当中，请耐心等待！'})

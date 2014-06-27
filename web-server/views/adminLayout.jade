@@ -33,7 +33,7 @@ html
                 a(href='http://115.29.243.80:9090', target='_blank') AppStore平台
         div(class='collapse navbar-collapse', id='nb-collapse')
           ul(class='nav navbar-nav')
-            if user.prvlg_lv === 1
+            if user && user.prvlg_lv === 1
                 li(class=menu=='notice' ? 'active':'')
                   a(href='/admin/notice') 公告管理
                 li(class=menu=='version' ? 'active':'')
@@ -64,11 +64,12 @@ html
                       a(href='/admin/playerConsumption') 魔石使用占比
                 li(class=menu=='upload' ? 'active':'')
                   a(href='/admin/uploadWCConfig') 世界杯赛果上传
-            else
+            else if user && user.prvlg_lv === 2
                 li(class=menu=='playerWastageRateOnLv' ? 'active':'')
                     a(href='/admin/playerWastageRateOnLv') 等级流失率
                 li(class=menu=='playerConsumption' ? 'active':'')
                     a(href='/admin/playerConsumption') 魔石使用占比
+
           p.navbar-text.navbar-right
             a.navbar-link(href='/logout') 注销
       block content

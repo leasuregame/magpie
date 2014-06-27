@@ -93,6 +93,9 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (cb) ->
       checkIsOpenServer app, cb
 
+    (cb) ->
+      checkAreaServerStatus app, areaId, cb
+      
     (cb) =>
       args = authParams(type, msg, app)
       args.sid = session.id
@@ -205,6 +208,17 @@ checkIsOpenServer = (app, cb) ->
       code: 501, 
       msg: util.format('%s月%s日%s点开服，敬请期待', openTime.getMonth()+1, openTime.getDate(), openTime.getHours())
     })
+  else 
+    cb()
+
+checkAreaServerStatus = (app, areaId, cb) ->
+  areaInfo = app.get('areaConfig')
+  currentArea = null
+  for a in areaInfo
+    if parseInt(a.areaId) is parseInt(areaId)
+      currentArea = a
+  if currentArea and parseInt(currentArea.status) is 40
+    cb({code: 501, msg: '服务器正在维护当中，请耐心等待！'})
   else 
     cb()
 

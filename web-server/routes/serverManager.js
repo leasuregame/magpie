@@ -1,8 +1,11 @@
 var filter = require('../util/filter');
+var playerDao = require('../dao/playerDao');
 var exec = require('child_process').exec;
 var path = require('path');
+var fs = require('fs');
 var game_dir = path.join(__dirname, '..', '..', 'game-server');
-
+var WHITE_LIST_PATH= path.join(__dirname, '..', '..', 'shared', 'whitelist.json');
+var CONF_PATH = path.join(__dirname, '..', '..', 'shared', 'conf.json');
 
 var Manager = function(app) {
   app.get('/admin/server/manager', filter.authorize, function(req, res) {
@@ -50,6 +53,103 @@ var Manager = function(app) {
         });
     }
   });
+
+  app.get('/admin/api/whitelist', filter.authorize, function(req, res) {
+    var list = JSON.parse(readWhiteList());
+    playerDao.playersInAreas(
+      ['id', 'name', 'userId', 'areaId'], 
+      ' userId in (' + list.toString() + ') ', 
+      [1],
+      function(err, players) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(players);  
+        }        
+      }
+    );
+  });
+
+  app.post('/admin/api/whitelist', filter.authorize, function(req, res) {
+    var name = req.body.name;
+
+    if (!name || typeof name != 'string' || name == '') { 
+      res.send('非法参数');
+    } else {
+      playerDao.playersInAreas(['id', 'name', 'userId', 'areaId'], {
+        name: name
+      }, [1], function(err, players) {
+        if (err) {
+          res.send(err);
+        } else {
+          if (!!players && players.length > 0) {
+            var player = players[0];
+            addWhiteList(player.userId);
+            res.send(player);
+          } else {
+            res.send('玩家不存在');
+          }
+        }
+      });      
+    }
+  });
+
+  app.delete('/admin/api/whitelist/:pid', filter.authorize, function(req, res) {
+    var pid = req.params.pid;
+    console.log(req.params, pid);
+    if (isNaN(parseInt(pid))) {
+      res.send('非法参数');
+    } else {
+      delWhiteList(pid);
+      res.send('ok');
+    }
+  });
+
+  app.get('/admin/api/whitelist/status', filter.authorize, function(req, res) {
+    var confData = JSON.parse(fs.readFileSync(CONF_PATH, 'utf8'));
+    res.send(confData.useWhiteList);
+  });
+
+  app.get('/admin/api/whitelist/status/toggle', filter.authorize, function(req, res) {
+    var confData = JSON.parse(fs.readFileSync(CONF_PATH, 'utf8'));
+
+    if (confData.useWhiteList) {
+      confData.useWhiteList = false;
+    } else {
+      confData.useWhiteList = true;
+    }
+
+    fs.writeFileSync(CONF_PATH, JSON.stringify(confData), 'utf8');
+    res.send(confData.useWhiteList);
+  });
+
+  var readWhiteList = function() {
+    return fs.readFileSync(WHITE_LIST_PATH, 'utf8') || [];
+  };
+
+  var writeWhiteList = function(data) {
+    if (typeof data != 'string') {
+      data = JSON.stringify(data);
+    }
+    fs.writeFileSync(WHITE_LIST_PATH, data, 'utf8');
+  };
+
+  var addWhiteList = function(pid) {
+    var list = JSON.parse(readWhiteList());
+    list.push(pid);
+    writeWhiteList(list);
+  };
+
+  var delWhiteList = function(pid) {
+    var list = JSON.parse(readWhiteList());
+    for (var i = 0; i<list.length; i++) {
+      if (list[i] == pid) {
+        list.splice(i, 1);
+        break;
+      }
+    }
+    writeWhiteList(list);
+  };
 
   var errorHandler = function(res, error, stdout, stderr) {
     console.log('stdout: ' + stdout);

@@ -4,21 +4,53 @@ block head
   style.
     .btn-group-actions {padding-top: 50px}
     .btn-group-actions button {margin: 5px 30px}
+    .nav-tabs li a { font-weight: bold}
 
 block content
-  div.btn-group-actions.text-center
-    button.btn.btn-success.btn-lg(type='button', id="btn-restart")
-      span.glyphicon.glyphicon-refresh 
-      span 重启
-    button.btn.btn-primary.btn-lg(type='button', id="btn-start")
-      span.glyphicon.glyphicon-play 
-      span 启动
-    button.btn.btn-warning.btn-lg(type='button', id="btn-stop")
-      span.glyphicon.glyphicon-stop 
-      span 停止
-    button.btn.btn-danger.btn-lg(type='button', id="btn-stop-force")
-      span.glyphicon.glyphicon-stop 
-      span 强制停止
+  hr
+  div.row
+    div.col-xs-6.col-md-2
+      div.tabs-left
+        ul.nav.nav-tabs.nav-stacked
+          li.active
+            a(id="btn-servers", href="#tab1", data-toggle="tab") 服务器
+          li 
+            a(id="btn-white-list", href="#tab2", data-toggle="tab") 白名单
+          li 
+            a(id="btn-activities", href="#tab3", data-toggle="tab") 活动
+    
+    div.col-xs-12.col-md-10
+      div.tab-content
+        div.tab-pane.active(id='tab1')
+          div.btn-group-actions.text-center
+            button.btn.btn-success.btn-lg(type='button', id="btn-restart")
+              span.glyphicon.glyphicon-refresh 
+              span 重启
+            button.btn.btn-primary.btn-lg(type='button', id="btn-start")
+              span.glyphicon.glyphicon-play 
+              span 启动
+            button.btn.btn-warning.btn-lg(type='button', id="btn-stop")
+              span.glyphicon.glyphicon-stop 
+              span 停止
+            button.btn.btn-danger.btn-lg(type='button', id="btn-stop-force")
+              span.glyphicon.glyphicon-stop 
+              span 强制停止
+      
+        div.tab-pane(id='tab2')
+          nav.navbar.navbar-default(role='navigation')
+            
+            button.btn.btn-primary.navbar-btn(id='btn-white-list-enable', type='button', style='margin-left: 20px') 
+
+            form.navbar-form.navbar-right(role='search')
+              div.form-group
+                input.form-control(id='playername', name='name' type='text', placeholder='玩家名称')
+              
+              button.btn.btn-default(id='btn-add-white-list', type='submit', style='margin: 0 20px') 添加
+
+          ul.list-group(id='whitelist')
+      
+        div.tab-pane(id='tab3')
+          p 活动管理    
 
   div.cmd-results.alert
 
@@ -53,4 +85,86 @@ block footer
           $('.cmd-results').removeClass('alert-success alert-warning').addClass('alert-danger').html(data.msg);
         }
       }
+
+      $('#btn-white-list').click(function(e) {
+        setWhiteListStatus();
+
+        $.get('/admin/api/whitelist', function(data) {
+          var html='';
+
+          data.forEach(function(i) {
+            html += '<li class="list-group-item">'
+              + i.areaId + ' 区 - '
+              + '<strong>' + i.name
+              + '</strong><button class="del-white-list btn btn-danger btn-xs pull-right" value="' 
+              + i.userId + '">删除</button></li>';
+          });
+
+          $('#whitelist').html(html);
+          addDeleteEvents();          
+        });
+      });
+
+      $('#btn-add-white-list').click(function(e) {
+        e.preventDefault();
+
+        var pname = $('#playername').val();
+        $.post('/admin/api/whitelist', {
+            name: pname
+          }, function(data) {
+            if (typeof data == 'string') {
+              alert(pname + ' ' + data);
+            } else {
+              var html = '<li class="list-group-item">'
+                + data.areaId + ' 区 - '
+                + '<strong>' + data.name
+                + '</strong><button class="del-white-list btn btn-danger btn-xs pull-right" value="' 
+                + data.userId + '">删除</button></li>';
+
+              $('#whitelist').append(html);
+              addDeleteEvents();
+            }
+          });
+
+      });
+
+      $('#btn-white-list-enable').click(function(e) {
+        $.get('/admin/api/whitelist/status/toggle', function(status) {
+          if (status == true) {
+            $('#btn-white-list-enable').text('关闭');
+          } else {
+            $('#btn-white-list-enable').text('开启');
+          }
+        });
+      });
+
+      var addDeleteEvents = function() {
+        $('.del-white-list').click(function(e) {
+            e.preventDefault();
+            var self = $(this);
+            $.ajax({
+              url: '/admin/api/whitelist/'+this.value,
+              type: 'DELETE'
+            }).success(function(data) {
+              if (data == 'ok') {
+                self.parent().remove();
+              }
+            }).error(function(err) {
+              alert(err);
+            });
+          });
+      };
+
+      var setWhiteListStatus = function() {
+        $.get('/admin/api/whitelist/status', function(status) {
+          console.log(typeof status);
+          if (status == true) {
+            $('#btn-white-list-enable').text('关闭');
+          } else {
+            $('#btn-white-list-enable').text('开启');
+          }
+        });
+      };
+      setWhiteListStatus();
+
     });

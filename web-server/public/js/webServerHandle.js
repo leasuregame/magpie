@@ -6,6 +6,7 @@
     var API = {
         ACTOR_CARDS : API_BASE_PATH + 'getActorCards',
         CARD_LV_LIMIT : API_BASE_PATH + 'getCardLv',
+        RECHARGE_PRODUCT : API_BASE_PATH + 'rechargeProduct',
         CONSUME_SOURCE : API_BASE_PATH + 'getConsumeSource',
         PLAYER_NAMES : API_BASE_PATH + 'getPlayerNames',
         PLAYER_IDS : API_BASE_PATH + 'getPlayerId',
@@ -34,6 +35,14 @@
      */
     webAPI.getCardLvLimit = function (cb) {
         ajax(API.CARD_LV_LIMIT, cb);
+    };
+
+    /**
+     * 获得充值项目
+     * @param cb
+     */
+    webAPI.getRechargeProduct = function (cb) {
+        ajax(API.RECHARGE_PRODUCT, cb);
     };
 
     /**

@@ -124,7 +124,12 @@ var Manager = function(app) {
   });
 
   var readWhiteList = function() {
-    return fs.readFileSync(WHITE_LIST_PATH, 'utf8') || [];
+    try {
+      return fs.readFileSync(WHITE_LIST_PATH, 'utf8') || [];  
+    } catch (err) {
+      fs.writeFileSync(WHITE_LIST_PATH, '[]', 'utf8');
+      return '[]';
+    }      
   };
 
   var writeWhiteList = function(data) {

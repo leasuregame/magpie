@@ -13,15 +13,63 @@ block content
       div.tabs-left
         ul.nav.nav-tabs.nav-stacked
           li.active
+            a(id="btn-versions", href="#tab0", data-toggle="tab") 版本号管理
+          li
             a(id="btn-servers", href="#tab1", data-toggle="tab") 服务器
           li 
-            a(id="btn-white-list", href="#tab2", data-toggle="tab") 白名单
+            a(id="btn-areas", href="#tab2", data-toggle="tab") 区服管理
           li 
-            a(id="btn-activities", href="#tab3", data-toggle="tab") 活动
+            a(id="btn-white-list", href="#tab3", data-toggle="tab") 白名单
     
     div.col-xs-12.col-md-10
       div.tab-content
-        div.tab-pane.active(id='tab1')
+        div.tab-pane.active(id="tab0")
+          div(class='panel panel-default')
+     
+            - each v, k in version
+            
+              div(class='panel-heading')
+                strong #{k} 平台版本
+                span(class='pull-right')
+                  a(href='http://www.ksyun.com/product/ks3' target='blank') 金山云存储
+              div(class='panel-body')
+                div(class='col-md-9')
+
+                  form(class='form-horizontal', role='form',  action="/admin/version", method='POST')
+                    div(class='form-group')
+                      lable(for='#{k}_version', class='col-sm-2 control-label') 当前版本
+                      div(class='col-sm-4')
+                        input(type='text', class='form-control', name='#{k}_version', value='#{v.version}')
+                      
+                      lable(for='#{k}_lastVersion', class='col-sm-2 control-label') 上一版本
+                      div(class='col-sm-4')
+                        input(type='text', class='form-control', name='#{k}_lastVersion', value='#{v.lastVersion}')
+                    div(class='form-group')
+                      lable(for='#{k}_oldestVersion', class='col-sm-2 control-label') 最老版本
+                      div(class='col-sm-4')
+                        input(type='text', class='form-control', name='#{k}_oldestVersion', value='#{v.oldestVersion}')
+                    
+                      lable(for='#{k}_forceUpdateVersion', class='col-sm-2 control-label') 强制更新版本
+                      div(class='col-sm-4')
+                        input(type='text', class='form-control', name='#{k}_forceUpdateVersion', value='#{v.forceUpdateVersion}')
+
+                    hr
+                    div(class='form-group')
+                      lable(for='#{k}_filename', class='col-sm-2 control-label') 部分更新包
+                      div(class='col-sm-4')
+                        input(type='text', class='form-control', name='#{k}_filename', value='#{v.filename}' required)
+                      lable(for='#{k}_lastFilename', class='col-sm-2 control-label') 全部更新包
+                      div(class='col-sm-4')
+                        input(type='text', class='form-control', name='#{k}_lastFilename', value='#{v.lastFilename}')
+                    div(class='form-group')
+                      div(class='col-sm-offset-2 col-sm-2')
+                        button(type='submit', class='btn btn-default btn-block btn-lg') 更新
+
+                div(class='col-md-3')
+                  a(class='btn btn-primary btn-block', href='/api/#{k}/update/1.0.0') Download #{v.filename}
+                  a(class='btn btn-primary btn-block', href='/api/#{k}/update/#{v.lastVersion}') Download #{v.lastFilename}
+
+        div.tab-pane(id='tab1')
           div.btn-group-actions.text-center
             button.btn.btn-success.btn-lg(type='button', id="btn-restart")
               span.glyphicon.glyphicon-refresh 
@@ -37,9 +85,17 @@ block content
               span 强制停止
       
         div.tab-pane(id='tab2')
+          div(id='editor') #{areas}
+          div(class='row', style="margin-top: 20px")
+            div(class='col-md-8 text-right', style='line-height: 45px')
+              span(id='res-msg')
+            div(class='col-md-4')
+              input(id='save', type='button', class='btn btn-primary btn-lg btn-block' value='保存')  
+      
+        div.tab-pane(id='tab3')
           nav.navbar.navbar-default(role='navigation')
-            
-            button.btn.btn-primary.navbar-btn(id='btn-white-list-enable', type='button', style='margin-left: 20px') 
+            strong(style='margin-left: 20px') 当前状态：
+              button.btn.btn-danger.navbar-btn(id='btn-white-list-enable', type='button') 
 
             form.navbar-form.navbar-right(role='search')
               div.form-group
@@ -47,124 +103,10 @@ block content
               
               button.btn.btn-default(id='btn-add-white-list', type='submit', style='margin: 0 20px') 添加
 
-          ul.list-group(id='whitelist')
-      
-        div.tab-pane(id='tab3')
-          p 活动管理    
+          ul.list-group(id='whitelist')          
 
   div.cmd-results.alert
 
 block footer
-  script.
-    $(function(){
-      $('#btn-start').click(function(e) {
-        $.get('/admin/api/server/start', handerResult);
-      });
-
-      $('#btn-stop').click(function(e) {
-        $.get('/admin/api/server/stop', handerResult);
-      });
-
-      $('#btn-stop-force').click(function(e) {
-        $.get('/admin/api/server/stop?force=true', handerResult);
-      });
-
-      $('#btn-restart').click(function(e) {
-        $.get('/admin/api/server/restart', handerResult);
-      });
-
-      function handerResult(data) {
-        if(data.code == 200) {
-          $('.cmd-results').removeClass('alert-danger alert-warning').addClass('alert-success').html(data.msg);
-        } else if (data.code == 300) {
-          $('.cmd-results').removeClass('alert-danger alert-success').addClass('alert-warning').html(
-            data.msg + '<br>' 
-            + data.output.map(function(o, i) {return '<strong>'+(i+1)+'. </strong>'+o}).join('<br>')
-          );
-        } else {
-          $('.cmd-results').removeClass('alert-success alert-warning').addClass('alert-danger').html(data.msg);
-        }
-      }
-
-      $('#btn-white-list').click(function(e) {
-        setWhiteListStatus();
-
-        $.get('/admin/api/whitelist', function(data) {
-          var html='';
-
-          data.forEach(function(i) {
-            html += '<li class="list-group-item">'
-              + i.areaId + ' 区 - '
-              + '<strong>' + i.name
-              + '</strong><button class="del-white-list btn btn-danger btn-xs pull-right" value="' 
-              + i.userId + '">删除</button></li>';
-          });
-
-          $('#whitelist').html(html);
-          addDeleteEvents();          
-        });
-      });
-
-      $('#btn-add-white-list').click(function(e) {
-        e.preventDefault();
-
-        var pname = $('#playername').val();
-        $.post('/admin/api/whitelist', {
-            name: pname
-          }, function(data) {
-            if (typeof data == 'string') {
-              alert(pname + ' ' + data);
-            } else {
-              var html = '<li class="list-group-item">'
-                + data.areaId + ' 区 - '
-                + '<strong>' + data.name
-                + '</strong><button class="del-white-list btn btn-danger btn-xs pull-right" value="' 
-                + data.userId + '">删除</button></li>';
-
-              $('#whitelist').append(html);
-              addDeleteEvents();
-            }
-          });
-
-      });
-
-      $('#btn-white-list-enable').click(function(e) {
-        $.get('/admin/api/whitelist/status/toggle', function(status) {
-          if (status == true) {
-            $('#btn-white-list-enable').text('关闭');
-          } else {
-            $('#btn-white-list-enable').text('开启');
-          }
-        });
-      });
-
-      var addDeleteEvents = function() {
-        $('.del-white-list').click(function(e) {
-            e.preventDefault();
-            var self = $(this);
-            $.ajax({
-              url: '/admin/api/whitelist/'+this.value,
-              type: 'DELETE'
-            }).success(function(data) {
-              if (data == 'ok') {
-                self.parent().remove();
-              }
-            }).error(function(err) {
-              alert(err);
-            });
-          });
-      };
-
-      var setWhiteListStatus = function() {
-        $.get('/admin/api/whitelist/status', function(status) {
-          console.log(typeof status);
-          if (status == true) {
-            $('#btn-white-list-enable').text('关闭');
-          } else {
-            $('#btn-white-list-enable').text('开启');
-          }
-        });
-      };
-      setWhiteListStatus();
-
-    });
+  script(type='text/javascript', src='/js/ace/ace.js')
+  script(type='text/javascript', src='/js/serverManager.js')

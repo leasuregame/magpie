@@ -1,15 +1,29 @@
 var filter = require('../util/filter');
 var playerDao = require('../dao/playerDao');
+var helper = require('../../shared/version_helper');
 var exec = require('child_process').exec;
 var path = require('path');
 var fs = require('fs');
 var game_dir = path.join(__dirname, '..', '..', 'game-server');
 var WHITE_LIST_PATH= path.join(__dirname, '..', '..', 'shared', 'whitelist.json');
 var CONF_PATH = path.join(__dirname, '..', '..', 'shared', 'conf.json');
+var AREA_PATH = path.join(__dirname, '..', '..', 'game-server', 'config', 'area.json');
 
 var Manager = function(app) {
   app.get('/admin/server/manager', filter.authorize, function(req, res) {
-    res.render('serverManager');
+    if (!fs.existsSync(AREA_PATH)) {
+        res.render('serverManager', {
+            areas: [],
+            version: helper.versionData()
+        });
+    } else {
+        var areas = fs.readFileSync(AREA_PATH, 'utf8');
+        
+        res.render('serverManager', {
+            areas: areas,
+            version: helper.versionData()
+        });
+    }
   });
 
   app.get('/admin/api/server/restart', filter.authorize, function(req, res) {
@@ -56,15 +70,23 @@ var Manager = function(app) {
 
   app.get('/admin/api/whitelist', filter.authorize, function(req, res) {
     var list = JSON.parse(readWhiteList());
+    console.log('-a--a-', list);
+    if (list.length == 0) {
+      return res.send([]);
+    }
+
+    var areas = JSON.parse(fs.readFileSync(AREA_PATH, 'utf8'));
+    areaIds = areas.map(function(a) { return a.id; });
+
     playerDao.playersInAreas(
       ['id', 'name', 'userId', 'areaId'], 
       ' userId in (' + list.toString() + ') ', 
-      [1],
+      areaIds,
       function(err, players) {
         if (err) {
           res.send(err);
         } else {
-          res.send(players);  
+          res.send(players);
         }        
       }
     );
@@ -76,16 +98,22 @@ var Manager = function(app) {
     if (!name || typeof name != 'string' || name == '') { 
       res.send('非法参数');
     } else {
+      var areas = JSON.parse(fs.readFileSync(AREA_PATH, 'utf8'));
+      areaIds = areas.map(function(a) { return a.id; });
+
       playerDao.playersInAreas(['id', 'name', 'userId', 'areaId'], {
         name: name
-      }, [1], function(err, players) {
+      }, areaIds, function(err, players) {
         if (err) {
           res.send(err);
         } else {
           if (!!players && players.length > 0) {
             var player = players[0];
-            addWhiteList(player.userId);
-            res.send(player);
+            var ok = addWhiteList(player.userId);
+            if (ok)
+              res.send(player);
+            else
+              res.send('玩家已存在');
           } else {
             res.send('玩家不存在');
           }
@@ -141,8 +169,12 @@ var Manager = function(app) {
 
   var addWhiteList = function(pid) {
     var list = JSON.parse(readWhiteList());
-    list.push(pid);
-    writeWhiteList(list);
+    if (list.indexOf(pid) < 0) {
+      list.push(pid);  
+      writeWhiteList(list);
+      return true;
+    }
+    return false;
   };
 
   var delWhiteList = function(pid) {

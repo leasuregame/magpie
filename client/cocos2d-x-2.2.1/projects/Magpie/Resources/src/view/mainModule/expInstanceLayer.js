@@ -250,16 +250,7 @@ var ExpInstanceLayer = cc.Layer.extend({
     _onClickBuyCount: function () {
         cc.log("ExpInstanceLayer _onClickBuyCount");
 
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
         var vip = gameData.player.get("vip");
-
-        var needVip = gameData.dailyInstances.buyExpCountNeedVip();
-
-        if (vip < needVip) {
-            AdvancedTipsLabel.pop(TYPE_EXP_INSTANCES_TIPS);
-            return;
-        }
 
         if (gameData.shop.get("expPassBuyCount") <= 0) {
 
@@ -371,7 +362,7 @@ var ExpInstanceLayer = cc.Layer.extend({
             var state = gameData.dailyInstances.expInstanceState();
 
             if (state == STATE_COUNT_USE_UP) {
-                TipLayer.tip("今日免费次数已用完");
+                that._onClickBuyCount();
                 return;
             } else if (state == STATE_CARD_LIST_FULL) {
                 CardListFullTipLayer.pop();

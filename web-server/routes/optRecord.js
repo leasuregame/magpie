@@ -29,7 +29,7 @@ var optRecord = function(app) {
 		var options = JSON.stringify(reqParam['options']);
 		var status = reqParam['status'];
 
-        console.log('recordMsgOpt ', [operator, areaId, playerNames, options, status]);
+//        console.log('recordMsgOpt ', [operator, areaId, playerNames, options, status]);
 
         recordDao.addRecord([operator, areaId, playerNames, options, status], function (err){
             if(err) res.status(500).send('error when selecting record, ' + err);

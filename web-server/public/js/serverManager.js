@@ -100,9 +100,9 @@ $(function(){
   $('#btn-white-list-enable').click(function(e) {
     $.get('/admin/api/whitelist/status/toggle', function(status) {
       if (status == true) {
-        $('#btn-white-list-enable').removeClass('btn-danger').addClass('btn-success').text('关闭');
+        $('#btn-white-list-enable').removeClass('btn-danger').addClass('btn-success').text('开启');
       } else {
-        $('#btn-white-list-enable').removeClass('btn-success').addClass('btn-danger').text('开启');
+        $('#btn-white-list-enable').removeClass('btn-success').addClass('btn-danger').text('关闭');
       }
     });
   });
@@ -128,9 +128,9 @@ $(function(){
     $.get('/admin/api/whitelist/status', function(status) {
       
       if (status == true) {
-        $('#btn-white-list-enable').removeClass('btn-danger').addClass('btn-success').text('关闭');
+        $('#btn-white-list-enable').removeClass('btn-danger').addClass('btn-success').text('开启');
       } else {
-        $('#btn-white-list-enable').removeClass('btn-success').addClass('btn-danger').text('开启');
+        $('#btn-white-list-enable').removeClass('btn-success').addClass('btn-danger').text('关闭');
       }
     });
   };

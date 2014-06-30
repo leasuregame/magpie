@@ -394,13 +394,14 @@ var Task = Entity.extend({
                 for (var key in reward) {
                     if (key == "exp_card") {
                         var ids = reward["exp_card"].ids;
-                        var card = reward["exp_card"].card;
                         var len = ids.length;
 
-                        for (var i = 0; i < len; i++) {
-                            card.id = ids[i];
-                            gameData.cardList.push(Card.create(card));
-                        }
+                        for (var i = 0; i < len; i++)
+                            (function (i) {
+                                var card = reward["exp_card"].card;
+                                card.id = ids[i];
+                                gameData.cardList.push(Card.create(card));
+                            })(i);
 
                         cbData["exp_card_star"] = card.tableId % 20;
                         cbData["exp_card_count"] = len;

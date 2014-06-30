@@ -1619,6 +1619,38 @@ var Player = (function(_super) {
         };
     };
 
+    Player.prototype.isGotLuckCardStar = function(rate_list) {
+        if (typeof this.activities.luckCard == 'undefined') {
+            var i = _.random(0, rate_list.length-1);
+            this.activities.luckCard = {
+                star: 0,
+                luckCardCount10: 0,
+                rates: rate_list[i]
+            };
+        }
+
+        var activities = utility.deepCopy(this.activities);
+        var lcData = activities.luckCard;
+
+        var got = false;
+        if (_.isNumber(rate_list)) {
+            got = utility.hitRate(rate_list);
+            lcData.star += 1;
+        } else {
+            lcData.luckCardCount10 += 1;        
+            if (lcData.rates[lcData.luckCardCount10-1] == '1') {
+                lcData.star += 1;
+                got = true
+            }
+
+            if (lcData.luckCardCount10%10 == 0) {
+                lcData.rates = rate_list[_.random(0, rate_list.length-1)];
+            }
+        }
+        this.activities = activities;
+        return got;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,

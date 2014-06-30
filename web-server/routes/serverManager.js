@@ -5,7 +5,7 @@ var exec = require('child_process').exec;
 var path = require('path');
 var fs = require('fs');
 var game_dir = path.join(__dirname, '..', '..', 'game-server');
-var WHITE_LIST_PATH= path.join(__dirname, '..', '..', 'shared', 'whitelist.json');
+var WHITE_LIST_PATH= path.join(__dirname, '..', '..', 'shared', 'whiteList.json');
 var CONF_PATH = path.join(__dirname, '..', '..', 'shared', 'conf.json');
 var AREA_PATH = path.join(__dirname, '..', '..', 'game-server', 'config', 'area.json');
 

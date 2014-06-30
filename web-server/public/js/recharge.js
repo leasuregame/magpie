@@ -136,6 +136,12 @@ function doRequest(reqData) {
             // 当前时间
             var now = new Date();
             rsPanel.setElement('.recDateTime', now.toLocaleString());
+
+            var option = {
+                product : reqData.productId,
+                qty : reqData.qty
+            };
+            window.webAPI.recordRechargeOpt(reqData.areaId, option, msg.players, 1);
             cb();
         } else {
             cb(data.msg);

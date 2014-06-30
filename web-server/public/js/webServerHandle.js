@@ -11,7 +11,9 @@
         PLAYER_NAMES : API_BASE_PATH + 'getPlayerNames',
         PLAYER_IDS : API_BASE_PATH + 'getPlayerId',
         RECORD_MSG_OPT : API_BASE_PATH + 'recordMsgOpt',
+        RECORD_RCHG_OPT : API_BASE_PATH + 'recordRchgOpt',
         GET_MSG_OPT : API_BASE_PATH + 'getSysMsgOpt',
+        GET_RCHG_OPT : API_BASE_PATH + 'getRchgOpt',
         SYS_MSG : API_BASE_PATH + 'getSysMsg',
         RECHARGE_RECORD : API_BASE_PATH + 'getRechargeRecord',
         WASTAGE_RATE_ON_LV : API_BASE_PATH + 'getWastageRateOnLv',
@@ -111,6 +113,40 @@
         };
         ajax(API.GET_MSG_OPT, param, scb, ecb);
     };
+
+    /**
+     * 记录后台充值操作
+     * @param areaId
+     * @param options
+     * @param playerNames
+     * @param status
+     */
+    webAPI.recordRechargeOpt = function (areaId, options, playerNames, status) {
+        var param = {
+            areaId : areaId,
+            playerNames : playerNames,
+            options : options,
+            status : status
+        };
+        ajax(API.RECORD_RCHG_OPT, param, null);
+    };
+
+    /**
+     * 获取后台充值操作记录
+     * @param createTime
+     * @param scb
+     * @param ecb
+     */
+    webAPI.getRechargeOptions = function (createTime, scb, ecb) {
+        createTime[0] = util.strDate2Ms(createTime[0]);
+        createTime[1] = util.strDate2Ms(createTime[1]);
+
+        var param = {
+            createTime : createTime
+        };
+        ajax(API.GET_RCHG_OPT, param, scb, ecb);
+    };
+
 
     /**
      * 获取后台充值记录

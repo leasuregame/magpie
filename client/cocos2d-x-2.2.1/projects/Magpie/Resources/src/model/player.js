@@ -378,6 +378,7 @@ var Player = Entity.extend({
         cc.log("Player _vipChangeEvent");
 
         gameData.shop.updateMaxCount();
+
     },
 
     _powerChangeEven: function () {

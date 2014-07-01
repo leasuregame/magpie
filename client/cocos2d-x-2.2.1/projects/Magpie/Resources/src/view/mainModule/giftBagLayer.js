@@ -41,7 +41,7 @@ var giftBagGoods = {
         name: "经验元灵"
     },
 
-   gold: {
+    gold: {
         name: "魔石",
         url: "icon112"
     },
@@ -61,7 +61,7 @@ var giftBagGoods = {
     },
 
     spirit: {
-        name: "灵气", 
+        name: "灵气",
         url: "icon111"
     },
 
@@ -96,7 +96,8 @@ var GiftBagLayer = LazyLayer.extend({
 
     _frameLayer: null,
     _effect: null,
-
+    _menu: null,
+    _cardMenu: null,
 
     init: function (data) {
         cc.log("GiftBagLayer init: " + data);
@@ -135,7 +136,7 @@ var GiftBagLayer = LazyLayer.extend({
         var url = "icon333";
         if (titleType == TYPE_LOOK_REWARD) {
             url = "icon388";
-        } else if(titleType == TYPE_EXPLORE_REWARD) {
+        } else if (titleType == TYPE_EXPLORE_REWARD) {
             url = "icon448";
         }
 
@@ -222,9 +223,9 @@ var GiftBagLayer = LazyLayer.extend({
         closeItem.setPosition(this._giftBagLayerFit.closeItemPoint);
         closeItem.setVisible(type != SHOW_GIFT_BAG_NO_CLOSE && type != GET_GIFT_BAG_NO_CLOSE);
 
-        var menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem, closeItem);
-        menu.setPosition(cc.p(0, 0));
-        this._frameLayer.addChild(menu);
+        this._menu = cc.Menu.create(okItem, getItem, buyItem, cancelItem, closeItem);
+        this._menu.setPosition(cc.p(0, 0));
+        this._frameLayer.addChild(this._menu);
 
         if (reward && Object.keys(reward).length > 0) {
             this._addRankScrollView(reward);
@@ -266,14 +267,14 @@ var GiftBagLayer = LazyLayer.extend({
 
         var index = 0;
         var x = 140;
-        var cardMenu = cc.Menu.create();
-        cardMenu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(cardMenu);
+        this._cardMenu = cc.Menu.create();
+        this._cardMenu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(this._cardMenu);
 
         for (var i = 0; i < len; i++) {
             var key = keys[i];
 
-            if(key == "exp_card_count" && reward[key] > 0) {
+            if (key == "exp_card_count" && reward[key] > 0) {
                 var y = scrollViewHeight - index * 110 - 60;
 
                 var card = Card.create({
@@ -285,7 +286,7 @@ var GiftBagLayer = LazyLayer.extend({
                 var cardItem = CardHeadNode.getCardHeadItem(card);
                 cardItem.setScale(0.82);
                 cardItem.setPosition(cc.p(x - 10, y));
-                cardMenu.addChild(cardItem);
+                this._cardMenu.addChild(cardItem);
 
                 var nameLabel = StrokeLabel.create(card.get("name"), "STHeitiTC-Medium", 25);
                 nameLabel.setColor(cc.c3b(255, 252, 175));
@@ -317,7 +318,7 @@ var GiftBagLayer = LazyLayer.extend({
                         var cardItem = CardHeadNode.getCardHeadItem(card);
                         cardItem.setScale(0.82);
                         cardItem.setPosition(cc.p(x - 10, y));
-                        cardMenu.addChild(cardItem);
+                        this._cardMenu.addChild(cardItem);
 
                         var nameLabel = StrokeLabel.create(card.get("name"), "STHeitiTC-Medium", 25);
                         nameLabel.setColor(cc.c3b(255, 252, 175));
@@ -371,6 +372,18 @@ var GiftBagLayer = LazyLayer.extend({
 
         scrollView.setContentSize(cc.size(500, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());
+    },
+
+    setTopPriority: function () {
+        cc.log("GiftBagLayer setTopPriority");
+
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
+        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
+        if(this._cardMenu) {
+            this._cardMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        }
     }
 });
 
@@ -390,4 +403,11 @@ GiftBagLayer.pop = function (data) {
     var giftBagLayer = GiftBagLayer.create(data);
 
     MainScene.getInstance().getLayer().addChild(giftBagLayer, 10);
+};
+
+GiftBagLayer.pop2Top = function (data) {
+    var giftBagLayer = GiftBagLayer.create(data);
+    giftBagLayer.setTopPriority();
+
+    MainScene.getInstance().addChild(giftBagLayer, 1);
 };

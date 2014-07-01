@@ -175,6 +175,12 @@ var ActivityLayer = cc.Layer.extend({
         return true;
     },
 
+    _updateScrollView: function (index) {
+        cc.log("ActivityLayer _updateScrollView: " + index);
+
+        this._scrollView.setContentOffset(cc.p(parseInt(index / 5) * -540, 0));
+    },
+
     _onClickLayer: function (index) {
         return function () {
             cc.log("ActivityLayer _onClickLayer: " + index);
@@ -195,8 +201,8 @@ var ActivityLayer = cc.Layer.extend({
             var index = 0;
             var len = this._layers.length;
             for (var i = 0; i < len; i++) {
+                cc.log(this._layers[i].nameString);
                 if (this._layers[i].layer == runLayer) {
-                    cc.log(i);
                     index = i;
                     break;
                 }
@@ -205,7 +211,11 @@ var ActivityLayer = cc.Layer.extend({
             this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
 
-            this._selectIcon.setPosition(this._item[index].getPosition());
+            var point = this._item[index].getPosition();
+
+            this._selectIcon.setPosition(point);
+
+            this._updateScrollView(point.x / 107);
         }
     },
 

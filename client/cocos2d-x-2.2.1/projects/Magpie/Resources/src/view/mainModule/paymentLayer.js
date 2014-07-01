@@ -388,12 +388,11 @@ var PaymentLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var parent = this.getParent();
+        //var parent = this.getParent();
 
-        var vipPrivilegeLayer = VipPrivilegeLayer.create();
-        parent.addChild(vipPrivilegeLayer, 1);
+        VipPrivilegeLayer.pop();
 
-        this.removeFromParent();
+        //this.removeFromParent();
     },
 
     _onClickPayment: function (product) {

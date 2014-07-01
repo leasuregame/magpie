@@ -117,6 +117,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
         closeItem.setPosition(this._vipPrivilegeLayerFit.closeItemPoint);
 
         var menu = cc.Menu.create(closeItem);
+        menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 2);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -269,10 +270,10 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var parent = this.getParent();
-
-        var paymentLayer = PaymentLayer.create();
-        parent.addChild(paymentLayer, 1);
+//        var parent = this.getParent();
+//
+//        var paymentLayer = PaymentLayer.create();
+//        parent.addChild(paymentLayer, 1);
 
         this.removeFromParent();
     }
@@ -287,4 +288,12 @@ VipPrivilegeLayer.create = function () {
     }
 
     return null;
+};
+
+VipPrivilegeLayer.pop = function () {
+    var vipPrivilegeLayer = VipPrivilegeLayer.create();
+
+    MainScene.getInstance().getLayer().addChild(vipPrivilegeLayer, 10);
+
+    return vipPrivilegeLayer;
 };

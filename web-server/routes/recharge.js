@@ -36,7 +36,7 @@ var recharge = function(app) {
     /**
      * 获取'后台充值记录'
      */
-    app.all('/admin/api/getRechargeRecord', function(req, res) {
+    app.all('/admin/api/getRechargeRecord', filter.authorize, function(req, res) {
         var reqData = req.body;
 //        var reqData = req.query;
         var areaId = reqData.areaId;
@@ -81,6 +81,36 @@ var recharge = function(app) {
             });
             res.send(rows);
         });
+    });
+
+    app.post('/admin/api/getRchgSig', filter.authorize, function(req, res){
+        var SALTS = ['JWj$vN_F!g','?eecCX37lg','0%OZ-Yf@l?','a938tofcqv',
+            'iw57m:>s>~','d,CZ>e12j;','63dS0OZ$R#','N"WY9YU&&J',
+            'Kl=.aqX)=M',';1E6BNG*(0','w17muG:gZZ','V1Ue.J)Nl9'];
+
+        var crypto = require('crypto');
+
+        var salt = SALTS[new Date().getHours() % SALTS.length];
+
+        var reqData = req.body;
+        var md5 = crypto.createHash('md5');
+        md5.update(reqData.areaId.toString());
+        md5.update(salt);
+        md5.update(reqData.playerIds.toString());
+        md5.update(reqData.productId.toString());
+        var conPart1 = md5.digest('hex');
+
+        md5 = crypto.createHash('md5');
+        md5.update(reqData.qty.toString());
+        md5.update(salt);
+        md5.update(reqData.playerNames.toString());
+        var conPart2 = md5.digest('hex');
+
+        md5 = crypto.createHash('md5');
+        md5.update(conPart1);
+        md5.update(conPart2);
+
+        res.send(md5.digest('hex'));
     });
 };
 

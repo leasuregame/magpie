@@ -43,6 +43,16 @@ function initProductsList(){
 }
 
 /**
+ * 唤出确认弹窗
+ */
+function showConfirm(point){
+    var form = $('#confirm');
+    point.left -= 90;
+    point.top -= 70;
+    form.css(point).removeClass('hide');
+}
+
+/**
  * 校验并纠正'数量'选项所填的值
  */
 function validateQtyVal(){
@@ -100,7 +110,7 @@ function submit() {
         window.webAPI.getPlayerIdsByNames(reqData.areaId, reqData.playerNames, function (resPids){
             if (resPids.id) {
                 reqData.playerIds = resPids.id;
-                doRequest(reqData);
+                getSignature(reqData, doRequest);
             }
         }, function (data) {
             if(data.status == 404) {
@@ -114,47 +124,58 @@ function submit() {
     }
 }
 
+function getSignature(reqData, cb){
+    window.webAPI.getRchgSig(reqData, function(data){
+        reqData.signature = data;
+        cb(reqData);
+    }, function(data){
+        alert('failed!!\n' + data.msg);
+    });
+}
+
 function doRequest(reqData) {
     if(!rsPanel) {
         rsPanel = dataPanel($('#rsPanel'));
     }
-    rsPanel.hide();
-    window.pomeloAPI.request(reqData.areaId, window.pomeloAPI.API.RECHARGE, reqData, function(data, cb){
-        if(data.code == 200 || data.code == 501){
-            rsPanel.setMode2Info();
-            if(data.code == 200) {
-                rsPanel.set2Success();
+
+    rsPanel.hide(function(){
+        window.pomeloAPI.request(reqData.areaId, window.pomeloAPI.API.RECHARGE, reqData, function(data, cb){
+            if(data.code == 200 || data.code == 501){
+                rsPanel.setMode2Info();
+                if(data.code == 200) {
+                    rsPanel.set2Success();
+                } else {
+                    rsPanel.set2Warning();
+                }
+                var msg = data.msg;
+                rsPanel.setField('.succeededPlayer', msg.players);
+                rsPanel.setField('.failedPlayer', msg.failedPlayers);
+                rsPanel.setField('.product', msg.product.name);
+                rsPanel.setField('.qty', msg.qty);
+
+                // 当前时间
+                var now = new Date();
+                rsPanel.setElement('.recDateTime', now.toLocaleString());
+
+                var option = {
+                    product : reqData.productId,
+                    qty : reqData.qty
+                };
+                window.webAPI.recordRechargeOpt(reqData.areaId, option, msg.players, 1);
+                cb();
             } else {
-                rsPanel.set2Warning();
+                cb(data.msg);
             }
-            var msg = data.msg;
-            rsPanel.setField('.succeededPlayer', msg.players);
-            rsPanel.setField('.failedPlayer', msg.failedPlayers);
-            rsPanel.setField('.product', msg.product.name);
-            rsPanel.setField('.qty', msg.qty);
-
-            // 当前时间
-            var now = new Date();
-            rsPanel.setElement('.recDateTime', now.toLocaleString());
-
-            var option = {
-                product : reqData.productId,
-                qty : reqData.qty
-            };
-            window.webAPI.recordRechargeOpt(reqData.areaId, option, msg.players, 1);
-            cb();
-        } else {
-            cb(data.msg);
-        }
-    }, function(err){
-        if(err) {
-            rsPanel.setMode2Info();
-            rsPanel.set2Danger();
-            rsPanel.setElement('.error', err);
-            console.log('error', err);
-        }
-        rsPanel.show();
-    })
+        }, function(err){
+            if(err) {
+                rsPanel.setMode2Info();
+                rsPanel.set2Danger();
+                rsPanel.setElement('.error', err);
+                console.log('error', err);
+            }
+            rsPanel.show();
+        })
+    });
 }
 
 var dataPanel = function ($panel) {
@@ -162,8 +183,8 @@ var dataPanel = function ($panel) {
         show : function(){
            $panel.fadeIn(800);
         },
-        hide : function(){
-            $panel.fadeOut(800);
+        hide : function(cb){
+            $panel.fadeOut(400, cb);
         },
         set2Empty : function() {
             $panel.removeClass('panel-success panel-primary panel-danger panel-warning');
@@ -210,8 +231,17 @@ $(document).ready(function() {
 
     $('#qty, #product').change(validateQtyVal);
 
-    $('#submitCheck').click(function(){
-        submit();
+    $('#submit').click(function(evt){
+        showConfirm({
+            left : evt.pageX,
+            top : evt.pageY
+        });
     });
+
+    var confirmForm = $('#confirm');
+    confirmForm.delegate('.btn', 'click', function(){
+        confirmForm.offset({left:0,top:0}).addClass('hide');
+    }).delegate('.submit', 'click', submit);
+
 
 });

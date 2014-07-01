@@ -30,9 +30,9 @@ block content
                 .col-sm-2
                     input.form-control.up#qty(type='text' name='qty' value='1' required)
             .col-sm-2.center
-                a#submitCheck.btn.btn-primary(href='javascript:void(0);') 充值
+                a#submit.btn.btn-primary(href='javascript:void(0);') 充值
         hr
-        .form-group
+        .form-group(style='min-height:180px;')
             .col-sm-3
             #rsPanel.panel.col-sm-6(style='padding:0px;border-width:3px;display:none;')
                 .panel-heading 充值结果
@@ -51,6 +51,11 @@ block content
                         span.col-sm-4 充值失败玩家：
                         span.val
                 .panel-body.error
+    #confirm.panel.panel-default.hide(style='position:absolute;z-index:50;')
+        .panel-heading 确认充值?
+        .panel-body
+            button.submit.btn.btn-success 确认
+            button.cancel.btn.btn-danger(style='margin-left:38px') 取消
 
 
     script(type='text/javascript', src='/js/webServerHandle.js')

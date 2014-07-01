@@ -14,18 +14,15 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-
 Handler::recharge = (msg, session, next) ->
   app = @app
 
   playerIds = msg.playerIds
   playerNames = msg.playerNames
-  verifyKey = msg.verifyKey
+  signature = msg.signature
   proId = msg.productId
   type = if msg.type then msg.type else 0
   qty = msg.qty
-
-  #verify client
 
   if not _.isArray playerIds
     playerIds = [playerIds]
@@ -35,6 +32,14 @@ Handler::recharge = (msg, session, next) ->
 
   if (isGoldCard(proId) && qty != 1)
     return next(null, {code: 500, msg: 'parameter unexpected'})
+
+  if (not signature || signature.length != 32)
+    return next(null, {code: 500, msg: 'parameter unexpected'})
+
+  verifyParam = msg;
+  verifyParam.areaId = session.get('areaId');
+  if(!verifySignature signature, verifyParam)
+    return next(null, {code: 500, msg: 'verify failed'})
 
   products = table.getTable('recharge').filter (id, item) -> item.product_id is proId
   if products and products.length > 0
@@ -104,6 +109,33 @@ Handler::recharge = (msg, session, next) ->
       successMsg(app, player, isFirstRechage)
 
   next(null, {code: 200, msg: {players:playerNames, product:product, qty:qty}})
+
+verifySignature = (sig, param) ->
+  SALTS = ['JWj$vN_F!g','?eecCX37lg','0%OZ-Yf@l?','a938tofcqv',
+           'iw57m:>s>~','d,CZ>e12j;','63dS0OZ$R#','N"WY9YU&&J',
+           'Kl=.aqX)=M',';1E6BNG*(0','w17muG:gZZ','V1Ue.J)Nl9']
+
+  crypto = require 'crypto'
+  salt = SALTS[new Date().getHours() % SALTS.length];
+
+  md5 = crypto.createHash('md5');
+  md5.update(param.areaId.toString());
+  md5.update(salt);
+  md5.update(param.playerIds.toString());
+  md5.update(param.productId.toString());
+  conPart1 = md5.digest('hex');
+
+  md5 = crypto.createHash('md5');
+  md5.update(param.qty.toString());
+  md5.update(salt);
+  md5.update(param.playerNames.toString());
+  conPart2 = md5.digest('hex');
+
+  md5 = crypto.createHash('md5');
+  md5.update(conPart1);
+  md5.update(conPart2);
+
+  sig == md5.digest('hex')
 
 
 addGoldCard = (app, orderId, player, product, cb) ->

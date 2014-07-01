@@ -19,7 +19,8 @@
         WASTAGE_RATE_ON_LV : API_BASE_PATH + 'getWastageRateOnLv',
         PLAYER_CONSUMPTION : API_BASE_PATH + 'getPlayerConsumption',
         DOWNLOAD_PLAYER_CONSUMPTION : API_BASE_PATH + 'download/playerConsumption',
-        DOWNLOAD_WASTAGE_RATE_ON_LV : API_BASE_PATH + 'download/wastageRateOnLv'
+        DOWNLOAD_WASTAGE_RATE_ON_LV : API_BASE_PATH + 'download/wastageRateOnLv',
+        GET_RCHG_SIG : API_BASE_PATH + 'getRchgSig'
     };
 
     var webAPI = {};
@@ -147,7 +148,6 @@
         ajax(API.GET_RCHG_OPT, param, scb, ecb);
     };
 
-
     /**
      * 获取后台充值记录
      * @param areaId
@@ -215,6 +215,16 @@
             createTime : createTime
         };
         ajax(API.PLAYER_CONSUMPTION, param, scb, ecb);
+    };
+
+    /**
+     * 获取充值签名
+     * @param param
+     * @param scb
+     * @param ecb
+     */
+    webAPI.getRchgSig = function (param, scb, ecb) {
+        ajax(API.GET_RCHG_SIG, param, scb, ecb);
     };
 
     function ajax(url, data, successCb, errorCb) {

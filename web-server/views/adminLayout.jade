@@ -44,10 +44,16 @@ html
                   a(href='/admin/cdkey') 激活码
                 li(class=menu=='msgPush' ? 'active':'')
                   a(href='/admin/msgPush') 消息推送
-                li(class=menu=='recharge' ? 'active':'')
-                    a(href='/admin/recharge') 后台充值
-                li(class=menu=='rechargeRecord' ? 'active':'')
-                    a(href='/admin/rechargeRecord') 后台充值记录
+                li.dropdown(class=menu=='recharge' || menu=='rechargeRecord' || menu=='rchgOptRecord' ? 'active':'')
+                    a.dropdown-toggle(data-toggle='dropdown' href='#') 充值相关
+                        b.caret
+                    ul.dropdown-menu
+                        li(class=menu=='recharge' ? 'active':'')
+                            a(href='/admin/recharge') 后台充值
+                        li(class=menu=='rechargeRecord' ? 'active':'')
+                            a(href='/admin/rechargeRecord') 后台充值记录
+                        li(class=menu=='rchgOptRecord' ? 'active':'')
+                            a(href='/admin/rchgOptRecord') 后台充值操作记录
                 li(class=menu=='reward' ? 'active':'')
                   a(href='/admin/sendReward') 奖励发放
                 li.dropdown(class=menu=='sysMsgRecord' || menu=='msgOptRecord' ? 'active':'')

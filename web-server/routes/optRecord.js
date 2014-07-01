@@ -17,6 +17,16 @@ var optRecord = function(app) {
         })
     });
 
+    app.get('/admin/rchgOptRecord', filter.authorize, function(req, res) {
+        res.render('rchgOptRecord', {
+            menu: 'rchgOptRecord',
+            title: '系统消息操作记录',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        })
+    });
+
     function recordOption(data, addFunction, cb){
         var operator = data.operator;
         var areaId = JSON.stringify(data.areaId);

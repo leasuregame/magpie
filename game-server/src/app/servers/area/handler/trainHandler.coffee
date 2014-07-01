@@ -161,7 +161,7 @@ Handler::luckyCardActivity = (msg, session, next) ->
   if level is LOW_LUCKYCARD or type is LOTTERY_BY_ENERGY
     return next(null, {code: 501, msg: '只允许高级魔石抽卡'})
 
-  doLuckCard msg, session, (err, res, player) ->
+  doLuckCard msg, session, (err, res, player, cards) ->
     if err
       return next(err)
 
@@ -181,8 +181,7 @@ Handler::luckyCardActivity = (msg, session, next) ->
     next(null, res)
 
 Handler::luckyCard = (msg, session, next) -> 
-  doLuckCard msg, session, (err, res, player) ->
-    next(err, res)
+  doLuckCard msg, session, (err, res) -> next(err, res)
 
 doLuckCard = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -389,7 +388,7 @@ doLuckCard = (msg, session, next) ->
 
         goldLuckyCard10: player.dailyGift.goldLuckyCard10 if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCard10.got
         goldLuckyCardForFragment: player.dailyGift.goldLuckyCardForFragment if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCardForFragment.got
-    }, player)
+    }, player, cardEnts)
 
 Handler::skillUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

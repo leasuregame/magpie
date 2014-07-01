@@ -1,13 +1,6 @@
 dispatcher = require '../../../common/dispatcher'
 async = require 'async'
 _ = require 'underscore'
-fs = require 'fs'
-path = require 'path'
-
-try
-	areasInfo = require '../../../../config/area'
-catch e
-	areasInfo = []
 
 status = ['NEW', 'NORMAL', 'BUSY', 'MAINTENANCE']
 SERVER_STATUS = 
@@ -15,15 +8,6 @@ SERVER_STATUS =
 	NORMAL: 20
 	BUSY: 30
 	MAINTENANCE: 40
-
-watchAreasInfo = ->
-	filepath = path.join(__dirname, '..', '..', '..', '..', 'config', 'area.json')
-	if not fs.existsSync(filepath)
-		fs.writeFileSync(filepath, '[]', 'utf8')
-
-	fs.watchFile filepath, (curr, prev) -> 
-		areasInfo = JSON.parse fs.readFileSync(filepath, 'utf8')
-watchAreasInfo()
 
 module.exports = (app) ->
 	new Handler(app)
@@ -56,7 +40,7 @@ Handler::queryEntry = (msg, session, next) ->
 		msg: {
 			host: connector.host, 
 			port: connector.clientPort,
-			servers: filterServers(areasInfo, os, platform, version)
+			servers: filterServers(@app.get('areaConfig'), os, platform, version)
 		}
 	}
 

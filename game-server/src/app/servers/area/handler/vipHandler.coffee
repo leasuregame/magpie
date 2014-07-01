@@ -181,7 +181,7 @@ setIfExist = (player, boxInfo, attrs) ->
 
 openVipBox = (player, boxInfo, next) ->
   setIfExist player, boxInfo, ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
-
+  
   vb = _.clone(player.vipBox)
   vb.push boxInfo.id
   player.vipBox = vb
@@ -189,7 +189,7 @@ openVipBox = (player, boxInfo, next) ->
   player.save()
   recordManager.createConsumptionRecord player.id, SOURCE.BUY_VIP_BOX, {expense : boxInfo.price}
   
-  if _.has boxInfo, 'exp_card_count' and boxInfo.exp_card_count > 0
+  if _.has(boxInfo, 'exp_card_count') and boxInfo.exp_card_count > 0
     playerManager.addExpCardFor player, boxInfo.exp_card_count, boxInfo.exp_card_star, (err, cards) ->
       return next(null, {code: err.code or 500, msg: err.msg or err}) if err
 

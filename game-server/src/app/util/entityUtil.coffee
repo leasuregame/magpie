@@ -196,6 +196,13 @@ setIfExist = (player, data, attrs=['energy', 'money', 'skillPoint', 'elixir', 'g
   return
 
 filterTableId = (star, ids) ->
+  rareIds = table.getTable('cards')
+  .filter((id, row) -> row.is_rare is 1)
+  .map((row) -> row.id)
+
+  console.log('-1-', ids.toString())
+  ids = _.difference(ids, rareIds)
+  console.log('-2-', ids.toString(), rareIds)
   if star isnt 5
     return ids
 
@@ -226,11 +233,11 @@ generateCardId = (star, tableIds, exceptIds) ->
   idx = _.random(0, tableIds.length-1)
   tableIds[idx]
 
-getCardIdsByStar = (stars, exceptIds = [], isContainsRare=true) ->
+getCardIdsByStar = (stars, exceptIds = [], isContainsRare=false) ->
   if isContainsRare
     rare_card_filter = (row) -> true
   else
-    rare_card_filter = (row) -> (row.is_rare) isnt 1
+    rare_card_filter = (row) -> row.is_rare isnt 1
 
   items = table.getTable('cards')
   .filter((id, row) -> parseInt(id) <= 1500 and parseInt(id) not in exceptIds and row.star in stars and rare_card_filter(row)) 

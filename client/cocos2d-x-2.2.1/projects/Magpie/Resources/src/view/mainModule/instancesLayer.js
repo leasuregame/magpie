@@ -39,16 +39,16 @@ var InstancesLayer = cc.Layer.extend({
         this._taskLayerItem.setPosition(this._instancesLayerFit.taskLayerItemPoint);
         this._taskLayerItem.setOffset(cc.p(-6, -5));
 
-//        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
-//            this._passLayerItem = cc.MenuItemImage.createWithIcon(
-//                main_scene_image.button23h,
-//                main_scene_image.button23h,
-//                main_scene_image.button23h,
-//                main_scene_image.icon390,
-//                this._onClickPassLayer,
-//                this
-//            );
-//        } else {
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
+            this._passLayerItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.icon390,
+                this._onClickPassLayer,
+                this
+            );
+        } else {
             this._passLayerItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button23,
                 main_scene_image.button23s,
@@ -57,19 +57,29 @@ var InstancesLayer = cc.Layer.extend({
                 this._onClickPassLayer,
                 this
             );
-//        }
+        }
         this._passLayerItem.setPosition(this._instancesLayerFit.passLayerItemPoint);
         this._passLayerItem.setOffset(cc.p(0, -5));
 
-        this._dailyInstancesLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button23,
-            main_scene_image.button23s,
-            main_scene_image.button23d,
-            main_scene_image.icon466,
-            this._onClickDailyInstancesLayer,
-            this
-        );
-
+        if (gameData.player.get("lv") < outputTables.exp_pass_config.rows[1].limit_lv) {
+            this._dailyInstancesLayerItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.button23h,
+                main_scene_image.icon466,
+                this._onClickDailyInstancesLayer,
+                this
+            );
+        } else {
+            this._dailyInstancesLayerItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button23,
+                main_scene_image.button23s,
+                main_scene_image.button23d,
+                main_scene_image.icon466,
+                this._onClickDailyInstancesLayer,
+                this
+            );
+        }
         this._dailyInstancesLayerItem.setPosition(this._instancesLayerFit.dailyInstancesLayerItemPoint);
         this._dailyInstancesLayerItem.setOffset(cc.p(0, -5));
 

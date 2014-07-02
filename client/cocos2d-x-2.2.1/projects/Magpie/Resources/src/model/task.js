@@ -230,6 +230,7 @@ var Task = Entity.extend({
 
                 if (msg.find_boss) {
                     cbData.findBoss = msg.find_boss;
+                    gameData.boss.set("isNewBoss", true);
                 }
 
                 if (msg.upgradeInfo) {

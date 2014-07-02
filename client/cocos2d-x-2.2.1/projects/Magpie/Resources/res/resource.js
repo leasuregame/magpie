@@ -806,6 +806,8 @@ var main_scene_image = {
     icon475: main_scene_path + "icon475.png",
     icon476: main_scene_path + "icon476.png",
     icon477: main_scene_path + "icon477.png",
+    icon478: main_scene_path + "icon478.png",
+    icon479: main_scene_path + "icon479.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -1407,6 +1409,7 @@ var main_scene_res = [
     //effect
 ];
 
+//普通主角卡
 var cardResIdList = [
     2, 3, 5, 7, 8, 9, 10, 12, 13, 16, 18, 19, 20, 22, 25, 28, 29, 30, 31, 32, 33, 34, 36, 38, 39, 43, 44, 49, 50, 51
 ];
@@ -1429,6 +1432,27 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
+//稀有主角卡
+var rareCardResIdList = [
+    6
+];
+
+for (var cardIndex = 0; cardIndex < rareCardResIdList.length; ++cardIndex) {
+    var cardId = rareCardResIdList[cardIndex];
+
+    main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
+    main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
+
+    main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
+    main_scene_image["card" + cardId + "_half2"] = main_scene_path + "card" + cardId + "_half2.png";
+
+    main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
+    main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
+
+    main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
+}
+
+//怪物卡
 for (var cardId = 10000; cardId <= 10050; ++cardId) {
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
 }

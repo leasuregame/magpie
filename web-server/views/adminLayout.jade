@@ -9,6 +9,7 @@ html
     link(rel='stylesheet', href='/css/main.css')
     script(type='text/javascript', src='/js/bootstrap.min.js')
     script(type='text/javascript', src='/js/util.js')
+    script(type='text/javascript', src='/js/common.js')
     block head
   body
     div(class='container')
@@ -19,16 +20,22 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a(class='navbar-brand', href='/') LeasureGame
+          .dropdown
+            a#platformName.dropdown-toggle.navbar-brand(data-toggle='dropdown' href='/')
+              span LeasureGame
+              b.caret
+            ul.dropdown-menu(style="top:50px")
+              li
+                a(href='http://125.90.93.74:9090', target='_blank') YY大神
+              li
+                a(href='http://115.29.12.178:9090', target='_blank') 越狱平台
+              li
+                a(href='http://115.29.243.80:9090', target='_blank') AppStore平台
         div(class='collapse navbar-collapse', id='nb-collapse')
           ul(class='nav navbar-nav')
-            if user.prvlg_lv === 1
+            if user && user.prvlg_lv === 1
                 li(class=menu=='notice' ? 'active':'')
                   a(href='/admin/notice') 公告管理
-                li(class=menu=='version' ? 'active':'')
-                  a(href='/admin/version') 版本号
-                li(class=menu=='area' ? 'active':'')
-                  a(href='/admin/areaeditor') 区服管理
                 li(class=menu=='cdkey' ? 'active':'')
                   a(href='/admin/cdkey') 激活码
                 li(class=menu=='msgPush' ? 'active':'')
@@ -53,11 +60,12 @@ html
                       a(href='/admin/playerConsumption') 魔石使用占比
                 li(class=menu=='upload' ? 'active':'')
                   a(href='/admin/uploadWCConfig') 世界杯赛果上传
-            else
+            else if user && user.prvlg_lv === 2
                 li(class=menu=='playerWastageRateOnLv' ? 'active':'')
                     a(href='/admin/playerWastageRateOnLv') 等级流失率
                 li(class=menu=='playerConsumption' ? 'active':'')
                     a(href='/admin/playerConsumption') 魔石使用占比
+
           p.navbar-text.navbar-right
             a.navbar-link(href='/logout') 注销
       block content

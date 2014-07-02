@@ -6,6 +6,7 @@ configData = require '../../../../config/data'
 achieve = require '../../../domain/achievement'
 async = require 'async'
 areaUtil = require '../../../util/areaUtil'
+appUtil = require '../../../util/appUtil'
 _ = require 'underscore'
 
 resData = table.getTableItem('resource_limit', 1)
@@ -172,6 +173,11 @@ Handler::getActivityInfo = (msg, session, next) ->
 
     # rechargeFlag = results[1]
     # flag = setCanGetFlag player, rechargeFlag
+    
+    luckyCard = null
+    if appUtil.isActivityTime(@app, 'luckyCard') 
+      luckyCard = @app.get('sharedConf').activity.luckyCard
+    
     cur_hour = new Date().getHours()
     next(null, {
       code: 200,
@@ -183,6 +189,11 @@ Handler::getActivityInfo = (msg, session, next) ->
         loginInfo: logined # 新服累计登陆次数
         plan: player.plan
         vipLoginReward: !player.dailyGift.vipReward if player.isVip()
+        luckyCard: {
+          startDate: luckyCard.startDate
+          endDate: luckyCard.endDate
+          tableId: luckyCard.data.tableId
+        } if luckyCard
       }
     })
 

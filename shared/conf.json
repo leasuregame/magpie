@@ -1,47 +1,41 @@
 {
-    "openServerTime": { 
-      "displayName": "开服时间",
-      "value": "2014-1-10 10:00:00"
-    },
-    "newYearActivity": {
-      "displayName": "新年活动",
-      "value": {
-        "startDate": "2014-1-28",
-        "endDate": "2014-2-28"
-      }        
-    },
-    "useWhiteList": false,
-    "activity": {
-        "default": {
-            "enable": false,
-            "startDate": "2014-1-1",
-            "endDate": "2014-1-1"
-        },
-        "boss": {
-            "enable": true,
-            "startDate": "2014-6-1",
-            "endDate": "2014-6-3 23:59:59:999"
-        },
-        "power": {
-            "enable": true,
-            "startDate": "2014-6-1",
-            "endDate": "2014-6-3 23:59:59:999"
-        },
-        "luckyCard": {
-          "enable": true,
-          "startDate": "2014-06-30",
-          "endDate": "2014-7-20",
-          "data": {
-            "tableId": 1025,
-            "sigleRate": 3,
-            "tenRate": [
-              "1100101001",
-              "1011001001",
-              "0101100101",
-              "0110010101",
-              "1001011001"
-            ]
-          }
-        }
-    }
+  "openServerTime": ["#开服时间", "2014110 10:00:00"],
+  "newYearActivity": ["#新年充值活动", {
+    "startDate": ["#开始时间", "2014128"],
+    "endDate": ["#结束时间", "2014228"]
+  }],
+  "useWhiteList": ["#是否开启白名单", false],
+  "activity": ["#活动", {
+    "default": ["#默认配置", {
+      "enable": ["#是否开启", true],
+      "startDate": ["#开始日期", "201411"],
+      "endDate": ["#结束时间", "201411"]
+    }],
+    "boss": ["#BOSS活动", {
+      "enable": ["#是否开启", true],
+      "startDate": ["#开始日期", "201461"],
+      "endDate": ["#结束时间", "201463 23:59:59:999"]
+    }],
+    "power": ["#双倍体力活动", {
+      "enable": ["#是否开启", true],
+      "startDate": ["#开始日期", "201461"],
+      "endDate": ["#结束时间", "201463 23:59:59:999"]
+    }],
+    "luckyCard": ["#抽卡活动", {
+      "enable": ["#是否开启", true],
+      "startDate": ["#开始日期", "201471"],
+      "endDate": ["#结束时间", "2014720 23:59:59:999"],
+      "data": ["#相关配置信息", {
+        "tableId": ["#活动卡牌ID", 1025],
+        "sigleRate": ["#单抽概率", 3],
+        "tenRate": ["#10连抽概率", [
+          "1100101001",
+          "1011001001",
+          "0101100101",
+          "0110010101",
+          "1001011001"
+        ]]
+      }]
+    }]
+  }]
 }

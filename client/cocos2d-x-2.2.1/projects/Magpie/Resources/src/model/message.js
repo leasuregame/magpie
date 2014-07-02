@@ -149,10 +149,6 @@ var Message = Entity.extend({
                     cb();
                     lz.um.event("event_friend_accept");
                 } else {
-                    TipLayer.tip(data.msg);
-                    message.status = ACCEPT_STATUS;
-                    cb();
-
                     cc.log("accept fail");
                     TipLayer.tip(data.msg);
                     cb();

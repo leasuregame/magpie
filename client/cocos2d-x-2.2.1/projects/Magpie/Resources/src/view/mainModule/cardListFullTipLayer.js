@@ -77,16 +77,25 @@ var CardListFullTipLayer = LazyLayer.extend({
         );
         go2BuyItem.setPosition(this._cardListFullTipLayerFit.go2BuyPoint);
 
-        var cancelItem = cc.MenuItemImage.createWithIcon(
+
+        var go2SmeltItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon308,
+            main_scene_image.icon478,
+            this._onClickGo2Smelt,
+            this
+        );
+        go2SmeltItem.setPosition(this._cardListFullTipLayerFit.go2SmeltItemPoint);
+
+        var cancelItem = cc.MenuItemImage.create(
+            main_scene_image.button37,
+            main_scene_image.button37s,
             this._onClickCancel,
             this
         );
         cancelItem.setPosition(this._cardListFullTipLayerFit.cancelItemPoint);
 
-        var menu = cc.Menu.create(go2StrengthenItem, go2SellItem, go2BuyItem, cancelItem);
+        var menu = cc.Menu.create(go2StrengthenItem, go2SellItem, go2BuyItem, go2SmeltItem, cancelItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -130,6 +139,12 @@ var CardListFullTipLayer = LazyLayer.extend({
             },
             product
         );
+    },
+
+    _onClickGo2Smelt: function () {
+        cc.log("CardListFullTipLayer _onClickGoSmelt");
+        this.removeFromParent();
+        MainScene.getInstance().switchLayer(SmeltLayer);
     },
 
     _onClickCancel: function () {

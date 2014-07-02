@@ -4,6 +4,8 @@ var helper = require('../../shared/version_helper');
 var exec = require('child_process').exec;
 var path = require('path');
 var fs = require('fs');
+var beautify_js = require('js-beautify').js;
+
 var game_dir = path.join(__dirname, '..', '..', 'game-server');
 var WHITE_LIST_PATH= path.join(__dirname, '..', '..', 'shared', 'whiteList.json');
 var CONF_PATH = path.join(__dirname, '..', '..', 'shared', 'conf.json');
@@ -70,7 +72,7 @@ var Manager = function(app) {
 
   app.get('/admin/api/whitelist', filter.authorize, function(req, res) {
     var list = JSON.parse(readWhiteList());
-    console.log('-a--a-', list);
+    
     if (list.length == 0) {
       return res.send([]);
     }
@@ -147,7 +149,7 @@ var Manager = function(app) {
       confData.useWhiteList = true;
     }
 
-    fs.writeFileSync(CONF_PATH, JSON.stringify(confData), 'utf8');
+    fs.writeFileSync(CONF_PATH, beautify_js(JSON.stringify(confData)), 'utf8');
     res.send(confData.useWhiteList);
   });
 

@@ -886,7 +886,7 @@ var Player = (function(_super) {
             return;
         }
         var power = _.clone(this.power);
-        power.value = parseInt(power.value) +  value;
+        power.value = parseInt(power.value) + value;
         power.time = Date.now();
         this.updatePower(power);
     };
@@ -1619,6 +1619,46 @@ var Player = (function(_super) {
         };
     };
 
+    Player.prototype.isGotLuckCardStar = function(rate_list) {
+        if (typeof this.activities.luckCard == 'undefined') {
+            var i = _.random(0, rate_list.length - 1);
+            this.activities.luckCard = {
+                star: 0,
+                luckCardCount10: 0,
+                rates: rate_list[i]
+            };
+        }
+
+        var activities = utility.deepCopy(this.activities);
+        var lcData = activities.luckCard;
+
+        var got = false;
+        if (_.isNumber(rate_list)) {
+            if (lcData.star == 5) {
+                lcData.star = 0;
+            } else {
+                got = utility.hitRate(rate_list);
+                lcData.star += 1;
+            }
+        } else {
+            if (lcData.star == 5) {
+                lcData.star = 0;
+            } else {    
+                lcData.luckCardCount10 += 1;
+                if (lcData.rates[(lcData.luckCardCount10%10 || 10) - 1] == '1') {
+                    lcData.star += 1;
+                    got = true
+                }
+                
+                if (lcData.luckCardCount10 % 10 == 0) {
+                    lcData.rates = rate_list[_.random(0, rate_list.length - 1)];
+                }
+            }
+        }
+        this.activities = activities;
+        return got;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1810,7 +1850,7 @@ var recountVipPrivilege = function(player, oldVip) {
 
     player.friendsCount += curVipInfo.friend_count - oldVipInfo.friend_count;
     var dg = utility.deepCopy(player.dailyGift);
-    
+
     dg.expPassBuyCount += curVipInfo.exp_pass_count - oldVipInfo.exp_pass_count;
     dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;

@@ -16,6 +16,7 @@ _s = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
 fs = require 'fs'
 path = require 'path'
+appUtil = require '../../../util/appUtil'
 
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
@@ -147,10 +148,51 @@ Handler::strengthen = (msg, session, next) ->
 
     next(null, {code: 200, msg: result})
 
+Handler::luckyCardActivity = (msg, session, next) ->
+  luckCardConf = @app.get('sharedConf').activity.luckyCard
+  if not luckCardConf.enable or not appUtil.isActivityTime(@app, 'luckyCard') 
+    return next(null, {code: 501, msg: '不在活动时间内'})
 
+  playerId = session.get('playerId')
+  level = msg.level or LOW_LUCKYCARD
+  type = if msg.type? then msg.type else LOTTERY_BY_GOLD
+  times = if msg.times? then msg.times else 1
 
-Handler::luckyCard = (msg, session, next) ->
-  playerId = session.get('playerId') or msg.playerId
+  if level is LOW_LUCKYCARD or type is LOTTERY_BY_ENERGY
+    return next(null, {code: 501, msg: '只允许高级魔石抽卡'})
+
+  activityMethod = (player, cards) ->
+    # 获得5星铁扇公主卡牌
+    if player.activities.luckCard?.star >= 5
+      cards4 = cards.filter (c) -> c.star < 5
+      card = if cards4.length > 0 then cards4[0] else cards[0]
+      card.star = cardStar luckCardConf.data.tableId
+      card.tableId = luckCardConf.data.tableId
+
+  doLuckCard msg, session, activityMethod, (err, res, player) ->
+    if err
+      return next(err)
+
+    if res.code isnt 200
+      return next(null, res)
+
+    if times is 1
+      lightStar = player.isGotLuckCardStar luckCardConf.data.sigleRate
+    else 
+      lightStar = player.isGotLuckCardStar luckCardConf.data.tenRate
+
+    _.extend res.msg, activity: {
+      islightStar: lightStar
+      star: player.activities.luckCard.star
+    }
+    player.save()
+    next(null, res)
+
+Handler::luckyCard = (msg, session, next) -> 
+  doLuckCard msg, session, null, (err, res) -> next(err, res)
+
+doLuckCard = (msg, session, beforeSaveCards, next) ->
+  playerId = session.get('playerId')
   level = msg.level or LOW_LUCKYCARD
   type = if msg.type? then msg.type else LOTTERY_BY_GOLD
   times = if msg.times? then msg.times else 1
@@ -318,6 +360,8 @@ Handler::luckyCard = (msg, session, next) ->
       firstGoldLuckyCard(player) if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
 
       card.playerId = player.id for card in cards
+      
+      beforeSaveCards(player, cards) if beforeSaveCards
       async.map cards, entityUtil.createCard, cb
         
     (cardEnts, cb) =>
@@ -354,7 +398,7 @@ Handler::luckyCard = (msg, session, next) ->
 
         goldLuckyCard10: player.dailyGift.goldLuckyCard10 if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCard10.got
         goldLuckyCardForFragment: player.dailyGift.goldLuckyCardForFragment if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCardForFragment.got
-    })
+    }, player)
 
 Handler::skillUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

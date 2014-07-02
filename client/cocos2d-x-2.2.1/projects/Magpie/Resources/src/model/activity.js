@@ -520,9 +520,7 @@ var Activity = Entity.extend({
 
                 for (var key in table) {
                     if (key != "id") {
-                        if (key == "exp_card_star" || key == "exp_card_count") {
-                            continue;
-                        } else {
+                        if (key != "exp_card_star" && key != "exp_card_count") {
                             player.add(key, table[key]);
                         }
                         rewards[key] = table[key];
@@ -720,7 +718,7 @@ Activity.IsShowHandler = {
         return true;
     },
     invitationLayer: function () {
-        return !(lz.platformConfig.PLATFORM == "YY" || lz.platformConfig.PLATFORM == "AppStore");
+        return !(lz.platformConfig.PLATFORM == "AppStore");
     },
     worldCupLayer: function () {
         return true;

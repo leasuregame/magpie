@@ -1,0 +1,23 @@
+extends adminLayout
+
+block head
+
+block content  
+  mixin loopAttributes(obj)
+    - for v, k in obj
+      if typeof v == 'string' 
+        div
+          span #{k} : 
+          input(value='#{v}')
+      if typeof v == 'boolean'
+        div 
+          span #{k} : 
+          input(type='checkbox', checked='#{v}')
+      if Object.prototype.toString.call(v) === '[object Array]'
+
+      if typeof v == 'object'
+        hr
+        +loopAttributes(v)
+
+
+  +loopAttributes(confData)

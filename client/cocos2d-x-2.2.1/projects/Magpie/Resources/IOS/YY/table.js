@@ -11,28 +11,6 @@ var nameChanged = {
 	"Boss怪物卡牌配置表": "boss_card",
 	"boss_rank_reward": "伤害排行榜奖励配置表",
 	"伤害排行榜奖励配置表": "boss_rank_reward",
-	"card_grow": "卡牌升级表",
-	"卡牌升级表": "card_grow",
-	"card_pill_dissolve": "卡牌熔炼配置表",
-	"卡牌熔炼配置表": "card_pill_dissolve",
-	"card_pill_use": "卡牌潜能升级配置表",
-	"卡牌潜能升级配置表": "card_pill_use",
-	"card_price": "卡牌价格配置表",
-	"卡牌价格配置表": "card_price",
-	"cards": "神仙卡牌配置表",
-	"神仙卡牌配置表": "cards",
-	"elixir": "仙丹配置表",
-	"仙丹配置表": "elixir",
-	"resource_cards": "资源卡牌配置表",
-	"资源卡牌配置表": "resource_cards",
-	"factors": "基础属性成长表",
-	"基础属性成长表": "factors",
-	"new_card_id_map": "卡牌新旧配置表ID对应关系表",
-	"卡牌新旧配置表ID对应关系表": "new_card_id_map",
-	"star_upgrade_rate": "高星级卡牌进阶概率配置表",
-	"高星级卡牌进阶概率配置表": "star_upgrade_rate",
-	"star_upgrade": "卡牌进阶配置表",
-	"卡牌进阶配置表": "star_upgrade",
 	"login_count_reward": "开服累计登陆奖励配置表",
 	"开服累计登陆奖励配置表": "login_count_reward",
 	"new_year_rechage": "新年充值奖励",
@@ -73,6 +51,28 @@ var nameChanged = {
 	"连续签到奖励": "signIn_rewards",
 	"values": "零碎的值配置表",
 	"零碎的值配置表": "values",
+	"card_grow": "卡牌升级表",
+	"卡牌升级表": "card_grow",
+	"card_pill_dissolve": "卡牌熔炼配置表",
+	"卡牌熔炼配置表": "card_pill_dissolve",
+	"card_pill_use": "卡牌潜能升级配置表",
+	"卡牌潜能升级配置表": "card_pill_use",
+	"card_price": "卡牌价格配置表",
+	"卡牌价格配置表": "card_price",
+	"cards": "神仙卡牌配置表",
+	"神仙卡牌配置表": "cards",
+	"elixir": "仙丹配置表",
+	"仙丹配置表": "elixir",
+	"resource_cards": "资源卡牌配置表",
+	"资源卡牌配置表": "resource_cards",
+	"factors": "基础属性成长表",
+	"基础属性成长表": "factors",
+	"new_card_id_map": "卡牌新旧配置表ID对应关系表",
+	"卡牌新旧配置表ID对应关系表": "new_card_id_map",
+	"star_upgrade_rate": "高星级卡牌进阶概率配置表",
+	"高星级卡牌进阶概率配置表": "star_upgrade_rate",
+	"star_upgrade": "卡牌进阶配置表",
+	"卡牌进阶配置表": "star_upgrade",
 	"exp_pass_config": "经验副本配置表",
 	"经验副本配置表": "exp_pass_config",
 	"treasure_hunt": "寻宝配置表",
@@ -1083,6 +1083,772 @@ var outputTables = {
 			}
 		}
 	},
+	"login_count_reward": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"money": 10000,
+				"energy": 1000
+			},
+			"2": {
+				"id": 2,
+				"money": 15000,
+				"energy": 1100
+			},
+			"3": {
+				"id": 3,
+				"money": 20000,
+				"energy": 1200,
+				"gold": 100
+			},
+			"4": {
+				"id": 4,
+				"money": 25000,
+				"energy": 1300
+			},
+			"5": {
+				"id": 5,
+				"money": 30000,
+				"energy": 1400,
+				"fragments": 2
+			},
+			"6": {
+				"id": 6,
+				"money": 35000,
+				"energy": 1500
+			},
+			"7": {
+				"id": 7,
+				"money": 40000,
+				"energy": 1600,
+				"card_id": 965
+			},
+			"8": {
+				"id": 8,
+				"money": 45000,
+				"energy": 1700
+			},
+			"9": {
+				"id": 9,
+				"money": 50000,
+				"energy": 1800,
+				"gold": 150
+			},
+			"10": {
+				"id": 10,
+				"money": 55000,
+				"energy": 1900
+			},
+			"11": {
+				"id": 11,
+				"money": 60000,
+				"energy": 2000
+			},
+			"12": {
+				"id": 12,
+				"money": 65000,
+				"energy": 2100,
+				"fragments": 3
+			},
+			"13": {
+				"id": 13,
+				"money": 70000,
+				"energy": 2200
+			},
+			"14": {
+				"id": 14,
+				"money": 75000,
+				"energy": 2300
+			},
+			"15": {
+				"id": 15,
+				"money": 80000,
+				"energy": 2400
+			},
+			"16": {
+				"id": 16,
+				"money": 85000,
+				"energy": 2500,
+				"gold": 200
+			},
+			"17": {
+				"id": 17,
+				"money": 90000,
+				"energy": 2600
+			},
+			"18": {
+				"id": 18,
+				"money": 95000,
+				"energy": 2700
+			},
+			"19": {
+				"id": 19,
+				"money": 100000,
+				"energy": 2800
+			},
+			"20": {
+				"id": 20,
+				"money": 105000,
+				"energy": 2900
+			},
+			"21": {
+				"id": 21,
+				"money": 110000,
+				"energy": 3000,
+				"fragments": 5
+			},
+			"22": {
+				"id": 22,
+				"money": 115000,
+				"energy": 3100
+			},
+			"23": {
+				"id": 23,
+				"money": 120000,
+				"energy": 3200
+			},
+			"24": {
+				"id": 24,
+				"money": 125000,
+				"energy": 3300
+			},
+			"25": {
+				"id": 25,
+				"money": 130000,
+				"energy": 3400,
+				"gold": 250
+			},
+			"26": {
+				"id": 26,
+				"money": 135000,
+				"energy": 3500
+			},
+			"27": {
+				"id": 27,
+				"money": 140000,
+				"energy": 3600
+			},
+			"28": {
+				"id": 28,
+				"money": 145000,
+				"energy": 3700
+			},
+			"29": {
+				"id": 29,
+				"money": 150000,
+				"energy": 3800
+			},
+			"30": {
+				"id": 30,
+				"money": 155000,
+				"energy": 3900,
+				"gold": 300
+			}
+		}
+	},
+	"new_year_rechage": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"cash": 66,
+				"money": 20000,
+				"energy": 100,
+				"fragments": 2
+			},
+			"2": {
+				"id": 2,
+				"cash": 266,
+				"money": 50000,
+				"energy": 200,
+				"fragments": 3
+			},
+			"3": {
+				"id": 3,
+				"cash": 566,
+				"money": 80000,
+				"energy": 300,
+				"fragments": 5
+			},
+			"4": {
+				"id": 4,
+				"cash": 999,
+				"money": 100000,
+				"energy": 800,
+				"fragments": 8
+			},
+			"5": {
+				"id": 5,
+				"cash": 1888,
+				"money": 200000,
+				"energy": 1000,
+				"fragments": 12
+			}
+		}
+	},
+	"player_upgrade_reward": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"lv": 10,
+				"gold": 20,
+				"energy": 1000
+			},
+			"2": {
+				"id": 2,
+				"lv": 20,
+				"gold": 50,
+				"energy": 1200
+			},
+			"3": {
+				"id": 3,
+				"lv": 30,
+				"gold": 70,
+				"energy": 1400
+			},
+			"4": {
+				"id": 4,
+				"lv": 40,
+				"gold": 90,
+				"energy": 1600
+			},
+			"5": {
+				"id": 5,
+				"lv": 50,
+				"gold": 100,
+				"energy": 1800
+			},
+			"6": {
+				"id": 6,
+				"lv": 60,
+				"gold": 150,
+				"energy": 2000
+			},
+			"7": {
+				"id": 7,
+				"lv": 70,
+				"gold": 200,
+				"energy": 2200
+			},
+			"8": {
+				"id": 8,
+				"lv": 80,
+				"gold": 260,
+				"energy": 2400
+			},
+			"9": {
+				"id": 9,
+				"lv": 90,
+				"gold": 300,
+				"energy": 2600
+			},
+			"10": {
+				"id": 10,
+				"lv": 100,
+				"gold": 500,
+				"energy": 2800
+			},
+			"11": {
+				"id": 11,
+				"lv": 15,
+				"gold": 25,
+				"energy": 1100
+			},
+			"12": {
+				"id": 12,
+				"lv": 25,
+				"gold": 55,
+				"energy": 1300
+			},
+			"13": {
+				"id": 13,
+				"lv": 35,
+				"gold": 75,
+				"energy": 1500
+			},
+			"14": {
+				"id": 14,
+				"lv": 45,
+				"gold": 95,
+				"energy": 1700
+			},
+			"15": {
+				"id": 15,
+				"lv": 55,
+				"gold": 120,
+				"energy": 1900
+			},
+			"16": {
+				"id": 16,
+				"lv": 65,
+				"gold": 180,
+				"energy": 2100
+			},
+			"17": {
+				"id": 17,
+				"lv": 75,
+				"gold": 230,
+				"energy": 2300
+			},
+			"18": {
+				"id": 18,
+				"lv": 85,
+				"gold": 280,
+				"energy": 2500
+			},
+			"19": {
+				"id": 19,
+				"lv": 95,
+				"gold": 400,
+				"energy": 2700
+			}
+		}
+	},
+	"cdkey": {
+		"colComment": {},
+		"rows": {
+			"TB1-": {
+				"id": "TB1-",
+				"gold": 100,
+				"money": 100000,
+				"energy": 5000,
+				"fragments": 5,
+				"card_ids": 144,
+				"card_lvs": 20,
+				"card_qtys": 1
+			},
+			"911-": {
+				"id": "911-",
+				"gold": 100,
+				"money": 100000,
+				"energy": 5000,
+				"fragments": 5,
+				"card_ids": 144,
+				"card_lvs": 20,
+				"card_qtys": 1
+			},
+			"PP1-": {
+				"id": "PP1-",
+				"gold": 100,
+				"money": 100000,
+				"energy": 5000,
+				"fragments": 5,
+				"card_ids": 144,
+				"card_lvs": 20,
+				"card_qtys": 1
+			},
+			"YY1-": {
+				"id": "YY1-",
+				"gold": 88,
+				"money": 100000,
+				"fragments": 2,
+				"card_ids": 364,
+				"card_lvs": 20,
+				"card_qtys": 1
+			}
+		}
+	},
+	"daily_gift": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"lottery_count": 50,
+				"lottery_free_count": 0,
+				"power_buy_count": 1,
+				"challenge_count": 10,
+				"challenge_buy_count": 5,
+				"collect_count": 15,
+				"exp_card_count": 40,
+				"exp_pass_count": 5,
+				"exp_pass_buy_count": 0
+			}
+		}
+	},
+	"first_card": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"star3": "[23,43,163,563,583,643,663,963]",
+				"star4": "[144,184,244,484,604,864,984]"
+			}
+		}
+	},
+	"friends_config": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"count": 20
+			},
+			"31": {
+				"id": 31,
+				"count": 30
+			},
+			"51": {
+				"id": 51,
+				"count": 40
+			},
+			"71": {
+				"id": 71,
+				"count": 50
+			}
+		}
+	},
+	"receive_bless_config": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"count": 5
+			},
+			"31": {
+				"id": 31,
+				"count": 10
+			},
+			"51": {
+				"id": 51,
+				"count": 15
+			},
+			"71": {
+				"id": 71,
+				"count": 20
+			}
+		}
+	},
+	"give_bless_config": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"count": 5
+			},
+			"31": {
+				"id": 31,
+				"count": 10
+			},
+			"51": {
+				"id": 51,
+				"count": 15
+			},
+			"71": {
+				"id": 71,
+				"count": 20
+			}
+		}
+	},
+	"exp_instance_limit": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"open_lv": 1
+			},
+			"2": {
+				"id": 2,
+				"open_lv": 40
+			},
+			"3": {
+				"id": 3,
+				"open_lv": 65
+			}
+		}
+	},
+	"card_lineup_limit": {
+		"colComment": {},
+		"rows": {
+			"0": {
+				"id": 0,
+				"card_1": 1,
+				"card_2": 1,
+				"card_3": 6,
+				"card_4": 15,
+				"card_5": 35
+			},
+			"1": {
+				"id": 1,
+				"card_1": 55,
+				"card_2": 65,
+				"card_3": 75,
+				"card_4": 80,
+				"card_5": 85
+			}
+		}
+	},
+	"function_limit": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"rank": 5,
+				"card3_position": 6,
+				"pass": 10,
+				"skill_upgrade": 10,
+				"card4_position": 15,
+				"ranking_list": 45,
+				"lottery": 18,
+				"card5_position": 35,
+				"boss": 40,
+				"pass_skillafresh": 20,
+				"card_smelt": 25,
+				"use_pill": 50
+			}
+		}
+	},
+	"lv_limit": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"player_lv_limit": 100,
+				"skill_lv_limit": 5,
+				"spirit_lv_limit": 10,
+				"spirit_pool_lv_limit": 10
+			}
+		}
+	},
+	"card_lv_limit": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"max_lv": 30
+			},
+			"2": {
+				"id": 2,
+				"max_lv": 40
+			},
+			"3": {
+				"id": 3,
+				"max_lv": 50
+			},
+			"4": {
+				"id": 4,
+				"max_lv": 55
+			},
+			"5": {
+				"id": 5,
+				"max_lv": 60
+			},
+			"6": {
+				"id": 6,
+				"max_lv": 65
+			},
+			"7": {
+				"id": 7,
+				"max_lv": 70
+			}
+		}
+	},
+	"passive_skill_config": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"blue_attribute": 5,
+				"yellow_attribute": 8,
+				"full_attribute": 10
+			},
+			"2": {
+				"id": 2,
+				"blue_attribute": 5,
+				"yellow_attribute": 8,
+				"full_attribute": 10
+			},
+			"3": {
+				"id": 3,
+				"blue_attribute": 5,
+				"yellow_attribute": 8,
+				"full_attribute": 10
+			},
+			"4": {
+				"id": 4,
+				"blue_attribute": 5,
+				"yellow_attribute": 8,
+				"full_attribute": 10
+			},
+			"5": {
+				"id": 5,
+				"blue_attribute": 5,
+				"yellow_attribute": 8,
+				"full_attribute": 10
+			},
+			"6": {
+				"id": 6,
+				"blue_attribute": 5,
+				"yellow_attribute": 9,
+				"full_attribute": 11
+			},
+			"7": {
+				"id": 7,
+				"blue_attribute": 5,
+				"yellow_attribute": 10,
+				"full_attribute": 12
+			}
+		}
+	},
+	"elixir_limit": {
+		"colComment": {},
+		"rows": {
+			"3": {
+				"id": 3,
+				"elixir_limit": 250000
+			},
+			"4": {
+				"id": 4,
+				"elixir_limit": 400000
+			},
+			"5": {
+				"id": 5,
+				"elixir_limit": 600000
+			},
+			"6": {
+				"id": 6,
+				"elixir_limit": 900000
+			},
+			"7": {
+				"id": 7,
+				"elixir_limit": 1200000
+			}
+		}
+	},
+	"resource_limit": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"money": 99999999,
+				"skillPoint": 99999999,
+				"energy": 99999999,
+				"card_count_min": 35,
+				"card_count_limit": 100,
+				"power_value": 150,
+				"elixir": 99999999
+			}
+		}
+	},
+	"daily_signin_rewards": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"money": 8000,
+				"energy": 300
+			}
+		}
+	},
+	"signIn_rewards": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"count": 5,
+				"money": 30000,
+				"energy": 1000,
+				"elixir": 3000,
+				"lottery_free_count": 0,
+				"gold": 0,
+				"fragments": 0,
+				"spirit": 0,
+				"skillPoint": 0
+			},
+			"2": {
+				"id": 2,
+				"count": 10,
+				"money": 50000,
+				"energy": 2000,
+				"elixir": 5000,
+				"lottery_free_count": 5,
+				"fragments": 0,
+				"spirit": 0,
+				"skillPoint": 0
+			},
+			"3": {
+				"id": 3,
+				"count": 18,
+				"money": 100000,
+				"energy": 3000,
+				"elixir": 12000,
+				"lottery_free_count": 5,
+				"gold": 50,
+				"fragments": 0,
+				"spirit": 0,
+				"skillPoint": 0
+			},
+			"4": {
+				"id": 4,
+				"count": 25,
+				"money": 120000,
+				"energy": 5000,
+				"elixir": 15000,
+				"lottery_free_count": 8,
+				"gold": 100,
+				"fragments": 0,
+				"spirit": 0,
+				"skillPoint": 0
+			},
+			"5": {
+				"id": 5,
+				"count": -1,
+				"money": 200000,
+				"energy": 8000,
+				"elixir": 20000,
+				"lottery_free_count": 10,
+				"gold": 150,
+				"fragments": 10,
+				"spirit": 0,
+				"skillPoint": 0
+			}
+		}
+	},
+	"values": {
+		"colComment": {},
+		"rows": {
+			"reflashExcCardsMoney": {
+				"id": "reflashExcCardsMoney",
+				"value": 5000
+			},
+			"playSpeedLv1": {
+				"id": "playSpeedLv1",
+				"value": 1
+			},
+			"playSpeedLv2": {
+				"id": "playSpeedLv2",
+				"value": 10
+			},
+			"passBattleVip": {
+				"id": "passBattleVip",
+				"value": 2
+			},
+			"passBattleLv": {
+				"id": "passBattleLv",
+				"value": 10
+			},
+			"extractConsumeGold": {
+				"id": "extractConsumeGold",
+				"value": 200,
+				"desc": "提取仙丹或技能点消耗的元宝数量"
+			},
+			"greetingConsumeGold": {
+				"id": "greetingConsumeGold",
+				"value": 20,
+				"desc": "每次喊话话费的金额"
+			},
+			"elixirOfRankMoneyGap": {
+				"id": "elixirOfRankMoneyGap",
+				"value": 130500,
+				"desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
+			},
+			"damageOfRankHonorGap": {
+				"id": "damageOfRankHonorGap",
+				"value": 3000,
+				"desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
+			}
+		}
+	},
 	"card_grow": {
 		"colComment": {},
 		"rows": {
@@ -1893,7 +2659,6 @@ var outputTables = {
 				"id": 81,
 				"number": 5,
 				"name": "唐僧·金蝉子",
-				"is_rare": 1,
 				"star": 1,
 				"lv": 1,
 				"atk": 125,
@@ -1906,7 +2671,6 @@ var outputTables = {
 				"id": 82,
 				"number": 5,
 				"name": "普渡众佛·金蝉子",
-				"is_rare": 1,
 				"star": 2,
 				"lv": 1,
 				"atk": 175,
@@ -1919,7 +2683,6 @@ var outputTables = {
 				"id": 83,
 				"number": 5,
 				"name": "燃灯道人·金蝉子",
-				"is_rare": 1,
 				"star": 3,
 				"lv": 1,
 				"atk": 225,
@@ -1935,7 +2698,6 @@ var outputTables = {
 				"id": 84,
 				"number": 5,
 				"name": "功德佛·金蝉子",
-				"is_rare": 1,
 				"star": 4,
 				"lv": 1,
 				"atk": 275,
@@ -1951,7 +2713,6 @@ var outputTables = {
 				"id": 85,
 				"number": 5,
 				"name": "真身·金蝉子",
-				"is_rare": 1,
 				"star": 5,
 				"lv": 1,
 				"atk": 345,
@@ -1967,7 +2728,6 @@ var outputTables = {
 				"id": 86,
 				"number": 5,
 				"name": "组织部长·金蝉子",
-				"is_rare": 1,
 				"star": 6,
 				"lv": 1,
 				"atk": 425,
@@ -1983,7 +2743,6 @@ var outputTables = {
 				"id": 87,
 				"number": 5,
 				"name": "女儿情·金蝉子",
-				"is_rare": 1,
 				"star": 7,
 				"lv": 1,
 				"atk": 515,
@@ -4667,6 +5426,42 @@ var outputTables = {
 				"effect_id": 500,
 				"description": "为什么你活的那么累，因为你要求的太多了，你背负的太多了，你想的太多了。",
 				"url": 51
+			},
+			"1025": {
+				"id": 1025,
+				"number": 52,
+				"name": "罗刹女·铁扇公主",
+				"is_rare": 1,
+				"star": 5,
+				"lv": 1,
+				"atk": 350,
+				"hp": 1400,
+				"skill_name": "罗刹风暴",
+				"description": "嫁给老牛后，我有了另一个名字，罗莎女。"
+			},
+			"1026": {
+				"id": 1026,
+				"number": 52,
+				"name": "芭蕉扇·铁扇公主",
+				"is_rare": 1,
+				"star": 6,
+				"lv": 1,
+				"atk": 430,
+				"hp": 1720,
+				"skill_name": "罗刹风暴",
+				"description": "你热么？我给你扇扇？"
+			},
+			"1027": {
+				"id": 1027,
+				"number": 52,
+				"name": "生化芭蕉·铁扇公主",
+				"is_rare": 1,
+				"star": 7,
+				"lv": 1,
+				"atk": 520,
+				"hp": 2080,
+				"skill_name": "罗刹风暴",
+				"description": "以前看月亮的时候叫人家小甜甜，原来都是假的。"
 			},
 			"10000": {
 				"id": 10000,
@@ -13169,773 +13964,6 @@ var outputTables = {
 				"max_num": 7,
 				"no_work_count": 0,
 				"super_honor": 40
-			}
-		}
-	},
-	"login_count_reward": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"money": 10000,
-				"energy": 1000
-			},
-			"2": {
-				"id": 2,
-				"money": 15000,
-				"energy": 1100
-			},
-			"3": {
-				"id": 3,
-				"money": 20000,
-				"energy": 1200,
-				"gold": 100
-			},
-			"4": {
-				"id": 4,
-				"money": 25000,
-				"energy": 1300
-			},
-			"5": {
-				"id": 5,
-				"money": 30000,
-				"energy": 1400,
-				"fragments": 2
-			},
-			"6": {
-				"id": 6,
-				"money": 35000,
-				"energy": 1500
-			},
-			"7": {
-				"id": 7,
-				"money": 40000,
-				"energy": 1600,
-				"card_id": 965
-			},
-			"8": {
-				"id": 8,
-				"money": 45000,
-				"energy": 1700
-			},
-			"9": {
-				"id": 9,
-				"money": 50000,
-				"energy": 1800,
-				"gold": 150
-			},
-			"10": {
-				"id": 10,
-				"money": 55000,
-				"energy": 1900
-			},
-			"11": {
-				"id": 11,
-				"money": 60000,
-				"energy": 2000
-			},
-			"12": {
-				"id": 12,
-				"money": 65000,
-				"energy": 2100,
-				"fragments": 3
-			},
-			"13": {
-				"id": 13,
-				"money": 70000,
-				"energy": 2200
-			},
-			"14": {
-				"id": 14,
-				"money": 75000,
-				"energy": 2300
-			},
-			"15": {
-				"id": 15,
-				"money": 80000,
-				"energy": 2400
-			},
-			"16": {
-				"id": 16,
-				"money": 85000,
-				"energy": 2500,
-				"gold": 200
-			},
-			"17": {
-				"id": 17,
-				"money": 90000,
-				"energy": 2600
-			},
-			"18": {
-				"id": 18,
-				"money": 95000,
-				"energy": 2700
-			},
-			"19": {
-				"id": 19,
-				"money": 100000,
-				"energy": 2800
-			},
-			"20": {
-				"id": 20,
-				"money": 105000,
-				"energy": 2900
-			},
-			"21": {
-				"id": 21,
-				"money": 110000,
-				"energy": 3000,
-				"fragments": 5
-			},
-			"22": {
-				"id": 22,
-				"money": 115000,
-				"energy": 3100
-			},
-			"23": {
-				"id": 23,
-				"money": 120000,
-				"energy": 3200
-			},
-			"24": {
-				"id": 24,
-				"money": 125000,
-				"energy": 3300
-			},
-			"25": {
-				"id": 25,
-				"money": 130000,
-				"energy": 3400,
-				"gold": 250
-			},
-			"26": {
-				"id": 26,
-				"money": 135000,
-				"energy": 3500
-			},
-			"27": {
-				"id": 27,
-				"money": 140000,
-				"energy": 3600
-			},
-			"28": {
-				"id": 28,
-				"money": 145000,
-				"energy": 3700
-			},
-			"29": {
-				"id": 29,
-				"money": 150000,
-				"energy": 3800
-			},
-			"30": {
-				"id": 30,
-				"money": 155000,
-				"energy": 3900,
-				"gold": 300
-			}
-		}
-	},
-	"new_year_rechage": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"cash": 66,
-				"money": 20000,
-				"energy": 100,
-				"fragments": 2
-			},
-			"2": {
-				"id": 2,
-				"cash": 266,
-				"money": 50000,
-				"energy": 200,
-				"fragments": 3
-			},
-			"3": {
-				"id": 3,
-				"cash": 566,
-				"money": 80000,
-				"energy": 300,
-				"fragments": 5
-			},
-			"4": {
-				"id": 4,
-				"cash": 999,
-				"money": 100000,
-				"energy": 800,
-				"fragments": 8
-			},
-			"5": {
-				"id": 5,
-				"cash": 1888,
-				"money": 200000,
-				"energy": 1000,
-				"fragments": 12
-			}
-		}
-	},
-	"player_upgrade_reward": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"lv": 10,
-				"gold": 20,
-				"energy": 1000
-			},
-			"2": {
-				"id": 2,
-				"lv": 20,
-				"gold": 50,
-				"energy": 1200
-			},
-			"3": {
-				"id": 3,
-				"lv": 30,
-				"gold": 70,
-				"energy": 1400
-			},
-			"4": {
-				"id": 4,
-				"lv": 40,
-				"gold": 90,
-				"energy": 1600
-			},
-			"5": {
-				"id": 5,
-				"lv": 50,
-				"gold": 100,
-				"energy": 1800
-			},
-			"6": {
-				"id": 6,
-				"lv": 60,
-				"gold": 150,
-				"energy": 2000
-			},
-			"7": {
-				"id": 7,
-				"lv": 70,
-				"gold": 200,
-				"energy": 2200
-			},
-			"8": {
-				"id": 8,
-				"lv": 80,
-				"gold": 260,
-				"energy": 2400
-			},
-			"9": {
-				"id": 9,
-				"lv": 90,
-				"gold": 300,
-				"energy": 2600
-			},
-			"10": {
-				"id": 10,
-				"lv": 100,
-				"gold": 500,
-				"energy": 2800
-			},
-			"11": {
-				"id": 11,
-				"lv": 15,
-				"gold": 25,
-				"energy": 1100
-			},
-			"12": {
-				"id": 12,
-				"lv": 25,
-				"gold": 55,
-				"energy": 1300
-			},
-			"13": {
-				"id": 13,
-				"lv": 35,
-				"gold": 75,
-				"energy": 1500
-			},
-			"14": {
-				"id": 14,
-				"lv": 45,
-				"gold": 95,
-				"energy": 1700
-			},
-			"15": {
-				"id": 15,
-				"lv": 55,
-				"gold": 120,
-				"energy": 1900
-			},
-			"16": {
-				"id": 16,
-				"lv": 65,
-				"gold": 180,
-				"energy": 2100
-			},
-			"17": {
-				"id": 17,
-				"lv": 75,
-				"gold": 230,
-				"energy": 2300
-			},
-			"18": {
-				"id": 18,
-				"lv": 85,
-				"gold": 280,
-				"energy": 2500
-			},
-			"19": {
-				"id": 19,
-				"lv": 95,
-				"gold": 400,
-				"energy": 2700
-			}
-		}
-	},
-	"cdkey": {
-		"colComment": {},
-		"rows": {
-			"TB1-": {
-				"id": "TB1-",
-				"gold": 100,
-				"money": 100000,
-				"energy": 5000,
-				"fragments": 5,
-				"card_ids": 144,
-				"card_lvs": 20,
-				"card_qtys": 1
-			},
-			"911-": {
-				"id": "911-",
-				"gold": 100,
-				"money": 100000,
-				"energy": 5000,
-				"fragments": 5,
-				"card_ids": 144,
-				"card_lvs": 20,
-				"card_qtys": 1
-			},
-			"PP1-": {
-				"id": "PP1-",
-				"gold": 100,
-				"money": 100000,
-				"energy": 5000,
-				"fragments": 5,
-				"card_ids": 144,
-				"card_lvs": 20,
-				"card_qtys": 1
-			},
-			"YY1-": {
-				"id": "YY1-",
-				"gold": 100,
-				"money": 100000,
-				"energy": 5000,
-				"fragments": 5,
-				"card_ids": 144,
-				"card_lvs": 20,
-				"card_qtys": 1
-			}
-		}
-	},
-	"daily_gift": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"lottery_count": 50,
-				"lottery_free_count": 0,
-				"power_buy_count": 1,
-				"challenge_count": 10,
-				"challenge_buy_count": 5,
-				"collect_count": 15,
-				"exp_card_count": 40,
-				"exp_pass_count": 5,
-				"exp_pass_buy_count": 0
-			}
-		}
-	},
-	"first_card": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"star3": "[23,43,163,563,583,643,663,963]",
-				"star4": "[144,184,244,484,604,864,984]"
-			}
-		}
-	},
-	"friends_config": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"count": 20
-			},
-			"31": {
-				"id": 31,
-				"count": 30
-			},
-			"51": {
-				"id": 51,
-				"count": 40
-			},
-			"71": {
-				"id": 71,
-				"count": 50
-			}
-		}
-	},
-	"receive_bless_config": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"count": 5
-			},
-			"31": {
-				"id": 31,
-				"count": 10
-			},
-			"51": {
-				"id": 51,
-				"count": 15
-			},
-			"71": {
-				"id": 71,
-				"count": 20
-			}
-		}
-	},
-	"give_bless_config": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"count": 5
-			},
-			"31": {
-				"id": 31,
-				"count": 10
-			},
-			"51": {
-				"id": 51,
-				"count": 15
-			},
-			"71": {
-				"id": 71,
-				"count": 20
-			}
-		}
-	},
-	"exp_instance_limit": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"open_lv": 1
-			},
-			"2": {
-				"id": 2,
-				"open_lv": 40
-			},
-			"3": {
-				"id": 3,
-				"open_lv": 65
-			}
-		}
-	},
-	"card_lineup_limit": {
-		"colComment": {},
-		"rows": {
-			"0": {
-				"id": 0,
-				"card_1": 1,
-				"card_2": 1,
-				"card_3": 6,
-				"card_4": 15,
-				"card_5": 35
-			},
-			"1": {
-				"id": 1,
-				"card_1": 55,
-				"card_2": 65,
-				"card_3": 75,
-				"card_4": 80,
-				"card_5": 85
-			}
-		}
-	},
-	"function_limit": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"rank": 5,
-				"card3_position": 6,
-				"pass": 10,
-				"skill_upgrade": 10,
-				"card4_position": 15,
-				"ranking_list": 45,
-				"lottery": 18,
-				"card5_position": 35,
-				"boss": 40,
-				"pass_skillafresh": 20,
-				"card_smelt": 25,
-				"use_pill": 50
-			}
-		}
-	},
-	"lv_limit": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"player_lv_limit": 100,
-				"skill_lv_limit": 5,
-				"spirit_lv_limit": 10,
-				"spirit_pool_lv_limit": 10
-			}
-		}
-	},
-	"card_lv_limit": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"max_lv": 30
-			},
-			"2": {
-				"id": 2,
-				"max_lv": 40
-			},
-			"3": {
-				"id": 3,
-				"max_lv": 50
-			},
-			"4": {
-				"id": 4,
-				"max_lv": 55
-			},
-			"5": {
-				"id": 5,
-				"max_lv": 60
-			},
-			"6": {
-				"id": 6,
-				"max_lv": 65
-			},
-			"7": {
-				"id": 7,
-				"max_lv": 70
-			}
-		}
-	},
-	"passive_skill_config": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"blue_attribute": 5,
-				"yellow_attribute": 8,
-				"full_attribute": 10
-			},
-			"2": {
-				"id": 2,
-				"blue_attribute": 5,
-				"yellow_attribute": 8,
-				"full_attribute": 10
-			},
-			"3": {
-				"id": 3,
-				"blue_attribute": 5,
-				"yellow_attribute": 8,
-				"full_attribute": 10
-			},
-			"4": {
-				"id": 4,
-				"blue_attribute": 5,
-				"yellow_attribute": 8,
-				"full_attribute": 10
-			},
-			"5": {
-				"id": 5,
-				"blue_attribute": 5,
-				"yellow_attribute": 8,
-				"full_attribute": 10
-			},
-			"6": {
-				"id": 6,
-				"blue_attribute": 5,
-				"yellow_attribute": 9,
-				"full_attribute": 11
-			},
-			"7": {
-				"id": 7,
-				"blue_attribute": 5,
-				"yellow_attribute": 10,
-				"full_attribute": 12
-			}
-		}
-	},
-	"elixir_limit": {
-		"colComment": {},
-		"rows": {
-			"3": {
-				"id": 3,
-				"elixir_limit": 250000
-			},
-			"4": {
-				"id": 4,
-				"elixir_limit": 400000
-			},
-			"5": {
-				"id": 5,
-				"elixir_limit": 600000
-			},
-			"6": {
-				"id": 6,
-				"elixir_limit": 900000
-			},
-			"7": {
-				"id": 7,
-				"elixir_limit": 1200000
-			}
-		}
-	},
-	"resource_limit": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"money": 99999999,
-				"skillPoint": 99999999,
-				"energy": 99999999,
-				"card_count_min": 35,
-				"card_count_limit": 100,
-				"power_value": 150,
-				"elixir": 99999999
-			}
-		}
-	},
-	"daily_signin_rewards": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"money": 8000,
-				"energy": 300
-			}
-		}
-	},
-	"signIn_rewards": {
-		"colComment": {},
-		"rows": {
-			"1": {
-				"id": 1,
-				"count": 5,
-				"money": 30000,
-				"energy": 1000,
-				"elixir": 3000,
-				"lottery_free_count": 0,
-				"gold": 0,
-				"fragments": 0,
-				"spirit": 0,
-				"skillPoint": 0
-			},
-			"2": {
-				"id": 2,
-				"count": 10,
-				"money": 50000,
-				"energy": 2000,
-				"elixir": 5000,
-				"lottery_free_count": 5,
-				"fragments": 0,
-				"spirit": 0,
-				"skillPoint": 0
-			},
-			"3": {
-				"id": 3,
-				"count": 18,
-				"money": 100000,
-				"energy": 3000,
-				"elixir": 12000,
-				"lottery_free_count": 5,
-				"gold": 50,
-				"fragments": 0,
-				"spirit": 0,
-				"skillPoint": 0
-			},
-			"4": {
-				"id": 4,
-				"count": 25,
-				"money": 120000,
-				"energy": 5000,
-				"elixir": 15000,
-				"lottery_free_count": 8,
-				"gold": 100,
-				"fragments": 0,
-				"spirit": 0,
-				"skillPoint": 0
-			},
-			"5": {
-				"id": 5,
-				"count": -1,
-				"money": 200000,
-				"energy": 8000,
-				"elixir": 20000,
-				"lottery_free_count": 10,
-				"gold": 150,
-				"fragments": 10,
-				"spirit": 0,
-				"skillPoint": 0
-			}
-		}
-	},
-	"values": {
-		"colComment": {},
-		"rows": {
-			"reflashExcCardsMoney": {
-				"id": "reflashExcCardsMoney",
-				"value": 5000
-			},
-			"playSpeedLv1": {
-				"id": "playSpeedLv1",
-				"value": 1
-			},
-			"playSpeedLv2": {
-				"id": "playSpeedLv2",
-				"value": 10
-			},
-			"passBattleVip": {
-				"id": "passBattleVip",
-				"value": 2
-			},
-			"passBattleLv": {
-				"id": "passBattleLv",
-				"value": 10
-			},
-			"extractConsumeGold": {
-				"id": "extractConsumeGold",
-				"value": 200,
-				"desc": "提取仙丹或技能点消耗的元宝数量"
-			},
-			"greetingConsumeGold": {
-				"id": "greetingConsumeGold",
-				"value": 20,
-				"desc": "每次喊话话费的金额"
-			},
-			"elixirOfRankMoneyGap": {
-				"id": "elixirOfRankMoneyGap",
-				"value": 130500,
-				"desc": "竞技仙丹排名，入榜和不入榜的仙币差值"
-			},
-			"damageOfRankHonorGap": {
-				"id": "damageOfRankHonorGap",
-				"value": 3000,
-				"desc": "Boss伤害排行，入榜和不入榜的荣誉差值"
 			}
 		}
 	},
@@ -30628,6 +30656,32 @@ var outputTables = {
 				"star7_inc_max": 23,
 				"star7_grow": 3,
 				"rate7": 50
+			},
+			"11": {
+				"id": 11,
+				"description": "对所有敌方卡牌造成一定伤害。",
+				"type": 2,
+				"scope": 6,
+				"star3_inc_min": 51,
+				"star3_inc_max": 54,
+				"star3_grow": 3,
+				"rate3": 30,
+				"star4_inc_min": 54,
+				"star4_inc_max": 57,
+				"star4_grow": 3,
+				"rate4": 35,
+				"star5_inc_min": 57,
+				"star5_inc_max": 60,
+				"star5_grow": 3,
+				"rate5": 40,
+				"star6_inc_min": 60,
+				"star6_inc_max": 63,
+				"star6_grow": 3,
+				"rate6": 45,
+				"star7_inc_min": 63,
+				"star7_inc_max": 66,
+				"star7_grow": 3,
+				"rate7": 50
 			}
 		}
 	},
@@ -37950,8 +38004,8 @@ var outputTables = {
 			"50003": {
 				"id": 50003,
 				"card_id": 50002,
-				"atk": 5083,
-				"hp": 12705,
+				"atk": 7163,
+				"hp": 28652,
 				"dodge_rate": 5,
 				"crit_rate": 5
 			},
@@ -37959,15 +38013,15 @@ var outputTables = {
 				"id": 50004,
 				"card_id": 50003,
 				"atk": 12542,
-				"hp": 31322,
+				"hp": 50168,
 				"dodge_rate": 10,
 				"crit_rate": 10
 			},
 			"50005": {
 				"id": 50005,
 				"card_id": 50003,
-				"atk": 9838.4,
-				"hp": 18901,
+				"atk": 12542.4,
+				"hp": 50169.6,
 				"dodge_rate": 5,
 				"crit_rate": 5
 			},

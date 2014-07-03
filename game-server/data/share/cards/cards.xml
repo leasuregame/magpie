@@ -21,8 +21,8 @@
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>11600</WindowHeight>
   <WindowWidth>33340</WindowWidth>
-  <WindowTopX>2980</WindowTopX>
-  <WindowTopY>1460</WindowTopY>
+  <WindowTopX>200</WindowTopX>
+  <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -577,7 +577,7 @@
     <Cell ss:StyleID="s77"><Data ss:Type="Number">350</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">1400</Data></Cell>
     <Cell><Data ss:Type="String">罗刹风暴</Data></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2001</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2500</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">嫁给老牛后，我有了另一个名字，罗莎女。</Data></Cell>
@@ -593,7 +593,7 @@
     <Cell ss:StyleID="s77"><Data ss:Type="Number">430</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">1720</Data></Cell>
     <Cell><Data ss:Type="String">罗刹风暴</Data></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2001</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2500</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">你热么？我给你扇扇？</Data></Cell>
@@ -609,7 +609,7 @@
     <Cell ss:StyleID="s77"><Data ss:Type="Number">520</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">2080</Data></Cell>
     <Cell><Data ss:Type="String">罗刹风暴</Data></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2001</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2500</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">以前看月亮的时候叫人家小甜甜，原来都是假的。</Data></Cell>
@@ -3674,7 +3674,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>23</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

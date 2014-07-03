@@ -79,7 +79,8 @@ var skillIconMap = {
         7: "card_icon_1_5",
         8: "card_icon_1_5",
         9: "card_icon_1_5",
-        10: "card_icon_1_5"
+        10: "card_icon_1_5",
+        11: "card_icon_1_6"
     },
     2: {
         0: "card_icon_2_0",
@@ -92,7 +93,8 @@ var skillIconMap = {
         7: "card_icon_2_5",
         8: "card_icon_2_5",
         9: "card_icon_2_5",
-        10: "card_icon_2_5"
+        10: "card_icon_2_5",
+        11: "card_icon_2_6"
     }
 };
 
@@ -138,6 +140,7 @@ var Card = Entity.extend({
     _newCardMark: false,    // 新卡标记
 
     _priority: 0,           //卡牌优先级
+    _isRare: false,         //是否为稀有卡
 
     init: function (data) {
         cc.log("Card init");
@@ -236,6 +239,7 @@ var Card = Entity.extend({
         this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;
         this._skillName = cardTable.skill_name || "无";
+        this._isRare = cardTable.is_rare || false;
 
         // 读取等级加成表
         var factorsTable = outputTables.factors.rows[this._lv];
@@ -1006,6 +1010,10 @@ var Card = Entity.extend({
         }
 
         return price;
+    },
+
+    isRareCard: function () {
+        return this._isRare;
     },
 
     isExpCard: function () {

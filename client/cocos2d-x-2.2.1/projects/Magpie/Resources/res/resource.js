@@ -121,6 +121,7 @@ var main_scene_image = {
     card_icon_1_3: main_scene_path + "card_icon_1_3.png",
     card_icon_1_4: main_scene_path + "card_icon_1_4.png",
     card_icon_1_5: main_scene_path + "card_icon_1_5.png",
+    card_icon_1_6: main_scene_path + "card_icon_1_6.png",
 
     card_icon_2_0: main_scene_path + "card_icon_2_0.png",
     card_icon_2_1: main_scene_path + "card_icon_2_1.png",
@@ -128,6 +129,7 @@ var main_scene_image = {
     card_icon_2_3: main_scene_path + "card_icon_2_3.png",
     card_icon_2_4: main_scene_path + "card_icon_2_4.png",
     card_icon_2_5: main_scene_path + "card_icon_2_5.png",
+    card_icon_2_6: main_scene_path + "card_icon_2_6.png",
 
     card_subscript_6: main_scene_path + "card_subscript_6.png",
     card_subscript_7: main_scene_path + "card_subscript_7.png",

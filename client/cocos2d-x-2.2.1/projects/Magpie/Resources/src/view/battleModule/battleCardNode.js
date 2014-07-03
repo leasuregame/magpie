@@ -12,7 +12,7 @@
  * */
 
 var BOSS_NODE_SCALE = 1.3;
-var RARE_CARD_SIZE = cc.size(215, 218);
+var RARE_CARD_FRAME_SCALE = 1.2;
 
 var BattleCardNode = cc.Node.extend({
     _index: 0,
@@ -87,16 +87,15 @@ var BattleCardNode = cc.Node.extend({
             }
 
             var size = cardSpriteTexture.getContentSize();
-            cc.log("##############################");
-            cc.log(size);
-
-            this._ccbNode.setContentSize(size);
 
             var iconSpriteTexture = lz.getTexture(this.getCardIcon());
 
             this.ccbFrameSprite.setTexture(frameSpriteTexture);
             this.ccbCardSprite.setTexture(cardSpriteTexture);
-            this.ccbIconSprite.setTexture(iconSpriteTexture);
+
+            if (this.isRareCard() || this.isLeadCard() || this._boss) {
+                this.ccbIconSprite.setTexture(iconSpriteTexture);
+            }
 
             this.ccbCardSprite.setTextureRect(cc.rect(0, 0, size.width, size.height));
 

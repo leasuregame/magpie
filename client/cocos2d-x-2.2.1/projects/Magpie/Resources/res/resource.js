@@ -145,6 +145,10 @@ var main_scene_image = {
     card_item_bg6: main_scene_path + "card_item_bg6.png",
     card_item_bg7: main_scene_path + "card_item_bg7.png",
 
+    rare_card_item_bg5: main_scene_path + "rare_card_item_bg5.png",
+    rare_card_item_bg6: main_scene_path + "rare_card_item_bg6.png",
+    rare_card_item_bg7: main_scene_path + "rare_card_item_bg7.png",
+
     button1: main_scene_path + "button1.png",
     button1s: main_scene_path + "button1s.png",
     button1d: main_scene_path + "button1d.png",
@@ -926,6 +930,10 @@ var main_scene_image = {
     effect1801_1: "res/ccb/effect1801_1.ccbi",
     effect1801_2: "res/ccb/effect1801_2.ccbi",
     effect1801_3: "res/ccb/effect1801_3.ccbi",
+
+    effect2001_1: "res/ccb/effect2001_1.ccbi",
+    effect2001_2: "res/ccb/effect2001_2.ccbi",
+    effect2001_3: "res/ccb/effect2001_3.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",

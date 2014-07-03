@@ -26,13 +26,16 @@ var CardHeadNode = cc.Node.extend({
 
         var url = "icon11";
         var star = 0;
+        var frameUrl = "card_item_bg" + star;
 
         if (this._card === -1) {
             url = "icon12";
         } else if (this._card) {
             star = this._card.get("star");
+            frameUrl = "card_item_bg" + star;
             if (this._card.isRareCard()) {
                 url = this._card.get("url") + "_head" + (star == 5 ? 1 : 2);
+                frameUrl = "rare_card_item_bg" + star;
             } else if (this._card.isLeadCard() || this._card.isBossCard()) {
                 url = this._card.get("url") + "_head" + (star > 2 ? Math.min(star - 2, 3) : 1);
             } else if (this._card.isResourceCard()) {
@@ -53,7 +56,7 @@ var CardHeadNode = cc.Node.extend({
         }
         this.addChild(this._cardSprite);
 
-        this._frameSprite = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
+        this._frameSprite = cc.Sprite.create(main_scene_image[frameUrl]);
         this._frameSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(this._frameSprite);
 

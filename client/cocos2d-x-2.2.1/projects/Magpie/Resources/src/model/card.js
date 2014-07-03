@@ -393,7 +393,9 @@ var Card = Entity.extend({
     getCardIcon: function (type) {
         type = type != 2 ? 1 : 2;
 
-        return main_scene_image[(skillIconMap[type][this._skillId] || skillIconMap[type][0])];
+        var url = this.isLeadCard() ? (skillIconMap[type][this._skillId] || skillIconMap[type][0]) : skillIconMap[type][0];
+
+        return main_scene_image[url];
     },
 
     getCardSubscript: function () {

@@ -5,13 +5,42 @@
 替换更新：
 res/main/icon376.png
 
-
 resYY/main/icon376.png
 
-新加资源
+新加资源:
+res/main/card_icon_1_6.png
+res/main/card_icon_2_6.png
+res/main/card6_full1.png
+res/main/card6_full2.png
+res/main/card6_half1.png
+res/main/card6_half2.png
+res/main/card6_head1.png
+res/main/card6_head2.png
+res/main/card6_skill.png
 res/main/icon479.png
+res/main/rare_card_item_bg5.png
+res/main/rare_card_item_bg6.png
+res/main/rare_card_item_bg7.png
+res/ccb/effect2001_1.ccbi
+res/ccb/effect2001_2.ccbi
+res/ccb/effect2001_3.ccbi
 
+resYY/main/card_icon_1_6.png
+resYY/main/card_icon_2_6.png
+resYY/main/card6_full1.png
+resYY/main/card6_full2.png
+resYY/main/card6_half1.png
+resYY/main/card6_half2.png
+resYY/main/card6_head1.png
+resYY/main/card6_head2.png
+resYY/main/card6_skill.png
 resYY/main/icon479.png
+resYY/main/rare_card_item_bg5.png
+resYY/main/rare_card_item_bg6.png
+resYY/main/rare_card_item_bg7.png
+resYY/ccb/effect2001_1.ccbi
+resYY/ccb/effect2001_2.ccbi
+resYY/ccb/effect2001_3.ccbi
 ----------v1.5.7版本----------------------------------------------------------------------------------------------------
 
 ----------v1.5.6版本----------------------------------------------------------------------------------------------------

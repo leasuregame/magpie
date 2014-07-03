@@ -19,10 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>15360</WindowHeight>
+  <WindowHeight>11600</WindowHeight>
   <WindowWidth>33340</WindowWidth>
-  <WindowTopX>-24856</WindowTopX>
-  <WindowTopY>1100</WindowTopY>
+  <WindowTopX>200</WindowTopX>
+  <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -153,29 +153,29 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s84">
-   <Alignment ss:Vertical="Bottom"/>
-   <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
-   <Interior/>
-  </Style>
-  <Style ss:ID="s86" ss:Parent="s66">
+  <Style ss:ID="s85" ss:Parent="s66">
    <Alignment ss:Horizontal="Justify" ss:Vertical="Bottom"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s87">
+  <Style ss:ID="s86">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <NumberFormat/>
   </Style>
-  <Style ss:ID="s90" ss:Parent="s67">
+  <Style ss:ID="s89" ss:Parent="s67">
    <Alignment ss:Horizontal="Justify" ss:Vertical="Bottom"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s92" ss:Parent="s68">
+  <Style ss:ID="s91" ss:Parent="s68">
    <Alignment ss:Horizontal="Justify" ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s92">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
    <Interior/>
   </Style>
@@ -570,14 +570,14 @@
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s70"><Data ss:Type="Number">105</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">罗刹女·铁扇公主</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">罗刹女·铁扇公主</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="Number">350</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">1400</Data></Cell>
     <Cell><Data ss:Type="String">罗刹风暴</Data></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2001</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2500</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">嫁给老牛后，我有了另一个名字，罗莎女。</Data></Cell>
@@ -586,14 +586,14 @@
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s70"><Data ss:Type="Number">106</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">芭蕉扇·铁扇公主</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">芭蕉扇·铁扇公主</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="Number">430</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">1720</Data></Cell>
     <Cell><Data ss:Type="String">罗刹风暴</Data></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2001</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2500</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">你热么？我给你扇扇？</Data></Cell>
@@ -602,14 +602,14 @@
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s70"><Data ss:Type="Number">107</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">生化芭蕉·铁扇公主</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">生化芭蕉·铁扇公主</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="Number">520</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="Number">2080</Data></Cell>
     <Cell><Data ss:Type="String">罗刹风暴</Data></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2001</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="Number">2500</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">以前看月亮的时候叫人家小甜甜，原来都是假的。</Data></Cell>
@@ -3421,9 +3421,9 @@
     <Cell ss:StyleID="s74"><Data ss:Type="Number">47</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="Number">212</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s92"/>
+    <Cell ss:StyleID="s92"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s83"><Data ss:Type="String">我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">50</Data></Cell>
    </Row>
@@ -3437,9 +3437,9 @@
     <Cell ss:StyleID="s74"><Data ss:Type="Number">97</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="Number">412</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s92"/>
+    <Cell ss:StyleID="s92"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s83"><Data ss:Type="String">要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="Number">50</Data></Cell>
    </Row>
@@ -3674,8 +3674,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>23</ActiveRow>
-     <ActiveCol>10</ActiveCol>
-     <RangeSelection>R24C11:R26C12</RangeSelection>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

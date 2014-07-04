@@ -24,6 +24,9 @@ res/main/rare_card_item_bg7.png
 res/ccb/effect2001_1.ccbi
 res/ccb/effect2001_2.ccbi
 res/ccb/effect2001_3.ccbi
+res/ccb/effect2500_1.ccbi
+res/ccb/effect2500_2.ccbi
+res/ccb/effect2500_3.ccbi
 
 resYY/main/card_icon_1_6.png
 resYY/main/card_icon_2_6.png
@@ -41,6 +44,9 @@ resYY/main/rare_card_item_bg7.png
 resYY/ccb/effect2001_1.ccbi
 resYY/ccb/effect2001_2.ccbi
 resYY/ccb/effect2001_3.ccbi
+resYY/ccb/effect2500_1.ccbi
+resYY/ccb/effect2500_2.ccbi
+resYY/ccb/effect2500_3.ccbi
 ----------v1.5.7版本----------------------------------------------------------------------------------------------------
 
 ----------v1.5.6版本----------------------------------------------------------------------------------------------------

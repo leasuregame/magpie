@@ -182,8 +182,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3</real>
-							<real>3</real>
+							<real>4.5999994277954102</real>
+							<real>4.5999994277954102</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -215,7 +215,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>40</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -452,8 +452,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>3.9999990463256836</real>
+									<real>3.9999990463256836</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -466,7 +466,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>6</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -495,7 +495,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>204</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -676,8 +676,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>4</real>
+									<real>4</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -709,7 +709,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>170</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -872,8 +872,8 @@
 						<integer>10</integer>
 						<key>value</key>
 						<array>
-							<string></string>
-							<integer>0</integer>
+							<string>ccbFnCallback</string>
+							<integer>2</integer>
 						</array>
 					</dict>
 				</array>
@@ -889,7 +889,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.63333332538604736</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

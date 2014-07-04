@@ -937,6 +937,10 @@ var main_scene_image = {
     effect2001_2: "resYY/ccb/effect2001_2.ccbi",
     effect2001_3: "resYY/ccb/effect2001_3.ccbi",
 
+    effect2500_1: "resYY/ccb/effect2500_1.ccbi",
+    effect2500_2: "resYY/ccb/effect2500_2.ccbi",
+    effect2500_3: "resYY/ccb/effect2500_3.ccbi",
+
     battleEffect1: "resYY/ccb/battleEffect1.ccbi",
     battleEffect2: "resYY/ccb/battleEffect2.ccbi",
     battleEffect3: "resYY/ccb/battleEffect3.ccbi",

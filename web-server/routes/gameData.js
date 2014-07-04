@@ -6,7 +6,8 @@ var _ = require('underscore');
 var datakeys = {
     CARDS : 'cards',
     CARD_LV_LIMIT : 'card_lv_limit',
-    CDKEY: 'cdkey'
+    CDKEY : 'cdkey',
+    RECHARGE : 'recharge'
 };
 
 var ACTOR_CARD_TV = 10000;
@@ -74,7 +75,12 @@ var gameData = function(app) {
         res.send(cdkeys != 'undefined' ? _.keys(cdkeys) : []);
     });
 
-
+    /**
+     * 获取充值项目
+     */
+    app.all('/admin/api/rechargeProduct', function(req, res){
+        res.send(getGameData(datakeys.RECHARGE));
+    });
 };
 
 module.exports = gameData;

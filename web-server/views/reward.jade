@@ -2,8 +2,9 @@ extends adminLayout
 
 block head
     script(type='text/javascript', src='/js/serverAPI.js')
-    script(type='text/javascript', src='/js/async.js')
     script(type='text/javascript', src='/js/lib/build/build.js')
+    script(type='text/javascript', src='/js/async.js')
+    script(type='text/javascript', src='/js/pomeloHandle.js')
     script.
         require('boot');
     style.
@@ -127,7 +128,7 @@ block content
                         hidden.cardLimit(limit='30')
                         input.form-control.cardReward.cLv(name='lv')
                     label.col-sm-2.control-label
-                        hidden.cardLimit(limit='100')
+                        hidden.cardQtyLimit(limit='100')
                         input.form-control.cardReward.cQty(name='qty')
             div.form-group(style='text-align:center')
                     span.alert.alert-danger.hide(id='cardRewardAlert' style='padding:8px 15px;font-weight:normal')
@@ -185,7 +186,7 @@ block content
                 hidden.cardLimit(limit='30')
                 input.form-control.cardReward.cLv(name='lv')
             label.col-sm-2.control-label
-                hidden.cardLimit(limit='50')
+                hidden.cardQtyLimit(limit='100')
                 input.form-control.cardReward.cQty(name='qty')
     script(type='text/javascript', src='/js/webServerHandle.js')
     script(type='text/javascript', src='/js/reward.js')

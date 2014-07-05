@@ -706,7 +706,13 @@ Activity.IsShowHandler = {
         return true;
     },
     growthPlanLayer: function () {
-        return true;
+        var table = outputTables.growth_plan.rows;
+        for (var id in table) {
+            if (gameData.activity.getStateById(TYPE_GROWTH_PLAN_REWARD, id) != ALREADY_GOT_REWARD) {
+                return true;
+            }
+        }
+        return false;
     },
     powerRewardLayer: function () {
         return true;

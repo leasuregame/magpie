@@ -179,7 +179,7 @@ Handler::luckyCardActivity = (msg, session, next) ->
       lightStar = player.isGotLuckCardStar luckCardConf.data.tenRate
 
     _.extend res.msg, activity: {
-      islightStar: lightStar
+      isLightStar: lightStar
       star: player.activities.luckCard.star
     }
     player.save()

@@ -192,7 +192,10 @@ Handler::getActivityInfo = (msg, session, next) ->
         luckyCard: {
           startDate: luckyCard.startDate
           endDate: luckyCard.endDate
-          tableId: luckyCard.data.tableId
+          isVisable: if luckyCard then true else false
+          data:
+            tableId: luckyCard.data.tableId
+            star: player.activities.?luckyCard.star || 0
         } if luckyCard
       }
     })

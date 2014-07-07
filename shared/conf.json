@@ -24,7 +24,7 @@
         "luckyCard": {
           "enable": true,
           "startDate": "2014-6-30",
-          "endDate": "2014-7-20",
+          "endDate": "2014-7-20 23:59:59:999",
           "data": {
             "tableId": 105,
             "sigleRate": 3,
@@ -40,7 +40,7 @@
         "worldCup": {
           "enable": true,
           "startDate": "2014-6-13",
-          "endDate": "2014-7-14"
+          "endDate": "2014-7-14 23:59:59:999"
         }
     }
 }

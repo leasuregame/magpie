@@ -36,6 +36,11 @@
               "1001011001"
             ]
           }
+        },
+        "worldCup": {
+          "enable": true,
+          "startDate": "",
+          "endDate": "2014-7-14"
         }
     }
 }

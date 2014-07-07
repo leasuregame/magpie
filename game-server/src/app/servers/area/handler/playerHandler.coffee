@@ -175,8 +175,11 @@ Handler::getActivityInfo = (msg, session, next) ->
     # flag = setCanGetFlag player, rechargeFlag
     
     luckyCard = null
+    activity = @app.get('sharedConf').activity
     if appUtil.isActivityTime(@app, 'luckyCard') 
-      luckyCard = @app.get('sharedConf').activity.luckyCard
+      luckyCard = activity.luckyCard
+    if appUtil.isActivityTime(@app, 'worldCup')
+      worldCup = activity.worldCup
     
     cur_hour = new Date().getHours()
     next(null, {
@@ -192,8 +195,16 @@ Handler::getActivityInfo = (msg, session, next) ->
         luckyCard: {
           startDate: luckyCard.startDate
           endDate: luckyCard.endDate
-          tableId: luckyCard.data.tableId
+          isVisable: luckyCard.enable || false
+          data:
+            tableId: luckyCard.data.tableId
+            star: player.activities.?luckyCard.star || 0
         } if luckyCard
+        worldCup: {
+          startDate: worldCup.startDate
+          endDate: worldCup.endDate
+          isVisable: worldCup.enable
+        } if worldCup
       }
     })
 

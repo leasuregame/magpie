@@ -23,7 +23,7 @@
         },
         "luckyCard": {
           "enable": true,
-          "startDate": "2014-06-30",
+          "startDate": "2014-6-30",
           "endDate": "2014-7-20",
           "data": {
             "tableId": 105,

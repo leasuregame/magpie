@@ -154,8 +154,8 @@ Handler::luckyCardActivity = (msg, session, next) ->
     return next(null, {code: 501, msg: '不在活动时间内'})
 
   playerId = session.get('playerId')
-  level = HIGH_LUCKYCARD
-  type = LOTTERY_BY_GOLD
+  msg.level = HIGH_LUCKYCARD
+  msg.type = LOTTERY_BY_GOLD
   times = if msg.times? then msg.times else 1
 
   activityMethod = (player, cards) ->

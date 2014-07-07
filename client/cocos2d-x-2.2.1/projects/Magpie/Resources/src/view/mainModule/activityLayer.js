@@ -59,6 +59,11 @@ var ActivityLayer = cc.Layer.extend({
             titleIcon: "icon265",
             layer: InvitationLayer,
             nameString: "invitationLayer"
+        },
+        {
+            titleIcon: "icon480",
+            layer: FlashLotteryLayer,
+            nameString: "flashLotteryLayer"
         }
     ],
     _selectIcon: null,
@@ -227,7 +232,6 @@ var ActivityLayer = cc.Layer.extend({
         for (var i = 0; i < len; ++i) {
             var layer = this._layers[i];
             if (!Activity.IsShowHandler[layer.nameString]()) {
-                this._mark[i].setVisible(false);
                 continue;
             }
             this._mark[i].setVisible(Activity.IsMarkHandler[layer.nameString]());

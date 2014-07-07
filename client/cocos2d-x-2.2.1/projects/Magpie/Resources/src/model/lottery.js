@@ -35,6 +35,8 @@ var Lottery = Entity.extend({
             got: false
         };
 
+        this._lightStar = 0;
+
         this.update(data);
 
         return true;
@@ -136,6 +138,16 @@ var Lottery = Entity.extend({
             return false;
         }
 
+        return true;
+    },
+
+    canFlashLottery: function (times) {
+        var gold = gameData.player.get("gold");
+        var needGold = (times == 1) ? 199 * times : 199 * times * 0.8;
+        if (gold < needGold) {
+            TipLayer.tip("魔石不足");
+            return false;
+        }
         return true;
     },
 
@@ -252,6 +264,68 @@ var Lottery = Entity.extend({
                 lz.um.event("event_lottery", "type:" + type + " level:" + level);
             } else {
                 cc.log("lottery fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
+            }
+        });
+    },
+
+    flashLottery: function (cb, times) {
+        cc.log("Lottery flashLottery");
+
+        var that = this;
+        lz.server.request("area.trainHandler.luckyCard", {
+            times: times
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("flashLottery success");
+
+                var msg = data.msg;
+                var card;
+
+                if (times == 10) {
+                    if (msg.goldLuckyCard10) {
+                        that.set("goldLuckyCard10", msg.goldLuckyCard10);
+                    } else {
+                        that.set("goldLuckyCard10", {count: 3, got: true});
+                    }
+
+                    card = [];
+                    for (var i = 0; i < msg.cards.length; i++) {
+                        cards[i] = Card.create(msg.cards[i]);
+                        gameData.cardList.push(cards[i]);
+                    }
+                } else {
+                    if (msg.goldLuckyCardForFragment) {
+                        that.set("goldLuckyCardForFragment", msg.goldLuckyCardForFragment);
+                    } else {
+                        that.set("goldLuckyCardForFragment", {count: 5, got: true});
+                    }
+
+                    card = Card.create(msg.card);
+                    gameData.cardList.push(card);
+                }
+
+                player.add("gold", -msg.consume);
+
+                if (msg.fragment > 0) {
+                    player.add("fragment", msg.fragment);
+                }
+
+                cb({
+                    card: card,
+                    fragment: msg.fragment,
+                    isLightStar: msg.isLightStar,
+                    lightStar: msg.star
+                });
+
+            } else {
+                cc.log("flashLottery fail");
 
                 TipLayer.tip(data.msg);
 

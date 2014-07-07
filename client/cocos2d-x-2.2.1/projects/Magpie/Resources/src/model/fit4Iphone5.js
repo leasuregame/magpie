@@ -586,6 +586,28 @@ var fit4Iphone5 = {
             "rewardItemPoint": cc.p(580, 990),
             "collectLabelPoint": cc.p(320, 781)
         },
+        "flashLotteryLayer": {
+            "timesBgLabelPoint": cc.p(320, 1000),
+            "timeLabelPoint": cc.p(320, 995),
+            "titleLabelPoint": cc.p(320, 880),
+            "cardLabelPoint": cc.p(320, 530),
+            "baseSpritePoint": cc.p(320, 260),
+            "starPoints": [
+                cc.p(60, 690),
+                cc.p(60, 610),
+                cc.p(60, 530),
+                cc.p(60, 450),
+                cc.p(60, 370)
+            ],
+            "lotteryCardItemPoint": cc.p(170, 240),
+            "tenLotteryCardItemPoint": cc.p(440, 240),
+            "rateLabel1Point": cc.p(170, 280),
+            "rateLabel2Point": cc.p(440, 280),
+            "costLabel1Point": cc.p(170, 200),
+            "costLabel2Point": cc.p(440, 200),
+            "goldLotteryIconPoint": cc.p(170, 195),
+            "goldTenLotteryIconPoint": cc.p(440, 195)
+        },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
             "headIconPoint": cc.p(0, 1056),

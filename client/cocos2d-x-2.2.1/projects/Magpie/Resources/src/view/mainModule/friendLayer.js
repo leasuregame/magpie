@@ -196,7 +196,7 @@ var FriendLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        var friendList = friend.getFriendList();//friend.get("friendList");
+        var friendList = friend.getFriendList();
         var len = friendList.length;
 
         var giveCount = friend.get("giveCount");

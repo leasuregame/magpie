@@ -36,7 +36,7 @@ function initAreasList() {
     if(servers) {
         var inner = "";
 
-        inner += '<option value = "-1">所有</option>';
+        window.wsConst.IS_AREA_INCLUDE_ALL || (inner += '<option value = "-1">所有</option>');
         servers.forEach(function(area) {
             inner += '<option value =' + area.id + '>' + area.name + '</option>';
         });

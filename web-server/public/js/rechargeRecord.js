@@ -1,31 +1,9 @@
 var ROWS_PER_PAGE = 10;
-var messageStatus = {
-    1 : 'ASKING',
-    2 : '已接受',
-    3 : '已拒绝',
-    4 : '未处理',
-    5 : '已处理',
-    6 : 'NOTICE'
-};
 var serverNamePair = {};
-var configCards = {};
+var productNamePair = {};
 var tipAlertId = {
     LOADING : '#loadingAlert',
     NO_RS : '#noRsAlert'
-};
-var baseRewardNames = {
-    gold : '魔石',
-    money : '仙币',
-    powerValue : '体力点',
-    spirit : '灵气',
-    skillPoint : '技能点',
-    elixir : '仙丹',
-    energy : '活力点',
-    fragments : '卡魂',
-    superHonor : '精元',
-    speaker : '喇叭',
-    honor : '荣誉点',
-    pill : '觉醒玉'
 };
 
 /**
@@ -42,11 +20,15 @@ function initServerNames() {
 }
 
 /**
- * 向服务器获取预设卡牌信息
+ * 向服务器获取预设充值项目信息
  */
-function initConfCards() {
-    window.webAPI.getActorCards(function(data){
-        configCards = data;
+function initConfProduct(cb) {
+    window.webAPI.getRechargeProduct(function(data){
+        for(var key in data) {
+            var product = data[key];
+            productNamePair[product.product_id] = product.name;
+        }
+        cb && cb();
     });
 }
 
@@ -77,6 +59,18 @@ function initPaginator() {
         showTabPage(1);
     } else {
         $(tipAlertId.NO_RS).removeClass('hide');
+    }
+}
+
+/**
+ * 完成相关初始化后自动执行一次提交查询
+ */
+function submitAfterInit(){
+    var areaCount = $('#area option').length;
+    if(areaCount > 0) {
+        submit();
+    }else {
+        setTimeout(submitAfterInit, 100);
     }
 }
 
@@ -134,18 +128,6 @@ function getInputData() {
     return retData;
 }
 
-/**
- * 完成相关初始化后自动执行一次提交查询
- */
-function submitAfterInit(){
-    var areaCount = $('#area option').length;
-    if(areaCount > 0) {
-        submit();
-    }else {
-        setTimeout(submitAfterInit, 100);
-    }
-}
-
 function submit() {
     removeErrors();
 
@@ -180,7 +162,7 @@ function doRequest(reqData) {
     $(tipAlertId.LOADING).removeClass('hide');
     $('#submitCheck').attr('disabled', true);
 
-    window.webAPI.getSysMessages(reqData.areaId, reqData.playerIds, reqData.createTime, function(data){
+    window.webAPI.getRechargeRecord(reqData.areaId, reqData.playerIds, reqData.createTime, function(data){
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
 
@@ -188,19 +170,17 @@ function doRequest(reqData) {
         var rowTemp = $('#rowTemp').html();
         for(var i in data) {
             var rowData = data[i];
-            rowData.options = $.parseJSON(rowData.options);
-            rowData.createDate = new Date(rowData.createTime).toLocaleDateString();
-            rowData.validDate = new Date(rowData.validDate).toLocaleDateString();
             var $tmpRow = $(rowTemp);
-            var receiverTxt = rowData.name ? '(' + serverNamePair[rowData.areaId] + ") " + rowData.name : serverNamePair[rowData.areaId];
-            $tmpRow.find('.receiver').text(receiverTxt).attr('title', receiverTxt);
-            $tmpRow.find('.title').text(rowData.options.title).attr('title', rowData.options.title);
-            $tmpRow.find('.content').text(rowData.content).attr('title', rowData.content);
-            var rewardTxt = rewardJson2Str(rowData.options.rewards);
-            $tmpRow.find('.rewards').text(rewardTxt).attr('title', rewardTxt);
-            $tmpRow.find('.status').text(messageStatus[rowData.status]);
-            $tmpRow.find('.createTime').text(rowData.createDate);
-            $tmpRow.find('.validDate').text(rowData.validDate);
+            var areaTxt = serverNamePair[rowData.areaId];
+            $tmpRow.find('.area').text(areaTxt).attr('title', areaTxt);
+            $tmpRow.find('.player').text(rowData.playerName).attr('title', rowData.playerName);
+            var productTxt = productNamePair[rowData.productId];
+            $tmpRow.find('.product').text(productTxt).attr('title', productTxt);
+            $tmpRow.find('.qty').text(rowData.qty);
+            $tmpRow.find('.amount').text(rowData.amount);
+            $tmpRow.find('.gain').text(rowData.gain);
+            var createTimeTxt = new Date(rowData.createTime).toLocaleString();
+            $tmpRow.find('.createTime').text(createTimeTxt).attr('title', createTimeTxt);
             tabBody.append($tmpRow);
         }
         initPaginator();
@@ -211,40 +191,13 @@ function doRequest(reqData) {
     });
 }
 
-/**
- * 奖励格式化为可展示字符串
- * @param reward
- * @returns {string}
- */
-function rewardJson2Str(reward) {
-    var ret = "";
-    if (window.wsUtil.isNotEmptyObj(reward)){
-        $.each(reward, function (key, val) {
-            if (key == 'cardArray') {
-                var qty = 0;
-                $.each(val, function (idx, val) {
-                    qty += val.qty * 1;
-                    var card = configCards[val.tableId + ""];
-                    ret += val.lv + '级  ' + card.star + '☆  ' + card.name + '  x ' + val.qty + ';\n';
-                });
-                ret ='\n卡牌 : ' + qty + '张;\n' + ret;
-            } else {
-                ret += baseRewardNames[key] + ' x ' + val + ';\n';
-            }
-        });
-    } else {
-        ret = '-';
-    }
-    return ret;
-}
-
 $(document).ready(function() {
     initServer(initServerNames);
-    initConfCards();
+    initConfProduct();
     submitAfterInit();
 
     $('#submitCheck').click(function(){
         submit();
     });
-//    $('.container').delegate('.btn', 'click', re)
+
 });

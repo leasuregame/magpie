@@ -178,6 +178,7 @@ Handler::getActivityInfo = (msg, session, next) ->
     activity = @app.get('sharedConf').activity
     if appUtil.isActivityTime(@app, 'luckyCard') 
       luckyCard = activity.luckyCard
+    worldCup = null
     if appUtil.isActivityTime(@app, 'worldCup')
       worldCup = activity.worldCup
     
@@ -198,7 +199,7 @@ Handler::getActivityInfo = (msg, session, next) ->
           isVisible: luckyCard.enable || false
           info:
             tableId: luckyCard.data.tableId
-            star: player.activities.luckyCard?.star || 0
+            star: player.activities.luckCard?.star || 0
         } if luckyCard
         worldCup: {
           startDate: worldCup.startDate

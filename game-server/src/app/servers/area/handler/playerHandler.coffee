@@ -198,7 +198,7 @@ Handler::getActivityInfo = (msg, session, next) ->
           isVisable: luckyCard.enable || false
           data:
             tableId: luckyCard.data.tableId
-            star: player.activities.?luckyCard.star || 0
+            star: player.activities?.luckyCard.star || 0
         } if luckyCard
         worldCup: {
           startDate: worldCup.startDate

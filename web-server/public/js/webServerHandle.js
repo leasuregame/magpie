@@ -20,7 +20,10 @@
         PLAYER_CONSUMPTION : API_BASE_PATH + 'getPlayerConsumption',
         DOWNLOAD_PLAYER_CONSUMPTION : API_BASE_PATH + 'download/playerConsumption',
         DOWNLOAD_WASTAGE_RATE_ON_LV : API_BASE_PATH + 'download/wastageRateOnLv',
-        GET_RCHG_SIG : API_BASE_PATH + 'getRchgSig'
+        GET_RCHG_SIG : API_BASE_PATH + 'getRchgSig',
+        GET_EXC_PLAYER : API_BASE_PATH + 'getExcPlayer',
+        ADD_EXC_PLAYER : API_BASE_PATH + 'addExcPlayer',
+        DEL_EXC_PLAYER : API_BASE_PATH + 'delExcPlayer'
     };
 
     var webAPI = {};
@@ -47,6 +50,38 @@
      */
     webAPI.getRechargeProduct = function (cb) {
         ajax(API.RECHARGE_PRODUCT, cb);
+    };
+
+    /**
+     * 获得需排除玩家
+     * @param cb
+     */
+    webAPI.getExcPlayer = function (cb) {
+        ajax(API.GET_EXC_PLAYER, cb);
+    };
+
+    /**
+     * 增加需排除玩家
+     * @param playerNames
+     * @param cb
+     */
+    webAPI.addExcPlayer = function (playerNames, cb) {
+        var param = {
+            names : playerNames
+        };
+        ajax(API.ADD_EXC_PLAYER, param, cb);
+    };
+
+    /**
+     * 删除需排除玩家
+     * @param players
+     * @param cb
+     */
+    webAPI.delExcPlayer = function (players, cb) {
+        var param = {
+            players : players
+        };
+        ajax(API.DEL_EXC_PLAYER, param, cb);
     };
 
     /**
@@ -205,14 +240,16 @@
     /**
      * 获取魔石使用占比
      * @param areaId
+     * @param exceptedPlayers
      * @param createTime
      * @param scb
      * @param ecb
      */
-    webAPI.getConsumptionRate = function (areaId, createTime, scb, ecb) {
+    webAPI.getConsumptionRate = function (areaId, exceptedPlayers, createTime, scb, ecb) {
         var param = {
             areaId : areaId,
-            createTime : createTime
+            createTime : createTime,
+            exceptedPlayers : JSON.stringify(exceptedPlayers)
         };
         ajax(API.PLAYER_CONSUMPTION, param, scb, ecb);
     };

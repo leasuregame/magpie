@@ -22,8 +22,8 @@ fs.exists(DB_PATH, function(exists){
             '"areaIds"  TEXT(128),"playerNames"  TEXT(1024),' +
             '"options"  TEXT(1024) DEFAULT NULL,' +
             '"status"  INTEGER DEFAULT NULL,' +
-            '"createTime"  INTEGER DEFAULT NULL' +
-            '"type"  INTEGER DEFAULT NULL,' +
+            '"createTime"  INTEGER DEFAULT NULL,' +
+            '"type"  INTEGER DEFAULT NULL' +
             ');');
     });
 });

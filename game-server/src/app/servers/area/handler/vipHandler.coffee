@@ -66,6 +66,7 @@ Handler::buyPlan = (msg, session, next) ->
     player.buyPlan()
     player.decrease('gold', 1000)
     player.save()
+    recordManager.createConsumptionRecord player.id, SOURCE.BUY_GROWTH_PLAN, {expense : boxInfo.price}
     next(null, {code: 200, msg: gold: player.gold, plan: player.plan})
 
 Handler::getPlanReward = (msg, session, next) -> 

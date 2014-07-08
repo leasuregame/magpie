@@ -41,6 +41,7 @@ var TenLotteryCardLayer = LazyLayer.extend({
         this._canClick = false;
         this._cardList = data.card;
         this._fragment = data.fragment;
+        this._cb = data.cb || null;
 
         this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect64, this);
         this._ccbNode.setPosition(this._tenLotteryCardLayerFit.ccbNodePoint);
@@ -63,6 +64,10 @@ var TenLotteryCardLayer = LazyLayer.extend({
             var url = card.get("url");
             var star = card.get("star");
             var index = star > 2 ? star - 2 : 1;
+
+            if (card.isRareCard()) {
+                index = (5 == star) ? 1 : 2;
+            }
 
             this["ccbCardFrame" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
             this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));

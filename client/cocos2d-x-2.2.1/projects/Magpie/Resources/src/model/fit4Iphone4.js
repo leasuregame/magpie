@@ -589,8 +589,8 @@ var fit4Iphone4 = {
             "timesBgLabelPoint": cc.p(360, 835),
             "timeLabelPoint": cc.p(360, 830),
             "titleLabelPoint": cc.p(360, 740),
-            "cardLabelPoint": cc.p(360, 490),
-            "baseSpritePoint": cc.p(360, 220),
+            "cardLabelPoint": cc.p(360, 500),
+            "baseSpritePoint": cc.p(360, 230),
             "starPoints": [
                 cc.p(100, 680),
                 cc.p(100, 600),
@@ -598,14 +598,15 @@ var fit4Iphone4 = {
                 cc.p(100, 440),
                 cc.p(100, 360)
             ],
-            "lotteryCardItemPoint": cc.p(210, 200),
-            "tenLotteryCardItemPoint": cc.p(480, 200),
-            "rateLabel1Point": cc.p(210, 240),
-            "rateLabel2Point": cc.p(480, 240),
-            "costLabel1Point": cc.p(210, 160),
-            "costLabel2Point": cc.p(480, 160),
-            "goldLotteryIconPoint": cc.p(210, 155),
-            "goldTenLotteryIconPoint": cc.p(480, 155)
+            "lotteryCardItemPoint": cc.p(210, 210),
+            "tenLotteryCardItemPoint": cc.p(480, 210),
+            "rateLabel1Point": cc.p(210, 250),
+            "rateLabel2Point": cc.p(480, 250),
+            "costLabel1Point": cc.p(210, 170),
+            "costLabel2Point": cc.p(480, 170),
+            "goldLotteryIconPoint": cc.p(210, 165),
+            "goldTenLotteryIconPoint": cc.p(480, 165),
+            "tipLabelPoint": cc.p(480, 135)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),

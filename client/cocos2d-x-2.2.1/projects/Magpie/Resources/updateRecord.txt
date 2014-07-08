@@ -4,8 +4,24 @@
 
 替换更新：
 res/main/icon376.png
+res/font/skillName.fnt
+res/font/skillName.png
+
+res/ccb/battleNode.ccbi
+res/ccb/card20000.ccbi
+res/ccb/card20001.ccbi
+res/ccb/card20002.ccbi
+res/ccb/spiritNode.ccbi
 
 resYY/main/icon376.png
+resYY/font/skillName.fnt
+resYY/font/skillName.png
+
+resYY/ccb/battleNode.ccbi
+resYY/ccb/card20000.ccbi
+resYY/ccb/card20001.ccbi
+resYY/ccb/card20002.ccbi
+resYY/ccb/spiritNode.ccbi
 
 新加资源:
 res/main/card_icon_1_6.png
@@ -33,8 +49,18 @@ res/ccb/effect2001_3.ccbi
 res/ccb/effect2500_1.ccbi
 res/ccb/effect2500_2.ccbi
 res/ccb/effect2500_3.ccbi
+res/ccb/uiEffect119.ccbi
+res/effect/effect/p154.png
+res/effect/effect/p155.png
+res/effect/effect/p156.png
+res/effect/effect/p157.png
+res/effect/effect/p158.png
+res/effect/effect/p159.png
+res/effect/uiEffect/up264.png
+res/effect/uiEffect/up265.png
+res/sound/battle_sound_effect2500_3.wav
 
-resYY/main/card_icon_1_6.png
+res/main/card_icon_1_6.png
 resYY/main/card_icon_2_6.png
 resYY/main/card6_full1.png
 resYY/main/card6_full2.png
@@ -59,6 +85,16 @@ resYY/ccb/effect2001_3.ccbi
 resYY/ccb/effect2500_1.ccbi
 resYY/ccb/effect2500_2.ccbi
 resYY/ccb/effect2500_3.ccbi
+resYY/ccb/uiEffect119.ccbi
+resYY/effect/effect/p154.png
+resYY/effect/effect/p155.png
+resYY/effect/effect/p156.png
+resYY/effect/effect/p157.png
+resYY/effect/effect/p158.png
+resYY/effect/effect/p159.png
+resYY/effect/uiEffect/up264.png
+resYY/effect/uiEffect/up265.png
+resYY/sound/battle_sound_effect2500_3.wav
 ----------v1.5.7版本----------------------------------------------------------------------------------------------------
 
 ----------v1.5.6版本----------------------------------------------------------------------------------------------------

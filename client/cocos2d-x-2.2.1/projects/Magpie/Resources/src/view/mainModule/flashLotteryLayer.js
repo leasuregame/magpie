@@ -7,6 +7,8 @@ var FlashLotteryLayer = cc.Layer.extend({
 
     _starIcons: [],
     _starBgIcons: [],
+    _btnNode1: null,
+    _btnNode2: null,
 
     init: function () {
         cc.log("FlashLottery init");
@@ -72,7 +74,7 @@ var FlashLotteryLayer = cc.Layer.extend({
             this.addChild(this._starIcons[i]);
         }
 
-        var lotteryCardItem = cc.MenuItemImage.createWithIcon(
+        this._lotteryCardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
@@ -80,7 +82,7 @@ var FlashLotteryLayer = cc.Layer.extend({
             this._onClickLottery,
             this
         );
-        lotteryCardItem.setPosition(this._flashLotteryLayerFit.lotteryCardItemPoint);
+        this._lotteryCardItem.setPosition(this._flashLotteryLayerFit.lotteryCardItemPoint);
 
         var rateLabel1 = StrokeLabel.create("3%点亮星星", "STHeitiTC-Medium", 22);
         rateLabel1.setColor(cc.c3b(85, 255, 1));
@@ -97,7 +99,7 @@ var FlashLotteryLayer = cc.Layer.extend({
         goldLotteryIcon.setPosition(this._flashLotteryLayerFit.goldLotteryIconPoint);
         this.addChild(goldLotteryIcon);
 
-        var tenLotteryCardItem = cc.MenuItemImage.createWithIcon(
+        this._tenLotteryCardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
@@ -105,7 +107,7 @@ var FlashLotteryLayer = cc.Layer.extend({
             this._onClickTenLottery,
             this
         );
-        tenLotteryCardItem.setPosition(this._flashLotteryLayerFit.tenLotteryCardItemPoint);
+        this._tenLotteryCardItem.setPosition(this._flashLotteryLayerFit.tenLotteryCardItemPoint);
 
         var rateLabel2 = StrokeLabel.create("50%点亮星星", "STHeitiTC-Medium", 22);
         rateLabel2.setColor(cc.c3b(85, 255, 1));
@@ -122,25 +124,105 @@ var FlashLotteryLayer = cc.Layer.extend({
         goldTenLotteryIcon.setPosition(this._flashLotteryLayerFit.goldTenLotteryIconPoint);
         this.addChild(goldTenLotteryIcon);
 
-        var menu = cc.Menu.create(lotteryCardItem, tenLotteryCardItem);
+        var menu = cc.Menu.create(this._lotteryCardItem, this._tenLotteryCardItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+
+        var tipLabel = ColorLabelTTF.create(
+            {
+                string: "每日首次10连召唤必得",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 22
+            },
+            {
+                string: "5星",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 22,
+                color: cc.c3b(85, 255, 1)
+            }
+        );
+        tipLabel.setPosition(this._flashLotteryLayerFit.tipLabelPoint);
+        this.addChild(tipLabel);
+
+        this.update(luckCard.info.star);
 
         return true;
     },
 
     _update: function (data) {
-
+        cc.log(data);
         if (data.isLightStar) {
-            var scaleToAction = cc.Sequence.create(
-                cc.FadeIn.create(0.2),
-                cc.ScaleTo.create(0.3, 1.2),
-                cc.ScaleTo.create(0.2, 1)
-            );
+            var starEffect = cc.BuilderReader.load(main_scene_image.uiEffect119, this);
+            starEffect.setPosition(this._flashLotteryLayerFit.cardLabelPoint);
+            this.addChild(starEffect);
 
-            this._starIcons[data.star].runAction(scaleToAction);
+            var that = this;
+
+            var animationManager = starEffect.animationManager;
+            var time = animationManager.getSequenceDuration("animation_2");
+            var point = this._flashLotteryLayerFit.starPoints[data.lightStar - 1];
+
+            var fn3 = function () {
+                animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+                animationManager.setCompletedAnimationCallback(that, function () {
+                    starEffect.removeFromParent();
+                    var scaleToAction = cc.Sequence.create(
+                        cc.FadeIn.create(0.2),
+                        cc.ScaleTo.create(0.3, 1.4),
+                        cc.ScaleTo.create(0.2, 1.2)
+                    );
+
+                    that._starIcons[data.lightStar - 1].runAction(scaleToAction);
+                    that._starIcons[data.lightStar - 1].setVisible(true);
+                });
+            };
+
+            var fn2 = function () {
+                animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+                starEffect.runAction(
+                    cc.Sequence.create(
+                        cc.MoveTo.create(time, point)
+                    )
+                );
+                animationManager.setCompletedAnimationCallback(that, fn3);
+            };
+
+            var fn1 = function () {
+                animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
+                animationManager.setCompletedAnimationCallback(that, fn2);
+            };
+
+            fn1();
+        }
+    },
+
+    update: function (lightStar) {
+
+        if (lightStar == 5) {
+            this._btnNode1 = cc.BuilderReader.load(main_scene_image.uiEffect33, this);
+            this._btnNode1.setPosition(cc.p(75, 35));
+            this._lotteryCardItem.getNormalImage().addChild(this._btnNode1);
+
+            this._btnNode2 = cc.BuilderReader.load(main_scene_image.uiEffect33, this);
+            this._btnNode2.setPosition(cc.p(75, 35));
+            this._tenLotteryCardItem.getNormalImage().addChild(this._btnNode2);
         }
 
+        if (lightStar == 0) {
+            for (var i = 0; i < 5; i++) {
+                this._starIcons[i].setVisible(false);
+            }
+
+            if (this._btnNode1) {
+                this._btnNode1.removeFromParent();
+                this._btnNode1 = null;
+            }
+
+            if (this._btnNode2) {
+                this._btnNode2.removeFromParent();
+                this._btnNode2 = null;
+            }
+        }
     },
 
     _onClickLottery: function () {
@@ -164,6 +246,7 @@ var FlashLotteryLayer = cc.Layer.extend({
 
             var cb = function () {
                 that._update(data);
+                that.update(data.lightStar);
             };
 
             LotteryCardLayer.pop({
@@ -192,17 +275,30 @@ var FlashLotteryLayer = cc.Layer.extend({
         }
 
         var that = this;
-        lottery.flashLottery(function (data) {
-            var cb = function () {
-                that._update(data);
-            };
+        var next = function () {
+            lottery.flashLottery(function (data) {
+                var cb = function () {
+                    that._update(data);
+                    that.update(data.lightStar);
+                };
 
-            TenLotteryCardLayer.pop({
-                card: data.card,
-                fragment: data.fragment,
-                cb: cb
+                TenLotteryCardLayer.pop({
+                    card: data.card,
+                    fragment: data.fragment,
+                    cb: cb
+                });
+            }, 10);
+        };
+
+        var goldLuckyCard10 = lottery.get("goldLuckyCard10");
+        var key = gameData.player.get("uid") + "_goldLuckyCard10";
+        if (goldLuckyCard10.got && lz.load(key)) {
+            AdvancedTipsLabel.pop(TYPE_GOLD_TEN_LOTTERY_TIPS, function () {
+                next();
             });
-        }, 10);
+        } else {
+            next();
+        }
     }
 });
 

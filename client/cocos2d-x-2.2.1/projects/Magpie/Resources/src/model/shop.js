@@ -158,7 +158,14 @@ var Shop = Entity.extend({
         GiftBagLayer.pop2Top({
             reward: reward,
             type: GET_GIFT_BAG_NO_CLOSE,
-            cb: cb
+            cb: function () {
+                gameData.activity.getFirstRechargeBox(function (reward) {
+                    lz.tipReward(reward);
+                    if(cb) {
+                        cb();
+                    }
+                });
+            }
         });
     },
 
@@ -869,4 +876,4 @@ Shop.create = function () {
     }
 
     return null;
-}
+};

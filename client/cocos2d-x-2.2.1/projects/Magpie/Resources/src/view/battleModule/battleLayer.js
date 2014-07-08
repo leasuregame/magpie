@@ -523,16 +523,11 @@ var BattleLayer = cc.Layer.extend({
     },
 
     nextStepCallback: function () {
-        cc.log("nextStepCallback: ");
         this._counter += 1;
-
-        cc.log(this._counter);
 
         var that = this;
         return function () {
             that._counter -= 1;
-
-            cc.log("ret: " + that._counter);
 
             if (that._counter == 0) {
                 that.scheduleOnce(that.nextStep, 0.1);
@@ -4813,8 +4808,6 @@ var BattleLayer = cc.Layer.extend({
         var attackerNode = this._battleNode[attacker];
         var attackerLocate = this._locate[attacker];
         var targetLen = battleStep.get("targetLen");
-        var len = 16;
-        var index = 0;
 
         this._skillStep.step = [
             {
@@ -4824,7 +4817,6 @@ var BattleLayer = cc.Layer.extend({
                     var nextStepCallback2 = that.nextStepCallback();
                     var nextStepCallback3 = that.nextStepCallback();
                     var fn3 = function () {
-                        cc.log("fn3");
                         attackerNode.runAnimations(
                             "a_2500_3",
                             0,
@@ -4836,8 +4828,6 @@ var BattleLayer = cc.Layer.extend({
                     };
 
                     var fn2 = function () {
-                        cc.log("fn2");
-
                         that._battleNode[attacker].setPosition(that._getDirection(attacker) == "o" ? that._lineUpMidpoint["e"] : that._lineUpMidpoint["o"]);
 
                         attackerNode.runAnimations(
@@ -4863,7 +4853,6 @@ var BattleLayer = cc.Layer.extend({
             {
                 times: 1,
                 fn: function () {
-                    cc.log("2500_1");
                     var effect2500_1 = cc.BuilderReader.load(main_scene_image.effect2500_1, that);
                     effect2500_1.setPosition(attackerLocate);
                     that.addChild(effect2500_1, EFFECT_Z_ORDER);
@@ -4878,7 +4867,6 @@ var BattleLayer = cc.Layer.extend({
             {
                 times: 1,
                 fn: function () {
-                    cc.log("2500_2");
                     var effect2500_2 = cc.BuilderReader.load(main_scene_image.effect2500_2, that);
                     effect2500_2.setPosition(that._getDirection(attacker) == "o" ? that._lineUpMidpoint["e"] : that._lineUpMidpoint["o"]);
                     that.addChild(effect2500_2, EFFECT_Z_ORDER);
@@ -4893,7 +4881,6 @@ var BattleLayer = cc.Layer.extend({
             {
                 times: 1,
                 fn: function () {
-                    cc.log("2500_3");
                     var effect2500_3 = cc.BuilderReader.load(main_scene_image.effect2500_3, that);
                     effect2500_3.setPosition(that._getDirection(attacker) == "o" ? that._lineUpMidpoint["e"] : that._lineUpMidpoint["o"]);
                     that.addChild(effect2500_3, EFFECT_Z_ORDER);
@@ -4908,8 +4895,6 @@ var BattleLayer = cc.Layer.extend({
             {
                 times: 1,
                 fn: function () {
-                    cc.log("beat");
-
                     that.startShock();
 
                     battleStep.recover();
@@ -4937,7 +4922,6 @@ var BattleLayer = cc.Layer.extend({
             {
                 times: 1,
                 fn: function () {
-                    cc.log("2500_1");
                     var effect2500_1 = cc.BuilderReader.load(main_scene_image.effect2500_1, that);
                     effect2500_1.setPosition(attackerLocate);
                     that.addChild(effect2500_1, EFFECT_Z_ORDER);
@@ -4952,7 +4936,6 @@ var BattleLayer = cc.Layer.extend({
             {
                 times: 1,
                 fn: function () {
-                    cc.log("stop");
                     that.stopShock();
                 }
             }

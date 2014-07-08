@@ -53,6 +53,11 @@ var Lottery = Entity.extend({
 
         if (data.goldLuckyCard10) {
             this.set("goldLuckyCard10", data.goldLuckyCard10);
+
+            if(!this._goldLuckyCard10.got) {
+                var key = gameData.player.get("uid") + "_goldLuckyCard10";
+                lz.save(key, 1);
+            }
         }
 
         if (data.goldLuckyCardForFragment) {
@@ -276,7 +281,7 @@ var Lottery = Entity.extend({
         cc.log("Lottery flashLottery");
 
         var that = this;
-        lz.server.request("area.trainHandler.luckyCard", {
+        lz.server.request("area.trainHandler.luckyCardActivity", {
             times: times
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -286,6 +291,7 @@ var Lottery = Entity.extend({
                 cc.log("flashLottery success");
 
                 var msg = data.msg;
+                var player = gameData.player;
                 var card;
 
                 if (times == 10) {
@@ -297,8 +303,8 @@ var Lottery = Entity.extend({
 
                     card = [];
                     for (var i = 0; i < msg.cards.length; i++) {
-                        cards[i] = Card.create(msg.cards[i]);
-                        gameData.cardList.push(cards[i]);
+                        card[i] = Card.create(msg.cards[i]);
+                        gameData.cardList.push(card[i]);
                     }
                 } else {
                     if (msg.goldLuckyCardForFragment) {
@@ -317,11 +323,14 @@ var Lottery = Entity.extend({
                     player.add("fragment", msg.fragment);
                 }
 
+                var luckCard = gameData.activity.get("luckyCard");
+                luckCard.info.star = msg.activity.star;
+
                 cb({
                     card: card,
                     fragment: msg.fragment,
-                    isLightStar: msg.isLightStar,
-                    lightStar: msg.star
+                    isLightStar: msg.activity.isLightStar,
+                    lightStar: msg.activity.star
                 });
 
             } else {

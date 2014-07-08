@@ -455,14 +455,31 @@ var LotteryLayer = cc.Layer.extend({
 
                 }, type, level);
             } else if (this._times == 10) {
-                lottery.tenLottery(function (data) {
-                    cc.log(data);
 
-                    that.update();
-                    that._updateTips();
-                    fn(data);
+                var next = function () {
+                    lottery.tenLottery(function (data) {
+                        cc.log(data);
 
-                }, type, level);
+                        that.update();
+                        that._updateTips();
+                        fn(data);
+
+                    }, type, level);
+                };
+
+                if (type == LOTTERY_BY_GOLD && level == 2) {
+                    var goldLuckyCard10 = lottery.get("goldLuckyCard10");
+                    var key = gameData.player.get("uid") + "_goldLuckyCard10";
+                    if (goldLuckyCard10.got && lz.load(key)) {
+                        AdvancedTipsLabel.pop(TYPE_GOLD_TEN_LOTTERY_TIPS, function () {
+                            next();
+                        });
+                    } else {
+                        next();
+                    }
+                } else {
+                    next();
+                }
             }
         }
     },

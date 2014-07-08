@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -400,7 +400,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -425,8 +425,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>10</real>
+							<real>5</real>
+							<real>5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -458,7 +458,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -636,7 +636,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -670,7 +670,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>60</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -699,7 +699,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -923,7 +923,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -962,7 +962,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-60</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -991,7 +991,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1217,8 +1217,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3</real>
-									<real>3</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1747,7 +1747,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1800,7 +1800,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2378,6 +2378,8 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
+		<key>jsController</key>
+		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
@@ -2450,13 +2452,13 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>1</integer>
+			<integer>-1</integer>
 			<key>length</key>
 			<real>1.3333333730697632</real>
 			<key>name</key>
 			<string>animation_1</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.36659485101699829</real>
 			<key>position</key>
 			<real>1.3333333730697632</real>
 			<key>resolution</key>
@@ -2503,7 +2505,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>2</integer>
+			<integer>-1</integer>
 			<key>length</key>
 			<real>0.5</real>
 			<key>name</key>

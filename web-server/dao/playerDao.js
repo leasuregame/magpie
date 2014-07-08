@@ -53,6 +53,9 @@ var selectPlayers = function(fields, where, areaId, cb) {
         for (var key in where) {
             if (where[key]) {
                 var val = where[key];
+                if(key == 'name') {
+                    queryWhere += sqlUtil.buildInWhere(key, val);
+                }
                 queryWhere += sqlUtil.buildBetweenWhere(key, val);
             }
         }

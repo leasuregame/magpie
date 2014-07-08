@@ -46,6 +46,7 @@ var home = function(app) {
 
             res.render('index', {
                 title: 'LeasureGame',
+                menu: 'home',
                 userNum: userNum,
                 counts: counts.map(function (c) {
                     c.percent = ((c.num / userNum) * 100).toFixed(1);

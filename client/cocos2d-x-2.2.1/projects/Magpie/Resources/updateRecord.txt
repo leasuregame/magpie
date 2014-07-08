@@ -24,6 +24,8 @@ resYY/ccb/card20002.ccbi
 resYY/ccb/spiritNode.ccbi
 
 新加资源:
+res/main/button90.png
+res/main/button90s.png
 res/main/card_icon_1_6.png
 res/main/card_icon_2_6.png
 res/main/card6_full1.png
@@ -60,6 +62,8 @@ res/effect/uiEffect/up264.png
 res/effect/uiEffect/up265.png
 res/sound/battle_sound_effect2500_3.wav
 
+resYY/main/button90.png
+resYY/main/button90s.png
 res/main/card_icon_1_6.png
 resYY/main/card_icon_2_6.png
 resYY/main/card6_full1.png

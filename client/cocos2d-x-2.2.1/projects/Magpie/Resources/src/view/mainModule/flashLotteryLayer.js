@@ -313,3 +313,8 @@ FlashLotteryLayer.create = function () {
     return null;
 };
 
+FlashLotteryLayer.parentLayer = function () {
+    cc.log("FlashLotteryLayer parentLayer");
+
+    return ActivityLayer;
+};

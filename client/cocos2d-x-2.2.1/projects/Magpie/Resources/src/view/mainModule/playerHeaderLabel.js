@@ -95,16 +95,22 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._powerLabel.setPosition(cc.p(427, 36));
         this.addChild(this._powerLabel);
 
-        var vipLv = player.get("vip") || 0;
-        var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
-        vipSprite.setPosition(cc.p(410, 87));
-        this.addChild(vipSprite);
-
         return true;
     },
 
     update: function () {
+        
+        if (this._vipSprite) {
+            this._vipSprite.removeFromParent();
+            this._vipSprite = null;
+        }
+
         var player = gameData.player;
+
+        var vipLv = player.get("vip") || 0;
+        this._vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
+        this._vipSprite.setPosition(cc.p(410, 87));
+        this.addChild(this._vipSprite);
 
         if (player.isFullLv()) {
             this._expProgress.setAllValue(0, 0);

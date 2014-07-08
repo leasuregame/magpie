@@ -108,6 +108,8 @@ var Activity = Entity.extend({
         if (data.worldCup) {
             this.set("worldCup", data.worldCup);
         }
+
+        MainScene.getInstance().updateLayer();
     },
 
     sync: function () {
@@ -690,6 +692,15 @@ var Activity = Entity.extend({
             cc.log("类型出错！！！");
             return null;
         }
+    },
+
+    getLastDays: function () {
+        cc.log("Activity getLastDays");
+        var luckCard = gameData.activity.get("luckyCard");
+        var t1 = luckCard.startDate;
+        var t2 = luckCard.endDate;
+
+        return parseInt((t2 - t1) / (24 * 60 * 60 * 1000));
     }
 });
 

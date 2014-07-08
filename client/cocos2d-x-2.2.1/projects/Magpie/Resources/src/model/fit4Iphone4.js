@@ -835,7 +835,7 @@ var fit4Iphone4 = {
             "messageItemPoint": cc.p(628, 157),
             "configLayerItemPoint": cc.p(618, 608),
             "greetingLabelItemPoint": cc.p(100, 610),
-            "worldCupLayerItemPoint": cc.p(628, 242)
+            "activityItemBasePoint": cc.p(628, 242)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(40, 0),

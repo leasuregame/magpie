@@ -28,7 +28,8 @@ var MainLayer = cc.Layer.extend({
         FriendLayer,
         MessageLayer,
         ConfigLayer,
-        WorldCupLayer
+        WorldCupLayer,
+        FlashLotteryLayer
     ],
 
     _activityMark: null,
@@ -38,17 +39,22 @@ var MainLayer = cc.Layer.extend({
     _messageMark: null,
     _lotteryMark: null,
     _treasureHuntMark: null,
+    _worldCupMark: null,
+    _flashLotteryMark: null,
 
     _rankGuide: null,
     _lotteryGuide: null,
     _smeltGuide: null,
 
     _spiritLayerItem: null,
+    _worldCupLayerItem: null,
+    _flashLotteryLayerItem: null,
 
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
         this._super();
+        this.updateLayer();
         this.updateMark();
         this.updateGuide();
         this.onTeaching();
@@ -236,19 +242,7 @@ var MainLayer = cc.Layer.extend({
         );
         greetingLabelItem.setPosition(this._mainLayerFit.greetingLabelItemPoint);
 
-        var worldCupLayerItem = cc.MenuItemImage.create(
-            main_scene_image.worldCupButton2,
-            main_scene_image.worldCupButton2s,
-            this._onClickLayer(12),
-            this
-        );
-        worldCupLayerItem.setPosition(this._mainLayerFit.worldCupLayerItemPoint);
-        this._worldCupMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
-        this._worldCupMark.setPosition(cc.p(75, 80));
-        worldCupLayerItem.addChild(this._worldCupMark);
-
         var menu = cc.Menu.create(
-            worldCupLayerItem,
             lotteryLayerItem,
             smeltLayerItem,
             strengthenLayerItem,
@@ -304,6 +298,66 @@ var MainLayer = cc.Layer.extend({
 
     },
 
+    updateLayer: function () {
+        cc.log("MainLayer updateLayer");
+
+        var menu = cc.Menu.create();
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
+        var index = 0;
+        var point = this._mainLayerFit.activityItemBasePoint;
+
+        if (this._worldCupLayerItem) {
+            this._worldCupLayerItem.removeFromParent();
+            this._worldCupLayerItem = null;
+        }
+
+        if (Activity.IsShowHandler["worldCupLayer"]()) {
+            this._worldCupLayerItem = cc.MenuItemImage.create(
+                main_scene_image.worldCupButton2,
+                main_scene_image.worldCupButton2s,
+                this._onClickLayer(12),
+                this
+            );
+            this._worldCupLayerItem.setPosition(cc.p(point.x - 107 * index, point.y));
+            menu.addChild(this._worldCupLayerItem);
+
+            this._worldCupMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+            this._worldCupMark.setPosition(cc.p(75, 80));
+            this._worldCupLayerItem.addChild(this._worldCupMark);
+
+            index++;
+        }
+
+        if (this._flashLotteryLayerItem) {
+            this._flashLotteryLayerItem.removeFromParent();
+            this._flashLotteryLayerItem = null;
+        }
+
+        if (Activity.IsShowHandler["flashLotteryLayer"]()) {
+            this._flashLotteryLayerItem = cc.MenuItemImage.create(
+                main_scene_image.button90,
+                main_scene_image.button90s,
+                this._onClickLayer(13),
+                this
+            );
+            this._flashLotteryLayerItem.setPosition(cc.p(point.x - 107 * index, point.y));
+            menu.addChild(this._flashLotteryLayerItem);
+
+            this._flashLotteryMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+            this._flashLotteryMark.setPosition(cc.p(75, 80));
+            this._flashLotteryLayerItem.addChild(this._flashLotteryMark);
+
+            var lastDays = gameData.activity.getLastDays();
+            var lastDaysLabel = cc.LabelTTF.create(lastDays, "STHeitiTC-Medium", 25);
+            lastDaysLabel.setColor(cc.c3b(85, 255, 1));
+            lastDaysLabel.setPosition(cc.p(65, 20));
+            this._flashLotteryLayerItem.addChild(lastDaysLabel);
+            index++;
+        }
+    },
+
     updateMark: function () {
         cc.log("MainLayer updateMark");
 
@@ -313,7 +367,12 @@ var MainLayer = cc.Layer.extend({
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
         this._lotteryMark.setVisible(gameMark.getSummonMark());
-        this._worldCupMark.setVisible(gameMark.getWorldCupMark());
+        if (this._worldCupMark) {
+            this._worldCupMark.setVisible(gameMark.getWorldCupMark());
+        }
+        if (this._flashLotteryMark) {
+            this._flashLotteryMark.setVisible(false);
+        }
     },
 
     updateGuide: function () {

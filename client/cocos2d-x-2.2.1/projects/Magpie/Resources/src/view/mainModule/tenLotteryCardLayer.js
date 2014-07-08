@@ -68,10 +68,14 @@ var TenLotteryCardLayer = LazyLayer.extend({
             if (card.isRareCard()) {
                 index = (5 == star) ? 1 : 2;
             }
+            var cardSpriteTexture = lz.getTexture(main_scene_image[url + "_half" + index]);
+            var size = cardSpriteTexture.getContentSize();
 
             this["ccbCardFrame" + (i + 1)].setTexture(lz.getTexture(main_scene_image["card_frame" + star]));
-            this["ccbCardHalf" + (i + 1)].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+            this["ccbCardHalf" + (i + 1)].setTexture(cardSpriteTexture);
             this["ccbCardIcon" + (i + 1)].setTexture(lz.getTexture(card.getCardIcon()));
+
+            this["ccbCardHalf" + (i + 1)].setTextureRect(cc.rect(0, 0, size.width, size.height));
         }
     },
 

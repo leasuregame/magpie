@@ -1638,7 +1638,7 @@ var Player = (function(_super) {
                 lcData.star = 0;
             } else {
                 got = utility.hitRate(rate_list);
-                lcData.star += 1;
+                if (got) lcData.star += 1;
             }
         } else {
             if (lcData.star == 5) {

@@ -1,0 +1,193 @@
+extends adminLayout
+
+block head
+    script(type='text/javascript', src='/js/serverAPI.js')
+    script(type='text/javascript', src='/js/lib/build/build.js')
+    script(type='text/javascript', src='/js/async.js')
+    script(type='text/javascript', src='/js/pomeloHandle.js')
+    script.
+        require('boot');
+    style.
+        .no-margin {margin:0;}
+        .no-mar-bottom {margin-bottom:0;}
+
+block content
+    h1.text-center=title
+    hr
+    div.form-horizontal(role='form', action='#')
+        include ./queryPlayerBox
+        hr
+        div.form-group
+            label.col-sm-3.control-label.tagName 有效期限
+            div.col-sm-3
+                input.form-control(type='date', id='expDate' name='expDate')
+        div.form-group
+            label.col-sm-3.control-label.tagName 发件人
+            div.col-sm-7
+                input.form-control(type='text', id='author' name='author')
+        div.form-group
+            label.col-sm-2.control-label.limitTag(limit='8') 上限长度 : 8
+            label.col-sm-1.control-label.tagName 标题
+            div.col-sm-7
+                input.form-control(type='text', id='title' name='title')
+        div.form-group
+            label.col-sm-3.control-label.tagName 内容
+            div.col-sm-7
+                textarea.form-control(rows='3' id='content' name='content' maxlength='500')
+        hr
+        div(id='rewardBox')
+            div.form-group.no-margin
+                div.col-sm-2.control-label(style='padding: 16px 20px;')
+                    a.btn.btn-primary(href='javascript:void(0);',id='btnResetReward') 清空奖励
+                div.alert.no-margin
+                    span(style='font-size:24px;margin-right:8px;padding-top:4px;font-weight:bolder') 奖励选项
+                    span.alert.alert-danger.hide(id='baseRewardAlert' style='padding:8px 15px;position:relative;top:-3px;')
+            div.form-group
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='30000')
+                    label.col-sm-1.control-label.name 魔石
+                    div.col-sm-2
+                        input.form-control.baseReward(id='gold' name='gold')
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='5000000')
+                    label.col-sm-1.control-label.name 仙币
+                    div.col-sm-2
+                        input.form-control.baseReward(id='money' name='money')
+            div.form-group
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='500')
+                    label.col-sm-1.control-label.name 体力点
+                    div.col-sm-2
+                        input.form-control.baseReward(id='powerValue' name='powerValue')
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='1000')
+                    label.col-sm-1.control-label.name 灵气
+                    div.col-sm-2
+                        input.form-control.baseReward(id='spirit' name='spirit')
+            div.form-group
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='100000')
+                    label.col-sm-1.control-label.name 技能点
+                    div.col-sm-2
+                        input.form-control.baseReward(id='skillPoint' name='skillPoint')
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='200000')
+                    label.col-sm-1.control-label.name 仙丹
+                    div.col-sm-2
+                        input.form-control.baseReward(id='elixir' name='elixir')
+            div.form-group
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='10000')
+                    label.col-sm-1.control-label.name 活力点
+                    div.col-sm-2
+                        input.form-control.baseReward(id='energy' name='energy')
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='30')
+                    label.col-sm-1.control-label.name 卡魂
+                    div.col-sm-2
+                        input.form-control.baseReward(id='fragments' name='fragments')
+            div.form-group
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='50')
+                    label.col-sm-1.control-label.name 精元
+                    div.col-sm-2
+                        input.form-control.baseReward(id='superHonor' name='superHonor')
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='100000')
+                    label.col-sm-1.control-label.name 荣誉点
+                    div.col-sm-2
+                        input.form-control.baseReward(id='honor' name='honor')
+            div.form-group
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='50')
+                    label.col-sm-1.control-label.name 喇叭
+                    div.col-sm-2
+                        input.form-control.baseReward(id='speaker' name='speaker')
+                div.rewardTag
+                    label.col-sm-2.control-label.limitTag(limit='10000')
+                    label.col-sm-1.control-label.name 觉醒玉
+                    div.col-sm-2
+                        input.form-control.baseReward(id='pill' name='pill')
+            hr
+            div(id='cardBox')
+                div.form-group
+                    label.col-sm-3.control-label
+                        a.btn.btn-primary(href='javascript:void(0);',id='btnAddCard')
+                            span.glyphicon.glyphicon-plus
+                    label.col-sm-3.control-label(style='text-align:center') 卡牌
+                    label.col-sm-2.control-label(style='text-align:center') 等级
+                    label.col-sm-2.control-label(style='text-align:center') 数量
+                div.form-group.cardTag
+                    label.col-sm-3.control-label
+                        a.btn.btn-danger.btnRemoveCard(href='javascript:void(0);')
+                            span.glyphicon.glyphicon-minus
+                    label.col-sm-3.control-label
+                        select.form-control.cardReward.cName(name='tableId')
+                            option replace
+                    label.col-sm-2.control-label
+                        hidden.cardLimit(limit='30')
+                        input.form-control.cardReward.cLv(name='lv')
+                    label.col-sm-2.control-label
+                        hidden.cardQtyLimit(limit='100')
+                        input.form-control.cardReward.cQty(name='qty')
+            div.form-group(style='text-align:center')
+                    span.alert.alert-danger.hide(id='cardRewardAlert' style='padding:8px 15px;font-weight:normal')
+
+        hr
+        div.form-group.text-right
+            div.col-sm-7.col-sm-offset-3
+                a.btn.btn-success.btn-lg(href='javascript:void(0);',id='btnOk', data-loading-text="Loading...") &nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;
+        div.form-group(id='msg-block')
+            div.col-sm-7.col-sm-offset-3
+                div.alert.alert-dismissable.hide(id='resAlert')
+                    a.close(href='javascript:void(0);', data-dismiss='alert', aria-hidden='true') &times;
+                    span
+
+    div.modal.fade(id='actionConfirm', tabindex='-1' role='dialog', aria-labelledby='actionConfirmModalLable', aria-hidden='true')
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    a.close(href='javascript:void(0);', data-dismiss='modal' aria-hidden='true') &times;
+                    h4.modal-title(id='actionConfirmModalLable') 确定要提交此信息吗？
+                div.modal-body.form-horizontal(id='modalContent')
+                    div.form-group.no-mar-bottom.area
+                        label.col-sm-2.control-label 服务器:
+                        div.col-sm-8.form-control-static.text
+                    div.form-group.no-mar-bottom.receiver
+                        label.col-sm-2.control-label 玩家:
+                        div.col-sm-8.form-control-static.text
+                    div.form-group.no-mar-bottom.expDate
+                        label.col-sm-2.control-label 有效期限:
+                        div.col-sm-8.form-control-static.text
+                    div.form-group.no-mar-bottom.author
+                        label.col-sm-2.control-label 发件人:
+                        div.col-sm-8.form-control-static.text
+                    div.form-group.no-mar-bottom.title
+                        label.col-sm-2.control-label 标题:
+                        div.col-sm-8.form-control-static.text
+                    div.form-group.no-mar-bottom.content
+                        label.col-sm-2.control-label 内容:
+                        textarea.col-sm-8.form-control-static.text(style="overflow-y:hidden;height:256px;width:394px", disabled="disabled")
+                    div.form-group.no-mar-bottom.reward
+                        label.col-sm-2.control-label 奖励:
+                        div.col-sm-8.form-control-static.text
+                div.modal-footer
+                    a.btn.btn-default(href='javascript:void(0);', data-dismiss='modal') 取消
+                    a.btn.btn-primary(href='javascript:void(0);', id='btnSendMsg') 确定
+    div.hide(id='cardOptTemp')
+        div.form-group.cardTag
+            label.col-sm-3.control-label
+                a.btn.btn-danger.btnRemoveCard(href='javascript:void(0);')
+                    span.glyphicon.glyphicon-minus
+            label.col-sm-3.control-label
+                select.form-control.cardReward.cName(name='tableId')
+                    option replace
+            label.col-sm-2.control-label
+                hidden.cardLimit(limit='30')
+                input.form-control.cardReward.cLv(name='lv')
+            label.col-sm-2.control-label
+                hidden.cardQtyLimit(limit='100')
+                input.form-control.cardReward.cQty(name='qty')
+    script(type='text/javascript', src='/js/webServerHandle.js')
+    script(type='text/javascript', src='/js/reward.js')
+    script(type='text/javascript', src='/js/queryPlayer.js')

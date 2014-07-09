@@ -1,0 +1,90 @@
+extends adminLayout
+
+block content
+  div.form-inline(role='form')
+    div.form-group
+      label.control-label 激活码前缀 
+      br
+      select.form-control(id='cdkeyPrefix' style='width: 100px' placeholder='激活码前缀' required)
+    div.form-group
+      label.control-label 区服
+      br
+      select.form-control(id='area')
+        option(value='-1') 所有
+    div.form-group
+      label.control-label 开始日期
+      input(type='date' class='form-control' id='startDate' placeholder='开始日期' required)
+    div.form-group
+      label.control-label 结束日期
+      input(type='date' class='form-control' id='endDate' placeholder='结束日期' required)
+    div.form-group
+      label.control-label 生成个数
+      input(type='number' class='form-control' id='keyQty' placeholder='生成个数' required)
+  div.row
+    div.col-sm-2.col-sm-offset-10(style='padding-top: 20px')
+      button(id='btnGetCdkey', class='btn btn-primary') 生成激活码
+  div.alert.hidden(id='msgInfo', style='margin: 10px 50px')
+  hr
+  div.row
+    div.col-sm-6
+      div.input-group
+        input.form-control(id='queryText', type='text', placeholder='激活码/玩家名称/开始日期/结束日期')
+        span.input-group-btn
+          button.btn.btn-default(type='button', id='btnSearch') 搜索!
+  hr
+  div.row
+    div.col-sm-12
+      table.table
+        thead
+          tr
+            th 激活码
+              strong(style='color:red') &nbsp;&nbsp;(总数:#{totalCount})
+            th 开始日期
+            th 结束日期
+            th 区服
+            th(style='color: red')
+              div.radios
+                label
+                  input.usedFilter(type='radio', value='1', name='used' )
+                  span 已使用&nbsp;&nbsp;
+                label
+                  input.usedFilter(type='radio', value='0', name='used')
+                  span 未使用&nbsp;&nbsp;
+                label
+                  input.usedFilter(type='radio', value='-1', name='used' )
+                  span 全部
+        tbody
+          - each row in rows
+            tr(class=row.activate?'success':'')
+              td #{row.code}
+              td #{row.startDate}
+              td #{row.endDate}
+              td #{row.area}
+              td #{row.activate}
+      div(style='float: right')
+        ul(id="paginator")
+      
+  script(type='text/javascript', src='/js/bootstrap-paginator.js')
+  script(type='text/javascript', src='/js/cdkey.js')
+  script.
+    $(function(){
+      $('#paginator').bootstrapPaginator({
+        currentPage: #{curPage},
+        totalPages: #{totalPages},
+        bootstrapMajorVersion: 3,
+        alignment: 'right',
+        size: 'normal',
+        pageUrl: function(type, page, current) {
+          return '/admin/cdkey?page=' + page;
+        }
+      });
+
+      $('.usedFilter').each(function(index, row) {
+        if (#{used} == parseInt(row.value)) {
+          row.checked = true;
+        } else {
+          row.checked = false;
+        }        
+      });
+    });
+

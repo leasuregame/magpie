@@ -1,0 +1,28 @@
+extends adminLayout
+
+extends adminLayout
+block head
+    script(type='text/javascript', src='/js/serverAPI.js')
+    script(type='text/javascript', src='/js/lib/build/build.js')
+    script.
+        require('boot');
+
+block content
+    h1.text-center=title
+    hr
+    div.form-horizontal(role='form', action='#')
+        include ./queryPlayerBox
+        hr
+        div.row
+            div.col-sm-6
+                div.input-group
+                    input.form-control(id='queryText', type='text', placeholder='激活码/玩家名称/开始日期/结束日期')
+                    span.input-group-btn
+                        button.btn.btn-default(type='button', id='btnSearch') 搜索!
+        hr
+        div.row
+            div.col-sm-12
+                table.table
+    script(type='text/javascript', src='/js/webServerHandle.js')
+    script(type='text/javascript', src='/js/checkReward.js')
+    script(type='text/javascript', src='/js/queryPlayer.js')

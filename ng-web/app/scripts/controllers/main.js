@@ -8,10 +8,12 @@
  * Controller of the ngWebApp
  */
 angular.module('ngWebApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $http) {
+    var queryDate = '', areaId = 1;
+
+    $http.get('/admin/stats/onlineuser?date='+queryDate+'&areaId='+areaId)
+    .success(function(data) {
+      $scope.userData = data;
+    });
+
   });

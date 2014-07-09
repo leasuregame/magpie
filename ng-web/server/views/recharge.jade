@@ -1,0 +1,63 @@
+extends adminLayout
+
+extends adminLayout
+block head
+    script(type='text/javascript', src='/js/serverAPI.js')
+    script(type='text/javascript', src='/js/lib/build/build.js')
+    script(type='text/javascript', src='/js/async.js')
+    script(type='text/javascript', src='/js/pomeloHandle.js')
+
+    script.
+        require('boot');
+    style.
+        .center {text-align: center;}
+        #paginatorCntr li {cursor: pointer;}
+        #rsTableCntr table {table-layout:fixed;}
+        #rsTable td {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+
+block content
+    h1.text-center=title
+    hr
+    .form-horizontal(role='form', action='#')
+        include ./queryPlayerBox
+        hr
+        .form-group
+            #createTime.paramSet(name='createTime')
+                label.col-sm-3.control-label 充值项目
+                .col-sm-3
+                    select.form-control#product(name='product' required)
+                label.col-sm-1.control-label 数量
+                .col-sm-2
+                    input.form-control.up#qty(type='text' name='qty' value='1' required)
+            .col-sm-2.center
+                a#submit.btn.btn-primary(href='javascript:void(0);') 充值
+        hr
+        .form-group(style='min-height:180px;')
+            .col-sm-3
+            #rsPanel.panel.col-sm-6(style='padding:0px;border-width:3px;display:none;')
+                .panel-heading 充值结果
+                    span.recDateTime(style="float:right")
+                .panel-body.info
+                    .product.col-sm-10
+                        span.col-sm-4 充值项目：
+                        span.val
+                    .qty.col-sm-10
+                        span.col-sm-4 数量：
+                        span.val
+                    .succeededPlayer.col-sm-10
+                        span.col-sm-4 成功充值玩家：
+                        span.val
+                    .failedPlayer.col-sm-10
+                        span.col-sm-4 充值失败玩家：
+                        span.val
+                .panel-body.error
+    #confirm.panel.panel-default.hide(style='position:absolute;z-index:50;')
+        .panel-heading 确认充值?
+        .panel-body
+            button.submit.btn.btn-success 确认
+            button.cancel.btn.btn-danger(style='margin-left:38px') 取消
+
+
+    script(type='text/javascript', src='/js/webServerHandle.js')
+    script(type='text/javascript', src='/js/recharge.js')
+    script(type='text/javascript', src='/js/queryPlayer.js')

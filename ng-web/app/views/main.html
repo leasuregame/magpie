@@ -1,23 +1,53 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-6">
+    <div style="padding: 10px 5px 5px 0; text-align: right">
+      <label>区服：</label>
+      <select type="text" id="area_id"></select>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div style="padding: 10px 5px 5px 0; text-align: right">
+      <label>更改日期：</label>
+      <input type="date" id="cur_date_for_onlineuser" />
+    </div>
+  </div>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+<div class="well">
+  <div id="chart_div">用户在线人数时间分布图</div>
+</div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+<div class="well">
+  <h1>版本用户分布
+    <small>用户总数：{{userNum}}</small>
+  </h1>
+  <div class="row">
+    <div class="vblock col-sm-3">
+      <div class="version-header">V1.0.0</div>
+      <div class="version-body">
+        <div class="text-center vnum">123123</div>
+        <div class="text-right percent">38%</div>
+      </div>
+      <div class="version-footter">点击查看详情</div>
+    </div>
+  </div>
+</div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="well">
+    <h1>游戏 Web API<small class="pull-right"></small></h1><small>[ ]中得字符为参数。[platform]为平台参数（app或tb）</small><small><a href="http://www.ksyun.com/product/ks3" target="blank">去更新下载包</a></small>
+    <dl><dt><span class="label label-primary">/api/[platform]/version</span></dt>
+        <dd><span>获取最新的版本号</span>
+        </dd><dt><span class="label label-primary">/api/[platform]/update/[version]</span></dt>
+        <dd>
+            <p>获取更新包。[version]为当前手机游戏的版本号，根据这个版本号来判断是下载部分包还是完全包。</p>
+            <ul>
+                <li>version 为空，下载完全包</li>
+                <li>version 为上一版本号，下载部分包</li>
+                <li>version 小于上一版本号，下载完全包</li>
+            </ul>
+        </dd><dt><span class="label label-primary">/api/[platform]/notice</span></dt>
+        <dd>
+            <p>游戏公告内容地址</p>
+        </dd>
+    </dl>
 </div>

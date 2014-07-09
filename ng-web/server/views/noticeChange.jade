@@ -1,0 +1,45 @@
+extends adminLayout
+
+block head
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  link(rel='stylesheet', href='/js/cleditor/jquery.cleditor.css')
+  script(type='text/javascript', src='/js/cleditor/jquery.cleditor.min.js')
+  script(type='text/javascript', src='/js/cleditor/jquery.cleditor.advancedtable.min.js')
+
+  script.
+    $(document).ready(function () { 
+      $("#editor").cleditor({
+        height: 450,
+        bodyStyle: 'background-color: #835747'
+      }); 
+
+
+      $('#save').on('click', function(e){
+        e.preventDefault();
+        
+        var data = {
+          content: $(".cleditorMain iframe").contents().find('body').html()
+        };
+        console.log(data);
+        $.post('/admin/notice/#{platform}', data, function(data, status) {
+          console.log(data, status);
+        });
+      });
+    });
+
+block content
+  div(class='jumbotron', style='padding: 10px 20px 60px 20px')
+    div.pull-right
+      a(href='http://jsbeautifier.org/', target='blank') HTML格式化
+    h1 公告编辑
+      small 编辑完后记得要保存(⊙o⊙)哦
+    
+    
+    textarea(id='editor') #{content}
+    
+    div(class='row')
+      br
+      div(class='col-md-4 col-md-offset-3')
+        input(id='save', type='button', class='btn btn-default btn-lg btn-block' value='保存')
+      div(class='col-md-4 col-md-offset-1')
+        a(class='btn btn-default btn-lg btn-block', target='blank', href='/api/#{platform}/notice') 预览

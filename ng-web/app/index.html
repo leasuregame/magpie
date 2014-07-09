@@ -24,17 +24,41 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+          <li class="active"><a ng-href="#">首页</a></li>
+          <li><a ng-href="#/about">公告</a></li>
+          <li><a ng-href="#">奖励</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">消息<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a ng-href="#">消息推送</a></li>
+              <li><a ng-href="#">系统消息记录</a></li>
+              <li><a ng-href="#">消息操作记录</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" ng-href="#">充值<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a ng-href="#">人工充值</a></li>
+              <li><a ng-href="#">充值记录</a></li>
+              <li><a ng-href="#">充值操作记录</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" ng-href="#">统计<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a ng-href="#">等级流失率</a></li>
+              <li><a ng-href="#">魔石使用占比</a></li>
+            </ul>
+          </li>
+          <li><a ng-href="#">世界杯</a></li>
         </ul>
-        <h3 class="text-muted">ngWeb</h3>
+        <h3 class="text-muted">LeasureGame</h3>
       </div>
 
       <div ng-view=""></div>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      <div class="footer text-center">
+        <p><span class="glyphicon glyphicon-heart"></span> Copyright© 2014 LeasureGame Inc.</p>
       </div>
     </div>
 

@@ -1,0 +1,84 @@
+extends adminLayout
+
+extends adminLayout
+block head
+    script(type='text/javascript', src='/js/serverAPI.js')
+    script(type='text/javascript', src='/js/lib/build/build.js')
+    script.
+        require('boot');
+    style.
+        .center {text-align: center;}
+        .left {text-align: left;}
+        .right {text-align: right;}
+        #paginatorCntr li {cursor: pointer;}
+        #rsTableCntr {min-height: 430px;}
+        #rsTableCntr table {table-layout:fixed;}
+        #rsTable td {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+        #rsTable tbody tr:nth-child(even) {background: #edf2f7;}
+        #rsTable tbody tr:nth-child(odd) {background: #e0f0f0;}
+        #rsTable .sortBtn {cursor: pointer;-moz-user-select: none;-khtml-user-select: none;user-select: none;}
+        #rsTable .sortMark {position: relative; top: -2px;}
+
+block content
+    h1.text-center=title
+    hr
+    .form-horizontal(role='form', action='#')
+        hr
+        .form-group
+            .form-group
+                label.col-sm-3.control-label 服务器
+                .col-sm-7
+                    select.form-control#area(type='text' name='area')
+            include ./exceptPlayerBox
+            #createTime.form-group.paramSet(name='createTime')
+                label.col-sm-3.control-label 查询时间
+                .col-sm-2
+                    input.form-control.low(type='date' name='ptLow')
+                .col-sm-1.center
+                    span.glyphicon.glyphicon-minus.control-label
+                .col-sm-2
+                    input.form-control.up(type='date' name='ptUp')
+                .col-sm-2.center
+                    a#submitCheck.btn.btn-primary(href='javascript:void(0);') 查询
+                .col-sm-2.center
+                    a#exportCSV.btn.btn-primary(href='#' target='exportArea') 导出文件
+        iframe#exportArea.hide(name='exportArea')
+        hr
+        .row
+            .col-sm-12#rsTableCntr
+                table#rsTable.table.center
+                    thead(onselectstart='return false;')
+                        tr
+                            th.center.sortBtn.left(style='width:13%' sortKey='source') 功能
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:10%' sortKey='playerCounts') 消费角色数
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:13%' sortKey='playersRate') 消费角色比例
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:13%' sortKey='buyCounts') 购买次数
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:13%' sortKey='buyCountsPerPlayer') 人均购买次数
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:13%' sortKey='expense') 消费魔石
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:13%' sortKey='expenseRate') 魔石消费比例
+                                span.sortMark
+                            th.center.sortBtn.right(style='width:12%' sortKey='expensePerPlayer') 人均消费魔石
+                                span.sortMark
+                    tbody
+                #loadingAlert.alert.alert-info.center.hide loading..
+                #noRsAlert.alert.alert-warning.center Ooooops! No such record.. ╮(╯▽╰)╭
+        script#rowTemp.hide(type='text/template')
+            tr
+                td.source.left
+                td.playerCounts.right
+                td.playersRate.right
+                td.buyCounts.right
+                td.buyCountsPerPlayer.right
+                td.expense.right
+                td.expenseRate.right
+                td.expensePerPlayer.right
+
+    script(type='text/javascript', src='/js/webServerHandle.js')
+    script(type='text/javascript', src='/js/playerConsumption.js')
+    script(type='text/javascript', src='/js/exceptPlayer.js')

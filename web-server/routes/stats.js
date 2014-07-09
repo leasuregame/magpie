@@ -17,7 +17,7 @@ exports.onlineUser = function(req, res) {
 
     res.send({
       items: convertData(items),
-      curDate: new Date(curDate).toLocaleDateString()
+      curDate: new Date(parseInt(curDate) || curDate).toLocaleDateString()
     });
   });
 };

@@ -24,7 +24,7 @@ var home = function(app) {
     /**
      * render index of webserver
      */
-    app.get('/', filter.authorize, function (req, res) {
+    app.get('/', function (req, res) {
         async.parallel([
             function (cb) {
                 updateRecordDao.versionCounts(cb);

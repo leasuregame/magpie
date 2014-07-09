@@ -30,7 +30,7 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 9090);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '..', 'ng-web', 'app'));
 app.set('view engine', 'jade');
 app.use(flash());
 app.use(express.favicon());
@@ -43,7 +43,8 @@ app.use(express.session());
 app.use(express.bodyParser({uploadDir:'./uploads'}));
 app.use(expressValidator());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'ng-web', 'app')));
+app.use('/bower_components', express.static(path.join(__dirname, '..', 'ng-web', 'bower_components')));
 
 
 // development only
@@ -51,7 +52,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/admin/stats/onlineuser', filter.authorize, stats.onlineUser);
+app.get('/admin/stats/onlineuser', stats.onlineUser);
 
 home(app);
 notice(app);

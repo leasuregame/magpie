@@ -7,11 +7,12 @@ exports.getRecords = function(scope, areaId, cb) {
     areaId = 1;
   }
 
-  var d = new Date(scope);
+  var d = new Date(parseInt(scope) || scope);
   var start = new Date(d.getFullYear(), d.getMonth(), d.getDate());
   var end = new Date(d.getFullYear(), d.getMonth(), d.getDate()+1);
-
-  var sql = 'select createTime as ct, qty from onlineUser where createTime between ' + start.getTime() + ' and ' + end.getTime();
-  // console.log(sql);
+  console.log(scope, areaId, d, start, end);
+  var sql = 'select createTime as ct, qty from onlineUser where \
+    createTime between ' + start.getTime() + ' and ' + end.getTime();
+  //console.log(sql);
   db(areaId).query(sql, cb);
 };

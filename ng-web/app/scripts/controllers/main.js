@@ -9,7 +9,7 @@
  */
 angular.module('ngWebApp')
   .controller('MainCtrl', function ($scope, $http) {
-    var queryDate = '', areaId = 1;
+    var queryDate = new Date().getTime(), areaId = 1;
 
     $http.get('/admin/stats/onlineuser?date='+queryDate+'&areaId='+areaId)
     .success(function(data) {

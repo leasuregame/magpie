@@ -11,8 +11,8 @@
  * battle card node
  * */
 
-var BOSS_NODE_SCALE = 1.3;
-var RARE_CARD_FRAME_SCALE = 1.2;
+var BOSS_CARD_SCALE = 1.3;
+var RARE_CARD_SCALE = 1.1;
 
 var BattleCardNode = cc.Node.extend({
     _index: 0,
@@ -63,7 +63,9 @@ var BattleCardNode = cc.Node.extend({
             this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
 
             if (this._boss) {
-                this._ccbNode.setScale(BOSS_NODE_SCALE);
+                this._ccbNode.setScale(BOSS_CARD_SCALE);
+            } else if(this.isRareCard()) {
+                this._ccbNode.setScale(RARE_CARD_SCALE);
             }
 
             var frameSpriteTexture;

@@ -350,8 +350,9 @@ var MainLayer = cc.Layer.extend({
             this._flashLotteryLayerItem.addChild(this._flashLotteryMark);
 
             var lastDays = gameData.activity.getLastDays();
-            var lastDaysLabel = cc.LabelTTF.create(lastDays, "STHeitiTC-Medium", 25);
+            var lastDaysLabel = StrokeLabel.create(lastDays, "STHeitiTC-Medium", 25);
             lastDaysLabel.setColor(cc.c3b(85, 255, 1));
+            lastDaysLabel.setBgColor(cc.c3b(0, 0, 0));
             lastDaysLabel.setPosition(cc.p(65, 20));
             this._flashLotteryLayerItem.addChild(lastDaysLabel);
             index++;

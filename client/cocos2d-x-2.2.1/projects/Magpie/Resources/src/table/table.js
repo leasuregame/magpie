@@ -83,6 +83,8 @@ var nameChanged = {
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
+    "product": "道具配置表",
+    "道具配置表": "product",
     "elixir_ranking_reward": "竞技仙丹排行版奖励",
     "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
@@ -93,8 +95,6 @@ var nameChanged = {
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
-    "product": "道具配置表",
-    "道具配置表": "product",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -2023,7 +2023,7 @@ var outputTables = {
             "107": {
                 "id": 107,
                 "number": 6,
-                "name": "生化芭蕉·铁扇公主",
+                "name": "风暴·铁扇公主",
                 "is_rare": 1,
                 "star": 7,
                 "lv": 1,
@@ -28621,6 +28621,118 @@ var outputTables = {
             }
         }
     },
+    "product": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "order": 1,
+                "method": "expCard",
+                "name": "经验元灵",
+                "disc": "经验元灵1张，含1200点卡牌经验。",
+                "consume_type": "money",
+                "consume": 7500,
+                "obtain_type": "card",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "2": {
+                "id": 2,
+                "order": 2,
+                "method": "power",
+                "name": "体力",
+                "disc": "50点体力。首次购买仅20魔石。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50,
+                "isVisible": 1
+            },
+            "3": {
+                "id": 3,
+                "order": 4,
+                "method": "money",
+                "name": "一小袋仙币",
+                "disc": "15000仙币，额外赠送5000仙币。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "money",
+                "obtain": 20000,
+                "isVisible": 1
+            },
+            "4": {
+                "id": 4,
+                "order": 5,
+                "method": "money",
+                "name": "一袋仙币",
+                "disc": "75000仙币，额外赠送45000仙币。",
+                "consume_type": "gold",
+                "consume": 50,
+                "obtain_type": "money",
+                "obtain": 120000,
+                "isVisible": 1
+            },
+            "5": {
+                "id": 5,
+                "order": 6,
+                "method": "money",
+                "name": "一大袋仙币",
+                "disc": "150000仙币，额外赠送100000仙币。",
+                "consume_type": "gold",
+                "consume": 100,
+                "obtain_type": "money",
+                "obtain": 250000,
+                "isVisible": 1
+            },
+            "6": {
+                "id": 6,
+                "order": 7,
+                "method": "challengeCount",
+                "name": "有奖竞技次数",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "challengeCount",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "7": {
+                "id": 7,
+                "order": 8,
+                "method": "cardCount",
+                "name": "卡库位置",
+                "consume_type": "gold",
+                "consume": 5,
+                "obtain_type": "cardCount",
+                "obtain": 1,
+                "isVisible": 0
+            },
+            "8": {
+                "id": 8,
+                "order": 3,
+                "method": "speaker",
+                "name": "喇叭",
+                "disc": "用于世界聊天，一次性买10个以上打8折。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "speaker",
+                "obtain": 1,
+                "isVisible": 1,
+                "discount_num": 10,
+                "discount": 8
+            },
+            "9": {
+                "id": 9,
+                "order": 9,
+                "method": "expPassCount",
+                "name": "经验副本次数",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "expPassCount",
+                "obtain": 1,
+                "isVisible": 0
+            }
+        }
+    },
     "elixir_ranking_reward": {
         "colComment": {},
         "rows": {
@@ -30159,118 +30271,6 @@ var outputTables = {
                 "id": 33,
                 "ranking": 10001,
                 "percent": 4
-            }
-        }
-    },
-    "product": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "order": 1,
-                "method": "expCard",
-                "name": "经验元灵",
-                "disc": "经验元灵1张，含1200点卡牌经验。",
-                "consume_type": "money",
-                "consume": 7500,
-                "obtain_type": "card",
-                "obtain": 1,
-                "isVisible": 0
-            },
-            "2": {
-                "id": 2,
-                "order": 2,
-                "method": "power",
-                "name": "体力",
-                "disc": "50点体力。首次购买仅20魔石。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "power",
-                "obtain": 50,
-                "isVisible": 1
-            },
-            "3": {
-                "id": 3,
-                "order": 4,
-                "method": "money",
-                "name": "一小袋仙币",
-                "disc": "15000仙币，额外赠送5000仙币。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "money",
-                "obtain": 20000,
-                "isVisible": 1
-            },
-            "4": {
-                "id": 4,
-                "order": 5,
-                "method": "money",
-                "name": "一袋仙币",
-                "disc": "75000仙币，额外赠送45000仙币。",
-                "consume_type": "gold",
-                "consume": 50,
-                "obtain_type": "money",
-                "obtain": 120000,
-                "isVisible": 1
-            },
-            "5": {
-                "id": 5,
-                "order": 6,
-                "method": "money",
-                "name": "一大袋仙币",
-                "disc": "150000仙币，额外赠送100000仙币。",
-                "consume_type": "gold",
-                "consume": 100,
-                "obtain_type": "money",
-                "obtain": 250000,
-                "isVisible": 1
-            },
-            "6": {
-                "id": 6,
-                "order": 7,
-                "method": "challengeCount",
-                "name": "有奖竞技次数",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "challengeCount",
-                "obtain": 1,
-                "isVisible": 0
-            },
-            "7": {
-                "id": 7,
-                "order": 8,
-                "method": "cardCount",
-                "name": "卡库位置",
-                "consume_type": "gold",
-                "consume": 5,
-                "obtain_type": "cardCount",
-                "obtain": 1,
-                "isVisible": 0
-            },
-            "8": {
-                "id": 8,
-                "order": 3,
-                "method": "speaker",
-                "name": "喇叭",
-                "disc": "用于世界聊天，一次性买10个以上打8折。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "speaker",
-                "obtain": 1,
-                "isVisible": 1,
-                "discount_num": 10,
-                "discount": 8
-            },
-            "9": {
-                "id": 9,
-                "order": 9,
-                "method": "expPassCount",
-                "name": "经验副本次数",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "expPassCount",
-                "obtain": 1,
-                "isVisible": 0
             }
         }
     },

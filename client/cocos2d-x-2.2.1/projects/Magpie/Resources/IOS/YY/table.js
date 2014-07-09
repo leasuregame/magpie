@@ -2023,7 +2023,7 @@ var outputTables = {
 			"107": {
 				"id": 107,
 				"number": 6,
-				"name": "生化芭蕉·铁扇公主",
+				"name": "风暴·铁扇公主",
 				"is_rare": 1,
 				"star": 7,
 				"lv": 1,

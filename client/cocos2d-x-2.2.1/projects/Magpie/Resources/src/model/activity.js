@@ -754,7 +754,7 @@ Activity.IsShowHandler = {
     worldCupLayer: function () {
         var worldCup = gameData.activity.get("worldCup");
         if (worldCup) {
-            return worldCup.isVisable;
+            return worldCup.isVisible;
         }
         return false;
     },

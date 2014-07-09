@@ -1,13 +1,10 @@
 test for gerrit2
 
-make some change to this file
-
-dfdsafs
-fds
-af
-dsaf
-adsf
-ads
-
-
-test for game server code
+make some change to this fileadfasdfas
+fasd
+fasd
+fas
+afdssafsa
+adfasd
+dfagdsgr
+hhhhhy

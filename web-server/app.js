@@ -23,6 +23,7 @@ var messgae = require('./routes/message');
 var optRecord = require('./routes/optRecord');
 var playerRecord = require('./routes/playerRecord');
 var upload = require('./routes/upload');
+var recharge = require('./routes/recharge');
 var serverManager = require('./routes/serverManager');
 
 var app = express();
@@ -65,6 +66,7 @@ messgae(app);
 optRecord(app);
 playerRecord(app);
 upload(app);
+recharge(app);
 serverManager(app);
 
 http.createServer(app).listen(app.get('port'), function(){

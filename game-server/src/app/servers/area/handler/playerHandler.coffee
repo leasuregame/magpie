@@ -175,8 +175,12 @@ Handler::getActivityInfo = (msg, session, next) ->
     # flag = setCanGetFlag player, rechargeFlag
     
     luckyCard = null
+    activity = @app.get('sharedConf').activity
     if appUtil.isActivityTime(@app, 'luckyCard') 
-      luckyCard = @app.get('sharedConf').activity.luckyCard
+      luckyCard = activity.luckyCard
+    worldCup = null
+    if appUtil.isActivityTime(@app, 'worldCup')
+      worldCup = activity.worldCup
     
     cur_hour = new Date().getHours()
     next(null, {
@@ -190,12 +194,28 @@ Handler::getActivityInfo = (msg, session, next) ->
         plan: player.plan
         vipLoginReward: !player.dailyGift.vipReward if player.isVip()
         luckyCard: {
-          startDate: luckyCard.startDate
-          endDate: luckyCard.endDate
-          tableId: luckyCard.data.tableId
+          startDate: getDateTime luckyCard.startDate
+          endDate: getDateTime luckyCard.endDate
+          isVisible: luckyCard.enable || false
+          info:
+            tableId: luckyCard.data.tableId
+            star: player.activities.luckCard?.star || 0
         } if luckyCard
+        worldCup: {
+          startDate: getDateTime worldCup.startDate
+          endDate: getDateTime worldCup.endDate
+          isVisible: worldCup.enable
+        } if worldCup
       }
     })
+
+getDateTime = (d) ->
+  if typeof d is 'string' or typeof d is 'number'
+    return new Date(d).getTime()
+  else if d instanceof Date
+    return d.getTime()
+  else
+    return d
 
 Handler::getLevelReward = (msg, session, next) ->
   playerId = session.get('playerId')

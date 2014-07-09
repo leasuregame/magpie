@@ -29,6 +29,7 @@ block content
                 label.col-sm-3.control-label 服务器
                 .col-sm-7
                     select.form-control#area(type='text' name='area')
+            include ./exceptPlayerBox
             #createTime.form-group.paramSet(name='createTime')
                 label.col-sm-3.control-label 查询时间
                 .col-sm-2
@@ -39,6 +40,9 @@ block content
                     input.form-control.up(type='date' name='ptUp')
                 .col-sm-2.center
                     a#submitCheck.btn.btn-primary(href='javascript:void(0);') 查询
+                .col-sm-2.center
+                    a#exportCSV.btn.btn-primary(href='#' target='exportArea') 导出文件
+        iframe#exportArea.hide(name='exportArea')
         hr
         .row
             .col-sm-12#rsTableCntr
@@ -49,7 +53,7 @@ block content
                                 span.sortMark
                             th.center.sortBtn.right(style='width:10%' sortKey='playerCounts') 消费角色数
                                 span.sortMark
-                            th.center.sortBtn.right(style='width:13%' sortKey='playersRate') 消费角色比率
+                            th.center.sortBtn.right(style='width:13%' sortKey='playersRate') 消费角色比例
                                 span.sortMark
                             th.center.sortBtn.right(style='width:13%' sortKey='buyCounts') 购买次数
                                 span.sortMark
@@ -57,7 +61,7 @@ block content
                                 span.sortMark
                             th.center.sortBtn.right(style='width:13%' sortKey='expense') 消费魔石
                                 span.sortMark
-                            th.center.sortBtn.right(style='width:13%' sortKey='expenseRate') 魔石消费比率
+                            th.center.sortBtn.right(style='width:13%' sortKey='expenseRate') 魔石消费比例
                                 span.sortMark
                             th.center.sortBtn.right(style='width:12%' sortKey='expensePerPlayer') 人均消费魔石
                                 span.sortMark
@@ -77,3 +81,4 @@ block content
 
     script(type='text/javascript', src='/js/webServerHandle.js')
     script(type='text/javascript', src='/js/playerConsumption.js')
+    script(type='text/javascript', src='/js/exceptPlayer.js')

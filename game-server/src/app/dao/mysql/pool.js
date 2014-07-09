@@ -7,7 +7,6 @@ createMysqlPool = function(app, configKey) {
         configKey = configKey || 'mysql';
 
     mysqlConfig = app.get(configKey);
-    console.log('-a-a-a-', configKey, mysqlConfig);
     return _poolModule.Pool({
         name: 'mysql',
         create: function(callback) {

@@ -58,7 +58,7 @@ function getDateInputData($input) {
 
 /**
  * 获取各查询条件选项内容
- * @returns {{areaId: (*|jQuery), playerNames: *, createTime: *[]}}
+ * @returns {{areaId: *[], playerCreateTime: *[], recordDate: *}}
  */
 function getInputData() {
     var retData, areaId, recordDate, playerCreateTime;
@@ -77,7 +77,7 @@ function getInputData() {
 
     retData = {
         areaId : areaId,
-        playerCreateTime : playerCreateTime,
+        created : playerCreateTime,
         recordDate : recordDate
     };
 
@@ -95,7 +95,7 @@ function doRequest(reqData) {
     $(tipAlertId.LOADING).removeClass('hide');
     $('#submitCheck').attr('disabled', true);
 
-    window.webAPI.getLvWastageRate(reqData.areaId, reqData.playerCreateTime, reqData.recordDate, function(data){
+    window.webAPI.getLvWastageRate(reqData.areaId, reqData.created, reqData.recordDate, function(data){
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
         lastReqData = data;
@@ -105,7 +105,6 @@ function doRequest(reqData) {
             $(tipAlertId.NO_RS).removeClass('hide');
         }
     },function(data){
-        console.log(data);
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
     });
@@ -168,4 +167,11 @@ $(document).ready(function() {
     $('#submitCheck').click(function(){
         submit();
     });
+
+    $('#exportCSV').click(function(){
+        var url = window.webAPI.API.DOWNLOAD_WASTAGE_RATE_ON_LV + "?" + $.param(getInputData());
+        $(this).attr('href', url);
+        return true;
+    });
+
 });

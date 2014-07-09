@@ -44,7 +44,8 @@ var baseRewardNames = {
     fragments : '卡魂',
     superHonor : '精元',
     speaker : '喇叭',
-    honor : '荣誉点'
+    honor : '荣誉点',
+    pill : '觉醒玉'
 };
 
 // init
@@ -351,7 +352,6 @@ function doSubmit(mail) {
                 }
             }
         );
-
     } else { //指定服务器
         if (playerNames.length == 0) {
             dealAll(areaId, mail, function(err) {
@@ -389,80 +389,28 @@ function doSubmit(mail) {
 
 // handle request
 /**
- * 按序执行 连接服务器,发送请求,断开连接
+ * 请求pomelo接口并作出响应
  * @param id
- * @param mail
+ * @param msg
  * @param cb
  */
-function dealAll(id, mail, cb) {
-    async.waterfall([
-        /**
-         * 连接服务器
-         * @param callback
-         */
-        function(callback) {
-            connect(id, function() {
-                callback();
-            });
-        },
-        /**
-         * 发送请求
-         * @param callback
-         */
-        function(callback) {
-            sendMail(mail, function(code) {
-                if (code == 200) {
-                    showRsAlert('恭喜！消息发送成功!', true);
-                    setTimeout(function(){
-                        $('.alert').removeClass('show');
-                        $('.alert').addClass('hidden');
-                    }, 5000);
-
-                    callback();
-                } else {
-                    showRsAlert('消息发送失败!', false);
-                    setTimeout(function(){
-                        $('.alert').removeClass('show');
-                        $('.alert').addClass('hidden');
-                    }, 5000);
-
-                    cb(code);
-                }
-            })
-        },
-        /**
-         * 断开连接
-         * @param callback
-         */
-        function(callback) {
-            disconnect();
+function dealAll(id, msg, cb) {
+    window.pomeloAPI.request(id, window.pomeloAPI.API.SYS_MSG, msg, function(data, callback){
+        var code = data.code;
+        if (code == 200) {
+            showRsAlert('恭喜！消息发送成功!', true);
+            setTimeout(function(){
+                $('.alert').removeClass('show').addClass('hidden');
+            }, 5000);
             callback();
+        } else {
+            showRsAlert('消息发送失败!', false);
+            setTimeout(function () {
+                $('.alert').removeClass('show').addClass('hidden');
+            }, 5000);
+            callback(code);
         }
-    ], function(err) {
-        if (err) {
-            cb(err);
-        }
-        cb(null);
-    });
-}
-
-/**
- * 向游戏服务器发送发放奖励的请求
- * @param mail
- * @param cb
- */
-function sendMail(mail, cb) {
-//    console.log("mail", mail);
-//    return;
-    pomelo.request('area.messageHandler.sysMsg', mail, function(data) {
-        console.log(data);
-        cb(data.code);
-    });
-}
-
-function disconnect() {
-    pomelo.disconnect();
-    console.log("disconnect success");
+    }, cb)
 }
 
 // events
@@ -532,6 +480,10 @@ var evtAfterChanged = function () {
                         var val = $input.val();
                         var card = configCards[val + ''];
                         var lvLimit = cardLvLimit[card.star + ''].max_lv;
+                        if(card.id >= 50001 && card.id <=50005) {
+                            lvLimit = 1;
+                            $input.closest('.cardTag').find('.cLv').val(1);
+                        }
                         $input.closest('.cardTag').find('.cardLimit').attr('limit', lvLimit);
                         $input.closest('.cardTag').find('input').change();
                         break;

@@ -19,7 +19,12 @@ exports.getRecords = function(where, areaId, cb) {
     for(var key in where) {
         if(where[key]) {
             var val = where[key];
-            queryWhere += sqlUtil.buildBetweenWhere(key, val);
+            if(key.indexOf('notIn_') > -1) {
+                console.log(val);
+                queryWhere += sqlUtil.buildInWhere(key.replace('notIn_', ''), val, true);
+            } else {
+                queryWhere += sqlUtil.buildBetweenWhere(key, val);
+            }
         }
     }
 
@@ -27,6 +32,8 @@ exports.getRecords = function(where, areaId, cb) {
         ' from playerConsumptionRecord' +
         ' where ' + queryWhere +
         ' group by source order by source';
+
+    console.log(sql);
 
     db(areaId).query(sql, cb);
 };

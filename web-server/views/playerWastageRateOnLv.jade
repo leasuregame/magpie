@@ -47,6 +47,9 @@ block content
                     input.form-control.up(type='date' name='ptUp')
                 .col-sm-2.center
                     a#submitCheck.btn.btn-primary(href='javascript:void(0);') 查询
+                .col-sm-2.center
+                    a#exportCSV.btn.btn-primary(href='#' target='exportArea') 导出文件
+        iframe#exportArea.hide(name='exportArea')
         hr
         .row
             .col-sm-12#rsTableCntr

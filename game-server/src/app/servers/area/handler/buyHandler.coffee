@@ -220,7 +220,6 @@ products =
 
       curCount = player.cardsCount - RESOURE_LIMIT.card_count_min + 1
       totalGold = countTotalGold curCount, product, times
-      console.log('consume: ', totalGold)
 
       if player.gold < totalGold
         return next(null, {code: 501, msg: "魔石不足"})
@@ -285,6 +284,8 @@ products =
       player.updateGift product.obtain_type, player.expPassCount() + obtain
       player.updateGift 'expPassBuyCount', (player.dailyGift.expPassBuyCount or 1) - obtain
       player.save()
+      if product.consume_type == 'gold'
+        recordManager.createConsumptionRecord player.id, SOURCE.BUY_EXP_PASS_COUNT, {expense : consumeValue}
 
       next(null, {
         code: 200,

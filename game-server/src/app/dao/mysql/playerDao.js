@@ -132,7 +132,7 @@ var PlayerDao = (function(_super) {
             function(cardIds, callback) {
                 cardDao.fetchMany({
                     where: ' id in (' + cardIds.toString() + ')',
-                    fields: ['playerId', 'tableId']
+                    fields: ['playerId', 'tableId', 'id']
                 }, function(err, res) {
                     cards = res;
                     callback();

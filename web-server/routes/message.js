@@ -22,9 +22,7 @@ var message = function(app) {
                     res.status(500).send('error when selecting message, ' + err);
                     return;
                 }
-                console.log(servMsgs instanceof Array);
                 if(servMsgs instanceof Array) {
-//                    res.send(msgWhere);
                     res.send(servMsgs.concat(rows));
                 } else {
                     res.send(rows);
@@ -42,14 +40,19 @@ var message = function(app) {
                 for(var i = 1; i < rs.length; i++) {
                     rows = rows.concat(rs[i]);
                 }
+
                 if(servMsgs instanceof Array) {
-                    res.send(servMsgs.concat(rows));
-                }else {
-                    res.send(rows);
+                    rows = servMsgs.concat(rows);
                 }
+                //按时间大小倒序排序
+                rows.sort(function(a, b){
+                    return new Date(b.createTime) - new Date(a.createTime);
+                });
+                res.send(rows);
             });
         }
 
+        //全服信息
         var servMsgs = [];
 
         if(!areaId) {

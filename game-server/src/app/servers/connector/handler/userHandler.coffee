@@ -93,6 +93,9 @@ doLogin  = (type, app, msg, session, platform, next) ->
     (cb) ->
       checkIsOpenServer app, cb
 
+    (cb) ->
+      checkAreaServerStatus app, areaId, cb
+      
     (cb) =>
       args = authParams(type, msg, app)
       args.sid = session.id
@@ -183,7 +186,7 @@ checkVersion = (app, msg, platform, cb) ->
   version = msg.version or '1.0.0'
   vData = app.get('versionConf')?[platform]
   if not vData
-    return cb({501, msg: "找不到#{platform}的版本信息"})
+    return cb({code: 501, msg: "找不到#{platform}的版本信息"})
 
   if msg.appVersion? and versionHandler.versionCompare(msg.appVersion, vData.forceUpdateVersion) < 0
     cb({code: 501, msg: '版本过低，请到发行商更新游戏'})
@@ -205,6 +208,17 @@ checkIsOpenServer = (app, cb) ->
       code: 501, 
       msg: util.format('%s月%s日%s点开服，敬请期待', openTime.getMonth()+1, openTime.getDate(), openTime.getHours())
     })
+  else 
+    cb()
+
+checkAreaServerStatus = (app, areaId, cb) ->
+  areaInfo = app.get('areaConfig')
+  currentArea = null
+  for a in areaInfo
+    if parseInt(a.areaId) is parseInt(areaId)
+      currentArea = a
+  if currentArea and parseInt(currentArea.status) is 40
+    cb({code: 501, msg: '服务器正在维护当中，请耐心等待！'})
   else 
     cb()
 

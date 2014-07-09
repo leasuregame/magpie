@@ -135,6 +135,7 @@ var cdkey = function(app) {
                     res.send(items.map(function (r) {
                         r.startDate = localDateString(r.startDate);
                         r.endDate = localDateString(r.endDate);
+                        r.area = r.area != null && typeof r.area == 'string' ? areaString(JSON.parse(r.area)) : '所有';
                         return r;
                     }));
                 } else {

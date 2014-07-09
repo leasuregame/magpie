@@ -16,7 +16,8 @@ var baseRewardNames = {
     fragments : '卡魂',
     superHonor : '精元',
     speaker : '喇叭',
-    honor : '荣誉点'
+    honor : '荣誉点',
+    pill : '觉醒玉'
 };
 
 /**

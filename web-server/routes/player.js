@@ -110,6 +110,30 @@ var player = function(app) {
             }
         })
     });
+
+    app.get('/admin/api/players', function(req, res) {
+        var areas = req.query.areas;
+        var name = req.query.name;
+        var fields = req.query.fields;
+
+        if (!areas || areas == '' || areas == '[]') {
+            areas = [1];
+        }
+
+        if (fields && fields.length > 1) {
+            fields = fields.split(',');
+        } else {
+            fields = ['id', 'userId', 'name', 'areaId'];
+        }
+
+        playerDao.playersInAreas(fields, {name: name}, areas, function(err, rows) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(rows);
+            }
+        });
+    });
 };
 
 module.exports = player;

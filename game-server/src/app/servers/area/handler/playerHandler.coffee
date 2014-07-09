@@ -194,20 +194,28 @@ Handler::getActivityInfo = (msg, session, next) ->
         plan: player.plan
         vipLoginReward: !player.dailyGift.vipReward if player.isVip()
         luckyCard: {
-          startDate: luckyCard.startDate
-          endDate: luckyCard.endDate
+          startDate: getDateTime luckyCard.startDate
+          endDate: getDateTime luckyCard.endDate
           isVisible: luckyCard.enable || false
           info:
             tableId: luckyCard.data.tableId
             star: player.activities.luckCard?.star || 0
         } if luckyCard
         worldCup: {
-          startDate: worldCup.startDate
-          endDate: worldCup.endDate
+          startDate: getDateTime worldCup.startDate
+          endDate: getDateTime worldCup.endDate
           isVisible: worldCup.enable
         } if worldCup
       }
     })
+
+getDateTime = (d) ->
+  if typeof d is 'string' or typeof d is 'number'
+    return new Date(d).getTime()
+  else if d instanceof Date
+    return d.getTime()
+  else
+    return d
 
 Handler::getLevelReward = (msg, session, next) ->
   playerId = session.get('playerId')

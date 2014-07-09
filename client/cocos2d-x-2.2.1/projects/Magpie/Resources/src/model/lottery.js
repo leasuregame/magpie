@@ -55,8 +55,8 @@ var Lottery = Entity.extend({
             this.set("goldLuckyCard10", data.goldLuckyCard10);
 
             if(!this._goldLuckyCard10.got) {
-                var key = gameData.player.get("uid") + "_goldLuckyCard10";
-                lz.save(key, 1);
+                var key = gameData.player.get("uid") + "_dailyTenLottery";
+                lz.save(key, 0);
             }
         }
 

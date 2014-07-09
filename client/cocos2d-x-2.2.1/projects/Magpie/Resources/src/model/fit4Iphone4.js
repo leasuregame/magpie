@@ -1498,7 +1498,8 @@ var fit4Iphone4 = {
             "titleLabelPoint": cc.p(360, 572),
             "tipLabelPoint": cc.p(360, 512),
             "paymentItemPoint": cc.p(260, 432),
-            "closeItemPoint": cc.p(460, 432)
+            "closeItemPoint": cc.p(460, 432),
+            "continueItemPoint": cc.p(360, 432)
         },
         "greetingLabel": {
             "bgSpriteSize": cc.size(540, 660),

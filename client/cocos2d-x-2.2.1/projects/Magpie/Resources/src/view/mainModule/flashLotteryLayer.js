@@ -84,11 +84,11 @@ var FlashLotteryLayer = cc.Layer.extend({
         );
         this._lotteryCardItem.setPosition(this._flashLotteryLayerFit.lotteryCardItemPoint);
 
-        var rateLabel1 = StrokeLabel.create("3%点亮星星", "STHeitiTC-Medium", 22);
-        rateLabel1.setColor(cc.c3b(85, 255, 1));
-        rateLabel1.setBgColor(cc.c3b(0, 0, 0));
-        rateLabel1.setPosition(this._flashLotteryLayerFit.rateLabel1Point);
-        this.addChild(rateLabel1);
+        this._rateLabel1 = StrokeLabel.create("3%点亮星星", "STHeitiTC-Medium", 22);
+        this._rateLabel1.setColor(cc.c3b(85, 255, 1));
+        this._rateLabel1.setBgColor(cc.c3b(0, 0, 0));
+        this._rateLabel1.setPosition(this._flashLotteryLayerFit.rateLabel1Point);
+        this.addChild(this._rateLabel1);
 
         var costLabel1 = cc.Sprite.create(main_scene_image.icon331);
         costLabel1.setPosition(this._flashLotteryLayerFit.costLabel1Point);
@@ -109,11 +109,11 @@ var FlashLotteryLayer = cc.Layer.extend({
         );
         this._tenLotteryCardItem.setPosition(this._flashLotteryLayerFit.tenLotteryCardItemPoint);
 
-        var rateLabel2 = StrokeLabel.create("50%点亮星星", "STHeitiTC-Medium", 22);
-        rateLabel2.setColor(cc.c3b(85, 255, 1));
-        rateLabel2.setBgColor(cc.c3b(0, 0, 0));
-        rateLabel2.setPosition(this._flashLotteryLayerFit.rateLabel2Point);
-        this.addChild(rateLabel2);
+        this._rateLabel2 = StrokeLabel.create("50%点亮星星", "STHeitiTC-Medium", 22);
+        this._rateLabel2.setColor(cc.c3b(85, 255, 1));
+        this._rateLabel2.setBgColor(cc.c3b(0, 0, 0));
+        this._rateLabel2.setPosition(this._flashLotteryLayerFit.rateLabel2Point);
+        this.addChild(this._rateLabel2);
 
         var costLabel2 = cc.Sprite.create(main_scene_image.icon331);
         costLabel2.setPosition(this._flashLotteryLayerFit.costLabel2Point);
@@ -128,7 +128,7 @@ var FlashLotteryLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var tipLabel = ColorLabelTTF.create(
+        this._tipLabel = ColorLabelTTF.create(
             {
                 string: "每日首次10连召唤必得",
                 fontName: "STHeitiTC-Medium",
@@ -141,8 +141,8 @@ var FlashLotteryLayer = cc.Layer.extend({
                 color: cc.c3b(85, 255, 1)
             }
         );
-        tipLabel.setPosition(this._flashLotteryLayerFit.tipLabelPoint);
-        this.addChild(tipLabel);
+        this._tipLabel.setPosition(this._flashLotteryLayerFit.tipLabelPoint);
+        this.addChild(this._tipLabel);
 
         this.update(luckCard.info.star);
 
@@ -199,6 +199,19 @@ var FlashLotteryLayer = cc.Layer.extend({
     update: function (lightStar) {
 
         if (lightStar == 5) {
+            var luckCard = gameData.activity.get("luckyCard");
+            var name = outputTables.cards.rows[luckCard.info.tableId].name;
+            name = name.split('·')[1];
+
+            this._rateLabel1.setString("本次必得" + name);
+            this._rateLabel2.setString("本次必得" + name);
+        } else {
+            this._rateLabel1.setString("3%点亮星星");
+            this._rateLabel2.setString("50%点亮星星");
+        }
+
+
+        if (lightStar == 5) {
             this._btnNode1 = cc.BuilderReader.load(main_scene_image.uiEffect33, this);
             this._btnNode1.setPosition(cc.p(75, 35));
             this._lotteryCardItem.getNormalImage().addChild(this._btnNode1);
@@ -223,6 +236,9 @@ var FlashLotteryLayer = cc.Layer.extend({
                 this._btnNode2 = null;
             }
         }
+
+        var rate = gameData.lottery.getFiveStarCardRate();
+        this._tipLabel.setVisible(rate == 100);
     },
 
     _onClickLottery: function () {
@@ -290,12 +306,18 @@ var FlashLotteryLayer = cc.Layer.extend({
             }, 10);
         };
 
-        var goldLuckyCard10 = lottery.get("goldLuckyCard10");
-        var key = gameData.player.get("uid") + "_goldLuckyCard10";
-        if (goldLuckyCard10.got && lz.load(key)) {
+        var rate = gameData.lottery.getFiveStarCardRate();
+        var key = gameData.player.get("uid") + "_dailyTenLottery";
+
+        if (rate == 100 && !lz.load(key)) {
+            lz.save(key, 2);
+        }
+
+        if (rate != 100 && lz.load(key) == 1) {
             AdvancedTipsLabel.pop(TYPE_GOLD_TEN_LOTTERY_TIPS, function () {
                 next();
             });
+            lz.save(key, 0);
         } else {
             next();
         }

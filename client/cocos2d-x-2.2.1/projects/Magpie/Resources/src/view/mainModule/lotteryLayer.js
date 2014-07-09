@@ -468,12 +468,19 @@ var LotteryLayer = cc.Layer.extend({
                 };
 
                 if (type == LOTTERY_BY_GOLD && level == 2) {
-                    var goldLuckyCard10 = lottery.get("goldLuckyCard10");
-                    var key = gameData.player.get("uid") + "_goldLuckyCard10";
-                    if (goldLuckyCard10.got && lz.load(key)) {
+                    var rate = gameData.lottery.getFiveStarCardRate();
+                    var key = gameData.player.get("uid") + "_dailyTenLottery";
+
+                    if (rate == 100 && !lz.load(key)) {
+                        lz.save(key, 1);
+                    }
+
+                    if (rate != 100 && lz.load(key) == 2) {
                         AdvancedTipsLabel.pop(TYPE_GOLD_TEN_LOTTERY_TIPS, function () {
                             next();
                         });
+                        lz.save(key, 0);
+                        LazyLayer.closeCloudLayer();
                     } else {
                         next();
                     }

@@ -325,9 +325,6 @@ var AdvancedTipsLabel = LazyLayer.extend({
         var tipLabel = cc.LabelTTF.create("首次10连召唤必得5星已使用，是否继续", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         this._frameLayer.addChild(tipLabel);
-
-        var key = gameData.player.get("uid") + "_goldLuckyCard10";
-        lz.save(key, 0);
     },
 
     _onClickCancel: function () {

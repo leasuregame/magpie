@@ -118,8 +118,55 @@ var Shop = Entity.extend({
                 gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
                 gameData.spiritPool.set("maxCollectCount", outputTables.daily_gift.rows[1].collect_count + outputTables.vip_privilege.rows[nowVip].spirit_collect_count);
 
+
+                var cb = this.showVipUpgrade();
+
+                if (msg.firstRechargeBox && msg.firstRechargeBox == HAS_FIRST_RECHARGER_BOX) {
+                    this.showFirstRechargeBox(cb);
+                } else {
+                    cb();
+                }
+
             }
         });
+    },
+
+    //首充礼包
+    showFirstRechargeBox: function (cb) {
+        cc.log("shop showFirstRechargeBox");
+
+        var table = outputTables.first_recharge_box.rows[1];
+        var cards = [];
+        cards.push(
+            {
+                tableId: table.card_id,
+                lv: table.card_lv,
+                skillLv: 1
+            }
+        );
+
+        var reward = {
+            "energy": table.energy,
+            "money": table.money,
+            "elixir": table.elixir,
+            "skillPoint": table.skillPoint,
+            "spirit": table.spirit,
+            "power": table.power,
+            "cardArray": cards
+        };
+
+        GiftBagLayer.pop2Top({
+            reward: reward,
+            type: GET_GIFT_BAG_NO_CLOSE,
+            cb: cb
+        });
+    },
+
+    //vip特权升级
+    showVipUpgrade: function () {
+        cc.log("shop showVipUpgrade");
+
+        VipUpgradeTipLabel.pop();
     },
 
     updateMaxCount: function () {

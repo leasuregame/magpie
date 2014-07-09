@@ -6,6 +6,7 @@ configData = require '../../../../config/data'
 achieve = require '../../../domain/achievement'
 async = require 'async'
 areaUtil = require '../../../util/areaUtil'
+appUtil = require '../../../util/appUtil'
 _ = require 'underscore'
 
 resData = table.getTableItem('resource_limit', 1)
@@ -172,6 +173,15 @@ Handler::getActivityInfo = (msg, session, next) ->
 
     # rechargeFlag = results[1]
     # flag = setCanGetFlag player, rechargeFlag
+    
+    luckyCard = null
+    activity = @app.get('sharedConf').activity
+    if appUtil.isActivityTime(@app, 'luckyCard') 
+      luckyCard = activity.luckyCard
+    worldCup = null
+    if appUtil.isActivityTime(@app, 'worldCup')
+      worldCup = activity.worldCup
+    
     cur_hour = new Date().getHours()
     next(null, {
       code: 200,
@@ -183,8 +193,29 @@ Handler::getActivityInfo = (msg, session, next) ->
         loginInfo: logined # 新服累计登陆次数
         plan: player.plan
         vipLoginReward: !player.dailyGift.vipReward if player.isVip()
+        luckyCard: {
+          startDate: getDateTime luckyCard.startDate
+          endDate: getDateTime luckyCard.endDate
+          isVisible: luckyCard.enable || false
+          info:
+            tableId: luckyCard.data.tableId
+            star: player.activities.luckCard?.star || 0
+        } if luckyCard
+        worldCup: {
+          startDate: getDateTime worldCup.startDate
+          endDate: getDateTime worldCup.endDate
+          isVisible: worldCup.enable
+        } if worldCup
       }
     })
+
+getDateTime = (d) ->
+  if typeof d is 'string' or typeof d is 'number'
+    return new Date(d).getTime()
+  else if d instanceof Date
+    return d.getTime()
+  else
+    return d
 
 Handler::getLevelReward = (msg, session, next) ->
   playerId = session.get('playerId')

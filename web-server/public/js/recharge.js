@@ -139,17 +139,12 @@ function doRequest(reqData) {
     }
 
     rsPanel.hide(function(){
+        $('.loading-panel').show();
         window.pomeloAPI.request(reqData.areaId, window.pomeloAPI.API.RECHARGE, reqData, function(data, cb){
-            if(data.code == 200 || data.code == 501){
+            if(data.code == 200){
+
                 rsPanel.setMode2Info();
-                if(data.code == 200) {
-                    rsPanel.set2Success();
-                } else {
-                    rsPanel.set2Warning();
-                }
                 var msg = data.msg;
-                rsPanel.setField('.succeededPlayer', msg.players);
-                rsPanel.setField('.failedPlayer', msg.failedPlayers);
                 rsPanel.setField('.product', msg.product.name);
                 rsPanel.setField('.qty', msg.qty);
 
@@ -157,67 +152,82 @@ function doRequest(reqData) {
                 var now = new Date();
                 rsPanel.setElement('.recDateTime', now.toLocaleString());
 
+                var playerNames = [];
+                for(var i in data.msg.players) {
+                    var player = data.msg.players[i];
+                    rsPanel.addPlayerPanel(player);
+                    if(player.status == 1) {
+                        playerNames.push(player.name);
+                    }
+                }
+
                 var option = {
                     product : reqData.productId,
                     qty : reqData.qty
                 };
-                window.webAPI.recordRechargeOpt(reqData.areaId, option, msg.players, 1);
-                cb();
+                window.webAPI.recordRechargeOpt(reqData.areaId, option, playerNames, 1);
+                cb && cb();
             } else {
                 cb(data.msg);
             }
         }, function(err){
             if(err) {
-                rsPanel.setMode2Info();
-                rsPanel.set2Danger();
+                rsPanel.setMode2Error();
                 rsPanel.setElement('.error', err);
-                console.log('error', err);
             }
+            $('.loading-panel').hide();
             rsPanel.show();
         })
     });
 }
 
 var dataPanel = function ($panel) {
+
+    var rowTemp = $('#rowTemp').html();
+    var $playerArea = $panel.find('.players');
+
     var dataPanel = {
         show : function(){
            $panel.fadeIn(800);
         },
         hide : function(cb){
-            $panel.fadeOut(400, cb);
+            $panel.fadeOut(200, cb);
         },
         set2Empty : function() {
             $panel.removeClass('panel-success panel-primary panel-danger panel-warning');
-        },
-        set2Success : function() {
-            dataPanel.set2Empty();
-            $panel.addClass('panel-success');
-        },
-        set2Primary : function() {
-            dataPanel.set2Empty();
-            $panel.addClass('panel-primary');
-        },
-        set2Warning : function() {
-            dataPanel.set2Empty();
-            $panel.addClass('panel-warning');
-        },
-        set2Danger : function() {
-            dataPanel.set2Empty();
-            $panel.addClass('panel-danger');
+            $playerArea.empty();
         },
         setMode2Info : function() {
+            dataPanel.set2Empty();
             $panel.find('.info').show();
             $panel.find('.error').hide();
+            $panel.addClass('panel-default');
         },
         setMode2Error : function() {
-            $panel.find('.info').hide();
+            dataPanel.set2Empty();
             $panel.find('.error').show();
+            $panel.find('.info').hide();
+            $panel.addClass('panel-danger');
         },
         setField : function(fieldSelector, text) {
             $panel.find(fieldSelector).find('.val').text(text);
         },
         setElement : function(eleSelector, text) {
             $panel.find(eleSelector).text(text);
+        },
+        addPlayerPanel : function(player) {
+            var $tmpRow = $(rowTemp);
+            $tmpRow.find('.name').find('.val').text(player.name);
+
+            if(player.status == 1) {
+                $tmpRow.addClass('panel-success');
+                $tmpRow.find('.panel-heading').text('充值成功');
+            } else if (player.status == 2) {
+                $tmpRow.addClass('panel-danger');
+                $tmpRow.find('.panel-heading').text('充值失败');
+                $tmpRow.find('.msg').removeClass('hide').find('.val').text(player.msg);
+            }
+            $playerArea.append($tmpRow);
         }
     };
     return dataPanel;
@@ -242,6 +252,4 @@ $(document).ready(function() {
     confirmForm.delegate('.btn', 'click', function(){
         confirmForm.offset({left:0,top:0}).addClass('hide');
     }).delegate('.submit', 'click', submit);
-
-
 });

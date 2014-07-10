@@ -54,6 +54,7 @@ res/ccb/effect2500_1.ccbi
 res/ccb/effect2500_2.ccbi
 res/ccb/effect2500_3.ccbi
 res/ccb/uiEffect119.ccbi
+res/ccb/uiEffect120.ccbi
 res/effect/effect/p154.png
 res/effect/effect/p155.png
 res/effect/effect/p156.png
@@ -94,6 +95,7 @@ resYY/ccb/effect2500_1.ccbi
 resYY/ccb/effect2500_2.ccbi
 resYY/ccb/effect2500_3.ccbi
 resYY/ccb/uiEffect119.ccbi
+resYY/ccb/uiEffect120.ccbi
 resYY/effect/effect/p154.png
 resYY/effect/effect/p155.png
 resYY/effect/effect/p156.png

@@ -1086,6 +1086,7 @@ var main_scene_image = {
     uiEffect117: "res/ccb/uiEffect117.ccbi",
     uiEffect118: "res/ccb/uiEffect118.ccbi",
     uiEffect119: "res/ccb/uiEffect119.ccbi",
+    uiEffect120: "res/ccb/uiEffect120.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",

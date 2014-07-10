@@ -697,10 +697,10 @@ var Activity = Entity.extend({
     getLastDays: function () {
         cc.log("Activity getLastDays");
         var luckCard = gameData.activity.get("luckyCard");
-        var t1 = luckCard.startDate;
+        var t1 = Date.now();
         var t2 = luckCard.endDate;
 
-        return parseInt((t2 - t1) / (24 * 60 * 60 * 1000));
+        return Math.ceil((t2 - t1) / (24 * 60 * 60 * 1000));
     }
 });
 

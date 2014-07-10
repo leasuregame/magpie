@@ -161,6 +161,7 @@ var Shop = Entity.extend({
         GiftBagLayer.pop2Top({
             reward: reward,
             type: GET_GIFT_BAG_NO_CLOSE,
+            titleType: TYPE_FIRST_RECHARGE_REWARD,
             cb: function () {
                 gameData.activity.getFirstRechargeBox(function (reward) {
                     lz.tipReward(reward);

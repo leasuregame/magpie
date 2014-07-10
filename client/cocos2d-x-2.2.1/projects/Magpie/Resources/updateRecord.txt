@@ -41,6 +41,8 @@ res/main/icon481.png
 res/main/icon482.png
 res/main/icon483.png
 res/main/icon484.png
+res/main/icon485.png
+res/main/icon486.png
 res/main/rare_card_item_bg5.png
 res/main/rare_card_item_bg6.png
 res/main/rare_card_item_bg7.png
@@ -79,6 +81,8 @@ resYY/main/icon481.png
 resYY/main/icon482.png
 resYY/main/icon483.png
 resYY/main/icon484.png
+resYY/main/icon485.png
+resYY/main/icon486.png
 resYY/main/rare_card_item_bg5.png
 resYY/main/rare_card_item_bg6.png
 resYY/main/rare_card_item_bg7.png

@@ -46,7 +46,7 @@ var GoPaymentLayer = LazyLayer.extend({
         this._titleLabel.setPosition(this._goPaymentLayerFit.titleLabelPoint);
         this.addChild(this._titleLabel);
 
-        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 20);
+        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._tipLabel.setPosition(this._goPaymentLayerFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
@@ -122,7 +122,7 @@ var GoPaymentLayer = LazyLayer.extend({
         var tipVip = this._getTipsVip("buy_power_count");
 
         if (-1 == tipVip) {
-            this._tipLabel.setString("今日次数已用完，明日可继续购买");
+            this._tipLabel.setString("您已买完所有权限次数");
             this._continueItem.setVisible(true);
         } else {
             this._tipLabel.setString("成为VIP" + tipVip + "，每日即可获得更多购买次数");
@@ -139,7 +139,7 @@ var GoPaymentLayer = LazyLayer.extend({
         var tipVip = this._getTipsVip("challenge_buy_count");
 
         if (-1 == tipVip) {
-            this._tipLabel.setString("今日次数已用完，明日可继续购买");
+            this._tipLabel.setString("您已买完所有权限次数");
             this._continueItem.setVisible(true);
         } else {
             this._tipLabel.setString("成为VIP" + tipVip + "，每日即可获得更多购买次数");
@@ -157,7 +157,7 @@ var GoPaymentLayer = LazyLayer.extend({
         var tipVip = this._getTipsVip("exp_pass_count");
 
         if (-1 == tipVip) {
-            this._tipLabel.setString("今日次数已用完，明日可继续购买");
+            this._tipLabel.setString("您已买完所有权限次数");
             this._continueItem.setVisible(true);
         } else {
             this._tipLabel.setString("成为VIP" + tipVip + "，每日即可获得更多购买次数");
@@ -175,7 +175,7 @@ var GoPaymentLayer = LazyLayer.extend({
         var tipVip = this._getTipsVip("give_bless_count");
 
         if (-1 == tipVip) {
-            this._tipLabel.setString("今日次数已用完，明日可继续祝福");
+            this._tipLabel.setString("您已使用完所有权限次数");
             this._continueItem.setVisible(true);
         } else {
             this._tipLabel.setString("成为VIP" + tipVip + "，每日即可获得额外的祝福次数");
@@ -192,7 +192,7 @@ var GoPaymentLayer = LazyLayer.extend({
         var tipVip = this._getTipsVip("spirit_collect_count");
 
         if (-1 == tipVip) {
-            this._tipLabel.setString("今日次数已用完，明日可继续采集");
+            this._tipLabel.setString("您已使用完所有权限次数");
             this._continueItem.setVisible(true);
         } else {
             this._tipLabel.setString("成为VIP" + tipVip + "，每日即可获得额外的采集次数");

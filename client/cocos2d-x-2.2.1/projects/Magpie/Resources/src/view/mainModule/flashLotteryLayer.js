@@ -166,15 +166,17 @@ var FlashLotteryLayer = cc.Layer.extend({
                 animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
                 animationManager.setCompletedAnimationCallback(that, function () {
                     starEffect.removeFromParent();
-                    var scaleToAction = cc.Sequence.create(
-                        cc.FadeIn.create(0.2),
-                        cc.ScaleTo.create(0.3, 1.4),
-                        cc.ScaleTo.create(0.2, 1.2)
-                    );
-
-                    that._starIcons[data.lightStar - 1].runAction(scaleToAction);
-                    that._starIcons[data.lightStar - 1].setVisible(true);
+                    starEffect = null;
                 });
+
+                var scaleToAction = cc.Sequence.create(
+                    cc.FadeIn.create(0.2),
+                    cc.ScaleTo.create(0.3, 1.4),
+                    cc.ScaleTo.create(0.2, 1.2)
+                );
+
+                that._starIcons[data.lightStar - 1].runAction(scaleToAction);
+                that._starIcons[data.lightStar - 1].setVisible(true);
             };
 
             var fn2 = function () {

@@ -39,21 +39,21 @@
 
 	"production": {
 		"1": {
-			"host": "125.90.93.74",
+			"host": "127.0.0.1",
 			"port": "3306",
 			"database": "yy_db_area_1",
 			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		},
 		"2": {
-			"host": "125.90.93.74",
+			"host": "127.0.0.1",
 			"port": "3306",
 			"database": "yy_db_area_2",
 			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		},
 		"3": {
-			"host": "125.90.93.74",
+			"host": "127.0.0.1",
 			"port": "3306",
 			"database": "yy_db_area_3",
 			"user": "yy_leasuregame",
@@ -67,14 +67,14 @@
 			"password": "leasure405GAME"
 		},
 		"userdb": {
-			"host": "125.90.93.74",
+			"host": "127.0.0.1",
 			"port": "3306",
 			"database": "yy_userdb",
 			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		},
 		"sharedb": {
-			"host": "125.90.93.74",
+			"host": "127.0.0.1",
 			"port": "3306",
 			"database": "yy_sharedb",
 			"user": "yy_leasuregame",

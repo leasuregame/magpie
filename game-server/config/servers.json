@@ -19,19 +19,19 @@
   },
   "production": {
     "connector": [
-      { "id": "connector-server-1", "host": "127.0.0.1", "port": 3150, "clientPort": 3010, "frontend": true, "area": 1}
+      { "id": "connector-server-1", "host": "125.90.93.80", "port": 3150, "clientPort": 3010, "frontend": true, "area": 1}
     ],
     "gate": [
-      { "id": "gate-server-1", "host": "127.0.0.1", "port": 3149, "clientPort": 3009, "frontend": true }
+      { "id": "gate-server-1", "host": "125.90.93.80", "port": 3149, "clientPort": 3009, "frontend": true }
     ],
     "auth": [
-      { "id": "auth-server-1", "host": "127.0.0.1", "port": 4300}
+      { "id": "auth-server-1", "host": "125.90.93.80", "port": 4300}
     ],
     "area": [
-      { "id": "area-server-1", "host": "127.0.0.1", "port": 4100, "area": 1 }
+      { "id": "area-server-1", "host": "125.90.93.80", "port": 4100, "area": 1 }
     ],
     "notice": [
-      { "id": "tb-notice-server-1", "host": "127.0.0.1", "port": 4200, "webPort": 5050}
+      { "id": "tb-notice-server-1", "host": "125.90.93.80", "port": 4200, "webPort": 5050}
     ]
   }
 }

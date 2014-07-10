@@ -30,7 +30,8 @@
     "area": [
       { "id": "area-server-1", "host": "115.29.12.178", "port": 4100, "area": 1 },
       { "id": "area-server-2", "host": "115.29.12.178", "port": 4101, "area": 2 },
-      { "id": "area-server-3", "host": "115.29.12.178", "port": 4102, "area": 3 }
+      { "id": "area-server-3", "host": "115.29.12.178", "port": 4102, "area": 3 },
+      { "id": "area-server-4", "host": "115.29.12.178", "port": 4103, "area": 4 }
     ],
     "notice": [
       { "id": "tb-notice-server-1", "host": "115.29.12.178", "port": 4200, "webPort": 80}

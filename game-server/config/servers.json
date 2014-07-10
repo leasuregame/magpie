@@ -26,7 +26,7 @@
     ],
     "area": [
       { "id": "area-server-1", "host": "125.90.93.80", "port": 4100, "area": 1 },
-      { "id": "area-server-1", "host": "218.30.131.245", "port": 4101, "area": 2, "sshPort": 9022 },
+      { "id": "area-server-1", "host": "218.30.131.245", "port": 4101, "area": 2, "sshPort": 9022 }
     ]
   }
 }

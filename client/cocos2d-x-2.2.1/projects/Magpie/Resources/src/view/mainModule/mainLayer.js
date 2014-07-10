@@ -257,7 +257,7 @@ var MainLayer = cc.Layer.extend({
             greetingLabelItem
         );
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
         this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);

@@ -25,7 +25,8 @@
       { "id": "auth-server-1", "host": "115.29.243.80", "port": 4300}
     ],
     "area": [
-      { "id": "area-server-1", "host": "115.29.243.80", "port": 4100, "area": 1 }
+      { "id": "area-server-1", "host": "115.29.243.80", "port": 4100, "area": 1 },
+      { "id": "area-server-1", "host": "115.29.243.80", "port": 4101, "area": 2 }
     ]
   }
 }

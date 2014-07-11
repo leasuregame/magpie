@@ -50,6 +50,8 @@ var MainLayer = cc.Layer.extend({
     _worldCupLayerItem: null,
     _flashLotteryLayerItem: null,
 
+    _activityMenu: null,
+
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
@@ -113,6 +115,10 @@ var MainLayer = cc.Layer.extend({
         var lineUpLabel = LineUpLabel.create();
         lineUpLabel.setPosition(this._mainLayerFit.lineUpLabelPoint);
         this.addChild(lineUpLabel);
+
+        this._activityMenu = cc.Menu.create();
+        this._activityMenu.setPosition(cc.p(0, 0));
+        this.addChild(this._activityMenu);
 
         var lotteryLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -257,7 +263,7 @@ var MainLayer = cc.Layer.extend({
             greetingLabelItem
         );
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 2);
+        this.addChild(menu);
 
         this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
         this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
@@ -301,10 +307,6 @@ var MainLayer = cc.Layer.extend({
     updateLayer: function () {
         cc.log("MainLayer updateLayer");
 
-        var menu = cc.Menu.create();
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
-
         var index = 0;
         var point = this._mainLayerFit.activityItemBasePoint;
 
@@ -321,7 +323,7 @@ var MainLayer = cc.Layer.extend({
                 this
             );
             this._worldCupLayerItem.setPosition(cc.p(point.x - 107 * index, point.y));
-            menu.addChild(this._worldCupLayerItem);
+            this._activityMenu.addChild(this._worldCupLayerItem);
 
             this._worldCupMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
             this._worldCupMark.setPosition(cc.p(75, 80));
@@ -343,7 +345,7 @@ var MainLayer = cc.Layer.extend({
                 this
             );
             this._flashLotteryLayerItem.setPosition(cc.p(point.x - 107 * index, point.y));
-            menu.addChild(this._flashLotteryLayerItem);
+            this._activityMenu.addChild(this._flashLotteryLayerItem);
 
             this._flashLotteryMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
             this._flashLotteryMark.setPosition(cc.p(75, 80));

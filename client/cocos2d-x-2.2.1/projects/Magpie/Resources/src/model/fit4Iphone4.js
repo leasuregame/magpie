@@ -347,7 +347,8 @@ var fit4Iphone4 = {
             "go2StrengthenItemPoint": cc.p(480, 462),
             "go2SellPoint": cc.p(240, 387),
             "go2BuyPoint": cc.p(240, 462),
-            "cancelItemPoint": cc.p(480, 387)
+            "go2SmeltItemPoint": cc.p(480, 387),
+            "cancelItemPoint": cc.p(596, 600)
         },
         "cardListLayer": {
             "bgSpritePoint": cc.p(40, 106),

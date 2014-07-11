@@ -640,6 +640,11 @@ var main_scene_image = {
     p150: effect_scene_path + "effect/" + "p150.png",
     p151: effect_scene_path + "effect/" + "p151.png",
     p153: effect_scene_path + "effect/" + "p153.png",
+    p154: effect_scene_path + "effect/" + "p154.png",
+    p156: effect_scene_path + "effect/" + "p156.png",
+    p157: effect_scene_path + "effect/" + "p157.png",
+    p165: effect_scene_path + "effect/" + "p165.png",
+    p179: effect_scene_path + "effect/" + "p179.png",
     
     boss2_png: effect_scene_path + "effect/" + "boss2.png",
     boss2_plist: effect_scene_path + "effect/" + "boss2.plist",
@@ -1073,6 +1078,7 @@ var main_scene_image = {
     effect600_2: ccb_scene_path + "effect600_2.ccbi",
     effect601_1: ccb_scene_path + "effect601_1.ccbi",
     effect601_2: ccb_scene_path + "effect601_2.ccbi",
+    effect602: ccb_scene_path + "effect602.ccbi",
     effect700_1: ccb_scene_path + "effect700_1.ccbi",
     effect700_2: ccb_scene_path + "effect700_2.ccbi",
     effect701_1: ccb_scene_path + "effect701_1.ccbi",
@@ -1267,6 +1273,13 @@ var main_scene_image = {
     108: test_scene_path + "res/" + "108.png",
     109: test_scene_path + "res/" + "109.png",
     110: test_scene_path + "res/" + "110.png",
+    123: test_scene_path + "res/" + "123.png",
+    124: test_scene_path + "res/" + "124.png",
+    125: test_scene_path + "res/" + "125.png",
+
+    card48_half2: test_scene_path + "res/" + "card48_half2.png",
+    card15_half2: test_scene_path + "res/" + "card15_half2.png",
+    card4_half2: test_scene_path + "res/" + "card4_half2.png",
 
 
 
@@ -1300,6 +1313,7 @@ var main_scene_image = {
     texiao30: test_scene_path + "ccb/" + "texiao30.ccbi",
     texiao31: test_scene_path + "ccb/" + "texiao31.ccbi",
     texiao32: test_scene_path + "ccb/" + "texiao32.ccbi",
+    texiao33: test_scene_path + "ccb/" + "texiao33.ccbi",
     texiao36: test_scene_path + "ccb/" + "texiao36.ccbi",
 
 };

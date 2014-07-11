@@ -25,9 +25,13 @@ var CardFullNode = cc.Node.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = star > 2 ? Math.min(star - 2, 3) : 1;
+        var index;
 
-        if (this._card.isLeadCard()) {
+        if (this._card.isRareCard()) {
+            index = (5 == star) ? 1 : 2;
+            this._cardSprite = cc.Sprite.create(main_scene_image[url + "_full" + index]);
+        } else if (this._card.isLeadCard()) {
+            index = star > 2 ? Math.min(star - 2, 3) : 1;
             this._cardSprite = cc.Sprite.create(main_scene_image[url + "_full" + index]);
         } else if (this._card.isResourceCard()) {
             this._cardSprite = cc.Sprite.create(main_scene_image[url + "_full1"]);

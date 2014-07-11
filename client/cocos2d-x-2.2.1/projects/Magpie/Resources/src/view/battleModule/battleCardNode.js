@@ -12,7 +12,7 @@
  * */
 
 var BOSS_NODE_SCALE = 1.3;
-var RARE_NODE_SCALE = 1.2;
+var RARE_NODE_SCALE = 1.1;
 
 var BattleCardNode = cc.Node.extend({
     _index: 0,

@@ -16,6 +16,7 @@ _s = require 'underscore.string'
 logger = require('pomelo-logger').getLogger(__filename)
 fs = require 'fs'
 path = require 'path'
+appUtil = require '../../../util/appUtil'
 
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
@@ -147,10 +148,48 @@ Handler::strengthen = (msg, session, next) ->
 
     next(null, {code: 200, msg: result})
 
+Handler::luckyCardActivity = (msg, session, next) ->
+  luckCardConf = @app.get('sharedConf').activity.luckyCard
+  if not luckCardConf.enable or not appUtil.isActivityTime(@app, 'luckyCard') 
+    return next(null, {code: 501, msg: '不在活动时间内'})
 
+  playerId = session.get('playerId')
+  msg.level = HIGH_LUCKYCARD
+  msg.type = LOTTERY_BY_GOLD
+  times = if msg.times? then msg.times else 1
 
-Handler::luckyCard = (msg, session, next) ->
-  playerId = session.get('playerId') or msg.playerId
+  activityMethod = (player, cards) ->
+    # 获得5星铁扇公主卡牌
+    if player.activities.luckCard?.star >= 5
+      cards4 = cards.filter (c) -> c.star < 5
+      card = if cards4.length > 0 then cards4[0] else cards[0]
+      card.star = cardStar luckCardConf.data.tableId
+      card.tableId = luckCardConf.data.tableId
+
+  doLuckCard msg, session, activityMethod, false, (err, res, player) ->
+    if err
+      return next(err)
+
+    if res.code isnt 200
+      return next(null, res)
+
+    if times is 1
+      lightStar = player.isGotLuckCardStar luckCardConf.data.sigleRate
+    else 
+      lightStar = player.isGotLuckCardStar luckCardConf.data.tenRate
+
+    _.extend res.msg, activity: {
+      isLightStar: lightStar
+      star: player.activities.luckCard.star
+    }
+    player.save()
+    next(null, res)
+
+Handler::luckyCard = (msg, session, next) -> 
+  doLuckCard msg, session, null, true, (err, res) -> next(err, res)
+
+doLuckCard = (msg, session, beforeSaveCards, processFirstTime, next) ->
+  playerId = session.get('playerId')
   level = msg.level or LOW_LUCKYCARD
   type = if msg.type? then msg.type else LOTTERY_BY_GOLD
   times = if msg.times? then msg.times else 1
@@ -269,7 +308,6 @@ Handler::luckyCard = (msg, session, next) ->
       goldLuckyCard10.got = true
       player.updateGift 'goldLuckyCard10', goldLuckyCard10
 
-
   firstGoldLuckyCard = (player) ->
     ### 每天前3次单次魔石抽卡，比得一个卡魂 ###
 
@@ -290,10 +328,10 @@ Handler::luckyCard = (msg, session, next) ->
     (res, cb) ->
       player = res     
 
-      if level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
+      if processFirstTime and level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
         isFree = player.firstTime.lowLuckyCard
         player.setFirstTime('lowLuckyCard', 0)
-      if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.highLuckyCard
+      if processFirstTime and level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.highLuckyCard
         isFree = player.firstTime.highLuckyCard
         player.setFirstTime('highLuckyCard', 0)
 
@@ -318,6 +356,8 @@ Handler::luckyCard = (msg, session, next) ->
       firstGoldLuckyCard(player) if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD
 
       card.playerId = player.id for card in cards
+      
+      beforeSaveCards(player, cards) if beforeSaveCards
       async.map cards, entityUtil.createCard, cb
         
     (cardEnts, cb) =>
@@ -354,7 +394,7 @@ Handler::luckyCard = (msg, session, next) ->
 
         goldLuckyCard10: player.dailyGift.goldLuckyCard10 if times is 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCard10.got
         goldLuckyCardForFragment: player.dailyGift.goldLuckyCardForFragment if times isnt 10 and type is LOTTERY_BY_GOLD and level is HIGH_LUCKYCARD and not player.dailyGift.goldLuckyCardForFragment.got
-    })
+    }, player)
 
 Handler::skillUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -476,9 +516,19 @@ Handler::starUpgrade = (msg, session, next) ->
       if _.isEmpty(sourceCards)
         return cb({code: 501, msg: "找不到素材卡牌"})
 
-      badCardsCount = (sourceCards.filter (s) -> s.star isnt starUpgradeData.source_card_star).length
+      badCardsCount = 
+        sourceCards.filter (s) -> 
+          s.star isnt starUpgradeData.source_card_star
+        .length
       if badCardsCount > 0
         return cb({code: 501, msg: "素材卡牌必须为#{starUpgradeData.source_card_star}星"})
+
+      hasExpCards = 
+        sourceCards.filter (s) ->
+          s.isExpCard()
+        .length > 0
+      if hasExpCards
+        return cb({code: 501, msg: "经验元灵不能做为进阶的素材卡"})
 
       cb(null)
 

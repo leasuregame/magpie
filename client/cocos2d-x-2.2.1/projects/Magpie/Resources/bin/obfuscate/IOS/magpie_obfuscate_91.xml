@@ -121,6 +121,7 @@
                 <file name="src/view/mainModule/bossListLayer.js"/>
                 <file name="src/view/mainModule/bossRewardLabel.js"/>
                 <file name="src/view/mainModule/rechargeLayer.js"/>
+                <file name="src/view/mainModule/flashLotteryLayer.js"/>
                 <file name="src/view/mainModule/powerRewardLayer.js"/>
                 <file name="src/view/mainModule/goldCardsLayer.js"/>
                 <file name="src/view/mainModule/goldRewardLayer.js"/>
@@ -219,6 +220,7 @@
                 <file name="src/view/mainModule/usePillLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
+                <file name="src/view/mainModule/vipUpgradeTipLabel.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>
                 <file name="src/view/mainModule/mainLayer.js"/>
                 <file name="src/view/mainModule/mainMenuLayer.js"/>

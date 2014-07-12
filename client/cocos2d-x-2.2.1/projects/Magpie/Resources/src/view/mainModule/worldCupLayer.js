@@ -8,6 +8,7 @@ var WorldCupLayer = cc.Layer.extend({
     _answers: null,
     _teamLen: null,
     _reward: null,
+    _rewardEffect: null,
 
     onEnter: function () {
         cc.log("WorldCupLayer onEnter");
@@ -205,6 +206,7 @@ var WorldCupLayer = cc.Layer.extend({
                 );
                 answerItem.setAnchorPoint(cc.p(0.5, 0));
                 answerItem.setPosition(cc.p(160 * j + (j - 2) * 20, y));
+                answerItem.setVisible(2 != j);
 
                 if (game.answer) {
                     answerItem.setEnabled(false);

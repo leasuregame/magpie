@@ -12,6 +12,7 @@
  * */
 
 var BOSS_NODE_SCALE = 1.3;
+var RARE_NODE_SCALE = 1.1;
 
 var BattleCardNode = cc.Node.extend({
     _index: 0,
@@ -65,26 +66,42 @@ var BattleCardNode = cc.Node.extend({
                 this._ccbNode.setScale(BOSS_NODE_SCALE);
             }
 
+            if(this.isRareCard()) {
+                this._ccbNode.setScale(RARE_NODE_SCALE);
+            }
+
             var frameSpriteTexture;
             var cardSpriteTexture;
+            var num;
 
-            if (this.isLeadCard()) {
+            if (this.isRareCard()) {
                 frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
-                var num = this._star > 2 ? Math.min(this._star - 2, 3) : 1;
+                num = this._star == 5 ? 1 : 2;
                 cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
-            } else if(this.isResourceCard()){
+            } else if (this.isLeadCard()) {
+                frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
+                num = this._star > 2 ? Math.min(this._star - 2, 3) : 1;
+                cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
+            } else if (this.isResourceCard()) {
                 frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
                 cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half1"]);
-            } else if(this.isMonsterCard()) {
+            } else if (this.isMonsterCard()) {
                 frameSpriteTexture = lz.getTexture(main_scene_image["card_frame0"]);
                 cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half1"]);
             }
+
+            var size = cardSpriteTexture.getContentSize();
 
             var iconSpriteTexture = lz.getTexture(this.getCardIcon());
 
             this.ccbFrameSprite.setTexture(frameSpriteTexture);
             this.ccbCardSprite.setTexture(cardSpriteTexture);
-            this.ccbIconSprite.setTexture(iconSpriteTexture);
+
+            if (this.isRareCard() || this.isLeadCard() || this._boss) {
+                this.ccbIconSprite.setTexture(iconSpriteTexture);
+            }
+
+            this.ccbCardSprite.setTextureRect(cc.rect(0, 0, size.width, size.height));
 
             if (this.getCardSubscript()) {
                 var subscriptSprite = cc.Sprite.create(this.getCardSubscript());
@@ -128,6 +145,7 @@ var BattleCardNode = cc.Node.extend({
         this._effectId = cardTable.effect_id || 1;
         this._skillName = cardTable.skill_name || "";
         this._url = "card" + cardTable.url;
+        this._isRare = cardTable.is_rare || false;
 
         // 读取技能配置表
         if (this._skillId) {
@@ -296,6 +314,10 @@ var BattleCardNode = cc.Node.extend({
                 }
             }
         }
+    },
+
+    isRareCard: function () {
+        return this._isRare;
     },
 
     isExpCard: function () {

@@ -261,14 +261,14 @@ var Player = Entity.extend({
                 that.set("goldCards", msg.goldCards);
             }
 
-            gameData.activity.set("vipLoginReward", msg.vipLoginReward);
-            gameData.activity.updateLoginCountFlag(msg.loginInfo);
+//            gameData.activity.set("vipLoginReward", msg.vipLoginReward);
+//            gameData.activity.updateLoginCountFlag(msg.loginInfo);
 
             gameData.boss.update(msg.bossInfo);
 
             gameData.friend.sync();
 
-            gameData.activity.todayGames();
+            gameData.activity.sync();
 
             MainScene.getInstance().updateMark();
         });
@@ -378,6 +378,7 @@ var Player = Entity.extend({
         cc.log("Player _vipChangeEvent");
 
         gameData.shop.updateMaxCount();
+
     },
 
     _powerChangeEven: function () {

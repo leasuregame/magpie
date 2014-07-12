@@ -63,6 +63,10 @@ var MainScene = cc.Scene.extend({
         } else {
             this.switchLayer(MainLayer);
         }
+
+        if (HAS_FIRST_RECHARGER_BOX == gameData.player.get("firstRechargeBox")) {
+            gameData.shop.showFirstRechargeBox();
+        }
     },
 
     changeMessage: function (msg) {
@@ -98,6 +102,12 @@ var MainScene = cc.Scene.extend({
         this._mainMenuLayer.updateGuide();
     },
 
+    updateLayer: function() {
+        if (this._nowLayer && this._nowLayer.updateLayer) {
+            this._nowLayer.updateLayer();
+        }
+    },
+
     switchLayer: function (runLayer) {
         cc.log("MainScene switchLayer");
 
@@ -108,7 +118,7 @@ var MainScene = cc.Scene.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
-            if(runLayer.parentLayer) {
+            if (runLayer.parentLayer) {
                 var layer = runLayer.parentLayer().create();
                 this.switchTo(layer);
                 layer.switchLayer(runLayer);

@@ -9,8 +9,13 @@ exports.buildBetweenWhere = function(key, val) {
     return where;
 };
 
-exports.buildInWhere = function(key, val) {
-    var where = ' and ' + key + ' in (';
+exports.buildInWhere = function(key, val, isNot) {
+    var where = '';
+    if(isNot) {
+        where = ' and ' + key + ' not in (';
+    } else {
+        where = ' and ' + key + ' in (';
+    }
 
     if(val instanceof Array) {
         for(var i in val) {

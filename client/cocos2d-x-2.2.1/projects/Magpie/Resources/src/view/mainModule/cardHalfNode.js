@@ -27,7 +27,7 @@ var CardHalfNode = cc.Node.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = star > 2 ? Math.min(star - 2, 3) : 1;
+        var index;
 
         if (this._card.isBossCard()) {
             var ccbNode = cc.BuilderReader.load(main_scene_image[url], this);
@@ -35,7 +35,12 @@ var CardHalfNode = cc.Node.extend({
 
             ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("def", 0);
         } else {
-            if (this._card.isLeadCard()) {
+            if (this._card.isRareCard()) {
+                index = (5 == star) ? 1 : 2;
+                this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
+                this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
+            } else if (this._card.isLeadCard()) {
+                index = star > 2 ? Math.min(star - 2, 3) : 1;
                 this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
                 this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
             } else if (this._card.isResourceCard()) {
@@ -46,9 +51,11 @@ var CardHalfNode = cc.Node.extend({
             this.addChild(this._frameSprite);
             this.addChild(this._cardSprite);
 
-            this._iconSprite = cc.Sprite.create(this._card.getCardIcon());
-            this._iconSprite.setPosition(cc.p(40, -53));
-            this.addChild(this._iconSprite);
+            if (this._card.isRareCard() || this._card.isLeadCard()) {
+                this._iconSprite = cc.Sprite.create(this._card.getCardIcon());
+                this._iconSprite.setPosition(cc.p(40, -53));
+                this.addChild(this._iconSprite);
+            }
 
             if (this._card.getCardSubscript()) {
                 var subscriptSprite = cc.Sprite.create(this._card.getCardSubscript());

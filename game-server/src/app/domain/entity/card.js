@@ -179,6 +179,7 @@ var Card = (function(_super) {
         Card.__super__.constructor.apply(this, arguments);
 
         if (this.tableId) {
+            console.log('new card:', this.tableId);
             var cardData = table.getTableItem('cards', this.tableId);
             // 同步配置表中卡牌的星级到数据库
             this.set('star', cardData.star);

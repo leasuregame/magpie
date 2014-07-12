@@ -68,24 +68,23 @@ function getDateInputData($input) {
  * @returns {{areaId: (*|jQuery), playerNames: *, createTime: *[]}}
  */
 function getInputData() {
-    var retData,areaId,createTime;
-
-    areaId = $('#area').val();
-    if(areaId == AREAID_ALL && servers) {
+    var areaId = $('#area').val();
+    if (areaId == AREAID_ALL && servers) {
         areaId = [];
-        for(var i in servers) {
+        for (var i in servers) {
             areaId.push(servers[i].id);
         }
     }
 
-    createTime = getDateInputData($('#createTime'));
+    var createTime = getDateInputData($('#createTime'));
 
-    retData = {
-        areaId : areaId,
-        createTime : createTime
-    };
+    var exceptedPlayers = ctrlExcPlayer.getExcPlayerIds();
 
-    return retData;
+    return {
+        areaId: areaId,
+        createTime: createTime,
+        exceptedPlayers: exceptedPlayers
+    }
 }
 
 function submit() {
@@ -99,7 +98,7 @@ function doRequest(reqData) {
     $(tipAlertId.LOADING).removeClass('hide');
     $('#submitCheck').attr('disabled', true);
 
-    window.webAPI.getConsumptionRate(reqData.areaId, reqData.createTime, function(data){
+    window.webAPI.getConsumptionRate(reqData.areaId, reqData.exceptedPlayers, reqData.createTime, function(data){
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
         lastReqData = data;
@@ -109,7 +108,6 @@ function doRequest(reqData) {
             $(tipAlertId.NO_RS).removeClass('hide');
         }
     },function(data){
-        console.log(data);
         $(tipAlertId.LOADING).addClass('hide');
         $('#submitCheck').attr('disabled', false);
     });
@@ -145,7 +143,7 @@ $(document).ready(function() {
     });
 
     $('#rsTable .sortBtn').click(function(){
-        $this = $(this);
+        var $this = $(this);
         var sKey = $this.attr('sortKey');
         var sType = $this.attr('sortType');
         sType = sType ? sType : SORT_TYPES.ASC;
@@ -175,5 +173,11 @@ $(document).ready(function() {
 
     $('#submitCheck').click(function(){
         submit();
+    });
+
+    $('#exportCSV').click(function(){
+        var url = window.webAPI.API.DOWNLOAD_PLAYER_CONSUMPTION + "?" + $.param(getInputData());
+        $(this).attr('href', url);
+        return true;
     });
 });

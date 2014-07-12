@@ -47,6 +47,7 @@ var main_scene_image = {
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
     star3: main_scene_path + "star3.png",
+    star4: main_scene_path + "star4.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
     cloud: main_scene_path + "cloud.png",
@@ -121,6 +122,7 @@ var main_scene_image = {
     card_icon_1_3: main_scene_path + "card_icon_1_3.png",
     card_icon_1_4: main_scene_path + "card_icon_1_4.png",
     card_icon_1_5: main_scene_path + "card_icon_1_5.png",
+    card_icon_1_6: main_scene_path + "card_icon_1_6.png",
 
     card_icon_2_0: main_scene_path + "card_icon_2_0.png",
     card_icon_2_1: main_scene_path + "card_icon_2_1.png",
@@ -128,6 +130,7 @@ var main_scene_image = {
     card_icon_2_3: main_scene_path + "card_icon_2_3.png",
     card_icon_2_4: main_scene_path + "card_icon_2_4.png",
     card_icon_2_5: main_scene_path + "card_icon_2_5.png",
+    card_icon_2_6: main_scene_path + "card_icon_2_6.png",
 
     card_subscript_6: main_scene_path + "card_subscript_6.png",
     card_subscript_7: main_scene_path + "card_subscript_7.png",
@@ -142,6 +145,10 @@ var main_scene_image = {
     card_item_bg5: main_scene_path + "card_item_bg5.png",
     card_item_bg6: main_scene_path + "card_item_bg6.png",
     card_item_bg7: main_scene_path + "card_item_bg7.png",
+
+    rare_card_item_bg5: main_scene_path + "rare_card_item_bg5.png",
+    rare_card_item_bg6: main_scene_path + "rare_card_item_bg6.png",
+    rare_card_item_bg7: main_scene_path + "rare_card_item_bg7.png",
 
     button1: main_scene_path + "button1.png",
     button1s: main_scene_path + "button1s.png",
@@ -332,6 +339,8 @@ var main_scene_image = {
     button88s: main_scene_path + "button88s.png",
     button89: main_scene_path + "button89.png",
     button89s: main_scene_path + "button89s.png",
+    button90: main_scene_path + "button90.png",
+    button90s: main_scene_path + "button90s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -809,6 +818,14 @@ var main_scene_image = {
     icon476: main_scene_path + "icon476.png",
     icon477: main_scene_path + "icon477.png",
     icon478: main_scene_path + "icon478.png",
+    icon479: main_scene_path + "icon479.png",
+    icon480: main_scene_path + "icon480.png",
+    icon481: main_scene_path + "icon481.png",
+    icon482: main_scene_path + "icon482.png",
+    icon483: main_scene_path + "icon483.png",
+    icon484: main_scene_path + "icon484.png",
+    icon485: main_scene_path + "icon485.png",
+    icon486: main_scene_path + "icon486.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -925,6 +942,14 @@ var main_scene_image = {
     effect1801_1: "resYY/ccb/effect1801_1.ccbi",
     effect1801_2: "resYY/ccb/effect1801_2.ccbi",
     effect1801_3: "resYY/ccb/effect1801_3.ccbi",
+
+    effect2001_1: "resYY/ccb/effect2001_1.ccbi",
+    effect2001_2: "resYY/ccb/effect2001_2.ccbi",
+    effect2001_3: "resYY/ccb/effect2001_3.ccbi",
+
+    effect2500_1: "resYY/ccb/effect2500_1.ccbi",
+    effect2500_2: "resYY/ccb/effect2500_2.ccbi",
+    effect2500_3: "resYY/ccb/effect2500_3.ccbi",
 
     battleEffect1: "resYY/ccb/battleEffect1.ccbi",
     battleEffect2: "resYY/ccb/battleEffect2.ccbi",
@@ -1063,6 +1088,8 @@ var main_scene_image = {
     uiEffect116: "resYY/ccb/uiEffect116.ccbi",
     uiEffect117: "resYY/ccb/uiEffect117.ccbi",
     uiEffect118: "resYY/ccb/uiEffect118.ccbi",
+    uiEffect119: "resYY/ccb/uiEffect119.ccbi",
+    uiEffect120: "resYY/ccb/uiEffect120.ccbi",
 
     // 特效资源
     p1: "resYY/effect/effect/p1.png",
@@ -1409,6 +1436,7 @@ var main_scene_res = [
     //effect
 ];
 
+//普通主角卡
 var cardResIdList = [
     2, 3, 5, 7, 8, 9, 10, 12, 13, 16, 18, 19, 20, 22, 25, 28, 29, 30, 31, 32, 33, 34, 36, 38, 39, 43, 44, 49, 50, 51
 ];
@@ -1431,6 +1459,27 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
+//稀有主角卡
+var rareCardResIdList = [
+    6
+];
+
+for (var cardIndex = 0; cardIndex < rareCardResIdList.length; ++cardIndex) {
+    var cardId = rareCardResIdList[cardIndex];
+
+    main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
+    main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
+
+    main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
+    main_scene_image["card" + cardId + "_half2"] = main_scene_path + "card" + cardId + "_half2.png";
+
+    main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
+    main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
+
+    main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
+}
+
+//怪物卡
 for (var cardId = 10000; cardId <= 10050; ++cardId) {
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
 }

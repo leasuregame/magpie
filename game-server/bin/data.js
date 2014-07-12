@@ -380,6 +380,39 @@ Data.prototype.correctCardBook = function() {
   });
 };
 
+Data.prototype.eachPlayer = function(execute) {
+  var playerDao = this.db['player'];
+  var totalCount = 0, finished = 0;
+
+  playerDao.fetchMany({
+    fields: ['id']
+  }, function(err, ids) {
+    console.log(err, ids.length);
+    ids = ids.map(function(id) {return id.id;});
+    totalCount = ids.length;
+
+    async.eachSeries(ids, function(id, next) {
+
+      playerDao.getPlayerInfo({
+        sync: true,
+        where: {id: id}
+      }, function(err, player) {
+        var _old_abi = player.ability;
+        var _abi = player.getAbility();
+        player.ability = _abi;
+        player.save()
+        console.log('update player ', player.name, "'s ability "+_old_abi+" to " + _abi);
+        finished += 1;
+        next(err, player);
+      });
+    }, function(err) {
+      console.log(err);
+      console.log('total count: ', totalCount);
+      console.log('finished count: ', finished);
+    });
+  });
+};
+
 Data.prototype.correctCardTableId = function() {
   var idTab = table.getTable('new_card_id_map');
   var cardDao = this.db['card'];
@@ -387,10 +420,10 @@ Data.prototype.correctCardTableId = function() {
 
   cardDao.totalCount(function(err, count) {
     console.log(err, count);
-    pageNum = 1000
-    pages = Math.ceil(count / pageNum);
+    var pageNum = 1000
+    var pages = Math.ceil(count / pageNum);
 
-    fCount = 0
+    var fCount = 0
     async.times(pages, function(page, next) {
       var start = page * pageNum;
 

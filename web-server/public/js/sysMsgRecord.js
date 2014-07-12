@@ -24,7 +24,8 @@ var baseRewardNames = {
     fragments : '卡魂',
     superHonor : '精元',
     speaker : '喇叭',
-    honor : '荣誉点'
+    honor : '荣誉点',
+    pill : '觉醒玉'
 };
 
 /**
@@ -88,6 +89,16 @@ function showTabPage(pageIdx){
 }
 
 /**
+ * 移除所有错误提示与效果
+ */
+function removeErrors() {
+    $('.has-error').removeClass('has-error');
+    $('.help-block').remove();
+    $('.alert-danger').addClass('hide');
+    $('.limitTag, .form-control').removeAttr('style');
+}
+
+/**
  * 获取各查询条件选项内容
  * @returns {{areaId: (*|jQuery), playerNames: *, createTime: *[]}}
  */
@@ -123,8 +134,29 @@ function getInputData() {
     return retData;
 }
 
+/**
+ * 完成相关初始化后自动执行一次提交查询
+ */
+function submitAfterInit(){
+    var areaCount = $('#area option').length;
+    if(areaCount > 0) {
+        submit();
+    }else {
+        setTimeout(submitAfterInit, 100);
+    }
+}
+
 function submit() {
+    removeErrors();
+
     var reqData = getInputData();
+
+    if ((isNaN(reqData.areaId) || reqData.areaId == AREAID_ALL) && reqData.playerNames.length > 0) {
+        $('#area').closest('.form-group').addClass('has-error');
+        $('#area').parent().append('<span class="help-block">必须指定玩家所在的具体服务器</span>');
+        return;
+    }
+
     if(reqData.playerNames) {
         window.webAPI.getPlayerIdsByNames(reqData.areaId, reqData.playerNames, function (resPids){
             if (resPids.id) {
@@ -209,6 +241,7 @@ function rewardJson2Str(reward) {
 $(document).ready(function() {
     initServer(initServerNames);
     initConfCards();
+    submitAfterInit();
 
     $('#submitCheck').click(function(){
         submit();

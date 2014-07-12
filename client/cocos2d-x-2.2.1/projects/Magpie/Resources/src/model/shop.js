@@ -54,6 +54,7 @@ var Shop = Entity.extend({
     setListener: function () {
         cc.log("Shop setListener");
 
+        var that = this;
         lz.server.on("onVerifyResult", function (data) {
             cc.log("***** on verify result:");
             cc.log(JSON.stringify(data));
@@ -118,8 +119,65 @@ var Shop = Entity.extend({
                 gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
                 gameData.spiritPool.set("maxCollectCount", outputTables.daily_gift.rows[1].collect_count + outputTables.vip_privilege.rows[nowVip].spirit_collect_count);
 
+
+                var cb = function () {
+                    that.showVipUpgrade();
+                };
+
+                if (msg.firstRechargeBox && msg.firstRechargeBox == HAS_FIRST_RECHARGER_BOX) {
+                    that.showFirstRechargeBox(cb);
+                } else {
+                    cb();
+                }
+
             }
         });
+    },
+
+    //首充礼包
+    showFirstRechargeBox: function (cb) {
+        cc.log("shop showFirstRechargeBox");
+
+        var table = outputTables.first_recharge_box.rows[1];
+        var cards = [];
+        cards.push(
+            {
+                tableId: table.card_id,
+                lv: table.card_lv,
+                skillLv: 1
+            }
+        );
+
+        var reward = {
+            "energy": table.energy,
+            "money": table.money,
+            "elixir": table.elixir,
+            "skillPoint": table.skillPoint,
+            "spirit": table.spirit,
+            "power": table.power,
+            "cardArray": cards
+        };
+
+        GiftBagLayer.pop2Top({
+            reward: reward,
+            type: GET_GIFT_BAG_NO_CLOSE,
+            titleType: TYPE_FIRST_RECHARGE_REWARD,
+            cb: function () {
+                gameData.activity.getFirstRechargeBox(function (reward) {
+                    lz.tipReward(reward);
+                    if (cb) {
+                        cb();
+                    }
+                });
+            }
+        });
+    },
+
+    //vip特权升级
+    showVipUpgrade: function () {
+        cc.log("shop showVipUpgrade");
+
+        VipUpgradeTipLabel.pop();
     },
 
     updateMaxCount: function () {
@@ -822,4 +880,4 @@ Shop.create = function () {
     }
 
     return null;
-}
+};

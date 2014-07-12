@@ -130,9 +130,9 @@ var VipDailyRewardLayer = cc.Layer.extend({
     _onClickGo2Payment: function () {
         cc.log("VipDailyRewardLayer _onClickGo2Payment");
 
-        var shopLayer = ShopLayer.create();
-        shopLayer._onClickVipLayer();
-        MainScene.getInstance().switchTo(shopLayer);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        PaymentLayer.pop();
     },
 
     _onClickGetReward: function () {

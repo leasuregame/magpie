@@ -47,7 +47,7 @@ Remote::getPlayerByUserId = (args, callback) ->
   
   dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) =>
     if err and not player
-      return callback {code: 501, msg: '找不到玩家'}
+      return callback {code: 501, msg: '找不到玩家，userid：' + userId}
 
     ### 每天重置一次玩家的部分数据 ###
     player.resetData() if not player.isReset()

@@ -171,6 +171,8 @@ var SystemMessageLabel = LazyLayer.extend({
         return function () {
             cc.log("SystemMessageLabel _onClickGetReward: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             if (that._cardsLen > 0) {
                 if (gameData.cardList.isFull()) {
                     CardListFullTipLayer.pop();
@@ -192,6 +194,8 @@ var SystemMessageLabel = LazyLayer.extend({
         return function () {
             cc.log("SystemMessageLabel _onClickOK: " + message);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             if (message.status == UNHANDLED_STATUS) {
                 gameData.message.handleSysMsg(message.id);
                 that._cb();
@@ -203,6 +207,8 @@ var SystemMessageLabel = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("SystemMessageLabel _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
     }

@@ -219,6 +219,7 @@
                 <file name="src/view/mainModule/usePillLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
+                <file name="src/view/mainModule/vipUpgradeTipLabel.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>
                 <file name="src/view/mainModule/mainLayer.js"/>
                 <file name="src/view/mainModule/mainMenuLayer.js"/>

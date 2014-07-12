@@ -11,17 +11,23 @@ exports.query = function(sql, cb) {
     });
 };
 
-exports.insert = function(table, rows, cb) {
+exports.insert = function(table, fields, cb) {
 
     var conn = new sqlite3.Database(DB_PATH);
+    var count = fields.length;
+    var placeholder = '';
+    for(var i = 0; i < count; i++) {
+        placeholder += '?,';
+    }
+    placeholder = placeholder.substr(0, placeholder.length - 1);
     conn.serialize(function(){
-        var stmt = conn.prepare("INSERT INTO " + table + " VALUES (?, ?, ?, ?, ?, ?, ?)");
-        if(rows[0] instanceof Array) {
-            for(var i in rows) {
-                stmt.run(rows[i]);
+        var stmt = conn.prepare("INSERT INTO " + table + " VALUES (" + placeholder + ")");
+        if(fields[0] instanceof Array) {
+            for(var i in fields) {
+                stmt.run(fields[i]);
             }
         } else {
-            stmt.run(rows);
+            stmt.run(fields);
         }
         stmt.finalize(cb);
     });

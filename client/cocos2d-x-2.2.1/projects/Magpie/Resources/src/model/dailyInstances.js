@@ -2,6 +2,11 @@
  * Created by lujunyu on 14-6-16.
  */
 
+var STATE_NORMAL = 0;
+var STATE_POWER_NOT_ENOUGH = 1;
+var STATE_CARD_LIST_FULL = 2;
+var STATE_COUNT_USE_UP = 3;
+
 var DailyInstances = Entity.extend({
 
     _expPassCount: null,
@@ -34,6 +39,28 @@ var DailyInstances = Entity.extend({
                 return table[id].id;
             }
         }
+
+        return 0;
+    },
+
+    expInstanceState: function () {
+        cc.log("DailyInstances expInstanceState");
+
+        var table = outputTables.exp_pass_config.rows;
+
+        if (0 >= this._expPassCount) {
+            return STATE_COUNT_USE_UP;
+        }
+
+        if (gameData.player.get("power") < table[1].power_consume) {
+            return STATE_POWER_NOT_ENOUGH;
+        }
+
+        if (gameData.cardList.isFull()) {
+            return STATE_CARD_LIST_FULL;
+        }
+
+        return STATE_NORMAL;
     },
 
     expInstance: function (id, cb) {

@@ -16,7 +16,8 @@ exp = module.exports = {
         BUY_VIP_BOX: 14,
         RESET_PASS_MARK: 15,
         RESET_BOSS_CD: 16,
-        INSPIRE_ON_ATTACK_BOSS: 17
+        INSPIRE_ON_ATTACK_BOSS: 17,
+        BUY_EXP_PASS_COUNT: 18
 	},
     CONSUMPTION_SOURCE_NAME: {
         "1":'低级抽卡',
@@ -35,6 +36,7 @@ exp = module.exports = {
         "14":'购买VIP礼包',
         "15":'重置天道',
         "16":'重置降魔CD',
-        "17":'购买降魔BUFF'
+        "17":'购买降魔BUFF',
+        "18":'购买经验副本次数'
     }
 };

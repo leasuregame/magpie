@@ -306,6 +306,22 @@ CREATE TABLE IF NOT EXISTS `worldCup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ---------------------------------------------------------
+-- 后台充值记录
+-- ---------------------------------------------------------
+DROP TABLE IF EXISTS `backendRecharge`;
+CREATE TABLE `backendRecharge` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `type` TINYINT(2) UNSIGNED DEFAULT '1' ,
+  `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
+  `qty` INT(10) UNSIGNED DEFAULT '0',
+  `amount` INT(5) UNSIGNED DEFAULT '1' ,
+  `gain` INT(7) UNSIGNED DEFAULT '1' ,
+  `createTime` DATETIME,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ---------------------------------------------------------
 -- 数据收集相关表
 -- ---------------------------------------------------------
 

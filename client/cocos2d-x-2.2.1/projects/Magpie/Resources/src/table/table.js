@@ -1988,6 +1988,54 @@ var outputTables = {
                 "description": "你说我没动过心，那是假的，那一声御弟哥哥，怎能让我忘却。",
                 "url": 5
             },
+            "105": {
+                "id": 105,
+                "number": 6,
+                "name": "罗刹女·铁扇公主",
+                "is_rare": 1,
+                "star": 5,
+                "lv": 1,
+                "atk": 350,
+                "hp": 1400,
+                "skill_name": "罗刹风暴",
+                "skill_id": 11,
+                "normal_atk_id": 2001,
+                "effect_id": 2500,
+                "description": "嫁给老牛后，我有了另一个名字，罗莎女。",
+                "url": 6
+            },
+            "106": {
+                "id": 106,
+                "number": 6,
+                "name": "芭蕉扇·铁扇公主",
+                "is_rare": 1,
+                "star": 6,
+                "lv": 1,
+                "atk": 430,
+                "hp": 1720,
+                "skill_name": "罗刹风暴",
+                "skill_id": 11,
+                "normal_atk_id": 2001,
+                "effect_id": 2500,
+                "description": "你热么？我给你扇扇？",
+                "url": 6
+            },
+            "107": {
+                "id": 107,
+                "number": 6,
+                "name": "生化芭蕉·铁扇公主",
+                "is_rare": 1,
+                "star": 7,
+                "lv": 1,
+                "atk": 520,
+                "hp": 2080,
+                "skill_name": "罗刹风暴",
+                "skill_id": 11,
+                "normal_atk_id": 2001,
+                "effect_id": 2500,
+                "description": "以前看月亮的时候叫人家小甜甜，原来都是假的。",
+                "url": 6
+            },
             "121": {
                 "id": 121,
                 "number": 7,
@@ -11645,6 +11693,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
+                "skill_id": 1,
+                "normal_atk_id": 5,
+                "effect_id": 805,
                 "description": "经验卡牌，不可强化与进阶，卡牌蕴含500点经验",
                 "url": 30000
             },
@@ -11656,6 +11707,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 6,
                 "hp": 11,
+                "skill_id": 4,
+                "normal_atk_id": 4,
+                "effect_id": 701,
                 "description": "经验卡牌，不可强化与进阶，卡牌蕴含1060点经验",
                 "url": 30000
             },
@@ -11667,6 +11721,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 7,
                 "hp": 12,
+                "skill_id": 5,
+                "normal_atk_id": 3,
+                "effect_id": 402,
                 "description": "经验卡牌，不可强化与进阶，卡牌蕴含2080点经验",
                 "url": 30000
             },
@@ -11678,6 +11735,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 8,
                 "hp": 13,
+                "skill_id": 6,
+                "normal_atk_id": 1,
+                "effect_id": 400,
                 "description": "经验卡牌，不可强化与进阶，卡牌蕴含4240点经验",
                 "url": 30000
             },
@@ -11689,6 +11749,9 @@ var outputTables = {
                 "lv": 1,
                 "atk": 9,
                 "hp": 14,
+                "skill_id": 3,
+                "normal_atk_id": 2,
+                "effect_id": 600,
                 "description": "经验卡牌，不可强化与进阶，卡牌蕴含7000点经验",
                 "url": 30000
             }
@@ -11701,7 +11764,7 @@ var outputTables = {
                 "id": 1,
                 "elixir": 20,
                 "atk": 1,
-                "hp": 2
+                "hp": 4
             }
         }
     },
@@ -11710,7 +11773,7 @@ var outputTables = {
         "rows": {
             "50001": {
                 "id": 50001,
-                "exp": 500,
+                "exp": 390,
                 "price": 100,
                 "star": 1,
                 "lv": 1,
@@ -11718,32 +11781,32 @@ var outputTables = {
             },
             "50002": {
                 "id": 50002,
-                "exp": 1060,
-                "price": 100,
+                "exp": 950,
+                "price": 200,
                 "star": 2,
                 "lv": 1,
                 "remark": "2星经验卡"
             },
             "50003": {
                 "id": 50003,
-                "exp": 2080,
-                "price": 100,
+                "exp": 1970,
+                "price": 300,
                 "star": 3,
                 "lv": 1,
                 "remark": "3星经验卡"
             },
             "50004": {
                 "id": 50004,
-                "exp": 4240,
-                "price": 100,
+                "exp": 4090,
+                "price": 400,
                 "star": 4,
                 "lv": 1,
                 "remark": "4星经验卡"
             },
             "50005": {
                 "id": 50005,
-                "exp": 7000,
-                "price": 100,
+                "exp": 6890,
+                "price": 500,
                 "star": 5,
                 "lv": 1,
                 "remark": "5星经验卡"
@@ -13505,6 +13568,15 @@ var outputTables = {
                 "card_ids": 144,
                 "card_lvs": 20,
                 "card_qtys": 1
+            },
+            "YY1-": {
+                "id": "YY1-",
+                "gold": 88,
+                "money": 100000,
+                "fragments": 2,
+                "card_ids": 364,
+                "card_lvs": 20,
+                "card_qtys": 1
             }
         }
     },
@@ -13927,7 +13999,7 @@ var outputTables = {
                 "exp_card_stars": "1,2,3",
                 "player_exp": 20,
                 "power_consume": 10,
-                "description": "我是使命是：无私奉献！不求回报！"
+                "description": "我的使命是：无私奉献！不求回报！"
             },
             "2": {
                 "id": 2,
@@ -13958,7 +14030,7 @@ var outputTables = {
                 "trigger_rate": 40,
                 "boss_attr": 86,
                 "atk_inc": 0,
-                "hp_inc": 50,
+                "hp_inc": 100,
                 "limit_lv": 60,
                 "total_count_scope": "9,11",
                 "litle_count_scope": "0,2",
@@ -30596,6 +30668,32 @@ var outputTables = {
                 "star7_inc_max": 23,
                 "star7_grow": 3,
                 "rate7": 50
+            },
+            "11": {
+                "id": 11,
+                "description": "对所有敌方卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 6,
+                "star3_inc_min": 51,
+                "star3_inc_max": 54,
+                "star3_grow": 3,
+                "rate3": 30,
+                "star4_inc_min": 54,
+                "star4_inc_max": 57,
+                "star4_grow": 3,
+                "rate4": 35,
+                "star5_inc_min": 57,
+                "star5_inc_max": 60,
+                "star5_grow": 3,
+                "rate5": 40,
+                "star6_inc_min": 60,
+                "star6_inc_max": 63,
+                "star6_grow": 3,
+                "rate6": 45,
+                "star7_inc_min": 63,
+                "star7_inc_max": 66,
+                "star7_grow": 3,
+                "rate7": 50
             }
         }
     },
@@ -43430,32 +43528,32 @@ var outputTables = {
             "50003": {
                 "id": 50003,
                 "card_id": 50002,
-                "atk": 3287.7,
-                "hp": 11506.949999999999,
+                "atk": 7163,
+                "hp": 28652,
                 "dodge_rate": 5,
                 "crit_rate": 5
             },
             "50004": {
                 "id": 50004,
                 "card_id": 50003,
-                "atk": 5083,
-                "hp": 17790.5,
+                "atk": 12542,
+                "hp": 50168,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "50005": {
                 "id": 50005,
                 "card_id": 50003,
-                "atk": 7163,
-                "hp": 25070.5,
+                "atk": 12542.4,
+                "hp": 50169.6,
                 "dodge_rate": 5,
                 "crit_rate": 5
             },
             "50006": {
                 "id": 50006,
                 "card_id": 50004,
-                "atk": 9838.4,
-                "hp": 34434.4,
+                "atk": 21918,
+                "hp": 56932,
                 "dodge_rate": 10,
                 "crit_rate": 10
             }

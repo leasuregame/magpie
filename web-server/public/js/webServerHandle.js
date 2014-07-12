@@ -6,16 +6,24 @@
     var API = {
         ACTOR_CARDS : API_BASE_PATH + 'getActorCards',
         CARD_LV_LIMIT : API_BASE_PATH + 'getCardLv',
+        RECHARGE_PRODUCT : API_BASE_PATH + 'rechargeProduct',
         CONSUME_SOURCE : API_BASE_PATH + 'getConsumeSource',
         PLAYER_NAMES : API_BASE_PATH + 'getPlayerNames',
         PLAYER_IDS : API_BASE_PATH + 'getPlayerId',
         RECORD_MSG_OPT : API_BASE_PATH + 'recordMsgOpt',
+        RECORD_RCHG_OPT : API_BASE_PATH + 'recordRchgOpt',
         GET_MSG_OPT : API_BASE_PATH + 'getSysMsgOpt',
+        GET_RCHG_OPT : API_BASE_PATH + 'getRchgOpt',
         SYS_MSG : API_BASE_PATH + 'getSysMsg',
+        RECHARGE_RECORD : API_BASE_PATH + 'getRechargeRecord',
         WASTAGE_RATE_ON_LV : API_BASE_PATH + 'getWastageRateOnLv',
         PLAYER_CONSUMPTION : API_BASE_PATH + 'getPlayerConsumption',
         DOWNLOAD_PLAYER_CONSUMPTION : API_BASE_PATH + 'download/playerConsumption',
-        DOWNLOAD_WASTAGE_RATE_ON_LV : API_BASE_PATH + 'download/wastageRateOnLv'
+        DOWNLOAD_WASTAGE_RATE_ON_LV : API_BASE_PATH + 'download/wastageRateOnLv',
+        GET_RCHG_SIG : API_BASE_PATH + 'getRchgSig',
+        GET_EXC_PLAYER : API_BASE_PATH + 'getExcPlayer',
+        ADD_EXC_PLAYER : API_BASE_PATH + 'addExcPlayer',
+        DEL_EXC_PLAYER : API_BASE_PATH + 'delExcPlayer'
     };
 
     var webAPI = {};
@@ -34,6 +42,46 @@
      */
     webAPI.getCardLvLimit = function (cb) {
         ajax(API.CARD_LV_LIMIT, cb);
+    };
+
+    /**
+     * 获得充值项目
+     * @param cb
+     */
+    webAPI.getRechargeProduct = function (cb) {
+        ajax(API.RECHARGE_PRODUCT, cb);
+    };
+
+    /**
+     * 获得需排除玩家
+     * @param cb
+     */
+    webAPI.getExcPlayer = function (cb) {
+        ajax(API.GET_EXC_PLAYER, cb);
+    };
+
+    /**
+     * 增加需排除玩家
+     * @param playerNames
+     * @param cb
+     */
+    webAPI.addExcPlayer = function (playerNames, cb) {
+        var param = {
+            names : playerNames
+        };
+        ajax(API.ADD_EXC_PLAYER, param, cb);
+    };
+
+    /**
+     * 删除需排除玩家
+     * @param players
+     * @param cb
+     */
+    webAPI.delExcPlayer = function (players, cb) {
+        var param = {
+            players : players
+        };
+        ajax(API.DEL_EXC_PLAYER, param, cb);
     };
 
     /**
@@ -103,6 +151,56 @@
     };
 
     /**
+     * 记录后台充值操作
+     * @param areaId
+     * @param options
+     * @param playerNames
+     * @param status
+     */
+    webAPI.recordRechargeOpt = function (areaId, options, playerNames, status) {
+        var param = {
+            areaId : areaId,
+            playerNames : playerNames,
+            options : options,
+            status : status
+        };
+        ajax(API.RECORD_RCHG_OPT, param, null);
+    };
+
+    /**
+     * 获取后台充值操作记录
+     * @param createTime
+     * @param scb
+     * @param ecb
+     */
+    webAPI.getRechargeOptions = function (createTime, scb, ecb) {
+        createTime[0] = util.strDate2Ms(createTime[0]);
+        createTime[1] = util.strDate2Ms(createTime[1]);
+
+        var param = {
+            createTime : createTime
+        };
+        ajax(API.GET_RCHG_OPT, param, scb, ecb);
+    };
+
+    /**
+     * 获取后台充值记录
+     * @param areaId
+     * @param playerIds
+     * @param createTime
+     * @param scb
+     * @param ecb
+     */
+    webAPI.getRechargeRecord = function (areaId, playerIds, createTime, scb, ecb) {
+        var param = {
+            areaId : areaId,
+            playerIds : playerIds,
+            createTime : createTime
+        };
+        ajax(API.RECHARGE_RECORD, param, scb, ecb);
+    };
+
+    /**
      * 获取系统消息
      * @param areaId
      * @param playerIds
@@ -142,16 +240,28 @@
     /**
      * 获取魔石使用占比
      * @param areaId
+     * @param exceptedPlayers
      * @param createTime
      * @param scb
      * @param ecb
      */
-    webAPI.getConsumptionRate = function (areaId, createTime, scb, ecb) {
+    webAPI.getConsumptionRate = function (areaId, exceptedPlayers, createTime, scb, ecb) {
         var param = {
             areaId : areaId,
-            createTime : createTime
+            createTime : createTime,
+            exceptedPlayers : JSON.stringify(exceptedPlayers)
         };
         ajax(API.PLAYER_CONSUMPTION, param, scb, ecb);
+    };
+
+    /**
+     * 获取充值签名
+     * @param param
+     * @param scb
+     * @param ecb
+     */
+    webAPI.getRchgSig = function (param, scb, ecb) {
+        ajax(API.GET_RCHG_SIG, param, scb, ecb);
     };
 
     function ajax(url, data, successCb, errorCb) {

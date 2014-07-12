@@ -135,7 +135,9 @@ var CardTrainLabel = cc.Layer.extend({
         tipLabelBgSprite.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabelBgSprite);
 
-        var tipLabel1 = cc.LabelTTF.create("每消耗 20 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
+        var elixirTable = outputTables.elixir.rows[1];
+
+        var tipLabel1 = cc.LabelTTF.create("每消耗 " + elixirTable.elixir + " 点仙丹可提升 " + elixirTable.atk + " 点攻击或 " + elixirTable.hp + " 点生命", "STHeitiTC-Medium", 22);
         tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
 
@@ -256,8 +258,9 @@ var CardTrainLabel = cc.Layer.extend({
     update: function () {
         cc.log("CardTrainLabel update");
 
+        var elixirTable = outputTables.elixir.rows[1];
         var elixir = gameData.player.get("elixir");
-        var needElixir = this._trainCount * 20;
+        var needElixir = this._trainCount * elixirTable.elixir;
 
         this._elixirLabel.setString(elixir);
         this._needElixirLabel.setString(needElixir);
@@ -325,14 +328,14 @@ var CardTrainLabel = cc.Layer.extend({
 
             if (this._trainType != TRAIN_CARD_NULL && this._trainCount != TRAIN_ZERO_COUNT) {
                 if (this._trainType == TRAIN_CARD_HP) {
-                    this._hpAdditionLabel.setString("+ " + (this._trainCount * 2));
+                    this._hpAdditionLabel.setString("+ " + (this._trainCount * elixirTable.hp));
                     this._atkAdditionLabel.setString("+ 0");
 
                     this._hpAdditionLabel.setVisible(true);
                     this._atkAdditionLabel.setVisible(false);
                 } else if (this._trainType == TRAIN_CARD_ATK) {
                     this._hpAdditionLabel.setString("+ 0");
-                    this._atkAdditionLabel.setString("+ " + this._trainCount);
+                    this._atkAdditionLabel.setString("+ " + this._trainCount * elixirTable.atk);
 
                     this._hpAdditionLabel.setVisible(false);
                     this._atkAdditionLabel.setVisible(true);

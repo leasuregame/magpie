@@ -20,6 +20,9 @@ var BossListLayer = cc.Layer.extend({
         cc.log("BossListLayer onEnter");
 
         this._super();
+
+        gameData.boss.set("isNewBoss", false);
+
         this.update();
         this.updateGuide();
         this.updateMark();
@@ -295,9 +298,9 @@ var BossListLayer = cc.Layer.extend({
 
             var bossNameLabel = cc.LabelTTF.create(bossCard.get("name"), "STHeitiTC-Medium", 24);
 
-            if(bossTable.type == 2) {
+            if (bossTable.type == 2) {
                 bossNameLabel.setColor(cc.c3b(255, 131, 242));
-            } else if(bossTable.type == 3) {
+            } else if (bossTable.type == 3) {
                 bossNameLabel.setColor(cc.c3b(252, 254, 143));
             }
 

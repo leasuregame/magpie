@@ -32,6 +32,9 @@ var TYPE_CRIT_SMALL = 1;
 var TYPE_CRIT_MIDDLE = 2;
 var TYPE_CTIT_BIG = 3;
 
+var EXP_CARD_PRIORITY = 1;
+var LEAD_CARD_PRIORITY = 10;
+
 var LEAD_CARD_TABLE_ID = {
     begin: 0,
     end: 9999
@@ -76,7 +79,8 @@ var skillIconMap = {
         7: "card_icon_1_5",
         8: "card_icon_1_5",
         9: "card_icon_1_5",
-        10: "card_icon_1_5"
+        10: "card_icon_1_5",
+        11: "card_icon_1_6"
     },
     2: {
         0: "card_icon_2_0",
@@ -89,7 +93,8 @@ var skillIconMap = {
         7: "card_icon_2_5",
         8: "card_icon_2_5",
         9: "card_icon_2_5",
-        10: "card_icon_2_5"
+        10: "card_icon_2_5",
+        11: "card_icon_2_6"
     }
 };
 
@@ -132,7 +137,10 @@ var Card = Entity.extend({
     _pill: 0,               // 当前觉醒玉数量
     _potentialLv: 0,        // 当前觉醒等级
 
-    _newCardMark: false,
+    _newCardMark: false,    // 新卡标记
+
+    _priority: 0,           //卡牌优先级
+    _isRare: false,         //是否为稀有卡
 
     init: function (data) {
         cc.log("Card init");
@@ -145,6 +153,7 @@ var Card = Entity.extend({
         this.on("abilityChange", this._abilityChangeEvent);
 
         this._newCardMark = this._id && (lz.load("card_" + this._id + "_mark") || false);
+        this.set("priority", this.getCardPriority());
 
         return true;
     },
@@ -230,6 +239,7 @@ var Card = Entity.extend({
         this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;
         this._skillName = cardTable.skill_name || "无";
+        this._isRare = cardTable.is_rare || false;
 
         // 读取等级加成表
         var factorsTable = outputTables.factors.rows[this._lv];
@@ -984,16 +994,26 @@ var Card = Entity.extend({
     getSellCardMoney: function () {
         cc.log("Card getSellCardMoney");
 
-        var table = outputTables.card_price.rows[1];
+        var price = 0;
 
-        var price = table["star" + this._star];
+        if (this.isLeadCard()) {
+            var table = outputTables.card_price.rows[1];
 
-        var rows = outputTables.card_grow.rows;
-        for (var i = 1; i < this._lv; ++i) {
-            price += rows[i].money_need;
+            price = table["star" + this._star];
+
+            var rows = outputTables.card_grow.rows;
+            for (var i = 1; i < this._lv; ++i) {
+                price += rows[i].money_need;
+            }
+        } else if (this.isExpCard()) {
+            price = outputTables.resource_cards.rows[this._tableId].price;
         }
 
         return price;
+    },
+
+    isRareCard: function () {
+        return this._isRare;
     },
 
     isExpCard: function () {
@@ -1005,7 +1025,7 @@ var Card = Entity.extend({
     },
 
     isMonsterCard: function () {
-        return this._tableId >= MONSTER_CARD_TABLE_ID.begin && this._tableId <= MONSTER_CARD_TABLE_ID.end;
+        return (this._tableId >= MONSTER_CARD_TABLE_ID.begin && this._tableId <= MONSTER_CARD_TABLE_ID.end) || (this._tableIdId >= 40003 && this._tableId <= 40005);
     },
 
     isResourceCard: function () {
@@ -1016,6 +1036,19 @@ var Card = Entity.extend({
         cc.log(this._tableId);
 
         return (this._tableId >= BOSS_CARD_TABLE_ID.begin && this._tableId <= BOSS_CARD_TABLE_ID.end);
+    },
+
+    getCardPriority: function () {
+        cc.log("Card getCardPriority");
+
+        if (this.isExpCard()) {
+            return EXP_CARD_PRIORITY;
+        } else if (this.isLeadCard()) {
+            return LEAD_CARD_PRIORITY;
+        }
+
+        return 0;
+
     }
 });
 

@@ -30,6 +30,7 @@ var Boss = Entity.extend({
     _thisWeek: null,        // 本周信息
     _lastWeek: null,        // 上周信息
     _isGetReward: null,     // 上周奖励是否已领
+    _isNewBoss: false,      // 新发现的boss
 
     init: function (data) {
         cc.log("Boss init");
@@ -53,6 +54,7 @@ var Boss = Entity.extend({
         this._thisWeek = null;
         this._lastWeek = null;
         this._isGetReward = true;
+        this._isNewBoss = false;
 
         this.update(data);
 
@@ -513,6 +515,11 @@ var Boss = Entity.extend({
         // 提示cd已经到了可以打BOSS
 
         var mark = gameMark.getBossMark();
+
+        if (this.get("isNewBoss")) {
+            gameMark.updateBossMark(true);
+            return;
+        }
 
         if (this.get("cd") == 0) {
             if (!mark) {

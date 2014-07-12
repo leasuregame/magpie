@@ -615,38 +615,38 @@ var ExploreLayer = cc.Layer.extend({
             CardListFullTipLayer.pop();
             this.unscheduleAllCallbacks();
         } else {
-            gameData.task.explore(function (data) {
-
-                if (task.isCollectedAll()) {
-                    task.getTurnReward();
-                }
-
-                if (data) {
-                    if (data.goldList) {
-                        var len = data.goldList.length;
-                        var gold = 0;
-                        for (var i = 0; i < len; i++) {
-                            gold += data.goldList[i];
+            if (task.isCollectedAll()) {
+                task.getTurnReward();
+            } else {
+                gameData.task.explore(function (data) {
+                    if (data) {
+                        if (data.goldList) {
+                            var len = data.goldList.length;
+                            var gold = 0;
+                            for (var i = 0; i < len; i++) {
+                                gold += data.goldList[i];
+                            }
+                            task.obtainGold(gold);
                         }
-                        task.obtainGold(gold);
+
+                        if (data.toNext) {
+                            that._index += 1;
+                        }
+
+                        if (that._index > that._maxIndex) {
+                            that._sectionId = task.getSection();
+                        }
+
+                        that.update();
+                        that._updateCollect();
                     }
+                }, this._getTaskId());
+            }
 
-                    if (data.toNext) {
-                        that._index += 1;
-                    }
+            that.scheduleOnce(function () {
+                that._onClickExplore();
+            }, 3.5);
 
-                    if (that._index > that._maxIndex) {
-                        that._sectionId = task.getSection();
-                    }
-
-                    that.update();
-                    that._updateCollect();
-                }
-
-                that.scheduleOnce(function () {
-                    that._onClickExplore();
-                }, 3.5);
-            }, this._getTaskId());
         }
     },
 

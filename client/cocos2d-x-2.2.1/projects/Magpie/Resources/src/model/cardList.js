@@ -11,10 +11,15 @@
  * card list
  * */
 
-
+var SORT_CARD_LIST_BY_PRIORITY = "priority";
 var SORT_CARD_LIST_BY_STAR = "star";
 var SORT_CARD_LIST_BY_LV = "lv";
 var SORT_CARD_LIST_BY_ABILITY = "ability";
+
+var SORT_TYPE_DEFAULT = [EXP_CARD_PRIORITY, LEAD_CARD_PRIORITY];
+var SORT_TYPE_SELL = [LEAD_CARD_PRIORITY, EXP_CARD_PRIORITY];
+var SORT_TYPE_UPGRADE = [EXP_CARD_PRIORITY, LEAD_CARD_PRIORITY];
+
 
 var CardList = Entity.extend({
     _cardList: {},
@@ -114,7 +119,7 @@ var CardList = Entity.extend({
     _sort: function (cardList, type) {
         cc.log("CardList _sort: " + type);
 
-        var typeList = [type, SORT_CARD_LIST_BY_STAR, SORT_CARD_LIST_BY_ABILITY, SORT_CARD_LIST_BY_LV];
+        var typeList = [type, SORT_CARD_LIST_BY_PRIORITY, SORT_CARD_LIST_BY_STAR, SORT_CARD_LIST_BY_ABILITY, SORT_CARD_LIST_BY_LV];
         var lineUp = gameData.lineUp;
 
         return function (a, b) {
@@ -144,15 +149,77 @@ var CardList = Entity.extend({
         }
     },
 
+    _sort2: function (cardList, priorityList) {
+
+        var typeList = [SORT_CARD_LIST_BY_STAR, SORT_CARD_LIST_BY_ABILITY, SORT_CARD_LIST_BY_LV];
+        var lineUp = gameData.lineUp;
+
+        return function (a, b) {
+            var aa = cardList[a];
+            var bb = cardList[b];
+            var len = typeList.length;
+
+            var aaLineUpIndex = lineUp.getCardOfLineUp(aa.get("id"));
+            var bbLineUpIndex = lineUp.getCardOfLineUp(bb.get("id"));
+
+            aaLineUpIndex = aaLineUpIndex != undefined ? aaLineUpIndex : 100000000;
+            bbLineUpIndex = bbLineUpIndex != undefined ? bbLineUpIndex : 100000000;
+
+            if (aaLineUpIndex != bbLineUpIndex) {
+                return (aaLineUpIndex < bbLineUpIndex ? 1 : -1);
+            }
+
+            var priorityId = function (priority) {
+                var len2 = priorityList.length;
+                for (var id = 0; id < len2; id++) {
+                    if (priorityList[id] == priority) {
+                        return id;
+                    }
+                }
+                return 0;
+            };
+
+            var ap = priorityId(aa.get("priority"));
+            var bp = priorityId(bb.get("priority"));
+
+            if (ap != bp) {
+                return ap - bp;
+            }
+
+            for (var i = 0; i < len; ++i) {
+                if (aa.has(typeList[i]) && bb.has(typeList[i])) {
+                    if (aa.get(typeList[i]) != bb.get(typeList[i])) {
+                        return (aa.get(typeList[i]) - bb.get(typeList[i]));
+                    }
+                }
+            }
+
+            return 0;
+        }
+    },
+
     sortCardList: function (type) {
         cc.log("CardList sortCardList");
         cc.log(type);
 
-        type = type || SORT_CARD_LIST_BY_STAR;
+        type = type || SORT_CARD_LIST_BY_PRIORITY;
 
-        if (type == "") type = SORT_CARD_LIST_BY_STAR;
+        if (type == "") type = SORT_CARD_LIST_BY_PRIORITY;
 
         this._index.sort(this._sort(this._cardList, type));
+
+        return this._index;
+    },
+
+    sortCardListByType: function (type) {
+        cc.log("CardList sortCardListByType");
+        cc.log(type);
+
+        type = type || SORT_TYPE_DEFAULT;
+
+        if (type == "") type = SORT_TYPE_DEFAULT;
+
+        this._index.sort(this._sort2(this._cardList, type));
 
         return this._index;
     },

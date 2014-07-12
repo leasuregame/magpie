@@ -43,6 +43,7 @@ shared/version.json
 game-server/config/area.json
 
 shared/whiteList.json
+shared/exceptedPlayerList.json
 
 *.map
 
@@ -52,3 +53,4 @@ web-server/uploads
 web-server/sqlite
 web-server/tmp
 client/cocos2d-html5-v2.2
+ng-web

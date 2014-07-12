@@ -157,9 +157,9 @@ var GoldCardsLayer = cc.Layer.extend({
     _onClickGo2Payment: function () {
         cc.log("GoldCardsLayer _onClickGo2Payment");
 
-        var shopLayer = ShopLayer.create();
-        shopLayer._onClickVipLayer();
-        MainScene.getInstance().switchTo(shopLayer);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        PaymentLayer.pop();
     },
 
     _onClickGotDaily: function (type) {

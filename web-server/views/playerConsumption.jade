@@ -29,6 +29,7 @@ block content
                 label.col-sm-3.control-label 服务器
                 .col-sm-7
                     select.form-control#area(type='text' name='area')
+            include ./exceptPlayerBox
             #createTime.form-group.paramSet(name='createTime')
                 label.col-sm-3.control-label 查询时间
                 .col-sm-2
@@ -80,3 +81,4 @@ block content
 
     script(type='text/javascript', src='/js/webServerHandle.js')
     script(type='text/javascript', src='/js/playerConsumption.js')
+    script(type='text/javascript', src='/js/exceptPlayer.js')

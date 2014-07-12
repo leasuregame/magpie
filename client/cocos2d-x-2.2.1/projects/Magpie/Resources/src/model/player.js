@@ -284,7 +284,7 @@ var Player = Entity.extend({
         for (var i = 0; i < len; ++i) {
             card = lineUpCardList[i];
             ability += card.get("ability");
-            ability += parseInt(card.get("initHp") / 2 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
+            ability += parseInt(card.get("initHp") / 4 * spiritPassiveHarm / 100) + parseInt(card.get("initAtk") * spiritPassiveHarm / 100);
         }
 
         return ability;
@@ -378,6 +378,7 @@ var Player = Entity.extend({
         cc.log("Player _vipChangeEvent");
 
         gameData.shop.updateMaxCount();
+
     },
 
     _powerChangeEven: function () {

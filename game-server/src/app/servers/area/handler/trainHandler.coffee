@@ -365,7 +365,6 @@ doLuckCard = (msg, session, beforeSaveCards, processFirstTime, next) ->
 
       if type is LOTTERY_BY_GOLD
         player.decrease('gold', totalConsume)
-        # todo record here
 
       if type is LOTTERY_BY_ENERGY
         player.decrease('energy', totalConsume)
@@ -431,7 +430,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       sp_left = card.skillPointLeft()
       if player.skillPoint + sp_left < sp_need
         return cb({code: 501, msg: '技能点不够，不能升级'})  
-      
+
       sp_need = sp_need - sp_left
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)

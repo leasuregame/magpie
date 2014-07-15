@@ -4227,7 +4227,8 @@ var outputTables = {
 				"skill_id": 3,
 				"normal_atk_id": 2002,
 				"effect_id": 2600,
-				"description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。"
+				"description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。",
+				"url": 42
 			},
 			"826": {
 				"id": 826,
@@ -4242,7 +4243,8 @@ var outputTables = {
 				"skill_id": 3,
 				"normal_atk_id": 2002,
 				"effect_id": 2600,
-				"description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。"
+				"description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。",
+				"url": 42
 			},
 			"827": {
 				"id": 827,
@@ -4257,7 +4259,8 @@ var outputTables = {
 				"skill_id": 3,
 				"normal_atk_id": 2002,
 				"effect_id": 2600,
-				"description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。"
+				"description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。",
+				"url": 42
 			},
 			"841": {
 				"id": 841,

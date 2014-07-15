@@ -19,10 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>14860</WindowHeight>
+  <WindowHeight>11100</WindowHeight>
   <WindowWidth>37700</WindowWidth>
-  <WindowTopX>-26836</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowTopX>1000</WindowTopX>
+  <WindowTopY>1240</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -209,41 +209,41 @@
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s99" ss:Parent="s66">
-   <Alignment ss:Horizontal="Justify" ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
-   <Interior/>
-  </Style>
-  <Style ss:ID="s100">
-   <Alignment ss:Vertical="Bottom"/>
-   <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s102" ss:Parent="s67">
-   <Alignment ss:Horizontal="Justify" ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
-   <Interior/>
-  </Style>
-  <Style ss:ID="s103">
-   <Alignment ss:Vertical="Center"/>
-  </Style>
-  <Style ss:ID="s104">
-   <Alignment ss:Vertical="Bottom"/>
-   <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
-   <Interior/>
-  </Style>
-  <Style ss:ID="s105">
-   <Alignment ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s106">
+  <Style ss:ID="s98">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="仿宋" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
+  </Style>
+  <Style ss:ID="s100" ss:Parent="s66">
+   <Alignment ss:Horizontal="Justify" ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s101">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s103" ss:Parent="s67">
+   <Alignment ss:Horizontal="Justify" ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s104">
+   <Alignment ss:Vertical="Center"/>
+  </Style>
+  <Style ss:ID="s105">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s106">
+   <Alignment ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="神仙卡牌配置表">
@@ -3149,41 +3149,41 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">降龙伏虎</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">2002</Data></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="Number">2600</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="Number">2600</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s98"><Data ss:Type="Number">42</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s73"><Data ss:Type="Number">826</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="Number">42</Data></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">降龙罗汉·济公</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">降龙罗汉·济公</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">420</Data></Cell>
-    <Cell ss:StyleID="s100" ss:Formula="=440*4"><Data ss:Type="Number">1760</Data></Cell>
+    <Cell ss:StyleID="s101" ss:Formula="=440*4"><Data ss:Type="Number">1760</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">降龙伏虎</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">2002</Data></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="Number">2600</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="Number">2600</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s98"><Data ss:Type="Number">42</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s73"><Data ss:Type="Number">827</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="Number">42</Data></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">降龙尊者·济公</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">降龙尊者·济公</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">510</Data></Cell>
-    <Cell ss:StyleID="s103" ss:Formula="=530*4"><Data ss:Type="Number">2120</Data></Cell>
+    <Cell ss:StyleID="s104" ss:Formula="=530*4"><Data ss:Type="Number">2120</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">降龙伏虎</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">2002</Data></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="Number">2600</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="Number">2600</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s98"><Data ss:Type="Number">42</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s77"><Data ss:Type="Number">841</Data></Cell>
@@ -3531,9 +3531,9 @@
     <Cell ss:StyleID="s77"><Data ss:Type="Number">47</Data></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="Number">212</Data></Cell>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s104"/>
-    <Cell ss:StyleID="s104"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s105"/>
     <Cell ss:StyleID="s86"><Data ss:Type="String">我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">50</Data></Cell>
    </Row>
@@ -3547,9 +3547,9 @@
     <Cell ss:StyleID="s77"><Data ss:Type="Number">97</Data></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="Number">412</Data></Cell>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s104"/>
-    <Cell ss:StyleID="s104"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s104"/>
+    <Cell ss:StyleID="s105"/>
+    <Cell ss:StyleID="s105"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s105"/>
     <Cell ss:StyleID="s86"><Data ss:Type="String">要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="Number">50</Data></Cell>
    </Row>
@@ -3767,7 +3767,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>2</SplitHorizontal>
-   <TopRowBottomPane>5</TopRowBottomPane>
+   <TopRowBottomPane>163</TopRowBottomPane>
    <SplitVertical>2</SplitVertical>
    <LeftColumnRightPane>2</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -3784,8 +3784,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>25</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>176</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -3798,8 +3798,8 @@
    <Column ss:AutoFitWidth="0" ss:Width="96"/>
    <Column ss:AutoFitWidth="0" ss:Width="76"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s105"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="String">export_name</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

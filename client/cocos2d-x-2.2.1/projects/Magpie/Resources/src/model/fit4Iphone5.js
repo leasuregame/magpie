@@ -404,6 +404,7 @@ var fit4Iphone5 = {
             "selectLeadCardIconPoint": cc.p(320, 690),
             "leadCardHalfNodePoint": cc.p(320, 690),
             "helpItemPoint": cc.p(50, 810),
+            "tipLayerPoint": cc.p(320, 860),
             "extractEffectUrl": "animation_2"
         },
         "cardUpgradeLabel": {

@@ -5093,9 +5093,6 @@ var BattleLayer = cc.Layer.extend({
                             effect2600.setPosition(targetLocate);
                             that.addChild(effect2600, EFFECT_Z_ORDER);
 
-                            cc.log(effect2600);
-
-
                             that.scheduleOnce(function () {
                                 cc.log("d_2600");
                                 targetNode.runAnimations(
@@ -5106,18 +5103,7 @@ var BattleLayer = cc.Layer.extend({
 
                                 targetNode.update(effect);
                                 that.tipHarm(target, effect, true, isCrit);
-                            }, 1);
-//                            effect2600.controller.ccbFnCallback = function() {
-//                                cc.log("d_2600");
-//                                targetNode.runAnimations(
-//                                    effect ? "d_2600" : "miss",
-//                                    0,
-//                                    that.nextStepCallback()
-//                                );
-//
-//                                targetNode.update(effect);
-//                                that.tipHarm(target, effect, true, isCrit);
-//                            };
+                            }, 2);
 
                             effect2600.animationManager.setCompletedAnimationCallback(that, function () {
                                 effect2600.removeFromParent();

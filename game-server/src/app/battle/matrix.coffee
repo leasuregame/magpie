@@ -56,7 +56,7 @@ class Matrix
 
   getElement: (pos) ->
     # 根据对方给出的位置，找到可以被攻击的对象
-    @get @_atkIndex(pos)
+    @get @numberToPosition(@_atkIndex(pos))
 
   _atkIndex: (pos) ->
     if _.isString(pos) and pos.length is 2
@@ -73,7 +73,7 @@ class Matrix
       el = @get(_pos)
       
       if el? and not el.death?()
-        return _pos
+        return num
 
     null
 
@@ -231,11 +231,11 @@ class Matrix
     idxs = []    
     idx = @_atkIndex(pos)
     idxs.push idx
-    idxs.push idx+3
+    idxs.push idx+3 if idx+3 <= 5
 
-    mIdx = idx <= 2 ? 0 : 1
-    idxs.concat _.difference(matrix[mIdx], [idx])
-    idxs.map (i) => @getElement(i)
+    mIdx = if idx <= 2 then 0 else 1
+    idxs = idxs.concat _.difference(matrix[mIdx], [idx])
+    idxs.map (i) => @get @numberToPosition(i)
 
   get: (row, col) ->
     if arguments.length == 1

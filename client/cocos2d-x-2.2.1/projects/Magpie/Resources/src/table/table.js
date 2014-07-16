@@ -13,12 +13,12 @@ var nameChanged = {
     "伤害排行榜奖励配置表": "boss_rank_reward",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
     "card_pill_dissolve": "卡牌熔炼配置表",
     "卡牌熔炼配置表": "card_pill_dissolve",
     "card_pill_use": "卡牌潜能升级配置表",
     "卡牌潜能升级配置表": "card_pill_use",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
     "神仙卡牌配置表": "cards",
     "elixir": "仙丹配置表",
@@ -57,6 +57,10 @@ var nameChanged = {
     "卡槽开放等级配置表": "card_lineup_limit",
     "function_limit": "功能开放等级限制",
     "功能开放等级限制": "function_limit",
+    "lv_limit": "等级限制表",
+    "等级限制表": "lv_limit",
+    "card_lv_limit": "卡牌等级限制表",
+    "卡牌等级限制表": "card_lv_limit",
     "passive_skill_config": "被动洗练配置表",
     "被动洗练配置表": "passive_skill_config",
     "elixir_limit": "仙丹培养限制表",
@@ -67,10 +71,6 @@ var nameChanged = {
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "lv_limit": "等级限制表",
-    "等级限制表": "lv_limit",
-    "card_lv_limit": "卡牌等级限制表",
-    "卡牌等级限制表": "card_lv_limit",
     "values": "零碎的值配置表",
     "零碎的值配置表": "values",
     "exp_pass_config": "经验副本配置表",
@@ -83,6 +83,8 @@ var nameChanged = {
     "名": "first_name",
     "last_name": "姓",
     "姓": "last_name",
+    "elixir_ranking_reward": "竞技仙丹排行版奖励",
+    "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_list": "竞技排名配置表",
@@ -91,14 +93,12 @@ var nameChanged = {
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
-    "elixir_ranking_reward": "竞技仙丹排行版奖励",
-    "竞技仙丹排行版奖励": "elixir_ranking_reward",
     "product": "道具配置表",
     "道具配置表": "product",
-    "skill_type": "技能类型表",
-    "技能类型表": "skill_type",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
+    "skill_type": "技能类型表",
+    "技能类型表": "skill_type",
     "skill_upgrade": "卡牌技能升级表",
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
@@ -109,28 +109,10 @@ var nameChanged = {
     "爬塔胜利喊话配置表": "passWinSpiritSpeak",
     "spiritSpeak": "精灵喊话配置表",
     "精灵喊话配置表": "spiritSpeak",
-    "spirit_pool": "灵气池配置表",
-    "灵气池配置表": "spirit_pool",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
-    "against_time_list": "世界杯每日比赛场次",
-    "世界杯每日比赛场次": "against_time_list",
-    "country_list": "国家列表",
-    "国家列表": "country_list",
-    "first_recharge_box": "首次充值赠送礼包",
-    "首次充值赠送礼包": "first_recharge_box",
-    "recharge": "充值类型",
-    "充值类型": "recharge",
-    "growth_plan": "成长计划",
-    "成长计划": "growth_plan",
-    "vip": "vip等级配置表",
-    "vip等级配置表": "vip",
-    "vip_box": "vip礼包赠品",
-    "vip礼包赠品": "vip_box",
-    "vip_daily_reward": "vip每日登陆奖励",
-    "vip每日登陆奖励": "vip_daily_reward",
-    "vip_privilege": "vip特权",
-    "vip特权": "vip_privilege",
+    "spirit_pool": "灵气池配置表",
+    "灵气池配置表": "spirit_pool",
     "chapter": "大章表",
     "大章表": "chapter",
     "chapter_title": "总章表",
@@ -160,7 +142,25 @@ var nameChanged = {
     "turn_reward_base": "每轮基础奖励",
     "每轮基础奖励": "turn_reward_base",
     "wipe_out": "任务扫荡产出表",
-    "任务扫荡产出表": "wipe_out"
+    "任务扫荡产出表": "wipe_out",
+    "first_recharge_box": "首次充值赠送礼包",
+    "首次充值赠送礼包": "first_recharge_box",
+    "growth_plan": "成长计划",
+    "成长计划": "growth_plan",
+    "recharge": "充值类型",
+    "充值类型": "recharge",
+    "vip": "vip等级配置表",
+    "vip等级配置表": "vip",
+    "vip_box": "vip礼包赠品",
+    "vip礼包赠品": "vip_box",
+    "vip_daily_reward": "vip每日登陆奖励",
+    "vip每日登陆奖励": "vip_daily_reward",
+    "vip_privilege": "vip特权",
+    "vip特权": "vip_privilege",
+    "against_time_list": "世界杯每日比赛场次",
+    "世界杯每日比赛场次": "against_time_list",
+    "country_list": "国家列表",
+    "国家列表": "country_list"
 };
 var outputTables = {
     "achievement": {
@@ -1585,22 +1585,6 @@ var outputTables = {
             }
         }
     },
-    "card_price": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "grow_per_lv": 0,
-                "star1": 100,
-                "star2": 500,
-                "star3": 5000,
-                "star4": 20000,
-                "star5": 200000,
-                "star6": 500000,
-                "star7": 1000000
-            }
-        }
-    },
     "card_pill_dissolve": {
         "colComment": {},
         "rows": {
@@ -1678,6 +1662,22 @@ var outputTables = {
                 "id": 7,
                 "pill": 20000,
                 "grow_percent": 35
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 0,
+                "star1": 100,
+                "star2": 500,
+                "star3": 5000,
+                "star4": 20000,
+                "star5": 200000,
+                "star6": 500000,
+                "star7": 1000000
             }
         }
     },
@@ -4459,6 +4459,54 @@ var outputTables = {
                 "effect_id": 501,
                 "description": "天道永恒，万物无极，凡人们知道这是什么意思么，反正我是不知道的。",
                 "url": 44
+            },
+            "945": {
+                "id": 945,
+                "number": 48,
+                "name": "仙·杨戬",
+                "is_rare": 1,
+                "star": 5,
+                "lv": 1,
+                "atk": 355,
+                "hp": 1380,
+                "skill_name": "三只眼",
+                "skill_id": 12,
+                "normal_atk_id": 2003,
+                "effect_id": 2700,
+                "description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。",
+                "url": 48
+            },
+            "946": {
+                "id": 946,
+                "number": 48,
+                "name": "神·杨戬",
+                "is_rare": 1,
+                "star": 6,
+                "lv": 1,
+                "atk": 435,
+                "hp": 1700,
+                "skill_name": "三只眼",
+                "skill_id": 12,
+                "normal_atk_id": 2003,
+                "effect_id": 2700,
+                "description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！",
+                "url": 48
+            },
+            "947": {
+                "id": 947,
+                "number": 48,
+                "name": "二郎神·杨戬",
+                "is_rare": 1,
+                "star": 7,
+                "lv": 1,
+                "atk": 525,
+                "hp": 2060,
+                "skill_name": "三只眼",
+                "skill_id": 12,
+                "normal_atk_id": 2003,
+                "effect_id": 2700,
+                "description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。",
+                "url": 48
             },
             "961": {
                 "id": 961,
@@ -13776,6 +13824,51 @@ var outputTables = {
             }
         }
     },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            },
+            "6": {
+                "id": 6,
+                "max_lv": 65
+            },
+            "7": {
+                "id": 7,
+                "max_lv": 70
+            }
+        }
+    },
     "passive_skill_config": {
         "colComment": {},
         "rows": {
@@ -13934,51 +14027,6 @@ var outputTables = {
                 "fragments": 10,
                 "spirit": 0,
                 "skillPoint": 0
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            },
-            "6": {
-                "id": 6,
-                "max_lv": 65
-            },
-            "7": {
-                "id": 7,
-                "max_lv": 70
             }
         }
     },
@@ -28669,6 +28717,375 @@ var outputTables = {
             }
         }
     },
+    "elixir_ranking_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "elixir": 60000,
+                "money": 600000,
+                "power": 200,
+                "exp_card_count": 30,
+                "exp_card_star": 3
+            },
+            "2": {
+                "id": 2,
+                "elixir": 58000,
+                "money": 585000,
+                "power": 190,
+                "exp_card_count": 28,
+                "exp_card_star": 3
+            },
+            "3": {
+                "id": 3,
+                "elixir": 56000,
+                "money": 570000,
+                "power": 180,
+                "exp_card_count": 26,
+                "exp_card_star": 3
+            },
+            "4": {
+                "id": 4,
+                "elixir": 54000,
+                "money": 555000,
+                "power": 170,
+                "exp_card_count": 24,
+                "exp_card_star": 3
+            },
+            "5": {
+                "id": 5,
+                "elixir": 52000,
+                "money": 540000,
+                "power": 160,
+                "exp_card_count": 22,
+                "exp_card_star": 3
+            },
+            "6": {
+                "id": 6,
+                "elixir": 50000,
+                "money": 525000,
+                "power": 150,
+                "exp_card_count": 20,
+                "exp_card_star": 3
+            },
+            "7": {
+                "id": 7,
+                "elixir": 48000,
+                "money": 510000,
+                "power": 140,
+                "exp_card_count": 18,
+                "exp_card_star": 3
+            },
+            "8": {
+                "id": 8,
+                "elixir": 46000,
+                "money": 495000,
+                "power": 130,
+                "exp_card_count": 16,
+                "exp_card_star": 3
+            },
+            "9": {
+                "id": 9,
+                "elixir": 44000,
+                "money": 480000,
+                "power": 120,
+                "exp_card_count": 14,
+                "exp_card_star": 3
+            },
+            "10": {
+                "id": 10,
+                "elixir": 42000,
+                "money": 465000,
+                "power": 110,
+                "exp_card_count": 12,
+                "exp_card_star": 3
+            },
+            "11": {
+                "id": 11,
+                "elixir": 41500,
+                "money": 460000,
+                "power": 105,
+                "exp_card_count": 0
+            },
+            "12": {
+                "id": 12,
+                "elixir": 41000,
+                "money": 455000,
+                "power": 100,
+                "exp_card_count": 0
+            },
+            "13": {
+                "id": 13,
+                "elixir": 40500,
+                "money": 450000,
+                "power": 95,
+                "exp_card_count": 0
+            },
+            "14": {
+                "id": 14,
+                "elixir": 40000,
+                "money": 445000,
+                "power": 90,
+                "exp_card_count": 0
+            },
+            "15": {
+                "id": 15,
+                "elixir": 39500,
+                "money": 440000,
+                "power": 85,
+                "exp_card_count": 0
+            },
+            "16": {
+                "id": 16,
+                "elixir": 39000,
+                "money": 435000,
+                "power": 80,
+                "exp_card_count": 0
+            },
+            "17": {
+                "id": 17,
+                "elixir": 38500,
+                "money": 430000,
+                "power": 75,
+                "exp_card_count": 0
+            },
+            "18": {
+                "id": 18,
+                "elixir": 38000,
+                "money": 425000,
+                "power": 70,
+                "exp_card_count": 0
+            },
+            "19": {
+                "id": 19,
+                "elixir": 37500,
+                "money": 420000,
+                "power": 65,
+                "exp_card_count": 0
+            },
+            "20": {
+                "id": 20,
+                "elixir": 37000,
+                "money": 415000,
+                "power": 60,
+                "exp_card_count": 0
+            },
+            "21": {
+                "id": 21,
+                "elixir": 36500,
+                "money": 410000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "22": {
+                "id": 22,
+                "elixir": 36000,
+                "money": 405000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "23": {
+                "id": 23,
+                "elixir": 35500,
+                "money": 400000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "24": {
+                "id": 24,
+                "elixir": 35000,
+                "money": 395000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "25": {
+                "id": 25,
+                "elixir": 34500,
+                "money": 390000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "26": {
+                "id": 26,
+                "elixir": 34000,
+                "money": 385000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "27": {
+                "id": 27,
+                "elixir": 33500,
+                "money": 380000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "28": {
+                "id": 28,
+                "elixir": 33000,
+                "money": 375000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "29": {
+                "id": 29,
+                "elixir": 32500,
+                "money": 370000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "30": {
+                "id": 30,
+                "elixir": 32000,
+                "money": 365000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "31": {
+                "id": 31,
+                "elixir": 31500,
+                "money": 360000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "32": {
+                "id": 32,
+                "elixir": 31000,
+                "money": 355000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "33": {
+                "id": 33,
+                "elixir": 30500,
+                "money": 350000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "34": {
+                "id": 34,
+                "elixir": 30000,
+                "money": 345000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "35": {
+                "id": 35,
+                "elixir": 29500,
+                "money": 340000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "36": {
+                "id": 36,
+                "elixir": 29000,
+                "money": 335000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "37": {
+                "id": 37,
+                "elixir": 28500,
+                "money": 330000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "38": {
+                "id": 38,
+                "elixir": 28000,
+                "money": 325000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "39": {
+                "id": 39,
+                "elixir": 27500,
+                "money": 320000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "40": {
+                "id": 40,
+                "elixir": 27000,
+                "money": 315000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "41": {
+                "id": 41,
+                "elixir": 26500,
+                "money": 310000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "42": {
+                "id": 42,
+                "elixir": 26000,
+                "money": 305000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "43": {
+                "id": 43,
+                "elixir": 25500,
+                "money": 300000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "44": {
+                "id": 44,
+                "elixir": 25000,
+                "money": 295000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "45": {
+                "id": 45,
+                "elixir": 24500,
+                "money": 290000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "46": {
+                "id": 46,
+                "elixir": 24000,
+                "money": 285000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "47": {
+                "id": 47,
+                "elixir": 23500,
+                "money": 280000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "48": {
+                "id": 48,
+                "elixir": 23000,
+                "money": 275000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "49": {
+                "id": 49,
+                "elixir": 22500,
+                "money": 270000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "50": {
+                "id": 50,
+                "elixir": 22000,
+                "money": 265000,
+                "power": 0,
+                "exp_card_count": 0
+            },
+            "51": {
+                "id": 51,
+                "elixir": 20000
+            }
+        }
+    },
     "rank": {
         "colComment": {},
         "rows": {
@@ -29841,375 +30258,6 @@ var outputTables = {
             }
         }
     },
-    "elixir_ranking_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "elixir": 60000,
-                "money": 600000,
-                "power": 200,
-                "exp_card_count": 30,
-                "exp_card_star": 3
-            },
-            "2": {
-                "id": 2,
-                "elixir": 58000,
-                "money": 585000,
-                "power": 190,
-                "exp_card_count": 28,
-                "exp_card_star": 3
-            },
-            "3": {
-                "id": 3,
-                "elixir": 56000,
-                "money": 570000,
-                "power": 180,
-                "exp_card_count": 26,
-                "exp_card_star": 3
-            },
-            "4": {
-                "id": 4,
-                "elixir": 54000,
-                "money": 555000,
-                "power": 170,
-                "exp_card_count": 24,
-                "exp_card_star": 3
-            },
-            "5": {
-                "id": 5,
-                "elixir": 52000,
-                "money": 540000,
-                "power": 160,
-                "exp_card_count": 22,
-                "exp_card_star": 3
-            },
-            "6": {
-                "id": 6,
-                "elixir": 50000,
-                "money": 525000,
-                "power": 150,
-                "exp_card_count": 20,
-                "exp_card_star": 3
-            },
-            "7": {
-                "id": 7,
-                "elixir": 48000,
-                "money": 510000,
-                "power": 140,
-                "exp_card_count": 18,
-                "exp_card_star": 3
-            },
-            "8": {
-                "id": 8,
-                "elixir": 46000,
-                "money": 495000,
-                "power": 130,
-                "exp_card_count": 16,
-                "exp_card_star": 3
-            },
-            "9": {
-                "id": 9,
-                "elixir": 44000,
-                "money": 480000,
-                "power": 120,
-                "exp_card_count": 14,
-                "exp_card_star": 3
-            },
-            "10": {
-                "id": 10,
-                "elixir": 42000,
-                "money": 465000,
-                "power": 110,
-                "exp_card_count": 12,
-                "exp_card_star": 3
-            },
-            "11": {
-                "id": 11,
-                "elixir": 41500,
-                "money": 460000,
-                "power": 105,
-                "exp_card_count": 0
-            },
-            "12": {
-                "id": 12,
-                "elixir": 41000,
-                "money": 455000,
-                "power": 100,
-                "exp_card_count": 0
-            },
-            "13": {
-                "id": 13,
-                "elixir": 40500,
-                "money": 450000,
-                "power": 95,
-                "exp_card_count": 0
-            },
-            "14": {
-                "id": 14,
-                "elixir": 40000,
-                "money": 445000,
-                "power": 90,
-                "exp_card_count": 0
-            },
-            "15": {
-                "id": 15,
-                "elixir": 39500,
-                "money": 440000,
-                "power": 85,
-                "exp_card_count": 0
-            },
-            "16": {
-                "id": 16,
-                "elixir": 39000,
-                "money": 435000,
-                "power": 80,
-                "exp_card_count": 0
-            },
-            "17": {
-                "id": 17,
-                "elixir": 38500,
-                "money": 430000,
-                "power": 75,
-                "exp_card_count": 0
-            },
-            "18": {
-                "id": 18,
-                "elixir": 38000,
-                "money": 425000,
-                "power": 70,
-                "exp_card_count": 0
-            },
-            "19": {
-                "id": 19,
-                "elixir": 37500,
-                "money": 420000,
-                "power": 65,
-                "exp_card_count": 0
-            },
-            "20": {
-                "id": 20,
-                "elixir": 37000,
-                "money": 415000,
-                "power": 60,
-                "exp_card_count": 0
-            },
-            "21": {
-                "id": 21,
-                "elixir": 36500,
-                "money": 410000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "22": {
-                "id": 22,
-                "elixir": 36000,
-                "money": 405000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "23": {
-                "id": 23,
-                "elixir": 35500,
-                "money": 400000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "24": {
-                "id": 24,
-                "elixir": 35000,
-                "money": 395000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "25": {
-                "id": 25,
-                "elixir": 34500,
-                "money": 390000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "26": {
-                "id": 26,
-                "elixir": 34000,
-                "money": 385000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "27": {
-                "id": 27,
-                "elixir": 33500,
-                "money": 380000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "28": {
-                "id": 28,
-                "elixir": 33000,
-                "money": 375000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "29": {
-                "id": 29,
-                "elixir": 32500,
-                "money": 370000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "30": {
-                "id": 30,
-                "elixir": 32000,
-                "money": 365000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "31": {
-                "id": 31,
-                "elixir": 31500,
-                "money": 360000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "32": {
-                "id": 32,
-                "elixir": 31000,
-                "money": 355000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "33": {
-                "id": 33,
-                "elixir": 30500,
-                "money": 350000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "34": {
-                "id": 34,
-                "elixir": 30000,
-                "money": 345000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "35": {
-                "id": 35,
-                "elixir": 29500,
-                "money": 340000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "36": {
-                "id": 36,
-                "elixir": 29000,
-                "money": 335000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "37": {
-                "id": 37,
-                "elixir": 28500,
-                "money": 330000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "38": {
-                "id": 38,
-                "elixir": 28000,
-                "money": 325000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "39": {
-                "id": 39,
-                "elixir": 27500,
-                "money": 320000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "40": {
-                "id": 40,
-                "elixir": 27000,
-                "money": 315000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "41": {
-                "id": 41,
-                "elixir": 26500,
-                "money": 310000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "42": {
-                "id": 42,
-                "elixir": 26000,
-                "money": 305000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "43": {
-                "id": 43,
-                "elixir": 25500,
-                "money": 300000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "44": {
-                "id": 44,
-                "elixir": 25000,
-                "money": 295000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "45": {
-                "id": 45,
-                "elixir": 24500,
-                "money": 290000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "46": {
-                "id": 46,
-                "elixir": 24000,
-                "money": 285000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "47": {
-                "id": 47,
-                "elixir": 23500,
-                "money": 280000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "48": {
-                "id": 48,
-                "elixir": 23000,
-                "money": 275000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "49": {
-                "id": 49,
-                "elixir": 22500,
-                "money": 270000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "50": {
-                "id": 50,
-                "elixir": 22000,
-                "money": 265000,
-                "power": 0,
-                "exp_card_count": 0
-            },
-            "51": {
-                "id": 51,
-                "elixir": 20000
-            }
-        }
-    },
     "product": {
         "colComment": {},
         "rows": {
@@ -30322,31 +30370,6 @@ var outputTables = {
             }
         }
     },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
-            }
-        }
-    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -30391,6 +30414,42 @@ var outputTables = {
                 "name": "hp_min",
                 "value": 7,
                 "desc": "血量最低卡牌"
+            },
+            "8": {
+                "id": 8,
+                "name": "latitude_line",
+                "value": 8,
+                "desc": "所有纵横线上的卡牌"
+            }
+        }
+    },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            },
+            "5": {
+                "id": 5,
+                "name": "aoe_latitude",
+                "chinese": "特殊群体攻击"
             }
         }
     },
@@ -30742,6 +30801,37 @@ var outputTables = {
                 "star7_inc_max": 65,
                 "star7_grow": 3,
                 "rate7": 50
+            },
+            "12": {
+                "id": 12,
+                "description": "十字形伤害，对十字中心卡牌造成高倍伤害。",
+                "type": 5,
+                "scope": 8,
+                "star3_special_inc": 20,
+                "star3_inc_min": 127,
+                "star3_inc_max": 130,
+                "star3_grow": 5,
+                "rate3": 22,
+                "star4_inc_min": 137,
+                "star4_inc_max": 140,
+                "star4_grow": 5,
+                "rate4": 35,
+                "star4_special_inc": 24,
+                "star5_inc_min": 147,
+                "star5_inc_max": 150,
+                "star5_grow": 5,
+                "rate5": 40,
+                "star5_special_inc": 26,
+                "star6_inc_min": 157,
+                "star6_inc_max": 160,
+                "star6_grow": 5,
+                "rate6": 45,
+                "star6_special_inc": 28,
+                "star7_inc_min": 167,
+                "star7_inc_max": 170,
+                "star7_grow": 5,
+                "rate7": 50,
+                "star7_special_inc": 30
             }
         }
     },
@@ -30992,71 +31082,6 @@ var outputTables = {
             }
         }
     },
-    "spirit_pool": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 225,
-                "spirit_obtain": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 450,
-                "spirit_obtain": 12
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 825,
-                "spirit_obtain": 14
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 1200,
-                "spirit_obtain": 16
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 1575,
-                "spirit_obtain": 18
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 1950,
-                "spirit_obtain": 20
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 2325,
-                "spirit_obtain": 22
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 2700,
-                "spirit_obtain": 24
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 3075,
-                "spirit_obtain": 26
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 3500,
-                "spirit_obtain": 28
-            }
-        }
-    },
     "spirit": {
         "colComment": {},
         "rows": {
@@ -31152,1165 +31177,68 @@ var outputTables = {
             }
         }
     },
-    "against_time_list": {
-        "colComment": {
-            "home_team": {
-                "table": "国家列表",
-                "key_index": "country",
-                "value_index": "id",
-                "withPound": false
-            },
-            "visiting_team": {
-                "table": "国家列表",
-                "key_index": "country",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "date": "2014-06-14T00:00:00.000",
-                "home_team": "墨西哥",
-                "visiting_team": "喀麦隆",
-                "reward_gold": 20,
-                "result": 1,
-                "score": "1:0"
-            },
-            "2": {
-                "id": 2,
-                "date": "2014-06-14T00:00:00.000",
-                "home_team": "西班牙",
-                "visiting_team": "荷兰",
-                "reward_gold": 20,
-                "result": 3,
-                "score": "1:5"
-            },
-            "3": {
-                "id": 3,
-                "date": "2014-06-14T00:00:00.000",
-                "home_team": "智利",
-                "visiting_team": "澳大利亚",
-                "reward_gold": 20,
-                "result": 1,
-                "score": "3:1"
-            },
-            "4": {
-                "id": 4,
-                "date": "2014-06-15T00:00:00.000",
-                "home_team": "哥伦比亚",
-                "visiting_team": "希腊",
-                "reward_gold": 20
-            },
-            "5": {
-                "id": 5,
-                "date": "2014-06-15T00:00:00.000",
-                "home_team": "乌拉圭",
-                "visiting_team": "哥斯达黎加",
-                "reward_gold": 20
-            },
-            "6": {
-                "id": 6,
-                "date": "2014-06-15T00:00:00.000",
-                "home_team": "英格兰",
-                "visiting_team": "意大利",
-                "reward_gold": 20
-            },
-            "7": {
-                "id": 7,
-                "date": "2014-06-15T00:00:00.000",
-                "home_team": "科特迪瓦",
-                "visiting_team": "日本",
-                "reward_gold": 20
-            },
-            "8": {
-                "id": 8,
-                "date": "2014-06-16T00:00:00.000",
-                "home_team": "瑞士",
-                "visiting_team": "厄瓜多尔",
-                "reward_gold": 20
-            },
-            "9": {
-                "id": 9,
-                "date": "2014-06-16T00:00:00.000",
-                "home_team": "法国",
-                "visiting_team": "洪都拉斯",
-                "reward_gold": 20
-            },
-            "10": {
-                "id": 10,
-                "date": "2014-06-16T00:00:00.000",
-                "home_team": "阿根廷",
-                "visiting_team": "波黑",
-                "reward_gold": 20
-            },
-            "11": {
-                "id": 11,
-                "date": "2014-06-17T00:00:00.000",
-                "home_team": "德国",
-                "visiting_team": "葡萄牙",
-                "reward_gold": 20
-            },
-            "12": {
-                "id": 12,
-                "date": "2014-06-17T00:00:00.000",
-                "home_team": "伊朗",
-                "visiting_team": "尼日利亚",
-                "reward_gold": 20
-            },
-            "13": {
-                "id": 13,
-                "date": "2014-06-17T00:00:00.000",
-                "home_team": "加纳",
-                "visiting_team": "美国",
-                "reward_gold": 20
-            },
-            "14": {
-                "id": 14,
-                "date": "2014-06-18T00:00:00.000",
-                "home_team": "比利时",
-                "visiting_team": "阿尔及利亚",
-                "reward_gold": 20
-            },
-            "15": {
-                "id": 15,
-                "date": "2014-06-18T00:00:00.000",
-                "home_team": "巴西",
-                "visiting_team": "墨西哥",
-                "reward_gold": 20
-            },
-            "16": {
-                "id": 16,
-                "date": "2014-06-18T00:00:00.000",
-                "home_team": "俄罗斯",
-                "visiting_team": "韩国",
-                "reward_gold": 20
-            },
-            "17": {
-                "id": 17,
-                "date": "2014-06-19T00:00:00.000",
-                "home_team": "澳大利亚",
-                "visiting_team": "荷兰",
-                "reward_gold": 20
-            },
-            "18": {
-                "id": 18,
-                "date": "2014-06-19T00:00:00.000",
-                "home_team": "西班牙",
-                "visiting_team": "智利",
-                "reward_gold": 20
-            },
-            "19": {
-                "id": 19,
-                "date": "2014-06-19T00:00:00.000",
-                "home_team": "喀麦隆",
-                "visiting_team": "克罗地亚",
-                "reward_gold": 20
-            },
-            "20": {
-                "id": 20,
-                "date": "2014-06-20T00:00:00.000",
-                "home_team": "哥伦比亚",
-                "visiting_team": "科特迪瓦",
-                "reward_gold": 20
-            },
-            "21": {
-                "id": 21,
-                "date": "2014-06-20T00:00:00.000",
-                "home_team": "乌拉圭",
-                "visiting_team": "英格兰",
-                "reward_gold": 20
-            },
-            "22": {
-                "id": 22,
-                "date": "2014-06-20T00:00:00.000",
-                "home_team": "日本",
-                "visiting_team": "希腊",
-                "reward_gold": 20
-            },
-            "23": {
-                "id": 23,
-                "date": "2014-06-21T00:00:00.000",
-                "home_team": "意大利",
-                "visiting_team": "哥斯达黎加",
-                "reward_gold": 20
-            },
-            "24": {
-                "id": 24,
-                "date": "2014-06-21T00:00:00.000",
-                "home_team": "瑞士",
-                "visiting_team": "法国",
-                "reward_gold": 20
-            },
-            "25": {
-                "id": 25,
-                "date": "2014-06-21T00:00:00.000",
-                "home_team": "洪都拉斯",
-                "visiting_team": "厄瓜多尔",
-                "reward_gold": 20
-            },
-            "26": {
-                "id": 26,
-                "date": "2014-06-22T00:00:00.000",
-                "home_team": "阿根廷",
-                "visiting_team": "伊朗",
-                "reward_gold": 20
-            },
-            "27": {
-                "id": 27,
-                "date": "2014-06-22T00:00:00.000",
-                "home_team": "德国",
-                "visiting_team": "加纳",
-                "reward_gold": 20
-            },
-            "28": {
-                "id": 28,
-                "date": "2014-06-22T00:00:00.000",
-                "home_team": "尼日利亚",
-                "visiting_team": "波黑",
-                "reward_gold": 20
-            },
-            "29": {
-                "id": 29,
-                "date": "2014-06-23T00:00:00.000",
-                "home_team": "比利时",
-                "visiting_team": "俄罗斯",
-                "reward_gold": 20
-            },
-            "30": {
-                "id": 30,
-                "date": "2014-06-23T00:00:00.000",
-                "home_team": "韩国",
-                "visiting_team": "阿尔及利亚",
-                "reward_gold": 20
-            },
-            "31": {
-                "id": 31,
-                "date": "2014-06-23T00:00:00.000",
-                "home_team": "美国",
-                "visiting_team": "葡萄牙",
-                "reward_gold": 20
-            },
-            "32": {
-                "id": 32,
-                "date": "2014-06-24T00:00:00.000",
-                "home_team": "澳大利亚",
-                "visiting_team": "西班牙",
-                "reward_gold": 20
-            },
-            "33": {
-                "id": 33,
-                "date": "2014-06-24T00:00:00.000",
-                "home_team": "荷兰",
-                "visiting_team": "智利",
-                "reward_gold": 20
-            },
-            "34": {
-                "id": 34,
-                "date": "2014-06-24T00:00:00.000",
-                "home_team": "喀麦隆",
-                "visiting_team": "巴西",
-                "reward_gold": 20
-            },
-            "35": {
-                "id": 35,
-                "date": "2014-06-24T00:00:00.000",
-                "home_team": "克罗地亚",
-                "visiting_team": "墨西哥",
-                "reward_gold": 20
-            },
-            "36": {
-                "id": 36,
-                "date": "2014-06-25T00:00:00.000",
-                "home_team": "意大利",
-                "visiting_team": "乌拉圭",
-                "reward_gold": 20
-            },
-            "37": {
-                "id": 37,
-                "date": "2014-06-25T00:00:00.000",
-                "home_team": "哥斯达黎加",
-                "visiting_team": "英格兰",
-                "reward_gold": 20
-            },
-            "38": {
-                "id": 38,
-                "date": "2014-06-25T00:00:00.000",
-                "home_team": "日本",
-                "visiting_team": "哥伦比亚",
-                "reward_gold": 20
-            },
-            "39": {
-                "id": 39,
-                "date": "2014-06-25T00:00:00.000",
-                "home_team": "希腊",
-                "visiting_team": "科特迪瓦",
-                "reward_gold": 20
-            },
-            "40": {
-                "id": 40,
-                "date": "2014-06-26T00:00:00.000",
-                "home_team": "尼日利亚",
-                "visiting_team": "阿根廷",
-                "reward_gold": 20
-            },
-            "41": {
-                "id": 41,
-                "date": "2014-06-26T00:00:00.000",
-                "home_team": "波黑",
-                "visiting_team": "伊朗",
-                "reward_gold": 20
-            },
-            "42": {
-                "id": 42,
-                "date": "2014-06-26T00:00:00.000",
-                "home_team": "洪都拉斯",
-                "visiting_team": "瑞士",
-                "reward_gold": 20
-            },
-            "43": {
-                "id": 43,
-                "date": "2014-06-26T00:00:00.000",
-                "home_team": "厄瓜多尔",
-                "visiting_team": "法国",
-                "reward_gold": 20
-            },
-            "44": {
-                "id": 44,
-                "date": "2014-06-27T00:00:00.000",
-                "home_team": "美国",
-                "visiting_team": "德国",
-                "reward_gold": 20
-            },
-            "45": {
-                "id": 45,
-                "date": "2014-06-27T00:00:00.000",
-                "home_team": "葡萄牙",
-                "visiting_team": "加纳",
-                "reward_gold": 20
-            },
-            "46": {
-                "id": 46,
-                "date": "2014-06-27T00:00:00.000",
-                "home_team": "韩国",
-                "visiting_team": "比利时",
-                "reward_gold": 20
-            },
-            "47": {
-                "id": 47,
-                "date": "2014-06-27T00:00:00.000",
-                "home_team": "阿尔及利亚",
-                "visiting_team": "俄罗斯",
-                "reward_gold": 20
-            }
-        }
-    },
-    "country_list": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "country": "巴西",
-                "url": "country1"
-            },
-            "2": {
-                "id": 2,
-                "country": "西班牙",
-                "url": "country2"
-            },
-            "3": {
-                "id": 3,
-                "country": "哥伦比亚",
-                "url": "country3"
-            },
-            "4": {
-                "id": 4,
-                "country": "乌拉圭",
-                "url": "country4"
-            },
-            "5": {
-                "id": 5,
-                "country": "瑞士",
-                "url": "country5"
-            },
-            "6": {
-                "id": 6,
-                "country": "阿根廷",
-                "url": "country6"
-            },
-            "7": {
-                "id": 7,
-                "country": "德国",
-                "url": "country7"
-            },
-            "8": {
-                "id": 8,
-                "country": "比利时",
-                "url": "country8"
-            },
-            "9": {
-                "id": 9,
-                "country": "喀麦隆",
-                "url": "country9"
-            },
-            "10": {
-                "id": 10,
-                "country": "智利",
-                "url": "country10"
-            },
-            "11": {
-                "id": 11,
-                "country": "科特迪瓦",
-                "url": "country11"
-            },
-            "12": {
-                "id": 12,
-                "country": "英格兰",
-                "url": "country12"
-            },
-            "13": {
-                "id": 13,
-                "country": "厄瓜多尔",
-                "url": "country13"
-            },
-            "14": {
-                "id": 14,
-                "country": "尼日利亚",
-                "url": "country14"
-            },
-            "15": {
-                "id": 15,
-                "country": "加纳",
-                "url": "country15"
-            },
-            "16": {
-                "id": 16,
-                "country": "阿尔及利亚",
-                "url": "country16"
-            },
-            "17": {
-                "id": 17,
-                "country": "墨西哥",
-                "url": "country17"
-            },
-            "18": {
-                "id": 18,
-                "country": "澳大利亚",
-                "url": "country18"
-            },
-            "19": {
-                "id": 19,
-                "country": "日本",
-                "url": "country19"
-            },
-            "20": {
-                "id": 20,
-                "country": "哥斯达黎加",
-                "url": "country20"
-            },
-            "21": {
-                "id": 21,
-                "country": "洪都拉斯",
-                "url": "country21"
-            },
-            "22": {
-                "id": 22,
-                "country": "伊朗",
-                "url": "country22"
-            },
-            "23": {
-                "id": 23,
-                "country": "美国",
-                "url": "country23"
-            },
-            "24": {
-                "id": 24,
-                "country": "韩国",
-                "url": "country24"
-            },
-            "25": {
-                "id": 25,
-                "country": "克罗地亚",
-                "url": "country25"
-            },
-            "26": {
-                "id": 26,
-                "country": "荷兰",
-                "url": "country26"
-            },
-            "27": {
-                "id": 27,
-                "country": "希腊",
-                "url": "country27"
-            },
-            "28": {
-                "id": 28,
-                "country": "意大利",
-                "url": "country28"
-            },
-            "29": {
-                "id": 29,
-                "country": "法国",
-                "url": "country29"
-            },
-            "30": {
-                "id": 30,
-                "country": "波黑",
-                "url": "country30"
-            },
-            "31": {
-                "id": 31,
-                "country": "葡萄牙",
-                "url": "country31"
-            },
-            "32": {
-                "id": 32,
-                "country": "俄罗斯",
-                "url": "country32"
-            }
-        }
-    },
-    "first_recharge_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 8000,
-                "money": 80000,
-                "elixir": 10000,
-                "skillPoint": 10000,
-                "spirit": 1000,
-                "power": 100,
-                "card_id": 765,
-                "card_lv": 1
-            }
-        }
-    },
-    "recharge": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "60魔石",
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.pay6",
-                "times": 2
-            },
-            "2": {
-                "id": 2,
-                "name": "300魔石",
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.pay30",
-                "times": 2
-            },
-            "3": {
-                "id": 3,
-                "name": "680魔石",
-                "cash": 68,
-                "gold": 76,
-                "product_id": "com.leasuregame.magpie.pay68",
-                "times": 2
-            },
-            "4": {
-                "id": 4,
-                "name": "1280魔石",
-                "cash": 128,
-                "gold": 146,
-                "product_id": "com.leasuregame.magpie.pay128",
-                "times": 2
-            },
-            "5": {
-                "id": 5,
-                "name": "1980魔石",
-                "cash": 198,
-                "gold": 232,
-                "product_id": "com.leasuregame.magpie.pay198",
-                "times": 2
-            },
-            "6": {
-                "id": 6,
-                "name": "3280魔石",
-                "cash": 328,
-                "gold": 403,
-                "product_id": "com.leasuregame.magpie.pay328",
-                "times": 2
-            },
-            "7": {
-                "id": 7,
-                "name": "6480魔石",
-                "cash": 648,
-                "gold": 842,
-                "product_id": "com.leasuregame.magpie.pay648",
-                "times": 3
-            },
-            "8": {
-                "id": 8,
-                "name": "周卡",
-                "cash": 6,
-                "gold": 6,
-                "product_id": "com.leasuregame.magpie.week.card",
-                "daily_gold": 60,
-                "valid_days": 7,
-                "times": 1
-            },
-            "9": {
-                "id": 9,
-                "name": "月卡",
-                "cash": 30,
-                "gold": 33,
-                "product_id": "com.leasuregame.magpie.month.card",
-                "daily_gold": 100,
-                "valid_days": 30,
-                "times": 1
-            }
-        }
-    },
-    "growth_plan": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 25,
-                "gold": 100
-            },
-            "2": {
-                "id": 2,
-                "lv": 30,
-                "gold": 150
-            },
-            "3": {
-                "id": 3,
-                "lv": 35,
-                "gold": 200
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 250
-            },
-            "5": {
-                "id": 5,
-                "lv": 45,
-                "gold": 300
-            },
-            "6": {
-                "id": 6,
-                "lv": 50,
-                "gold": 350
-            },
-            "7": {
-                "id": 7,
-                "lv": 55,
-                "gold": 400
-            },
-            "8": {
-                "id": 8,
-                "lv": 60,
-                "gold": 450
-            },
-            "9": {
-                "id": 9,
-                "lv": 65,
-                "gold": 500
-            },
-            "10": {
-                "id": 10,
-                "lv": 70,
-                "gold": 550
-            },
-            "11": {
-                "id": 11,
-                "lv": 75,
-                "gold": 630
-            }
-        }
-    },
-    "vip": {
+    "spirit_pool": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
                 "lv": 1,
-                "name": "Vip1",
-                "cash": 6,
-                "total_cash": 6
+                "exp_need": 225,
+                "spirit_obtain": 10
             },
             "2": {
                 "id": 2,
                 "lv": 2,
-                "name": "Vip2",
-                "cash": 10,
-                "total_cash": 16
+                "exp_need": 450,
+                "spirit_obtain": 12
             },
             "3": {
                 "id": 3,
                 "lv": 3,
-                "name": "Vip3",
-                "cash": 14,
-                "total_cash": 30
+                "exp_need": 825,
+                "spirit_obtain": 14
             },
             "4": {
                 "id": 4,
                 "lv": 4,
-                "name": "Vip4",
-                "cash": 30,
-                "total_cash": 60
+                "exp_need": 1200,
+                "spirit_obtain": 16
             },
             "5": {
                 "id": 5,
                 "lv": 5,
-                "name": "Vip5",
-                "cash": 50,
-                "total_cash": 110
+                "exp_need": 1575,
+                "spirit_obtain": 18
             },
             "6": {
                 "id": 6,
                 "lv": 6,
-                "name": "Vip6",
-                "cash": 90,
-                "total_cash": 200
+                "exp_need": 1950,
+                "spirit_obtain": 20
             },
             "7": {
                 "id": 7,
                 "lv": 7,
-                "name": "Vip7",
-                "cash": 130,
-                "total_cash": 330
+                "exp_need": 2325,
+                "spirit_obtain": 22
             },
             "8": {
                 "id": 8,
                 "lv": 8,
-                "name": "Vip8",
-                "cash": 300,
-                "total_cash": 630
+                "exp_need": 2700,
+                "spirit_obtain": 24
             },
             "9": {
                 "id": 9,
                 "lv": 9,
-                "name": "Vip9",
-                "cash": 600,
-                "total_cash": 1230
+                "exp_need": 3075,
+                "spirit_obtain": 26
             },
             "10": {
                 "id": 10,
                 "lv": 10,
-                "name": "Vip10",
-                "cash": 1200,
-                "total_cash": 2430
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "name": "Vip11",
-                "cash": 2400,
-                "total_cash": 4830
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "name": "Vip12",
-                "cash": 4800,
-                "total_cash": 9630
-            }
-        }
-    },
-    "vip_box": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "energy": 3000,
-                "money": 100000,
-                "skillPoint": 0,
-                "elixir": 0,
-                "fragments": 0,
-                "exp_card_count": 0,
-                "exp_card_star": 0,
-                "price": 18,
-                "true_price": 66
-            },
-            "2": {
-                "id": 2,
-                "energy": 4000,
-                "money": 150000,
-                "skillPoint": 10000,
-                "elixir": 0,
-                "fragments": 0,
-                "exp_card_count": 0,
-                "exp_card_star": 0,
-                "price": 58,
-                "true_price": 195
-            },
-            "3": {
-                "id": 3,
-                "energy": 5000,
-                "money": 200000,
-                "skillPoint": 20000,
-                "elixir": 10000,
-                "fragments": 1,
-                "exp_card_count": 10,
-                "exp_card_star": 2,
-                "price": 88,
-                "true_price": 246
-            },
-            "4": {
-                "id": 4,
-                "energy": 6000,
-                "money": 250000,
-                "skillPoint": 30000,
-                "elixir": 20000,
-                "fragments": 2,
-                "exp_card_count": 10,
-                "exp_card_star": 3,
-                "price": 188,
-                "true_price": 569
-            },
-            "5": {
-                "id": 5,
-                "energy": 7000,
-                "money": 300000,
-                "skillPoint": 40000,
-                "elixir": 30000,
-                "fragments": 3,
-                "exp_card_count": 15,
-                "exp_card_star": 3,
-                "price": 288,
-                "true_price": 726
-            },
-            "6": {
-                "id": 6,
-                "energy": 8000,
-                "money": 350000,
-                "skillPoint": 50000,
-                "elixir": 40000,
-                "fragments": 4,
-                "exp_card_count": 10,
-                "exp_card_star": 4,
-                "price": 388,
-                "true_price": 1080
-            },
-            "7": {
-                "id": 7,
-                "energy": 9000,
-                "money": 400000,
-                "skillPoint": 60000,
-                "elixir": 50000,
-                "fragments": 5,
-                "exp_card_count": 12,
-                "exp_card_star": 4,
-                "price": 488,
-                "true_price": 1368
-            },
-            "8": {
-                "id": 8,
-                "energy": 10000,
-                "money": 450000,
-                "skillPoint": 70000,
-                "elixir": 60000,
-                "fragments": 6,
-                "exp_card_count": 15,
-                "exp_card_star": 4,
-                "price": 588,
-                "true_price": 1989
-            },
-            "9": {
-                "id": 9,
-                "energy": 11000,
-                "money": 500000,
-                "skillPoint": 80000,
-                "elixir": 70000,
-                "fragments": 7,
-                "exp_card_count": 10,
-                "exp_card_star": 5,
-                "price": 688,
-                "true_price": 2366
-            },
-            "10": {
-                "id": 10,
-                "energy": 12000,
-                "money": 550000,
-                "skillPoint": 90000,
-                "elixir": 80000,
-                "fragments": 8,
-                "exp_card_count": 12,
-                "exp_card_star": 5,
-                "price": 788,
-                "true_price": 2899
-            },
-            "11": {
-                "id": 11,
-                "energy": 13000,
-                "money": 600000,
-                "skillPoint": 100000,
-                "elixir": 90000,
-                "fragments": 9,
-                "exp_card_count": 13,
-                "exp_card_star": 5,
-                "price": 888,
-                "true_price": 3288
-            },
-            "12": {
-                "id": 12,
-                "energy": 14000,
-                "money": 650000,
-                "skillPoint": 110000,
-                "elixir": 100000,
-                "fragments": 10,
-                "exp_card_count": 15,
-                "exp_card_star": 5,
-                "price": 999,
-                "true_price": 3986
-            }
-        }
-    },
-    "vip_daily_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 20000,
-                "elixir": 3000,
-                "energy": 0,
-                "exp_card_count": 6,
-                "exp_card_star": 3
-            },
-            "2": {
-                "id": 2,
-                "money": 40000,
-                "elixir": 4000,
-                "energy": 200,
-                "exp_card_count": 9,
-                "exp_card_star": 3
-            },
-            "3": {
-                "id": 3,
-                "money": 60000,
-                "elixir": 5000,
-                "energy": 400,
-                "exp_card_count": 12,
-                "exp_card_star": 3
-            },
-            "4": {
-                "id": 4,
-                "money": 80000,
-                "elixir": 6000,
-                "energy": 600,
-                "exp_card_count": 15,
-                "exp_card_star": 3
-            },
-            "5": {
-                "id": 5,
-                "money": 100000,
-                "elixir": 7000,
-                "energy": 800,
-                "exp_card_count": 18,
-                "exp_card_star": 3
-            },
-            "6": {
-                "id": 6,
-                "money": 120000,
-                "elixir": 8000,
-                "energy": 1000,
-                "exp_card_count": 21,
-                "exp_card_star": 3
-            },
-            "7": {
-                "id": 7,
-                "money": 140000,
-                "elixir": 9000,
-                "energy": 1200,
-                "exp_card_count": 24,
-                "exp_card_star": 3
-            },
-            "8": {
-                "id": 8,
-                "money": 160000,
-                "elixir": 10000,
-                "energy": 1400,
-                "exp_card_count": 27,
-                "exp_card_star": 3
-            },
-            "9": {
-                "id": 9,
-                "money": 180000,
-                "elixir": 11000,
-                "energy": 1600,
-                "exp_card_count": 30,
-                "exp_card_star": 3
-            },
-            "10": {
-                "id": 10,
-                "money": 200000,
-                "elixir": 12000,
-                "energy": 1800,
-                "exp_card_count": 33,
-                "exp_card_star": 3
-            },
-            "11": {
-                "id": 11,
-                "money": 220000,
-                "elixir": 13000,
-                "energy": 2000,
-                "exp_card_count": 36,
-                "exp_card_star": 3
-            },
-            "12": {
-                "id": 12,
-                "money": 240000,
-                "elixir": 14000,
-                "energy": 2200,
-                "exp_card_count": 39,
-                "exp_card_star": 3
-            }
-        }
-    },
-    "vip_privilege": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "lottery_free_count": 0,
-                "buy_power_count": 0,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "exp_pass_count": 0,
-                "friend_count": 0
-            },
-            "1": {
-                "id": 1,
-                "lottery_free_count": 1,
-                "buy_power_count": 1,
-                "give_bless_count": 0,
-                "receive_bless_count": 0,
-                "spirit_collect_count": 0,
-                "challenge_buy_count": 0,
-                "exp_pass_count": 0,
-                "friend_count": 0
-            },
-            "2": {
-                "id": 2,
-                "lottery_free_count": 1,
-                "buy_power_count": 2,
-                "give_bless_count": 1,
-                "receive_bless_count": 1,
-                "spirit_collect_count": 1,
-                "challenge_buy_count": 0,
-                "exp_pass_count": 0,
-                "friend_count": 0
-            },
-            "3": {
-                "id": 3,
-                "lottery_free_count": 2,
-                "buy_power_count": 3,
-                "give_bless_count": 2,
-                "receive_bless_count": 2,
-                "spirit_collect_count": 2,
-                "challenge_buy_count": 5,
-                "exp_pass_count": 0,
-                "friend_count": 0
-            },
-            "4": {
-                "id": 4,
-                "lottery_free_count": 2,
-                "buy_power_count": 4,
-                "give_bless_count": 3,
-                "receive_bless_count": 3,
-                "spirit_collect_count": 3,
-                "challenge_buy_count": 10,
-                "exp_pass_count": 1,
-                "friend_count": 5
-            },
-            "5": {
-                "id": 5,
-                "lottery_free_count": 3,
-                "buy_power_count": 5,
-                "give_bless_count": 4,
-                "receive_bless_count": 4,
-                "spirit_collect_count": 4,
-                "challenge_buy_count": 15,
-                "exp_pass_count": 1,
-                "friend_count": 10
-            },
-            "6": {
-                "id": 6,
-                "lottery_free_count": 4,
-                "buy_power_count": 6,
-                "give_bless_count": 5,
-                "receive_bless_count": 5,
-                "spirit_collect_count": 5,
-                "challenge_buy_count": 20,
-                "exp_pass_count": 2,
-                "friend_count": 15
-            },
-            "7": {
-                "id": 7,
-                "lottery_free_count": 5,
-                "buy_power_count": 7,
-                "give_bless_count": 6,
-                "receive_bless_count": 6,
-                "spirit_collect_count": 6,
-                "challenge_buy_count": 25,
-                "exp_pass_count": 2,
-                "friend_count": 20
-            },
-            "8": {
-                "id": 8,
-                "lottery_free_count": 6,
-                "buy_power_count": 8,
-                "give_bless_count": 7,
-                "receive_bless_count": 7,
-                "spirit_collect_count": 7,
-                "challenge_buy_count": 30,
-                "exp_pass_count": 3,
-                "friend_count": 25
-            },
-            "9": {
-                "id": 9,
-                "lottery_free_count": 7,
-                "buy_power_count": 9,
-                "give_bless_count": 8,
-                "receive_bless_count": 8,
-                "spirit_collect_count": 8,
-                "challenge_buy_count": 35,
-                "exp_pass_count": 4,
-                "friend_count": 30
-            },
-            "10": {
-                "id": 10,
-                "lottery_free_count": 8,
-                "buy_power_count": 10,
-                "give_bless_count": 9,
-                "receive_bless_count": 9,
-                "spirit_collect_count": 9,
-                "challenge_buy_count": 40,
-                "exp_pass_count": 5,
-                "friend_count": 35
-            },
-            "11": {
-                "id": 11,
-                "lottery_free_count": 9,
-                "buy_power_count": 11,
-                "give_bless_count": 10,
-                "receive_bless_count": 10,
-                "spirit_collect_count": 10,
-                "challenge_buy_count": 45,
-                "exp_pass_count": 5,
-                "friend_count": 40
-            },
-            "12": {
-                "id": 12,
-                "lottery_free_count": 10,
-                "buy_power_count": 12,
-                "give_bless_count": 11,
-                "receive_bless_count": 11,
-                "spirit_collect_count": 11,
-                "challenge_buy_count": 50,
-                "exp_pass_count": 5,
-                "friend_count": 45
+                "exp_need": 3500,
+                "spirit_obtain": 28
             }
         }
     },
@@ -53642,6 +52570,1168 @@ var outputTables = {
             "50": {
                 "id": 50,
                 "money_obtain": 8450
+            }
+        }
+    },
+    "first_recharge_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 8000,
+                "money": 80000,
+                "elixir": 10000,
+                "skillPoint": 10000,
+                "spirit": 1000,
+                "power": 100,
+                "card_id": 765,
+                "card_lv": 1
+            }
+        }
+    },
+    "growth_plan": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 25,
+                "gold": 100
+            },
+            "2": {
+                "id": 2,
+                "lv": 30,
+                "gold": 150
+            },
+            "3": {
+                "id": 3,
+                "lv": 35,
+                "gold": 200
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 250
+            },
+            "5": {
+                "id": 5,
+                "lv": 45,
+                "gold": 300
+            },
+            "6": {
+                "id": 6,
+                "lv": 50,
+                "gold": 350
+            },
+            "7": {
+                "id": 7,
+                "lv": 55,
+                "gold": 400
+            },
+            "8": {
+                "id": 8,
+                "lv": 60,
+                "gold": 450
+            },
+            "9": {
+                "id": 9,
+                "lv": 65,
+                "gold": 500
+            },
+            "10": {
+                "id": 10,
+                "lv": 70,
+                "gold": 550
+            },
+            "11": {
+                "id": 11,
+                "lv": 75,
+                "gold": 630
+            }
+        }
+    },
+    "recharge": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "60魔石",
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.pay6",
+                "times": 2
+            },
+            "2": {
+                "id": 2,
+                "name": "300魔石",
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.pay30",
+                "times": 2
+            },
+            "3": {
+                "id": 3,
+                "name": "680魔石",
+                "cash": 68,
+                "gold": 76,
+                "product_id": "com.leasuregame.magpie.pay68",
+                "times": 2
+            },
+            "4": {
+                "id": 4,
+                "name": "1280魔石",
+                "cash": 128,
+                "gold": 146,
+                "product_id": "com.leasuregame.magpie.pay128",
+                "times": 2
+            },
+            "5": {
+                "id": 5,
+                "name": "1980魔石",
+                "cash": 198,
+                "gold": 232,
+                "product_id": "com.leasuregame.magpie.pay198",
+                "times": 2
+            },
+            "6": {
+                "id": 6,
+                "name": "3280魔石",
+                "cash": 328,
+                "gold": 403,
+                "product_id": "com.leasuregame.magpie.pay328",
+                "times": 2
+            },
+            "7": {
+                "id": 7,
+                "name": "6480魔石",
+                "cash": 648,
+                "gold": 842,
+                "product_id": "com.leasuregame.magpie.pay648",
+                "times": 3
+            },
+            "8": {
+                "id": 8,
+                "name": "周卡",
+                "cash": 6,
+                "gold": 6,
+                "product_id": "com.leasuregame.magpie.week.card",
+                "daily_gold": 60,
+                "valid_days": 7,
+                "times": 1
+            },
+            "9": {
+                "id": 9,
+                "name": "月卡",
+                "cash": 30,
+                "gold": 33,
+                "product_id": "com.leasuregame.magpie.month.card",
+                "daily_gold": 100,
+                "valid_days": 30,
+                "times": 1
+            }
+        }
+    },
+    "vip": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "name": "Vip1",
+                "cash": 6,
+                "total_cash": 6
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "name": "Vip2",
+                "cash": 10,
+                "total_cash": 16
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "name": "Vip3",
+                "cash": 14,
+                "total_cash": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "name": "Vip4",
+                "cash": 30,
+                "total_cash": 60
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "name": "Vip5",
+                "cash": 50,
+                "total_cash": 110
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "name": "Vip6",
+                "cash": 90,
+                "total_cash": 200
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "name": "Vip7",
+                "cash": 130,
+                "total_cash": 330
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "name": "Vip8",
+                "cash": 300,
+                "total_cash": 630
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "name": "Vip9",
+                "cash": 600,
+                "total_cash": 1230
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "name": "Vip10",
+                "cash": 1200,
+                "total_cash": 2430
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "name": "Vip11",
+                "cash": 2400,
+                "total_cash": 4830
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "name": "Vip12",
+                "cash": 4800,
+                "total_cash": 9630
+            }
+        }
+    },
+    "vip_box": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "energy": 3000,
+                "money": 100000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "fragments": 0,
+                "exp_card_count": 0,
+                "exp_card_star": 0,
+                "price": 18,
+                "true_price": 66
+            },
+            "2": {
+                "id": 2,
+                "energy": 4000,
+                "money": 150000,
+                "skillPoint": 10000,
+                "elixir": 0,
+                "fragments": 0,
+                "exp_card_count": 0,
+                "exp_card_star": 0,
+                "price": 58,
+                "true_price": 195
+            },
+            "3": {
+                "id": 3,
+                "energy": 5000,
+                "money": 200000,
+                "skillPoint": 20000,
+                "elixir": 10000,
+                "fragments": 1,
+                "exp_card_count": 10,
+                "exp_card_star": 2,
+                "price": 88,
+                "true_price": 246
+            },
+            "4": {
+                "id": 4,
+                "energy": 6000,
+                "money": 250000,
+                "skillPoint": 30000,
+                "elixir": 20000,
+                "fragments": 2,
+                "exp_card_count": 10,
+                "exp_card_star": 3,
+                "price": 188,
+                "true_price": 569
+            },
+            "5": {
+                "id": 5,
+                "energy": 7000,
+                "money": 300000,
+                "skillPoint": 40000,
+                "elixir": 30000,
+                "fragments": 3,
+                "exp_card_count": 15,
+                "exp_card_star": 3,
+                "price": 288,
+                "true_price": 726
+            },
+            "6": {
+                "id": 6,
+                "energy": 8000,
+                "money": 350000,
+                "skillPoint": 50000,
+                "elixir": 40000,
+                "fragments": 4,
+                "exp_card_count": 10,
+                "exp_card_star": 4,
+                "price": 388,
+                "true_price": 1080
+            },
+            "7": {
+                "id": 7,
+                "energy": 9000,
+                "money": 400000,
+                "skillPoint": 60000,
+                "elixir": 50000,
+                "fragments": 5,
+                "exp_card_count": 12,
+                "exp_card_star": 4,
+                "price": 488,
+                "true_price": 1368
+            },
+            "8": {
+                "id": 8,
+                "energy": 10000,
+                "money": 450000,
+                "skillPoint": 70000,
+                "elixir": 60000,
+                "fragments": 6,
+                "exp_card_count": 15,
+                "exp_card_star": 4,
+                "price": 588,
+                "true_price": 1989
+            },
+            "9": {
+                "id": 9,
+                "energy": 11000,
+                "money": 500000,
+                "skillPoint": 80000,
+                "elixir": 70000,
+                "fragments": 7,
+                "exp_card_count": 10,
+                "exp_card_star": 5,
+                "price": 688,
+                "true_price": 2366
+            },
+            "10": {
+                "id": 10,
+                "energy": 12000,
+                "money": 550000,
+                "skillPoint": 90000,
+                "elixir": 80000,
+                "fragments": 8,
+                "exp_card_count": 12,
+                "exp_card_star": 5,
+                "price": 788,
+                "true_price": 2899
+            },
+            "11": {
+                "id": 11,
+                "energy": 13000,
+                "money": 600000,
+                "skillPoint": 100000,
+                "elixir": 90000,
+                "fragments": 9,
+                "exp_card_count": 13,
+                "exp_card_star": 5,
+                "price": 888,
+                "true_price": 3288
+            },
+            "12": {
+                "id": 12,
+                "energy": 14000,
+                "money": 650000,
+                "skillPoint": 110000,
+                "elixir": 100000,
+                "fragments": 10,
+                "exp_card_count": 15,
+                "exp_card_star": 5,
+                "price": 999,
+                "true_price": 3986
+            }
+        }
+    },
+    "vip_daily_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 20000,
+                "elixir": 3000,
+                "energy": 0,
+                "exp_card_count": 6,
+                "exp_card_star": 3
+            },
+            "2": {
+                "id": 2,
+                "money": 40000,
+                "elixir": 4000,
+                "energy": 200,
+                "exp_card_count": 9,
+                "exp_card_star": 3
+            },
+            "3": {
+                "id": 3,
+                "money": 60000,
+                "elixir": 5000,
+                "energy": 400,
+                "exp_card_count": 12,
+                "exp_card_star": 3
+            },
+            "4": {
+                "id": 4,
+                "money": 80000,
+                "elixir": 6000,
+                "energy": 600,
+                "exp_card_count": 15,
+                "exp_card_star": 3
+            },
+            "5": {
+                "id": 5,
+                "money": 100000,
+                "elixir": 7000,
+                "energy": 800,
+                "exp_card_count": 18,
+                "exp_card_star": 3
+            },
+            "6": {
+                "id": 6,
+                "money": 120000,
+                "elixir": 8000,
+                "energy": 1000,
+                "exp_card_count": 21,
+                "exp_card_star": 3
+            },
+            "7": {
+                "id": 7,
+                "money": 140000,
+                "elixir": 9000,
+                "energy": 1200,
+                "exp_card_count": 24,
+                "exp_card_star": 3
+            },
+            "8": {
+                "id": 8,
+                "money": 160000,
+                "elixir": 10000,
+                "energy": 1400,
+                "exp_card_count": 27,
+                "exp_card_star": 3
+            },
+            "9": {
+                "id": 9,
+                "money": 180000,
+                "elixir": 11000,
+                "energy": 1600,
+                "exp_card_count": 30,
+                "exp_card_star": 3
+            },
+            "10": {
+                "id": 10,
+                "money": 200000,
+                "elixir": 12000,
+                "energy": 1800,
+                "exp_card_count": 33,
+                "exp_card_star": 3
+            },
+            "11": {
+                "id": 11,
+                "money": 220000,
+                "elixir": 13000,
+                "energy": 2000,
+                "exp_card_count": 36,
+                "exp_card_star": 3
+            },
+            "12": {
+                "id": 12,
+                "money": 240000,
+                "elixir": 14000,
+                "energy": 2200,
+                "exp_card_count": 39,
+                "exp_card_star": 3
+            }
+        }
+    },
+    "vip_privilege": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lottery_free_count": 0,
+                "buy_power_count": 0,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "exp_pass_count": 0,
+                "friend_count": 0
+            },
+            "1": {
+                "id": 1,
+                "lottery_free_count": 1,
+                "buy_power_count": 1,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "spirit_collect_count": 0,
+                "challenge_buy_count": 0,
+                "exp_pass_count": 0,
+                "friend_count": 0
+            },
+            "2": {
+                "id": 2,
+                "lottery_free_count": 1,
+                "buy_power_count": 2,
+                "give_bless_count": 1,
+                "receive_bless_count": 1,
+                "spirit_collect_count": 1,
+                "challenge_buy_count": 0,
+                "exp_pass_count": 0,
+                "friend_count": 0
+            },
+            "3": {
+                "id": 3,
+                "lottery_free_count": 2,
+                "buy_power_count": 3,
+                "give_bless_count": 2,
+                "receive_bless_count": 2,
+                "spirit_collect_count": 2,
+                "challenge_buy_count": 5,
+                "exp_pass_count": 0,
+                "friend_count": 0
+            },
+            "4": {
+                "id": 4,
+                "lottery_free_count": 2,
+                "buy_power_count": 4,
+                "give_bless_count": 3,
+                "receive_bless_count": 3,
+                "spirit_collect_count": 3,
+                "challenge_buy_count": 10,
+                "exp_pass_count": 1,
+                "friend_count": 5
+            },
+            "5": {
+                "id": 5,
+                "lottery_free_count": 3,
+                "buy_power_count": 5,
+                "give_bless_count": 4,
+                "receive_bless_count": 4,
+                "spirit_collect_count": 4,
+                "challenge_buy_count": 15,
+                "exp_pass_count": 1,
+                "friend_count": 10
+            },
+            "6": {
+                "id": 6,
+                "lottery_free_count": 4,
+                "buy_power_count": 6,
+                "give_bless_count": 5,
+                "receive_bless_count": 5,
+                "spirit_collect_count": 5,
+                "challenge_buy_count": 20,
+                "exp_pass_count": 2,
+                "friend_count": 15
+            },
+            "7": {
+                "id": 7,
+                "lottery_free_count": 5,
+                "buy_power_count": 7,
+                "give_bless_count": 6,
+                "receive_bless_count": 6,
+                "spirit_collect_count": 6,
+                "challenge_buy_count": 25,
+                "exp_pass_count": 2,
+                "friend_count": 20
+            },
+            "8": {
+                "id": 8,
+                "lottery_free_count": 6,
+                "buy_power_count": 8,
+                "give_bless_count": 7,
+                "receive_bless_count": 7,
+                "spirit_collect_count": 7,
+                "challenge_buy_count": 30,
+                "exp_pass_count": 3,
+                "friend_count": 25
+            },
+            "9": {
+                "id": 9,
+                "lottery_free_count": 7,
+                "buy_power_count": 9,
+                "give_bless_count": 8,
+                "receive_bless_count": 8,
+                "spirit_collect_count": 8,
+                "challenge_buy_count": 35,
+                "exp_pass_count": 4,
+                "friend_count": 30
+            },
+            "10": {
+                "id": 10,
+                "lottery_free_count": 8,
+                "buy_power_count": 10,
+                "give_bless_count": 9,
+                "receive_bless_count": 9,
+                "spirit_collect_count": 9,
+                "challenge_buy_count": 40,
+                "exp_pass_count": 5,
+                "friend_count": 35
+            },
+            "11": {
+                "id": 11,
+                "lottery_free_count": 9,
+                "buy_power_count": 11,
+                "give_bless_count": 10,
+                "receive_bless_count": 10,
+                "spirit_collect_count": 10,
+                "challenge_buy_count": 45,
+                "exp_pass_count": 5,
+                "friend_count": 40
+            },
+            "12": {
+                "id": 12,
+                "lottery_free_count": 10,
+                "buy_power_count": 12,
+                "give_bless_count": 11,
+                "receive_bless_count": 11,
+                "spirit_collect_count": 11,
+                "challenge_buy_count": 50,
+                "exp_pass_count": 5,
+                "friend_count": 45
+            }
+        }
+    },
+    "against_time_list": {
+        "colComment": {
+            "home_team": {
+                "table": "国家列表",
+                "key_index": "country",
+                "value_index": "id",
+                "withPound": false
+            },
+            "visiting_team": {
+                "table": "国家列表",
+                "key_index": "country",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "date": "2014-06-14T00:00:00.000",
+                "home_team": "墨西哥",
+                "visiting_team": "喀麦隆",
+                "reward_gold": 20,
+                "result": 1,
+                "score": "1:0"
+            },
+            "2": {
+                "id": 2,
+                "date": "2014-06-14T00:00:00.000",
+                "home_team": "西班牙",
+                "visiting_team": "荷兰",
+                "reward_gold": 20,
+                "result": 3,
+                "score": "1:5"
+            },
+            "3": {
+                "id": 3,
+                "date": "2014-06-14T00:00:00.000",
+                "home_team": "智利",
+                "visiting_team": "澳大利亚",
+                "reward_gold": 20,
+                "result": 1,
+                "score": "3:1"
+            },
+            "4": {
+                "id": 4,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "哥伦比亚",
+                "visiting_team": "希腊",
+                "reward_gold": 20
+            },
+            "5": {
+                "id": 5,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "乌拉圭",
+                "visiting_team": "哥斯达黎加",
+                "reward_gold": 20
+            },
+            "6": {
+                "id": 6,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "英格兰",
+                "visiting_team": "意大利",
+                "reward_gold": 20
+            },
+            "7": {
+                "id": 7,
+                "date": "2014-06-15T00:00:00.000",
+                "home_team": "科特迪瓦",
+                "visiting_team": "日本",
+                "reward_gold": 20
+            },
+            "8": {
+                "id": 8,
+                "date": "2014-06-16T00:00:00.000",
+                "home_team": "瑞士",
+                "visiting_team": "厄瓜多尔",
+                "reward_gold": 20
+            },
+            "9": {
+                "id": 9,
+                "date": "2014-06-16T00:00:00.000",
+                "home_team": "法国",
+                "visiting_team": "洪都拉斯",
+                "reward_gold": 20
+            },
+            "10": {
+                "id": 10,
+                "date": "2014-06-16T00:00:00.000",
+                "home_team": "阿根廷",
+                "visiting_team": "波黑",
+                "reward_gold": 20
+            },
+            "11": {
+                "id": 11,
+                "date": "2014-06-17T00:00:00.000",
+                "home_team": "德国",
+                "visiting_team": "葡萄牙",
+                "reward_gold": 20
+            },
+            "12": {
+                "id": 12,
+                "date": "2014-06-17T00:00:00.000",
+                "home_team": "伊朗",
+                "visiting_team": "尼日利亚",
+                "reward_gold": 20
+            },
+            "13": {
+                "id": 13,
+                "date": "2014-06-17T00:00:00.000",
+                "home_team": "加纳",
+                "visiting_team": "美国",
+                "reward_gold": 20
+            },
+            "14": {
+                "id": 14,
+                "date": "2014-06-18T00:00:00.000",
+                "home_team": "比利时",
+                "visiting_team": "阿尔及利亚",
+                "reward_gold": 20
+            },
+            "15": {
+                "id": 15,
+                "date": "2014-06-18T00:00:00.000",
+                "home_team": "巴西",
+                "visiting_team": "墨西哥",
+                "reward_gold": 20
+            },
+            "16": {
+                "id": 16,
+                "date": "2014-06-18T00:00:00.000",
+                "home_team": "俄罗斯",
+                "visiting_team": "韩国",
+                "reward_gold": 20
+            },
+            "17": {
+                "id": 17,
+                "date": "2014-06-19T00:00:00.000",
+                "home_team": "澳大利亚",
+                "visiting_team": "荷兰",
+                "reward_gold": 20
+            },
+            "18": {
+                "id": 18,
+                "date": "2014-06-19T00:00:00.000",
+                "home_team": "西班牙",
+                "visiting_team": "智利",
+                "reward_gold": 20
+            },
+            "19": {
+                "id": 19,
+                "date": "2014-06-19T00:00:00.000",
+                "home_team": "喀麦隆",
+                "visiting_team": "克罗地亚",
+                "reward_gold": 20
+            },
+            "20": {
+                "id": 20,
+                "date": "2014-06-20T00:00:00.000",
+                "home_team": "哥伦比亚",
+                "visiting_team": "科特迪瓦",
+                "reward_gold": 20
+            },
+            "21": {
+                "id": 21,
+                "date": "2014-06-20T00:00:00.000",
+                "home_team": "乌拉圭",
+                "visiting_team": "英格兰",
+                "reward_gold": 20
+            },
+            "22": {
+                "id": 22,
+                "date": "2014-06-20T00:00:00.000",
+                "home_team": "日本",
+                "visiting_team": "希腊",
+                "reward_gold": 20
+            },
+            "23": {
+                "id": 23,
+                "date": "2014-06-21T00:00:00.000",
+                "home_team": "意大利",
+                "visiting_team": "哥斯达黎加",
+                "reward_gold": 20
+            },
+            "24": {
+                "id": 24,
+                "date": "2014-06-21T00:00:00.000",
+                "home_team": "瑞士",
+                "visiting_team": "法国",
+                "reward_gold": 20
+            },
+            "25": {
+                "id": 25,
+                "date": "2014-06-21T00:00:00.000",
+                "home_team": "洪都拉斯",
+                "visiting_team": "厄瓜多尔",
+                "reward_gold": 20
+            },
+            "26": {
+                "id": 26,
+                "date": "2014-06-22T00:00:00.000",
+                "home_team": "阿根廷",
+                "visiting_team": "伊朗",
+                "reward_gold": 20
+            },
+            "27": {
+                "id": 27,
+                "date": "2014-06-22T00:00:00.000",
+                "home_team": "德国",
+                "visiting_team": "加纳",
+                "reward_gold": 20
+            },
+            "28": {
+                "id": 28,
+                "date": "2014-06-22T00:00:00.000",
+                "home_team": "尼日利亚",
+                "visiting_team": "波黑",
+                "reward_gold": 20
+            },
+            "29": {
+                "id": 29,
+                "date": "2014-06-23T00:00:00.000",
+                "home_team": "比利时",
+                "visiting_team": "俄罗斯",
+                "reward_gold": 20
+            },
+            "30": {
+                "id": 30,
+                "date": "2014-06-23T00:00:00.000",
+                "home_team": "韩国",
+                "visiting_team": "阿尔及利亚",
+                "reward_gold": 20
+            },
+            "31": {
+                "id": 31,
+                "date": "2014-06-23T00:00:00.000",
+                "home_team": "美国",
+                "visiting_team": "葡萄牙",
+                "reward_gold": 20
+            },
+            "32": {
+                "id": 32,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "澳大利亚",
+                "visiting_team": "西班牙",
+                "reward_gold": 20
+            },
+            "33": {
+                "id": 33,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "荷兰",
+                "visiting_team": "智利",
+                "reward_gold": 20
+            },
+            "34": {
+                "id": 34,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "喀麦隆",
+                "visiting_team": "巴西",
+                "reward_gold": 20
+            },
+            "35": {
+                "id": 35,
+                "date": "2014-06-24T00:00:00.000",
+                "home_team": "克罗地亚",
+                "visiting_team": "墨西哥",
+                "reward_gold": 20
+            },
+            "36": {
+                "id": 36,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "意大利",
+                "visiting_team": "乌拉圭",
+                "reward_gold": 20
+            },
+            "37": {
+                "id": 37,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "哥斯达黎加",
+                "visiting_team": "英格兰",
+                "reward_gold": 20
+            },
+            "38": {
+                "id": 38,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "日本",
+                "visiting_team": "哥伦比亚",
+                "reward_gold": 20
+            },
+            "39": {
+                "id": 39,
+                "date": "2014-06-25T00:00:00.000",
+                "home_team": "希腊",
+                "visiting_team": "科特迪瓦",
+                "reward_gold": 20
+            },
+            "40": {
+                "id": 40,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "尼日利亚",
+                "visiting_team": "阿根廷",
+                "reward_gold": 20
+            },
+            "41": {
+                "id": 41,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "波黑",
+                "visiting_team": "伊朗",
+                "reward_gold": 20
+            },
+            "42": {
+                "id": 42,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "洪都拉斯",
+                "visiting_team": "瑞士",
+                "reward_gold": 20
+            },
+            "43": {
+                "id": 43,
+                "date": "2014-06-26T00:00:00.000",
+                "home_team": "厄瓜多尔",
+                "visiting_team": "法国",
+                "reward_gold": 20
+            },
+            "44": {
+                "id": 44,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "美国",
+                "visiting_team": "德国",
+                "reward_gold": 20
+            },
+            "45": {
+                "id": 45,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "葡萄牙",
+                "visiting_team": "加纳",
+                "reward_gold": 20
+            },
+            "46": {
+                "id": 46,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "韩国",
+                "visiting_team": "比利时",
+                "reward_gold": 20
+            },
+            "47": {
+                "id": 47,
+                "date": "2014-06-27T00:00:00.000",
+                "home_team": "阿尔及利亚",
+                "visiting_team": "俄罗斯",
+                "reward_gold": 20
+            }
+        }
+    },
+    "country_list": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "country": "巴西",
+                "url": "country1"
+            },
+            "2": {
+                "id": 2,
+                "country": "西班牙",
+                "url": "country2"
+            },
+            "3": {
+                "id": 3,
+                "country": "哥伦比亚",
+                "url": "country3"
+            },
+            "4": {
+                "id": 4,
+                "country": "乌拉圭",
+                "url": "country4"
+            },
+            "5": {
+                "id": 5,
+                "country": "瑞士",
+                "url": "country5"
+            },
+            "6": {
+                "id": 6,
+                "country": "阿根廷",
+                "url": "country6"
+            },
+            "7": {
+                "id": 7,
+                "country": "德国",
+                "url": "country7"
+            },
+            "8": {
+                "id": 8,
+                "country": "比利时",
+                "url": "country8"
+            },
+            "9": {
+                "id": 9,
+                "country": "喀麦隆",
+                "url": "country9"
+            },
+            "10": {
+                "id": 10,
+                "country": "智利",
+                "url": "country10"
+            },
+            "11": {
+                "id": 11,
+                "country": "科特迪瓦",
+                "url": "country11"
+            },
+            "12": {
+                "id": 12,
+                "country": "英格兰",
+                "url": "country12"
+            },
+            "13": {
+                "id": 13,
+                "country": "厄瓜多尔",
+                "url": "country13"
+            },
+            "14": {
+                "id": 14,
+                "country": "尼日利亚",
+                "url": "country14"
+            },
+            "15": {
+                "id": 15,
+                "country": "加纳",
+                "url": "country15"
+            },
+            "16": {
+                "id": 16,
+                "country": "阿尔及利亚",
+                "url": "country16"
+            },
+            "17": {
+                "id": 17,
+                "country": "墨西哥",
+                "url": "country17"
+            },
+            "18": {
+                "id": 18,
+                "country": "澳大利亚",
+                "url": "country18"
+            },
+            "19": {
+                "id": 19,
+                "country": "日本",
+                "url": "country19"
+            },
+            "20": {
+                "id": 20,
+                "country": "哥斯达黎加",
+                "url": "country20"
+            },
+            "21": {
+                "id": 21,
+                "country": "洪都拉斯",
+                "url": "country21"
+            },
+            "22": {
+                "id": 22,
+                "country": "伊朗",
+                "url": "country22"
+            },
+            "23": {
+                "id": 23,
+                "country": "美国",
+                "url": "country23"
+            },
+            "24": {
+                "id": 24,
+                "country": "韩国",
+                "url": "country24"
+            },
+            "25": {
+                "id": 25,
+                "country": "克罗地亚",
+                "url": "country25"
+            },
+            "26": {
+                "id": 26,
+                "country": "荷兰",
+                "url": "country26"
+            },
+            "27": {
+                "id": 27,
+                "country": "希腊",
+                "url": "country27"
+            },
+            "28": {
+                "id": 28,
+                "country": "意大利",
+                "url": "country28"
+            },
+            "29": {
+                "id": 29,
+                "country": "法国",
+                "url": "country29"
+            },
+            "30": {
+                "id": 30,
+                "country": "波黑",
+                "url": "country30"
+            },
+            "31": {
+                "id": 31,
+                "country": "葡萄牙",
+                "url": "country31"
+            },
+            "32": {
+                "id": 32,
+                "country": "俄罗斯",
+                "url": "country32"
             }
         }
     }

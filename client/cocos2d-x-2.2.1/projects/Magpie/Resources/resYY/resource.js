@@ -951,11 +951,19 @@ var main_scene_image = {
     effect2002_2: "resYY/ccb/effect2002_2.ccbi",
     effect2002_3: "resYY/ccb/effect2002_3.ccbi",
 
+    effect2003_1: "resYY/ccb/effect2003_1.ccbi",
+    effect2003_2: "resYY/ccb/effect2003_2.ccbi",
+
     effect2500_1: "resYY/ccb/effect2500_1.ccbi",
     effect2500_2: "resYY/ccb/effect2500_2.ccbi",
     effect2500_3: "resYY/ccb/effect2500_3.ccbi",
 
     effect2600: "resYY/ccb/effect2600.ccbi",
+
+    effect2700_1: "resYY/ccb/effect2700_1.ccbi",
+    effect2700_2: "resYY/ccb/effect2700_2.ccbi",
+    effect2700_3: "resYY/ccb/effect2700_3.ccbi",
+    effect2700_4: "resYY/ccb/effect2700_4.ccbi",
 
     battleEffect1: "resYY/ccb/battleEffect1.ccbi",
     battleEffect2: "resYY/ccb/battleEffect2.ccbi",
@@ -1467,7 +1475,7 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
 
 //稀有主角卡
 var rareCardResIdList = [
-    6, 42
+    6, 42, 48
 ];
 
 for (var cardIndex = 0; cardIndex < rareCardResIdList.length; ++cardIndex) {

@@ -4890,6 +4890,11 @@ var BattleLayer = cc.Layer.extend({
         ];
     },
 
+    skill2003: function (battleStep) {
+        cc.log("skill2003");
+
+    },
+
     skill2500: function (battleStep) {
         cc.log("skill2500");
 
@@ -5126,6 +5131,10 @@ var BattleLayer = cc.Layer.extend({
                 }
             }
         ];
+    },
+
+    skill2700: function (battleStep) {
+        cc.log("skill2700");
     },
 
     _addSpirit: function (index) {

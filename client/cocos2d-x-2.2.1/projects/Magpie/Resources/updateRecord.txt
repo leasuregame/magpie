@@ -1,6 +1,40 @@
 更新记录表
 ----------v1.5.8版本----------------------------------------------------------------------------------------------------
+备注：济公卡牌接入
 
+替换更新：
+res/font/skillName.fnt
+res/font/skillName.png
+res/ccb/battleNode.ccbi
+res/ccb/card20000.ccbi
+res/ccb/card20001.ccbi
+res/ccb/card20002.ccbi
+res/ccb/spiritNode.ccbi
+
+resYY/font/skillName.fnt
+resYY/font/skillName.png
+resYY/ccb/battleNode.ccbi
+resYY/ccb/card20000.ccbi
+resYY/ccb/card20001.ccbi
+resYY/ccb/card20002.ccbi
+resYY/ccb/spiritNode.ccbi
+
+新加资源:
+res/main/card42_full1.png
+res/main/card42_full2.png
+res/main/card42_half1.png
+res/main/card42_half2.png
+res/main/card42_head1.png
+res/main/card42_head2.png
+res/main/card42_skill.png
+
+resYY/main/card42_full1.png
+resYY/main/card42_full2.png
+resYY/main/card42_half1.png
+resYY/main/card42_half2.png
+resYY/main/card42_head1.png
+resYY/main/card42_head2.png
+resYY/main/card42_skill.png
 ----------v1.5.8版本----------------------------------------------------------------------------------------------------
 
 ----------v1.5.7版本----------------------------------------------------------------------------------------------------
@@ -10,7 +44,6 @@
 res/main/icon376.png
 res/font/skillName.fnt
 res/font/skillName.png
-
 res/ccb/battleNode.ccbi
 res/ccb/card20000.ccbi
 res/ccb/card20001.ccbi
@@ -20,7 +53,6 @@ res/ccb/spiritNode.ccbi
 resYY/main/icon376.png
 resYY/font/skillName.fnt
 resYY/font/skillName.png
-
 resYY/ccb/battleNode.ccbi
 resYY/ccb/card20000.ccbi
 resYY/ccb/card20001.ccbi

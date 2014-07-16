@@ -524,11 +524,9 @@ var BattleLayer = cc.Layer.extend({
 
     nextStepCallback: function () {
         this._counter += 1;
-        cc.log("nsc: " + this._counter);
         var that = this;
         return function () {
             that._counter -= 1;
-            cc.log("rf: " + that._counter);
             if (that._counter == 0) {
                 that.scheduleOnce(that.nextStep, 0.1);
             }
@@ -5068,8 +5066,6 @@ var BattleLayer = cc.Layer.extend({
             },
             {
                 fn: function () {
-                    cc.log("a_2600_2");
-
                     if (battleStep.hasNextTarget()) {
                         (function () {
                             var target = battleStep.getTarget();
@@ -5094,16 +5090,23 @@ var BattleLayer = cc.Layer.extend({
                             that.addChild(effect2600, EFFECT_Z_ORDER);
 
                             that.scheduleOnce(function () {
-                                cc.log("d_2600");
                                 targetNode.runAnimations(
                                     effect ? "d_2600" : "miss",
                                     0,
                                     that.nextStepCallback()
                                 );
-
+                                if (effect) {
+                                    that.startShock();
+                                }
                                 targetNode.update(effect);
                                 that.tipHarm(target, effect, true, isCrit);
-                            }, 2);
+                            }, 1.5);
+
+                            if (effect) {
+                                that.scheduleOnce(function () {
+                                    that.stopShock();
+                                }, 1.7);
+                            }
 
                             effect2600.animationManager.setCompletedAnimationCallback(that, function () {
                                 effect2600.removeFromParent();
@@ -5113,7 +5116,6 @@ var BattleLayer = cc.Layer.extend({
                         })();
                         return 1;
                     } else {
-                        cc.log("haha");
                         attackerNode.runAnimations(
                             "a_2600_" + that._getDirection(attacker) + "_3",
                             0,

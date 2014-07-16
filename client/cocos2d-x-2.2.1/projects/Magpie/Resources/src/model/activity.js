@@ -42,6 +42,9 @@ var Activity = Entity.extend({
     _worldCupReward: false,
     _worldCupCanAnswer: false,
 
+    _luckyCard: {},
+    _worldCup: {},
+
     init: function () {
         cc.log("Activity init");
 
@@ -56,6 +59,9 @@ var Activity = Entity.extend({
 
         this._worldCupCanAnswer = false;
         this._worldCupReward = false;
+
+        this._luckyCard = {};
+        this._worldCup = {};
 
         var rows = outputTables.player_upgrade_reward.rows;
         var index = 0;
@@ -94,6 +100,16 @@ var Activity = Entity.extend({
         if (data.vipLoginReward) {
             this.set("vipLoginReward", data.vipLoginReward);
         }
+
+        if (data.luckyCard) {
+            this.set("luckyCard", data.luckyCard);
+        }
+
+        if (data.worldCup) {
+            this.set("worldCup", data.worldCup);
+        }
+
+        MainScene.getInstance().updateLayer();
     },
 
     sync: function () {
@@ -107,7 +123,7 @@ var Activity = Entity.extend({
                 cc.log("pomelo websocket callback data:");
                 cc.log(data);
                 if (data.code == 200) {
-                    cc.log("sync success");
+                    cc.log("Activity sync success");
 
                     that.update(data.msg);
                     that.setListener();
@@ -116,7 +132,7 @@ var Activity = Entity.extend({
 
                     lz.um.event("event_activity");
                 } else {
-                    cc.log("sync fail");
+                    cc.log("Activity sync fail");
 
                     that.sync();
                 }
@@ -676,6 +692,15 @@ var Activity = Entity.extend({
             cc.log("类型出错！！！");
             return null;
         }
+    },
+
+    getLastDays: function () {
+        cc.log("Activity getLastDays");
+        var luckCard = gameData.activity.get("luckyCard");
+        var t1 = Date.now();
+        var t2 = luckCard.endDate;
+
+        return Math.ceil((t2 - t1) / (24 * 60 * 60 * 1000));
     }
 });
 
@@ -706,7 +731,13 @@ Activity.IsShowHandler = {
         return true;
     },
     growthPlanLayer: function () {
-        return true;
+        var table = outputTables.growth_plan.rows;
+        for (var id in table) {
+            if (gameData.activity.getStateById(TYPE_GROWTH_PLAN_REWARD, id) != ALREADY_GOT_REWARD) {
+                return true;
+            }
+        }
+        return false;
     },
     powerRewardLayer: function () {
         return true;
@@ -721,7 +752,18 @@ Activity.IsShowHandler = {
         return !(lz.platformConfig.PLATFORM == "AppStore");
     },
     worldCupLayer: function () {
-        return true;
+        var worldCup = gameData.activity.get("worldCup");
+        if (worldCup) {
+            return worldCup.isVisible;
+        }
+        return false;
+    },
+    flashLotteryLayer: function () {
+        var luckyCard = gameData.activity.get("luckyCard");
+        if (luckyCard) {
+            return luckyCard.isVisible;
+        }
+        return false;
     }
 };
 
@@ -752,5 +794,8 @@ Activity.IsMarkHandler = {
     },
     worldCupLayer: function () {
         return gameMark.getWorldCupMark();
+    },
+    flashLotteryLayer: function () {
+        return false;
     }
 };

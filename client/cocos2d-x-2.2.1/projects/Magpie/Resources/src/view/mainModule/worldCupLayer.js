@@ -8,6 +8,7 @@ var WorldCupLayer = cc.Layer.extend({
     _answers: null,
     _teamLen: null,
     _reward: null,
+    _rewardEffect: null,
 
     onEnter: function () {
         cc.log("WorldCupLayer onEnter");

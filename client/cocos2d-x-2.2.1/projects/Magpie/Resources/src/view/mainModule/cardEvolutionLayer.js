@@ -80,10 +80,18 @@ var CardEvolutionLayer = LazyLayer.extend({
         var star = this._card.get("star");
         var index = star > 2 ? Math.min(star - 2, 3) : 1;
 
+        if (this._card.isRareCard()) {
+            index = (5 == star) ? 1 : 2;
+        }
+
+        var cardSpriteTexture = lz.getTexture(main_scene_image[url + "_half" + index]);
+        var size = cardSpriteTexture.getContentSize();
         var controller = this._evolutionEffect.controller;
 
-        controller["ccbCardHalf"].setTexture(lz.getTexture(main_scene_image[url + "_half" + index]));
+        controller["ccbCardHalf"].setTexture(cardSpriteTexture);
         controller["ccbCardIcon"].setTexture(lz.getTexture(this._card.getCardIcon()));
+
+        controller["ccbCardHalf"].setTextureRect(cc.rect(0, 0, size.width, size.height));
     },
 
     ccbFnChangeCardFrame: function () {

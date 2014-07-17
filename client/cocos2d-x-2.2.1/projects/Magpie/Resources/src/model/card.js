@@ -80,7 +80,8 @@ var skillIconMap = {
         8: "card_icon_1_5",
         9: "card_icon_1_5",
         10: "card_icon_1_5",
-        11: "card_icon_1_6"
+        11: "card_icon_1_6",
+        12: "card_icon_1_7"
     },
     2: {
         0: "card_icon_2_0",
@@ -94,7 +95,8 @@ var skillIconMap = {
         8: "card_icon_2_5",
         9: "card_icon_2_5",
         10: "card_icon_2_5",
-        11: "card_icon_2_6"
+        11: "card_icon_2_6",
+        12: "card_icon_2_7"
     }
 };
 

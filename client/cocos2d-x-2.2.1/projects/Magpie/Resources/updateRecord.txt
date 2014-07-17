@@ -20,6 +20,8 @@ resYY/ccb/card20002.ccbi
 resYY/ccb/spiritNode.ccbi
 
 新加资源:
+res/main/card_icon_1_7.png
+res/main/card_icon_2_7.png
 res/main/card42_full1.png
 res/main/card42_full2.png
 res/main/card42_half1.png
@@ -45,6 +47,8 @@ res/ccb/effect2700_2.ccbi
 res/ccb/effect2700_3.ccbi
 res/ccb/effect2700_4.ccbi
 
+resYY/main/card_icon_1_7.png
+resYY/main/card_icon_2_7.png
 resYY/main/card42_full1.png
 resYY/main/card42_full2.png
 resYY/main/card42_half1.png

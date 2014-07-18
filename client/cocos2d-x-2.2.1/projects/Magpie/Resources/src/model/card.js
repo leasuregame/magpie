@@ -392,6 +392,23 @@ var Card = Entity.extend({
         return false;
     },
 
+    getGroupSkill: function () {
+        cc.log("Card getGroupSkill");
+
+        var table = outputTables.card_group.rows;
+        for (var key in table) {
+            var group = table[key].group.split("&");
+            var len = group.length;
+            for (var i = 0; i < len; i++) {
+                if(group[i] == this._kind) {
+                    return table[key];
+                }
+            }
+        }
+
+        return {};
+    },
+
     getCardIcon: function (type) {
         type = type != 2 ? 1 : 2;
 

@@ -440,12 +440,14 @@ var CardDetails = LazyLayer.extend({
     _cardGroupSkillDesc: function() {
         cc.log("CardDetails _cardGroupSkillDesc");
 
-        var groupSkillNameLabel = cc.LabelTTF.create("寻找师兄", "STHeitiTC-Medium", 20);
+        var groupSkill = this._card.getGroupSkill();
+
+        var groupSkillNameLabel = cc.LabelTTF.create(groupSkill.name || "无", "STHeitiTC-Medium", 20);
         groupSkillNameLabel.setAnchorPoint(cc.p(0, 0.5));
         groupSkillNameLabel.setPosition(this._cardDetailsFit.groupSkillNameLabelPoint);
         this.addChild(groupSkillNameLabel);
 
-        var groupSkillDescLabel = cc.LabelTTF.create("金蝉子，猪八戒，沙悟净同时上阵，攻击+15%，生命+15%", "STHeitiTC-Medium", 20);
+        var groupSkillDescLabel = cc.LabelTTF.create(groupSkill.desc || "暂无组合技能", "STHeitiTC-Medium", 20);
         groupSkillDescLabel.setAnchorPoint(cc.p(0, 0.5));
         groupSkillDescLabel.setPosition(this._cardDetailsFit.groupSkillDescLabelPoint);
         this.addChild(groupSkillDescLabel);

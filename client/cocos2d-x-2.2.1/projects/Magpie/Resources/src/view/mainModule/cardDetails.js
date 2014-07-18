@@ -437,23 +437,34 @@ var CardDetails = LazyLayer.extend({
         this.addChild(tipDescriptionLabel);
     },
 
-    _cardGroupSkillDesc: function() {
+    _cardGroupSkillDesc: function () {
         cc.log("CardDetails _cardGroupSkillDesc");
 
-        var groupSkill = this._card.getGroupSkill();
+        var name = "无";
+        var desc = "5星以上卡牌拥有组合技能";
+        var color = cc.c3b(255, 255, 255);
 
-        var groupSkillNameLabel = cc.LabelTTF.create(groupSkill.name || "无", "STHeitiTC-Medium", 20);
+        if (this._card.get("star") >= 5) {
+            //目前这有一个组合技能
+            var groupSkill = this._card.getGroupSkill(0);
+            name = groupSkill.name || "无";
+            desc = groupSkill.desc ? groupSkill.desc + (groupSkill.atk ? "， 攻击+" + groupSkill.atk + "%" : "") + (groupSkill.hp ? "， 生命+" + groupSkill.hp + "%" : "") : "暂无组合技能";
+            color = groupSkill.isActive ? cc.c3b(255, 215, 57) : cc.c3b(116, 98, 91);
+        }
+
+        var groupSkillNameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 20);
         groupSkillNameLabel.setAnchorPoint(cc.p(0, 0.5));
         groupSkillNameLabel.setPosition(this._cardDetailsFit.groupSkillNameLabelPoint);
         this.addChild(groupSkillNameLabel);
 
-        var groupSkillDescLabel = cc.LabelTTF.create(groupSkill.desc || "暂无组合技能", "STHeitiTC-Medium", 20);
+        var groupSkillDescLabel = cc.LabelTTF.create(desc, "STHeitiTC-Medium", 20);
         groupSkillDescLabel.setAnchorPoint(cc.p(0, 0.5));
         groupSkillDescLabel.setPosition(this._cardDetailsFit.groupSkillDescLabelPoint);
+        groupSkillDescLabel.setColor(color);
         this.addChild(groupSkillDescLabel);
     },
 
-    _expCardGroupSkillDesc: function() {
+    _expCardGroupSkillDesc: function () {
         cc.log("CardDetails _expCardGroupSkillDesc");
 
         var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);

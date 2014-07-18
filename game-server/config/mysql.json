@@ -45,6 +45,13 @@
 			"user": "dev",
 			"password": "1"
 		},
+        "3": {
+            "host": "127.0.0.1",
+            "port": "6033",
+            "database": "magpie_area_5",
+            "user": "dev",
+            "password": "1"
+        },
 		"userdb": {
 			"host": "127.0.0.1",
 			"port": "6033",

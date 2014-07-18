@@ -754,7 +754,9 @@ var Player = (function(_super) {
         var idMap = [];
 
         var cids = this.lineUp.map(function(i) {
-            return _.values(i).filter(function(j) { return j != -1; });
+            return _.values(i)
+            .filter(function(j) { return j != -1; })
+            .filter(function(j) { return self.getCard(j).star >= 5; });
         });
                 
         var sids = cids.map(function(i) {

@@ -52,17 +52,18 @@ describe("Player Object", function() {
             tableId: 244
         }, {
             id: 9,
-            tableId: 964
+            tableId: 965
         }].map(function(c) {
             return new Card(c);
         })
         p.addCards(cards);
 
         it('should can active group effect', function() {
-            p.getCard(1).ability().should.be.equal(3990);
-            p.getCard(2).ability().should.be.equal(3990);
+            p.getCard(1).ability().should.be.equal(4043);
+            p.getAbility().should.be.equal(14804);
+            p.getCard(2).ability().should.be.equal(4043);
             p.getCard(8).ability().should.be.equal(2630);
-            p.getCard(9).ability().should.be.equal(2630);
+            p.getCard(9).ability().should.be.equal(3990);
         });
     });
 

@@ -35,6 +35,8 @@ var Lottery = Entity.extend({
             got: false
         };
 
+        this._lightStar = 0;
+
         this.update(data);
 
         return true;
@@ -51,6 +53,11 @@ var Lottery = Entity.extend({
 
         if (data.goldLuckyCard10) {
             this.set("goldLuckyCard10", data.goldLuckyCard10);
+
+            if(!this._goldLuckyCard10.got) {
+                var key = gameData.player.get("uid") + "_dailyTenLottery";
+                lz.save(key, 0);
+            }
         }
 
         if (data.goldLuckyCardForFragment) {
@@ -136,6 +143,16 @@ var Lottery = Entity.extend({
             return false;
         }
 
+        return true;
+    },
+
+    canFlashLottery: function (times) {
+        var gold = gameData.player.get("gold");
+        var needGold = (times == 1) ? 199 * times : 199 * times * 0.8;
+        if (gold < needGold) {
+            TipLayer.tip("魔石不足");
+            return false;
+        }
         return true;
     },
 
@@ -252,6 +269,72 @@ var Lottery = Entity.extend({
                 lz.um.event("event_lottery", "type:" + type + " level:" + level);
             } else {
                 cc.log("lottery fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
+            }
+        });
+    },
+
+    flashLottery: function (cb, times) {
+        cc.log("Lottery flashLottery");
+
+        var that = this;
+        lz.server.request("area.trainHandler.luckyCardActivity", {
+            times: times
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("flashLottery success");
+
+                var msg = data.msg;
+                var player = gameData.player;
+                var card;
+
+                if (times == 10) {
+                    if (msg.goldLuckyCard10) {
+                        that.set("goldLuckyCard10", msg.goldLuckyCard10);
+                    } else {
+                        that.set("goldLuckyCard10", {count: 3, got: true});
+                    }
+
+                    card = [];
+                    for (var i = 0; i < msg.cards.length; i++) {
+                        card[i] = Card.create(msg.cards[i]);
+                        gameData.cardList.push(card[i]);
+                    }
+                } else {
+                    if (msg.goldLuckyCardForFragment) {
+                        that.set("goldLuckyCardForFragment", msg.goldLuckyCardForFragment);
+                    } else {
+                        that.set("goldLuckyCardForFragment", {count: 5, got: true});
+                    }
+
+                    card = Card.create(msg.card);
+                    gameData.cardList.push(card);
+                }
+
+                player.add("gold", -msg.consume);
+
+                if (msg.fragment > 0) {
+                    player.add("fragment", msg.fragment);
+                }
+
+                var luckCard = gameData.activity.get("luckyCard");
+                luckCard.info.star = msg.activity.star;
+
+                cb({
+                    card: card,
+                    fragment: msg.fragment,
+                    isLightStar: msg.activity.isLightStar,
+                    lightStar: msg.activity.star
+                });
+
+            } else {
+                cc.log("flashLottery fail");
 
                 TipLayer.tip(data.msg);
 

@@ -102,6 +102,12 @@ var MainScene = cc.Scene.extend({
         this._mainMenuLayer.updateGuide();
     },
 
+    updateLayer: function() {
+        if (this._nowLayer && this._nowLayer.updateLayer) {
+            this._nowLayer.updateLayer();
+        }
+    },
+
     switchLayer: function (runLayer) {
         cc.log("MainScene switchLayer");
 

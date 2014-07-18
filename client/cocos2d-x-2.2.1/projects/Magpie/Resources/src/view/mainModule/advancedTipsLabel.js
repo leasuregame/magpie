@@ -11,6 +11,7 @@ var TYPE_BUY_GROWTH_PLAN_TIPS = 5;
 var TYPE_PASS_RESET_TIPS = 6;
 var TYPE_WORLD_CUP_TIPS = 7;
 var TYPE_EXP_INSTANCES_TIPS = 8;
+var TYPE_GOLD_TEN_LOTTERY_TIPS = 9;
 
 var spendFailTip = {
     gold: "魔石不足",
@@ -122,6 +123,8 @@ var AdvancedTipsLabel = LazyLayer.extend({
             case TYPE_EXP_INSTANCES_TIPS:
                 this._initExpInstancesTips();
                 break;
+            case TYPE_GOLD_TEN_LOTTERY_TIPS:
+                this._initGoldTenLotteryTips();
         }
     },
 
@@ -314,6 +317,14 @@ var AdvancedTipsLabel = LazyLayer.extend({
 
         this._continueItem.setVisible(false);
         this._paymentItem.setVisible(true);
+    },
+
+    _initGoldTenLotteryTips: function () {
+        cc.log("AdvancedTipsLabel _initGoldTenLotteryTips");
+
+        var tipLabel = cc.LabelTTF.create("首次10连召唤必得5星已使用，是否继续", "STHeitiTC-Medium", 25);
+        tipLabel.setPosition(cc.p(0, 30));
+        this._frameLayer.addChild(tipLabel);
     },
 
     _onClickCancel: function () {

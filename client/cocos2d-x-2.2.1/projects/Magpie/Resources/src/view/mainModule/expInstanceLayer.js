@@ -250,30 +250,8 @@ var ExpInstanceLayer = cc.Layer.extend({
     _onClickBuyCount: function () {
         cc.log("ExpInstanceLayer _onClickBuyCount");
 
-        var vip = gameData.player.get("vip");
-
         if (gameData.shop.get("expPassBuyCount") <= 0) {
-
-            var tipVip = -1;
-            var table = outputTables.vip_privilege.rows;
-            var len = Object.keys(table).length;
-
-            for (var i = vip + 1; i < len; i++) {
-                if (table[i].exp_pass_count > table[vip].exp_pass_count) {
-                    tipVip = i;
-                    break;
-                }
-            }
-
-            if (-1 == tipVip) {
-                TipLayer.tip("购买次数已用完");
-            } else {
-                GoPaymentLayer.pop({
-                    title: "购买次数已用完",
-                    msg: "成为VIP" + tipVip + "，每日即可获得更多购买次数"
-                });
-            }
-
+            GoPaymentLayer.pop(TYPE_EXP_PASS_BUY_COUNT_USE_UP_TIPS);
             return;
         }
 
@@ -314,15 +292,7 @@ var ExpInstanceLayer = cc.Layer.extend({
 
         if (product.remainTimes <= 0) {
             if (gameData.shop.get("powerBuyCount") <= 0) {
-                var tipVip = gameData.player.get("vip") + 1;
-
-                tipVip = Math.max(tipVip, 1);
-                tipVip = Math.min(tipVip, 12);
-
-                GoPaymentLayer.pop({
-                    title: "体力购买次数已用完",
-                    msg: "成为VIP" + tipVip + "，每日即可获得额外的购买次数"
-                });
+                GoPaymentLayer.pop(TYPE_POWER_BUY_COUNT_USE_UP_TIPS);
             }
 
             return;

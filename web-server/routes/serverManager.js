@@ -29,7 +29,7 @@ var Manager = function(app) {
   });
 
   app.get('/admin/api/server/restart', filter.authorize, function(req, res) {
-    var child = exec('cd ' + game_dir + ' && ' + 'pomelo stop && pomelo start -e production --daemon',
+    var child = exec('cd ' + game_dir + ' && ' + 'make restart',
       function(error, stdout, stderr) {
         errorHandler(res, error, stdout, stderr);
       });

@@ -143,6 +143,7 @@
             'src/view/mainModule/bossListLayer.js',
             'src/view/mainModule/bossRewardLabel.js',
             'src/view/mainModule/rechargeLayer.js',
+            'src/view/mainModule/flashLotteryLayer.js',
             'src/view/mainModule/powerRewardLayer.js',
             'src/view/mainModule/goldCardsLayer.js',
             'src/view/mainModule/goldRewardLayer.js',

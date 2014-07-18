@@ -509,21 +509,21 @@ var ExploreLayer = cc.Layer.extend({
         }, this);
 
         var spiritScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.08, 1, 0.92),
-            cc.ScaleTo.create(0.08, 1, 1.08),
-            cc.ScaleTo.create(0.24, 1, 1),
-            cc.ScaleTo.create(0.24, 1, 1.08),
-            cc.ScaleTo.create(0.08, 1, 1)
+            cc.ScaleTo.create(0.07, 1, 0.92),
+            cc.ScaleTo.create(0.07, 1, 1.08),
+            cc.ScaleTo.create(0.23, 1, 1),
+            cc.ScaleTo.create(0.23, 1, 1.08),
+            cc.ScaleTo.create(0.07, 1, 1)
         );
 
         var spiritMoveAction = cc.Sequence.create(
-            cc.DelayTime.create(0.16),
+            cc.DelayTime.create(0.14),
             cc.CallFunc.create(function () {
                 gameData.sound.playEffect(main_scene_image.startAnimation_pop_sound, false);
             }, this),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.24, cc.p(0, 60))),
-            cc.EaseSineIn.create(cc.MoveBy.create(0.24, cc.p(0, -60))),
-            cc.DelayTime.create(0.08)
+            cc.EaseSineOut.create(cc.MoveBy.create(0.23, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.23, cc.p(0, -60))),
+            cc.DelayTime.create(0.07)
         );
 
         var spiritRepeatAction = cc.Repeat.create(
@@ -536,11 +536,11 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode.runAction(spiritAction);
 
         var spiritShadowScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.08, 1.1, 1.1),
-            cc.ScaleTo.create(0.08, 1, 1),
-            cc.ScaleTo.create(0.24, 0.4, 0.4),
-            cc.ScaleTo.create(0.24, 1, 1),
-            cc.ScaleTo.create(0.08, 1.1, 1.1)
+            cc.ScaleTo.create(0.07, 1.1, 1.1),
+            cc.ScaleTo.create(0.07, 1, 1),
+            cc.ScaleTo.create(0.23, 0.4, 0.4),
+            cc.ScaleTo.create(0.23, 1, 1),
+            cc.ScaleTo.create(0.07, 1.1, 1.1)
         );
 
         var spiritShadowAction = cc.Repeat.create(spiritShadowScaleAction, 2);
@@ -548,10 +548,10 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritShadow.runAction(spiritShadowAction);
 
         var mapMoveAction = cc.Sequence.create(
-            cc.EaseSineIn.create(cc.MoveBy.create(0.16, cc.p(-6, 0))),
-            cc.MoveBy.create(0.24, cc.p(-40, 0)),
-            cc.MoveBy.create(0.24, cc.p(-40, 0)),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.08, cc.p(-6, 0)))
+            cc.EaseSineIn.create(cc.MoveBy.create(0.14, cc.p(-6, 0))),
+            cc.MoveBy.create(0.23, cc.p(-40, 0)),
+            cc.MoveBy.create(0.23, cc.p(-40, 0)),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.07, cc.p(-6, 0)))
         );
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
@@ -571,15 +571,7 @@ var ExploreLayer = cc.Layer.extend({
 
         if (product.remainTimes <= 0) {
             if (gameData.shop.get("powerBuyCount") <= 0) {
-                var tipVip = gameData.player.get("vip") + 1;
-
-                tipVip = Math.max(tipVip, 1);
-                tipVip = Math.min(tipVip, 12);
-
-                GoPaymentLayer.pop({
-                    title: "体力购买次数已用完",
-                    msg: "成为VIP" + tipVip + "，每日即可获得额外的购买次数"
-                });
+                GoPaymentLayer.pop(TYPE_POWER_BUY_COUNT_USE_UP_TIPS);
             }
 
             return;
@@ -694,7 +686,7 @@ var ExploreLayer = cc.Layer.extend({
                             }
                         },
                         function () {
-                            that.update(1);
+                            that.update(0.4);
                             that._updateCollect();
 
                             if (!money || !exp) {
@@ -704,8 +696,8 @@ var ExploreLayer = cc.Layer.extend({
 
                             var action = cc.Spawn.create(
                                 cc.Sequence.create(
-                                    cc.FadeIn.create(0.3),
-                                    cc.DelayTime.create(0.6),
+                                    cc.FadeIn.create(0.2),
+                                    cc.DelayTime.create(0.4),
                                     cc.FadeOut.create(0.1)
                                 ),
                                 cc.MoveBy.create(0.5, cc.p(0, 20)),

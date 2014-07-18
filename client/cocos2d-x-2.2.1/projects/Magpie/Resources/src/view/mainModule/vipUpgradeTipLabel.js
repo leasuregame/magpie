@@ -13,6 +13,11 @@ var VipUpgradeTipLabel = LazyLayer.extend({
         this.addChild(bgLayer);
 
         var point = gameFit.GAME_MIDPOINT;
+
+        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect120, this);
+        bgEffect.setPosition(cc.p(point.x, point.y + 220));
+        this.addChild(bgEffect);
+
         var effect = cc.BuilderReader.load(main_scene_image.uiEffect113, this);
         effect.setPosition(point);
         this.addChild(effect);

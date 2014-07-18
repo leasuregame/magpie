@@ -114,8 +114,12 @@ var LineUp = Entity.extend({
         };
 
         var mapping = function (arr1, arr2) {   //匹配组合技能
-            arr1.sort();
-            arr2.sort();
+            arr1.sort(function (a, b) {
+                return a - b;
+            });
+            arr2.sort(function (a, b) {
+                return a - b;
+            });
             var len1 = arr1.length;
             var len2 = arr2.length;
             var i = 0, j = 0;
@@ -139,7 +143,7 @@ var LineUp = Entity.extend({
         var len = this._lineUpList.length;
         for (var i = 0; i < len; i++) {
             var lineUpList = filter5star(this.getLineUpCardList(i));
-
+            var k = kinds(lineUpList);
             var len2 = lineUpList.length;
             for (var j = 0; j < len2; j++) {
                 var card = lineUpList[j];
@@ -147,8 +151,6 @@ var LineUp = Entity.extend({
                 var gsLen = groupSkills.length;
 
                 if (!gsLen) continue;   //没有组合技能
-
-                var k = kinds(lineUpList);
 
                 for (var index = 0; index < gsLen; index++) {
                     cc.log(groupSkills[index].group);
@@ -175,7 +177,6 @@ var LineUp = Entity.extend({
         for (var i = 0; i < len; i++) {
             var oldList = this.getLineUpCardList(i, this._oldLineUpList);
             var list = this.getLineUpList(i);
-
             var len2 = oldList.length;
             var len3 = list.length;
 

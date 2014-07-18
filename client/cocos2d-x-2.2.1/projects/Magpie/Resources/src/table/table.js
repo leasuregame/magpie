@@ -1092,64 +1092,64 @@ var outputTables = {
                 "id": 1,
                 "name": "父子情深",
                 "group": "13&49",
-                "atk": 10,
-                "hp": 10,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "desc": "哪咤+李靖"
             },
             "2": {
                 "id": 2,
                 "name": "心心相印",
                 "group": "38&39",
-                "atk": 5,
-                "hp": 5,
+                "atk_inc": 5,
+                "hp_inc": 5,
                 "desc": "嫦娥+后羿"
             },
             "3": {
                 "id": 3,
                 "name": "无微无至",
                 "group": "6&8",
-                "atk": 10,
-                "hp": 15,
+                "atk_inc": 10,
+                "hp_inc": 15,
                 "desc": "铁扇公主+红孩儿"
             },
             "4": {
                 "id": 4,
                 "name": "兄弟情深",
                 "group": "2&3",
-                "atk": 15,
-                "hp": 5,
+                "atk_inc": 15,
+                "hp_inc": 5,
                 "desc": "猪八戒+沙悟净"
             },
             "5": {
                 "id": 5,
                 "name": "黑白无常",
                 "group": "31&32",
-                "atk": 15,
-                "hp": 5,
+                "atk_inc": 15,
+                "hp_inc": 5,
                 "desc": "黑无常+白无常"
             },
             "6": {
                 "id": 6,
                 "name": "日夜游神",
                 "group": "33&34",
-                "atk": 15,
-                "hp": 5,
+                "atk_inc": 15,
+                "hp_inc": 5,
                 "desc": "日游神+夜游神"
             },
             "7": {
                 "id": 7,
                 "name": "以一当百",
                 "group": "9&10",
-                "atk": 10,
-                "hp": 10,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "desc": "黄飞虎+雷震子"
             },
             "8": {
                 "id": 8,
                 "name": "情深意重",
                 "group": "18&19",
-                "atk": 0,
-                "hp": 20,
+                "atk_inc": 0,
+                "hp_inc": 20,
                 "desc": "小青+白素贞"
             }
         }

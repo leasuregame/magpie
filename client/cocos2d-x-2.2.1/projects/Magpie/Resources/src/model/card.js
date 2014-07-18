@@ -312,8 +312,8 @@ var Card = Entity.extend({
                     var gs = {
                         name: groupSkill.name,
                         group: group,
-                        atk: groupSkill.atk,
-                        hp: groupSkill.hp,
+                        atk: groupSkill.atk_inc,
+                        hp: groupSkill.hp_inc,
                         desc: groupSkill.desc,
                         isActive: false
                     };
@@ -408,7 +408,7 @@ var Card = Entity.extend({
 
     //取消组合技能
     unActivateGroupSkill: function (index) {
-        cc.log("Card activateGroupSkill: " + index);
+        cc.log("Card unActivateGroupSkill: " + index);
 
         var len = this._groupSkills.length;
         if (index >= len) return;

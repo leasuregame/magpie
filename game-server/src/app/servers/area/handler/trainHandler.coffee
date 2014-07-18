@@ -166,7 +166,7 @@ Handler::luckyCardActivity = (msg, session, next) ->
       card.star = cardStar luckCardConf.data.tableId
       card.tableId = luckCardConf.data.tableId
 
-  doLuckCard msg, session, activityMethod, (err, res, player) ->
+  doLuckCard msg, session, activityMethod, false, (err, res, player) ->
     if err
       return next(err)
 
@@ -186,9 +186,9 @@ Handler::luckyCardActivity = (msg, session, next) ->
     next(null, res)
 
 Handler::luckyCard = (msg, session, next) -> 
-  doLuckCard msg, session, null, (err, res) -> next(err, res)
+  doLuckCard msg, session, null, true, (err, res) -> next(err, res)
 
-doLuckCard = (msg, session, beforeSaveCards, next) ->
+doLuckCard = (msg, session, beforeSaveCards, processFirstTime, next) ->
   playerId = session.get('playerId')
   level = msg.level or LOW_LUCKYCARD
   type = if msg.type? then msg.type else LOTTERY_BY_GOLD
@@ -308,7 +308,6 @@ doLuckCard = (msg, session, beforeSaveCards, next) ->
       goldLuckyCard10.got = true
       player.updateGift 'goldLuckyCard10', goldLuckyCard10
 
-
   firstGoldLuckyCard = (player) ->
     ### 每天前3次单次魔石抽卡，比得一个卡魂 ###
 
@@ -329,10 +328,10 @@ doLuckCard = (msg, session, beforeSaveCards, next) ->
     (res, cb) ->
       player = res     
 
-      if level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
+      if processFirstTime and level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
         isFree = player.firstTime.lowLuckyCard
         player.setFirstTime('lowLuckyCard', 0)
-      if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.highLuckyCard
+      if processFirstTime and level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.highLuckyCard
         isFree = player.firstTime.highLuckyCard
         player.setFirstTime('highLuckyCard', 0)
 
@@ -366,7 +365,6 @@ doLuckCard = (msg, session, beforeSaveCards, next) ->
 
       if type is LOTTERY_BY_GOLD
         player.decrease('gold', totalConsume)
-        # todo record here
 
       if type is LOTTERY_BY_ENERGY
         player.decrease('energy', totalConsume)
@@ -432,7 +430,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       sp_left = card.skillPointLeft()
       if player.skillPoint + sp_left < sp_need
         return cb({code: 501, msg: '技能点不够，不能升级'})  
-      
+
       sp_need = sp_need - sp_left
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)

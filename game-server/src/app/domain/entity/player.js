@@ -1621,11 +1621,9 @@ var Player = (function(_super) {
 
     Player.prototype.isGotLuckCardStar = function(rate_list) {
         if (typeof this.activities.luckCard == 'undefined') {
-            var i = _.random(0, rate_list.length - 1);
             this.activities.luckCard = {
                 star: 0,
-                luckCardCount10: 0,
-                rates: rate_list[i]
+                luckCardCount10: 0
             };
         }
 
@@ -1638,13 +1636,18 @@ var Player = (function(_super) {
                 lcData.star = 0;
             } else {
                 got = utility.hitRate(rate_list);
-                lcData.star += 1;
+                if (got) lcData.star += 1;
             }
         } else {
             if (lcData.star == 5) {
                 lcData.star = 0;
             } else {    
                 lcData.luckCardCount10 += 1;
+
+                if (typeof lcData.rates == 'undefined') {
+                    lcData.rates = rate_list[_.random(0, rate_list.length - 1)];
+                }
+
                 if (lcData.rates[(lcData.luckCardCount10%10 || 10) - 1] == '1') {
                     lcData.star += 1;
                     got = true

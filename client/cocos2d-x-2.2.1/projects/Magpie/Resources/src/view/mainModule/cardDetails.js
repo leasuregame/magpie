@@ -75,6 +75,10 @@ var CardDetails = LazyLayer.extend({
         line3Icon.setPosition(this._cardDetailsFit.line3IconPoint);
         this.addChild(line3Icon);
 
+        var line4Icon = cc.Sprite.create(main_scene_image.icon18);
+        line4Icon.setPosition(this._cardDetailsFit.line4IconPoint);
+        this.addChild(line4Icon);
+
         var nameLabel = StrokeLabel.create(this._card.get("name"), "STHeitiTC-Medium", 35);
         nameLabel.setColor(cc.c3b(255, 236, 168));
         nameLabel.setPosition(this._cardDetailsFit.nameLabelPoint);
@@ -207,12 +211,17 @@ var CardDetails = LazyLayer.extend({
         skillIcon.setPosition(this._cardDetailsFit.skillIconPoint);
         this.addChild(skillIcon);
 
-
         var passiveSkillIcon = cc.LabelTTF.create("被动效果:", "STHeitiTC-Medium", 30);
         passiveSkillIcon.setColor(cc.c3b(255, 248, 69));
         passiveSkillIcon.setAnchorPoint(cc.p(0, 0.5));
         passiveSkillIcon.setPosition(this._cardDetailsFit.passiveSkillIconPoint);
         this.addChild(passiveSkillIcon);
+
+        var groupSkillIcon = cc.LabelTTF.create("情缘:", "STHeitiTC-Medium", 30);
+        groupSkillIcon.setColor(cc.c3b(255, 248, 69));
+        groupSkillIcon.setAnchorPoint(cc.p(0, 0.5));
+        groupSkillIcon.setPosition(this._cardDetailsFit.groupSkillIconPoint);
+        this.addChild(groupSkillIcon);
 
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -232,9 +241,11 @@ var CardDetails = LazyLayer.extend({
         if (this._card.isExpCard()) {
             this._expCardSkillDesc();
             this._expCardPassiveSkillDesc();
+            this._expCardGroupSkillDesc();
         } else {
             this._cardSkillDesc();
             this._cardPassiveSkillDesc();
+            this._cardGroupSkillDesc();
         }
 
 
@@ -305,7 +316,7 @@ var CardDetails = LazyLayer.extend({
         } else {
             var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
-            tipLabel.setPosition(this._cardDetailsFit.tipLabel2Point);
+            tipLabel.setPosition(this._cardDetailsFit.tipLabel3Point);
             this._passiveSkillLayer.addChild(tipLabel);
 
             var str = "三星以上拥有被动效果";
@@ -321,7 +332,7 @@ var CardDetails = LazyLayer.extend({
 
             var tipDescriptionLabel = cc.LabelTTF.create(str + "，具体属性随机生成。", "STHeitiTC-Medium", 20);
             tipDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
-            tipDescriptionLabel.setPosition(this._cardDetailsFit.tipDescriptionLabel2Point);
+            tipDescriptionLabel.setPosition(this._cardDetailsFit.tipDescriptionLabel3Point);
             this._passiveSkillLayer.addChild(tipDescriptionLabel);
         }
     },
@@ -417,10 +428,38 @@ var CardDetails = LazyLayer.extend({
 
         var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
-        tipLabel.setPosition(this._cardDetailsFit.tipLabel2Point);
+        tipLabel.setPosition(this._cardDetailsFit.tipLabel3Point);
         this.addChild(tipLabel);
 
         var tipDescriptionLabel = cc.LabelTTF.create("你信不信我能让你的等级突飞猛进。不信？多试几张。", "STHeitiTC-Medium", 20);
+        tipDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
+        tipDescriptionLabel.setPosition(this._cardDetailsFit.tipDescriptionLabel3Point);
+        this.addChild(tipDescriptionLabel);
+    },
+
+    _cardGroupSkillDesc: function() {
+        cc.log("CardDetails _cardGroupSkillDesc");
+
+        var groupSkillNameLabel = cc.LabelTTF.create("寻找师兄", "STHeitiTC-Medium", 20);
+        groupSkillNameLabel.setAnchorPoint(cc.p(0, 0.5));
+        groupSkillNameLabel.setPosition(this._cardDetailsFit.groupSkillNameLabelPoint);
+        this.addChild(groupSkillNameLabel);
+
+        var groupSkillDescLabel = cc.LabelTTF.create("金蝉子，猪八戒，沙悟净同时上阵，攻击+15%，生命+15%", "STHeitiTC-Medium", 20);
+        groupSkillDescLabel.setAnchorPoint(cc.p(0, 0.5));
+        groupSkillDescLabel.setPosition(this._cardDetailsFit.groupSkillDescLabelPoint);
+        this.addChild(groupSkillDescLabel);
+    },
+
+    _expCardGroupSkillDesc: function() {
+        cc.log("CardDetails _expCardGroupSkillDesc");
+
+        var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
+        tipLabel.setAnchorPoint(cc.p(0, 0.5));
+        tipLabel.setPosition(this._cardDetailsFit.tipLabel2Point);
+        this.addChild(tipLabel);
+
+        var tipDescriptionLabel = cc.LabelTTF.create("你见过像我这么萌的神仙么", "STHeitiTC-Medium", 20);
         tipDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
         tipDescriptionLabel.setPosition(this._cardDetailsFit.tipDescriptionLabel2Point);
         this.addChild(tipDescriptionLabel);

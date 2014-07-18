@@ -59,8 +59,10 @@ describe("Player Object", function() {
         p.addCards(cards);
 
         it('should can active group effect', function() {
-            p.activeGroupEffect();
-            p.lv.should.be.equal(1);
+            p.getCard(1).ability().should.be.equal(3990);
+            p.getCard(2).ability().should.be.equal(3990);
+            p.getCard(8).ability().should.be.equal(2630);
+            p.getCard(9).ability().should.be.equal(2630);
         });
     });
 

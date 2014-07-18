@@ -745,6 +745,11 @@ var Player = (function(_super) {
     };
 
     Player.prototype.activeGroupEffect = function() {
+        var l1 = this.activeCardIds().filter(function(i) { return i != -1; }).length;
+        var l2 = this.activeCards().length;
+        
+        if (l1 > l2) return;
+
         var self = this;
         var idMap = [];
 
@@ -780,8 +785,11 @@ var Player = (function(_super) {
                     return self.getCard(m[_g]);
                 }).forEach(function(c) {
                     c.countGroupEffect(gid);
-                });                
+                });
+                
             });
+
+
         });
     };
 

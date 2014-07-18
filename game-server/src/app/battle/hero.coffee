@@ -126,7 +126,7 @@ class Hero extends Module
     for enemy, i in enemys
       continue if enemy.death()
       
-      _dmg = if isSpecial and i is 0 then _dmg1 else _dmg2
+      _dmg = if isSpecial and i is 0 or not isSpecial then _dmg1 else _dmg2
       if enemy.isDodge(@)
         # 闪避
         _step.d.push enemy.idx

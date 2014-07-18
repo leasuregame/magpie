@@ -239,13 +239,28 @@ var Card = (function(_super) {
             ps_hp: 0,
             ps_atk: 0,
             elixir_hp: 0,
-            elixir_atk: 0
+            elixir_atk: 0,
+            group_hp: 0,
+            group_atk: 0
         },
         passiveSkills: [],
         useCardsCounts: 0,
         psGroupCount: 3,
         pill: 0,
         potentialLv: 0
+    };
+
+    Card.prototype.countGroupEffect = function(gid) {
+        var g = table.getTableItem('card_group', gid);
+        if (g) {
+            if (g.hp_inc) {
+                this.incs.group_hp = parseInt(this.init_hp*g.hp_inc/100);
+            }
+            if (g.atk_inc) {
+                this.incs.group_atk = parseInt(this.init_atk*g.atk_inc/100);
+            }
+        }
+        this.recountHpAndAtk();
     };
 
     Card.prototype.init = function() {
@@ -321,8 +336,10 @@ var Card = (function(_super) {
 
         hp += this.incs.elixir_hp;
         hp += this.incs.ps_hp;
+        hp += this.incs.group_hp;
         atk += this.incs.elixir_atk;
         atk += this.incs.ps_atk;
+        atk += this.incs.group_atk;
 
         this.hp = hp;
         this.atk = atk;
@@ -354,12 +371,12 @@ var Card = (function(_super) {
                 var sum = items.filter(function(ps) {
                     return should_inc_ps.indexOf(ps.name) > -1;
                 })
-                    .map(function(ps) {
-                        return ps.value * ae[ps.name];
-                    })
-                    .reduce(function(x, y) {
-                        return x + y;
-                    }, 0);
+                .map(function(ps) {
+                    return ps.value * ae[ps.name];
+                })
+                .reduce(function(x, y) {
+                    return x + y;
+                }, 0);
 
                 _abi += sum;
             }

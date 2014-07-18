@@ -725,7 +725,7 @@ var Player = (function(_super) {
         var atk_pct = spiritorData.atk_inc;
 
         this.activeCards().forEach(function(card) {
-            var _a = card.ability() + card.groupAbility();
+            var _a = card.ability();
 
             // 计算元神增加的战斗力
             var _hp = parseInt(card.init_hp / ae.hp * hp_pct / 100);

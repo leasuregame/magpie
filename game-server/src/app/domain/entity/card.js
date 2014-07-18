@@ -385,11 +385,6 @@ var Card = (function(_super) {
         return parseInt(_abi);
     };
 
-    Card.prototype.groupAbility = function() {
-        var ae = configData.card.ABILIGY_EXCHANGE;
-        return parseInt(this.incs.group_hp/ae.hp) + parseInt(this.incs.group_atk/ae.atk)
-    };
-
     //产生被动技能
     Card.prototype.bornPassiveSkill = function() {
         var pss = _.clone(this.passiveSkills);

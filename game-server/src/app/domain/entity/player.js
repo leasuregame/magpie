@@ -127,6 +127,7 @@ var addEvents = function(player) {
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
             player.activeSpiritorEffect();
+            player.activeGroupEffect();
         }
 
         if (!card.isExpCard() && !player.cardBookMark.hasMark(card.tableId)) {
@@ -724,7 +725,7 @@ var Player = (function(_super) {
         var atk_pct = spiritorData.atk_inc;
 
         this.activeCards().forEach(function(card) {
-            var _a = card.ability();
+            var _a = card.ability() + card.groupAbility();
 
             // 计算元神增加的战斗力
             var _hp = parseInt(card.init_hp / ae.hp * hp_pct / 100);
@@ -743,26 +744,46 @@ var Player = (function(_super) {
         this.set('ability', this.getAbility());
     };
 
-    // Player.prototype.activeGroupEffect = function() {
-    //     var cardIds = _.values(lineUpToObj(this.lineUp));
-    //     var cards = _.values(this.cards).filter(function(id, c) {
-    //         return c.star >= 3 && cardIds.indexOf(c.id) > -1;
-    //     });
-    //     var cardTable = table.getTable('cards');
+    Player.prototype.activeGroupEffect = function() {
+        var self = this;
+        var idMap = [];
 
-    //     for (var i = 0; i < cards.length; i++) {
-    //         var card = cards[i];
-    //         var cdata = cardTable.getItem(card.id);
-    //         var series = cdata.group.toString().split(',');
-    //         var seriesCards = cardTable.filter(function(id, item) {
-    //             return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
-    //         });
+        var cids = this.lineUp.map(function(i) {
+            return _.values(i).filter(function(j) { return j != -1; });
+        });
+                
+        var sids = cids.map(function(i) {
+            var _m = {};
+            var _res = i.map(function(j) {
+                var tid = self.getCard(j).tableId;
+                sid = table.getTableItem('cards', tid).number;
+                _m[sid] = j;
+                return sid;
+            });
+            idMap.push(_m);
+            return _res;
+        });
 
-    //         if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-    //             card.activeGroupEffect();
-    //         }
-    //     }
-    // };
+        var groups = table.getTable('card_group').map(function(item) {
+            return [item.group.split('&').map(function(i) { return parseInt(i);}), item.id];
+        });
+
+        sids.forEach(function(_sid, i) {
+            var matchGroups = groups.filter(function(gs) {
+                var g = gs[0];
+                return _.isEqual(_.intersection(_sid, g).sort(), g.sort());
+            }).forEach(function(gs) {
+                var m = idMap[i];
+                var g = gs[0];
+                var gid = gs[1];
+                var cards = g.map(function(_g) {
+                    return self.getCard(m[_g]);
+                }).forEach(function(c) {
+                    c.countGroupEffect(gid);
+                });                
+            });
+        });
+    };
 
     Player.prototype.isVip = function() {
         return this.vip > 0;

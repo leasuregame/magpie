@@ -28,7 +28,6 @@
     "pomelo-schedule": "*"
   },
   "devDependencies": {
-    "underscore": "1.4.4",
     "mocha": "*",
     "sinon": "*",
     "should": "*",
@@ -37,7 +36,7 @@
     "jade": "*",
     "ejs": "*",
     "xunit-file": "*",
-    "webdriverjs": "*",
+    
     "elementtree": "*"
   }
 }

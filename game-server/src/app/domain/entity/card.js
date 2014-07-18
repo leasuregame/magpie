@@ -260,6 +260,7 @@ var Card = (function(_super) {
                 this.incs.group_atk = parseInt(this.init_atk*g.atk_inc/100);
             }
         }
+        this.recountHpAndAtk();
     };
 
     Card.prototype.init = function() {
@@ -335,8 +336,10 @@ var Card = (function(_super) {
 
         hp += this.incs.elixir_hp;
         hp += this.incs.ps_hp;
+        hp += this.incs.group_hp;
         atk += this.incs.elixir_atk;
         atk += this.incs.ps_atk;
+        atk += this.incs.group_atk;
 
         this.hp = hp;
         this.atk = atk;

@@ -744,6 +744,16 @@ var Player = (function(_super) {
         this.set('ability', this.getAbility());
     };
 
+    Player.prototype.rmGroupEffect = function(cards) {
+        // 移除所有上阵卡牌的卡牌组合效果
+        if (!cards) {
+            cards = this.activeCards();
+        }
+        cards.forEach(function(c) {
+            c.rmGroupEffect();
+        });
+    }
+
     Player.prototype.activeGroupEffect = function() {
         var l1 = this.activeCardIds().filter(function(i) { return i != -1; }).length;
         var l2 = this.activeCards().length;
@@ -775,6 +785,7 @@ var Player = (function(_super) {
             return [item.group.split('&').map(function(i) { return parseInt(i);}), item.id];
         });
 
+        var results = [];
         sids.forEach(function(_sid, i) {
             var matchGroups = groups.filter(function(gs) {
                 var g = gs[0];
@@ -786,13 +797,12 @@ var Player = (function(_super) {
                 var cards = g.map(function(_g) {
                     return self.getCard(m[_g]);
                 }).forEach(function(c) {
-                    c.countGroupEffect(gid);
+                    c.addGroupEffect(gid);
+                    results.push(c.id);
                 });
-                
             });
-
-
         });
+        return results;
     };
 
     Player.prototype.isVip = function() {

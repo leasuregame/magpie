@@ -971,9 +971,22 @@ Handler::changeLineUp = (msg, session, next) ->
     if not checkCardCount(cids, cardCount)
       return next(null, {code: 501, msg: "当前等级只能上阵#{cardCount}张卡牌"})
 
+    beforeChange = player.activeGroupEffect()
     player.updateLineUp(lineupObj, index)
+    afterChange = player.activeGroupEffect()
+    results = processChangedCardsAbility(player, beforeChange, afterChange)
+
     player.save()
-    next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
+    next(null, { code: 200, msg: {lineUp: player.lineUpObj(), changedCards: results} })
+
+processChangedCardsAbility = (player, beforeChange, afterChange) ->
+  needRemove = _.difference(beforeChange, afterChange)
+  allIds = _.union(beforeChange, afterChange)
+
+  player.rmGroupEffect(player.getCards(needRemove))
+  allIds.map (i) -> 
+    c = player.getCard(i)
+    [c.id, c.ability()]
 
 Handler::sellCards = (msg, session, next) ->
   playerId = session.get('playerId')

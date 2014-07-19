@@ -85,7 +85,7 @@ var LineUp = Entity.extend({
         for (var i = 0; i < len; i++) {
             var c = cards[i];
             var card = gameData.cardList.getCardByIndex(c[0]);
-            card.set("ability", c[1]);
+            card.updateAbility(c[1]);
         }
     },
 
@@ -194,7 +194,7 @@ var LineUp = Entity.extend({
                 for (var k = 0; k < len3; k++) {
                     if (card.get("id") == list[k]) break;
                     else if (k == len3 - 1) {
-                        card.unAllActivateGroupSkill();
+                        card.unActivateAllGroupSkill();
                     }
                 }
             }

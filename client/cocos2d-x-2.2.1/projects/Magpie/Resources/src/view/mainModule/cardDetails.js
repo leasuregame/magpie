@@ -449,7 +449,7 @@ var CardDetails = LazyLayer.extend({
             var groupSkill = this._card.getGroupSkill(0);
             name = groupSkill.name || "无";
             desc = groupSkill.desc ? groupSkill.desc + (groupSkill.atk ? "， 攻击+" + groupSkill.atk + "%" : "") + (groupSkill.hp ? "， 生命+" + groupSkill.hp + "%" : "") : "暂无组合技能";
-            color = groupSkill.isActive ? cc.c3b(255, 215, 57) : cc.c3b(116, 98, 91);
+            color = groupSkill.isActive ? cc.c3b(255, 215, 57) : cc.c3b(145, 124, 124);
         }
 
         var groupSkillNameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 20);

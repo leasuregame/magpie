@@ -153,6 +153,7 @@ var Card = Entity.extend({
         this._groupSkills = [];
 
         this.update(data);
+        this._loadGroupSkillTable();
 
         this.off();
         this.on("abilityChange", this._abilityChangeEvent);
@@ -192,8 +193,12 @@ var Card = Entity.extend({
         if (data) {
             this.set("ability", data.ability);
         }
+    },
 
-        this._loadGroupSkillTable();
+    updateAbility: function (ability) {
+        cc.log("Card updateAbility: " + ability);
+
+        this._ability = ability;
     },
 
     _updatePassiveSkills: function (data) {
@@ -333,6 +338,7 @@ var Card = Entity.extend({
         this._calculatePotentialLvAddition();
         this._calculatePassiveSkillAddition();
         this._calculateElixirAddition();
+        this._calculateGroupSkill();
     },
 
     _calculatePotentialLvAddition: function () {
@@ -390,6 +396,23 @@ var Card = Entity.extend({
         this._atk += elixirAtk;
     },
 
+    _calculateGroupSkill: function () {
+        cc.log("Card _calculateGroupSkill");
+
+        var len = this._groupSkills.length;
+
+        if (!len) return;
+
+        for (var i = 0; i < len; i++) {
+            var gs = this._groupSkills[i];
+            if(gs.isActive) {
+                this._atk += parseInt(this._initAtk * gs.atk / 100);
+                this._hp += parseInt(this._initHp * gs.hp / 100);
+            }
+        }
+
+    },
+
     //激活组合技能
     activateGroupSkill: function (index) {
         cc.log("Card activateGroupSkill: " + index);
@@ -422,8 +445,8 @@ var Card = Entity.extend({
         this._hp -= parseInt(this._initHp * gs.hp / 100);
     },
 
-    unAllActivateGroupSkill: function () {
-        cc.log("Card unAllActivateGroupSkill");
+    unActivateAllGroupSkill: function () {
+        cc.log("Card unActivateAllGroupSkill");
 
         var len = this._groupSkills.length;
         if (!len) return;
@@ -475,7 +498,7 @@ var Card = Entity.extend({
 
         var len = this._groupSkills;
 
-        if(!len || index >= len) return {};
+        if (!len || index >= len) return {};
 
         return this._groupSkills[index];
     },

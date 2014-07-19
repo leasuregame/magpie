@@ -455,6 +455,7 @@ var CardDetails = LazyLayer.extend({
         var groupSkillNameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 20);
         groupSkillNameLabel.setAnchorPoint(cc.p(0, 0.5));
         groupSkillNameLabel.setPosition(this._cardDetailsFit.groupSkillNameLabelPoint);
+        groupSkillNameLabel.setColor(color);
         this.addChild(groupSkillNameLabel);
 
         var groupSkillDescLabel = cc.LabelTTF.create(desc, "STHeitiTC-Medium", 20);

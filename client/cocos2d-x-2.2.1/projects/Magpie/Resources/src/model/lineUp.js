@@ -49,8 +49,6 @@ var LineUp = Entity.extend({
         var maxLineUp = this._maxLineUp;
         var lv = gameData.player.get("lv");
 
-        cc.log(data);
-
         for (var i = 0; i < maxLineUp; ++i) {
             var lineUp;
             if (data) {
@@ -78,6 +76,17 @@ var LineUp = Entity.extend({
         this.set("lineUpList", lineUpList);
 
         this.activateCardsGroupSkill();
+    },
+
+    updateCardsAbility: function (cards) {
+        cc.log("LineUp updateCardsAbility");
+
+        var len = cards.length;
+        for (var i = 0; i < len; i++) {
+            var c = cards[i];
+            var card = gameData.cardList.getCardByIndex(c[0]);
+            card.set("ability", c[1]);
+        }
     },
 
     _lineUpListChangeEvent: function () {
@@ -337,6 +346,7 @@ var LineUp = Entity.extend({
 
                 var msg = data.msg;
 
+                that.updateCardsAbility(msg.changedCards);
                 that.update(msg.lineUp);
 
                 cb(true);

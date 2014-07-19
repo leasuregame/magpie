@@ -1,16 +1,6 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
-    "boss_find_rate": "BOSS出现概率",
-    "BOSS出现概率": "boss_find_rate",
-    "boss_type_rate": "BOSS类型配置表",
-    "BOSS类型配置表": "boss_type_rate",
-    "boss": "BOSS属性配置表",
-    "BOSS属性配置表": "boss",
-    "boss_card": "Boss怪物卡牌配置表",
-    "Boss怪物卡牌配置表": "boss_card",
-    "boss_rank_reward": "伤害排行榜奖励配置表",
-    "伤害排行榜奖励配置表": "boss_rank_reward",
     "card_group": "卡牌组合配置表",
     "卡牌组合配置表": "card_group",
     "card_grow": "卡牌升级表",
@@ -35,6 +25,16 @@ var nameChanged = {
     "高星级卡牌进阶概率配置表": "star_upgrade_rate",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "boss_find_rate": "BOSS出现概率",
+    "BOSS出现概率": "boss_find_rate",
+    "boss_type_rate": "BOSS类型配置表",
+    "BOSS类型配置表": "boss_type_rate",
+    "boss": "BOSS属性配置表",
+    "BOSS属性配置表": "boss",
+    "boss_card": "Boss怪物卡牌配置表",
+    "Boss怪物卡牌配置表": "boss_card",
+    "boss_rank_reward": "伤害排行榜奖励配置表",
+    "伤害排行榜奖励配置表": "boss_rank_reward",
     "login_count_reward": "开服累计登陆奖励配置表",
     "开服累计登陆奖励配置表": "login_count_reward",
     "new_year_rechage": "新年充值奖励",
@@ -836,255 +836,6 @@ var outputTables = {
             }
         }
     },
-    "boss_find_rate": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rate": 0
-            },
-            "2": {
-                "id": 2,
-                "rate": 0
-            },
-            "3": {
-                "id": 3,
-                "rate": 0
-            },
-            "4": {
-                "id": 4,
-                "rate": 0
-            },
-            "5": {
-                "id": 5,
-                "rate": 0
-            },
-            "6": {
-                "id": 6,
-                "rate": 0
-            },
-            "7": {
-                "id": 7,
-                "rate": 0
-            },
-            "8": {
-                "id": 8,
-                "rate": 0
-            },
-            "9": {
-                "id": 9,
-                "rate": 0
-            },
-            "10": {
-                "id": 10,
-                "rate": 0
-            },
-            "11": {
-                "id": 11,
-                "rate": 1
-            },
-            "12": {
-                "id": 12,
-                "rate": 1
-            },
-            "13": {
-                "id": 13,
-                "rate": 1
-            },
-            "14": {
-                "id": 14,
-                "rate": 1
-            },
-            "15": {
-                "id": 15,
-                "rate": 1
-            },
-            "16": {
-                "id": 16,
-                "rate": 5
-            },
-            "17": {
-                "id": 17,
-                "rate": 30
-            },
-            "18": {
-                "id": 18,
-                "rate": 40
-            },
-            "19": {
-                "id": 19,
-                "rate": 50
-            },
-            "20": {
-                "id": 20,
-                "rate": 100
-            }
-        }
-    },
-    "boss_type_rate": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rate": 55,
-                "name": "蓝卡",
-                "reward_inc": 0,
-                "rate_activity": 10
-            },
-            "2": {
-                "id": 2,
-                "rate": 30,
-                "name": "紫卡",
-                "reward_inc": 50,
-                "rate_activity": 55
-            },
-            "3": {
-                "id": 3,
-                "rate": 15,
-                "name": "金卡",
-                "reward_inc": 150,
-                "rate_activity": 35
-            }
-        }
-    },
-    "boss": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "九阴罗刹",
-                "type": 1,
-                "boss_id": 40000,
-                "card_ids": "40003#40000#40003",
-                "formation": "2:40000,4:40003,6:40003",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "2": {
-                "id": 2,
-                "name": "赤炎星君",
-                "type": 2,
-                "boss_id": 40001,
-                "card_ids": "40004#40001#40004",
-                "formation": "2:40001,4:40004,6:40004",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            },
-            "3": {
-                "id": 3,
-                "name": "金身冥王",
-                "type": 3,
-                "boss_id": 40002,
-                "card_ids": "40005#40002#40005",
-                "formation": "2:40002,4:40005,6:40005",
-                "live_time": 12,
-                "disappear_time": 2,
-                "atk_count": 10
-            }
-        }
-    },
-    "boss_card": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "40000": {
-                "id": 40000,
-                "card_id": "九阴罗刹",
-                "atk": 1000000,
-                "hp": 30000000,
-                "dodge_rate": 0,
-                "crit_rate": 30,
-                "hit_rate": 15
-            },
-            "40001": {
-                "id": 40001,
-                "card_id": "赤炎星君",
-                "atk": 1500000,
-                "hp": 30000000,
-                "dodge_rate": 0,
-                "crit_rate": 30,
-                "hit_rate": 15
-            },
-            "40002": {
-                "id": 40002,
-                "card_id": "金身冥王",
-                "atk": 2000000,
-                "hp": 30000000,
-                "dodge_rate": 0,
-                "crit_rate": 30,
-                "hit_rate": 15
-            },
-            "40003": {
-                "id": 40003,
-                "card_id": "小怪1号",
-                "atk": 5000,
-                "hp": 20000,
-                "dodge_rate": 0,
-                "crit_rate": 10,
-                "hit_rate": 15
-            },
-            "40004": {
-                "id": 40004,
-                "card_id": "小怪2号",
-                "atk": 5000,
-                "hp": 20000,
-                "dodge_rate": 0,
-                "crit_rate": 10,
-                "hit_rate": 15
-            },
-            "40005": {
-                "id": 40005,
-                "card_id": "小怪3号",
-                "atk": 5000,
-                "hp": 20000,
-                "dodge_rate": 0,
-                "crit_rate": 10,
-                "hit_rate": 15
-            }
-        }
-    },
-    "boss_rank_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "honor": 18000,
-                "money": 500000
-            },
-            "2": {
-                "id": 2,
-                "honor": 16000,
-                "money": 450000
-            },
-            "3": {
-                "id": 3,
-                "honor": 14000,
-                "money": 400000
-            },
-            "4": {
-                "id": 4,
-                "honor": 12000,
-                "money": 350000
-            },
-            "5": {
-                "id": 5,
-                "honor": 10000,
-                "money": 300000
-            },
-            "6": {
-                "id": 6,
-                "honor": 8000
-            }
-        }
-    },
     "card_group": {
         "colComment": {},
         "rows": {
@@ -1093,64 +844,72 @@ var outputTables = {
                 "name": "父子情深",
                 "group": "13&49",
                 "atk_inc": 10,
-                "hp_inc": 10,
-                "desc": "哪咤+李靖"
+                "hp_inc": 15,
+                "desc": "哪咤，李靖同时上阵"
             },
             "2": {
                 "id": 2,
                 "name": "心心相印",
                 "group": "38&39",
-                "atk_inc": 5,
-                "hp_inc": 5,
-                "desc": "嫦娥+后羿"
+                "atk_inc": 15,
+                "hp_inc": 10,
+                "desc": "嫦娥，后羿同时上阵"
             },
             "3": {
                 "id": 3,
-                "name": "无微无至",
+                "name": "无微不至",
                 "group": "6&8",
-                "atk_inc": 10,
+                "atk_inc": 12,
                 "hp_inc": 15,
-                "desc": "铁扇公主+红孩儿"
+                "desc": "铁扇公主，红孩儿同时上阵"
             },
             "4": {
                 "id": 4,
-                "name": "兄弟情深",
-                "group": "2&3",
-                "atk_inc": 15,
-                "hp_inc": 5,
-                "desc": "猪八戒+沙悟净"
+                "name": "寻找师兄",
+                "group": "2&3&5",
+                "atk_inc": 12,
+                "hp_inc": 20,
+                "desc": "金蝉子，猪八戒，沙悟净同时上阵"
             },
             "5": {
                 "id": 5,
                 "name": "黑白无常",
                 "group": "31&32",
                 "atk_inc": 15,
-                "hp_inc": 5,
-                "desc": "黑无常+白无常"
+                "hp_inc": 10,
+                "desc": "黑无常，白无常同时上阵"
             },
             "6": {
                 "id": 6,
                 "name": "日夜游神",
                 "group": "33&34",
                 "atk_inc": 15,
-                "hp_inc": 5,
-                "desc": "日游神+夜游神"
+                "hp_inc": 10,
+                "desc": "日游神，夜游神同时上阵"
             },
             "7": {
                 "id": 7,
                 "name": "以一当百",
                 "group": "9&10",
-                "atk_inc": 10,
-                "hp_inc": 10,
-                "desc": "黄飞虎+雷震子"
+                "atk_inc": 12,
+                "hp_inc": 13,
+                "desc": "黄飞虎，雷震子同时上阵"
             },
             "8": {
                 "id": 8,
                 "name": "情深意重",
                 "group": "18&19",
-                "atk_inc": 0,
-                "hp_inc": 20,
-                "desc": "小青+白素贞"
+                "atk_inc": 13,
+                "hp_inc": 12,
+                "desc": "小青，白素贞同时上阵"
+            },
+            "9": {
+                "id": 9,
+                "name": "八仙小队",
+                "group": "20&22&25",
+                "atk_inc": 15,
+                "hp_inc": 15,
+                "desc": "铁拐李，韩湘子，何仙姑同时上阵"
             }
         }
     },
@@ -13377,6 +13136,255 @@ var outputTables = {
                 "max_num": 7,
                 "no_work_count": 0,
                 "super_honor": 40
+            }
+        }
+    },
+    "boss_find_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 0
+            },
+            "2": {
+                "id": 2,
+                "rate": 0
+            },
+            "3": {
+                "id": 3,
+                "rate": 0
+            },
+            "4": {
+                "id": 4,
+                "rate": 0
+            },
+            "5": {
+                "id": 5,
+                "rate": 0
+            },
+            "6": {
+                "id": 6,
+                "rate": 0
+            },
+            "7": {
+                "id": 7,
+                "rate": 0
+            },
+            "8": {
+                "id": 8,
+                "rate": 0
+            },
+            "9": {
+                "id": 9,
+                "rate": 0
+            },
+            "10": {
+                "id": 10,
+                "rate": 0
+            },
+            "11": {
+                "id": 11,
+                "rate": 1
+            },
+            "12": {
+                "id": 12,
+                "rate": 1
+            },
+            "13": {
+                "id": 13,
+                "rate": 1
+            },
+            "14": {
+                "id": 14,
+                "rate": 1
+            },
+            "15": {
+                "id": 15,
+                "rate": 1
+            },
+            "16": {
+                "id": 16,
+                "rate": 5
+            },
+            "17": {
+                "id": 17,
+                "rate": 30
+            },
+            "18": {
+                "id": 18,
+                "rate": 40
+            },
+            "19": {
+                "id": 19,
+                "rate": 50
+            },
+            "20": {
+                "id": 20,
+                "rate": 100
+            }
+        }
+    },
+    "boss_type_rate": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rate": 55,
+                "name": "蓝卡",
+                "reward_inc": 0,
+                "rate_activity": 10
+            },
+            "2": {
+                "id": 2,
+                "rate": 30,
+                "name": "紫卡",
+                "reward_inc": 50,
+                "rate_activity": 55
+            },
+            "3": {
+                "id": 3,
+                "rate": 15,
+                "name": "金卡",
+                "reward_inc": 150,
+                "rate_activity": 35
+            }
+        }
+    },
+    "boss": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "九阴罗刹",
+                "type": 1,
+                "boss_id": 40000,
+                "card_ids": "40003#40000#40003",
+                "formation": "2:40000,4:40003,6:40003",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "2": {
+                "id": 2,
+                "name": "赤炎星君",
+                "type": 2,
+                "boss_id": 40001,
+                "card_ids": "40004#40001#40004",
+                "formation": "2:40001,4:40004,6:40004",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            },
+            "3": {
+                "id": 3,
+                "name": "金身冥王",
+                "type": 3,
+                "boss_id": 40002,
+                "card_ids": "40005#40002#40005",
+                "formation": "2:40002,4:40005,6:40005",
+                "live_time": 12,
+                "disappear_time": 2,
+                "atk_count": 10
+            }
+        }
+    },
+    "boss_card": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "40000": {
+                "id": 40000,
+                "card_id": "九阴罗刹",
+                "atk": 1000000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 15
+            },
+            "40001": {
+                "id": 40001,
+                "card_id": "赤炎星君",
+                "atk": 1500000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 15
+            },
+            "40002": {
+                "id": 40002,
+                "card_id": "金身冥王",
+                "atk": 2000000,
+                "hp": 30000000,
+                "dodge_rate": 0,
+                "crit_rate": 30,
+                "hit_rate": 15
+            },
+            "40003": {
+                "id": 40003,
+                "card_id": "小怪1号",
+                "atk": 5000,
+                "hp": 20000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 15
+            },
+            "40004": {
+                "id": 40004,
+                "card_id": "小怪2号",
+                "atk": 5000,
+                "hp": 20000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 15
+            },
+            "40005": {
+                "id": 40005,
+                "card_id": "小怪3号",
+                "atk": 5000,
+                "hp": 20000,
+                "dodge_rate": 0,
+                "crit_rate": 10,
+                "hit_rate": 15
+            }
+        }
+    },
+    "boss_rank_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "honor": 18000,
+                "money": 500000
+            },
+            "2": {
+                "id": 2,
+                "honor": 16000,
+                "money": 450000
+            },
+            "3": {
+                "id": 3,
+                "honor": 14000,
+                "money": 400000
+            },
+            "4": {
+                "id": 4,
+                "honor": 12000,
+                "money": 350000
+            },
+            "5": {
+                "id": 5,
+                "honor": 10000,
+                "money": 300000
+            },
+            "6": {
+                "id": 6,
+                "honor": 8000
             }
         }
     },

@@ -187,7 +187,6 @@ var Card = (function(_super) {
             }
         }
 
-
         countHpAtk(this);
         countElixirEffect(this);
         countPassiveSkills(this);
@@ -250,7 +249,7 @@ var Card = (function(_super) {
         potentialLv: 0
     };
 
-    Card.prototype.countGroupEffect = function(gid) {
+    Card.prototype.addGroupEffect = function(gid) {
         var g = table.getTableItem('card_group', gid);
         if (g) {
             if (g.hp_inc) {
@@ -260,6 +259,12 @@ var Card = (function(_super) {
                 this.incs.group_atk = parseInt(this.init_atk*g.atk_inc/100);
             }
         }
+        this.recountHpAndAtk();
+    };
+
+    Card.prototype.rmGroupEffect = function() {
+        this.incs.group_hp = 0;
+        this.incs.group_atk = 0;
         this.recountHpAndAtk();
     };
 

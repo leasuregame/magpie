@@ -174,6 +174,7 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.DELETE, options);
+    console.log(stm);
     return this.dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when delete " + _this.table + "s]", err.stack);

@@ -15,8 +15,13 @@
     "appender": {
       "type": "smtp",
       "recipients": "wuzhanghai@leasuregame.com,linchenchen@leasuregame.com",
+<<<<<<< HEAD
       "subject": "[Aliyun Game Server Error]",
       "sendInterval": 5,
+=======
+      "subject": "[AppStore Server Error]",
+      "sendInterval": 60,
+>>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
       "transport": "SMTP",
       "SMTP": {
         "host": "smtp.gmail.com",

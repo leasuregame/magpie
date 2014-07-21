@@ -9,6 +9,9 @@ GOLDCARD_MAP =
   'com.leasuregame.magpie.week.card': 'week'
   'com.leasuregame.magpie.month.card': 'month'
 
+GOLD_CARD_ID_WEEK = 'com.leasuregame.magpie.week.card'
+GOLD_CARD_ID_MONTH = 'com.leasuregame.magpie.month.card'
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -47,11 +50,10 @@ Handler::recharge = (msg, session, next) ->
   else
     return next(null, {code: 500, msg: 'product does not exists'})
 
-  # 用于记录充值失败的用户
-  failIdx = playerIds.length
-
-  _.each playerIds, (playerId, idx) ->
-
+  # 用于记录用户的充值结果
+  retPlayers = []
+  async.each playerIds
+  , (playerId, eachCb) ->
     isFirstRechage = false
     player = null
 
@@ -63,6 +65,11 @@ Handler::recharge = (msg, session, next) ->
       (_player, cb) ->
         #为用户增加相关资源
         player = _player
+
+        if product.product_id == GOLD_CARD_ID_WEEK && player.goldCards.week
+          return cb({msg:'充值失败,周卡已存在'})
+        else if product.product_id == GOLD_CARD_ID_MONTH && player.goldCards.month
+          return cb({msg:'充值失败,月卡已存在'})
 
         presentTimes = 1
 
@@ -81,7 +88,9 @@ Handler::recharge = (msg, session, next) ->
         player.increase('gold', goldGain)
         player.save()
 
-        addGoldCard(app, null, player, product, ->
+        orderId = new Date().getTime() + "" + Math.ceil(Math.random() * 100)
+
+        addGoldCard(app, orderId, player, product, ->
           cb null, data:
             playerId : player.id
             type : type
@@ -90,25 +99,28 @@ Handler::recharge = (msg, session, next) ->
             amount : cashAmount
             gain : goldGain
         )
-
       (rechargeData, cb) ->
         # 记录此次操作
         rechargeDao.createRecharge rechargeData, cb
     ], (err) ->
+      retPlayerData = {
+        id : playerId
+        name : player && player.name
+        status : 1
+      }
       if err
-        # 如果充值失败则同时返回哪些用户成功,哪些用户失败
-        failIdx = idx
-        succeededPN = playerNames.splice(0, failIdx);
-        return next(null, {code: 501, msg: {
-          err:'player not found',
-          players:succeededPN,
-          failedPlayers:playerNames,
-          product:product,
-          qty:qty,
-        }})
-      successMsg(app, player, isFirstRechage)
+        # 如果充值失败,返回失败信息
+        retPlayerData.status = 2
+        retPlayerData.msg = err.msg
+        eachCb()
+      retPlayers.push retPlayerData
+      successMsg app, player, isFirstRechage
+      eachCb()
+  , (err) ->
+    if(err)
+      next null, {code: 500, msg: err}
+    next null, {code: 200, msg: {players:retPlayers, product:product, qty:qty}}
 
-  next(null, {code: 200, msg: {players:playerNames, product:product, qty:qty}})
 
 verifySignature = (sig, param) ->
   SALTS = ['JWj$vN_F!g','?eecCX37lg','0%OZ-Yf@l?','a938tofcqv',
@@ -141,33 +153,17 @@ verifySignature = (sig, param) ->
 addGoldCard = (app, orderId, player, product, cb) ->
   return cb() if not isGoldCard(product)
 
-  app.get('dao').goldCard.fetchOne where: playerId: player.id, orderId: orderId, (err, res) ->
-    if res
-      updateGoldCardStatus app, orderId, res, player, cb
-    else
-      createNewGoldCard app, orderId, player, product, cb
+  createNewGoldCard app, orderId, player, product, cb
 
 isGoldCard = (product) ->
   ids = [
-    'com.leasuregame.magpie.week.card',
-    'com.leasuregame.magpie.month.card'
+    GOLD_CARD_ID_WEEK,
+    GOLD_CARD_ID_MONTH
   ]
   if product and product.product_id in ids
     return true
   else
     return false
-
-updateGoldCardStatus = (app, orderId, goldCard, player, cb) ->
-  app.get('dao').goldCard.update {
-    data: status: 1
-    where: playerId: player.id, orderId: orderId
-  }, (err, res) ->
-    if err
-      logger.error('faild to update goldCard record: ', err)
-
-    goldCard.status = 1
-    player.addGoldCard goldCard
-    cb()
 
 createNewGoldCard = (app, orderId, player, product, cb) ->
   today = new Date()
@@ -191,13 +187,13 @@ createNewGoldCard = (app, orderId, player, product, cb) ->
 
 successMsg = (app, player, isFirstRechage) ->
   app.get('messageService').pushByPid player.id, {
-    route: 'onVerifyResult',
+    route: 'onVerifyResult'
     msg: {
-      gold: player.gold,
-      vip: player.vip,
-      cash: player.cash,
-      goldCards: player.getGoldCard(),
-      recharge: player.firstTime.recharge or 0,
+      gold: player.gold
+      vip: player.vip
+      cash: player.cash
+      goldCards: player.getGoldCard()
+      recharge: player.firstTime.recharge or 0
       firstRechargeBox: 1 if isFirstRechage
       vipLoginReward: !player.dailyGift.vipReward if player.isVip()
     }

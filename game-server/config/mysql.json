@@ -34,8 +34,15 @@
 		"1": {
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",
-			"database": "tb_db_area_1",
-			"user": "tb_leasuregame",
+			"database": "app_db_area_1",
+			"user": "app_leasuregame",
+			"password": "leasure405GAME"
+		},
+		"2": {
+			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
+			"port": "3306",
+			"database": "app_db_area_2",
+			"user": "app_leasuregame",
 			"password": "leasure405GAME"
 		},
 		"2": {
@@ -62,15 +69,25 @@
 		"userdb": {
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",
+<<<<<<< HEAD
 			"database": "tb_db_userdb",
 			"user": "tb_leasuregame",
+=======
+			"database": "app_db_userdb",
+			"user": "app_leasuregame",
+>>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
 			"password": "leasure405GAME"
 		},
 		"sharedb": {
 			"host": "rdsunmvbrvfv2uj.mysql.rds.aliyuncs.com",
 			"port": "3306",
+<<<<<<< HEAD
 			"database": "tb_db_sharedb",
 			"user": "tb_leasuregame",
+=======
+			"database": "app_db_sharedb",
+			"user": "app_leasuregame",
+>>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
 			"password": "leasure405GAME"
 		}
 	}

@@ -8,6 +8,10 @@ var ServerStateService = require('./app/service/serverStateService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var cdFilter = require('./app/servers/area/filter/cdFilter');
+<<<<<<< HEAD
+=======
+var userLogFilter = require('./app/servers/area/filter/userLogFilter');
+>>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
@@ -117,19 +121,26 @@ app.configure('production|development', 'area', function() {
     app: app
   });
   areaUtil.checkFlagFile(app);
+<<<<<<< HEAD
   app.before(cdFilter());
 
+=======
+  
+>>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
   appUtil.loadDatabaseInfo(app, 'areadb');
   appUtil.loadShareDatabaseInfo(app);
 
   var dao_share = require('./app/dao').init('mysql', 'share');
   app.set('dao_share', dao_share);
 
-  app.set('useSanbox', false);
+  app.set('useSanbox', true);
 
   app.load(counter);
   app.load(verifier);
   app.load(worldCupRewardNotice);
+
+  app.before(cdFilter());
+  app.filter(userLogFilter(app));
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

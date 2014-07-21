@@ -3,6 +3,10 @@
     "id": "master-server-1", "host": "127.0.0.1", "port": 4005
   },
   "production": {
+<<<<<<< HEAD
     "id": "master-server-1", "host": "115.29.12.178", "port": 3005
+=======
+    "id": "master-server-1", "host": "115.29.243.80", "port": 3005
+>>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
   }
 }

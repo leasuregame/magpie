@@ -586,6 +586,29 @@ var fit4Iphone5 = {
             "rewardItemPoint": cc.p(580, 990),
             "collectLabelPoint": cc.p(320, 781)
         },
+        "flashLotteryLayer": {
+            "timesBgLabelPoint": cc.p(320, 1000),
+            "timeLabelPoint": cc.p(320, 995),
+            "titleLabelPoint": cc.p(320, 890),
+            "cardLabelPoint": cc.p(320, 580),
+            "baseSpritePoint": cc.p(320, 310),
+            "starPoints": [
+                cc.p(60, 730),
+                cc.p(60, 650),
+                cc.p(60, 570),
+                cc.p(60, 490),
+                cc.p(60, 410)
+            ],
+            "lotteryCardItemPoint": cc.p(170, 240),
+            "tenLotteryCardItemPoint": cc.p(440, 240),
+            "rateLabel1Point": cc.p(170, 280),
+            "rateLabel2Point": cc.p(440, 280),
+            "costLabel1Point": cc.p(170, 200),
+            "costLabel2Point": cc.p(440, 200),
+            "goldLotteryIconPoint": cc.p(170, 195),
+            "goldTenLotteryIconPoint": cc.p(440, 195),
+            "tipLabelPoint": cc.p(440, 165)
+        },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
             "headIconPoint": cc.p(0, 1056),
@@ -814,7 +837,7 @@ var fit4Iphone5 = {
             "messageItemPoint": cc.p(588, 167),
             "configLayerItemPoint": cc.p(578, 749),
             "greetingLabelItemPoint": cc.p(60, 751),
-            "worldCupLayerItemPoint": cc.p(588, 267)
+            "activityItemBasePoint": cc.p(588, 267)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(0, 0),
@@ -1039,16 +1062,18 @@ var fit4Iphone5 = {
             "playerLabelPoint": cc.p(240, 841),
             "nameLabelPoint": cc.p(280, 841),
             "vipIconPoint": cc.p(490, 841),
+            "buyVipItemPoint": cc.p(560, 841),
             "lvIconLabelPoint": cc.p(240, 795),
             "lvLabelPoint": cc.p(280, 795),
             "spiritLvIconLabelPoint": cc.p(240, 749),
             "spiritLvLabelPoint": cc.p(280, 749),
-            "moneyIconPoint": cc.p(130, 678),
-            "moneyIconLabelPoint": cc.p(240, 678),
-            "moneyLabelPoint": cc.p(280, 678),
-            "goldIconPoint": cc.p(130, 632),
-            "goldIconLabelPoint": cc.p(240, 632),
-            "goldLabelPoint": cc.p(280, 632),
+            "goldIconPoint": cc.p(130, 678),
+            "goldIconLabelPoint": cc.p(240, 678),
+            "goldLabelPoint": cc.p(280, 678),
+            "buyGoldItemPoint": cc.p(440, 678),
+            "moneyIconPoint": cc.p(130, 632),
+            "moneyIconLabelPoint": cc.p(240, 632),
+            "moneyLabelPoint": cc.p(280, 632),
             "skillPointIconPoint": cc.p(130, 561),
             "skillPointIconLabelPoint": cc.p(240, 561),
             "skillPointLabelPoint": cc.p(280, 561),
@@ -1061,6 +1086,7 @@ var fit4Iphone5 = {
             "powerIconPoint": cc.p(130, 393),
             "powerIconLabelPoint": cc.p(240, 393),
             "powerLabelPoint": cc.p(280, 393),
+            "buyPowerItemPoint": cc.p(440, 393),
             "tipLabelPoint": cc.p(120, 347),
             "okItemPoint": cc.p(320, 275),
             "closeItemPoint": cc.p(600, 930)
@@ -1493,7 +1519,8 @@ var fit4Iphone5 = {
             "titleLabelPoint": cc.p(320, 660),
             "tipLabelPoint": cc.p(320, 600),
             "paymentItemPoint": cc.p(220, 520),
-            "closeItemPoint": cc.p(420, 520)
+            "closeItemPoint": cc.p(420, 520),
+            "continueItemPoint": cc.p(320, 520)
         },
         "greetingLabel": {
             "bgSpriteSize": cc.size(540, 780),

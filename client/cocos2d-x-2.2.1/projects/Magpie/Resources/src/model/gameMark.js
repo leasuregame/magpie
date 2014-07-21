@@ -320,6 +320,11 @@ var gameMark = {
                         mark = true;
                         break;
                     }
+                } else if(type == LEAVE_MESSAGE) {
+                    if (status == UNHANDLED_STATUS) {
+                        mark = true;
+                        break;
+                    }
                 }
             }
         }

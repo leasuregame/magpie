@@ -4,7 +4,7 @@
         "startDate": "2014-1-28",
         "endDate": "2014-2-28"
     },
-    "useWhiteList": false,
+    "useWhiteList": true,
     "activity": {
         "default": {
             "enable": false,
@@ -22,25 +22,19 @@
             "endDate": "2014-6-3 23:59:59:999"
         },
         "luckyCard": {
-          "enable": true,
-          "startDate": "2014-6-30",
-          "endDate": "2014-7-20 23:59:59:999",
-          "data": {
-            "tableId": 105,
-            "sigleRate": 3,
-            "tenRate": [
-              "1100101001",
-              "1011001001",
-              "0101100101",
-              "0110010101",
-              "1001011001"
-            ]
-          }
+            "enable": true,
+            "startDate": "2014-7-12",
+            "endDate": "2014-7-16 23:59:59:999",
+            "data": {
+                "tableId": 105,
+                "sigleRate": 3,
+                "tenRate": ["1100101001", "1011001001", "0101100101", "0110010101", "1001011001"]
+            }
         },
         "worldCup": {
-          "enable": true,
-          "startDate": "2014-6-13",
-          "endDate": "2014-7-14 23:59:59:999"
+            "enable": true,
+            "startDate": "2014-6-13",
+            "endDate": "2014-7-16 23:59:59:999"
         }
     }
 }

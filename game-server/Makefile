@@ -9,6 +9,10 @@ convert-data: build
 start: convert-data
 	pomelo start -e production --daemon
 
+start-yy: build
+	node ./bin/convertXmlToJson.js YY
+	pomelo start -e production --daemon	
+
 stop:
 	pomelo stop
 
@@ -48,11 +52,11 @@ test-mapping: build
 
 test-domain: build
 	./node_modules/.bin/mocha \
-		--compilers coffee:coffee-script \
 		--require should \
 		--reporter spec \
 		--ui bdd \
 		--recursive \
+		-g ".activeGroupEffect" \
 		./test/domain/$(files)
 
 test-battle: build
@@ -78,8 +82,12 @@ restartserver: build
 	./node_modules/.bin/pomelo start production --daemon
 
 newdb:
+<<<<<<< HEAD
 	sh ./bin/initMysql.sh magpie_area_1
 	sh ./bin/initMysql.sh magpie_area_2
+=======
+	sh ./bin/initMysql.sh yy_db_area_1
+>>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
 
 inittables: 
 	mysql -uroot -p1easure114E -e "drop database if exists $(db);create database $(db);use $(db);source ./config/schema/init.sql;GRANT ALL PRIVILEGES ON $(db).* to dev@localhost IDENTIFIED BY '1';" 

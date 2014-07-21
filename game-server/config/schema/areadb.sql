@@ -356,4 +356,19 @@ CREATE TABLE `playerConsumptionRecord` (
   `source`  tinyint(4) UNSIGNED DEFAULT NULL ,
   `createTime`  DATETIME,
   PRIMARY KEY (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- ----------------------------------------------------------
+-- 玩家操作日记
+-- ----------------------------------------------------------
+
+DROP TABLE IF EXISTS `userLog`;
+CREATE TABLE `userLog` (
+  `id`  int(20) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `playerId`  int(20) UNSIGNED NOT NULL,
+  `route` VARCHAR(50) NOT NULL,
+  `params` VARCHAR(1024),
+  `result` TEXT,
+  `created` DATETIME,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

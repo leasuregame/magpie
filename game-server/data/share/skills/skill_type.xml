@@ -9,6 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-09-11T19:47:14Z</Created>
+  <LastSaved>2014-07-15T08:12:04Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -19,11 +20,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8760</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>140</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <WindowHeight>6000</WindowHeight>
+  <WindowWidth>17680</WindowWidth>
+  <WindowTopX>340</WindowTopX>
+  <WindowTopY>10100</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -36,7 +36,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s62">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
@@ -44,18 +44,18 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s71">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="技能类型表">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultColumnWidth="97"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="97"
    ss:DefaultRowHeight="19">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="44"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="164"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="156"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="44"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="164"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="156"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">序号</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
@@ -86,6 +86,11 @@
     <Cell><Data ss:Type="String">mult_heal</Data></Cell>
     <Cell><Data ss:Type="String">群体治疗</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">aoe_latitude</Data></Cell>
+    <Cell><Data ss:Type="String">特殊群体攻击</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -94,10 +99,11 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>31</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -108,18 +114,18 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">export_name</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">技能类型表</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">skill_type</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">技能类型表</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">skill_type</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

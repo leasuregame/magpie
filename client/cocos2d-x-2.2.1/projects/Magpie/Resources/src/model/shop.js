@@ -54,6 +54,7 @@ var Shop = Entity.extend({
     setListener: function () {
         cc.log("Shop setListener");
 
+        var that = this;
         lz.server.on("onVerifyResult", function (data) {
             cc.log("***** on verify result:");
             cc.log(JSON.stringify(data));
@@ -119,10 +120,12 @@ var Shop = Entity.extend({
                 gameData.spiritPool.set("maxCollectCount", outputTables.daily_gift.rows[1].collect_count + outputTables.vip_privilege.rows[nowVip].spirit_collect_count);
 
 
-                var cb = this.showVipUpgrade();
+                var cb = function () {
+                    that.showVipUpgrade();
+                };
 
                 if (msg.firstRechargeBox && msg.firstRechargeBox == HAS_FIRST_RECHARGER_BOX) {
-                    this.showFirstRechargeBox(cb);
+                    that.showFirstRechargeBox(cb);
                 } else {
                     cb();
                 }
@@ -158,7 +161,15 @@ var Shop = Entity.extend({
         GiftBagLayer.pop2Top({
             reward: reward,
             type: GET_GIFT_BAG_NO_CLOSE,
-            cb: cb
+            titleType: TYPE_FIRST_RECHARGE_REWARD,
+            cb: function () {
+                gameData.activity.getFirstRechargeBox(function (reward) {
+                    lz.tipReward(reward);
+                    if (cb) {
+                        cb();
+                    }
+                });
+            }
         });
     },
 
@@ -869,4 +880,4 @@ Shop.create = function () {
     }
 
     return null;
-}
+};

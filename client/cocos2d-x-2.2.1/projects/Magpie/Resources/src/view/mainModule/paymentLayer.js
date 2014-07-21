@@ -176,19 +176,6 @@ var PaymentLayer = LazyLayer.extend({
             cardItem.setPosition(cc.p(56, y + 113));
             menu.addChild(cardItem);
 
-//            var getRewardItem = cc.MenuItemImage.createWithIcon(
-//                main_scene_image.button10,
-//                main_scene_image.button10s,
-//                main_scene_image.button9d,
-//                main_scene_image.icon123,
-//                this._onClickGetReward,
-//                this
-//            );
-//
-//            getRewardItem.setPosition(cc.p(255, y + 44));
-//            getRewardItem.setScale(0.7);
-//            getRewardItem.setEnabled(firstPaymentState == HAS_FIRST_RECHARGER_BOX);
-//            menu.addChild(getRewardItem);
         }
 
 
@@ -388,11 +375,8 @@ var PaymentLayer = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        //var parent = this.getParent();
-
         VipPrivilegeLayer.pop();
 
-        //this.removeFromParent();
     },
 
     _onClickPayment: function (product) {

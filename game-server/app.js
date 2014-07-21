@@ -8,6 +8,10 @@ var ServerStateService = require('./app/service/serverStateService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var cdFilter = require('./app/servers/area/filter/cdFilter');
+<<<<<<< HEAD
+=======
+var userLogFilter = require('./app/servers/area/filter/userLogFilter');
+>>>>>>> 461c77d4a5123e4ff36ea9b7ac70e73c34332f70
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
@@ -118,7 +122,7 @@ app.configure('production|development', 'area', function() {
   });
   areaUtil.checkFlagFile(app);
   app.before(cdFilter());
-
+  
   appUtil.loadDatabaseInfo(app, 'areadb');
   appUtil.loadShareDatabaseInfo(app);
 
@@ -130,6 +134,9 @@ app.configure('production|development', 'area', function() {
   app.load(counter);
   app.load(verifier);
   app.load(worldCupRewardNotice);
+
+  app.before(cdFilter());
+  app.filter(userLogFilter(app));
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

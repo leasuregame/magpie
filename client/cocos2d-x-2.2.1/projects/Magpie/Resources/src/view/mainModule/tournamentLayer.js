@@ -500,16 +500,7 @@ var TournamentLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         if (gameData.shop.get("challengeBuyCount") <= 0) {
-            var tipVip = gameData.player.get("vip") + 1;
-
-            tipVip = Math.max(tipVip, 3);
-            tipVip = Math.min(tipVip, 12);
-
-            GoPaymentLayer.pop({
-                title: "有奖竞技购买次数已用完",
-                msg: "成为VIP" + tipVip + "，每日即可获得额外的有奖竞技购买次数"
-            });
-
+            GoPaymentLayer.pop(TYPE_CHALLENGE_BUY_COUNT_USE_UP_TIPS);
             return;
         }
 

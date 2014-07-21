@@ -118,7 +118,6 @@ app.configure('production|development', 'area', function() {
     app: app
   });
   areaUtil.checkFlagFile(app);
-  app.before(cdFilter());
   
   appUtil.loadDatabaseInfo(app, 'areadb');
   appUtil.loadShareDatabaseInfo(app);

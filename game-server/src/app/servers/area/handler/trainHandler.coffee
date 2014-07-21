@@ -631,7 +631,7 @@ Handler::starUpgrade = (msg, session, next) ->
     player.popCards(sources)    
     afterChange = player.activeGroupEffect()
     changedCards = afterChange.map (i) ->
-      c.player.getCard(i)
+      c = player.getCard(i)
       [c.id, c.ability()]
 
     next(null, {code: 200, msg: {

@@ -628,14 +628,19 @@ Handler::starUpgrade = (msg, session, next) ->
     if err and not result
       return next(null, {code: err.code, msg: err.msg})
       
-    player.popCards(sources)
-    player.activeGroupEffect()
+    player.popCards(sources)    
+    afterChange = player.activeGroupEffect()
+    changedCards = afterChange.map (i) ->
+      c.player.getCard(i)
+      [c.id, c.ability()]
+
     next(null, {code: 200, msg: {
       upgrade: is_upgrade, 
       card: card?.toJson(), 
       initRate: player.initRate,
       money: player.money,
-      superHonor: player.superHonor
+      superHonor: player.superHonor,
+      changedCards: changedCards
     }})
 
 Handler::passSkillActive = (msg, session, next) ->

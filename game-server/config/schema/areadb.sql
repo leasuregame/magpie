@@ -366,7 +366,7 @@ DROP TABLE IF EXISTS `userLog`;
 CREATE TABLE `userLog` (
   `id`  int(20) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `playerId`  int(20) UNSIGNED NOT NULL,
-  `route` smallint(4) UNSIGNED NOT NULL,
+  `route` VARCHAR(50) NOT NULL,
   `params` VARCHAR(1024),
   `result` TEXT,
   `created` DATETIME,

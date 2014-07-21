@@ -629,6 +629,7 @@ Handler::starUpgrade = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
       
     player.popCards(sources)
+    player.activeGroupEffect()
     next(null, {code: 200, msg: {
       upgrade: is_upgrade, 
       card: card?.toJson(), 

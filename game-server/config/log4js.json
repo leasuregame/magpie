@@ -16,7 +16,7 @@
       "type": "smtp",
       "recipients": "wuzhanghai@leasuregame.com,linchenchen@leasuregame.com",
       "subject": "[AppStore Server Error]",
-      "sendInterval": 5,
+      "sendInterval": 60,
       "transport": "SMTP",
       "SMTP": {
         "host": "smtp.gmail.com",

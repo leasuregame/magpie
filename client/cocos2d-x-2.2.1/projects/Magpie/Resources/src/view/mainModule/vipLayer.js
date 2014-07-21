@@ -290,14 +290,7 @@ var VipLayer = cc.Layer.extend({
             var player = gameData.player;
 
             if (player.get("vip") < id) {
-                GoPaymentLayer.pop({
-                    title: "购 买 失 败",
-                    msg: "只有达到VIP" + id + "才能购买此礼包，快去充值吧！",
-                    cb: function () {
-                        PaymentLayer.pop();
-                    }
-                });
-
+                GoPaymentLayer.pop(TYPE_BUY_VIP_BOX_TIPS, {id: id});
                 return;
             }
 
@@ -308,7 +301,7 @@ var VipLayer = cc.Layer.extend({
 
 
             var table = outputTables.vip_box.rows[id];
-            if(player.get("gold") < table.price) {
+            if (player.get("gold") < table.price) {
                 TipLayer.tip("魔石不足");
                 return;
             }

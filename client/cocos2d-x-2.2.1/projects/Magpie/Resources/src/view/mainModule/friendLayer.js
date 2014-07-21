@@ -196,7 +196,7 @@ var FriendLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        var friendList = friend.getFriendList();//friend.get("friendList");
+        var friendList = friend.getFriendList();
         var len = friendList.length;
 
         var giveCount = friend.get("giveCount");
@@ -403,15 +403,7 @@ var FriendLayer = cc.Layer.extend({
             var friend = gameData.friend;
 
             if (friend.get("giveCount") <= 0) {
-                var tipVip = gameData.player.get("vip") + 1;
-
-                tipVip = Math.max(tipVip, 2);
-                tipVip = Math.min(tipVip, 12);
-
-                GoPaymentLayer.pop({
-                    title: "祝福次数已用完",
-                    msg: "成为VIP" + tipVip + "，每日即可获得额外的祝福次数"
-                });
+                GoPaymentLayer.pop(TYPE_GIVE_BLESS_COUNT_USE_UP_TIPS);
                 return;
             }
 

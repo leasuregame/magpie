@@ -11,7 +11,11 @@ var cdFilter = require('./app/servers/area/filter/cdFilter');
 <<<<<<< HEAD
 =======
 var userLogFilter = require('./app/servers/area/filter/userLogFilter');
+<<<<<<< HEAD
 >>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
+=======
+>>>>>>> 461c77d4a5123e4ff36ea9b7ac70e73c34332f70
+>>>>>>> e93854c7505da8d3c2ff221d06687263665e410e
 var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
@@ -122,11 +126,15 @@ app.configure('production|development', 'area', function() {
   });
   areaUtil.checkFlagFile(app);
 <<<<<<< HEAD
-  app.before(cdFilter());
-
+<<<<<<< HEAD
 =======
+>>>>>>> e93854c7505da8d3c2ff221d06687263665e410e
+  app.before(cdFilter());
   
+<<<<<<< HEAD
 >>>>>>> ac642b31f4f07179ab030dbece51609372ca85a5
+=======
+>>>>>>> e93854c7505da8d3c2ff221d06687263665e410e
   appUtil.loadDatabaseInfo(app, 'areadb');
   appUtil.loadShareDatabaseInfo(app);
 

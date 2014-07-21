@@ -16,6 +16,11 @@ var ActivityLayer = cc.Layer.extend({
 
     _layers: [
         {
+            titleIcon: "icon480",
+            layer: FlashLotteryLayer,
+            nameString: "flashLotteryLayer"
+        },
+        {
             titleIcon: "worldCupIcon1",
             layer: WorldCupLayer,
             nameString: "worldCupLayer"

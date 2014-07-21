@@ -58,6 +58,10 @@ var LotteryCardLayer = LazyLayer.extend({
         var star = this._card.get("star");
         var index = star > 2 ? Math.min(star - 2, 3) : 1;
 
+        if (this._card.isRareCard()) {
+            index = (5 == star) ? 1 : 2;
+        }
+
         controller.ccbCardFull.setTexture(lz.getTexture(main_scene_image[url + "_full" + index]));
 
         this._ccbNode.animationManager.setCompletedAnimationCallback(this, function () {

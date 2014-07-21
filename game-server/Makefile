@@ -52,11 +52,11 @@ test-mapping: build
 
 test-domain: build
 	./node_modules/.bin/mocha \
-		--compilers coffee:coffee-script \
 		--require should \
 		--reporter spec \
 		--ui bdd \
 		--recursive \
+		-g ".activeGroupEffect" \
 		./test/domain/$(files)
 
 test-battle: build

@@ -78,7 +78,12 @@ var giftBagGoods = {
     speaker: {
         name: "喇叭",
         url: "icon144"
-    }
+    },
+
+    pill: {
+        name: "觉醒玉",
+        url: "icon486"
+  }
 };
 
 var SHOW_GIFT_BAG = 1;
@@ -90,6 +95,7 @@ var GET_GIFT_BAG_NO_CLOSE = 5;
 var TYPE_GIFT_REWARD = 1;
 var TYPE_LOOK_REWARD = 2;
 var TYPE_EXPLORE_REWARD = 3;
+var TYPE_FIRST_RECHARGE_REWARD = 4;
 
 var GiftBagLayer = LazyLayer.extend({
     _giftBagLayerFit: null,
@@ -138,6 +144,8 @@ var GiftBagLayer = LazyLayer.extend({
             url = "icon388";
         } else if (titleType == TYPE_EXPLORE_REWARD) {
             url = "icon448";
+        } else if(titleType == TYPE_FIRST_RECHARGE_REWARD) {
+            url = "icon485";
         }
 
         var titleIcon = cc.Sprite.create(main_scene_image[url]);

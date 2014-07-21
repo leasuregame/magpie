@@ -280,14 +280,13 @@ var FriendMessageLayer = cc.Layer.extend({
             if (status == UNHANDLED_STATUS) {
                 gameData.message.setAsRead(id, function () {
                     that._friendMessageList[index].status = HANDLED_STATUS;
+                    gameMark.updateFriendMessageMark(false);
                     if (that._markEffect[index]) {
                         that._markEffect[index].removeFromParent();
                         that._markEffect[index] = null;
                     }
                 });
             }
-
-            gameMark.updateFriendMessageMark(false);
 
             ReadMessageLayer.pop(message.sender, message.senderName, message.text);
         }

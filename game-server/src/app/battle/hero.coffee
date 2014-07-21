@@ -105,20 +105,28 @@ class Hero extends Module
         @skillAttack enemys, percent, isSpiritor, callback
       when 'single_heal', 'mult_heal'
         @cure enemys, percent, isSpiritor, callback
+      when 'aoe_latitude'
+        @specialSkillAttack enemys, percent, isSpiritor, callback
       else
         callback()
 
+  specialSkillAttack: (enemys, percent, isSpiritor, callback) ->
+    @_doSkillAttack enemys, percent, isSpiritor, true, callback
+
   skillAttack: (enemys, percent, isSpiritor, callback) ->
+    @_doSkillAttack enemys, percent, isSpiritor, false, callback
+
+  _doSkillAttack: (enemys, percent, isSpiritor, isSpecial, callback) ->
     # 负的a的id代表技能攻击
-    _step = {a: -@idx, d: [], e: [], r: []}
-    _step.t = 1 if isSpiritor
+    _step = @_initSkillStep isSpiritor
     
-    _len = enemys? and enemys.length or 0
-    _dmg = parseInt(@atk * @skill.effectValue() * percent / 100)
+    _dmg1 = parseInt(@atk * @skill.effectValue() * percent / 100)
+    _dmg2 = parseInt(@atk * @skill.attachedDamagePercent() * percent / 100)
     
-    for enemy in enemys
+    for enemy, i in enemys
       continue if enemy.death()
       
+      _dmg = if isSpecial and i is 0 or not isSpecial then _dmg1 else _dmg2
       if enemy.isDodge(@)
         # 闪避
         _step.d.push enemy.idx
@@ -138,11 +146,10 @@ class Hero extends Module
       enemy.damage _dmg, @, _step
 
     @log _step
-    callback enemys     
+    callback enemys      
 
   cure: (enemys, percent, isSpiritor, callback) ->
-    _step = {a: -@idx, d: [], e: []}
-    _step.t = 1 if isSpiritor
+    _step = @_initSkillStep isSpiritor
     
     ### 卡牌治疗效果按卡牌最大生命值来计算 ###
     _hp = parseInt(@init_hp * @skill.effectValue() * percent / 100)
@@ -165,6 +172,11 @@ class Hero extends Module
 
     @log _step
     callback enemys
+
+  _initSkillStep: (isSpiritor) ->
+    _step = {a: -@idx, d: [], e: []}
+    _step.t = 1 if isSpiritor
+    _step
 
   normalAttack: (callback) ->    
     _hero = @player.enemy.herosToBeAttacked 'default', @pos

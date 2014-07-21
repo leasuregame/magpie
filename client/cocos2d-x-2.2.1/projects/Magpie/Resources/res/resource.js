@@ -123,7 +123,6 @@ var main_scene_image = {
     card_icon_1_4: main_scene_path + "card_icon_1_4.png",
     card_icon_1_5: main_scene_path + "card_icon_1_5.png",
     card_icon_1_6: main_scene_path + "card_icon_1_6.png",
-    card_icon_1_7: main_scene_path + "card_icon_1_7.png",
 
     card_icon_2_0: main_scene_path + "card_icon_2_0.png",
     card_icon_2_1: main_scene_path + "card_icon_2_1.png",
@@ -132,7 +131,6 @@ var main_scene_image = {
     card_icon_2_4: main_scene_path + "card_icon_2_4.png",
     card_icon_2_5: main_scene_path + "card_icon_2_5.png",
     card_icon_2_6: main_scene_path + "card_icon_2_6.png",
-    card_icon_2_7: main_scene_path + "card_icon_2_7.png",
 
     card_subscript_6: main_scene_path + "card_subscript_6.png",
     card_subscript_7: main_scene_path + "card_subscript_7.png",
@@ -947,23 +945,9 @@ var main_scene_image = {
     effect2001_2: "res/ccb/effect2001_2.ccbi",
     effect2001_3: "res/ccb/effect2001_3.ccbi",
 
-    effect2002_1: "res/ccb/effect2002_1.ccbi",
-    effect2002_2: "res/ccb/effect2002_2.ccbi",
-    effect2002_3: "res/ccb/effect2002_3.ccbi",
-
-    effect2003_1: "res/ccb/effect2003_1.ccbi",
-    effect2003_2: "res/ccb/effect2003_2.ccbi",
-
     effect2500_1: "res/ccb/effect2500_1.ccbi",
     effect2500_2: "res/ccb/effect2500_2.ccbi",
     effect2500_3: "res/ccb/effect2500_3.ccbi",
-
-    effect2600: "res/ccb/effect2600.ccbi",
-
-    effect2700_1: "res/ccb/effect2700_1.ccbi",
-    effect2700_2: "res/ccb/effect2700_2.ccbi",
-    effect2700_3: "res/ccb/effect2700_3.ccbi",
-    effect2700_4: "res/ccb/effect2700_4.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",
@@ -1476,7 +1460,7 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
 
 //稀有主角卡
 var rareCardResIdList = [
-    6, 42, 48
+    6
 ];
 
 for (var cardIndex = 0; cardIndex < rareCardResIdList.length; ++cardIndex) {

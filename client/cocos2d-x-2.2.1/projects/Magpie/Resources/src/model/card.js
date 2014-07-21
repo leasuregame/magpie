@@ -80,8 +80,7 @@ var skillIconMap = {
         8: "card_icon_1_5",
         9: "card_icon_1_5",
         10: "card_icon_1_5",
-        11: "card_icon_1_6",
-        12: "card_icon_1_7"
+        11: "card_icon_1_6"
     },
     2: {
         0: "card_icon_2_0",
@@ -95,8 +94,7 @@ var skillIconMap = {
         8: "card_icon_2_5",
         9: "card_icon_2_5",
         10: "card_icon_2_5",
-        11: "card_icon_2_6",
-        12: "card_icon_2_7"
+        11: "card_icon_2_6"
     }
 };
 
@@ -165,8 +163,10 @@ var Card = Entity.extend({
     },
 
     // 更新卡牌数据
-    update: function (data) {
+    update: function (data, isNotSet) {
         cc.log("Card update");
+
+        isNotSet = isNotSet || false;
 
         if (data) {
             this.set("id", data.id);
@@ -191,7 +191,11 @@ var Card = Entity.extend({
         this._calculateAddition();
 
         if (data) {
-            this.set("ability", data.ability);
+            if (!isNotSet) {
+                this.set("ability", data.ability);
+            } else {
+                this.updateAbility(data.ability);
+            }
         }
     },
 
@@ -305,6 +309,8 @@ var Card = Entity.extend({
 
         if (this._star < 5) return;
 
+        if (this._groupSkills.length > 0) return;
+
         var groupSkillTable = outputTables.card_group.rows;
 
         for (var key in groupSkillTable) {
@@ -405,7 +411,7 @@ var Card = Entity.extend({
 
         for (var i = 0; i < len; i++) {
             var gs = this._groupSkills[i];
-            if(gs.isActive) {
+            if (gs.isActive) {
                 this._atk += parseInt(this._initAtk * gs.atk / 100);
                 this._hp += parseInt(this._initHp * gs.hp / 100);
             }
@@ -927,7 +933,11 @@ var Card = Entity.extend({
                 gameData.player.add("superHonor", -that.getEvolutionNeedSuperHonor());
                 gameData.cardList.deleteById(cardIdList);
 
-                that.update(msg.card);
+                that.update(msg.card, true);
+                that._loadGroupSkillTable();
+                gameData.lineUp.updateCardsAbility(msg.changedCards);
+                gameData.lineUp.activateCardsGroupSkill();
+                gameData.player.checkAbility();
 
                 if (msg.initRate) {
                     gameData.player.set("evolutionRate", msg.initRate);

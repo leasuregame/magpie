@@ -524,11 +524,9 @@ var BattleLayer = cc.Layer.extend({
 
     nextStepCallback: function () {
         this._counter += 1;
-        cc.log("nec = " + this._counter);
         var that = this;
         return function () {
             that._counter -= 1;
-            cc.log("rf = " + that._counter);
             if (that._counter == 0) {
                 that.scheduleOnce(that.nextStep, 0.1);
             }

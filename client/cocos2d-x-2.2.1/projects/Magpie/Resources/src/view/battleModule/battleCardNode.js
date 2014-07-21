@@ -66,7 +66,7 @@ var BattleCardNode = cc.Node.extend({
                 this._ccbNode.setScale(BOSS_NODE_SCALE);
             }
 
-            if(this.isRareCard()) {
+            if (this.isRareCard()) {
                 this._ccbNode.setScale(RARE_NODE_SCALE);
             }
 
@@ -90,7 +90,8 @@ var BattleCardNode = cc.Node.extend({
                 cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half1"]);
             }
 
-            var size = cardSpriteTexture.getContentSize();
+            var cardSize = cardSpriteTexture.getContentSize();
+            var frameSize = frameSpriteTexture.getContentSize();
 
             var iconSpriteTexture = lz.getTexture(this.getCardIcon());
 
@@ -101,7 +102,8 @@ var BattleCardNode = cc.Node.extend({
                 this.ccbIconSprite.setTexture(iconSpriteTexture);
             }
 
-            this.ccbCardSprite.setTextureRect(cc.rect(0, 0, size.width, size.height));
+            this.ccbFrameSprite.setTextureRect(cc.rect(0, 0, frameSize.width, frameSize.height));
+            this.ccbCardSprite.setTextureRect(cc.rect(0, 0, cardSize.width, cardSize.height));
 
             if (this.getCardSubscript()) {
                 var subscriptSprite = cc.Sprite.create(this.getCardSubscript());

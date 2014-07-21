@@ -57,15 +57,18 @@ Handler::buyPlan = (msg, session, next) ->
         }
       )
 
+    expense = 1000;
+
     if player.hasBuyPlan()
       return next(null, {code: 501, msg: '不能重复购买'})
 
-    if player.gold < 1000
+    if player.gold < expense
       return next(null, {code: 501, msg: '魔石不足，请充值'})
 
     player.buyPlan()
-    player.decrease('gold', 1000)
+    player.decrease('gold', expense)
     player.save()
+    recordManager.createConsumptionRecord player.id, SOURCE.BUY_GROWTH_PLAN, {expense : expense}
     next(null, {code: 200, msg: gold: player.gold, plan: player.plan})
 
 Handler::getPlanReward = (msg, session, next) -> 

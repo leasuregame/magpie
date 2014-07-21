@@ -19,6 +19,7 @@ var LINE_UP_INDEX = 0;
 
 var LineUp = Entity.extend({
     _lineUpList: null,
+    _oldLineUpList: null,
     _maxLineUp: 0,
 
     init: function (data) {
@@ -26,6 +27,7 @@ var LineUp = Entity.extend({
 
         LINE_UP_INDEX = 0;
         this._lineUpList = [];
+        this._oldLineUpList = [];
         this._maxLineUp = Object.keys(outputTables.card_lineup_limit.rows).length;
 
         this.update(data);
@@ -46,8 +48,6 @@ var LineUp = Entity.extend({
         var lineUpList = [];
         var maxLineUp = this._maxLineUp;
         var lv = gameData.player.get("lv");
-
-        cc.log(data);
 
         for (var i = 0; i < maxLineUp; ++i) {
             var lineUp;
@@ -74,21 +74,140 @@ var LineUp = Entity.extend({
         }
 
         this.set("lineUpList", lineUpList);
+
+        this.activateCardsGroupSkill();
+    },
+
+    updateCardsAbility: function (cards) {
+        cc.log("LineUp updateCardsAbility");
+
+        var len = cards.length;
+        for (var i = 0; i < len; i++) {
+            var c = cards[i];
+            var card = gameData.cardList.getCardByIndex(c[0]);
+            card.updateAbility(c[1]);
+        }
     },
 
     _lineUpListChangeEvent: function () {
         cc.log("LineUp _lineUpListChangeEvent");
 
+        this.activateCardsGroupSkill();
+        this.unActivateCardsGroupSkill();
         gameData.player.checkAbility();
     },
 
-    getLineUpCardList: function (index) {
+    activateCardsGroupSkill: function () {
+        cc.log("LineUp activateCardsGroupSkill");
+
+        var filter5star = function (data) {   //筛选5星以上卡牌
+            var arr = [];
+            var len = data.length;
+            for (var i = 0; i < len; i++) {
+                var card = data[i];
+                if (card.get("star") >= 5) {
+                    arr.push(card);
+                }
+            }
+            return arr;
+        };
+
+        var kinds = function (data) {  //获取卡牌系列id
+            var arr = [];
+            var len = data.length;
+            for (var i = 0; i < len; i++) {
+                var card = data[i];
+                arr.push(card.get("kind"));
+            }
+            return arr;
+        };
+
+        var mapping = function (arr1, arr2) {   //匹配组合技能
+            arr1.sort(function (a, b) {
+                return a - b;
+            });
+            arr2.sort(function (a, b) {
+                return a - b;
+            });
+            var len1 = arr1.length;
+            var len2 = arr2.length;
+            var i = 0, j = 0;
+            var m = 0; //匹配数量
+
+            while (i < len1 && j < len2) {
+                if (arr1[i] == arr2[j]) {
+                    i++;
+                    j++;
+                    m++;
+                } else if (arr1[i] < arr2[j]) {
+                    i++;
+                } else {
+                    j++;
+                }
+            }
+
+            return m == len1;
+        };
+
+        var len = this._lineUpList.length;
+        for (var i = 0; i < len; i++) {
+            var lineUpList = filter5star(this.getLineUpCardList(i));
+            var k = kinds(lineUpList);
+            var len2 = lineUpList.length;
+            for (var j = 0; j < len2; j++) {
+                var card = lineUpList[j];
+                var groupSkills = card.get("groupSkills");
+                var gsLen = groupSkills.length;
+
+                if (!gsLen) continue;   //没有组合技能
+
+                for (var index = 0; index < gsLen; index++) {
+                    cc.log(groupSkills[index].group);
+
+                    if (mapping(groupSkills[index].group, k)) {
+                        if (!groupSkills[index].isActive) {  //组合技能未激活
+                            card.activateGroupSkill(index);
+                        }
+                    } else {
+                        if (groupSkills[index].isActive) {  //组合技能已失效
+                            card.unActivateGroupSkill(index);
+                        }
+                    }
+                }
+
+            }
+        }
+    },
+
+    unActivateCardsGroupSkill: function () {
+        cc.log("LineUp unActivateCardsGroupSkill");
+
+        var len = this._oldLineUpList.length;
+        for (var i = 0; i < len; i++) {
+            var oldList = this.getLineUpCardList(i, this._oldLineUpList);
+            var list = this.getLineUpList(i);
+            var len2 = oldList.length;
+            var len3 = list.length;
+
+            for (var j = 0; j < len2; j++) {
+                var card = oldList[j];
+                for (var k = 0; k < len3; k++) {
+                    if (card.get("id") == list[k]) break;
+                    else if (k == len3 - 1) {
+                        card.unActivateAllGroupSkill();
+                    }
+                }
+            }
+        }
+    },
+
+    getLineUpCardList: function (index, list) {
         cc.log("LineUp getLineUpCardList: " + index);
 
         var lineUpCardList = [];
         var cardList = gameData.cardList;
 
-        var lineUpList = this.getLineUpList(index);
+        var lineUpList = this.getLineUpList(index, list);
         var len = lineUpList.length;
 
         for (var i = 0; i < len; ++i) {
@@ -98,14 +217,16 @@ var LineUp = Entity.extend({
         return lineUpCardList;
     },
 
-    getLineUpList: function (index) {
+    getLineUpList: function (index, list) {
         cc.log("LineUp getLineUpList");
+
+        list = list || this._lineUpList;
 
         var lineUpList = [];
         var lineUp, i, j;
 
         if (index != undefined) {
-            lineUp = this._lineUpList[index].lineUp;
+            lineUp = list[index].lineUp;
 
             for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
                 if (lineUp[j] != undefined && lineUp[j] >= 0) {
@@ -116,7 +237,7 @@ var LineUp = Entity.extend({
             var maxLineUp = this._maxLineUp;
 
             for (i = 0; i < maxLineUp; ++i) {
-                lineUp = this._lineUpList[i].lineUp;
+                lineUp = list[i].lineUp;
 
                 for (j = 1; j <= MAX_LINE_UP_SIZE; ++j) {
                     if (lineUp[j] != undefined && lineUp[j] >= 0) {
@@ -211,6 +332,8 @@ var LineUp = Entity.extend({
             return;
         }
 
+        this._oldLineUpList = this._lineUpList;
+
         var that = this;
         lz.server.request("area.trainHandler.changeLineUp", {
             lineUp: data,
@@ -223,6 +346,7 @@ var LineUp = Entity.extend({
 
                 var msg = data.msg;
 
+                that.updateCardsAbility(msg.changedCards);
                 that.update(msg.lineUp);
 
                 cb(true);

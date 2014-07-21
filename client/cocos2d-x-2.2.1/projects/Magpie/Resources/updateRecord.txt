@@ -1,4 +1,12 @@
 更新记录表
+----------v1.5.8版本----------------------------------------------------------------------------------------------------
+备注：组合技能
+
+替换更新：
+
+新加资源:
+----------v1.5.8版本----------------------------------------------------------------------------------------------------
+
 ----------v1.5.7版本----------------------------------------------------------------------------------------------------
 备注：限时抽卡活动、VIP界面改版
 
@@ -6,7 +14,6 @@
 res/main/icon376.png
 res/font/skillName.fnt
 res/font/skillName.png
-
 res/ccb/battleNode.ccbi
 res/ccb/card20000.ccbi
 res/ccb/card20001.ccbi
@@ -16,7 +23,6 @@ res/ccb/spiritNode.ccbi
 resYY/main/icon376.png
 resYY/font/skillName.fnt
 resYY/font/skillName.png
-
 resYY/ccb/battleNode.ccbi
 resYY/ccb/card20000.ccbi
 resYY/ccb/card20001.ccbi

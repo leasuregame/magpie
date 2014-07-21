@@ -139,15 +139,19 @@ var Card = Entity.extend({
 
     _newCardMark: false,    // 新卡标记
 
-    _priority: 0,           //卡牌优先级
-    _isRare: false,         //是否为稀有卡
+    _priority: 0,           // 卡牌优先级
+    _isRare: false,         // 是否为稀有卡
+
+    _groupSkills: [],         // 卡牌组合
 
     init: function (data) {
         cc.log("Card init");
 
         this._passiveSkill = {};
+        this._groupSkills = [];
 
         this.update(data);
+        this._loadGroupSkillTable();
 
         this.off();
         this.on("abilityChange", this._abilityChangeEvent);
@@ -159,8 +163,10 @@ var Card = Entity.extend({
     },
 
     // 更新卡牌数据
-    update: function (data) {
+    update: function (data, isNotSet) {
         cc.log("Card update");
+
+        isNotSet = isNotSet || false;
 
         if (data) {
             this.set("id", data.id);
@@ -185,8 +191,18 @@ var Card = Entity.extend({
         this._calculateAddition();
 
         if (data) {
-            this.set("ability", data.ability);
+            if (!isNotSet) {
+                this.set("ability", data.ability);
+            } else {
+                this.updateAbility(data.ability);
+            }
         }
+    },
+
+    updateAbility: function (ability) {
+        cc.log("Card updateAbility: " + ability);
+
+        this._ability = ability;
     },
 
     _updatePassiveSkills: function (data) {
@@ -288,6 +304,38 @@ var Card = Entity.extend({
         this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
     },
 
+    _loadGroupSkillTable: function () {
+        cc.log("Card _loadGroupSkillTable");
+
+        if (this._star < 5) return;
+
+        if (this._groupSkills.length > 0) return;
+
+        var groupSkillTable = outputTables.card_group.rows;
+
+        for (var key in groupSkillTable) {
+            var groupSkill = groupSkillTable[key];
+            var group = groupSkill.group.split("&");
+            var len = group.length;
+
+            for (var i = 0; i < len; i++) {
+                if (group[i] == this._kind) {
+                    var gs = {
+                        name: groupSkill.name,
+                        group: group,
+                        atk: groupSkill.atk_inc,
+                        hp: groupSkill.hp_inc,
+                        desc: groupSkill.desc,
+                        isActive: false
+                    };
+                    this._groupSkills.push(gs);
+                    break;
+                }
+            }
+        }
+
+    },
+
     _calculateAddition: function () {
         cc.log("Card _calculateAddition");
 
@@ -296,6 +344,7 @@ var Card = Entity.extend({
         this._calculatePotentialLvAddition();
         this._calculatePassiveSkillAddition();
         this._calculateElixirAddition();
+        this._calculateGroupSkill();
     },
 
     _calculatePotentialLvAddition: function () {
@@ -353,6 +402,66 @@ var Card = Entity.extend({
         this._atk += elixirAtk;
     },
 
+    _calculateGroupSkill: function () {
+        cc.log("Card _calculateGroupSkill");
+
+        var len = this._groupSkills.length;
+
+        if (!len) return;
+
+        for (var i = 0; i < len; i++) {
+            var gs = this._groupSkills[i];
+            if (gs.isActive) {
+                this._atk += parseInt(this._initAtk * gs.atk / 100);
+                this._hp += parseInt(this._initHp * gs.hp / 100);
+            }
+        }
+
+    },
+
+    //激活组合技能
+    activateGroupSkill: function (index) {
+        cc.log("Card activateGroupSkill: " + index);
+
+        var len = this._groupSkills.length;
+        if (index >= len) return;
+
+        var gs = this._groupSkills[index];
+
+        if (gs.isActive) return;
+
+        gs.isActive = true;
+        this._atk += parseInt(this._initAtk * gs.atk / 100);
+        this._hp += parseInt(this._initHp * gs.hp / 100);
+    },
+
+    //取消组合技能
+    unActivateGroupSkill: function (index) {
+        cc.log("Card unActivateGroupSkill: " + index);
+
+        var len = this._groupSkills.length;
+        if (index >= len) return;
+
+        var gs = this._groupSkills[index];
+
+        if (!gs.isActive) return;
+
+        gs.isActive = false;
+        this._atk -= parseInt(this._initAtk * gs.atk / 100);
+        this._hp -= parseInt(this._initHp * gs.hp / 100);
+    },
+
+    unActivateAllGroupSkill: function () {
+        cc.log("Card unActivateAllGroupSkill");
+
+        var len = this._groupSkills.length;
+        if (!len) return;
+
+        for (var i = 0; i < len; i++) {
+            this.unActivateGroupSkill(i);
+        }
+    },
+
     _abilityChangeEvent: function () {
         cc.log("Card _abilityChangeEvent");
 
@@ -388,6 +497,16 @@ var Card = Entity.extend({
         }
 
         return false;
+    },
+
+    getGroupSkill: function (index) {
+        cc.log("Card getGroupSkill");
+
+        var len = this._groupSkills;
+
+        if (!len || index >= len) return {};
+
+        return this._groupSkills[index];
     },
 
     getCardIcon: function (type) {
@@ -814,7 +933,11 @@ var Card = Entity.extend({
                 gameData.player.add("superHonor", -that.getEvolutionNeedSuperHonor());
                 gameData.cardList.deleteById(cardIdList);
 
-                that.update(msg.card);
+                that.update(msg.card, true);
+                that._loadGroupSkillTable();
+                gameData.lineUp.updateCardsAbility(msg.changedCards);
+                gameData.lineUp.activateCardsGroupSkill();
+                gameData.player.checkAbility();
 
                 if (msg.initRate) {
                     gameData.player.set("evolutionRate", msg.initRate);

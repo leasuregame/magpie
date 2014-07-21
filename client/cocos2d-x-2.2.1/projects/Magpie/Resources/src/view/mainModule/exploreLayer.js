@@ -509,21 +509,21 @@ var ExploreLayer = cc.Layer.extend({
         }, this);
 
         var spiritScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.08, 1, 0.92),
-            cc.ScaleTo.create(0.08, 1, 1.08),
-            cc.ScaleTo.create(0.24, 1, 1),
-            cc.ScaleTo.create(0.24, 1, 1.08),
-            cc.ScaleTo.create(0.08, 1, 1)
+            cc.ScaleTo.create(0.07, 1, 0.92),
+            cc.ScaleTo.create(0.07, 1, 1.08),
+            cc.ScaleTo.create(0.23, 1, 1),
+            cc.ScaleTo.create(0.23, 1, 1.08),
+            cc.ScaleTo.create(0.07, 1, 1)
         );
 
         var spiritMoveAction = cc.Sequence.create(
-            cc.DelayTime.create(0.16),
+            cc.DelayTime.create(0.14),
             cc.CallFunc.create(function () {
                 gameData.sound.playEffect(main_scene_image.startAnimation_pop_sound, false);
             }, this),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.24, cc.p(0, 60))),
-            cc.EaseSineIn.create(cc.MoveBy.create(0.24, cc.p(0, -60))),
-            cc.DelayTime.create(0.08)
+            cc.EaseSineOut.create(cc.MoveBy.create(0.23, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.23, cc.p(0, -60))),
+            cc.DelayTime.create(0.07)
         );
 
         var spiritRepeatAction = cc.Repeat.create(
@@ -536,11 +536,11 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode.runAction(spiritAction);
 
         var spiritShadowScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.08, 1.1, 1.1),
-            cc.ScaleTo.create(0.08, 1, 1),
-            cc.ScaleTo.create(0.24, 0.4, 0.4),
-            cc.ScaleTo.create(0.24, 1, 1),
-            cc.ScaleTo.create(0.08, 1.1, 1.1)
+            cc.ScaleTo.create(0.07, 1.1, 1.1),
+            cc.ScaleTo.create(0.07, 1, 1),
+            cc.ScaleTo.create(0.23, 0.4, 0.4),
+            cc.ScaleTo.create(0.23, 1, 1),
+            cc.ScaleTo.create(0.07, 1.1, 1.1)
         );
 
         var spiritShadowAction = cc.Repeat.create(spiritShadowScaleAction, 2);
@@ -548,10 +548,10 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritShadow.runAction(spiritShadowAction);
 
         var mapMoveAction = cc.Sequence.create(
-            cc.EaseSineIn.create(cc.MoveBy.create(0.16, cc.p(-6, 0))),
-            cc.MoveBy.create(0.24, cc.p(-40, 0)),
-            cc.MoveBy.create(0.24, cc.p(-40, 0)),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.08, cc.p(-6, 0)))
+            cc.EaseSineIn.create(cc.MoveBy.create(0.14, cc.p(-6, 0))),
+            cc.MoveBy.create(0.23, cc.p(-40, 0)),
+            cc.MoveBy.create(0.23, cc.p(-40, 0)),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.07, cc.p(-6, 0)))
         );
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
@@ -607,7 +607,7 @@ var ExploreLayer = cc.Layer.extend({
         var task = gameData.task;
 
         var statue = task.canExplore();
-
+        
         if (statue == POWER_NO_ENOUGH) {
             this._onBuyPower();
             this.unscheduleAllCallbacks();

@@ -12,13 +12,13 @@ var UserLogDao = (function (_super) {
     UserLogDao.domain = function(attrs) {
         this.id = attrs.id;
         this.playerId = attrs.playerId;
-        this.type = attrs.type;
+        this.route = attrs.route;
         this.params = attrs.params;
         this.result = attrs.result;
         this.created = this.created;
     };
     UserLogDao.domain.DEFAULT_VALUES = {};
-    UserLogDao.domain.FIELDS = ['id', 'playerId', 'type', 'params', 'result', 'created'];
+    UserLogDao.domain.FIELDS = ['id', 'playerId', 'route', 'params', 'result', 'created'];
     UserLogDao.FIELDS = [];
     UserLogDao.syncKey = 'userLogSync.update';
 

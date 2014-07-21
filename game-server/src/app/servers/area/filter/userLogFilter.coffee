@@ -21,7 +21,7 @@ class Filter
       next()
 
   after: (err, msg, session, resp, next) ->
-    @app.get('dao').userLog.update {
+    @app.get('dao').userLog.update 
       data: 
         result: resp
       where:
@@ -30,4 +30,4 @@ class Filter
       if err
         logger.error(err)
 
-    next()
+    next(err)

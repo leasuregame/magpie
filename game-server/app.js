@@ -119,9 +119,6 @@ app.configure('production|development', 'area', function() {
   });
   areaUtil.checkFlagFile(app);
   
-  app.before(cdFilter());
-  //app.filter(userLogFilter(app));
-
   appUtil.loadDatabaseInfo(app, 'areadb');
   appUtil.loadShareDatabaseInfo(app);
 
@@ -133,6 +130,9 @@ app.configure('production|development', 'area', function() {
   app.load(counter);
   app.load(verifier);
   app.load(worldCupRewardNotice);
+
+  app.before(cdFilter());
+  app.filter(userLogFilter(app));
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

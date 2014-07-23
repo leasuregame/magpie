@@ -758,7 +758,7 @@ var Player = (function(_super) {
         var l1 = this.activeCardIds().filter(function(i) { return i != -1; }).length;
         var l2 = this.activeCards().length;
         
-        if (l1 > l2) return;
+        if (l1 > l2) return [];
 
         var self = this;
         var idMap = [];

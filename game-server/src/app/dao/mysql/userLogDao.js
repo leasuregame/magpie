@@ -8,7 +8,7 @@ var UserLogDao = (function (_super) {
         UserLogDao.__super__.constructor.apply(this, arguments);
     }
 
-    UserLogDao.table = 'user';
+    UserLogDao.table = 'userLog';
     UserLogDao.domain = function(attrs) {
         this.id = attrs.id;
         this.playerId = attrs.playerId;

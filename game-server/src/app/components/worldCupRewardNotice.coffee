@@ -12,7 +12,7 @@ class Component
   @name = '__worldCupRewardNotice__'
 
   start: (cb) ->
-    @jobId = schedule.scheduleJob("0 0 12 * 5-8 *", noticeRewardToReceive, @app)
+    @jobId = schedule.scheduleJob("0 0 12 * 5-7 *", noticeRewardToReceive, @app)
     process.nextTick cb
 
   afterStart: (cb) ->

@@ -59,13 +59,20 @@
 			"user": "yy_leasuregame",
 			"password": "leasure405GAME"
 		},
-		"4": {
-			"host": "125.90.93.74",
-			"port": "3306",
-			"database": "yy_db_area_4",
-			"user": "yy_leasuregame",
-			"password": "leasure405GAME"
-		},
+        "4": {
+            "host": "125.90.93.74",
+            "port": "3306",
+            "database": "yy_db_area_4",
+            "user": "yy_leasuregame",
+            "password": "leasure405GAME"
+        },
+        "5": {
+            "host": "125.90.93.74",
+            "port": "3306",
+            "database": "yy_db_area_5",
+            "user": "yy_leasuregame",
+            "password": "leasure405GAME"
+        },
 		"userdb": {
 			"host": "125.90.93.74",
 			"port": "3306",

@@ -58,7 +58,7 @@ class Matrix
     # 根据对方给出的位置，找到可以被攻击的对象
     _idx = @_atkIndex(pos)
     if _idx?
-      @get @numberToPosition(_idx)
+      return @get @numberToPosition(_idx)
     
     null
 

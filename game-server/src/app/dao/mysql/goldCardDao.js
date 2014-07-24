@@ -17,7 +17,7 @@ var GoldCardDao = (function(_super) {
 
   GoldCardDao.getValidCards = function(playerId, cb) {
     var today = new Date();
-    var sql = 'select * from goldCard where playerId = ' + playerId + ' and validDate >= ' + utility.dateFormat(today, 'yyyy-MM-dd');
+    var sql = 'select * from goldCard where playerId = ' + playerId + ' and validDate >= "' + utility.dateFormat(today, 'yyyy-MM-dd') + '"';
 
     dbClient.query(sql, [], function(err, res) {
       if (err) {

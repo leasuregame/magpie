@@ -66,9 +66,9 @@ Handler::recharge = (msg, session, next) ->
         #为用户增加相关资源
         player = _player
 
-        if product.product_id == GOLD_CARD_ID_WEEK && player.goldCards.week
+        if product.product_id == GOLD_CARD_ID_WEEK && player.goldCards.week && player.goldCards.week.remainingDays > 0
           return cb({msg:'充值失败,周卡已存在'})
-        else if product.product_id == GOLD_CARD_ID_MONTH && player.goldCards.month
+        else if product.product_id == GOLD_CARD_ID_MONTH && player.goldCards.month && player.goldCards.month.remainingDays > 0
           return cb({msg:'充值失败,月卡已存在'})
 
         presentTimes = 1

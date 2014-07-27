@@ -13,7 +13,7 @@ var areaUtil = require('./app/util/areaUtil');
 var counter = require('./app/components/counter');
 var simpleWeb = require('./app/components/web');
 var verifier = require('./app/components/verifier');
-
+var dbCleaner = require('./app/components/dbCleaner');
 var worldCupRewardNotice = require('./app/components/worldCupRewardNotice');
 
 var PlayerManager = require('./app/manager/playerManager');
@@ -130,6 +130,7 @@ app.configure('production|development', 'area', function() {
   app.load(counter);
   app.load(verifier);
   app.load(worldCupRewardNotice);
+  //app.load(dbCleaner);
 
   app.before(cdFilter());
   app.filter(userLogFilter(app));

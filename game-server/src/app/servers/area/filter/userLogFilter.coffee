@@ -8,7 +8,7 @@ class Filter
 
   before: (msg, session, next) ->
     route = msg.__route__
-    playerId = session.get('playerId') or -1
+    playerId = session.get('playerId') or 0
 
     @app.get('dao').userLog.createLog data: {
       playerId: playerId,

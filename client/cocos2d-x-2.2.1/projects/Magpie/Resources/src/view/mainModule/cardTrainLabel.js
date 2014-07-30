@@ -548,6 +548,9 @@ var CardTrainLabel = cc.Layer.extend({
         }
 
         var that = this;
+
+        TipLayer2.tip("长按可快速使用仙丹培养", that._cardTrainLabelFit.tipLayerPoint);
+
         this._leadCard.train(function (type) {
 
             if (that._effect != null) {

@@ -11,6 +11,8 @@ var nameChanged = {
 	"Boss怪物卡牌配置表": "boss_card",
 	"boss_rank_reward": "伤害排行榜奖励配置表",
 	"伤害排行榜奖励配置表": "boss_rank_reward",
+	"card_group": "卡牌组合配置表",
+	"卡牌组合配置表": "card_group",
 	"card_grow": "卡牌升级表",
 	"卡牌升级表": "card_grow",
 	"card_pill_dissolve": "卡牌熔炼配置表",
@@ -1080,6 +1082,83 @@ var outputTables = {
 			"6": {
 				"id": 6,
 				"honor": 8000
+			}
+		}
+	},
+	"card_group": {
+		"colComment": {},
+		"rows": {
+			"1": {
+				"id": 1,
+				"name": "父子情深",
+				"group": "13&49",
+				"atk_inc": 10,
+				"hp_inc": 15,
+				"desc": "哪咤，李靖同时上阵"
+			},
+			"2": {
+				"id": 2,
+				"name": "心心相印",
+				"group": "38&39",
+				"atk_inc": 15,
+				"hp_inc": 10,
+				"desc": "嫦娥，后羿同时上阵"
+			},
+			"3": {
+				"id": 3,
+				"name": "无微不至",
+				"group": "6&8",
+				"atk_inc": 12,
+				"hp_inc": 15,
+				"desc": "铁扇公主，红孩儿同时上阵"
+			},
+			"4": {
+				"id": 4,
+				"name": "寻找师兄",
+				"group": "2&3&5",
+				"atk_inc": 12,
+				"hp_inc": 20,
+				"desc": "金蝉子，猪八戒，沙悟净同时上阵"
+			},
+			"5": {
+				"id": 5,
+				"name": "黑白无常",
+				"group": "31&32",
+				"atk_inc": 15,
+				"hp_inc": 10,
+				"desc": "黑无常，白无常同时上阵"
+			},
+			"6": {
+				"id": 6,
+				"name": "日夜游神",
+				"group": "33&34",
+				"atk_inc": 15,
+				"hp_inc": 10,
+				"desc": "日游神，夜游神同时上阵"
+			},
+			"7": {
+				"id": 7,
+				"name": "以一当百",
+				"group": "9&10",
+				"atk_inc": 12,
+				"hp_inc": 13,
+				"desc": "黄飞虎，雷震子同时上阵"
+			},
+			"8": {
+				"id": 8,
+				"name": "情深意重",
+				"group": "18&19",
+				"atk_inc": 13,
+				"hp_inc": 12,
+				"desc": "小青，白素贞同时上阵"
+			},
+			"9": {
+				"id": 9,
+				"name": "八仙小队",
+				"group": "20&22&25",
+				"atk_inc": 15,
+				"hp_inc": 15,
+				"desc": "铁拐李，韩湘子，何仙姑同时上阵"
 			}
 		}
 	},
@@ -4459,6 +4538,54 @@ var outputTables = {
 				"effect_id": 501,
 				"description": "天道永恒，万物无极，凡人们知道这是什么意思么，反正我是不知道的。",
 				"url": 44
+			},
+			"945": {
+				"id": 945,
+				"number": 48,
+				"name": "仙·杨戬",
+				"is_rare": 1,
+				"star": 5,
+				"lv": 1,
+				"atk": 355,
+				"hp": 1380,
+				"skill_name": "斩龙诀",
+				"skill_id": 12,
+				"normal_atk_id": 2003,
+				"effect_id": 2700,
+				"description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。",
+				"url": 48
+			},
+			"946": {
+				"id": 946,
+				"number": 48,
+				"name": "神·杨戬",
+				"is_rare": 1,
+				"star": 6,
+				"lv": 1,
+				"atk": 435,
+				"hp": 1700,
+				"skill_name": "斩龙诀",
+				"skill_id": 12,
+				"normal_atk_id": 2003,
+				"effect_id": 2700,
+				"description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！",
+				"url": 48
+			},
+			"947": {
+				"id": 947,
+				"number": 48,
+				"name": "二郎神·杨戬",
+				"is_rare": 1,
+				"star": 7,
+				"lv": 1,
+				"atk": 525,
+				"hp": 2060,
+				"skill_name": "斩龙诀",
+				"skill_id": 12,
+				"normal_atk_id": 2003,
+				"effect_id": 2700,
+				"description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。",
+				"url": 48
 			},
 			"961": {
 				"id": 961,
@@ -30366,6 +30493,12 @@ var outputTables = {
 				"name": "hp_min",
 				"value": 7,
 				"desc": "血量最低卡牌"
+			},
+			"8": {
+				"id": 8,
+				"name": "latitude_line",
+				"value": 8,
+				"desc": "所有纵横线上的卡牌"
 			}
 		}
 	},
@@ -30391,6 +30524,11 @@ var outputTables = {
 				"id": 4,
 				"name": "mult_heal",
 				"chinese": "群体治疗"
+			},
+			"5": {
+				"id": 5,
+				"name": "aoe_latitude",
+				"chinese": "特殊群体攻击"
 			}
 		}
 	},
@@ -30742,6 +30880,37 @@ var outputTables = {
 				"star7_inc_max": 65,
 				"star7_grow": 3,
 				"rate7": 50
+			},
+			"12": {
+				"id": 12,
+				"description": "十字形伤害，对十字中心卡牌造成高倍伤害。",
+				"type": 5,
+				"scope": 8,
+				"star3_special_inc": 20,
+				"star3_inc_min": 127,
+				"star3_inc_max": 130,
+				"star3_grow": 5,
+				"rate3": 22,
+				"star4_inc_min": 137,
+				"star4_inc_max": 140,
+				"star4_grow": 5,
+				"rate4": 35,
+				"star4_special_inc": 24,
+				"star5_inc_min": 147,
+				"star5_inc_max": 150,
+				"star5_grow": 5,
+				"rate5": 40,
+				"star5_special_inc": 26,
+				"star6_inc_min": 157,
+				"star6_inc_max": 160,
+				"star6_grow": 5,
+				"rate6": 45,
+				"star6_special_inc": 28,
+				"star7_inc_min": 167,
+				"star7_inc_max": 170,
+				"star7_grow": 5,
+				"rate7": 50,
+				"star7_special_inc": 30
 			}
 		}
 	},

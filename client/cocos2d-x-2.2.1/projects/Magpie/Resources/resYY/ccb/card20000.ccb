@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>87</integer>
+	<integer>98</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -7027,7 +7027,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>2.0333333015441895</real>
+									<real>2.3666665554046631</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -7042,86 +7042,11 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>2.0999999046325684</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.1666667461395264</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>-10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.2333333492279053</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.2999999523162842</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>-10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.3666665554046631</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
 									<real>2.4333333969116211</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>-10</real>
+									<real>10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7136,7 +7061,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>10</real>
+									<real>-10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7151,7 +7076,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>-10</real>
+									<real>10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7166,7 +7091,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>5</real>
+									<real>-10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7181,7 +7106,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>-5</real>
+									<real>10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7193,6 +7118,81 @@
 									<string>rotation</string>
 									<key>time</key>
 									<real>2.7666666507720947</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>-10</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>2.8333332538604736</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>10</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>2.9000000953674316</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>-10</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>2.9666666984558105</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>5</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>3.0333333015441895</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>-5</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>3.0999999046325684</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -7621,7 +7621,7 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>2.0333333015441895</real>
+									<real>2.3666665554046631</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -7636,86 +7636,11 @@
 									<key>name</key>
 									<string>rotation</string>
 									<key>time</key>
-									<real>2.0999999046325684</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.1666667461395264</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>-10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.2333333492279053</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.2999999523162842</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>-10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
-									<real>2.3666665554046631</real>
-									<key>type</key>
-									<integer>2</integer>
-									<key>value</key>
-									<real>10</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>rotation</string>
-									<key>time</key>
 									<real>2.4333333969116211</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>-10</real>
+									<real>10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7730,7 +7655,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>10</real>
+									<real>-10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7745,7 +7670,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>-10</real>
+									<real>10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7760,7 +7685,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>5</real>
+									<real>-10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7775,7 +7700,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>-5</real>
+									<real>10</real>
 								</dict>
 								<dict>
 									<key>easing</key>
@@ -7787,6 +7712,81 @@
 									<string>rotation</string>
 									<key>time</key>
 									<real>2.7666666507720947</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>-10</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>2.8333332538604736</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>10</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>2.9000000953674316</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>-10</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>2.9666666984558105</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>5</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>3.0333333015441895</real>
+									<key>type</key>
+									<integer>2</integer>
+									<key>value</key>
+									<real>-5</real>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>rotation</string>
+									<key>time</key>
+									<real>3.0999999046325684</real>
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
@@ -26480,7 +26480,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>-10</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -26491,8 +26491,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -31628,7 +31626,7 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>2.7666666507720947</real>
+			<real>3.0999999046325684</real>
 			<key>name</key>
 			<string>d_2700_o_1</string>
 			<key>offset</key>
@@ -31696,7 +31694,7 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>2.7666666507720947</real>
+			<real>3.0999999046325684</real>
 			<key>name</key>
 			<string>d_2700_e_1</string>
 			<key>offset</key>

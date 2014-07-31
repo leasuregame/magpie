@@ -10,25 +10,6 @@
   }, {
     "type": "console"
   }, {
-    "type": "logLevelFilter",
-    "level": "ERROR",
-    "appender": {
-      "type": "smtp",
-      "recipients": "wuzhanghai@leasuregame.com,linchenchen@leasuregame.com",
-      "subject": "[Sina Error Message]",
-      "sendInterval": 5,
-      "transport": "SMTP",
-      "SMTP": {
-        "host": "smtp.gmail.com",
-        "secureConnection": true,
-        "port": 465,
-        "auth": {
-          "user": "leasuregame@gmail.com",
-          "pass": "leasure123game"
-        }
-      }
-    }
-  }, {
     "type": "file",
     "filename": "${opts:base}/logs/con-log-${opts:serverId}.log",
     "pattern": "connector",

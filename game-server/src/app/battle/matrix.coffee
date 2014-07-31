@@ -56,7 +56,11 @@ class Matrix
 
   getElement: (pos) ->
     # 根据对方给出的位置，找到可以被攻击的对象
-    @get @numberToPosition(@_atkIndex(pos))
+    _idx = @_atkIndex(pos)
+    if _idx?
+      return @get @numberToPosition(_idx)
+    
+    null
 
   _atkIndex: (pos) ->
     if _.isString(pos) and pos.length is 2

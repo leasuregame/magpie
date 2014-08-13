@@ -975,8 +975,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
             that._setTip();
 
-//            that.schedule(that._repeatAfresh, 1);
-//            that.schedule(that._setTip, 1);
             that.scheduleOnce(that._repeatAfresh, 1);
             that.scheduleOnce(that._setTip, 1);
         };

@@ -4,6 +4,7 @@ var KSS_HOST = 'http://kss.ksyun.com';
 var updateRecordDao = require('../dao/updateRecordDao');
 var async = require('async');
 var util = require('util');
+var path = require('path');
 
 var version = function(app) {
 
@@ -93,6 +94,7 @@ var version = function(app) {
         var ver = req.params.version;
         var platform = req.params.platform;
         var vData = helper.versionData();
+        console.log('get update file', vData)
         if (!platform in vData) {
             return res.status(404).send('找不到版本信息' + platform);
         }
@@ -110,14 +112,25 @@ var version = function(app) {
         if (helper.versionCompare(ver, lastVersion) < 0) {
             filename = vData[platform].lastFilename;
         }
-
-        res.redirect(helper.make_request_url('GET', 'magpie', filename, KSS_HOST));
+        console.log('filename: ', filename);
+        downloadUpdatePackage(filename, res);
+        //res.redirect(helper.make_request_url('GET', 'magpie', filename, KSS_HOST));
     }
 
     // api for game client
     app.get('/api/:platform/version', getVersion4Api);
     app.get('/api/:platform/update', updateVersion4Api);
     app.get('/api/:platform/update/:version', updateVersion4Api);
+
+    function downloadUpdatePackage(filename, res) {
+        var filepath = path.join(__dirname, '..', 'uploads', filename);
+        console.log(filepath, filename);
+        res.download(filepath, filename, function(err) {
+            if(err) {
+                return res.status(500).send('文件下载出错，请重新下载！');
+            }
+        });
+    }
 
 };
 

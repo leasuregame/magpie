@@ -91,11 +91,19 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(nameLabel);
 
         var vip = player.get("vip");
-        if (vip) {
-            var vipIcon = cc.Sprite.create(main_scene_image["vip" + vip]);
-            vipIcon.setPosition(this._playerDetailsFit.vipIconPoint);
-            this.addChild(vipIcon);
-        }
+        var vipIcon = cc.Sprite.create(main_scene_image["vip" + vip]);
+        vipIcon.setPosition(this._playerDetailsFit.vipIconPoint);
+        this.addChild(vipIcon);
+
+        var buyVipItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyVip,
+            this
+        );
+
+        buyVipItem.setPosition(this._playerDetailsFit.buyVipItemPoint);
+        buyVipItem.setVisible(vip != 12);
 
         var lvIconLabel = cc.LabelTTF.create("等        级:", "STHeitiTC-Medium", 25);
         lvIconLabel.setAnchorPoint(cc.p(1, 0.5));
@@ -144,6 +152,15 @@ var PlayerDetails = LazyLayer.extend({
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
         goldLabel.setPosition(this._playerDetailsFit.goldLabelPoint);
         this.addChild(goldLabel);
+
+        var buyGoldItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyGold,
+            this
+        );
+
+        buyGoldItem.setPosition(this._playerDetailsFit.buyGoldItemPoint);
 
         var skillPointIcon = cc.Sprite.create(main_scene_image.icon152);
         skillPointIcon.setPosition(this._playerDetailsFit.skillPointIconPoint);
@@ -201,6 +218,15 @@ var PlayerDetails = LazyLayer.extend({
         this._powerLabel.setPosition(this._playerDetailsFit.powerLabelPoint);
         this.addChild(this._powerLabel);
 
+        var buyPowerItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyPower,
+            this
+        );
+
+        buyPowerItem.setPosition(this._playerDetailsFit.buyPowerItemPoint);
+
         var tipLabel = cc.LabelTTF.create("体力每 10 分钟恢复 5 点", "STHeitiTC-Medium", 25);
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
         tipLabel.setPosition(this._playerDetailsFit.tipLabelPoint);
@@ -223,7 +249,7 @@ var PlayerDetails = LazyLayer.extend({
         );
         closeItem.setPosition(this._playerDetailsFit.closeItemPoint);
 
-        this._menu = cc.Menu.create(okItem, closeItem);
+        this._menu = cc.Menu.create(buyVipItem, buyGoldItem, buyPowerItem, okItem, closeItem);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
@@ -233,6 +259,46 @@ var PlayerDetails = LazyLayer.extend({
     update: function () {
         var player = gameData.player;
         this._powerLabel.setString(player.get("power") + " / " + player.get("maxPower"));
+    },
+
+    _onClickBuyVip: function () {
+        cc.log("PlayerDetails _onClickBuyVip");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        PaymentLayer.pop();
+    },
+
+    _onClickBuyGold: function () {
+        cc.log("PlayerDetails _onClickBuyGold");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        PaymentLayer.pop();
+    },
+
+    _onClickBuyPower: function () {
+        cc.log("PlayerDetails _onClickBuyPower");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var product = gameData.shop.getProduct(2);
+
+        if (product.remainTimes <= 0) {
+            if (gameData.shop.get("powerBuyCount") <= 0) {
+                GoPaymentLayer.pop(TYPE_POWER_BUY_COUNT_USE_UP_TIPS);
+            }
+        } else {
+            AmountLayer.pop(
+                function (count) {
+                    gameData.shop.buyProduct(function (data) {
+                        lz.tipReward(data);
+                    }, 2, count);
+                },
+                product
+            );
+        }
+
     },
 
     _onClickClose: function () {

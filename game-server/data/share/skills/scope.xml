@@ -9,6 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-09-11T19:47:15Z</Created>
+  <LastSaved>2014-07-15T07:50:18Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -19,10 +20,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>5000</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>9620</WindowTopX>
-  <WindowTopY>1300</WindowTopY>
+  <WindowHeight>6500</WindowHeight>
+  <WindowWidth>12560</WindowWidth>
+  <WindowTopX>26560</WindowTopX>
+  <WindowTopY>6040</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -49,7 +50,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="卡牌范围表">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="97"
    ss:DefaultRowHeight="19">
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="133"/>
@@ -107,6 +108,12 @@
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">血量最低卡牌</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="String">latitude_line</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="String">所有纵横线上的卡牌</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -119,7 +126,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>9</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

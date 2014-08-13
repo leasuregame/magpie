@@ -55,7 +55,14 @@ class Matrix
     @attackElement scope, args 
 
   getElement: (pos) ->
-    # 根据对方给出的位置，找到可以被攻击的对象    
+    # 根据对方给出的位置，找到可以被攻击的对象
+    _idx = @_atkIndex(pos)
+    if _idx?
+      return @get @numberToPosition(_idx)
+    
+    null
+
+  _atkIndex: (pos) ->
     if _.isString(pos) and pos.length is 2
       attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
     else if _.isNumber(pos) and pos < (@rows * @cols)
@@ -70,7 +77,8 @@ class Matrix
       el = @get(_pos)
       
       if el? and not el.death?()
-        return el 
+        return num
+
     null
 
   current: ->
@@ -217,6 +225,21 @@ class Matrix
       indexs = indexs.filter (i) -> indexs.indexOf(i) != rd_index
 
     _res
+
+  latitude_line: (pos) ->
+    matrix = [
+      [0,1,2],
+      [3,4,5]
+    ]
+    
+    idxs = []    
+    idx = @_atkIndex(pos)
+    idxs.push idx
+    idxs.push idx+3 if idx+3 <= 5
+
+    mIdx = if idx <= 2 then 0 else 1
+    idxs = idxs.concat _.difference(matrix[mIdx], [idx])
+    idxs.map (i) => @get @numberToPosition(i)
 
   get: (row, col) ->
     if arguments.length == 1

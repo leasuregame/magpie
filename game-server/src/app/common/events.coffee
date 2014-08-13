@@ -41,7 +41,7 @@ Events =
     this
 
   listenToOnce: (obj, ev, callback) ->
-    listeningToOnce = @listeningToOnce or = []
+    listeningToOnce = @listeningToOnce or []
     listeningToOnce.push obj
     obj.one ev, ->
       idx = listeningToOnce.indexOf(obj)

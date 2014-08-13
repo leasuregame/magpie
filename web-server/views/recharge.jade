@@ -32,9 +32,11 @@ block content
             .col-sm-2.center
                 a#submit.btn.btn-primary(href='javascript:void(0);') 充值
         hr
+        .col-sm-12.center.loading-panel(style='display:none;')
+            img(src='/loading.gif')
         .form-group(style='min-height:180px;')
             .col-sm-3
-            #rsPanel.panel.col-sm-6(style='padding:0px;border-width:3px;display:none;')
+            #rsPanel.panel.panel-default.col-sm-6(style='padding:0px;border-width:3px;')
                 .panel-heading 充值结果
                     span.recDateTime(style="float:right")
                 .panel-body.info
@@ -44,18 +46,24 @@ block content
                     .qty.col-sm-10
                         span.col-sm-4 数量：
                         span.val
-                    .succeededPlayer.col-sm-10
-                        span.col-sm-4 成功充值玩家：
-                        span.val
-                    .failedPlayer.col-sm-10
-                        span.col-sm-4 充值失败玩家：
-                        span.val
+                    .players.col-sm-12.form-horizontal(style='margin-top:15px;')
                 .panel-body.error
     #confirm.panel.panel-default.hide(style='position:absolute;z-index:50;')
         .panel-heading 确认充值?
         .panel-body
             button.submit.btn.btn-success 确认
             button.cancel.btn.btn-danger(style='margin-left:38px') 取消
+
+    script#rowTemp.hide(type='text/template')
+        .panel
+            .panel-heading
+            .panel-body
+                .form-group.name(style="margin-bottom:0px")
+                    .name.col-sm-3.control-label 玩家名：
+                    .name.col-sm-9.form-control-static.val
+                .form-group.msg.hide(style="margin-bottom:0px")
+                    .name.col-sm-3.control-label 失败信息：
+                    .name.col-sm-9.form-control-static.val
 
 
     script(type='text/javascript', src='/js/webServerHandle.js')

@@ -22,7 +22,9 @@ var upload = function(app) {
         var file = req.files.configFile;
         var tmp_path = file.path;
         // 指定文件上传后的目录 - 示例为"images"目录。
-        var target_path = path.join(__dirname,'..','..','game-server','data','share','world_cup', file.name);
+        
+        //var target_path = path.join(__dirname,'..','..','game-server','data','share','world_cup', file.name);
+        var target_path = path.join(__dirname, '..', 'uploads', file.name);
 
         // 移动文件
         fs.rename(tmp_path, target_path, function(err) {

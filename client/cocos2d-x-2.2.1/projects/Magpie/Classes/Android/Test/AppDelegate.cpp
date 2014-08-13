@@ -68,7 +68,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-    ScriptingCore::getInstance()->runScript("game.jsc");
+    // ScriptingCore::getInstance()->runScript("game.jsc");
+    ScriptingCore::getInstance()->runScript("main_binding.js");
        
     return true;
 }

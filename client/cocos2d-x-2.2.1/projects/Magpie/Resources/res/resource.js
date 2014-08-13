@@ -47,6 +47,7 @@ var main_scene_image = {
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
     star3: main_scene_path + "star3.png",
+    star4: main_scene_path + "star4.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
     cloud: main_scene_path + "cloud.png",
@@ -144,6 +145,10 @@ var main_scene_image = {
     card_item_bg5: main_scene_path + "card_item_bg5.png",
     card_item_bg6: main_scene_path + "card_item_bg6.png",
     card_item_bg7: main_scene_path + "card_item_bg7.png",
+
+    rare_card_item_bg5: main_scene_path + "rare_card_item_bg5.png",
+    rare_card_item_bg6: main_scene_path + "rare_card_item_bg6.png",
+    rare_card_item_bg7: main_scene_path + "rare_card_item_bg7.png",
 
     button1: main_scene_path + "button1.png",
     button1s: main_scene_path + "button1s.png",
@@ -332,6 +337,8 @@ var main_scene_image = {
     button88s: main_scene_path + "button88s.png",
     button89: main_scene_path + "button89.png",
     button89s: main_scene_path + "button89s.png",
+    button90: main_scene_path + "button90.png",
+    button90s: main_scene_path + "button90s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -810,6 +817,13 @@ var main_scene_image = {
     icon477: main_scene_path + "icon477.png",
     icon478: main_scene_path + "icon478.png",
     icon479: main_scene_path + "icon479.png",
+    icon480: main_scene_path + "icon480.png",
+    icon481: main_scene_path + "icon481.png",
+    icon482: main_scene_path + "icon482.png",
+    icon483: main_scene_path + "icon483.png",
+    icon484: main_scene_path + "icon484.png",
+    icon485: main_scene_path + "icon485.png",
+    icon486: main_scene_path + "icon486.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -926,6 +940,14 @@ var main_scene_image = {
     effect1801_1: "res/ccb/effect1801_1.ccbi",
     effect1801_2: "res/ccb/effect1801_2.ccbi",
     effect1801_3: "res/ccb/effect1801_3.ccbi",
+
+    effect2001_1: "res/ccb/effect2001_1.ccbi",
+    effect2001_2: "res/ccb/effect2001_2.ccbi",
+    effect2001_3: "res/ccb/effect2001_3.ccbi",
+
+    effect2500_1: "res/ccb/effect2500_1.ccbi",
+    effect2500_2: "res/ccb/effect2500_2.ccbi",
+    effect2500_3: "res/ccb/effect2500_3.ccbi",
 
     battleEffect1: "res/ccb/battleEffect1.ccbi",
     battleEffect2: "res/ccb/battleEffect2.ccbi",
@@ -1063,6 +1085,8 @@ var main_scene_image = {
     uiEffect116: "res/ccb/uiEffect116.ccbi",
     uiEffect117: "res/ccb/uiEffect117.ccbi",
     uiEffect118: "res/ccb/uiEffect118.ccbi",
+    uiEffect119: "res/ccb/uiEffect119.ccbi",
+    uiEffect120: "res/ccb/uiEffect120.ccbi",
 
     // 特效资源
     p1: "res/effect/effect/p1.png",

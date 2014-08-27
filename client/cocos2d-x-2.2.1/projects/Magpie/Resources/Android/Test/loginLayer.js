@@ -36,6 +36,9 @@ var LoginLayer = cc.Layer.extend({
         this._super();
 
         lz.um.beginLogPageView("登录界面");
+
+        yy.YYClient.init();
+        cc.log("yy init result: -- ", yy.YYClient.getInitResult());
     },
 
     onExit: function () {
@@ -203,6 +206,8 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.getParent().switchLayer(RegisterLayer);
+        yy.YYClient.login();
+        cc.log('get yy init result: ', yy.YYClient.getInitResult());
     }
 });
 

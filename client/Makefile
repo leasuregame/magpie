@@ -32,6 +32,9 @@ build-android-debug:
 build-android-debug-test:
 	sh ./bin/build_android_debug.sh test
 
+build-android-yy:
+	sh ./bin/build_android.sh yy
+
 clean-android:
 	sh ./cocos2d-x-2.2.1/projects/Magpie/proj.android/build_native.sh clean
 

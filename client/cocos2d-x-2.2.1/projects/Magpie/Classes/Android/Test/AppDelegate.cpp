@@ -17,6 +17,7 @@
 #include "XMLHTTPRequest.h"
 #include "jsb_websocket.h"
 #include "js_bindings_MobClickCpp.hpp"
+#include "yy_client_js_bindings.hpp"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -61,6 +62,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(MinXmlHttpRequest::_js_register);
     sc->addRegisterCallback(register_jsb_websocket);
     sc->addRegisterCallback(register_all_js_bindings_MobClickCpp);
+    sc->addRegisterCallback(register_all_yy_client_js_bindings);
     
     sc->start();
     
@@ -69,6 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
     ScriptingCore::getInstance()->runScript("game.jsc");
+    //ScriptingCore::getInstance()->runScript("main_binding.js");
        
     return true;
 }

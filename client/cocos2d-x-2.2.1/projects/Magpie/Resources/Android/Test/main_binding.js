@@ -29,7 +29,7 @@
 require('jsb.js');
 
 var appFiles = [
-    'src/resource.js',
+    'res/resource.js',
 
     'src/table/table.js',
 
@@ -53,6 +53,7 @@ var appFiles = [
     'src/model/player.js',
     'src/model/card.js',
     'src/model/cardList.js',
+    'src/model/dailyInstances.js',
     'src/model/lineUp.js',
     'src/model/task.js',
     'src/model/pass.js',
@@ -125,13 +126,17 @@ var appFiles = [
     'src/view/mainModule/bossListLayer.js',
     'src/view/mainModule/bossRewardLabel.js',
     'src/view/mainModule/rechargeLayer.js',
+    'src/view/mainModule/flashLotteryLayer.js',
     'src/view/mainModule/powerRewardLayer.js',
     'src/view/mainModule/goldCardsLayer.js',
     'src/view/mainModule/goldRewardLayer.js',
     'src/view/mainModule/growthPlanLayer.js',
     'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/invitationLayer.js',
+    'src/view/mainModule/newAreaRewardLayer.js',
     'src/view/mainModule/vipDailyRewardLayer.js',
+    'src/view/mainModule/worldCupLayer.js',
+    'src/view/mainModule/worldCupHistoryLabel.js',
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/amountLayer.js',
     'src/view/mainModule/battleMessageLayer.js',
@@ -146,10 +151,13 @@ var appFiles = [
     'src/view/mainModule/cardLibraryLayer.js',
     'src/view/mainModule/cardListFullTipLayer.js',
     'src/view/mainModule/cardListLayer.js',
+    'src/view/mainModule/cardSmeltLabel.js',
     'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/tipsLayer.js',
     'src/view/mainModule/configLayer.js',
+    'src/view/mainModule/expInstanceLayer.js',
+    'src/view/mainModule/dailyInstancesLayer.js',
     'src/view/mainModule/damageRankHelpLabel.js',
     'src/view/mainModule/damageRankLayer.js',
     'src/view/mainModule/elixirRankHelpLabel.js',
@@ -159,6 +167,7 @@ var appFiles = [
     'src/view/mainModule/exploreCardLayer.js',
     'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/extractTipLabel.js',
+    'src/view/mainModule/filterStarLabel.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gameFrame.js',
@@ -194,6 +203,7 @@ var appFiles = [
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
+    'src/view/mainModule/smeltLayer.js',
     'src/view/mainModule/speakerLayer.js',
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
@@ -202,6 +212,7 @@ var appFiles = [
     'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/summonLayer.js',
+    'src/view/mainModule/systemMessageLabel.js',
     'src/view/mainModule/systemMessageLayer.js',
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tenLotteryCardLayer.js',
@@ -211,8 +222,10 @@ var appFiles = [
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
+    'src/view/mainModule/usePillLabel.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',
+    'src/view/mainModule/vipUpgradeTipLabel.js',
     'src/view/mainModule/mainBgLayer.js',
     'src/view/mainModule/mainLayer.js',
     'src/view/mainModule/mainMenuLayer.js',
@@ -240,7 +253,7 @@ for (var i = 0; i < appFiles.length; ++i) {
 
 
 var director = cc.Director.getInstance();
-director.setDisplayStats(true);
+director.setDisplayStats(false);
 
 // set FPS. the default value is 1.0/60 if you don't call this
 gameConfig.init();

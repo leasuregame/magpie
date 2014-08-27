@@ -6,9 +6,18 @@
 
     <uses-sdk android:minSdkVersion="8"/>
     <uses-feature android:glEsVersion="0x00020000" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <!-- SD卡读写相关权限-文件下载所需 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 获取网络类型状态所需权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 网络请求所需权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" /> 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application android:label="@string/app_name"
         android:icon="@drawable/icon">
@@ -23,6 +32,147 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="com.yy.gamesdk.act.YYGPayWeb"
+            android:screenOrientation="landscape"
+            android:theme="@style/yyg_theme" >
+        </activity>
+        
+        <activity
+            android:name="com.yy.gamesdk.act.YYGLogin"
+            android:theme="@style/yyg_theme">
+        </activity>
+        <activity
+            android:name="com.yy.gamesdk.act.YYGRegistGetAC"
+            android:theme="@style/yyg_theme" >
+        </activity>
+        <activity
+            android:name="com.yy.gamesdk.act.YYGRegistPwd"
+            android:theme="@style/yyg_theme" >
+        </activity>
+        <activity
+            android:name="com.yy.gamesdk.act.YYGRetrieveGetAC"
+            android:theme="@style/yyg_theme" >
+        </activity>
+        <activity
+            android:name="com.yy.gamesdk.act.YYGRetrievePwd"
+            android:theme="@style/yyg_theme" >
+        </activity>
+        <activity
+            android:name="com.yy.udbsdk.Login_Activity"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+        <activity
+            android:name="com.yy.udbsdk.Reg_Activity"
+            android:label="注册新帐号"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+        <activity
+            android:name="com.yy.udbsdk.RegWeb_Activity"
+            android:label="注册新帐号"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+        <activity
+            android:name="com.yy.udbsdk.Pwd_Activity"
+            android:label="修改帐号密码"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+
+         <!--YYGameSDK需要的provider， authorities改为包名.yygamesdkprovider -->
+        <provider
+            android:name="com.yy.gamesdk.provider.YYDataProvider"
+            android:authorities="com.LeasureGame.Magpie.yygamesdkprovider" >
+        </provider>
+
+
+
+	 <!--移动话费充值配置 -->
+        <meta-data android:name="iap" android:value="true"></meta-data>
+        <service
+            android:name="mm.purchasesdk.iapservice.PurchaseService"
+            android:exported="true" >
+
+            <!-- android:process="mm.iapServices" > -->
+            <intent-filter android:priority="240" >
+                <action android:name="com.aspire.purchaseservice.BIND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="240" >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.SAFIAP.COMPONENT" >
+                </category>
+            </intent-filter>
+        </service>
+        <!-- android:excludeFromRecents="true" -->
+        <!-- android:launchMode="singleInstance" -->
+        <activity
+            android:name="mm.purchasesdk.iapservice.BillingLayoutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent" >
+	
+            <intent-filter android:priority="240" >
+                <action android:name="com.LeasureGame.Magpie.com.mmiap.activity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+             <intent-filter android:priority="240" >
+                <action android:name="null.com.mmiap.activity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- android:process="safiap.framework.safframeworkmanager" begin -->
+        <service
+            android:name="safiap.framework.SafFrameworkManager"
+            android:exported="true"
+            android:process="safiap.framework" >
+            <intent-filter android:priority="610" >
+
+            <!-- ID for services declared in AIDL -->
+        		<action android:name="safiap.framework.sdk.ISAFFramework" />
+            </intent-filter>
+            <intent-filter android:priority="610" >
+                <!-- ID for services declared in AIDL -->
+                <action android:name="safiap.framework.ACTION_START_DOWNLOAD" />
+        	</intent-filter>
+        	<intent-filter android:priority="610" >
+                <!-- ID for services declared in AIDL -->
+                <action android:name="safiap.framework.ACTION_CHECK_UPDATE" />
+            </intent-filter>
+        </service>
+        <!-- receivers -->
+        <receiver android:name="safiap.framework.CheckUpdateReceiver" >
+            <intent-filter>
+                <action android:name="safiap.framework.ACTION_CANCEL_NOTIFICATION" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="safiap.GET_SHARED_DATA" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="safiap.framework.ACTION_SET_TIMER" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="safiap.framework.ui.UpdateHintActivity" 
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter android:priority="610" >
+                <action android:name="safiap.framework.ACTION_TO_INSTALL" />
+            </intent-filter>
+            <intent-filter android:priority="610" >
+                <action android:name="safiap.framework.ACTION_TO_INSTALL_IAP" />
+            </intent-filter>
+            <intent-filter android:priority="610" >
+                <action android:name="safiap.framework.ACTION_NETWORK_ERROR" />
+            </intent-filter>
+        </activity>
+        <service android:name="safiap.framework.logreport.monitor.handler.LogreportHandler" android:process=":remote"/>
+       	<!-- android:process="safiap.framework.safframeworkmanager" end -->
     </application>
     <supports-screens android:largeScreens="true"
                       android:smallScreens="true"

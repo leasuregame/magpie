@@ -141,3 +141,61 @@ var TipLayer = {
         }
     }
 };
+
+var TipLayer2 = {
+    _label: null,
+    _tip: function (hasBg, str, point, color, fontName, fontSize) {
+        cc.log("TipLayer2 tip: " + str);
+
+        if (!str) return;
+
+        color = color || cc.c3b(255, 255, 255);
+        fontName = fontName || "STHeitiTC-Medium";
+        fontSize = fontSize || 30;
+        point = point || gameFit.GAME_MIDPOINT;
+
+        if (this._label) {
+            this._label.removeFromParent();
+            this._label = null;
+        }
+
+        this._label = cc.Node.create();
+        this._label.setPosition(point);
+        cc.Director.getInstance().getRunningScene().addChild(this._label, TIP_LAYER_Z_ORDER);
+
+        var strLabel = StrokeLabel.create(str, fontName, fontSize);
+        strLabel.setColor(color);
+        this._label.addChild(strLabel, 1);
+
+        if (hasBg) {
+            var strLabelSize = strLabel.getContentSize();
+            var bgLabelSize = cc.size(strLabelSize.width + 60, strLabelSize.height + 30);
+
+            var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon3);
+            bgLabel.setContentSize(bgLabelSize);
+            this._label.addChild(bgLabel);
+        }
+
+        this._label.setOpacity = function (opacity) {
+            strLabel.setOpacity(opacity);
+
+            if (bgLabel) bgLabel.setOpacity(opacity);
+        };
+
+        this._label.stopAllActions();
+
+        this._label.runAction(
+            cc.Sequence.create(
+                cc.FadeOut.create(0.5),
+                cc.CallFunc.create(function () {
+                    this._label.removeFromParent();
+                    this._label = null;
+                }, this)
+            )
+        );
+    },
+
+    tip: function (str, point, color, fontName, fontSize) {
+        this._tip(true, str, point, color, fontName, fontSize);
+    }
+};

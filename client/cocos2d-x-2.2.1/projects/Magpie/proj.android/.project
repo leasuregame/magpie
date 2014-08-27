@@ -3,6 +3,7 @@
 	<name>Magpie</name>
 	<comment></comment>
 	<projects>
+		<project>libcocos2dx</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

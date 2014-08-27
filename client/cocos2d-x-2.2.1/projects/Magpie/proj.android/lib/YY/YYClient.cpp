@@ -182,9 +182,9 @@ string YYClient::getUserName() {
 void YYClient::pay(const char* areaId, const char* playerId, const char* playerName, const char* productId, const char* productName, float price) {
 	JniMethodInfo t;
 	if( JniHelper::getStaticMethodInfo(t
-									   , yyWrapperClassName
-									   , "pay"
-									   , "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F;)V"))
+		, yyWrapperClassName
+		, "pay"
+		, "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V"))
 	{
 		jobject ctx = getContext1();
 		jstring jstrAreaId =GET_JSTRING(areaId);
@@ -192,11 +192,11 @@ void YYClient::pay(const char* areaId, const char* playerId, const char* playerN
 		jstring jstrPlayerName = GET_JSTRING(playerName);
 		jstring jstrProductId = GET_JSTRING(productId);
 		jstring jstrProductName = GET_JSTRING(productName);
-		//jfloat jfloPrice = (jfloat)price;
+		jfloat jfloPrice = (jfloat)price;
 
-		t.env->CallStaticObjectMethod(t.classID, t.methodID, ctx,
+		t.env->CallStaticVoidMethod(t.classID, t.methodID, ctx,
 				jstrAreaId, jstrPlayerId, jstrPlayerName, jstrProductId,
-				jstrProductName, price);
+				jstrProductName, jfloPrice);
 
 		SAFE_RELEASE_JCONTEXT(ctx);
 		SAFE_RELEASE_JOBJ(jstrAreaId);

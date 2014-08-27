@@ -98,7 +98,8 @@ var User = Entity.extend({
                     appid: lz.platformConfig.APP_ID,
                     areaId: that._area,
                     version: version,
-                    appVersion: appVersion
+                    appVersion: appVersion,
+                    os: 'android'
                 }, function (data) {
                     cc.log(JSON.stringify(data));
 

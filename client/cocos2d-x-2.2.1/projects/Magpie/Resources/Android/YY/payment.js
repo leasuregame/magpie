@@ -86,13 +86,25 @@ var Payment = Entity.extend({
         var product = args.product;
         this._cb = args.cb;
 
-        if (lz.IAPHelp) {
-            this._showWaitLayer();
+        // if (lz.IAPHelp) {
+        //     this._showWaitLayer();
 
-            cc.log(product.product_id);
+        //     cc.log(product.product_id);
 
-            lz.IAPHelp.buy(product.product_id, this, this._payCallback);
-        }
+        //     lz.IAPHelp.buy(product.product_id, this, this._payCallback);
+        // }
+
+        var user = gameData.user;
+        var player = gameData.player;
+
+        yy.YYClient.pay(
+            user.get('area'), 
+            player.get('id'),
+            player.get('name'),
+            product.id,
+            product.product_id,
+            product.cash
+        );
     },
 
     _sendOrder: function (order) {

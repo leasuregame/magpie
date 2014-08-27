@@ -148,7 +148,12 @@ class Authorize
       cb(null, user?.toJson())
 
   @YY: (args, cb) ->
-    text = "#{process.env.APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
+    if args.os is 'android'
+      text = "#{process.env.APP_KEY_YY_ANDROID}#{process.env.APP_ID_YY_ANDROID}#{args.account}#{args.time}"
+    else
+      text = "#{process.env.APP_KEY_YY}#{args.appid}#{args.account}#{args.time}"
+    console.log text
+    console.log 'login yy:: ', args.signid, md5(text).toUpperCase()
     if args.signid is md5(text).toUpperCase()
       fetchUserInfoOrCreate "yy-#{args.account}", null, {name: args.userName}, (err, user) ->
         if err

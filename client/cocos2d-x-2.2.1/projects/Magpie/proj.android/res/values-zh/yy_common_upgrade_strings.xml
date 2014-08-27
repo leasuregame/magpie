@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="yy_common_action_info_exist">正在下载中</string>
+	<string name="yy_common_info_interrupt">下载出错啦，请检查网络后继续。</string>
+	<string name="yy_common_action_pause">正在下载，点击暂停。</string>
+	<string name="yy_common_action_continue">已暂停，点击继续。</string>
+	<string name="yy_common_action_start">点击开始下载。</string>
+	<string name="yy_common_action_cancel">取消</string>
+	<string name="yy_common_download_notification_prefix">下载进度: %s</string>
+	<string name="yy_common_pause_notification_prefix">暂停: </string>
+	<string name="yy_common_start_download_notification">正在下载应用</string>
+	<string name="yy_common_start_patch_notification">正在更新安装包</string>
+    <string name="yy_common_network_break_alert">请连接网络后再尝试！</string>
+	<string name="yy_common_download_failed">下载失败</string>
+	<string name="yy_common_download_finish">下载完成，请点击安装</string>
+	<string name="yy_common_patch_finish">更新完成，请点击安装</string>
+	<string name="yy_common_silent_download_finish">新版本已经准备好，请点击安装</string>
+	<string name="yy_network_condition">（提示：非WIFI环境）</string>
+	
+	<string name="yy_common_has_upgrade">发现新版本，点击更新.</string>
+	<string name="yy_common_has_no_upgrade">没有发现新版本</string>
+	<string name="yy_ignore_this_version">忽略此版本</string>
+	<string name="yy_status_requesting">正在请求服务器...</string>
+	<string name="yy_status_faild">下载失败，点击重试.</string>
+	<string name="yy_common_must_update">此版本必需更新才可以进入应用程序.</string>
+	<string name="yy_update_content">更新内容</string>
+	<string name="yy_onley_need_download">仅需要下载:%s</string>
+	<string name="yy_size_of_new_version">新版本大小:%s</string>
+	<string name="yy_update_now">立即更新</string>
+	<string name="yy_not_update_now">以后再说</string>
+	<string name="yy_no_network_status">未联网</string>
+	<string name="yy_app_update">应用更新</string>
+	<string name="yy_app_updating">正在更新中....</string>
+	<string name="yy_network_unconnect">网络未连接</string>
+	<string name="yy_download_proccess">下载成功,正在处理...</string>
+	<string name="yy_common_update_ver">检测到更新版本:\t%s</string>
+	<string name="yy_common_update_time">发布时间:\t%s</string>
+	<string name="yy_common_update_content">更新内容:\n%s</string>
+	<string name="yy_common_aready_paused">已暂停</string>
+	<string name="yy_common_start_resume">正在恢复下载</string>
+	<string name="yy_common_network_timeout">网络超时，请检测网络是否可用。</string>
+	
+	<string name="yy_check_update_desc">升级检测</string>
+	<string name="yy_patch_merge">补丁合并</string>
+	<string name="yy_patch_md5_check">补丁MD5校验: %s</string>
+	<string name="yy_app_md5_check">升级包MD5校验:%s</string>
+	<string name="yy_upgrade_result">升级:%s</string>
+</resources>

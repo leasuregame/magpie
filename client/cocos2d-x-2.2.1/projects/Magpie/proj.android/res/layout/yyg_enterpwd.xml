@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 获取验证码界面，注册和找回密码公用该layout -->
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/yyg_header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dip" >
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="已发送验证码到"
+                android:paddingLeft="4dip"
+                android:paddingRight="8dip"
+                android:textColor="@color/yyg_clr_black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/phoneno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="130xxxxxxxx"
+                android:textColor="@color/yyg_clr_lightblue"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l2"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_below="@id/l1"
+            android:layout_marginTop="8dip"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/ac"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dip"
+                android:layout_weight="0.5"
+                android:background="@drawable/yyg_roundrect_gray"
+                android:hint="请输入验证码"
+                android:paddingLeft="4dip"
+                android:paddingRight="4dip"
+                android:singleLine="true"
+                android:textSize="21sp" />
+
+            <Button
+                android:id="@+id/getac"
+                style="@style/yyg_btn"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="获取验证码"
+                android:textSize="21sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/pwd"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_below="@id/l2"
+            android:layout_marginTop="8dip"
+            android:background="@drawable/yyg_roundrect_gray"
+            android:hint="@string/yyg_input_password"
+            android:inputType="textPassword"
+            android:paddingLeft="4dip"
+            android:paddingRight="4dip"
+            android:singleLine="true"
+            android:textSize="21sp" />
+
+        <TextView
+            android:id="@+id/tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pwd"
+            android:layout_marginTop="4dip"
+            android:hint="密码为6-20位，区分大小写"
+            android:paddingLeft="4dip"
+            android:textColor="@color/yyg_clr_lightgray"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/ok"
+            style="@style/yyg_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_below="@id/tip"
+            android:layout_marginTop="24dip"
+            android:text="@string/yyg_ok"
+            android:textSize="21sp" />
+    </RelativeLayout>
+
+</LinearLayout>

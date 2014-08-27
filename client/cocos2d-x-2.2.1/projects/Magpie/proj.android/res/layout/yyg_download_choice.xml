@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/yyg_clr_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dip"
+        android:text="版本升级"
+        android:textColor="@color/yyg_clr_black"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/yyg_clr_lightblue" >
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="280dip"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="80dip"
+        android:padding="12dip"
+        android:paddingLeft="14dip"
+        android:text="检查到新版本，是否更新。"
+        android:textColor="@color/yyg_clr_black"
+        android:textSize="16sp" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/yyg_clr_lightgray2" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dip"
+            android:layout_height="48dip"
+            android:layout_weight="0.5"
+            android:background="@drawable/yyg_graybtn_selector"
+            android:text="取消"
+            android:textColor="@color/yyg_clr_black" />
+
+        <LinearLayout
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="@color/yyg_clr_lightgray2" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="0dip"
+            android:layout_height="48dip"
+            android:layout_weight="0.5"
+            android:background="@drawable/yyg_graybtn_selector"
+            android:text="确定"
+            android:textColor="@color/yyg_clr_black" />
+    </LinearLayout>
+
+</LinearLayout>

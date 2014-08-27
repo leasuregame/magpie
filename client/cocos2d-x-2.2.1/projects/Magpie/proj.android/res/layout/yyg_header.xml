@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/yyg_header">"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:background="@color/yyg_clr_headerbg"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/header_back"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:background="@drawable/yyg_btn_headerselector"
+            android:contentDescription="@null"
+            android:src="@drawable/yyg_btn_headerback" />
+
+     
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+            android:layout_centerVertical="true" >
+        
+               <ImageView
+            android:id="@+id/top_logo"
+            android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:background="@drawable/yysdk_logo_top" />
+               
+                <TextView
+            android:id="@+id/header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="hello"
+            android:textColor="@color/yyg_clr_white"
+            android:textSize="20sp" />
+               
+    	</LinearLayout>
+    
+       
+
+        <Button
+            android:id="@+id/header_rightbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/yyg_btn_headerselector"
+            android:gravity="center"
+            android:paddingLeft="16dip"
+            android:paddingRight="16dip"
+            android:text="right"
+            android:textColor="@color/yyg_clr_white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <!-- 头部分割线 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/yyg_clr_headerline" >
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/yyg_header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dip" >
+
+        <LinearLayout
+            android:id="@+id/username_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="48dip"
+            android:background="@drawable/yyg_edit_top"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/yyg_hedit_uname"
+                android:inputType="text|textEmailAddress"
+                android:paddingLeft="4dip"
+                android:textSize="21sp" />
+
+            <ImageButton
+                android:id="@+id/username_dropdown"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:paddingRight="10dip"
+                android:scaleType="center"
+                android:src="@drawable/yyg_dropdown_selector" />
+        </LinearLayout>
+
+        <com.yy.gamesdk.view.EditTextDel
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_below="@id/username_layout"
+            android:background="@drawable/yyg_edit_bottom"
+            android:hint="@string/yyg_input_password"
+            android:inputType="textPassword"
+            android:paddingLeft="4dip"
+            android:textSize="21sp" />
+
+        <Button
+            android:id="@+id/loginbtn"
+            style="@style/yyg_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_below="@id/password"
+            android:layout_marginTop="24dip"
+            android:text="@string/yyg_login"
+            android:textSize="21sp" />
+
+        <CheckBox
+            android:id="@+id/savepwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/loginbtn"
+            android:layout_marginTop="14dip"
+            android:button="@drawable/yyg_check_selector"
+            android:checked="true"
+            android:paddingRight="12dip"
+            android:text="@string/yyg_save_password"
+            android:textColor="@color/yyg_clr_lightblue"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/retrieve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/savepwd"
+            android:layout_alignBottom="@+id/savepwd"
+            android:layout_alignRight="@+id/loginbtn"
+            android:clickable="true"
+            android:padding="12dip"
+            android:text="@string/yyg_forget_password"
+            android:textColor="@color/yyg_clr_lightblue"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</LinearLayout>

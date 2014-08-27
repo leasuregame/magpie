@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#f2f2f2"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/img_pop_list_item_portrait"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:src="@drawable/yyg_portrait" />
+
+    <TextView
+        android:id="@+id/tv_pop_list_item_uname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="13560230000yg"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_pop_list_item_forget"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:scaleType="center"
+        android:src="@drawable/yyg_item_forget" />
+
+</LinearLayout>

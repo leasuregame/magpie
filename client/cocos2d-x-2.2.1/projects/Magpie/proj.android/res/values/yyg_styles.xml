@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="yyg_theme" parent="android:Theme">
+        <item name="android:windowBackground">@color/yyg_clr_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="yyg_btn">
+        <item name="android:background">@drawable/yyg_btn_selector</item>
+        <item name="android:textColor">#fefefe</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>

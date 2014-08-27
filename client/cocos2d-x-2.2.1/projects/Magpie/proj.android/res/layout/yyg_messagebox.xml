@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/yyg_clr_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dip"
+        android:text="标题"
+        android:textColor="@color/yyg_clr_black"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/yyg_clr_lightblue" >
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="280dip"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="80dip"
+        android:padding="12dip"
+        android:paddingLeft="16dip"
+        android:text="内容"
+        android:textColor="@color/yyg_clr_black"
+        android:textSize="16sp" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/yyg_clr_lightgray2" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_list"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</LinearLayout>

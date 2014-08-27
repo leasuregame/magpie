@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/yy_common_hide_notification"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:background="#000000">
+	<FrameLayout 
+	    android:layout_width="60dp"
+	    android:layout_height="60dp"
+	    android:padding="5dp"	
+	    android:layout_gravity="center_vertical"    
+	    >
+	    <ImageView 
+	        android:id="@+id/yy_notification_icon"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        />
+	    <ImageView 
+	        android:id="@+id/yy_notification_icon_status"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        />
+	</FrameLayout>
+    <LinearLayout
+        android:id="@+id/yy_common_notification_control"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="3dp" 
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingLeft="6dp"
+        >
+
+        <TextView
+            android:id="@+id/yy_common_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" 
+            android:paddingTop="5dp"
+            />
+
+        <ProgressBar
+            android:id="@+id/yy_common_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="12dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="1dp" 
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            >
+
+            <TextView
+                android:id="@+id/yy_common_progress_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#999999"
+                android:gravity="left|center_vertical"
+                android:textSize="15sp" 
+                android:paddingTop="2dp"
+                />
+
+            <TextView
+                android:id="@+id/yy_common_progress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginRight="5dp" 
+                android:visibility="gone"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/yy_common_notification_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingRight="10dp" 
+        android:gravity="bottom"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/yy_update_common_gradient_orange"
+            android:singleLine="true"
+            android:textSize="12sp" 
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/yy_common_action_cancel"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

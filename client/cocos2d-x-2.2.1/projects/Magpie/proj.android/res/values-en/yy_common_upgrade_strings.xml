@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="yy_common_action_info_exist">The app is already in downloading list.</string>
+    <string name="yy_common_info_interrupt">dowload interrupted.</string>
+    <string name="yy_common_action_pause">Downloading,click to pause.</string>
+    <string name="yy_common_action_continue">Paused,click to continue.</string>
+    <string name="yy_common_action_cancel">Cancel</string>
+    <string name="yy_common_action_start">click to start.</string>
+	<string name="yy_common_download_notification_prefix">Downloading:%s </string>
+	<string name="yy_common_pause_notification_prefix">Pause: </string>
+	<string name="yy_common_start_download_notification">Download start.</string>
+	<string name="yy_common_start_patch_notification">Patch start.</string>
+	<string name="yy_common_network_break_alert">Please make sure you are connected to internet, download failed</string>
+	<string name="yy_common_download_failed">Download Failed! </string>
+	<string name="yy_common_download_finish">Download finished,click to install it.</string>
+	<string name="yy_common_patch_finish">Patch finished,click to install it.</string>
+	<string name="yy_common_silent_download_finish">New version is ready,click to install it.</string>
+	<string name="yy_update_now">Update now</string>
+	<string name="yy_not_update_now">Not now</string>
+	<string name="yy_common_has_upgrade">New version found,click to update.</string>
+	<string name="yy_common_has_no_upgrade">No new version found</string>
+	<string name="yy_ignore_this_version">Ignore this version.</string>
+	<string name="yy_status_requesting">Requesting Now</string>
+	<string name="yy_status_faild">Download Failed,Click To Rtry.</string>
+	<string name="yy_common_must_update">You must update this version.</string>
+	<string name="yy_network_condition">(Warning: Not WIFI Condition)</string>
+	<string name="yy_update_content">Update Content</string>
+	<string name="yy_onley_need_download">Update size: %s</string>
+	<string name="yy_size_of_new_version">Target size: %s</string>
+	
+	<string name="yy_no_network_status">Please make sure you are connected to internet,update failed</string>
+	<string name="yy_app_update">App updating</string>
+	<string name="yy_app_updating">Updating....</string>
+	<string name="yy_network_unconnect">network not connect.</string>
+	<string name="yy_download_proccess">Wait please...</string>
+	<string name="yy_common_update_ver">version:\t%s</string>
+	<string name="yy_common_update_time">publish:\t%s</string>
+	<string name="yy_common_update_content">modify:\n%s</string>
+	<string name="yy_common_aready_paused">aready paused.</string>
+	<string name="yy_common_start_resume">resume downloading</string>
+	<string name="yy_common_network_timeout">network connected time out.</string>
+	
+	<string name="yy_check_update_desc">new version check request.</string>
+	<string name="yy_patch_merge">patch merge</string>
+	<string name="yy_patch_md5_check">patch md5 check: %s</string>
+	<string name="yy_app_md5_check">app md5 check:%s</string>
+	<string name="yy_upgrade_result">upgrade:%s</string>
+</resources>

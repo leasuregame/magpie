@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- 获取验证码界面，注册和找回密码公用该layout -->
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/yyg_header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dip" >
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:background="@drawable/yyg_roundrect_gray"
+            android:hint="@string/yyg_input_phoneno"
+            android:inputType="phone"
+            android:paddingLeft="4dip"
+            android:singleLine="true"
+            android:textSize="21sp" />
+
+        <TextView
+            android:id="@+id/tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone"
+            android:hint="@string/yyg_input_phoneno_tip"
+            android:paddingLeft="4dip"
+            android:textColor="@color/yyg_clr_lightgray"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/getac"
+            style="@style/yyg_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_below="@id/tip"
+            android:layout_marginTop="12dip"
+            android:text="@string/yyg_get_ac"
+            android:textSize="21sp" />
+
+        <TextView
+            android:id="@+id/otherregist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/getac"
+            android:layout_marginTop="8dip"
+            android:clickable="true"
+            android:padding="4dip"
+            android:text="@string/yyg_not_registed_by_phoneno"
+            android:textColor="#4b9fe1"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</LinearLayout>

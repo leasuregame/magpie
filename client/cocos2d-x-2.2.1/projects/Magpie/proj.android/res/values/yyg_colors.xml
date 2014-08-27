@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="yyg_clr_headerbg">#4b9fe0</color>
+    <color name="yyg_clr_headerline">#3e90d0</color>
+    <color name="yyg_clr_bg">#f5f5f5</color>
+    <color name="yyg_clr_btnpressed">#3D91D4</color>
+    <color name="yyg_clr_white">#ffffff</color>
+    <color name="yyg_clr_lightgray">#cccccc</color>
+    <color name="yyg_clr_lightgray2">#d1d1d1</color>
+    <color name="yyg_clr_graybtn_up">#f4f4f4</color>
+    <color name="yyg_clr_graybtn_down">#ededed</color>
+    <color name="yyg_clr_black">#333333</color>
+    <color name="yyg_clr_lightblue">#4b9fe1</color>
+</resources>

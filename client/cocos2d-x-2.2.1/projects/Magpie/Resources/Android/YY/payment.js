@@ -31,6 +31,7 @@ var Payment = Entity.extend({
         this._orderList = [];
 
         this._load();
+        this._interValId = null;
         this.schedule(this._judge, JUDGE_INTERVAL);
     },
 
@@ -99,12 +100,19 @@ var Payment = Entity.extend({
 
         yy.YYClient.pay(
             user.get('area'), 
-            player.get('id'),
-            player.get('name'),
-            product.id,
+            user.get('id')
+            user.get('name'),
             product.product_id,
+            product.name,
             product.cash
         );
+
+        // this.interValId = setInterVal(function() {
+        //     var payResult = yy.YYClient.getPayResult();
+        //     if (payResult == '') {
+
+        //     }
+        // }, 100);
     },
 
     _sendOrder: function (order) {

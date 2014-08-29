@@ -43,7 +43,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value>${ProjDirPath}/build_native.sh yy debug</value>
+					<value>${CLIENT_ROOT}/bin/build_android_debug.sh</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>

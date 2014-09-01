@@ -100,8 +100,8 @@ var Payment = Entity.extend({
 
         yy.YYClient.pay(
             user.get('area'), 
-            user.get('id')
-            user.get('name'),
+            player.get('id'),
+            player.get('name'),
             product.product_id,
             product.name,
             product.cash

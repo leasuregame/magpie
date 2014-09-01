@@ -9,7 +9,7 @@ BINDINGS_JS_ROOT="$APP_ROOT/../../scripting/javascript/bindings/js"
 
 function cp_res
 {
-	echo "cp magpie res to android assets"
+	echo "cp magpie resYY to android assets"
 
 	cp -rf "$APP_ROOT"/Resources/resYY "$APP_ANDROID_ROOT"/assets
 
@@ -39,7 +39,7 @@ function releases
 	cp -rf "$APP_ROOT"/Resources/game/Android/YY-Releases/* "$APP_ANDROID_ROOT"/assets
 }
 
-echo "msgpie android cp res"
+echo "magpie android cp res"
 
 if [ "$BUILD_MODE" = "debug" ] || [ "$BUILD_MODE" = "Debug" ]; then
 	debug

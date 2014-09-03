@@ -88,8 +88,6 @@ var User = Entity.extend({
                     userName: yy.YYClient.getUserName()
                 }
 
-                cc.log(JSON.stringify(yyUser));
-
                 lz.server.request("connector.userHandler.loginYY", {
                     signid: yyUser.sid,
                     account: yyUser.account,

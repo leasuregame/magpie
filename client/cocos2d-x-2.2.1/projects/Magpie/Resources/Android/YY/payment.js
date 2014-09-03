@@ -87,14 +87,6 @@ var Payment = Entity.extend({
         var product = args.product;
         this._cb = args.cb;
 
-        // if (lz.IAPHelp) {
-        //     this._showWaitLayer();
-
-        //     cc.log(product.product_id);
-
-        //     lz.IAPHelp.buy(product.product_id, this, this._payCallback);
-        // }
-
         var user = gameData.user;
         var player = gameData.player;
 
@@ -102,17 +94,10 @@ var Payment = Entity.extend({
             user.get('area'), 
             player.get('id'),
             player.get('name'),
-            product.product_id,
+            product.id,
             product.name,
             product.cash
         );
-
-        // this.interValId = setInterVal(function() {
-        //     var payResult = yy.YYClient.getPayResult();
-        //     if (payResult == '') {
-
-        //     }
-        // }, 100);
     },
 
     _sendOrder: function (order) {

@@ -20,6 +20,8 @@ client/cocos2d-x-2.2.1/projects/Magpie/proj.android/gen
 client/cocos2d-x-2.2.1/projects/MagpieTest
 client/cocos2d-x-2.2.1/projects/Magpie/proj.ios/lib/YY/SDK/libyygamesdk_universal.a
 client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/bin/libcocos2dx.jar
+client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/bin/classes/org/cocos2dx/lib/Cocos2dxSound.class
+
 fileLookup.plist
 table.json
 .idea

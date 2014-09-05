@@ -172,7 +172,7 @@ authParams = (type, msg, app) ->
     AppStore: ['account', 'password', 'areaId']
     TB: ['nickName', 'userId', 'sessionId', 'areaId']
     PP: ['token', 'areaId']
-    YY: ['signid', 'account', 'time', 'appid', 'serverid', 'areaId', 'userName']
+    YY: ['signid', 'account', 'time', 'appid', 'serverid', 'areaId', 'userName', 'os']
     S91: ['sessionid', 'uin', 'appid', 'areaId']
   
   args  = {}

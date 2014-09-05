@@ -88,8 +88,6 @@ var User = Entity.extend({
                     userName: yy.YYClient.getUserName()
                 }
 
-                cc.log(JSON.stringify(yyUser));
-
                 lz.server.request("connector.userHandler.loginYY", {
                     signid: yyUser.sid,
                     account: yyUser.account,
@@ -108,9 +106,6 @@ var User = Entity.extend({
                     if (data.code == 200) {
                         cc.log("login success");
 
-                        // YY数据收集
-                        //yyAdapter.YYSelectGameServer("s" + that._area);
-
                         that.update(msg.user);
 
                         var player = msg.player;
@@ -122,6 +117,8 @@ var User = Entity.extend({
                             cb(2);
                         }
 
+                        // YY数据收集
+                        yy.YYClient.enterGameServer(that._area, player.id, player.name);
                         lz.um.event("event_login", that._area);
                     } else if (data.code == 600) {
                         cc.log("login fail go to updateLayer");

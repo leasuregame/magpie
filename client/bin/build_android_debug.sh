@@ -2,22 +2,28 @@
 
 echo "magpie android client build debug"
 
+CLENT_ROOT="/cygdrive/e/magpie/client"
 MAGPIE_PATH="cocos2d-x-2.2.1/projects/Magpie"
-YY_LIBS_SOURCE="$MAGPIE_PATH"/proj.android/lib/yylib
+YY_LIBS_SOURCE="$MAGPIE_PATH"/proj.android/lib/yylib/armeabi
 YY_LIBS_TARGET="$MAGPIE_PATH"/proj.android/libs/armeabi
 
 function build_Test_debug
 {
 	echo "build_Test_debug"
 
-	sh "$MAGPIE_PATH"/proj.android/build_native.sh yy debug
+	sh "$MAGPIE_PATH"/proj.android/build_native.sh yy debug -j4
 }
 
 function cp_yy_libs
 {
-	echo "copy yy libs"
-	cp -rf "$YY_LIBS_SOURCE"/armeabi/* "$YY_LIBS_TARGET"
+	echo "copy yy libs from $YY_LIBS_SOURCE => $YY_LIBS_TARGET"
+	cp -rf "$YY_LIBS_SOURCE"/* "$YY_LIBS_TARGET"
 }
+
+if [ -d "$CLENT_ROOT" ]; then 
+	echo 'cd to clent root dir'
+	cd "$CLENT_ROOT"
+fi
 
 if [ ! -n "$1" ]; then
 	build_Test_debug

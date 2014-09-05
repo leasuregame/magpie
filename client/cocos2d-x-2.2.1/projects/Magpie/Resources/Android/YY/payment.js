@@ -31,6 +31,7 @@ var Payment = Entity.extend({
         this._orderList = [];
 
         this._load();
+        this._interValId = null;
         this.schedule(this._judge, JUDGE_INTERVAL);
     },
 
@@ -85,14 +86,6 @@ var Payment = Entity.extend({
 
         var product = args.product;
         this._cb = args.cb;
-
-        // if (lz.IAPHelp) {
-        //     this._showWaitLayer();
-
-        //     cc.log(product.product_id);
-
-        //     lz.IAPHelp.buy(product.product_id, this, this._payCallback);
-        // }
 
         var user = gameData.user;
         var player = gameData.player;

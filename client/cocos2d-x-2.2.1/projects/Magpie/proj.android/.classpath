@@ -3,13 +3,15 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="lib/yylib/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/yylib/mmbilling.2.4.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/yylib/androidsystem-1.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/yylib/netroid-sdk-1.2.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/yylib/udbsdk.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/yylib/ymsdk-1.1.18.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/yylib/YYGameSdkCommon-2.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/yylib/YYGameSdkExt-2.0.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/UM/umeng_sdk.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/udbsdk.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/uRyn/Athena/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/libs/androidsystem-1.0.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/uRyn/Athena/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/libs/netroid-sdk-1.2.8.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/uRyn/Athena/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/libs/ymsdk-1.1.18.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/uRyn/Athena/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/libs/YYGameSdkCommon-2.0.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/uRyn/Athena/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/libs/YYGameSdkExt-2.0.4.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>

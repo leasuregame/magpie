@@ -35,13 +35,13 @@ public class YYWrapper {
 			@Override
 			public void callback(int error, String data) {
 				if (error == YYGameSDKErrorCode.YY_SUCCESS) {
-					Toast.makeText(activity, "初始化成功", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(activity, "初始化成功", Toast.LENGTH_SHORT).show();
 					YYWrapper.isInitSuccess = true;
-					Log.d("debug", "-arthur- 初始化成功");
+					Log.d("debug", "- 初始化成功");
 				} else {
-					Toast.makeText(activity, "初始化失败", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(activity, "初始化失败", Toast.LENGTH_SHORT).show();
 					YYWrapper.isInitSuccess = false;
-					Log.d("debug", "-arthur- 初始化失败");
+					Log.d("debug", "- 初始化失败");
 				}
 			}
 		});
@@ -71,12 +71,12 @@ public class YYWrapper {
 					YYWrapper.userName = data.getUsername();
 					
 					YYWrapper.isLoginSuccess = true;
-					Log.i("", "- arthur - 登陆成功");
-					Toast.makeText(activity, "登陆成功", Toast.LENGTH_SHORT).show();
+					Log.i("", " - 登陆成功");
+					//Toast.makeText(activity, "登陆成功", Toast.LENGTH_SHORT).show();
 				} else {
-					Log.i("", "- arthur - 登陆取消");
+					Log.i("", " - 登陆取消");
 					YYWrapper.isLoginSuccess = false;
-					Toast.makeText(activity, "登陆取消", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(activity, "登陆取消", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});

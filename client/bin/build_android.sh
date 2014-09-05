@@ -1,7 +1,6 @@
 #! /bin/sh
 
 echo "magpie android client build"
-export PATH=/Users/uRyn/Documents/Development/apache-ant-1.9.4/bin:$PATH
 
 MAGPIE_PATH="cocos2d-x-2.2.1/projects/Magpie"
 COCOS2D_COMPILE_PATH="cocos2d-x-2.2.1/tools/cocos2d-console/console/cocos2d.py"

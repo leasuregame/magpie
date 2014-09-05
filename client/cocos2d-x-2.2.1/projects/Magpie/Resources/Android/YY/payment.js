@@ -96,13 +96,21 @@ var Payment = Entity.extend({
 
         var user = gameData.user;
         var player = gameData.player;
+        
+        var payCountDsp = product.cash * 10 + product.gold + " 魔石";
+
+        var firstPaymentState = player.get("firstRechargeBox");
+        if (firstPaymentState != HAS_FIRST_RECHARGER_BOX)
+        {
+            payCountDsp = (product.cash * 10 + product.gold) + " * " + product.times + " 魔石";
+        }
 
         yy.YYClient.pay(
             user.get('area'), 
             player.get('id'),
             player.get('name'),
             product.id,
-            product.product_id,
+            payCountDsp,
             product.cash
         );
     },

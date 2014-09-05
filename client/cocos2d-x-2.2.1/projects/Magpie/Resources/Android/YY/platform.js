@@ -11,16 +11,16 @@
 var lz = lz || {};
 
 lz.platformConfig = {
-    OS: "IOS",
+    OS: "ANDROID",
     PLATFORM: "YY",
     VERSION: "1.5.0",
     APP_ID: "IYYDS",
     APP_KEY: "OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf",
-    GATE_SERVER_HOST: "192.168.1.103",
+    GATE_SERVER_HOST: "183.56.170.243",
     GATE_SERVER_PORT: "3009",
-    UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/yy/update/",
-    UPDATE_VERSION_URL: "http://124.238.236.33:9090/api/yy/version",
-    GAME_NOTICE_URL: "http://124.238.236.33:9090/api/yy/notice",
+    UPDATE_PACKAGE_URL: "http://183.56.170.243:9090/api/yy/update/",
+    UPDATE_VERSION_URL: "http://183.56.170.243:9090/api/yy/version",
+    GAME_NOTICE_URL: "http://183.56.170.243:9090/api/yy/notice",
     UM_APP_KEY: "534c999b56240b5a0d01d4b9"
 };
 

@@ -11,7 +11,7 @@ function build_Test_debug
 {
 	echo "build_Test_debug"
 
-	sh "$MAGPIE_PATH"/proj.android/build_native.sh yy debug -j4
+	sh "$MAGPIE_PATH"/proj.android/build_native.sh yy debug
 }
 
 function cp_yy_libs

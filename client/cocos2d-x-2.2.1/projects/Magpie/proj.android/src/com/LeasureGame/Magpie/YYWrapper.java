@@ -27,7 +27,7 @@ public class YYWrapper {
 		
 		AppInfo info = new AppInfo();
 		info.setAppId("MYYDS");
-		info.setDebug(true);
+		info.setDebug(false);
 		info.setScreenOrientation(YYGameSDKScreenOrientation.ScreenOrientationPortrait);
 		
 		YYGame.getInstance().init(activity, info, new YYGameSDKCallback<String>() {

@@ -9,14 +9,21 @@
 #define YYCLIENT_H_
 #include <string>
 #include <iostream>
+
+#include <android/log.h>
+#define  LOG_TAG    "c++log"
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,TAG ,__VA_ARGS__)
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,TAG ,__VA_ARGS__)
+#define LOGW(...) __android_log_print(ANDROID_LOG_WARN,TAG ,__VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG ,__VA_ARGS__)
+#define LOGF(...) __android_log_print(ANDROID_LOG_FATAL,TAG ,__VA_ARGS__)
+
 using namespace std;
 
 class YYClient {
 public:
 
 	virtual ~YYClient(){};
-
-	//static YYClient* getInstance();
 
 	static void init();
 	static string getInitResult();
@@ -31,7 +38,6 @@ public:
 	static void exitSDK();
 
 	YYClient(){};
-//	void executeCallback(const char* name, uint32_t argc, jsval *vp, jsval *retVal);
 };
 
 #endif /* YYCLIENT_H_ */

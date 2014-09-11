@@ -4,6 +4,14 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="lib" path="lib/UM/umeng_sdk.jar"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="libs/androidsystem-1.0.3.jar"/>
+	<classpathentry kind="lib" path="libs/mmbilling.2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/netroid-sdk-1.2.8.jar"/>
+	<classpathentry kind="lib" path="libs/udbsdk.jar"/>
+	<classpathentry kind="lib" path="libs/ymsdk-1.1.18.jar"/>
+	<classpathentry kind="lib" path="libs/YYGameSdkCommon-2.0.4.jar"/>
+	<classpathentry kind="lib" path="libs/YYGameSdkExt-2.0.4.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>

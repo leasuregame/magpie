@@ -23,6 +23,12 @@ THE SOFTWARE.
 ****************************************************************************/
 package com.LeasureGame.Magpie;
 
+import com.yy.gamesdk.AppInfo;
+import com.yy.gamesdk.YYGame;
+import com.yy.gamesdk.YYGameSDKScreenOrientation;
+import com.yy.gamesdk.callbacks.YYGameSDKCallback;
+import com.yy.gamesdk.callbacks.YYGameSDKErrorCode;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import com.yy.gamesdk.AppInfo;
@@ -51,9 +57,34 @@ public class Magpie extends Cocos2dxActivity{
 	public static Context STATIC_REF = null;
 	public static Magpie _magpie;
 	
+	private void yySdkInit() {
+		AppInfo info = new AppInfo();
+		info.setAppId("MYYDS");
+		info.setDebug(true);
+		info.setScreenOrientation(YYGameSDKScreenOrientation.ScreenOrientationPortrait);
+
+		Log.d("debug", "before init: " + this.toString() + info.toString());
+
+		YYGame.getInstance().init(this, info, new YYGameSDKCallback<String>() {
+
+			@Override
+			public void callback(int error, String data) {
+				if (error == YYGameSDKErrorCode.YY_SUCCESS) {
+					//Toast.makeText(activity, "初始化成功", Toast.LENGTH_SHORT).show();
+					YYWrapper.isInitSuccess = true;
+					Log.d("debug", "- 初始化成功");
+				} else {
+					//Toast.makeText(activity, "初始化失败", Toast.LENGTH_SHORT).show();
+					YYWrapper.isInitSuccess = false;
+					Log.d("debug", "- 初始化失败");
+				}
+			}
+		});
+	}
+	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		
+		yySdkInit();
 		STATIC_REF = this;
 		_magpie = this;
 		yySdkInit();
@@ -148,7 +179,7 @@ public class Magpie extends Cocos2dxActivity{
 			PackageManager pm = STATIC_REF.getPackageManager();  
 			PackageInfo pi = pm.getPackageInfo(STATIC_REF.getPackageName(), 0);  
 			version = pi.versionName;
-		} catch (Exception e) {  
+		} catch (Exception e) {
 			Log.e("VersionInfo", "Exception", e);  
 	    } 
 		
@@ -158,4 +189,5 @@ public class Magpie extends Cocos2dxActivity{
     static {
         System.loadLibrary("cocos2djs");
     }
+    
 }

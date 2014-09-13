@@ -41,22 +41,9 @@ jobject getContext1(){
     return NULL;
 }
 
-//static YYClient* _instance;
-
-//YYClient* YYClient::getInstance(){
-//	if(_instance == NULL) {
-//		return new YYClient();
-//	} else {
-//		return _instance;
-//	}
-//}
-
-//void YYClient::executeCallback(const char* name, uint32_t argc, jsval *vp, jsval *retVal) {
-//	ScriptingCore::getInstance()->executeCallbackWithOwner(this, name, argc, vp, retVal);
-//}
-
 void YYClient::init() {
 	JniMethodInfo t;
+	//LOGI("debug init in c++");
 	if( JniHelper::getStaticMethodInfo( t
 										, yyWrapperClassName
 										, "init"

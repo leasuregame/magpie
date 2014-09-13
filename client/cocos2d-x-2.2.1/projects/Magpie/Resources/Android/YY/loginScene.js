@@ -21,6 +21,12 @@ var LoginScene = cc.Scene.extend({
 
         this._super();
 
+        //cc.log('=============open browser 0================');
+        //cc.log(WebBrowser, WebBrowser.WebBrowser);
+        //var browser = WebBrowser.WebBrowser();
+        //cc.log(browser, browser.openWebView);
+        //browser.openWebView();
+
         if (LoginScene.flag) {
             if (this._toLayer) {
                 this.switchLayer(this._toLayer);
@@ -48,6 +54,12 @@ var LoginScene = cc.Scene.extend({
                         NoticeLayer.pop();
                     }
                 }
+
+                // console.log('=============open brower================');
+                // console.log(WebBrowser, WebBrowser.WebBrowser);
+                // var browser = WebBrowser.WebBrowser();
+                // console.log(browser, browser.openWebView);
+                // browser.openWebView();
 
                 effect.removeFromParent();
             });

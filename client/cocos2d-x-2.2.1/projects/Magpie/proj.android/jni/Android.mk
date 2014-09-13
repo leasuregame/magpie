@@ -11,7 +11,9 @@ LOCAL_SRC_FILES := magpie/main.cpp \
                    ../lib/UM/js_bindings_MobClickCpp.cpp \
                    ../lib/YY/YYClient.cpp \
                    ../lib/YY/yy_client_js_bindings.cpp \
-                   ../../Classes/Android/YY/AppDelegate.cpp
+                   ../../Classes/Android/YY/AppDelegate.cpp \
+                   ../lib/YY/web_browser_js_bindings.cpp \
+                   ../lib/YY/WebBrowser.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes/Android/YY \
 					$(LOCAL_PATH)/../../../../cocos2dx/platform/android/jni \

@@ -9,8 +9,6 @@
 #define WEBVIEW_H_
 
 class WebView {
-private:
-	jobject webview;
 
 public:
 	WebView(const char * url);

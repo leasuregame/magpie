@@ -38,20 +38,20 @@ var SystemMessageLabel = LazyLayer.extend({
 
         var titleLabel = cc.LabelTTF.create(message.title, "STHeitiTC-Medium", 30);
         titleLabel.setPosition(cc.p(0, 325));
-        titleLabel.setColor(cc.c3b(255, 239, 213));
+        titleLabel.setColor(cc.c3b(255, 232, 75));
         frameLayer.addChild(titleLabel);
 
         var contentBgLabel = cc.Scale9Sprite.create(main_scene_image.icon175);
-        contentBgLabel.setContentSize(cc.size(490, 230));
-        contentBgLabel.setPosition(cc.p(0, 180));
+        contentBgLabel.setContentSize(cc.size(490, 570));
+        contentBgLabel.setPosition(cc.p(0, 10));
         frameLayer.addChild(contentBgLabel);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(0, 0, 490, 200));
+        var scrollViewLayer = MarkLayer.create(cc.rect(0, 0, 490, 500+320));
         var content = lz.format2(message.content, "STHeitiTC-Medium", 22, 440);
         var len = content.length;
 
         var i, x, y;
-        var scrollViewHeight = len * 25;
+        var scrollViewHeight = len * 25 + 320;
 
         for (i = 0; i < len; i++) {
             y = scrollViewHeight - 25 - 25 * i;
@@ -62,8 +62,8 @@ var SystemMessageLabel = LazyLayer.extend({
             scrollViewLayer.addChild(text);
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(490, 200), scrollViewLayer);
-        scrollView.setPosition(cc.p(0, 15));
+        var scrollView = cc.ScrollView.create(cc.size(490, 535), scrollViewLayer);
+        scrollView.setPosition(cc.p(0, 20));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         scrollView.updateInset();
@@ -72,61 +72,63 @@ var SystemMessageLabel = LazyLayer.extend({
         scrollView.setContentSize(cc.size(490, scrollViewHeight));
         scrollView.setContentOffset(cc.p(0, scrollView.minContainerOffset().y));
 
-        var rewardsBgLabel = cc.Scale9Sprite.create(main_scene_image.icon175);
-        rewardsBgLabel.setContentSize(cc.size(490, 320));
-        rewardsBgLabel.setPosition(cc.p(0, -115));
-        frameLayer.addChild(rewardsBgLabel);
+        if (Object.keys(message.rewards).length > 0) {
+            var rewardsBgLabel = cc.Scale9Sprite.create();
+            rewardsBgLabel.setContentSize(cc.size(490, 320));
+            rewardsBgLabel.setPosition(cc.p(0, 0));
+            scrollViewLayer.addChild(rewardsBgLabel);
 
-        var attachmentLabel = cc.LabelTTF.create("附件：", "STHeitiTC-Medium", 28);
-        attachmentLabel.setAnchorPoint(cc.p(0, 0.5));
-        attachmentLabel.setPosition(cc.p(18, 290));
-        attachmentLabel.setColor(cc.c3b(255, 239, 213));
-        rewardsBgLabel.addChild(attachmentLabel);
+            var attachmentLabel = cc.LabelTTF.create("附件：", "STHeitiTC-Medium", 28);
+            attachmentLabel.setAnchorPoint(cc.p(0, 0.5));
+            attachmentLabel.setPosition(cc.p(28, 290));
+            attachmentLabel.setColor(cc.c3b(255, 232, 75));
+            rewardsBgLabel.addChild(attachmentLabel);
 
-        var rewards = message.rewards;
-        var index = 0;
+            var rewards = message.rewards;
+            var index = 0;
 
-        var cardMenu = cc.Menu.create();
-        cardMenu.setPosition(cc.p(0, 0));
-        rewardsBgLabel.addChild(cardMenu);
+            var cardMenu = cc.Menu.create();
+            cardMenu.setPosition(cc.p(0, 0));
+            rewardsBgLabel.addChild(cardMenu);
 
-        for (var key in rewards) {
-            if (key == "cardArray") {
-                var cards = rewards[key];
-                this._cardsLen = cards.length;
-                for (i = 0; i < this._cardsLen; i++) {
-                    x = 67 + (index % 5 ) * 92;
-                    y = 212 - parseInt(index / 5) * 100;
-                    var card = Card.create(cards[i]);
-                    var cardItem = CardHeadNode.getCardHeadItem(card);
-                    cardItem.setScale(0.82);
-                    cardItem.setPosition(cc.p(x, y));
-                    cardMenu.addChild(cardItem);
+            for (var key in rewards) {
+                if (key == "cardArray") {
+                    var cards = rewards[key];
+                    this._cardsLen = cards.length;
+                    for (i = 0; i < this._cardsLen; i++) {
+                        x = 67 + (index % 5 ) * 92;
+                        y = 212 - parseInt(index / 5) * 100;
+                        var card = Card.create(cards[i]);
+                        var cardItem = CardHeadNode.getCardHeadItem(card);
+                        cardItem.setScale(0.82);
+                        cardItem.setPosition(cc.p(x, y));
+                        cardMenu.addChild(cardItem);
 
-                    var numLabel = StrokeLabel.create("+" + cards[i].qty, "STHeitiTC-Medium", 20);
-                    numLabel.setAnchorPoint(cc.p(1, 0));
-                    numLabel.setPosition(cc.p(90, 10));
-                    numLabel.setColor(cc.c3b(255, 255, 255));
-                    numLabel.setBgColor(cc.c3b(0, 0, 0));
-                    cardItem.addChild(numLabel);
+                        var numLabel = StrokeLabel.create("+" + cards[i].qty, "STHeitiTC-Medium", 20);
+                        numLabel.setAnchorPoint(cc.p(1, 0));
+                        numLabel.setPosition(cc.p(90, 10));
+                        numLabel.setColor(cc.c3b(255, 255, 255));
+                        numLabel.setBgColor(cc.c3b(0, 0, 0));
+                        cardItem.addChild(numLabel);
 
+                        index++;
+                    }
+                } else {
+                    x = 25 + (index % 5 ) * 92;
+                    y = 170 - parseInt(index / 5) * 100;
+
+                    var goods = giftBagGoods[key];
+                    var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
+                    goodsSprite.setAnchorPoint(cc.p(0, 0));
+                    goodsSprite.setPosition(cc.p(x, y));
+                    rewardsBgLabel.addChild(goodsSprite);
+
+                    var goodsLabel = cc.LabelTTF.create("+" + rewards[key], "STHeitiTC-Medium", 16);
+                    goodsLabel.setAnchorPoint(cc.p(1, 0));
+                    goodsLabel.setPosition(cc.p(73, 8));
+                    goodsSprite.addChild(goodsLabel);
                     index++;
                 }
-            } else {
-                x = 25 + (index % 5 ) * 92;
-                y = 170 - parseInt(index / 5) * 100;
-
-                var goods = giftBagGoods[key];
-                var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
-                goodsSprite.setAnchorPoint(cc.p(0, 0));
-                goodsSprite.setPosition(cc.p(x, y));
-                rewardsBgLabel.addChild(goodsSprite);
-
-                var goodsLabel = cc.LabelTTF.create("+" + rewards[key], "STHeitiTC-Medium", 16);
-                goodsLabel.setAnchorPoint(cc.p(1, 0));
-                goodsLabel.setPosition(cc.p(73, 8));
-                goodsSprite.addChild(goodsLabel);
-                index++;
             }
         }
 

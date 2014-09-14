@@ -47,10 +47,10 @@ var NoticeLayer = cc.Layer.extend({
         var rect = cc.rect(point.x - 260, point.y - 280, 520, 532);
         var size = cc.EGLView.getInstance().getFrameSize();
         this._webLayer = new WebBrowser();
-        var rx = (size.width * 0.16) / 2;
-        var rwidth = size.width * 0.84 * 0.98;
-        var ry = (size.height - (rwidth / 0.98) * 1.05) / 2;
-        var rheight = rwidth * 1.05;
+        var rx = (size.width * 0.19) / 2;
+        var rwidth = size.width * 0.81 * 0.98;
+        var ry = ((size.height - (rwidth / 0.98) * 1.05) / 2) * 1.06;
+        var rheight = rwidth * 1.035;
         this._webLayer.openWebView(
             lz.platformConfig.GAME_NOTICE_URL + "?w=" + size.width + "&h=" + size.height,
             rx, 

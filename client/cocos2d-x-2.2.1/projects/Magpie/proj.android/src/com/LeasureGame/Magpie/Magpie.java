@@ -144,10 +144,10 @@ public class Magpie extends Cocos2dxActivity {
 
 	public boolean onKeyDown(int keyCoder, KeyEvent event) // 重载函数，android手机实体返回键回调函数
 	{
-		if (_webview.canGoBack() && keyCoder == KeyEvent.KEYCODE_BACK) {// 如果网页能回退则后退，如果不能后退移除WebView
+		if (_webview.canGoBack() && keyCoder == KeyEvent.KEYCODE_BACK) {// 如果网页能回退则后退
 			_webview.goBack();
 		} else {
-			removeWebView();
+			//removeWebView();
 		}
 		return false;
 	}

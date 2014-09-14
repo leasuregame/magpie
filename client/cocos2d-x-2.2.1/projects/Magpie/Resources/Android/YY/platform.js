@@ -21,7 +21,7 @@ lz.platformConfig = {
     UPDATE_PACKAGE_URL: "http://183.56.170.243:9090/api/yy/update/",
     UPDATE_VERSION_URL: "http://183.56.170.243:9090/api/yy/version",
     GAME_NOTICE_URL: "http://183.56.170.243:9090/api/yy/notice",
-    UM_APP_KEY: "534c999b56240b5a0d01d4b9"
+    UM_APP_KEY: "54151830fd98c55dc80008c9"
 };
 
 

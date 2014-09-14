@@ -224,7 +224,7 @@
                 <file name="src/view/mainModule/mainLayer.js"/>
                 <file name="src/view/mainModule/mainMenuLayer.js"/>
                 <file name="src/view/mainModule/mandatoryTeachingLayer.js"/>
-                <file name="src/view/mainModule/noticeLayer.js"/>
+                <file name="Android/YY/noticeLayer.js"/>
                 <file name="src/view/mainModule/noviceTeachingLayer.js"/>
                 <file name="src/view/mainModule/mainScene.js"/>
 

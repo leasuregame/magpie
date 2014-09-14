@@ -230,7 +230,7 @@ var appFiles = [
     'src/view/mainModule/mainLayer.js',
     'src/view/mainModule/mainMenuLayer.js',
     'src/view/mainModule/mandatoryTeachingLayer.js',
-    'src/view/mainModule/noticeLayer.js',
+    'noticeLayer.js',
     'src/view/mainModule/noviceTeachingLayer.js',
     'src/view/mainModule/mainScene.js',
 

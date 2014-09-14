@@ -12,6 +12,8 @@ JSBool js_web_browser_js_bindings_WebBrowser_constructor(JSContext *cx, uint32_t
 void js_web_browser_js_bindings_WebBrowser_finalize(JSContext *cx, JSObject *obj);
 void js_register_web_browser_js_bindings_WebBrowser(JSContext *cx, JSObject *global);
 void register_all_web_browser_js_bindings(JSContext* cx, JSObject* obj);
+JSBool js_web_browser_js_bindings_WebBrowser_close(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_web_browser_js_bindings_WebBrowser_updateUrl(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_web_browser_js_bindings_WebBrowser_openWebView(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_web_browser_js_bindings_WebBrowser_WebBrowser(JSContext *cx, uint32_t argc, jsval *vp);
 #endif

@@ -25,19 +25,67 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 JSClass  *jsb_WebBrowser_class;
 JSObject *jsb_WebBrowser_prototype;
 
-JSBool js_web_browser_js_bindings_WebBrowser_openWebView(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_web_browser_js_bindings_WebBrowser_close(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	WebBrowser* cobj = (WebBrowser *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
 	if (argc == 0) {
-		cobj->openWebView();
+		cobj->close();
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_web_browser_js_bindings_WebBrowser_updateUrl(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	WebBrowser* cobj = (WebBrowser *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 1) {
+		const char* arg0;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		cobj->updateUrl(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_web_browser_js_bindings_WebBrowser_openWebView(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	WebBrowser* cobj = (WebBrowser *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
+	if (argc == 5) {
+		const char* arg0;
+		int arg1;
+		int arg2;
+		int arg3;
+		int arg4;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
+		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		cobj->openWebView(arg0, arg1, arg2, arg3, arg4);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 5);
 	return JS_FALSE;
 }
 JSBool js_web_browser_js_bindings_WebBrowser_constructor(JSContext *cx, uint32_t argc, jsval *vp)
@@ -104,7 +152,9 @@ void js_register_web_browser_js_bindings_WebBrowser(JSContext *cx, JSObject *glo
 	JSPropertySpec *properties = NULL;
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("openWebView", js_web_browser_js_bindings_WebBrowser_openWebView, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("close", js_web_browser_js_bindings_WebBrowser_close, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateUrl", js_web_browser_js_bindings_WebBrowser_updateUrl, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("openWebView", js_web_browser_js_bindings_WebBrowser_openWebView, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_web_browser_js_bindings_WebBrowser_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};

@@ -11,7 +11,9 @@
 class WebBrowser {
 public:
 	WebBrowser();
-	void openWebView();
+	void openWebView(const char* url, int x, int y, int width, int height);
+	void updateUrl(const char * url);
+	void close();
 	virtual ~WebBrowser();
 };
 

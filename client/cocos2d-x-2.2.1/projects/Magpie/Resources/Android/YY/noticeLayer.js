@@ -47,12 +47,16 @@ var NoticeLayer = cc.Layer.extend({
         var rect = cc.rect(point.x - 260, point.y - 280, 520, 532);
         var size = cc.EGLView.getInstance().getFrameSize();
         this._webLayer = new WebBrowser();
+        var rx = (size.width * 0.16) / 2;
+        var rwidth = size.width * 0.84 * 0.98;
+        var ry = (size.height - (rwidth / 0.98) * 1.05) / 2;
+        var rheight = rwidth * 1.05;
         this._webLayer.openWebView(
             lz.platformConfig.GAME_NOTICE_URL + "?w=" + size.width + "&h=" + size.height,
-            point.x - 190, 
-            point.y - 120, 
-            820, 
-            910            
+            rx, 
+            ry, 
+            rwidth, 
+            rheight            
         );
 
         noticeEffect.controller.ccbMenu.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY - 1);

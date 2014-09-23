@@ -31,7 +31,9 @@ import com.yy.gamesdk.callbacks.YYGameSDKErrorCode;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -49,6 +51,27 @@ public class Magpie extends Cocos2dxActivity {
 
 	public static Context STATIC_REF = null;
 	public static Magpie _magpie;
+	
+	private boolean isExiting = false;
+	
+	public DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
+	{
+		public void onClick(DialogInterface dialog, int which)
+		{
+			switch(which)
+			{
+			case AlertDialog.BUTTON_NEGATIVE:
+				System.exit(0);
+				finish();
+				break;
+			case AlertDialog.BUTTON_POSITIVE:
+				isExiting = false;
+				break;
+			default:
+				break;
+			}
+		}
+	};
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -141,16 +164,37 @@ public class Magpie extends Cocos2dxActivity {
 			}
 		});
 	}
+	
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK)
+        {
+            if(isExiting == false)
+            {
+            	onBackPressedExit();
+            }
+            else
+            {
+            	isExiting = false;
+            }
+            
+            return true;
+        }
+        
+        return super.dispatchKeyEvent(event);
+    }
 
-	public boolean onKeyDown(int keyCoder, KeyEvent event) // 重载函数，android手机实体返回键回调函数
-	{
-		if (_webview.canGoBack() && keyCoder == KeyEvent.KEYCODE_BACK) {// 如果网页能回退则后退
-			_webview.goBack();
-		} else {
-			//removeWebView();
-		}
-		return false;
-	}
+	public void onBackPressedExit() {
+			isExiting = true;
+			AlertDialog.Builder builder = new AlertDialog.Builder(this)
+            .setTitle("YY大神")
+            .setMessage("退出游戏?")
+            .setNegativeButton("退出", listener)
+            .setPositiveButton("继续游戏", listener);
+		    
+		    AlertDialog dialog = builder.create();
+		    dialog.show();
+    }
 
 	private void webViewInit() {
 		_weblayout = new LinearLayout(this);

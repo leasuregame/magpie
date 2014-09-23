@@ -35,13 +35,13 @@ public class YYWrapper {
 			@Override
 			public void callback(int error, String data) {
 				if (error == YYGameSDKErrorCode.YY_SUCCESS) {
-					//Toast.makeText(activity, "���濮����������", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(activity, "初始化成功", Toast.LENGTH_SHORT).show();
 					YYWrapper.isInitSuccess = true;
-					Log.d("debug", "- ���濮����������");
+					Log.d("debug", "- 初始化成功");
 				} else {
-					//Toast.makeText(activity, "���濮����澶辫触", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(activity, "初始化失败", Toast.LENGTH_SHORT).show();
 					YYWrapper.isInitSuccess = false;
-					Log.d("debug", "- ���濮����澶辫触");
+					Log.d("debug", "- 初始化失败");
 				}
 			}
 		});
@@ -71,12 +71,12 @@ public class YYWrapper {
 					YYWrapper.userName = data.getUsername();
 					
 					YYWrapper.isLoginSuccess = true;
-					Log.i("", " - ��婚��������");
-					//Toast.makeText(activity, "��婚��������", Toast.LENGTH_SHORT).show();
+					Log.i("", " - 登陆成功");
+					//Toast.makeText(activity, "登陆成功", Toast.LENGTH_SHORT).show();
 				} else {
-					Log.i("", " - ��婚�����娑�");
+					Log.i("", " - 登陆取消");
 					YYWrapper.isLoginSuccess = false;
-					//Toast.makeText(activity, "��婚�����娑�", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(activity, "登陆取消", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -126,10 +126,10 @@ public class YYWrapper {
 			@Override
 			public void callback(int error, String data){
 				if (error == YYGameSDKErrorCode.YY_SUCCESS) {
-					Toast.makeText(activity, "�����兼�����", 2000).show();
+					Toast.makeText(activity, "充值成功", 2000).show();
 					YYWrapper.isPaySuccess = true;
 				 }else if (error == YYGameSDKErrorCode.YY_PAY_CANCEL){
-					 Toast.makeText(activity, "���娑�浜�������", 2000).show();
+					 Toast.makeText(activity, "取消了充值", 2000).show();
 					 YYWrapper.isPaySuccess = false;
 				 }
 			}
@@ -147,10 +147,10 @@ public class YYWrapper {
 			@Override
 			public void callback(int error, String data) {
 				if (error == YYGameSDKErrorCode.YY_SDK_EXIT) {
-					Toast.makeText(act, "�����烘父���", Toast.LENGTH_SHORT).show();
+					Toast.makeText(act, "退出游戏", Toast.LENGTH_SHORT).show();
 				} else if (error == YYGameSDKErrorCode.YY_SDK_CONTINUE) {
-					// 缁х画娓告��
-					Toast.makeText(act, "缁х画娓告��", Toast.LENGTH_SHORT).show();
+					// 继续游戏
+					Toast.makeText(act, "继续游戏", Toast.LENGTH_SHORT).show();
 					}
 			}
 		});

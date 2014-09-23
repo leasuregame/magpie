@@ -24,11 +24,7 @@ client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/bin/classes/org/cocos2dx/l
 client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/bin/classes/org/cocos2dx/lib
 client/cocos2d-x-2.2.1/projects/Magpie/proj.android/.project
 client/cocos2d-x-2.2.1/projects/Magpie/proj.android/.classpath
-client/cocos2d-x-2.2.1/projects/Magpie/proj.android/project.properties
-client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/.classpath
-client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/.project
-client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/project.properties
-
+client/cocos2d-x-2.2.1/cocos2dx/platform/android/java/lint.xml
 fileLookup.plist
 table.json
 .idea

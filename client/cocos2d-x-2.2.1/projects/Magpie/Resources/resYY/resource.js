@@ -3,7 +3,7 @@ var main_scene_path = "resYY/main/";
 
 var effect_scene_path = "resYY/effect/";
 
-var world_cup_path = "resYY/worldCup/";
+//var world_cup_path = "resYY/worldCup/";
 
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
@@ -1408,7 +1408,7 @@ var main_scene_image = {
     yy: "resYY/effect/uiEffect/yy.plist",
 
     //世界杯资源
-    worldCupIcon1: world_cup_path + "worldCupIcon1.png",
+    /*worldCupIcon1: world_cup_path + "worldCupIcon1.png",
     worldCupIcon2: world_cup_path + "worldCupIcon2.png",
     worldCupIcon3: world_cup_path + "worldCupIcon3.png",
     worldCupIcon4: world_cup_path + "worldCupIcon4.png",
@@ -1424,7 +1424,7 @@ var main_scene_image = {
     worldCupButton1: world_cup_path + "worldCupButton1.png",
     worldCupButton1s: world_cup_path + "worldCupButton1s.png",
     worldCupButton2: world_cup_path + "worldCupButton2.png",
-    worldCupButton2s: world_cup_path + "worldCupButton2s.png"
+    worldCupButton2s: world_cup_path + "worldCupButton2s.png"*/
 };
 
 var main_scene_res = [

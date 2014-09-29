@@ -61,6 +61,8 @@ public class Magpie extends Cocos2dxActivity {
 			switch(which)
 			{
 			case AlertDialog.BUTTON_NEGATIVE:
+				YYWrapper.exitSDK(STATIC_REF);
+				Log.d("debug", "exited yysdk!");
 				System.exit(0);
 				finish();
 				break;
@@ -85,7 +87,7 @@ public class Magpie extends Cocos2dxActivity {
 	private void yySdkInit() {
 		AppInfo info = new AppInfo();
 		info.setAppId("MYYDS");
-		info.setDebug(true);
+		info.setDebug(false);
 		info.setScreenOrientation(YYGameSDKScreenOrientation.ScreenOrientationPortrait);
 
 		Log.d("debug", "before init: " + this.toString() + info.toString());
@@ -95,15 +97,13 @@ public class Magpie extends Cocos2dxActivity {
 			@Override
 			public void callback(int error, String data) {
 				if (error == YYGameSDKErrorCode.YY_SUCCESS) {
-					// Toast.makeText(activity, "初始化成功",
-					// Toast.LENGTH_SHORT).show();
+					// Toast.makeText(activity, "初始化成功", Toast.LENGTH_SHORT).show();
 					YYWrapper.isInitSuccess = true;
-					Log.d("debug", "- 初始化成功");
+					Log.d("debug", " - 初始化成功");
 				} else {
-					// Toast.makeText(activity, "初始化失败",
-					// Toast.LENGTH_SHORT).show();
+					// Toast.makeText(activity, "初始化失败", Toast.LENGTH_SHORT).show();
 					YYWrapper.isInitSuccess = false;
-					Log.d("debug", "- 初始化失败");
+					Log.d("debug", " - 初始化失败");
 				}
 			}
 		});

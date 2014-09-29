@@ -22,31 +22,6 @@ public class YYWrapper {
 	protected static String userName;
 	protected static boolean isPaySuccess;
 	
-	public static void init(Context ctx) {
-		final Activity activity = (Activity)ctx;
-		
-		AppInfo info = new AppInfo();
-		info.setAppId("MYYDS");
-		info.setDebug(false);
-		info.setScreenOrientation(YYGameSDKScreenOrientation.ScreenOrientationPortrait);
-		
-		YYGame.getInstance().init(activity, info, new YYGameSDKCallback<String>() {
-
-			@Override
-			public void callback(int error, String data) {
-				if (error == YYGameSDKErrorCode.YY_SUCCESS) {
-					//Toast.makeText(activity, "初始化成功", Toast.LENGTH_SHORT).show();
-					YYWrapper.isInitSuccess = true;
-					Log.d("debug", "- 初始化成功");
-				} else {
-					//Toast.makeText(activity, "初始化失败", Toast.LENGTH_SHORT).show();
-					YYWrapper.isInitSuccess = false;
-					Log.d("debug", "- 初始化失败");
-				}
-			}
-		});
-	}
-	
 	public static String getInitResult() {
 		Log.d("debug", "- get init result- ");
 		Log.d("debug", String.valueOf(YYWrapper.isInitSuccess));
@@ -106,6 +81,7 @@ public class YYWrapper {
 	}
 	
 	public static void enterGameServer(String gameServer, String roleId, String roleName) {
+		Log.d("debug", "enterGameServer()");
 		YYGame.getInstance().enterGameServer(gameServer, roleId, roleName);
 	}
 	
@@ -143,15 +119,14 @@ public class YYWrapper {
 	public static void exitSDK(Context ctx) {
 		final Activity act = (Activity) ctx;
 		YYGame.getInstance().exitSDK(act, new YYGameSDKCallback<String>() {
-			
+
 			@Override
 			public void callback(int error, String data) {
 				if (error == YYGameSDKErrorCode.YY_SDK_EXIT) {
 					Toast.makeText(act, "退出游戏", Toast.LENGTH_SHORT).show();
 				} else if (error == YYGameSDKErrorCode.YY_SDK_CONTINUE) {
-					// 继续游戏
 					Toast.makeText(act, "继续游戏", Toast.LENGTH_SHORT).show();
-					}
+				}
 			}
 		});
 	}

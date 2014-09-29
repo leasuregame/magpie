@@ -25,7 +25,6 @@ public:
 
 	virtual ~YYClient(){};
 
-	static void init();
 	static string getInitResult();
 	static void login();
 	static string getLoginResult();
@@ -36,6 +35,7 @@ public:
 	static void pay(const char* areaId, const char* playerId, const char* playerName, const char* productId, const char* productName, float price);
 	static string getPayResult();
 	static void exitSDK();
+	static void enterGameServer(const char* gameServer, const char* roleId, const char* roleName);
 
 	YYClient(){};
 };

@@ -64,6 +64,26 @@ JSBool js_yy_client_js_bindings_YYClient_pay(JSContext *cx, uint32_t argc, jsval
 	return JS_FALSE;
 }
 
+JSBool js_yy_client_js_bindings_YYClient_enterGameServer(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	if (argc == 3) {
+		const char* arg0;
+		const char* arg1;
+		const char* arg2;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg2_tmp; ok &= jsval_to_std_string(cx, argv[2], &arg2_tmp); arg2 = arg2_tmp.c_str();
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		YYClient::enterGameServer(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "wrong number of arguments");
+	return JS_FALSE;
+}
+
 JSBool js_yy_client_js_bindings_YYClient_exitSDK(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -88,21 +108,10 @@ JSBool js_yy_client_js_bindings_YYClient_getInitResult(JSContext *cx, uint32_t a
 	return JS_FALSE;
 }
 
-JSBool js_yy_client_js_bindings_YYClient_init(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_yy_client_js_bindings_YYClient_getLoginResult(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		YYClient::init();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-	JS_ReportError(cx, "wrong number of arguments");
-	return JS_FALSE;
-}
-
-JSBool js_yy_client_js_bindings_YYClient_getSid(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	if (argc == 0) {
-		std::string ret = YYClient::getSid();
+		std::string ret = YYClient::getLoginResult();
 		jsval jsret;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -149,10 +158,10 @@ JSBool js_yy_client_js_bindings_YYClient_getAccount(JSContext *cx, uint32_t argc
 	return JS_FALSE;
 }
 
-JSBool js_yy_client_js_bindings_YYClient_getLoginResult(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_yy_client_js_bindings_YYClient_getSid(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		std::string ret = YYClient::getLoginResult();
+		std::string ret = YYClient::getSid();
 		jsval jsret;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -243,14 +252,14 @@ void js_register_yy_client_js_bindings_YYClient(JSContext *cx, JSObject *global)
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("getTime", js_yy_client_js_bindings_YYClient_getTime, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("pay", js_yy_client_js_bindings_YYClient_pay, 6, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("enterGameServer", js_yy_client_js_bindings_YYClient_enterGameServer, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("exitSDK", js_yy_client_js_bindings_YYClient_exitSDK, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getInitResult", js_yy_client_js_bindings_YYClient_getInitResult, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("init", js_yy_client_js_bindings_YYClient_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getSid", js_yy_client_js_bindings_YYClient_getSid, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getLoginResult", js_yy_client_js_bindings_YYClient_getLoginResult, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPayResult", js_yy_client_js_bindings_YYClient_getPayResult, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("login", js_yy_client_js_bindings_YYClient_login, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAccount", js_yy_client_js_bindings_YYClient_getAccount, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getLoginResult", js_yy_client_js_bindings_YYClient_getLoginResult, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getSid", js_yy_client_js_bindings_YYClient_getSid, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getUserName", js_yy_client_js_bindings_YYClient_getUserName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};

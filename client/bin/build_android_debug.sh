@@ -2,8 +2,8 @@
 
 echo "magpie android client build debug"
 
-CLENT_ROOT="/cygdrive/e/magpie/client"
 MAGPIE_PATH="cocos2d-x-2.2.1/projects/Magpie"
+CLENT_ROOT="$MAGPIE_PATH/../../.."
 YY_LIBS_SOURCE="$MAGPIE_PATH"/proj.android/lib/yylib/armeabi
 YY_LIBS_TARGET="$MAGPIE_PATH"/proj.android/libs/armeabi
 

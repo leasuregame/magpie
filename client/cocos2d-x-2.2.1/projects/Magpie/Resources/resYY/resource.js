@@ -1405,7 +1405,7 @@ var main_scene_image = {
     boss2_plist: "resYY/effect/effect/boss2.plist",
     boss3_png: "resYY/effect/effect/boss3.png",
     boss3_plist: "resYY/effect/effect/boss3.plist",
-    yy: "resYY/effect/uiEffect/yy.plist",
+    yy: "resYY/effect/uiEffect/yy.plist"
 
     //世界杯资源
     /*worldCupIcon1: world_cup_path + "worldCupIcon1.png",
@@ -1499,9 +1499,9 @@ for (var treasureHuntId = 1; treasureHuntId <= 20; ++treasureHuntId) {
 }
 
 //世界杯国家图片
-for (var countryId = 1; countryId <= 32; ++countryId) {
+/*for (var countryId = 1; countryId <= 32; ++countryId) {
     main_scene_image["country" + countryId] = world_cup_path + "country" + countryId + ".png";
-}
+}*/
 
 //字体
 main_scene_res.push({

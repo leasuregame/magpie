@@ -68,8 +68,7 @@ lz.platformConfig = {
     lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY);
 })();
     
-yy.YYClient.init();
-
+//yy.YYClient.init();
 
 lz.platformIsLogin = function () {
     cc.log("yyAdapter YYIsLogin");

@@ -630,6 +630,8 @@ var fit4Iphone5 = {
             "friendCountIconPoint": cc.p(525, 139),
             "slashIconPoint": cc.p(525, 137),
             "friendCountLabelPoint": cc.p(510, 137),
+            "sortIconPoint": cc.p(120, 139),
+            "sortLablePoint": cc.p(170, 137),
             "maxFriendCountLabelPoint": cc.p(540, 137),
             "labelContentSize": cc.size(216, 390),
             "detailItemPoint": cc.p(108, 330),

@@ -105,10 +105,14 @@ var Friend = Entity.extend({
         return a.id - b.id;
     },
 
-    getFriendList: function () {
+    getFriendList: function (sortFun) {
         cc.log("Friend getFriendLise");
 
-        this._friendList.sort(this._sort);
+        if (!sortFun || typeof sortFun != 'function') {
+            sortFun = this._sort;
+        }
+
+        this._friendList.sort(sortFun);
         return this._friendList;
     },
 

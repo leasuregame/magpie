@@ -20,12 +20,26 @@ var FriendLayer = cc.Layer.extend({
     _receiveCountLabel: null,
     _friendCountLabel: null,
     _maxFriendCountLabel: null,
+    _sortLabel: null,
+    _sortMenu: null,
+    sortMenu: null,
     _skyDialog: null,
     _scrollView: null,
     _friendItem: {},
     _isFirstEnter: true,
 
     _scrollViewElement: [],
+    _sortFields: [
+        'lv:等级↑        ',
+        '-lv:等级↓        ',
+        'ability:战斗力↑    ',
+        '-ability:战斗力↓    ',
+        'giveCount:送出祝福↑',
+        '-giveCount:送出祝福↓',
+        'receiveCount:收到祝福↑',
+        '-receiveCount:收到祝福↓'
+    ],
+    _sortIndex: -1,
 
     onEnter: function () {
         cc.log("FriendLayer onEnter");
@@ -35,6 +49,7 @@ var FriendLayer = cc.Layer.extend({
 
         lz.um.beginLogPageView("好友界面");
     },
+
 
     onExit: function () {
         cc.log("FriendLayer onExit");
@@ -114,6 +129,15 @@ var FriendLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        this._sortMenu = cc.MenuItemFont.create('点击排序 ↑ ↓    ', this.sortFriends, this);
+        this._sortMenu.setPosition(this._friendLayerFit.sortIconPoint);
+        this._sortMenu.setColor(cc.c3b(255, 239, 131));
+        this._sortMenu.setFontName('STHeitiTC-Medium');
+        this._sortMenu.setFontSize(24);
+        this.sortMenu = cc.Menu.create(this._sortMenu);
+        this.sortMenu.setPosition(cc.p(0, 0));
+        this.addChild(this.sortMenu);
+
         var friendCountIcon = cc.Sprite.create(main_scene_image.icon117);
         friendCountIcon.setPosition(this._friendLayerFit.friendCountIconPoint);
         this.addChild(friendCountIcon);
@@ -187,7 +211,7 @@ var FriendLayer = cc.Layer.extend({
         return true;
     },
 
-    update: function () {
+    update: function (sortFunc) {
         cc.log("FriendLayer update");
 
         var friend = gameData.friend;
@@ -196,7 +220,7 @@ var FriendLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        var friendList = friend.getFriendList();
+        var friendList = friend.getFriendList(sortFunc);
         var len = friendList.length;
 
         var giveCount = friend.get("giveCount");
@@ -274,6 +298,15 @@ var FriendLayer = cc.Layer.extend({
             receiveCountLabel.setPosition(cc.p(250, y + 41));
             slideLabel[i].addChild(receiveCountLabel);
 
+            var days = friendList[i].lastLogin
+            if (days && days > 0) {
+                var lastLoginLable = cc.LabelTTF.create("上次登录:"+days+"天前", "STHeitiTC-Medium", 16);
+                lastLoginLable.setColor(cc.c3b(56, 3, 5));
+                lastLoginLable.setAnchorPoint(cc.p(0, 0.5));
+                lastLoginLable.setPosition(cc.p(420, y + 35));
+                slideLabel[i].addChild(lastLoginLable);
+            }
+            
             var friendItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
                 main_scene_image.button15s,
@@ -288,7 +321,7 @@ var FriendLayer = cc.Layer.extend({
 
             this._friendItem[id] = friendItem;
 
-            var point = cc.p(490, y + 63);
+            var point = cc.p(490, y + 75);
 
             var receiveBlessItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
@@ -350,6 +383,51 @@ var FriendLayer = cc.Layer.extend({
 
             slideLayer.showSlide();
         }
+    },
+
+    sortFriends: function(keepCurrentSort) {
+        if (typeof keepCurrentSort == 'object') {
+            keepCurrentSort = false;
+        }
+
+        if (keepCurrentSort && this._sortIndex == -1) {
+            return this.update();
+        }
+
+        var _ref = this._getSortField(keepCurrentSort),
+            field = _ref[0],
+            fieldName = _ref[1];
+        var sortFuncDown = function(x, y) {
+            cc.log(x, y, field);
+            return x[field] - y[field];
+        };
+        var sortFuncUp = function(x, y) {
+            return y[field] - x[field];
+        };
+        
+        var sortFunc;
+        if (field[0] == '-') {
+            field = field.slice(1);
+            sortFunc = sortFuncUp;
+        } else {
+            sortFunc = sortFuncDown;
+        }
+        var menuText = '排序：'+fieldName;
+        this._sortMenu.setString(menuText);
+        this.update(sortFunc);
+    },
+
+    _getSortField: function(keepCurrentSort) {
+        if (!keepCurrentSort) {
+            this._sortIndex += 1;    
+        }
+        
+        if (this._sortIndex == this._sortFields.length) {
+            this._sortIndex = 0;
+        }
+
+        var sortField = this._sortFields[this._sortIndex];
+        return sortField.split(':');
     },
 
     _update: function (id) {
@@ -508,7 +586,7 @@ var FriendLayer = cc.Layer.extend({
 
         var that = this;
         gameData.friend.deleteFriend(function (data) {
-            that.update();
+            that.sortFriends(true);
         }, this._selectFriend);
     },
 

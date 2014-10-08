@@ -627,6 +627,8 @@ var fit4Iphone4 = {
             "receiveCountLabelPoint": cc.p(215, 822),
             "addFriendItemPoint": cc.p(600, 841),
             "friendCountIconPoint": cc.p(565, 139),
+            "sortIconPoint": cc.p(130, 139),
+            "sortLablePoint": cc.p(135, 137),
             "slashIconPoint": cc.p(565, 137),
             "friendCountLabelPoint": cc.p(550, 137),
             "maxFriendCountLabelPoint": cc.p(580, 137),

@@ -41,7 +41,7 @@ jobject getContext1(){
     return NULL;
 }
 
-void YYClient::init() {
+/*void YYClient::init() {
 	JniMethodInfo t;
 	//LOGI("debug init in c++");
 	if( JniHelper::getStaticMethodInfo( t
@@ -54,7 +54,7 @@ void YYClient::init() {
 		SAFE_RELEASE_JCONTEXT(ctx)
 		SAFE_RELEASE_JOBJ(t.classID);
 	}
-}
+}*/
 
 string YYClient::getInitResult() {
 	string ret = "";
@@ -164,6 +164,31 @@ string YYClient::getUserName() {
 		SAFE_RELEASE_JOBJ(t.classID);
 	}
 	return ret;
+}
+
+void YYClient::enterGameServer(const char* gameServer, const char* roleId, const char* roleName)
+{
+	JniMethodInfo t;
+	if(JniHelper::getStaticMethodInfo(t
+		, yyWrapperClassName
+		, "enterGameServer"
+		, "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"))
+	{
+		jstring jstrGameServer = GET_JSTRING(gameServer);
+		jstring jstrRoleId = GET_JSTRING(roleId);
+		jstring jstrRoleName = GET_JSTRING(roleName);
+
+		t.env->CallStaticVoidMethod(
+			t.classID,
+			t.methodID,
+			jstrGameServer,
+			jstrRoleId,
+			jstrRoleName);
+
+		SAFE_RELEASE_JOBJ(jstrGameServer);
+		SAFE_RELEASE_JOBJ(jstrRoleId);
+		SAFE_RELEASE_JOBJ(jstrRoleName);
+	}
 }
 
 void YYClient::pay(const char* areaId, const char* playerId, const char* playerName, const char* productId, const char* productName, float price) {

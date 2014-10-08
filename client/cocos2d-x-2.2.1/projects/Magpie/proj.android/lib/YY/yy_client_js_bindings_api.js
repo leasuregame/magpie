@@ -26,6 +26,14 @@ getTime : function () {},
 pay : function () {},
 
 /**
+ * @method enterGameServer
+ * @param {const char*}
+ * @param {const char*}
+ * @param {const char*}
+ */
+enterGameServer : function () {},
+
+/**
  * @method exitSDK
  */
 exitSDK : function () {},
@@ -37,15 +45,10 @@ exitSDK : function () {},
 getInitResult : function () {},
 
 /**
- * @method init
- */
-init : function () {},
-
-/**
- * @method getSid
+ * @method getLoginResult
  * @return A value converted from C/C++ "std::string"
  */
-getSid : function () {},
+getLoginResult : function () {},
 
 /**
  * @method getPayResult
@@ -65,10 +68,10 @@ login : function () {},
 getAccount : function () {},
 
 /**
- * @method getLoginResult
+ * @method getSid
  * @return A value converted from C/C++ "std::string"
  */
-getLoginResult : function () {},
+getSid : function () {},
 
 /**
  * @method getUserName

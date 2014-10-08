@@ -117,8 +117,13 @@ var User = Entity.extend({
                             cb(2);
                         }
 
-                        // YY数据收集
-                        yy.YYClient.enterGameServer(that._area, player.id, player.name);
+                        cc.log("enterGameServer: "+that._area+", "+player.id+", "+player.name);
+
+                        yy.YYClient.enterGameServer(
+                            that._area,
+                            player.id,
+                            player.name);
+
                         lz.um.event("event_login", that._area);
                     } else if (data.code == 600) {
                         cc.log("login fail go to updateLayer");

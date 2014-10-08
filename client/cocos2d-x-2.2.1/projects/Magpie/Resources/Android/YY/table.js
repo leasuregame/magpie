@@ -30429,7 +30429,7 @@ var outputTables = {
 				"name": "喇叭",
 				"disc": "用于世界聊天，一次性买10个以上打8折。",
 				"consume_type": "gold",
-				"consume": 10,
+				"consume": 1,
 				"obtain_type": "speaker",
 				"obtain": 1,
 				"isVisible": 1,

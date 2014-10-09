@@ -30,14 +30,14 @@ var FriendLayer = cc.Layer.extend({
 
     _scrollViewElement: [],
     _sortFields: [
+        'receiveCount:收到祝福↑',
+        '-receiveCount:收到祝福↓',
+        'giveCount:送出祝福↑',
+        '-giveCount:送出祝福↓',
         'lv:等级↑        ',
         '-lv:等级↓        ',
         'ability:战斗力↑    ',
-        '-ability:战斗力↓    ',
-        'giveCount:送出祝福↑',
-        '-giveCount:送出祝福↓',
-        'receiveCount:收到祝福↑',
-        '-receiveCount:收到祝福↓'
+        '-ability:战斗力↓    '
     ],
     _sortIndex: -1,
 

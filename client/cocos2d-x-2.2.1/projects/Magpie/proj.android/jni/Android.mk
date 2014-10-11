@@ -8,18 +8,18 @@ LOCAL_MODULE := cocos2djs_shared
 LOCAL_MODULE_FILENAME := libcocos2djs
 
 LOCAL_SRC_FILES := magpie/main.cpp \
-				   UM/MobClickCpp.cpp \
-                   UM/js_bindings_MobClickCpp.cpp \
-                   YY/YYClient.cpp \
-                   YY/yy_client_js_bindings.cpp \
+				   ../lib/UM/MobClickCpp.cpp \
+                   ../lib/UM/js_bindings_MobClickCpp.cpp \
+                   ../lib/YY/YYClient.cpp \
+                   ../lib/YY/yy_client_js_bindings.cpp \
                    ../../Classes/Android/YY/AppDelegate.cpp \
-                   YY/web_browser_js_bindings.cpp \
-                   YY/WebBrowser.cpp
+                   ../lib/YY/web_browser_js_bindings.cpp \
+                   ../lib/YY/WebBrowser.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes/Android/YY \
 					$(LOCAL_PATH)/../../../../cocos2dx/platform/android/jni \
-					$(LOCAL_PATH)/UM \
-					$(LOCAL_PATH)/YY
+					$(LOCAL_PATH)/../lib/UM \
+					$(LOCAL_PATH)/../lib/YY
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

@@ -23,79 +23,58 @@ var InstancesLayer = cc.Layer.extend({
 
         this._instancesLayerFit = gameFit.mainScene.instancesLayer;
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon1);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg11);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(this._instancesLayerFit.bgSpritePoint);
+        this.addChild(bgSprite);
+
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(this._instancesLayerFit.headIconPoint);
-        this.addChild(headIcon, 1);
+        this.addChild(headIcon);
 
-        this._taskLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button22,
-            main_scene_image.button22s,
-            main_scene_image.button22d,
-            main_scene_image.icon389,
-            this._onClickTaskLayer,
-            this
-        );
-        this._taskLayerItem.setPosition(this._instancesLayerFit.taskLayerItemPoint);
-        this._taskLayerItem.setOffset(cc.p(-6, -5));
+        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        titleIcon.setPosition(this._instancesLayerFit.titleIconPoint);
+        this.addChild(titleIcon);
 
-        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].pass) {
-            this._passLayerItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.icon390,
-                this._onClickPassLayer,
-                this
-            );
-        } else {
-            this._passLayerItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button23,
-                main_scene_image.button23s,
-                main_scene_image.button23d,
-                main_scene_image.icon390,
-                this._onClickPassLayer,
-                this
-            );
-        }
-        this._passLayerItem.setPosition(this._instancesLayerFit.passLayerItemPoint);
-        this._passLayerItem.setOffset(cc.p(0, -5));
+        var scrollViewLayer = MarkLayer.create(this._instancesLayerFit.scrollViewLayerRect);
 
-        if (gameData.player.get("lv") < outputTables.exp_pass_config.rows[1].limit_lv) {
-            this._dailyInstancesLayerItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.button23h,
-                main_scene_image.icon466,
-                this._onClickDailyInstancesLayer,
-                this
-            );
-        } else {
-            this._dailyInstancesLayerItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button23,
-                main_scene_image.button23s,
-                main_scene_image.button23d,
-                main_scene_image.icon466,
-                this._onClickDailyInstancesLayer,
-                this
-            );
-        }
-        this._dailyInstancesLayerItem.setPosition(this._instancesLayerFit.dailyInstancesLayerItemPoint);
-        this._dailyInstancesLayerItem.setOffset(cc.p(0, -5));
-
-
-        var menu = cc.Menu.create(
-            this._taskLayerItem,
-            this._passLayerItem,
-            this._dailyInstancesLayerItem
-        );
+        var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
+        scrollViewLayer.addChild(menu);
 
-        this._taskLayerItem.setEnabled(false);
-        this._passLayerItem.setEnabled(true);
-        this._dailyInstancesLayerItem.setEnabled(true);
-        this.switchLayer(TaskLayer);
+        var layers = [TaskLayer, PassLayer, DailyInstancesLayer, BossListLayer];
+        var name = ["修行", "天道", "搜仙", "降魔"];
+        var len = layers.length;
+        var scrollViewHeight = len * 140;
+
+        for (var i = 0; i < len; i++) {
+            var y = scrollViewHeight - 70 - i * 140;
+            var layerItem = cc.MenuItemImage.create(
+                main_scene_image.button15,
+                main_scene_image.button15s,
+                main_scene_image.button15d,
+                this._onSelectLayer(layers[i]),
+                this
+            );
+            layerItem.setAnchorPoint(cc.p(0, 0.5));
+            layerItem.setPosition(cc.p(20, y));
+            menu.addChild(layerItem);
+
+            var nameLabel = cc.LabelTTF.create(name[i], "STHeitiTC-Medium", 30);
+            nameLabel.setPosition(cc.p(300, 70));
+            layerItem.addChild(nameLabel);
+        }
+
+        this._scrollView = cc.ScrollView.create(this._instancesLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setPosition(this._instancesLayerFit.scrollViewPoint);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
+
+        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
+        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+
 
         return true;
     },
@@ -115,6 +94,15 @@ var InstancesLayer = cc.Layer.extend({
             this.addChild(this._dailyInstancesGuide, 2);
         }
 
+    },
+
+    _onSelectLayer: function(layer) {
+        var self = this;
+        return function() {
+            cc.log("InstancesLayer _onSelectLayer");
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            self.switchLayer(layer);
+        }
     },
 
     _onClickTaskLayer: function () {

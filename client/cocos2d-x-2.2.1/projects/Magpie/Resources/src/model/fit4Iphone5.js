@@ -444,9 +444,17 @@ var fit4Iphone5 = {
         },
         "dailyInstancesLayer": {
             "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
             "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
             "scrollViewSize": cc.size(640, 900),
             "scrollViewPoint": cc.p(0, 122)
+        },
+        "createUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(320, 1100),
@@ -709,7 +717,13 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(16, 140)
         },
         "instancesLayer": {
+            "bgSpritePoint": cc.p(0, 106),
             "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "scrollViewHeight": 843,
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 843),
+            "scrollViewSize": cc.size(640, 843),
+            "scrollViewPoint": cc.p(0, 122),
             "taskLayerItemPoint": cc.p(71, 1090),
             "passLayerItemPoint": cc.p(214, 1090),
             "dailyInstancesLayerItemPoint": cc.p(362, 1090)
@@ -1509,6 +1523,14 @@ var fit4Iphone5 = {
             "verticalIcon2Point": cc.p(569, 544),
             "verticalIconScale": 1,
             "helpItemPoint": cc.p(50, 1021)
+        },
+        "unionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "applyForItemPoint": cc.p(320, 700),
+            "createUnionItemPoint": cc.p(320, 550),
+            "searchUnionItemPoint": cc.p(320, 400)
         },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(325, 610),

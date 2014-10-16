@@ -442,8 +442,16 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 755),
             "scrollViewPoint": cc.p(40, 115)
         },
+        "createUnionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+        },
         "dailyInstancesLayer": {
             "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
             "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
             "scrollViewSize": cc.size(640, 740),
             "scrollViewPoint": cc.p(40, 122)
@@ -708,7 +716,13 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(56, 124)
         },
         "instancesLayer": {
-            "headIconPoint": cc.p(40, 874),
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "scrollViewHeight": 680,
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 680),
+            "scrollViewSize": cc.size(640, 680),
+            "scrollViewPoint": cc.p(40, 122),
             "taskLayerItemPoint": cc.p(111, 914),
             "passLayerItemPoint": cc.p(254, 914),
             "dailyInstancesLayerItemPoint": cc.p(402, 914)
@@ -1530,6 +1544,14 @@ var fit4Iphone4 = {
             "scrollViewHeight": 470,
             "closeItemPoint": cc.p(605, 760),
             "speakerNumPoint": cc.p(127, 711)
+        },
+        "unionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "applyForItemPoint": cc.p(360, 700),
+            "createUnionItemPoint": cc.p(360, 550),
+            "searchUnionItemPoint": cc.p(360, 400)
         },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(364, 485),

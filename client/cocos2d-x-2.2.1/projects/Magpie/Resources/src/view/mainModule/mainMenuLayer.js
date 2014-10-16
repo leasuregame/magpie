@@ -22,7 +22,7 @@ var MainMenuLayer = cc.Layer.extend({
         [MainLayer],
         [InstancesLayer, ExploreLayer, ExpInstanceLayer],
         [TournamentLayer],
-        [BossListLayer, BossLayer],
+        [UnionLayer],
         [CardListLayer],
         [ShopLayer]
     ],

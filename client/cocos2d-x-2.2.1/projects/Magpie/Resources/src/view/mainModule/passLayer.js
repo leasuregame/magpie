@@ -60,6 +60,15 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(this._passLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(this._passLayerFit.headIconPoint);
+        this.addChild(headIcon);
+
+        var titleIcon = cc.Sprite.create(main_scene_image.icon17);
+        titleIcon.setPosition(this._passLayerFit.titleIconPoint);
+        this.addChild(titleIcon);
+
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect28, this);
         ccbNode.setPosition(this._passLayerFit.ccbNodePoint);
         this.addChild(ccbNode);

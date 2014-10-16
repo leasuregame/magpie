@@ -25,6 +25,15 @@ var DailyInstancesLayer = cc.Layer.extend({
         bgSprite.setPosition(this._dailyInstancesLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(this._dailyInstancesLayerFit.headIconPoint);
+        this.addChild(headIcon);
+
+        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        titleIcon.setPosition(this._dailyInstancesLayerFit.titleIconPoint);
+        this.addChild(titleIcon);
+
         var scrollViewLayer = MarkLayer.create(this._dailyInstancesLayerFit.scrollViewLayerRect);
 
         var index = 0;

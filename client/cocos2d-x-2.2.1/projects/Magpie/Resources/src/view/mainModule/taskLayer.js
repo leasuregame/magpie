@@ -55,6 +55,15 @@ var TaskLayer = cc.Layer.extend({
         this._locate = this._taskLayerFit.locatePoints;
         this.setTouchEnabled(true);
 
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(this._taskLayerFit.headIconPoint);
+        this.addChild(headIcon);
+
+        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        titleIcon.setPosition(this._taskLayerFit.titleIconPoint);
+        this.addChild(titleIcon);
+
         var task = gameData.task;
         this._index = task.currentChapter || task.getChapter();
         task.currentChapter = 0;

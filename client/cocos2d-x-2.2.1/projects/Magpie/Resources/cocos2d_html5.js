@@ -93,6 +93,7 @@
             'src/model/activity.js',
             'src/model/greeting.js',
             'src/model/boss.js',
+            'src/model/union.js',
 
             'IOS/AppStore/payment.js',
 

@@ -95,6 +95,8 @@ var UnionLayer = cc.Layer.extend({
         cc.log("UnionLayer _onClickSearchUnion");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        var searchUnionLayer = SearchUnionLayer.create();
+        MainScene.getInstance().switchTo(searchUnionLayer);
     }
 });
 

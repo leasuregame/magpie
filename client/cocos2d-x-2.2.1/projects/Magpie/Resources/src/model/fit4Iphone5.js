@@ -1197,6 +1197,19 @@ var fit4Iphone5 = {
             "okItemPoint": cc.p(320, 330),
             "editBoxPoint": cc.p(423, 553)
         },
+        "searchUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "nameEditBoxIconPoint": cc.p(300, 948),
+            "nameEditBoxSize": cc.size(538, 67),
+            "nameEditBoxPoint": cc.p(310, 948),
+            "searchUnionItemPoint": cc.p(580, 948),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 750),
+            "scrollViewSize": cc.size(640, 750),
+            "scrollViewPoint": cc.p(0, 132)
+        },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpriteContentSize": cc.size(520, 300),

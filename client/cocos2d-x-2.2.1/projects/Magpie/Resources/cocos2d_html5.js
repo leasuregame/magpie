@@ -227,6 +227,7 @@
             'src/view/mainModule/readMessageLayer.js',
             'src/view/mainModule/removeCdTipLabel.js',
             'src/view/mainModule/requestUnionLayer.js',
+            'src/view/mainModule/searchUnionLayer.js',
             'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',

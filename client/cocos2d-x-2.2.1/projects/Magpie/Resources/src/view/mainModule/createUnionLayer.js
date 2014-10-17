@@ -6,7 +6,8 @@ var CreateUnionLayer = cc.Layer.extend({
     _createUnionLayerFit: null,
 
     init: function () {
-        this._super();
+
+        if (!this._super()) return false;
 
         this._createUnionLayerFit = gameFit.mainScene.createUnionLayer;
 

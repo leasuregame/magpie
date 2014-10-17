@@ -1183,6 +1183,15 @@ var fit4Iphone5 = {
             "go2PaymentItemPoint": cc.p(320, 220),
             "btnTitlePoint": cc.p(320, 220)
         },
+        "requestUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
+            "scrollViewSize": cc.size(640, 900),
+            "scrollViewPoint": cc.p(0, 122)
+        },
         "invitationLayer": {
             "iconSpritePoint": cc.p(320, 640),
             "okItemPoint": cc.p(320, 330),

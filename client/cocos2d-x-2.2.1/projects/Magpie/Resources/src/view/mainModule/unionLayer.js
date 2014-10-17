@@ -6,7 +6,8 @@ var UnionLayer = cc.Layer.extend({
     _unionLayerFit: null,
 
     init: function() {
-        this._super();
+
+        if (!this._super()) return false;
 
         this._unionLayerFit = gameFit.mainScene.unionLayer;
 
@@ -62,6 +63,23 @@ var UnionLayer = cc.Layer.extend({
         cc.log("UnionLayer _onClickApplyFor");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var unions = [];
+        for(var i = 0;i < 10;i++) {
+            unions.push({
+                id: i + 1,
+                name: "公会" + (i + 1),
+                lv: 5,
+                notice: "哈哈哈哈哈哈",
+                count: 30,
+                maxCount: 50,
+                created: "2014-10-10",
+                ability: 123456
+            })
+        }
+
+        var requestUnionLayer = RequestUnionLayer.create(unions);
+        this.addChild(requestUnionLayer);
     },
 
     _onClickCreateUnion: function() {

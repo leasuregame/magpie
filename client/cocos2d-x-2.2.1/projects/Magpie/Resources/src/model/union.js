@@ -2,6 +2,10 @@
  * Created by xiaoyu on 2014/10/16.
  */
 
+var TYPE_UNION_PRESIDENT = 1;
+var TYPE_UNION_ELDERS = 2;
+var TYPE_UNION_MEMBER = 3;
+
 var Union = Entity.extend({
     _id: null,              //公会id
     _name: null,            //名字

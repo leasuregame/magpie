@@ -26,21 +26,21 @@ var UnionLayer = cc.Layer.extend({
         this.addChild(titleIcon);
 
         var bgLayer = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgLayer.setContentSize(cc.size(560, 700));
+        bgLayer.setContentSize(cc.size(500, 600));
         bgLayer.setPosition(gameFit.GAME_MIDPOINT);
         this.addChild(bgLayer);
 
         var titleBgIcon = cc.Sprite.create(main_scene_image.icon371);
-        titleBgIcon.setPosition(cc.p(280, 700));
+        titleBgIcon.setPosition(cc.p(250, 600));
         bgLayer.addChild(titleBgIcon);
 
         titleIcon = cc.Sprite.create(main_scene_image.icon495);
-        titleIcon.setPosition(cc.p(280, 705));
+        titleIcon.setPosition(cc.p(250, 605));
         bgLayer.addChild(titleIcon);
 
         var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon169);
-        bgLabel.setPosition(cc.p(280, 350));
-        bgLabel.setContentSize(cc.size(470, 500));
+        bgLabel.setPosition(cc.p(250, 300));
+        bgLabel.setContentSize(cc.size(410, 400));
         bgLayer.addChild(bgLabel);
 
         var applyForItem = cc.MenuItemImage.createWithIcon(
@@ -51,7 +51,7 @@ var UnionLayer = cc.Layer.extend({
             this._onClickApplyFor,
             this
         );
-        applyForItem.setPosition(cc.p(280, 500));
+        applyForItem.setPosition(cc.p(250, 430));
 
         var createUnionItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button1,
@@ -61,7 +61,7 @@ var UnionLayer = cc.Layer.extend({
             this._onClickCreateUnion,
             this
         );
-        createUnionItem.setPosition(cc.p(280, 350));
+        createUnionItem.setPosition(cc.p(250, 300));
 
         var searchUnionItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button1,
@@ -71,7 +71,7 @@ var UnionLayer = cc.Layer.extend({
             this._onClickSearchUnion,
             this
         );
-        searchUnionItem.setPosition(cc.p(280, 200));
+        searchUnionItem.setPosition(cc.p(250, 170));
 
         var menu = cc.Menu.create(applyForItem, createUnionItem, searchUnionItem);
         menu.setPosition(cc.p(0, 0));

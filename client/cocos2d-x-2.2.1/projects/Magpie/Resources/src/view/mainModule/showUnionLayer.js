@@ -38,12 +38,6 @@ var ShowUnionLayer = cc.Layer.extend({
         var len = members.length;
         var scrollViewHeight = len * 150;
 
-        var role = {
-            1: "会长",
-            2: "长老",
-            3: "会员"
-        };
-
         for (var i = 0; i < len; i++) {
             var player = members[i];
             var y = scrollViewHeight - 75 - i * 150;
@@ -60,37 +54,51 @@ var ShowUnionLayer = cc.Layer.extend({
 
             this._playerItem[i] = playerItem;
 
-            var roleIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
-            roleIcon.setContentSize(cc.size(150, 30));
-            roleIcon.setAnchorPoint(cc.p(0, 0.5));
-            roleIcon.setPosition(cc.p(20, 100));
-            roleIcon.setVisible(player.role != 3);
-            playerItem.addChild(roleIcon);
+            var roleIcon = null;
 
-            var roleLabel = cc.LabelTTF.create(role[player.role], "STHeitiTC-Medium", 25);
-            roleLabel.setAnchorPoint(cc.p(0, 0.5));
-            roleLabel.setPosition(cc.p(25, 100));
-            roleLabel.setVisible(player.role != 3);
-            playerItem.addChild(roleLabel);
+            if(player.role == 1)
+                roleIcon = "icon501";
+            else if(player.role == 2)
+                roleIcon = "icon502";
+
+            if(roleIcon) {
+                var roleLabel = cc.Sprite.create(main_scene_image[roleIcon]);
+                roleLabel.setAnchorPoint(cc.p(0, 0.5));
+                roleLabel.setPosition(cc.p(450, 100));
+                playerItem.addChild(roleLabel);
+            }
+
+            var nameBgLabel = cc.Scale9Sprite.create(main_scene_image.icon29);
+            nameBgLabel.setContentSize(cc.size(150, 30));
+            nameBgLabel.setAnchorPoint(cc.p(0, 0.5));
+            nameBgLabel.setPosition(cc.p(25, 100));
+            playerItem.addChild(nameBgLabel);
 
             var nameLabel = cc.LabelTTF.create(player.name, "STHeitiTC-Medium", 25);
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
-            nameLabel.setPosition(cc.p(25, 55));
+            nameLabel.setPosition(cc.p(30, 100));
             playerItem.addChild(nameLabel);
 
             var vipLabel = cc.Sprite.create(main_scene_image["vip" + player.vip]);
             vipLabel.setAnchorPoint(cc.p(0, 0.5));
-            vipLabel.setPosition(cc.p(180, 55));
+            vipLabel.setPosition(cc.p(190, 100));
             playerItem.addChild(vipLabel);
 
-            var lvLabel = cc.LabelTTF.create("lv：" + player.lv, "STHeitiTC-Medium", 20);
+            var otherIcon = cc.Sprite.create(main_scene_image.icon30);
+            otherIcon.setAnchorPoint(cc.p(0, 0.5));
+            otherIcon.setPosition(cc.p(25, 50));
+            playerItem.addChild(otherIcon);
+
+            var lvLabel = cc.LabelTTF.create(player.lv, "STHeitiTC-Medium", 20);
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
-            lvLabel.setPosition(cc.p(25, 30));
+            lvLabel.setPosition(cc.p(70, 50));
+            lvLabel.setColor(cc.c3b(56, 3, 5));
             playerItem.addChild(lvLabel);
 
-            var abilityLabel = cc.LabelTTF.create("战力：" + player.ability, "STHeitiTC-Medium", 20);
+            var abilityLabel = cc.LabelTTF.create(player.ability, "STHeitiTC-Medium", 20);
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
-            abilityLabel.setPosition(cc.p(100, 30));
+            abilityLabel.setPosition(cc.p(150, 50));
+            abilityLabel.setColor(cc.c3b(56, 3, 5));
             playerItem.addChild(abilityLabel);
 
             var detailMenu = LazyMenu.create();
@@ -104,7 +112,7 @@ var ShowUnionLayer = cc.Layer.extend({
                 this._onClickDetail(i),
                 this
             );
-            detailItem.setPosition(cc.p(490, 70));
+            detailItem.setPosition(cc.p(490, 60));
             detailMenu.addChild(detailItem, 2);
         }
 

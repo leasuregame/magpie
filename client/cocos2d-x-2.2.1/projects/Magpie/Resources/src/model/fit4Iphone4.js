@@ -253,6 +253,7 @@ var fit4Iphone4 = {
             "superHonorLabelPoint": cc.p(550, 185),
             "rewardItemPoint": cc.p(160, 830),
             "rankItemPoint": cc.p(580, 830),
+            "backItemPoint": cc.p(100, 920),
             "exchangeItemPoint": cc.p(490, 114),
             "scrollViewLayerRect": cc.rect(0, 0, 621, 538),
             "scrollViewHeight": 538,
@@ -446,12 +447,13 @@ var fit4Iphone4 = {
             "bgSpritePoint": cc.p(40, 106),
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
-            "backItemPoint": cc.p(100, 920),
+            "backItemPoint": cc.p(100, 920)
         },
         "dailyInstancesLayer": {
             "bgSpritePoint": cc.p(40, 106),
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
             "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
             "scrollViewSize": cc.size(640, 740),
             "scrollViewPoint": cc.p(40, 122)
@@ -1035,6 +1037,7 @@ var fit4Iphone4 = {
             "lineUpItemPoint": cc.p(140, 846),
             "wipeOutItemPoint": cc.p(580, 846),
             "resetItemPoint": cc.p(580, 846),
+            "backItemPoint": cc.p(100, 920),
             "bgLayerPoint": cc.p(40, 0),
             "bgSprite2Point": cc.p(360, 492),
             "rewardLabel1Point": cc.p(210, 562),
@@ -1221,6 +1224,20 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 874),
             "vipLayerItemPoint": cc.p(254, 914),
             "propsLayerItemPoint": cc.p(111, 914)
+        },
+        "showUnionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
+            "scrollViewSize": cc.size(640, 740),
+            "scrollViewPoint": cc.p(40, 122),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "battleItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 808)
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
@@ -1426,7 +1443,8 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 774),
             "scrollViewContentSize": cc.size(6400, 774),
             "scrollViewPoint": cc.p(40, 106),
-            "titlePointY": 745
+            "titlePointY": 745,
+            "backItemPoint": cc.p(100, 920)
         },
         "tenLotteryCardLayer": {
             "ccbNodePoint": cc.p(360, 480),

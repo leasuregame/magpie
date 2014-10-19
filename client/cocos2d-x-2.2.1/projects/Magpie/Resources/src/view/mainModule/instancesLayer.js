@@ -43,27 +43,22 @@ var InstancesLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var layers = [TaskLayer, PassLayer, DailyInstancesLayer, BossListLayer];
-        var name = ["修行", "天道", "搜仙", "降魔"];
+        var layers = [TaskLayer, PassLayer, BossListLayer, DailyInstancesLayer];
+        var icons = ["icon487", "icon488", "icon489", "icon490"];
         var len = layers.length;
-        var scrollViewHeight = len * 140;
+        var scrollViewHeight = len * 160;
 
         for (var i = 0; i < len; i++) {
-            var y = scrollViewHeight - 70 - i * 140;
+            var y = scrollViewHeight - 80 - i * 160;
             var layerItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
-                main_scene_image.button15d,
+                main_scene_image[icons[i]],
+                main_scene_image[icons[i]],
                 this._onSelectLayer(layers[i]),
                 this
             );
             layerItem.setAnchorPoint(cc.p(0, 0.5));
             layerItem.setPosition(cc.p(20, y));
             menu.addChild(layerItem);
-
-            var nameLabel = cc.LabelTTF.create(name[i], "STHeitiTC-Medium", 30);
-            nameLabel.setPosition(cc.p(300, 70));
-            layerItem.addChild(nameLabel);
         }
 
         this._scrollView = cc.ScrollView.create(this._instancesLayerFit.scrollViewSize, scrollViewLayer);
@@ -74,7 +69,6 @@ var InstancesLayer = cc.Layer.extend({
 
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
-
 
         return true;
     },
@@ -102,54 +96,6 @@ var InstancesLayer = cc.Layer.extend({
             cc.log("InstancesLayer _onSelectLayer");
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
             self.switchLayer(layer);
-        }
-    },
-
-    _onClickTaskLayer: function () {
-        cc.log("InstancesLayer _onClickVipLayer");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._taskLayerItem.setEnabled(false);
-        this._passLayerItem.setEnabled(true);
-        this._dailyInstancesLayerItem.setEnabled(true);
-
-        this.switchLayer(TaskLayer);
-    },
-
-    _onClickPassLayer: function () {
-        cc.log("InstancesLayer _onClickPropsLayer");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        if (this._passGuide) {
-            this._passGuide.removeFromParent();
-            this._passGuide = null;
-            gameGuide.set("passGuide", false);
-        }
-
-        if (this.switchLayer(PassLayer)) {
-            this._taskLayerItem.setEnabled(true);
-            this._passLayerItem.setEnabled(false);
-            this._dailyInstancesLayerItem.setEnabled(true);
-        }
-    },
-
-    _onClickDailyInstancesLayer: function () {
-        cc.log("InstancesLayer _onClickDailyInstancesLayer");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        if (this._dailyInstancesGuide) {
-            this._dailyInstancesGuide.removeFromParent();
-            this._dailyInstancesGuide = null;
-            gameGuide.set("dailyInstancesGuide", false);
-        }
-
-        if (this.switchLayer(DailyInstancesLayer)) {
-            this._taskLayerItem.setEnabled(true);
-            this._passLayerItem.setEnabled(true);
-            this._dailyInstancesLayerItem.setEnabled(false);
         }
     },
 

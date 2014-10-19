@@ -893,7 +893,9 @@ var ExploreLayer = cc.Layer.extend({
 
         gameData.task.currentChapter = Math.ceil(this._sectionId / TASK_SECTION_COUNT);
 
-        MainScene.getInstance().switchLayer(InstancesLayer);
+        var instancesLayer = InstancesLayer.create();
+        instancesLayer.switchLayer(TaskLayer);
+        MainScene.getInstance().switchTo(instancesLayer);
     },
 
     _onClickPrePage: function () {

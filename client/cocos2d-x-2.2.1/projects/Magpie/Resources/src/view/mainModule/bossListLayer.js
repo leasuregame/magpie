@@ -169,7 +169,16 @@ var BossListLayer = cc.Layer.extend({
 
         helpItem.setPosition(this._bossListLayerFit.helpItemPoint);
 
-        var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, this._exchangeItem, helpItem);
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(this._bossListLayerFit.backItemPoint);
+
+
+        var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, this._exchangeItem, helpItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
@@ -505,6 +514,14 @@ var BossListLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         BossHelpLabel.pop();
+    },
+
+    _onClickBack: function () {
+        cc.log("BossListLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this.removeFromParent();
     },
 
     updateGuide: function () {

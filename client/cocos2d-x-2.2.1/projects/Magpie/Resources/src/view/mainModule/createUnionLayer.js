@@ -25,63 +25,73 @@ var CreateUnionLayer = cc.Layer.extend({
         titleIcon.setPosition(this._createUnionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        var createLayer = cc.Layer.create();
-        createLayer.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(createLayer);
+        var bgLayer = cc.Scale9Sprite.create(main_scene_image.bg16);
+        bgLayer.setContentSize(cc.size(600, 500));
+        bgLayer.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(bgLayer);
 
-        var bgLabel = cc.Sprite.create(main_scene_image.bg22);
-        createLayer.addChild(bgLabel);
+        var titleBgIcon = cc.Sprite.create(main_scene_image.icon371);
+        titleBgIcon.setPosition(cc.p(300, 500));
+        bgLayer.addChild(titleBgIcon);
 
-        var createLabel = cc.LabelTTF.create("创建公会", "STHeitiTC-Medium", 30);
-        createLabel.setPosition(cc.p(0, 130));
-        createLayer.addChild(createLabel);
+        titleIcon = cc.Sprite.create(main_scene_image.icon495);
+        titleIcon.setPosition(cc.p(300, 505));
+        bgLayer.addChild(titleIcon);
 
-        var inputLabel = cc.LabelTTF.create("输入名字", "STHeitiTC-Medium", 30);
-        inputLabel.setPosition(cc.p(0, 80));
-        createLayer.addChild(inputLabel);
+        var inputLabel = cc.LabelTTF.create("公会名称：", "STHeitiTC-Medium", 25);
+        inputLabel.setPosition(cc.p(30, 350));
+        inputLabel.setAnchorPoint(cc.p(0, 0.5));
+        bgLayer.addChild(inputLabel);
 
-        var nameEditBoxIcon = cc.Sprite.create(main_scene_image.edit4);
-        nameEditBoxIcon.setPosition(cc.p(0, 0));
-        createLayer.addChild(nameEditBoxIcon);
+        var nameEditBoxIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+        nameEditBoxIcon.setContentSize(cc.size(400, 60));
+        nameEditBoxIcon.setPosition(cc.p(360, 350));
+        bgLayer.addChild(nameEditBoxIcon);
 
-        this._nameEditBox = cc.EditBox.create(cc.size(540, 70), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._nameEditBox.setPosition(cc.p(0, 0));
+        this._nameEditBox = cc.EditBox.create(cc.size(400, 70), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._nameEditBox.setPosition(cc.p(360, 350));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
         this._nameEditBox.setPlaceHolder("最多输入八个中文或者英文字母");
-        createLayer.addChild(this._nameEditBox);
+        bgLayer.addChild(this._nameEditBox);
+
+        var spendLabel = cc.LabelTTF.create("花费：", "STHeitiTC-Medium", 25);
+        spendLabel.setAnchorPoint(cc.p(0, 0.5));
+        spendLabel.setPosition(cc.p(160, 220));
+        bgLayer.addChild(spendLabel);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-        moneyIcon.setPosition(cc.p(-150, -70));
-        createLayer.addChild(moneyIcon);
+        moneyIcon.setPosition(cc.p(250, 220));
+        bgLayer.addChild(moneyIcon);
 
-        var moneyLabel =  cc.LabelTTF.create("1000000", "STHeitiTC-Medium", 30);
-        moneyLabel.setPosition(cc.p(-120, -70));
+        var moneyLabel = cc.LabelTTF.create("1000000", "STHeitiTC-Medium", 25);
+        moneyLabel.setPosition(cc.p(280, 220));
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        createLayer.addChild(moneyLabel);
-        
+        bgLayer.addChild(moneyLabel);
+
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(cc.p(80, -70));
-        createLayer.addChild(goldIcon);
+        goldIcon.setPosition(cc.p(430, 220));
+        bgLayer.addChild(goldIcon);
 
-        var goldLabel =  cc.LabelTTF.create("200", "STHeitiTC-Medium", 30);
-        goldLabel.setPosition(cc.p(110, -70));
+        var goldLabel = cc.LabelTTF.create("200", "STHeitiTC-Medium", 25);
+        goldLabel.setPosition(cc.p(460, 220));
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        createLayer.addChild(goldLabel);
+        bgLayer.addChild(goldLabel);
 
-        var createItem = cc.MenuItemImage.create(
-            main_scene_image.button10,
-            main_scene_image.button10s,
+        var createItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
             main_scene_image.button9d,
+            main_scene_image.icon21,
             this._onClickCreate,
             this
         );
-        createItem.setPosition(cc.p(0, -150));
+        createItem.setPosition(cc.p(300, 100));
 
         var createMenu = cc.Menu.create(createItem);
         createMenu.setPosition(cc.p(0, 0));
-        createLayer.addChild(createMenu);
+        bgLayer.addChild(createMenu);
 
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,
@@ -105,7 +115,7 @@ var CreateUnionLayer = cc.Layer.extend({
         MainScene.getInstance().switchLayer(UnionLayer);
     },
 
-    _onClickCreate: function() {
+    _onClickCreate: function () {
         cc.log("CreateUnionLayer _onClickCreate");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);

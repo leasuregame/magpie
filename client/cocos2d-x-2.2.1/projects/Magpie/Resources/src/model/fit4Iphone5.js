@@ -254,6 +254,7 @@ var fit4Iphone5 = {
             "rewardItemPoint": cc.p(120, 988),
             "rankItemPoint": cc.p(540, 988),
             "exchangeItemPoint": cc.p(450, 114),
+            "backItemPoint": cc.p(60, 1096),
             "scrollViewLayerRect": cc.rect(0, 0, 621, 685),
             "scrollViewHeight": 685,
             "scrollViewSize": cc.size(621, 685),
@@ -442,19 +443,20 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 930),
             "scrollViewPoint": cc.p(0, 115)
         },
-        "dailyInstancesLayer": {
-            "bgSpritePoint": cc.p(0, 106),
-            "headIconPoint": cc.p(0, 1050),
-            "titleIconPoint": cc.p(320, 1096),
-            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
-            "scrollViewSize": cc.size(640, 900),
-            "scrollViewPoint": cc.p(0, 122)
-        },
         "createUnionLayer": {
             "bgSpritePoint": cc.p(0, 106),
             "headIconPoint": cc.p(0, 1050),
             "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096)
+        },
+        "dailyInstancesLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
             "backItemPoint": cc.p(60, 1096),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
+            "scrollViewSize": cc.size(640, 900),
+            "scrollViewPoint": cc.p(0, 122)
         },
         "elixirRankHelpLabel": {
             "headIconPoint": cc.p(320, 1100),
@@ -1039,6 +1041,7 @@ var fit4Iphone5 = {
             "lineUpItemPoint": cc.p(100, 1022),
             "wipeOutItemPoint": cc.p(540, 1022),
             "resetItemPoint": cc.p(540, 1022),
+            "backItemPoint": cc.p(60, 1096),
             "bgLayerPoint": cc.p(0, 0),
             "bgSprite2Point": cc.p(320, 580),
             "rewardLabel1Point": cc.p(170, 650),
@@ -1225,6 +1228,20 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1050),
             "vipLayerItemPoint": cc.p(214, 1090),
             "propsLayerItemPoint": cc.p(71, 1090)
+        },
+        "showUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
+            "scrollViewSize": cc.size(640, 900),
+            "scrollViewPoint": cc.p(0, 122),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "battleItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(0, 198, 640, 968)
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
@@ -1431,7 +1448,8 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 950),
             "scrollViewContentSize": cc.size(6400, 950),
             "scrollViewPoint": cc.p(0, 106),
-            "titlePointY": 920
+            "titlePointY": 920,
+            "backItemPoint": cc.p(60, 1096)
         },
         "tenLotteryCardLayer": {
             "ccbNodePoint": cc.p(320, 568),

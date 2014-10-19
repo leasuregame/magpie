@@ -77,25 +77,31 @@ var SearchUnionLayer = cc.Layer.extend({
 
         var unionList = this._unionList;
         var len = unionList.length;
-        var scrollViewHeight = len * 160;
+        var scrollViewHeight = len * 150;
 
         for (var i = 0; i < len; i++) {
             var union = unionList[i];
-            var y = scrollViewHeight - 80 - i * 160;
-            var bgLabel = cc.Sprite.create(main_scene_image.button20);
+            var y = scrollViewHeight - 75 - i * 150;
+            var bgLabel = cc.Sprite.create(main_scene_image.button15);
             bgLabel.setAnchorPoint(cc.p(0, 0.5));
             bgLabel.setPosition(cc.p(20, y));
             scrollViewLayer.addChild(bgLabel);
 
+            var unionIdIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+            unionIdIcon.setContentSize(cc.size(190, 30));
+            unionIdIcon.setAnchorPoint(cc.p(0, 0.5));
+            unionIdIcon.setPosition(cc.p(20, 100));
+            bgLabel.addChild(unionIdIcon);
+
             var unionIdLabel = cc.LabelTTF.create("公会id：" + union.id, "STHeitiTC-Medium", 25);
             unionIdLabel.setAnchorPoint(cc.p(0, 0.5));
-            unionIdLabel.setPosition(cc.p(20, 130));
+            unionIdLabel.setPosition(cc.p(25, 100));
             bgLabel.addChild(unionIdLabel);
 
             var info = union.name + "（" + union.count + "人）";
             var unionInfoLabel = cc.LabelTTF.create(info, "STHeitiTC-Medium", 25);
             unionInfoLabel.setAnchorPoint(cc.p(0, 0.5));
-            unionInfoLabel.setPosition(cc.p(30, 70));
+            unionInfoLabel.setPosition(cc.p(30, 50));
             bgLabel.addChild(unionInfoLabel);
 
             var detailItem = cc.MenuItemImage.createWithIcon(
@@ -105,7 +111,7 @@ var SearchUnionLayer = cc.Layer.extend({
                 this._onClickDetail(union),
                 this
             );
-            detailItem.setPosition(cc.p(380, y - 10));
+            detailItem.setPosition(cc.p(360, y));
             menu.addChild(detailItem);
 
             var requestItem = cc.MenuItemImage.createWithIcon(
@@ -115,8 +121,22 @@ var SearchUnionLayer = cc.Layer.extend({
                 this._onClickRequest(union.id),
                 this
             );
-            requestItem.setPosition(cc.p(530, y - 10));
+            requestItem.setPosition(cc.p(510, y));
+            requestItem.setVisible(!union.isRequest);
             menu.addChild(requestItem);
+
+            var requestedItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.button9d,
+                main_scene_image.icon496,
+                this._onClickRequest(union.id),
+                this
+            );
+            requestedItem.setPosition(cc.p(510, y));
+            requestedItem.setEnabled(false);
+            requestedItem.setVisible(union.isRequest);
+            menu.addChild(requestedItem);
         }
 
         this._scrollView = cc.ScrollView.create(this._searchUnionLayerFit.scrollViewSize, scrollViewLayer);
@@ -165,7 +185,8 @@ var SearchUnionLayer = cc.Layer.extend({
                 count: 30,
                 maxCount: 50,
                 created: "2014-10-10",
-                ability: 123456
+                ability: 123456,
+                isRequest: ((i % 2 == 0) ? true : false)
             })
         }
 

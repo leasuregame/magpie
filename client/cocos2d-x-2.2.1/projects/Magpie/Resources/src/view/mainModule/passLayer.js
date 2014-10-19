@@ -218,7 +218,15 @@ var PassLayer = cc.Layer.extend({
         );
         this._resetItem.setPosition(this._passLayerFit.resetItemPoint);
 
-        var menu = cc.Menu.create(lineUpItem, this._wipeOutItem, this._resetItem);
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(this._passLayerFit.backItemPoint);
+
+        var menu = cc.Menu.create(lineUpItem, this._wipeOutItem, this._resetItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
@@ -708,6 +716,14 @@ var PassLayer = cc.Layer.extend({
                 that.update();
             });
         });
+    },
+
+    _onClickBack: function () {
+        cc.log("PassLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this.removeFromParent();
     },
 
     updateGuide: function () {

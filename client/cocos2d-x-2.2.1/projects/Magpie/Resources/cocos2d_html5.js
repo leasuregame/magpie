@@ -230,6 +230,7 @@
             'src/view/mainModule/searchUnionLayer.js',
             'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
+            'src/view/mainModule/showUnionLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
             'src/view/mainModule/smeltLayer.js',
             'src/view/mainModule/speakerLayer.js',

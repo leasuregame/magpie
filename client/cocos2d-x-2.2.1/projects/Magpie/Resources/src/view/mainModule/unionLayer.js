@@ -25,36 +25,57 @@ var UnionLayer = cc.Layer.extend({
         titleIcon.setPosition(this._unionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        var applyForItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
+        var bgLayer = cc.Scale9Sprite.create(main_scene_image.bg16);
+        bgLayer.setContentSize(cc.size(560, 700));
+        bgLayer.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(bgLayer);
+
+        var titleBgIcon = cc.Sprite.create(main_scene_image.icon371);
+        titleBgIcon.setPosition(cc.p(280, 700));
+        bgLayer.addChild(titleBgIcon);
+
+        titleIcon = cc.Sprite.create(main_scene_image.icon495);
+        titleIcon.setPosition(cc.p(280, 705));
+        bgLayer.addChild(titleIcon);
+
+        var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon169);
+        bgLabel.setPosition(cc.p(280, 350));
+        bgLabel.setContentSize(cc.size(470, 500));
+        bgLayer.addChild(bgLabel);
+
+        var applyForItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button1,
+            main_scene_image.button1s,
+            main_scene_image.button1d,
+            main_scene_image.icon492,
             this._onClickApplyFor,
             this
         );
-        applyForItem.setPosition(this._unionLayerFit.applyForItemPoint);
+        applyForItem.setPosition(cc.p(280, 500));
 
-        var createUnionItem = cc.MenuItemImage.create(
-            main_scene_image.button10,
-            main_scene_image.button10s,
-            main_scene_image.button9d,
+        var createUnionItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button1,
+            main_scene_image.button1s,
+            main_scene_image.button1d,
+            main_scene_image.icon493,
             this._onClickCreateUnion,
             this
         );
-        createUnionItem.setPosition(this._unionLayerFit.createUnionItemPoint);
+        createUnionItem.setPosition(cc.p(280, 350));
 
-        var searchUnionItem = cc.MenuItemImage.create(
-            main_scene_image.button11,
-            main_scene_image.button11s,
-            main_scene_image.button9d,
+        var searchUnionItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button1,
+            main_scene_image.button1s,
+            main_scene_image.button1d,
+            main_scene_image.icon494,
             this._onClickSearchUnion,
             this
         );
-        searchUnionItem.setPosition(this._unionLayerFit.searchUnionItemPoint);
+        searchUnionItem.setPosition(cc.p(280, 200));
 
         var menu = cc.Menu.create(applyForItem, createUnionItem, searchUnionItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        bgLayer.addChild(menu);
 
         return true;
     },
@@ -74,12 +95,13 @@ var UnionLayer = cc.Layer.extend({
                 count: 30,
                 maxCount: 50,
                 created: "2014-10-10",
-                ability: 123456
+                ability: 123456,
+                isRequest: ((i % 2 == 0) ? true : false)
             })
         }
 
         var requestUnionLayer = RequestUnionLayer.create(unions);
-        this.addChild(requestUnionLayer);
+        MainScene.getInstance().switchTo(requestUnionLayer);
     },
 
     _onClickCreateUnion: function() {

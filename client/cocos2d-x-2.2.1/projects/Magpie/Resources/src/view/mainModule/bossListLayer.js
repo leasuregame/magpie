@@ -54,14 +54,14 @@ var BossListLayer = cc.Layer.extend({
         bgSprite.setPosition(this._bossListLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._bossListLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon394);
-        titleIcon.setPosition(this._bossListLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
+//        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+//        headIcon.setAnchorPoint(cc.p(0, 0));
+//        headIcon.setPosition(this._bossListLayerFit.headIconPoint);
+//        this.addChild(headIcon);
+//
+//        var titleIcon = cc.Sprite.create(main_scene_image.icon394);
+//        titleIcon.setPosition(this._bossListLayerFit.titleIconPoint);
+//        this.addChild(titleIcon);
 
         var cdTimeIcon = cc.Sprite.create(main_scene_image.icon412);
         cdTimeIcon.setPosition(this._bossListLayerFit.cdTimeIconPoint);
@@ -169,16 +169,7 @@ var BossListLayer = cc.Layer.extend({
 
         helpItem.setPosition(this._bossListLayerFit.helpItemPoint);
 
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._bossListLayerFit.backItemPoint);
-
-
-        var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, this._exchangeItem, helpItem, backItem);
+        var menu = cc.Menu.create(this._removeTimeItem, this._rewardItem, this._exchangeItem, helpItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 2);
 
@@ -514,14 +505,6 @@ var BossListLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         BossHelpLabel.pop();
-    },
-
-    _onClickBack: function () {
-        cc.log("BossListLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this.removeFromParent();
     },
 
     updateGuide: function () {

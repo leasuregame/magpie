@@ -55,15 +55,6 @@ var TaskLayer = cc.Layer.extend({
         this._locate = this._taskLayerFit.locatePoints;
         this.setTouchEnabled(true);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._taskLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
-        titleIcon.setPosition(this._taskLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
-
         var task = gameData.task;
         this._index = task.currentChapter || task.getChapter();
         task.currentChapter = 0;
@@ -191,18 +182,6 @@ var TaskLayer = cc.Layer.extend({
         var cloudEffect = cc.BuilderReader.load(main_scene_image.uiEffect75);
         cloudEffect.setPosition(gameFit.GAME_MIDPOINT);
         this.addChild(cloudEffect);
-
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._taskLayerFit.backItemPoint);
-
-        var backMenu = cc.Menu.create(backItem);
-        backMenu.setPosition(cc.p(0, 0));
-        this.addChild(backMenu, 1);
 
         return true;
     },
@@ -348,14 +327,6 @@ var TaskLayer = cc.Layer.extend({
     _onClickTip: function () {
         cc.log("TaskLayer _onClickTip");
         TipLayer.tip("已通关卡，每天可获得1次仙币奖励。");
-    },
-
-    _onClickBack: function () {
-        cc.log("TaskLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this.removeFromParent();
     },
 
     /**

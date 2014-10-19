@@ -727,7 +727,8 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(40, 122),
             "taskLayerItemPoint": cc.p(111, 914),
             "passLayerItemPoint": cc.p(254, 914),
-            "dailyInstancesLayerItemPoint": cc.p(402, 914)
+            "dailyInstancesLayerItemPoint": cc.p(402, 914),
+            "bossListLayerItemPoint": cc.p(550, 914)
         },
         "lineUpDetail": {
             "locatePoints": {

@@ -60,15 +60,6 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(this._passLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._passLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon17);
-        titleIcon.setPosition(this._passLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
-
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect28, this);
         ccbNode.setPosition(this._passLayerFit.ccbNodePoint);
         this.addChild(ccbNode);
@@ -218,15 +209,7 @@ var PassLayer = cc.Layer.extend({
         );
         this._resetItem.setPosition(this._passLayerFit.resetItemPoint);
 
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._passLayerFit.backItemPoint);
-
-        var menu = cc.Menu.create(lineUpItem, this._wipeOutItem, this._resetItem, backItem);
+        var menu = cc.Menu.create(lineUpItem, this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
@@ -716,14 +699,6 @@ var PassLayer = cc.Layer.extend({
                 that.update();
             });
         });
-    },
-
-    _onClickBack: function () {
-        cc.log("PassLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this.removeFromParent();
     },
 
     updateGuide: function () {

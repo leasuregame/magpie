@@ -25,27 +25,6 @@ var DailyInstancesLayer = cc.Layer.extend({
         bgSprite.setPosition(this._dailyInstancesLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._dailyInstancesLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
-        titleIcon.setPosition(this._dailyInstancesLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
-
-        var backItem = cc.MenuItemImage.create(
-            main_scene_image.button8,
-            main_scene_image.button8s,
-            this._onClickBack,
-            this
-        );
-        backItem.setPosition(this._dailyInstancesLayerFit.backItemPoint);
-
-        var backMenu = cc.Menu.create(backItem);
-        backMenu.setPosition(cc.p(0, 0));
-        this.addChild(backMenu);
-
         var scrollViewLayer = MarkLayer.create(this._dailyInstancesLayerFit.scrollViewLayerRect);
 
         var index = 0;
@@ -101,14 +80,6 @@ var DailyInstancesLayer = cc.Layer.extend({
         slideLayer.showSlide();
 
         return true;
-    },
-
-    _onClickBack: function () {
-        cc.log("DailyInstancesLayer _onClickBack");
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this.removeFromParent();
     },
 
     _onClickLayer: function (index) {

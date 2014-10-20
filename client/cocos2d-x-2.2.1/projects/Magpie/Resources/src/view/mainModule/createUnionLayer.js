@@ -127,6 +127,11 @@ var CreateUnionLayer = cc.Layer.extend({
             TipLayer.tip("请先输入公会名字");
             return;
         }
+
+        if(text.length > 8) {
+            TipLayer.tip("名字长度不得超过8个字符");
+            return;
+        }
     }
 
 });

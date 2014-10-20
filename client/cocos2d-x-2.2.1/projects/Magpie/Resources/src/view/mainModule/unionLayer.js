@@ -4,6 +4,7 @@
 
 var UnionLayer = cc.Layer.extend({
     _unionLayerFit: null,
+    _unionNoticeLabel: null,
 
     init: function () {
 
@@ -85,96 +86,64 @@ var UnionLayer = cc.Layer.extend({
     },
 
     _addedUnionLayer: function () {
-        var role = TYPE_UNION_PRESIDENT;
 
-        var bgLayer = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgLayer.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(bgLayer);
+        var noticeLabel = cc.LabelTTF.create("公会宣言", "STHeitiTC-Medium", 35);
+        noticeLabel.setPosition(this._unionLayerFit.noticeLabelPoint);
+        this.addChild(noticeLabel);
 
-        var titleBgIcon = cc.Sprite.create(main_scene_image.icon371);
-        bgLayer.addChild(titleBgIcon);
+        var bgSprite = cc.Sprite.create(main_scene_image.icon370);
+        bgSprite.setPosition(this._unionLayerFit.unionNoticeLabelPoint);
+        this.addChild(bgSprite);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon495);
-        bgLayer.addChild(titleIcon);
+        var unionNoticeLabel = cc.LabelTTF.create("明晚七点准时上线进行公会大战否则踢出公会", "STHeitiTC-Medium", 22);
+        unionNoticeLabel.setPosition(this._unionLayerFit.unionNoticeLabelPoint);
+        this.addChild(unionNoticeLabel);
 
-        var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon169);
-        bgLayer.addChild(bgLabel);
+        this._unionNoticeLabel = unionNoticeLabel;
 
-        var unionMembersItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button1,
-            main_scene_image.button1s,
-            main_scene_image.button1d,
-            main_scene_image.icon497,
-            this._onClickUnionMembers,
+        var updateNoticeItem = cc.MenuItemImage.create(
+            main_scene_image.button78,
+            main_scene_image.button78s,
+            this._onClickUpdateNotice,
             this
         );
+        updateNoticeItem.setPosition(this._unionLayerFit.updateNoticeItemPoint);
 
-        var unionApplyForItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button1,
-            main_scene_image.button1s,
-            main_scene_image.button1d,
-            main_scene_image.icon498,
-            this._onClickUnionApplyFor,
+        var wishTreeItem = cc.MenuItemImage.create(
+            main_scene_image.button46,
+            main_scene_image.button46s,
+            this._onClickWishTree,
             this
         );
+        wishTreeItem.setPosition(this._unionLayerFit.wishTreeItemPoint);
 
-        var unionQuitItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button91,
-            main_scene_image.button91s,
-            main_scene_image.button1d,
-            main_scene_image.icon499,
-            this._onClickUnionQuitItem,
+        var unionWarsItem = cc.MenuItemImage.create(
+            main_scene_image.button46,
+            main_scene_image.button46s,
+            this._onClickUnionWars,
             this
         );
+        unionWarsItem.setPosition(this._unionLayerFit.unionWarsItemPoint);
 
-        var unionDismissItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button91,
-            main_scene_image.button91s,
-            main_scene_image.button1d,
-            main_scene_image.icon500,
-            this._onClickUnionDismissItem,
+        var unionShopItem = cc.MenuItemImage.create(
+            main_scene_image.button46,
+            main_scene_image.button46s,
+            this._onClickUnionShop,
             this
         );
+        unionShopItem.setPosition(this._unionLayerFit.unionShopItemPoint);
 
-        var menu = cc.Menu.create();
+        var unionManageItem = cc.MenuItemImage.create(
+            main_scene_image.button46,
+            main_scene_image.button46s,
+            this._onClickUnionManage,
+            this
+        );
+        unionManageItem.setPosition(this._unionLayerFit.unionManageItemPoint);
+
+        var menu = cc.Menu.create(updateNoticeItem, wishTreeItem, unionWarsItem, unionShopItem, unionManageItem);
         menu.setPosition(cc.p(0, 0));
-        bgLayer.addChild(menu);
-
-        var items = [];
-        var y = 0;
-
-        if(role == TYPE_UNION_PRESIDENT) {
-            bgLayer.setContentSize(cc.size(460, 640));
-            titleBgIcon.setPosition(cc.p(230, 640));
-            titleIcon.setPosition(cc.p(230, 645));
-            bgLabel.setPosition(cc.p(230, 340));
-            bgLabel.setContentSize(cc.size(350, 500));
-            items.push(unionMembersItem, unionApplyForItem, unionQuitItem, unionDismissItem);
-            y = 640;
-        } else if(role == TYPE_UNION_ELDERS){
-            bgLayer.setContentSize(cc.size(460, 520));
-            titleBgIcon.setPosition(cc.p(230, 520));
-            titleIcon.setPosition(cc.p(230, 525));
-            bgLabel.setPosition(cc.p(230, 280));
-            bgLabel.setContentSize(cc.size(350, 380));
-            items.push(unionMembersItem, unionApplyForItem, unionQuitItem);
-            y = 520;
-        } else {
-            bgLayer.setContentSize(cc.size(460, 400));
-            titleBgIcon.setPosition(cc.p(230, 400));
-            titleIcon.setPosition(cc.p(230, 405));
-            bgLabel.setPosition(cc.p(230, 220));
-            bgLabel.setContentSize(cc.size(350, 260));
-            items.push(unionMembersItem, unionApplyForItem);
-            y = 400;
-        }
-
-        var len = items.length;
-        for(var i = 0;i < len;i++) {
-            items[i].setPosition(cc.p(230, y - 110 - 120 * i));
-            menu.addChild(items[i]);
-        }
-
+        this.addChild(menu);
     },
 
     _onClickApplyFor: function () {
@@ -218,36 +187,38 @@ var UnionLayer = cc.Layer.extend({
         MainScene.getInstance().switchTo(searchUnionLayer);
     },
 
-    _onClickUnionMembers: function() {
-        cc.log("UnionLayer _onClickUnionMembers");
-
+    _onClickUpdateNotice: function () {
+        cc.log("UnionLayer _onClickUpdateNotice");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
+
+        var that = this;
+        UpdateUnionNoticeLabel.pop(function (text) {
+            that._unionNoticeLabel.setString(text);
+        });
     },
 
-    _onClickUnionApplyFor: function() {
-        cc.log("UnionLayer _onClickUnionApplyFor");
-
+    _onClickWishTree: function () {
+        cc.log("UnionLayer _onClickWishTree");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
     },
 
-    _onClickUnionQuitItem: function() {
-        cc.log("UnionLayer _onClickUnionQuitItem");
-
+    _onClickUnionWars: function () {
+        cc.log("UnionLayer _onClickUnionWars");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
+        TipLayer.tip("敬请期待");
     },
 
-    _onClickUnionDismissItem: function() {
-        cc.log("UnionLayer _onClickUnionDismissItem");
-
+    _onClickUnionShop: function () {
+        cc.log("UnionLayer _onClickUnionShop");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
+        TipLayer.tip("敬请期待");
+    },
+
+    _onClickUnionManage: function () {
+        cc.log("UnionLayer _onClickUnionManage");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        var unionManageLayer = UnionManageLayer.create();
+        MainScene.getInstance().switchTo(unionManageLayer);
     }
 });
 

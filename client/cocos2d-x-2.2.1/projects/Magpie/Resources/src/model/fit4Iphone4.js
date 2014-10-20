@@ -1592,7 +1592,20 @@ var fit4Iphone4 = {
             "titleIconPoint": cc.p(360, 920),
             "applyForItemPoint": cc.p(360, 700),
             "createUnionItemPoint": cc.p(360, 550),
-            "searchUnionItemPoint": cc.p(360, 400)
+            "searchUnionItemPoint": cc.p(360, 400),
+            "noticeLabelPoint": cc.p(360, 800),
+            "unionNoticeLabelPoint": cc.p(360, 750),
+            "updateNoticeItemPoint": cc.p(620, 750),
+            "wishTreeItemPoint": cc.p(200, 600),
+            "unionWarsItemPoint": cc.p(520, 600),
+            "unionShopItemPoint": cc.p(200, 400),
+            "unionManageItemPoint": cc.p(520, 400)
+        },
+        "unionManageLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920)
         },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(364, 485),

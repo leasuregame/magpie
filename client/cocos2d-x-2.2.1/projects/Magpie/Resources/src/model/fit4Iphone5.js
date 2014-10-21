@@ -1572,13 +1572,15 @@ var fit4Iphone5 = {
             "applyForItemPoint": cc.p(320, 700),
             "createUnionItemPoint": cc.p(320, 550),
             "searchUnionItemPoint": cc.p(320, 400),
+            "leftIconPoint": cc.p(230, 942),
+            "rightIconPoint": cc.p(640, 942),
             "noticeLabelPoint": cc.p(320, 950),
             "unionNoticeLabelPoint": cc.p(320, 900),
             "updateNoticeItemPoint": cc.p(580, 900),
-            "wishTreeItemPoint": cc.p(160, 700),
-            "unionWarsItemPoint": cc.p(480, 700),
-            "unionShopItemPoint": cc.p(160, 450),
-            "unionManageItemPoint": cc.p(480, 450)
+            "wishTreeItemPoint": cc.p(160, 680),
+            "unionWarsItemPoint": cc.p(480, 680),
+            "unionShopItemPoint": cc.p(160, 380),
+            "unionManageItemPoint": cc.p(480, 380)
         },
         "unionManageLayer": {
             "bgSpritePoint": cc.p(0, 106),

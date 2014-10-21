@@ -87,6 +87,17 @@ var UnionLayer = cc.Layer.extend({
 
     _addedUnionLayer: function () {
 
+        var leftIcon = cc.Sprite.create(main_scene_image.icon503);
+        leftIcon.setScaleX(-1);
+        leftIcon.setAnchorPoint(cc.p(0, 0.5));
+        leftIcon.setPosition(this._unionLayerFit.leftIconPoint);
+        this.addChild(leftIcon);
+
+        var rightIcon = cc.Sprite.create(main_scene_image.icon503);
+        rightIcon.setAnchorPoint(cc.p(1, 0.5));
+        rightIcon.setPosition(this._unionLayerFit.rightIconPoint);
+        this.addChild(rightIcon);
+
         var noticeLabel = cc.LabelTTF.create("公会宣言", "STHeitiTC-Medium", 35);
         noticeLabel.setPosition(this._unionLayerFit.noticeLabelPoint);
         this.addChild(noticeLabel);
@@ -110,32 +121,32 @@ var UnionLayer = cc.Layer.extend({
         updateNoticeItem.setPosition(this._unionLayerFit.updateNoticeItemPoint);
 
         var wishTreeItem = cc.MenuItemImage.create(
-            main_scene_image.button46,
-            main_scene_image.button46s,
+            main_scene_image.button92,
+            main_scene_image.button92,
             this._onClickWishTree,
             this
         );
         wishTreeItem.setPosition(this._unionLayerFit.wishTreeItemPoint);
 
         var unionWarsItem = cc.MenuItemImage.create(
-            main_scene_image.button46,
-            main_scene_image.button46s,
+            main_scene_image.button93,
+            main_scene_image.button93,
             this._onClickUnionWars,
             this
         );
         unionWarsItem.setPosition(this._unionLayerFit.unionWarsItemPoint);
 
         var unionShopItem = cc.MenuItemImage.create(
-            main_scene_image.button46,
-            main_scene_image.button46s,
+            main_scene_image.button94,
+            main_scene_image.button94,
             this._onClickUnionShop,
             this
         );
         unionShopItem.setPosition(this._unionLayerFit.unionShopItemPoint);
 
         var unionManageItem = cc.MenuItemImage.create(
-            main_scene_image.button46,
-            main_scene_image.button46s,
+            main_scene_image.button95,
+            main_scene_image.button95,
             this._onClickUnionManage,
             this
         );

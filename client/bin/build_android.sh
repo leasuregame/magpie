@@ -29,7 +29,7 @@ function init
 	cd "$MAGPIE_PATH"
 
 	echo "delete all cc.log in Res_android"
-	#perl -pi -e "s/cc.log/\/\/cc.log/gi" `find Res_android -iname *.js`
+	perl -pi -e "s/cc.log/\/\/cc.log/gi" `find Res_android -iname *.js`
 
 	cd ../../../
 }

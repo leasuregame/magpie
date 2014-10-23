@@ -16,12 +16,24 @@ lz.platformConfig = {
     VERSION: "1.6.2",
     APP_ID: "IYYDS",
     APP_KEY: "OpYnjFNAqwKgoCqpfnrCPtbQdbUGPhgf",
-    GATE_SERVER_HOST: "183.56.170.243",
+    GATE_SERVER_HOST: "124.238.236.33",
     GATE_SERVER_PORT: "3009",
-    UPDATE_PACKAGE_URL: "http://183.56.170.243:9090/api/yy/update/",
-    UPDATE_VERSION_URL: "http://183.56.170.243:9090/api/yy/version",
-    GAME_NOTICE_URL: "http://183.56.170.243:9090/api/yy/notice",
-    UM_APP_KEY: "54151830fd98c55dc80008c9"
+    GAME_NOTICE_URL: "http://124.238.236.33:9090/api/yy/notice",
+    UM_APP_KEY: "54151830fd98c55dc80008c9",
+    
+};
+
+lz.updateConfig = {
+    UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/yy/update/",
+    UPDATE_VERSION_URL: "http://124.238.236.33:9090/api/yy/version",
+
+    LOAD_APP_RESOURCES_FILE_URL: "http://124.238.236.33:9090/api/yy/load/",
+    LOAD_APP_RESOURCES_FILE_VERSION: "http://124.238.236.33:9090/api/yy/load/version",
+    KEY_OF_HAS_LAOD_APP_FILES: 'has-load-app-files',
+    UPDATE_TYPE: {
+        LOAD_RESOURCES: 1,
+        UPDATE_VERSION: 2
+    }
 };
 
 

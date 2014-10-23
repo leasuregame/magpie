@@ -45,8 +45,9 @@ using namespace cocos2d;
 using namespace std;
 
 NS_CC_EXT_BEGIN;
-
+#define APP_DIR "app_dir"
 #define UPDATE_DIR "update_dir"
+#define KEY_OF_HAS_LOAD_APP_FILES "has-load-app-files"
 #define KEY_OF_APP_VERSION   "app-version-code"
 #define KEY_OF_VERSION   "current-version-code"
 #define KEY_OF_DOWNLOADED_VERSION    "downloaded-version-code"

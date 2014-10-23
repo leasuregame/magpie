@@ -15,6 +15,7 @@
 var LoginScene = cc.Scene.extend({
     _nowLayer: null,
     _toLayer: null,
+    _updateType: null,
 
     onEnter: function () {
         cc.log("YY LoginScene onEnter");
@@ -66,12 +67,13 @@ var LoginScene = cc.Scene.extend({
         lz.um.endLogPageView("登录场景");
     },
 
-    init: function (toLayer) {
+    init: function (toLayer, updateType) {
         cc.log("LoginScene init");
 
         if (!this._super()) return false;
 
         this._toLayer = toLayer;
+        this._updateType = updateType;
 
         cc.Director.getInstance().getScheduler().setTimeScale(MAIN_PLAY_SPEED);
 
@@ -98,7 +100,8 @@ var LoginScene = cc.Scene.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
-            this.switchTo(runLayer.create());
+
+            this.switchTo(runLayer.create(this._updateType));
         }
     },
 
@@ -117,10 +120,10 @@ var LoginScene = cc.Scene.extend({
 
 LoginScene.flag = false;
 
-LoginScene.create = function (toLayer) {
+LoginScene.create = function (toLayer, upateType) {
     var ret = new LoginScene();
 
-    if (ret && ret.init(toLayer)) {
+    if (ret && ret.init(toLayer, upateType)) {
         return ret;
     }
 

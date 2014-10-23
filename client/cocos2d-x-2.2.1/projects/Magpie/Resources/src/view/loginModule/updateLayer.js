@@ -44,8 +44,10 @@ var UpdateLayer = cc.Layer.extend({
     _ccbNode: null,
     _updateProgress: null,
     _isJump: false,
+    _updatePackageUrl: null,
+    _updateVersionUrl: null,
 
-    init: function () {
+    init: function (type) {
         cc.log("UpdateLayer init");
 
         if (!this._super()) return false;
@@ -75,8 +77,23 @@ var UpdateLayer = cc.Layer.extend({
             this.successCallback
         );
 
-        this._assetsManager.setPackageUrl(lz.platformConfig.UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || ""));
-        this._assetsManager.setVersionFileUrl(lz.platformConfig.UPDATE_VERSION_URL);
+        var packageUrl, versionFileUrl;
+        if (type == lz.updateConfig.UPDATE_TYPE.LOAD_RESOURCES) {
+            packageUrl = lz.updateConfig.LOAD_APP_RESOURCES_FILE_URL + '1.6.7'; // + (this._assetsManager.getVersion() || "");
+            versionFileUrl = lz.updateConfig.LOAD_APP_RESOURCES_FILE_VERSION;
+        } else {
+            packageUrl = lz.updateConfig.UPDATE_PACKAGE_URL + (this._assetsManager.getVersion() || "");
+            versionFileUrl = lz.updateConfig.UPDATE_VERSION_URL;
+        }
+
+        cc.log('==========update layer=============');
+        cc.log(type);
+        cc.log(packageUrl);
+        cc.log(versionFileUrl);
+        cc.log('===================================')
+
+        this._assetsManager.setPackageUrl(packageUrl);
+        this._assetsManager.setVersionFileUrl(versionFileUrl);
 
         this._assetsManager.update();
 
@@ -208,13 +225,12 @@ var UpdateLayer = cc.Layer.extend({
 });
 
 
-UpdateLayer.create = function () {
+UpdateLayer.create = function (type) {
     var ret = new UpdateLayer();
 
-    if (ret && ret.init()) {
+    if (ret && ret.init(type)) {
         return ret;
     }
 
     return null;
 };
-

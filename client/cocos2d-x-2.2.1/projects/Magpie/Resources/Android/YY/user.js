@@ -88,6 +88,13 @@ var User = Entity.extend({
                     userName: yy.YYClient.getUserName()
                 }
 
+                // -1 表示没有设置
+                var hasLoadFiles = false;
+                // cc.UserDefault.getInstance().getBoolForKey(
+                //     lz.platformConfig.KEY_OF_HAS_LAOD_APP_FILES,
+                //     false);
+                cc.log("====== has load files flag =======", hasLoadFiles);
+
                 lz.server.request("connector.userHandler.loginYY", {
                     signid: yyUser.sid,
                     account: yyUser.account,
@@ -97,7 +104,8 @@ var User = Entity.extend({
                     areaId: that._area,
                     version: version,
                     appVersion: appVersion,
-                    os: 'android'
+                    os: 'android',
+                    hasLoadFiles: hasLoadFiles
                 }, function (data) {
                     cc.log(JSON.stringify(data));
 
@@ -132,7 +140,31 @@ var User = Entity.extend({
 
                         Dialog.pop(data.msg, function () {
                             if (typeof(UpdateLayer) != "undefined") {
-                                cc.Director.getInstance().replaceScene(LoginScene.create(UpdateLayer));
+                                cc.Director.getInstance()
+                                .replaceScene(
+                                    LoginScene.create(
+                                        UpdateLayer, 
+                                        lz.updateConfig.UPDATE_TYPE.UPDATE_VERSION
+                                    )
+                                );
+                            } else {
+                                TipLayer.tip("找不到更新模块，请重新下载游戏");
+                            }
+                        });
+                    } else if (data.code == 700) {
+                        cc.log("login fail go to updateLayer to download app files for the first time");
+
+                        cb(4);
+
+                        Dialog.pop(data.msg, function () {
+                            if (typeof(UpdateLayer) != "undefined") {
+                                cc.Director.getInstance()
+                                .replaceScene(
+                                    LoginScene.create(
+                                        UpdateLayer, 
+                                        lz.updateConfig.UPDATE_TYPE.LOAD_RESOURCES
+                                    )
+                                );
                             } else {
                                 TipLayer.tip("找不到更新模块，请重新下载游戏");
                             }

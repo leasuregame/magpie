@@ -26,7 +26,12 @@ var UnionLayer = cc.Layer.extend({
         titleIcon.setPosition(this._unionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        this._addedUnionLayer();
+        var id = gameData.union.get("id");
+        if(id) {
+            this._addedUnionLayer();
+        } else {
+            this._nonunionLayer();
+        }
 
         return true;
     },
@@ -106,7 +111,8 @@ var UnionLayer = cc.Layer.extend({
         bgSprite.setPosition(this._unionLayerFit.unionNoticeLabelPoint);
         this.addChild(bgSprite);
 
-        var unionNoticeLabel = cc.LabelTTF.create("明晚七点准时上线进行公会大战否则踢出公会", "STHeitiTC-Medium", 22);
+        var notice = gameData.union.get("notice");
+        var unionNoticeLabel = cc.LabelTTF.create(notice, "STHeitiTC-Medium", 22);
         unionNoticeLabel.setPosition(this._unionLayerFit.unionNoticeLabelPoint);
         this.addChild(unionNoticeLabel);
 
@@ -120,33 +126,46 @@ var UnionLayer = cc.Layer.extend({
         );
         updateNoticeItem.setPosition(this._unionLayerFit.updateNoticeItemPoint);
 
-        var wishTreeItem = cc.MenuItemImage.create(
-            main_scene_image.button92,
-            main_scene_image.button92,
+        var normalIcon = cc.Sprite.create(main_scene_image.button92);
+        var selectedIcon = cc.Sprite.create(main_scene_image.button92);
+        selectedIcon.setScale(1.1);
+
+        var wishTreeItem = cc.MenuItemSprite.create(
+            normalIcon,
+            selectedIcon,
             this._onClickWishTree,
             this
         );
         wishTreeItem.setPosition(this._unionLayerFit.wishTreeItemPoint);
 
-        var unionWarsItem = cc.MenuItemImage.create(
-            main_scene_image.button93,
-            main_scene_image.button93,
+        normalIcon = cc.Sprite.create(main_scene_image.button93);
+        selectedIcon = cc.Sprite.create(main_scene_image.button93);
+        selectedIcon.setScale(1.1);
+        var unionWarsItem = cc.MenuItemSprite.create(
+            normalIcon,
+            selectedIcon,
             this._onClickUnionWars,
             this
         );
         unionWarsItem.setPosition(this._unionLayerFit.unionWarsItemPoint);
 
-        var unionShopItem = cc.MenuItemImage.create(
-            main_scene_image.button94,
-            main_scene_image.button94,
+        normalIcon = cc.Sprite.create(main_scene_image.button94);
+        selectedIcon = cc.Sprite.create(main_scene_image.button94);
+        selectedIcon.setScale(1.1);
+        var unionShopItem = cc.MenuItemSprite.create(
+            normalIcon,
+            selectedIcon,
             this._onClickUnionShop,
             this
         );
         unionShopItem.setPosition(this._unionLayerFit.unionShopItemPoint);
 
-        var unionManageItem = cc.MenuItemImage.create(
-            main_scene_image.button95,
-            main_scene_image.button95,
+        normalIcon = cc.Sprite.create(main_scene_image.button95);
+        selectedIcon = cc.Sprite.create(main_scene_image.button95);
+        selectedIcon.setScale(1.1);
+        var unionManageItem = cc.MenuItemSprite.create(
+            normalIcon,
+            selectedIcon,
             this._onClickUnionManage,
             this
         );
@@ -162,23 +181,10 @@ var UnionLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var unions = [];
-        for (var i = 0; i < 10; i++) {
-            unions.push({
-                id: i + 1,
-                name: "公会" + (i + 1),
-                lv: 5,
-                notice: "哈哈哈哈哈哈",
-                count: 30,
-                maxCount: 50,
-                created: "2014-10-10",
-                ability: 123456,
-                isRequest: ((i % 2 == 0) ? true : false)
-            })
-        }
-
-        var requestUnionLayer = RequestUnionLayer.create(unions);
-        MainScene.getInstance().switchTo(requestUnionLayer);
+        gameData.union.unionList(function(unions){
+            var requestUnionLayer = RequestUnionLayer.create(unions);
+            MainScene.getInstance().switchTo(requestUnionLayer);
+        });
     },
 
     _onClickCreateUnion: function () {

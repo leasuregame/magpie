@@ -1609,6 +1609,20 @@ var fit4Iphone4 = {
             "titleIconPoint": cc.p(360, 920),
             "backItemPoint": cc.p(100, 920)
         },
+        "unionRequestListLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+            "membersLabelPoint": cc.p(550, 140),
+            "countLabelPoint": cc.p(600, 140),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 700),
+            "scrollViewSize": cc.size(640, 700),
+            "scrollViewPoint": cc.p(40, 162),
+            "labelContentSize": cc.size(216, 120),
+            "detailItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 808)
+        },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(364, 485),
             "pillIconPoint": cc.p(475, 692),

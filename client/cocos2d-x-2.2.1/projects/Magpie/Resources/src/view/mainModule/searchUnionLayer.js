@@ -7,6 +7,8 @@ var SearchUnionLayer = cc.Layer.extend({
 
     _scrollView: null,
     _unionList: null,
+    _requestItems: null,
+    _requestedItems: null,
 
     init: function () {
         if (!this._super()) return false;
@@ -69,6 +71,9 @@ var SearchUnionLayer = cc.Layer.extend({
             this._scrollView = null;
         }
 
+        this._requestItems = [];
+        this._requestedItems = [];
+
         var scrollViewLayer = MarkLayer.create(this._searchUnionLayerFit.scrollViewLayerRect);
 
         var menu = LazyMenu.create();
@@ -108,7 +113,7 @@ var SearchUnionLayer = cc.Layer.extend({
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.icon120,
-                this._onClickDetail(union),
+                this._onClickDetail(union.id),
                 this
             );
             detailItem.setPosition(cc.p(360, y));
@@ -124,6 +129,7 @@ var SearchUnionLayer = cc.Layer.extend({
             requestItem.setPosition(cc.p(510, y));
             requestItem.setVisible(!union.isRequest);
             menu.addChild(requestItem);
+            this._requestItems[union.id] = requestItem;
 
             var requestedItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
@@ -137,6 +143,7 @@ var SearchUnionLayer = cc.Layer.extend({
             requestedItem.setEnabled(false);
             requestedItem.setVisible(union.isRequest);
             menu.addChild(requestedItem);
+            this._requestedItems[union.id] = requestedItem;
         }
 
         this._scrollView = cc.ScrollView.create(this._searchUnionLayerFit.scrollViewSize, scrollViewLayer);
@@ -149,12 +156,17 @@ var SearchUnionLayer = cc.Layer.extend({
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
     },
 
-    _onClickDetail: function (union) {
+    _onClickDetail: function (id) {
 
         return function () {
             cc.log("SearchUnionLayer _onClickDetail");
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            gameData.union.getMemberList(function (memberList) {
+                if (memberList) {
+                    ShowUnionLayer.pop(memberList, TYPE_UNION_SHOW_OTHER);
+                }
+            }, id);
         }
     },
 
@@ -163,6 +175,14 @@ var SearchUnionLayer = cc.Layer.extend({
         return function () {
             cc.log("SearchUnionLayer _onClickRequest");
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var that = this;
+            gameData.union.unionRequest(function (isSuccess) {
+                if (isSuccess) {
+                    that._requestedItems[id].setVisible(true);
+                    that._requestItems[id].setVisible(false);
+                }
+            }, id);
         }
     },
 
@@ -175,23 +195,11 @@ var SearchUnionLayer = cc.Layer.extend({
             return;
         }
 
-        var unions = [];
-        for(var i = 0;i < 10;i++) {
-            unions.push({
-                id: i + 1,
-                name: "公会" + (i + 1),
-                lv: 5,
-                notice: "哈哈哈哈哈哈",
-                count: 30,
-                maxCount: 50,
-                created: "2014-10-10",
-                ability: 123456,
-                isRequest: ((i % 2 == 0) ? true : false)
-            })
-        }
-
-        this._unionList = unions;
-        this.update();
+        var that = this;
+        gameData.union.unionSearch(function (unions) {
+            that._unionList = unions;
+            that.update();
+        }, text);
     },
 
     _onClickBack: function () {

@@ -76,9 +76,9 @@ var MainMenuLayer = cc.Layer.extend({
             mainMenu.addChild(item);
         }
 
-        this._bossMark = cc.BuilderReader.load(main_scene_image.uiEffect91, this);
-        this._bossMark.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
-        this.addChild(this._bossMark);
+//        this._bossMark = cc.BuilderReader.load(main_scene_image.uiEffect91, this);
+//        this._bossMark.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
+//        this.addChild(this._bossMark);
 
         return true;
     },
@@ -136,21 +136,21 @@ var MainMenuLayer = cc.Layer.extend({
     updateMark: function () {
         cc.log("MainMenuLayer updateMark");
 
-        var mark = gameMark.getBossMark();
-
-        if (mark) {
-            var nowLayer = MainScene.getInstance().getLayer();
-            var len = this._layer[2].length;
-
-            for (var i = 0; i < len; ++i) {
-                if (nowLayer instanceof this._layer[2][i]) {
-                    gameMark.updateBossMark(false);
-                    return;
-                }
-            }
-        }
-
-        this._bossMark.setVisible(mark);
+//        var mark = gameMark.getBossMark();
+//
+//        if (mark) {
+//            var nowLayer = MainScene.getInstance().getLayer();
+//            var len = this._layer[2].length;
+//
+//            for (var i = 0; i < len; ++i) {
+//                if (nowLayer instanceof this._layer[2][i]) {
+//                    gameMark.updateBossMark(false);
+//                    return;
+//                }
+//            }
+//        }
+//
+//        this._bossMark.setVisible(mark);
     },
 
     _onClickLayer: function (index) {

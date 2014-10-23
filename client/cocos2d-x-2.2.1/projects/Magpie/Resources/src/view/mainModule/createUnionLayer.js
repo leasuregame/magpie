@@ -132,6 +132,24 @@ var CreateUnionLayer = cc.Layer.extend({
             TipLayer.tip("名字长度不得超过8个字符");
             return;
         }
+
+        var player = gameData.player;
+
+        if(player.get("gold") < 200) {
+            TipLayer.tip("魔石不足");
+            return;
+        }
+
+        if(player.get("money") < 1000000) {
+            TipLayer.tip("仙币不足");
+            return;
+        }
+
+        gameData.union.unionCreate(function(isSuccess){
+            if(isSuccess) {
+                MainScene.getInstance().switchLayer(UnionLayer);
+            }
+        }, text);
     }
 
 });

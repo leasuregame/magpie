@@ -80,8 +80,14 @@ var UpdateUnionNoticeLabel = LazyLayer.extend({
             return;
         }
 
-        this._cb(text);
-        this.removeFromParent();
+        var that = this;
+        gameData.union.unionUpdate(function (isSuccess) {
+            if(isSuccess) {
+                that._cb(text);
+                that.removeFromParent();
+            }
+        }, text);
+
     },
 
     _onClickClose: function () {

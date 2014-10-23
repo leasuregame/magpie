@@ -5,10 +5,16 @@
 var RequestUnionLayer = cc.Layer.extend({
     _requestUnionLayerFit: null,
 
+    _requestItems: null,
+    _requestedItems: null,
+
     init: function (unionList) {
         if (!this._super()) return false;
 
         this._requestUnionLayerFit = gameFit.mainScene.requestUnionLayer;
+
+        this._requestItems = [];
+        this._requestedItems = [];
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -78,6 +84,7 @@ var RequestUnionLayer = cc.Layer.extend({
             requestItem.setPosition(cc.p(510, y));
             requestItem.setVisible(!union.isRequest);
             menu.addChild(requestItem);
+            this._requestItems[union.id] = requestItem;
 
             var requestedItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
@@ -91,6 +98,7 @@ var RequestUnionLayer = cc.Layer.extend({
             requestedItem.setEnabled(false);
             requestedItem.setVisible(union.isRequest);
             menu.addChild(requestedItem);
+            this._requestedItems[union.id] = requestedItem;
         }
 
         this._scrollView = cc.ScrollView.create(this._requestUnionLayerFit.scrollViewSize, scrollViewLayer);
@@ -124,21 +132,7 @@ var RequestUnionLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            var members = [];
-            for(var i = 0;i < 10;i++) {
-                members.push({
-                    id: i + 1,
-                    name: "哈哈哈哈哈",
-                    lv: 80,
-                    vip: 3,
-                    role: i % 3 + 1,
-                    ability: 123456
-                })
-            }
-
-            var showUnionLayer = ShowUnionLayer.create(members);
-            MainScene.getInstance().switchTo(showUnionLayer);
-
+            ShowUnionLayer.pop(union.memberList, TYPE_UNION_SHOW_OTHER);
         }
     },
 
@@ -147,6 +141,14 @@ var RequestUnionLayer = cc.Layer.extend({
         return function () {
             cc.log("RequestUnionLayer _onClickRequest");
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            var that = this;
+            gameData.union.unionRequest(function(isSuccess) {
+                if(isSuccess) {
+                    that._requestedItems[id].setVisible(true);
+                    that._requestItems[id].setVisible(false);
+                }
+            }, id);
         }
     },
 

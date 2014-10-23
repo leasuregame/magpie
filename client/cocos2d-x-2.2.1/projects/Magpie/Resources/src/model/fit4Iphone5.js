@@ -1588,6 +1588,20 @@ var fit4Iphone5 = {
             "titleIconPoint": cc.p(320, 1096),
             "backItemPoint": cc.p(60, 1096)
         },
+        "unionRequestListLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "membersLabelPoint": cc.p(510, 140),
+            "countLabelPoint": cc.p(560, 140),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 860),
+            "scrollViewSize": cc.size(640, 860),
+            "scrollViewPoint": cc.p(0, 162),
+            "labelContentSize": cc.size(216, 180),
+            "detailItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(0, 198, 640, 968)
+        },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(325, 610),
             "pillIconPoint": cc.p(435, 820),

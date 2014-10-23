@@ -6,19 +6,48 @@ var TYPE_UNION_PRESIDENT = 1;
 var TYPE_UNION_ELDERS = 2;
 var TYPE_UNION_MEMBER = 3;
 
+var TYPE_UNION_SHOW_MYSELF = 0;
+var TYPE_UNION_SHOW_OTHER = 1;
+
 var Union = Entity.extend({
     _id: null,              //公会id
     _name: null,            //名字
     _lv: 0,                 //等级
-    _notice: null,          //公告
+    _notice: "",            //公告
     _count: 0,              //当前人数
     _maxCount: 0,           //最多人数
-    _createTime: null,      //创建时间
+    _creator: null,         //创建公会的玩家id
+    _elderCount: null,      //当前长老数量
+    _created: null,         //创建时间
     _ability: 0,            //战斗力
-    _members: [],           //成员
+    _memberList: [],        //成员
+    _role: null,            //玩家角色
 
-    init: function (data) {
-        this.update(data);
+    init: function () {
+        this.sync();
+    },
+
+    sync: function () {
+        cc.log("Union sync");
+
+        var that = this;
+        lz.server.request("area.unionHandler.getUnion", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Union getUnion success");
+
+                var msg = data.msg.union;
+                for (var key in msg) {
+                    that.set(key, msg[key]);
+                }
+
+            } else {
+                cc.log("Union getUnion fail");
+
+                that.sync();
+            }
+        }, true);
     },
 
     update: function (data) {
@@ -28,9 +57,9 @@ var Union = Entity.extend({
         this.set("notice", data.notice);
         this.set("count", data.count);
         this.set("maxCount", data.maxCount);
-        this.set("createTime", data.createTime);
+        this.set("created", data.created);
         this.set("ability", data.ability);
-        this.set("member", data.member);
+        this.set("memberList", data.memberList);
     },
 
     unionCreate: function (cb, name, notice) {
@@ -43,11 +72,16 @@ var Union = Entity.extend({
         }, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                that.update(data.msg);
-                cb();
+
+                var msg = data.msg.union;
+                for (var key in msg) {
+                    that.set(key, msg[key]);
+                }
+
+                cb(true);
             } else {
                 TipLayer.tip(data.msg);
-                cb();
+                cb(false);
             }
         });
     },
@@ -61,7 +95,11 @@ var Union = Entity.extend({
         }, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                cb(data.msg.unions);
+                var unions = data.msg.unions || [];
+                if(unions.length == 0) {
+                    TipLayer.tip("未找到对应的公会");
+                }
+                cb(unions);
             } else {
                 TipLayer.tip(data.msg);
                 cb();
@@ -69,16 +107,16 @@ var Union = Entity.extend({
         });
     },
 
-    unionList: function(cb) {
+    unionList: function (cb) {
         cc.log("Union unionList");
 
         var that = this;
         lz.server.request("area.unionHandler.unionList", {
 
-        },function(data) {
+        }, function (data) {
             cc.log(data);
-            if(code == 200) {
-                cb(data.msg.unions)
+            if (data.code == 200) {
+                cb(data.msg.unionList)
             } else {
                 TipLayer.tip(data.msg);
                 cb();
@@ -86,33 +124,48 @@ var Union = Entity.extend({
         });
     },
 
-    unionRequest: function(cb, id) {
+    getMemberList: function(cb, id) {
+        var that = this;
+        lz.server.request("area.unionHandler.getMemberList", {
+            unionId: id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cb(data.msg.memberList)
+            } else {
+                TipLayer.tip(data.msg);
+                cb();
+            }
+        });
+    },
+
+    unionRequest: function (cb, id) {
         cc.log("Union unionRequest");
 
         var that = this;
         lz.server.request("area.unionHandler.unionRequest", {
             unionId: id
-        },function(data) {
+        }, function (data) {
             cc.log(data);
-            if(code == 200) {
+            if (data.code == 200) {
                 TipLayer.tip("申请成功");
-                cb();
+                cb(true);
             } else {
                 TipLayer.tip(data.msg);
-                cb();
+                cb(false);
             }
         });
     },
 
-    unionCancel: function(cb, id) {
+    unionCancel: function (cb, id) {
         cc.log("Union unionCancel");
 
         var that = this;
         lz.server.request("area.unionHandler.unionCancel", {
             requestId: id
-        },function(data) {
+        }, function (data) {
             cc.log(data);
-            if(code == 200) {
+            if (data.code == 200) {
                 cb();
             } else {
                 TipLayer.tip(data.msg);
@@ -121,16 +174,34 @@ var Union = Entity.extend({
         });
     },
 
-    unionApprove: function(cb, id) {
+    requestList: function(cb) {
+        cc.log("Union requestList");
+
+        var that = this;
+        lz.server.request("area.unionHandler.requestList", {
+            unionId: this._id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cb(data.msg.requestList);
+            } else {
+                TipLayer.tip(data.msg);
+                cb();
+            }
+        });
+    },
+
+    unionApprove: function (cb, id) {
         cc.log("Union unionApprove");
 
         var that = this;
-        lz.server.request("area.unionHandler.unionApprove", {
+        lz.server.request("area.unionHandler.requestApprove", {
             requestId: id
-        },function(data) {
+        }, function (data) {
             cc.log(data);
-            if(code == 200) {
-                cb(data.msg.member);
+            if (data.code == 200) {
+                that._memberList.push(data.msg.member);
+                cb(data.msg.requestList);
             } else {
                 TipLayer.tip(data.msg);
                 cb();
@@ -138,16 +209,16 @@ var Union = Entity.extend({
         });
     },
 
-    unionRefuse: function(cb, id) {
+    unionRefuse: function (cb, id) {
         cc.log("Union unionRefuse");
 
         var that = this;
-        lz.server.request("area.unionHandler.unionRefuse", {
+        lz.server.request("area.unionHandler.requestRefuse", {
             requestId: id
-        },function(data) {
+        }, function (data) {
             cc.log(data);
-            if(code == 200) {
-                cb();
+            if (data.code == 200) {
+                cb(data.msg.requestList);
             } else {
                 TipLayer.tip(data.msg);
                 cb();
@@ -155,38 +226,56 @@ var Union = Entity.extend({
         });
     },
 
-    unionQuit: function(cb, id) {
+    unionQuit: function (cb) {
         cc.log("Union unionQuit");
 
         var that = this;
         lz.server.request("area.unionHandler.unionQuit", {
-            unionId: id
-        },function(data) {
+            unionId: this._id
+        }, function (data) {
             cc.log(data);
-            if(code == 200) {
+            if (data.code == 200) {
                 TipLayer.tip("退出公会成功");
-                cb();
+                that._id = null;
+                cb(true);
             } else {
                 TipLayer.tip(data.msg);
-                cb();
+                cb(false);
             }
         });
     },
 
-    unionUpdate: function(cb, notice ) {
+    unionDismiss: function(cb) {
+        var that = this;
+        lz.server.request("area.unionHandler.unionDismiss", {
+            unionId: this._id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                TipLayer.tip("解散公会成功");
+                that._id = null;
+                cb(true);
+            } else {
+                TipLayer.tip(data.msg);
+                cb(false);
+            }
+        });
+    },
+
+    unionUpdate: function (cb, notice) {
         cc.log("Union unionList");
 
         var that = this;
         lz.server.request("area.unionHandler.unionUpdate", {
             notice: notice
-        },function(data) {
+        }, function (data) {
             cc.log(data);
-            if(code == 200) {
+            if (data.code == 200) {
                 TipLayer.tip("更新成功");
-                cb();
+                cb(true);
             } else {
                 TipLayer.tip(data.msg);
-                cb();
+                cb(false);
             }
         });
     }

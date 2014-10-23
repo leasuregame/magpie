@@ -1,19 +1,20 @@
 /**
  * Created by xiaoyu on 2014/10/19.
  */
-
 var ShowUnionLayer = cc.Layer.extend({
     _showUnionLayerFit: null,
     _playerItem: null,
     _members: null,
+    _type: null,
 
-    init: function(members) {
-        if(!this._super()) return false;
+    init: function (members, type) {
+        if (!this._super()) return false;
 
         this._showUnionLayerFit = gameFit.mainScene.showUnionLayer;
 
         this._members = members;
         this._playerItem = [];
+        this._type = type || TYPE_UNION_SHOW_MYSELF;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -28,40 +29,49 @@ var ShowUnionLayer = cc.Layer.extend({
         var titleIcon = cc.Sprite.create(main_scene_image.icon16);
         titleIcon.setPosition(this._showUnionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
-        
+
         var scrollViewLayer = MarkLayer.create(this._showUnionLayerFit.scrollViewLayerRect);
 
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 2);
 
-        var len = members.length;
+        var len = this._members.length;
         var scrollViewHeight = len * 150;
 
         for (var i = 0; i < len; i++) {
-            var player = members[i];
+            var player = this._members[i];
             var y = scrollViewHeight - 75 - i * 150;
 
-            var playerItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
-                this._onClickPlayer(i),
-                this
-            );
+            var playerItem = null;
+
+            if (player.id == gameData.player.get("id")) {
+                playerItem = cc.Sprite.create(main_scene_image.button18);
+                scrollViewLayer.addChild(playerItem);
+            }
+            else {
+                playerItem = cc.MenuItemImage.create(
+                    main_scene_image.button15,
+                    main_scene_image.button15s,
+                    this._onClickPlayer(i),
+                    this
+                );
+                playerItem.setEnabled(this._type == TYPE_UNION_SHOW_MYSELF);
+                menu.addChild(playerItem);
+            }
             playerItem.setAnchorPoint(cc.p(0, 0.5));
             playerItem.setPosition(cc.p(20, y));
-            menu.addChild(playerItem);
 
             this._playerItem[i] = playerItem;
 
             var roleIcon = null;
 
-            if(player.role == 1)
+            if (player.role == 1)
                 roleIcon = "icon501";
-            else if(player.role == 2)
+            else if (player.role == 2)
                 roleIcon = "icon502";
 
-            if(roleIcon) {
+            if (roleIcon) {
                 var roleLabel = cc.Sprite.create(main_scene_image[roleIcon]);
                 roleLabel.setAnchorPoint(cc.p(0, 0.5));
                 roleLabel.setPosition(cc.p(450, 100));
@@ -79,11 +89,12 @@ var ShowUnionLayer = cc.Layer.extend({
             nameLabel.setPosition(cc.p(30, 100));
             playerItem.addChild(nameLabel);
 
-            var vipLabel = cc.Sprite.create(main_scene_image["vip" + player.vip]);
-            vipLabel.setAnchorPoint(cc.p(0, 0.5));
-            vipLabel.setPosition(cc.p(190, 100));
-            playerItem.addChild(vipLabel);
-
+            if(player.vip && player.vip > 0) {
+                var vipLabel = cc.Sprite.create(main_scene_image["vip" + player.vip]);
+                vipLabel.setAnchorPoint(cc.p(0, 0.5));
+                vipLabel.setPosition(cc.p(190, 100));
+                playerItem.addChild(vipLabel);
+            }
             var otherIcon = cc.Sprite.create(main_scene_image.icon30);
             otherIcon.setAnchorPoint(cc.p(0, 0.5));
             otherIcon.setPosition(cc.p(25, 50));
@@ -113,6 +124,7 @@ var ShowUnionLayer = cc.Layer.extend({
                 this
             );
             detailItem.setPosition(cc.p(490, 60));
+            detailItem.setVisible(this._type == TYPE_UNION_SHOW_OTHER);
             detailMenu.addChild(detailItem, 2);
         }
 
@@ -137,45 +149,47 @@ var ShowUnionLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._skyDialog = SkyDialog.create();
-        this.addChild(this._skyDialog, 10);
+        if(this._type == TYPE_UNION_SHOW_MYSELF) {
+            this._skyDialog = SkyDialog.create();
+            this.addChild(this._skyDialog, 10);
 
-        var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
-        skyLabel.setContentSize(this._showUnionLayerFit.labelContentSize);
+            var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
+            skyLabel.setContentSize(this._showUnionLayerFit.labelContentSize);
 
-        var detailItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon120,
-            this._onClickDetail(),
-            this
-        );
-        detailItem.setPosition(this._showUnionLayerFit.detailItemPoint);
+            var detailItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.icon120,
+                this._onClickDetail(),
+                this
+            );
+            detailItem.setPosition(this._showUnionLayerFit.detailItemPoint);
 
-        var sendMessageItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon119,
-            this._onClickSendMessage,
-            this
-        );
-        sendMessageItem.setPosition(this._showUnionLayerFit.sendMessageItemPoint);
+            var sendMessageItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.icon119,
+                this._onClickSendMessage,
+                this
+            );
+            sendMessageItem.setPosition(this._showUnionLayerFit.sendMessageItemPoint);
 
-        var battleItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon121,
-            this._onClickFight,
-            this
-        );
-        battleItem.setPosition(this._showUnionLayerFit.battleItemPoint);
+            var battleItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.icon121,
+                this._onClickFight,
+                this
+            );
+            battleItem.setPosition(this._showUnionLayerFit.battleItemPoint);
 
-        var skyMenu = cc.Menu.create(detailItem, sendMessageItem, battleItem);
-        skyMenu.setPosition(cc.p(0, 0));
-        skyLabel.addChild(skyMenu);
+            var skyMenu = cc.Menu.create(detailItem, sendMessageItem, battleItem);
+            skyMenu.setPosition(cc.p(0, 0));
+            skyLabel.addChild(skyMenu);
 
-        this._skyDialog.setLabel(skyLabel);
-        this._skyDialog.setRect(this._showUnionLayerFit.skyDialogRect);
+            this._skyDialog.setLabel(skyLabel);
+            this._skyDialog.setRect(this._showUnionLayerFit.skyDialogRect);
+        }
 
         return true;
     },
@@ -193,9 +207,9 @@ var ShowUnionLayer = cc.Layer.extend({
         }
     },
 
-    _onClickDetail: function(index) {
+    _onClickDetail: function (index) {
         var self = this;
-        return function() {
+        return function () {
             cc.log("ShowUnionLayer _onClickDetail");
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
@@ -203,15 +217,15 @@ var ShowUnionLayer = cc.Layer.extend({
 
             var player = self._members[index];
 
-//            if (player) {
-//                gameData.player.playerDetail(function (data) {
-//                    cc.log(data);
-//
-//                    LineUpDetail.pop(data);
-//                }, player.playerId);
-//            } else {
-//                TipLayer.tip("找不到该玩家");
-//            }
+            if (player) {
+                gameData.player.playerDetail(function (data) {
+                    cc.log(data);
+
+                    LineUpDetail.pop(data);
+                }, player.playerId);
+            } else {
+                TipLayer.tip("找不到该玩家");
+            }
         }
     },
 
@@ -230,17 +244,18 @@ var ShowUnionLayer = cc.Layer.extend({
     },
 
     _onClickFight: function () {
-        cc.log("ShowUnionLayer _onClickFight: " + this._selectFriend);
-        cc.log(this._selectFriend);
+        cc.log("ShowUnionLayer _onClickFight: " + this._selectId);
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-//        var that = this;
-//        gameData.player.fight(function (battleLogId) {
-//            BattlePlayer.getInstance().play({
-//                id: battleLogId
-//            });
-//        }, this._selectFriend);
+        var player = this._members[this._selectId];
+
+        var that = this;
+        gameData.player.fight(function (battleLogId) {
+            BattlePlayer.getInstance().play({
+                id: battleLogId
+            });
+        }, player.id);
     },
 
     _onClickBack: function () {
@@ -248,33 +263,21 @@ var ShowUnionLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        var unions = [];
-        for(var i = 0;i < 10;i++) {
-            unions.push({
-                id: i + 1,
-                name: "公会" + (i + 1),
-                lv: 5,
-                notice: "哈哈哈哈哈哈",
-                count: 30,
-                maxCount: 50,
-                created: "2014-10-10",
-                ability: 123456,
-                isRequest: ((i % 2 == 0) ? true : false)
-            })
-        }
-
-        var requestUnionLayer = RequestUnionLayer.create(unions);
-
-        MainScene.getInstance().switchTo(requestUnionLayer);
+        this.removeFromParent();
     }
 });
 
-ShowUnionLayer.create = function(members) {
+ShowUnionLayer.create = function (members, type) {
     var ret = new ShowUnionLayer();
 
-    if(ret && ret.init(members)) {
+    if (ret && ret.init(members, type)) {
         return ret
     }
 
     return null;
+};
+
+ShowUnionLayer.pop = function(members, type) {
+    var showUnionLayer = ShowUnionLayer.create(members, type);
+    MainScene.getInstance().getLayer().addChild(showUnionLayer, 10);
 };

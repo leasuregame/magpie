@@ -24,7 +24,7 @@ var UnionManageLayer = cc.Layer.extend({
         titleIcon.setPosition(this._unionManageLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        var role = TYPE_UNION_PRESIDENT;
+        var role = gameData.union.get("role");
 
         var bgLayer = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgLayer.setPosition(gameFit.GAME_MIDPOINT);
@@ -57,21 +57,21 @@ var UnionManageLayer = cc.Layer.extend({
             this
         );
 
-        var unionQuitItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button91,
-            main_scene_image.button91s,
-            main_scene_image.button1d,
-            main_scene_image.icon499,
-            this._onClickUnionQuitItem,
-            this
-        );
-
         var unionDismissItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button91,
             main_scene_image.button91s,
             main_scene_image.button1d,
-            main_scene_image.icon500,
+            main_scene_image.icon499,
             this._onClickUnionDismissItem,
+            this
+        );
+
+        var unionQuitItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button91,
+            main_scene_image.button91s,
+            main_scene_image.button1d,
+            main_scene_image.icon500,
+            this._onClickUnionQuitItem,
             this
         );
 
@@ -104,7 +104,7 @@ var UnionManageLayer = cc.Layer.extend({
             titleIcon2.setPosition(cc.p(230, 405));
             bgLabel.setPosition(cc.p(230, 220));
             bgLabel.setContentSize(cc.size(350, 260));
-            items.push(unionMembersItem, unionApplyForItem);
+            items.push(unionMembersItem, unionQuitItem);
             y = 400;
         }
 
@@ -133,32 +133,45 @@ var UnionManageLayer = cc.Layer.extend({
         cc.log("UnionManageLayer _onClickUnionMembers");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
+
+        ShowUnionLayer.pop(gameData.union.get("memberList"), TYPE_UNION_SHOW_MYSELF);
     },
 
     _onClickUnionApplyFor: function () {
         cc.log("UnionManageLayer _onClickUnionApplyFor");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
+
+        gameData.union.requestList(function(list) {
+            if(list) {
+                var unionRequestListLayer = UnionRequestListLayer.create(list);
+                MainScene.getInstance().switchTo(unionRequestListLayer);
+            }
+        });
     },
 
     _onClickUnionQuitItem: function () {
         cc.log("UnionManageLayer _onClickUnionQuitItem");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
+
+        gameData.union.unionQuit(function (isSuccess) {
+            if(isSuccess) {
+                MainScene.getInstance().switchLayer(UnionLayer);
+            }
+        });
     },
 
     _onClickUnionDismissItem: function () {
         cc.log("UnionManageLayer _onClickUnionDismissItem");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-//        var searchUnionLayer = SearchUnionLayer.create();
-//        MainScene.getInstance().switchTo(searchUnionLayer);
+
+        gameData.union.unionDismiss(function (isSuccess) {
+            if(isSuccess) {
+                MainScene.getInstance().switchLayer(UnionLayer);
+            }
+        });
     },
 
     _onClickBack: function () {

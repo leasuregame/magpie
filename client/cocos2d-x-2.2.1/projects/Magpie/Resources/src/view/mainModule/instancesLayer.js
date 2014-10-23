@@ -138,6 +138,12 @@ var InstancesLayer = cc.Layer.extend({
             this.addChild(this._dailyInstancesGuide, 2);
         }
 
+        if (gameGuide.get("bossGuide") && !this._bossGuide) {
+            this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._bossGuide.setPosition(this._instancesLayerFit.bossListLayerItemPoint);
+            this.addChild(this._bossGuide, 2);
+        }
+
     },
 
     _onClickTaskLayer: function () {
@@ -195,6 +201,12 @@ var InstancesLayer = cc.Layer.extend({
         cc.log("InstancesLayer _onClickBossListLayer");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._bossGuide) {
+            this._bossGuide.removeFromParent();
+            this._bossGuide = null;
+            gameGuide.set("bossGuide", false);
+        }
 
         if (this.switchLayer(BossListLayer)) {
             this._taskLayerItem.setEnabled(true);

@@ -124,13 +124,6 @@ var MainMenuLayer = cc.Layer.extend({
             this._tournamentGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
             this.addChild(this._tournamentGuide);
         }
-
-        if (gameGuide.get("bossGuide") && !this._bossGuide) {
-            this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
-            this._bossGuide.setRotation(180);
-            this._bossGuide.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
-            this.addChild(this._bossGuide);
-        }
     },
 
     updateMark: function () {
@@ -170,14 +163,6 @@ var MainMenuLayer = cc.Layer.extend({
                     this._tournamentGuide.removeFromParent();
                     this._tournamentGuide = null;
                     gameGuide.set("tournamentGuide", false);
-                }
-            }
-
-            if (index == 3) {
-                if (this._bossGuide) {
-                    this._bossGuide.removeFromParent();
-                    this._bossGuide = null;
-                    gameGuide.set("bossGuide", false);
                 }
             }
 

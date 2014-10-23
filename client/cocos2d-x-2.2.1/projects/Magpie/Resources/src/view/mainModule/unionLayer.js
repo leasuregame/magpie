@@ -217,6 +217,7 @@ var UnionLayer = cc.Layer.extend({
     _onClickWishTree: function () {
         cc.log("UnionLayer _onClickWishTree");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        MainScene.getInstance().switchLayer(WishTreeLayer);
     },
 
     _onClickUnionWars: function () {
@@ -234,8 +235,7 @@ var UnionLayer = cc.Layer.extend({
     _onClickUnionManage: function () {
         cc.log("UnionLayer _onClickUnionManage");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-        var unionManageLayer = UnionManageLayer.create();
-        MainScene.getInstance().switchTo(unionManageLayer);
+        MainScene.getInstance().switchLayer(UnionManageLayer);
     }
 });
 

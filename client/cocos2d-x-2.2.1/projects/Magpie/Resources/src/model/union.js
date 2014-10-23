@@ -22,6 +22,11 @@ var Union = Entity.extend({
     _ability: 0,            //战斗力
     _memberList: [],        //成员
     _role: null,            //玩家角色
+    _cdTime: null,          //采集cd
+    _exp: 0,                //许愿树经验
+    _MaxExp: 0,             //许愿树最大经验
+    _collectTimes: 0,       //采集次数
+    _maxCollectTimes: 0,    //最大采集次数
 
     init: function () {
         this.sync();

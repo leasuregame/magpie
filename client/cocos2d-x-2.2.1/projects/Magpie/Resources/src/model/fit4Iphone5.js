@@ -1693,6 +1693,20 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(500, 665),
             "scrollViewPoint": cc.p(70, 220)
         },
+        "wishTreeLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "nextCollectLabelPoint": cc.p(400, 1006),
+            "collectCdTimePoint": cc.p(520, 1006),
+            "removeCdTimeItemPoint": cc.p(600, 1006),
+            "todayCollectLabelPoint": cc.p(400, 966),
+            "collectTimeLabelPoint": cc.p(545, 966),
+            "lvLabelPoint": cc.p(100, 200),
+            "progressPoint": cc.p(320, 200),
+            "tipLabelPoint": cc.p(320, 150)
+        },
         "worldCupLayer": {
             "bgSpritePoint": cc.p(0, 80),
             "tipLabelPoint": cc.p(320, 867),

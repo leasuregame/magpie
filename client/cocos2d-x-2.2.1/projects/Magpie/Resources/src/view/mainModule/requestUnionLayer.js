@@ -68,7 +68,7 @@ var RequestUnionLayer = cc.Layer.extend({
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.icon120,
-                this._onClickDetail(union),
+                this._onClickDetail(union.id),
                 this
             );
             detailItem.setPosition(cc.p(360, y));
@@ -82,7 +82,7 @@ var RequestUnionLayer = cc.Layer.extend({
                 this
             );
             requestItem.setPosition(cc.p(510, y));
-            requestItem.setVisible(!union.isRequest);
+            requestItem.setVisible(!union.hasRequest);
             menu.addChild(requestItem);
             this._requestItems[union.id] = requestItem;
 
@@ -96,7 +96,7 @@ var RequestUnionLayer = cc.Layer.extend({
             );
             requestedItem.setPosition(cc.p(510, y));
             requestedItem.setEnabled(false);
-            requestedItem.setVisible(union.isRequest);
+            requestedItem.setVisible(union.hasRequest);
             menu.addChild(requestedItem);
             this._requestedItems[union.id] = requestedItem;
         }
@@ -125,14 +125,18 @@ var RequestUnionLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickDetail: function (union) {
+    _onClickDetail: function (id) {
 
         return function () {
             cc.log("RequestUnionLayer _onClickDetail");
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            ShowUnionLayer.pop(union.memberList, TYPE_UNION_SHOW_OTHER);
+            gameData.union.getMemberList(function (memberList) {
+                if (memberList) {
+                    ShowUnionLayer.pop(memberList, TYPE_UNION_SHOW_OTHER);
+                }
+            }, id);
         }
     },
 

@@ -5,15 +5,19 @@
 var WishTreeLayer = cc.Layer.extend({
     _wishTreeLayerFit: null,
 
-    onEnter: function() {
+    _tree: null,
+
+    onEnter: function () {
         this._super();
         this.update();
     },
 
-    init: function() {
-        if(!this._super()) return false;
+    init: function (tree) {
+        if (!this._super()) return false;
 
         this._wishTreeLayerFit = gameFit.mainScene.wishTreeLayer;
+
+        this._tree = tree;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -34,7 +38,7 @@ var WishTreeLayer = cc.Layer.extend({
         this.addChild(nextCollectLabel);
 
         this._collectCdTime = StrokeLabel.create(
-            "00:30:00",//lz.getCountdownStr(boss.timeLeft),
+            "00:00:00",
             "STHeitiTC-Medium",
             22
         );
@@ -48,21 +52,20 @@ var WishTreeLayer = cc.Layer.extend({
             this
         );
         this._removeCdTimeItem.setPosition(this._wishTreeLayerFit.removeCdTimeItemPoint);
-        //this._removeCdTimeItem.setVisible(this._cdTime > 0);
 
         var todayCollectLabel = StrokeLabel.create("今天采集次数: ", "STHeitiTC-Medium", 22);
         todayCollectLabel.setPosition(this._wishTreeLayerFit.todayCollectLabelPoint);
         this.addChild(todayCollectLabel);
 
-        this._collectTimesLabel = StrokeLabel.create("4/4", "STHeitiTC-Medium", 22);
+        this._collectTimesLabel = StrokeLabel.create("0/0", "STHeitiTC-Medium", 22);
         this._collectTimesLabel.setPosition(this._wishTreeLayerFit.collectTimeLabelPoint);
         this.addChild(this._collectTimesLabel);
 
-        this._spiritPool = cc.BuilderReader.load(main_scene_image.uiEffect2, this);
+        this._spiritPool = cc.BuilderReader.load(main_scene_image.uiEffect121, this);
         this._spiritPool.setPosition(gameFit.GAME_MIDPOINT);
         this.addChild(this._spiritPool);
 
-        this._lvLabel = StrokeLabel.create("Lv：10", "STHeitiTC-Medium", 22);
+        this._lvLabel = StrokeLabel.create("Lv：0", "STHeitiTC-Medium", 22);
         this._lvLabel.setPosition(this._wishTreeLayerFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
@@ -94,17 +97,48 @@ var WishTreeLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        this.schedule(this._updateCdTime, UPDATE_CD_TIME_INTERVAL);
+
         return true;
     },
 
-    update: function() {
-        this._progress.setAllValue(5, 10);
+    update: function () {
+        this._progress.setAllValue(this._tree.exp, 10);
+        this._collectCdTime.setString(lz.getCountdownStr(this._tree.waterCd));
+        this._collectTimesLabel.setString(this._tree.waterCountLeft + "/" + this._tree.waterTotalCount);
+        this._lvLabel.setString("Lv：" + this._tree.lv);
+        this._removeCdTimeItem.setVisible(this._tree.waterCd > 0);
     },
 
-    _onClickRemoveCdTime: function() {
+    _updateCdTime: function () {
+        this._collectCdTime.setString(lz.getCountdownStr(this._tree.waterCd));
+
+        if (this._tree.waterCD > 0) {
+            this._tree.waterCD--;
+        }
+
+        this._removeCdTimeItem.setVisible(this._tree.waterCd > 0);
+    },
+
+    _onClickWatering: function() {
+        cc.log("WishTreeLayer _onClickWatering");
+
+        var that = this;
+        gameData.union.watering(function (tree) {
+            that._tree = tree;
+            that.update();
+        });
+    },
+
+    _onClickRemoveCdTime: function () {
         cc.log("WishTreeLayer _onClickRemoveCdTime");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var that = this;
+        gameData.union.removeWaterCd(function (cd) {
+            that._tree.waterCd = cd;
+        });
     },
 
     _onClickBack: function () {
@@ -116,10 +150,10 @@ var WishTreeLayer = cc.Layer.extend({
     }
 });
 
-WishTreeLayer.create = function() {
+WishTreeLayer.create = function (tree) {
     var ret = new WishTreeLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init(tree)) {
         return ret;
     }
 

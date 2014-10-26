@@ -22,11 +22,7 @@ var Union = Entity.extend({
     _ability: 0,            //战斗力
     _memberList: [],        //成员
     _role: null,            //玩家角色
-    _cdTime: null,          //采集cd
-    _exp: 0,                //许愿树经验
-    _MaxExp: 0,             //许愿树最大经验
-    _collectTimes: 0,       //采集次数
-    _maxCollectTimes: 0,    //最大采集次数
+    _tree: null,            //许愿树
 
     init: function () {
         this.sync();
@@ -281,6 +277,62 @@ var Union = Entity.extend({
             } else {
                 TipLayer.tip(data.msg);
                 cb(false);
+            }
+        });
+    },
+
+    getTree:function(cb) {
+        cc.log("Union getTree");
+
+        var that = this;
+        lz.server.request("area.unionTreeHandler.getTree", {
+            treeId: this._tree.id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cb(data.msg.tree);
+            } else {
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    watering: function(cb) {
+        cc.log("Union watering");
+
+        var that = this;
+        lz.server.request("area.unionTreeHandler.watering", {
+            treeId: this._tree.id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                var rewards = data.msg.rewards;
+
+                gameData.player.adds({
+                    money: rewards.money,
+                    gold: rewards.gold
+                });
+
+                lz.tipReward(rewards);
+
+                cb(data.msg.tree);
+            } else {
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    removeWaterCd: function(cb) {
+        cc.log("Union removeWaterCd");
+
+        var that = this;
+        lz.server.request("area.unionTreeHandler.removeWaterCd", {
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                cb(data.msg.waterCd);
+            } else {
+                TipLayer.tip(data.msg);
             }
         });
     }

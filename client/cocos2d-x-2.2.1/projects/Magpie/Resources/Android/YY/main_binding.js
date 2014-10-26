@@ -75,6 +75,7 @@ var appFiles = [
     'src/model/activity.js',
     'src/model/greeting.js',
     'src/model/boss.js',
+    'src/model/union.js',
 
     'payment.js',
 
@@ -200,8 +201,15 @@ var appFiles = [
     'src/view/mainModule/rankLayer.js',
     'src/view/mainModule/readMessageLayer.js',
     'src/view/mainModule/removeCdTipLabel.js',
+
+    'src/view/mainModule/requestUnionLayer.js',//
+    'src/view/mainModule/searchUnionLayer.js',//
+
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
+
+    'src/view/mainModule/showUnionLayer.js',//
+
     'src/view/mainModule/skillUpgradeLabel.js',
     'src/view/mainModule/smeltLayer.js',
     'src/view/mainModule/speakerLayer.js',
@@ -222,6 +230,12 @@ var appFiles = [
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
+
+    'src/view/mainModule/unionLayer.js',//
+    'src/view/mainModule/unionManage.js',//
+    'src/view/mainModule/unionRequestListLayer.js',//
+    'src/view/mainModule/updateUnionNoticeLabel.js',//
+    
     'src/view/mainModule/usePillLabel.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',

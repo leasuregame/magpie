@@ -38,7 +38,7 @@ var SearchUnionLayer = cc.Layer.extend({
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        this._nameEditBox.setPlaceHolder("输入公会ID");
+        this._nameEditBox.setPlaceHolder("输入公会ID或者名字");
         this.addChild(this._nameEditBox);
 
         var searchUnionItem = cc.MenuItemImage.create(
@@ -191,7 +191,7 @@ var SearchUnionLayer = cc.Layer.extend({
         cc.log("search union's id: " + text);
 
         if (text == null || text == "") {
-            TipLayer.tip("请先输入公会ID");
+            TipLayer.tip("请先输入公会ID或者名字");
             return;
         }
 

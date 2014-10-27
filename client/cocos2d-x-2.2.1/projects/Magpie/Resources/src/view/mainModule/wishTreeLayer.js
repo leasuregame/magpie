@@ -61,9 +61,9 @@ var WishTreeLayer = cc.Layer.extend({
         this._collectTimesLabel.setPosition(this._wishTreeLayerFit.collectTimeLabelPoint);
         this.addChild(this._collectTimesLabel);
 
-        this._spiritPool = cc.BuilderReader.load(main_scene_image.uiEffect121, this);
-        this._spiritPool.setPosition(gameFit.GAME_MIDPOINT);
-        this.addChild(this._spiritPool);
+        this._wishTree = cc.BuilderReader.load(main_scene_image.uiEffect121, this);
+        this._wishTree.setPosition(gameFit.GAME_MIDPOINT);
+        this.addChild(this._wishTree);
 
         this._lvLabel = StrokeLabel.create("Lv：0", "STHeitiTC-Medium", 22);
         this._lvLabel.setPosition(this._wishTreeLayerFit.lvLabelPoint);
@@ -103,7 +103,8 @@ var WishTreeLayer = cc.Layer.extend({
     },
 
     update: function () {
-        this._progress.setAllValue(this._tree.exp, 10);
+        var exp = outputTables.union_tree_upgrade_config.rows[this._tree.lv + 1].exp;
+        this._progress.setAllValue(this._tree.exp, exp);
         this._collectCdTime.setString(lz.getCountdownStr(this._tree.waterCd));
         this._collectTimesLabel.setString(this._tree.waterCountLeft + "/" + this._tree.waterTotalCount);
         this._lvLabel.setString("Lv：" + this._tree.lv);
@@ -120,13 +121,32 @@ var WishTreeLayer = cc.Layer.extend({
         this._removeCdTimeItem.setVisible(this._tree.waterCd > 0);
     },
 
-    _onClickWatering: function() {
-        cc.log("WishTreeLayer _onClickWatering");
+    ccbFnWatering: function() {
+        cc.log("WishTreeLayer ccbFnWatering");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        LazyLayer.showCloudLayer();
 
         var that = this;
         gameData.union.watering(function (tree) {
-            that._tree = tree;
-            that.update();
+            if(tree) {
+                that._tree = tree;
+                that.update();
+                that._wishTree.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+            } else {
+                that.update();
+                LazyLayer.closeCloudLayer();
+            }
+        });
+    },
+
+    ccbFnWaterPlay: function() {
+        cc.log("WishTreeLayer ccbFnWaterPlay");
+
+        this._wishTree.animationManager.setCompletedAnimationCallback(this, function(){
+            LazyLayer.closeCloudLayer();
+            that._wishTree.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
         });
     },
 
@@ -136,8 +156,10 @@ var WishTreeLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        gameData.union.removeWaterCd(function (cd) {
-            that._tree.waterCd = cd;
+        AdvancedTipsLabel.pop(TYPE_REMOVE_WATER_CD_TIPS, function () {
+            gameData.union.removeWaterCd(function (cd) {
+                that._tree.waterCd = cd;
+            });
         });
     },
 

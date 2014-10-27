@@ -1,7 +1,7 @@
 /**
  * Created by xiaoyu on 2014/10/19.
  */
-var ShowUnionLayer = cc.Layer.extend({
+var ShowUnionLayer = LazyLayer.extend({
     _showUnionLayerFit: null,
     _playerItem: null,
     _members: null,
@@ -33,6 +33,7 @@ var ShowUnionLayer = cc.Layer.extend({
         var scrollViewLayer = MarkLayer.create(this._showUnionLayerFit.scrollViewLayerRect);
 
         var menu = LazyMenu.create();
+        menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 2);
 
@@ -113,6 +114,7 @@ var ShowUnionLayer = cc.Layer.extend({
             playerItem.addChild(abilityLabel);
 
             var detailMenu = LazyMenu.create();
+            detailMenu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
             detailMenu.setPosition(cc.p(0, 0));
             playerItem.addChild(detailMenu);
 
@@ -130,6 +132,7 @@ var ShowUnionLayer = cc.Layer.extend({
 
         this._scrollView = cc.ScrollView.create(this._showUnionLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setPosition(this._showUnionLayerFit.scrollViewPoint);
+        this._scrollView.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY - 1);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -145,9 +148,9 @@ var ShowUnionLayer = cc.Layer.extend({
         );
         backItem.setPosition(this._showUnionLayerFit.backItemPoint);
 
-        var menu = cc.Menu.create(backItem);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        var backMenu = cc.Menu.create(backItem);
+        backMenu.setPosition(cc.p(0, 0));
+        this.addChild(backMenu);
 
         if(this._type == TYPE_UNION_SHOW_MYSELF) {
             this._skyDialog = SkyDialog.create();
@@ -210,10 +213,12 @@ var ShowUnionLayer = cc.Layer.extend({
     _onClickDetail: function (index) {
         var self = this;
         return function () {
-            cc.log("ShowUnionLayer _onClickDetail");
+            cc.log("ShowUnionLayer _onClickDetail: " + index);
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            index = index || self._selectId;
+            if(index == null) {
+                index = self._selectId;
+            }
 
             var player = self._members[index];
 

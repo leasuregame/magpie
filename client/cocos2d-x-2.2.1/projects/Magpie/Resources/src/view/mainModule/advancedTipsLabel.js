@@ -12,6 +12,7 @@ var TYPE_PASS_RESET_TIPS = 6;
 var TYPE_WORLD_CUP_TIPS = 7;
 var TYPE_EXP_INSTANCES_TIPS = 8;
 var TYPE_GOLD_TEN_LOTTERY_TIPS = 9;
+var TYPE_REMOVE_WATER_CD_TIPS = 10;
 
 var spendFailTip = {
     gold: "魔石不足",
@@ -125,6 +126,10 @@ var AdvancedTipsLabel = LazyLayer.extend({
                 break;
             case TYPE_GOLD_TEN_LOTTERY_TIPS:
                 this._initGoldTenLotteryTips();
+                break;
+            case TYPE_REMOVE_WATER_CD_TIPS:
+                this._initRemoveWaterCdTips();
+                break;
         }
     },
 
@@ -177,6 +182,38 @@ var AdvancedTipsLabel = LazyLayer.extend({
         cc.log("AdvancedTipsLabel _initRemoveCdTips");
 
         var needGold = gameData.boss.removeCdNeedGold();
+
+        var tipsLabel = ColorLabelTTF.create(
+            {
+                string: "是否确定花费" + needGold,
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            },
+            {
+                iconName: "gold",
+                scale: 0.7
+            },
+            {
+                string: "消除冷却时间",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 25
+            }
+        );
+        tipsLabel.setPosition(cc.p(0, 30));
+        tipsLabel.setAnchorPoint(cc.p(0.5, 0));
+        this._frameLayer.addChild(tipsLabel);
+
+        this._spend = {
+            type: "gold",
+            num: needGold
+        };
+
+    },
+
+    _initRemoveWaterCdTips: function () {
+        cc.log("AdvancedTipsLabel _initRemoveWaterCdTips");
+
+        var needGold = 20;
 
         var tipsLabel = ColorLabelTTF.create(
             {

@@ -31,6 +31,10 @@ var Union = Entity.extend({
     sync: function () {
         cc.log("Union sync");
 
+        if(gameData.player.get("lv") <   outputTables.function_limit.rows[1].union) {
+            return;
+        }
+
         var that = this;
         lz.server.request("area.unionHandler.getUnion", {}, function (data) {
             cc.log(data);
@@ -42,6 +46,9 @@ var Union = Entity.extend({
                 for (var key in msg) {
                     that.set(key, msg[key]);
                 }
+
+            } else if(data.code == 400) {
+                cc.log("Union getUnion: not join");
 
             } else {
                 cc.log("Union getUnion fail");
@@ -308,10 +315,9 @@ var Union = Entity.extend({
             if (data.code == 200) {
                 var rewards = data.msg.rewards;
 
-                gameData.player.adds({
-                    money: rewards.money,
-                    gold: rewards.gold
-                });
+                for(var key in rewards) {
+                    gameData.player.add(key, rewards[key]);
+                }
 
                 lz.tipReward(rewards);
 

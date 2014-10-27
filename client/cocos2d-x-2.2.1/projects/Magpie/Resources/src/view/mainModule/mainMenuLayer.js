@@ -166,6 +166,15 @@ var MainMenuLayer = cc.Layer.extend({
                 }
             }
 
+            if (index == 3) {
+                var limitLv = outputTables.function_limit.rows[1].union;
+
+                if(gameData.player.get("lv") < limitLv) {
+                    TipLayer.tip(limitLv + "级开启");
+                    return;
+                }
+            }
+
             if (mandatoryTeachingLayer) {
                 if (mandatoryTeachingLayer.isTeaching()) {
                     mandatoryTeachingLayer.clearAndSave();

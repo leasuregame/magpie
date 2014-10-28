@@ -46,7 +46,7 @@ var ShowUnionLayer = LazyLayer.extend({
 
             var playerItem = null;
 
-            if (player.id == gameData.player.get("id")) {
+            if (player.playerId == gameData.player.get("id")) {
                 playerItem = cc.Sprite.create(main_scene_image.button18);
                 scrollViewLayer.addChild(playerItem);
             }

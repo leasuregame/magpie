@@ -24,7 +24,7 @@ var UpdateUnionNoticeLabel = LazyLayer.extend({
         titleLabel.setPosition(cc.p(300, 300));
         bgSprite.addChild(titleLabel);
 
-        var nameEditBoxIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+        var nameEditBoxIcon = cc.Scale9Sprite.create(main_scene_image.icon175);
         nameEditBoxIcon.setContentSize(cc.size(520, 60));
         nameEditBoxIcon.setPosition(cc.p(300, 200));
         bgSprite.addChild(nameEditBoxIcon);

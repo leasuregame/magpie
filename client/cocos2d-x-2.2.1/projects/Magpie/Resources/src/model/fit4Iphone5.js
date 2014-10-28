@@ -1598,7 +1598,7 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(0, 0, 640, 860),
             "scrollViewSize": cc.size(640, 860),
             "scrollViewPoint": cc.p(0, 162),
-            "labelContentSize": cc.size(216, 180),
+            "labelContentSize": cc.size(216, 120),
             "detailItemPoint": cc.p(108, 60),
             "skyDialogRect": cc.rect(0, 198, 640, 968)
         },

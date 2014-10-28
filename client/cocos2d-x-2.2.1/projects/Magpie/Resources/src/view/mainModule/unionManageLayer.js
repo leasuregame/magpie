@@ -33,7 +33,7 @@ var UnionManageLayer = cc.Layer.extend({
         var titleBgIcon = cc.Sprite.create(main_scene_image.icon371);
         bgLayer.addChild(titleBgIcon);
 
-        var titleIcon2 = cc.Sprite.create(main_scene_image.icon495);
+        var titleIcon2 = cc.Sprite.create(main_scene_image.icon506);
         bgLayer.addChild(titleIcon2);
 
         var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon169);
@@ -155,10 +155,12 @@ var UnionManageLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        gameData.union.unionQuit(function (isSuccess) {
-            if(isSuccess) {
-                MainScene.getInstance().switchLayer(UnionLayer);
-            }
+        UnionTipsLabel.pop(TYPE_UNION_QUIT, function () {
+            gameData.union.unionQuit(function (isSuccess) {
+                if (isSuccess) {
+                    MainScene.getInstance().switchLayer(UnionLayer);
+                }
+            });
         });
     },
 
@@ -167,10 +169,12 @@ var UnionManageLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        gameData.union.unionDismiss(function (isSuccess) {
-            if(isSuccess) {
-                MainScene.getInstance().switchLayer(UnionLayer);
-            }
+        UnionTipsLabel.pop(TYPE_UNION_DISMISS, function () {
+            gameData.union.unionDismiss(function (isSuccess) {
+                if(isSuccess) {
+                    MainScene.getInstance().switchLayer(UnionLayer);
+                }
+            });
         });
     },
 

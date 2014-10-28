@@ -1576,7 +1576,7 @@ var fit4Iphone5 = {
             "rightIconPoint": cc.p(640, 942),
             "noticeLabelPoint": cc.p(320, 950),
             "unionNoticeLabelPoint": cc.p(320, 900),
-            "updateNoticeItemPoint": cc.p(580, 900),
+            "updateNoticeItemPoint": cc.p(515, 845),
             "wishTreeItemPoint": cc.p(160, 680),
             "unionWarsItemPoint": cc.p(480, 680),
             "unionShopItemPoint": cc.p(160, 380),
@@ -1703,7 +1703,8 @@ var fit4Iphone5 = {
             "removeCdTimeItemPoint": cc.p(600, 1006),
             "todayCollectLabelPoint": cc.p(400, 966),
             "collectTimeLabelPoint": cc.p(545, 966),
-            "lvLabelPoint": cc.p(100, 200),
+            "lvLabelPoint": cc.p(30, 200),
+            "expLabelPoint": cc.p(550, 200),
             "progressPoint": cc.p(320, 200),
             "tipLabelPoint": cc.p(320, 150)
         },

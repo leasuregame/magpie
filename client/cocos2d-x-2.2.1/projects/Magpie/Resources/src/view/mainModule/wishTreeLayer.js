@@ -66,20 +66,26 @@ var WishTreeLayer = cc.Layer.extend({
         this.addChild(this._wishTree);
 
         this._lvLabel = StrokeLabel.create("Lv：0", "STHeitiTC-Medium", 22);
+        this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._lvLabel.setPosition(this._wishTreeLayerFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
-        var progressBgSprite = cc.Sprite.create(main_scene_image.progress4);
+        var progressBgSprite = cc.Sprite.create(main_scene_image.progress8);
         progressBgSprite.setPosition(this._wishTreeLayerFit.progressPoint);
-        progressBgSprite.setScaleY(1.2);
-        progressBgSprite.setScaleX(1.8);
+//        progressBgSprite.setScaleY(1.2);
+        progressBgSprite.setScaleX(0.78);
         this.addChild(progressBgSprite);
 
-        this._progress = Progress.create(null, main_scene_image.progress5, 0, 1);
+        this._progress = Progress.create(null, main_scene_image.progress9, 0, 1);
         this._progress.setPosition(this._wishTreeLayerFit.progressPoint);
-        this._progress.setScaleY(1.2);
-        this._progress.setScaleX(1.8);
+//        this._progress.setScaleY(1.2);
+        this._progress.setScaleX(0.78);
         this.addChild(this._progress);
+
+        this._expLabel = StrokeLabel.create("0/0", "STHeitiTC-Medium", 22);
+        this._expLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._expLabel.setPosition(this._wishTreeLayerFit.expLabelPoint);
+        this.addChild(this._expLabel);
 
         var tipLabel = StrokeLabel.create("等级越高，获得奖励越丰富", "STHeitiTC-Medium", 22);
         tipLabel.setPosition(this._wishTreeLayerFit.tipLabelPoint);
@@ -105,6 +111,7 @@ var WishTreeLayer = cc.Layer.extend({
     update: function () {
         var exp = outputTables.union_tree_upgrade_config.rows[this._tree.lv + 1].exp;
         this._progress.setAllValue(this._tree.exp, exp);
+        this._expLabel.setString(this._tree.exp + "/" + exp);
         this._collectCdTime.setString(lz.getCountdownStr(this._tree.waterCd));
         this._collectTimesLabel.setString(this._tree.waterCountLeft + "/" + this._tree.waterTotalCount);
         this._lvLabel.setString("Lv：" + this._tree.lv);
@@ -112,22 +119,24 @@ var WishTreeLayer = cc.Layer.extend({
     },
 
     _updateCdTime: function () {
-        this._collectCdTime.setString(lz.getCountdownStr(this._tree.waterCd));
+        var str = lz.getCountdownStr(this._tree.waterCd);
+        this._collectCdTime.setString(str);
+        this._tree.waterCd -= 1000;
 
-        if (this._tree.waterCD > 0) {
-            this._tree.waterCD--;
+        if(this._tree.waterCd < 0) {
+            this._tree.waterCd = 0;
         }
 
         this._removeCdTimeItem.setVisible(this._tree.waterCd > 0);
     },
 
-    ccbFnWatering: function() {
+    ccbFnWatering: function () {
         cc.log("WishTreeLayer ccbFnWatering");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        if(this._tree.waterCd > 0) {
+        if (this._tree.waterCd > 0) {
             AdvancedTipsLabel.pop(TYPE_REMOVE_WATER_CD_TIPS, function () {
                 gameData.union.removeWaterCd(function (cd) {
                     that._tree.waterCd = cd;
@@ -139,7 +148,7 @@ var WishTreeLayer = cc.Layer.extend({
         LazyLayer.showCloudLayer();
 
         gameData.union.watering(function (tree) {
-            if(tree) {
+            if (tree) {
                 that._tree = tree;
                 that.update();
                 that._wishTree.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
@@ -150,11 +159,11 @@ var WishTreeLayer = cc.Layer.extend({
         });
     },
 
-    ccbFnWaterPlay: function() {
+    ccbFnWaterPlay: function () {
         cc.log("WishTreeLayer ccbFnWaterPlay");
 
         var that = this;
-        this._wishTree.animationManager.setCompletedAnimationCallback(this, function(){
+        this._wishTree.animationManager.setCompletedAnimationCallback(this, function () {
             LazyLayer.closeCloudLayer();
             that._wishTree.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
         });

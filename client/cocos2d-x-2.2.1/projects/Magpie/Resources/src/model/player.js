@@ -268,6 +268,8 @@ var Player = Entity.extend({
 
             gameData.activity.sync();
 
+            gameData.union.sync();
+
             MainScene.getInstance().updateMark();
         });
     },

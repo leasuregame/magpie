@@ -28,10 +28,12 @@ var Union = Entity.extend({
         this.sync();
     },
 
-    sync: function () {
+    sync: function (cb) {
         cc.log("Union sync");
 
-        if(gameData.player.get("lv") <   outputTables.function_limit.rows[1].union) {
+        cb = cb || function(){};
+
+        if(gameData.player.get("lv") < outputTables.function_limit.rows[1].union) {
             return;
         }
 
@@ -46,10 +48,11 @@ var Union = Entity.extend({
                 for (var key in msg) {
                     that.set(key, msg[key]);
                 }
-
+                cb();
             } else if(data.code == 400) {
                 cc.log("Union getUnion: not join");
-
+                that._id = -1;
+                cb();
             } else {
                 cc.log("Union getUnion fail");
 

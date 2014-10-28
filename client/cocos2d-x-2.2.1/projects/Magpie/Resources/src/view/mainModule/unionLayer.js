@@ -27,7 +27,7 @@ var UnionLayer = cc.Layer.extend({
         this.addChild(titleIcon);
 
         var id = gameData.union.get("id");
-        if(id) {
+        if(id && id != -1) {
             this._addedUnionLayer();
         } else {
             this._nonunionLayer();
@@ -118,9 +118,10 @@ var UnionLayer = cc.Layer.extend({
 
         this._unionNoticeLabel = unionNoticeLabel;
 
-        var updateNoticeItem = cc.MenuItemImage.create(
-            main_scene_image.button78,
-            main_scene_image.button78s,
+        var updateNoticeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button4,
+            main_scene_image.button4s,
+            main_scene_image.icon372,
             this._onClickUpdateNotice,
             this
         );

@@ -150,6 +150,25 @@ var MainMenuLayer = cc.Layer.extend({
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
+            var that = this;
+            var cb = function() {
+                if (mandatoryTeachingLayer) {
+                    if (mandatoryTeachingLayer.isTeaching()) {
+                        mandatoryTeachingLayer.clearAndSave();
+                        mandatoryTeachingLayer.next();
+                    }
+                }
+
+                MainScene.getInstance().switchLayer(that._layer[index][0]);
+
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+                if (noviceTeachingLayer.isNoviceTeaching()) {
+                    noviceTeachingLayer.clearAndSave();
+                    noviceTeachingLayer.next();
+                }
+            };
+
             if (index == 1) {
                 if (this._instancesGuide) {
                     this._instancesGuide.removeFromParent();
@@ -173,23 +192,13 @@ var MainMenuLayer = cc.Layer.extend({
                     TipLayer.tip(limitLv + "级开启");
                     return;
                 }
-            }
 
-            if (mandatoryTeachingLayer) {
-                if (mandatoryTeachingLayer.isTeaching()) {
-                    mandatoryTeachingLayer.clearAndSave();
-                    mandatoryTeachingLayer.next();
+                if(!gameData.union.get("id")) {
+                    gameData.union.sync(cb);
+                    return;
                 }
             }
-
-            MainScene.getInstance().switchLayer(this._layer[index][0]);
-
-            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-            if (noviceTeachingLayer.isNoviceTeaching()) {
-                noviceTeachingLayer.clearAndSave();
-                noviceTeachingLayer.next();
-            }
+            cb();
         }
     }
 });

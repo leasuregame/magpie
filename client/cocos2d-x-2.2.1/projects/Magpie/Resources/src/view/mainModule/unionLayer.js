@@ -22,7 +22,7 @@ var UnionLayer = cc.Layer.extend({
         headIcon.setPosition(this._unionLayerFit.headIconPoint);
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon504);
         titleIcon.setPosition(this._unionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
@@ -103,7 +103,7 @@ var UnionLayer = cc.Layer.extend({
         rightIcon.setPosition(this._unionLayerFit.rightIconPoint);
         this.addChild(rightIcon);
 
-        var noticeLabel = cc.LabelTTF.create("公会宣言", "STHeitiTC-Medium", 35);
+        var noticeLabel = StrokeLabel.create("公会宣言", "STHeitiTC-Medium", 35);
         noticeLabel.setPosition(this._unionLayerFit.noticeLabelPoint);
         this.addChild(noticeLabel);
 

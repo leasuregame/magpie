@@ -52,7 +52,7 @@ var CreateUnionLayer = cc.Layer.extend({
         this._nameEditBox.setPosition(cc.p(360, 350));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate(this);
-        this._nameEditBox.setFont("STHeitiTC-Medium", 35);
+        this._nameEditBox.setFont("STHeitiTC-Medium", 25);
         this._nameEditBox.setPlaceHolder("最多输入八个中文或者英文字母");
         bgLayer.addChild(this._nameEditBox);
 

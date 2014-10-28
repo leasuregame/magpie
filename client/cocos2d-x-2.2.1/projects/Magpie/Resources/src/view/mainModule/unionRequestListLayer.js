@@ -27,7 +27,7 @@ var UnionRequestListLayer = cc.Layer.extend({
         headIcon.setPosition(this._unionRequestListLayerFit.headIconPoint);
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon504);
         titleIcon.setPosition(this._unionRequestListLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 

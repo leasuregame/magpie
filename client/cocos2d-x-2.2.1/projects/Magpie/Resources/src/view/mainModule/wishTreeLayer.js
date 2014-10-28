@@ -29,7 +29,7 @@ var WishTreeLayer = cc.Layer.extend({
         headIcon.setPosition(this._wishTreeLayerFit.headIconPoint);
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon504);
         titleIcon.setPosition(this._wishTreeLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
@@ -126,9 +126,18 @@ var WishTreeLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        var that = this;
+        if(this._tree.waterCd > 0) {
+            AdvancedTipsLabel.pop(TYPE_REMOVE_WATER_CD_TIPS, function () {
+                gameData.union.removeWaterCd(function (cd) {
+                    that._tree.waterCd = cd;
+                });
+            });
+            return;
+        }
+
         LazyLayer.showCloudLayer();
 
-        var that = this;
         gameData.union.watering(function (tree) {
             if(tree) {
                 that._tree = tree;
@@ -144,6 +153,7 @@ var WishTreeLayer = cc.Layer.extend({
     ccbFnWaterPlay: function() {
         cc.log("WishTreeLayer ccbFnWaterPlay");
 
+        var that = this;
         this._wishTree.animationManager.setCompletedAnimationCallback(this, function(){
             LazyLayer.closeCloudLayer();
             that._wishTree.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);

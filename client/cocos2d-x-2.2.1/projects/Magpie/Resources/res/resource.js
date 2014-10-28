@@ -847,6 +847,8 @@ var main_scene_image = {
     icon501: main_scene_path + "icon501.png",
     icon502: main_scene_path + "icon502.png",
     icon503: main_scene_path + "icon503.png",
+    icon504: main_scene_path + "icon504.png",
+    icon505: main_scene_path + "icon505.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -1328,6 +1330,7 @@ var main_scene_image = {
     up102: "res/effect/uiEffect/up102.png",
     up103: "res/effect/uiEffect/up103.png",
     up104: "res/effect/uiEffect/up104.png",
+    up266: "res/effect/uiEffect/up266.png",
 
 
     //开场动画资源

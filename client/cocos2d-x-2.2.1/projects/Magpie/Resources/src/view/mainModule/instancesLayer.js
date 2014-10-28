@@ -89,7 +89,7 @@ var InstancesLayer = cc.Layer.extend({
                 main_scene_image.button23h,
                 main_scene_image.button23h,
                 main_scene_image.button23h,
-                main_scene_image.icon394,
+                main_scene_image.icon505,
                 this._onClickBossListLayer,
                 this
             );
@@ -98,7 +98,7 @@ var InstancesLayer = cc.Layer.extend({
                 main_scene_image.button23,
                 main_scene_image.button23s,
                 main_scene_image.button23d,
-                main_scene_image.icon394,
+                main_scene_image.icon505,
                 this._onClickBossListLayer,
                 this
             );

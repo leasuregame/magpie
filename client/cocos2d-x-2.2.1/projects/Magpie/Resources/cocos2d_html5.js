@@ -252,7 +252,7 @@
             'src/view/mainModule/tournamentTipLayer.js',
             'src/view/mainModule/treasureHuntLayer.js',
             'src/view/mainModule/unionLayer.js',
-            'src/view/mainModule/unionManage.js',
+            'src/view/mainModule/unionManageLayer.js',
             'src/view/mainModule/unionRequestListLayer.js',
             'src/view/mainModule/updateUnionNoticeLabel.js',
             'src/view/mainModule/usePillLabel.js',

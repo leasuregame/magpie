@@ -121,7 +121,7 @@ var UnionLayer = cc.Layer.extend({
         var updateNoticeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button4,
             main_scene_image.button4s,
-            main_scene_image.icon372,
+            main_scene_image.icon507,
             this._onClickUpdateNotice,
             this
         );

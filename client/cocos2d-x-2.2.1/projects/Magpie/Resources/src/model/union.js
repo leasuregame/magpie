@@ -31,9 +31,10 @@ var Union = Entity.extend({
     sync: function (cb) {
         cc.log("Union sync");
 
-        cb = cb || function(){};
+        cb = cb || function () {
+        };
 
-        if(gameData.player.get("lv") < outputTables.function_limit.rows[1].union) {
+        if (gameData.player.get("lv") < outputTables.function_limit.rows[1].union) {
             return;
         }
 
@@ -49,7 +50,7 @@ var Union = Entity.extend({
                     that.set(key, msg[key]);
                 }
                 cb();
-            } else if(data.code == 400) {
+            } else if (data.code == 400) {
                 cc.log("Union getUnion: not join");
                 that._id = -1;
                 cb();
@@ -107,7 +108,7 @@ var Union = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 var unions = data.msg.unions || [];
-                if(unions.length == 0) {
+                if (unions.length == 0) {
                     TipLayer.tip("未找到对应的公会");
                 }
                 cb(unions);
@@ -135,7 +136,7 @@ var Union = Entity.extend({
         });
     },
 
-    getMemberList: function(cb, id) {
+    getMemberList: function (cb, id) {
         var that = this;
         lz.server.request("area.unionHandler.getMemberList", {
             unionId: id
@@ -185,7 +186,7 @@ var Union = Entity.extend({
         });
     },
 
-    requestList: function(cb) {
+    requestList: function (cb) {
         cc.log("Union requestList");
 
         var that = this;
@@ -256,7 +257,7 @@ var Union = Entity.extend({
         });
     },
 
-    unionDismiss: function(cb) {
+    unionDismiss: function (cb) {
         var that = this;
         lz.server.request("area.unionHandler.unionDismiss", {
             unionId: this._id
@@ -291,7 +292,7 @@ var Union = Entity.extend({
         });
     },
 
-    getTree:function(cb) {
+    getTree: function (cb) {
         cc.log("Union getTree");
 
         var that = this;
@@ -307,7 +308,7 @@ var Union = Entity.extend({
         });
     },
 
-    watering: function(cb) {
+    watering: function (cb) {
         cc.log("Union watering");
 
         var that = this;
@@ -318,7 +319,7 @@ var Union = Entity.extend({
             if (data.code == 200) {
                 var rewards = data.msg.rewards;
 
-                for(var key in rewards) {
+                for (var key in rewards) {
                     gameData.player.add(key, rewards[key]);
                 }
 
@@ -331,7 +332,7 @@ var Union = Entity.extend({
         });
     },
 
-    removeWaterCd: function(cb) {
+    removeWaterCd: function (cb) {
         cc.log("Union removeWaterCd");
 
         var that = this;
@@ -344,8 +345,52 @@ var Union = Entity.extend({
                 TipLayer.tip(data.msg);
             }
         });
-    }
+    },
 
+    _changeRole: function (id, role) {
+        var len = this._memberList;
+        for (var i = 0; i < len; i++) {
+            var player = this._memberList[i];
+            if (player.playerId == id) {
+                player.role = role;
+                break;
+            }
+        }
+    },
+
+    addElder: function (cb, id) {
+        cc.log("Union addElder: " + id);
+
+        var that = this;
+        lz.server.request("area.unionHandler.addElder", {
+            targetId: id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                that._changeRole(id, TYPE_UNION_ELDERS);
+                cb();
+            } else {
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    removeElder: function (cb, id) {
+        cc.log("Union removeElder: " + id);
+
+        var that = this;
+        lz.server.request("area.unionHandler.removeElder", {
+            targetId: id
+        }, function (data) {
+            cc.log(data);
+            if (data.code == 200) {
+                that._changeRole(id, TYPE_UNION_MEMBER);
+                cb();
+            } else {
+                TipLayer.tip(data.msg);
+            }
+        });
+    }
 });
 
 Union.create = function () {

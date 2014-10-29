@@ -74,6 +74,7 @@ var ShowUnionLayer = LazyLayer.extend({
             var elderLabel = cc.Sprite.create(main_scene_image.icon502);
             elderLabel.setAnchorPoint(cc.p(0, 0.5));
             elderLabel.setPosition(cc.p(450, 100));
+            elderLabel.setVisible(player.role == TYPE_UNION_ELDERS);
             playerItem.addChild(elderLabel);
 
             this._elderIcons[i] = elderLabel;
@@ -248,8 +249,8 @@ var ShowUnionLayer = LazyLayer.extend({
 
             if (that._role == TYPE_UNION_DISMISS) {
                 var playerRole = that._members[index].role;
-                that._addElderItem.setVisible(playerRole != 2);
-                that._removeElderItem.setVisible(playerRole == 2);
+                that._addElderItem.setVisible(playerRole != TYPE_UNION_ELDERS);
+                that._removeElderItem.setVisible(playerRole == TYPE_UNION_ELDERS);
             }
 
             that._skyDialog.show(point);
@@ -306,7 +307,7 @@ var ShowUnionLayer = LazyLayer.extend({
             BattlePlayer.getInstance().play({
                 id: battleLogId
             });
-        }, player.id);
+        }, player.playerId);
     },
 
     _onClickAddElder: function () {
@@ -318,8 +319,9 @@ var ShowUnionLayer = LazyLayer.extend({
 
         var that = this;
         gameData.union.addElder(function () {
+            that._members = gameData.union.get("memberList");
             that._elderIcons[that._selectId].setVisible(true);
-        }, player.id);
+        }, player.playerId);
     },
 
     _onClickRemoveElder: function () {
@@ -331,8 +333,9 @@ var ShowUnionLayer = LazyLayer.extend({
 
         var that = this;
         gameData.union.removeElder(function () {
+            that._members = gameData.union.get("memberList");
             that._elderIcons[that._selectId].setVisible(false);
-        }, player.id);
+        }, player.playerId);
 
     },
 

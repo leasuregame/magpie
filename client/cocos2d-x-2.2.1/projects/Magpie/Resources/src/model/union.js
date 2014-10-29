@@ -2,9 +2,9 @@
  * Created by xiaoyu on 2014/10/16.
  */
 
-var TYPE_UNION_PRESIDENT = 1;
-var TYPE_UNION_ELDERS = 2;
-var TYPE_UNION_MEMBER = 3;
+var TYPE_UNION_PRESIDENT = "1";
+var TYPE_UNION_ELDERS = "2";
+var TYPE_UNION_MEMBER = "3";
 
 var TYPE_UNION_SHOW_MYSELF = 0;
 var TYPE_UNION_SHOW_OTHER = 1;
@@ -348,7 +348,7 @@ var Union = Entity.extend({
     },
 
     _changeRole: function (id, role) {
-        var len = this._memberList;
+        var len = this._memberList.length;
         for (var i = 0; i < len; i++) {
             var player = this._memberList[i];
             if (player.playerId == id) {
@@ -368,6 +368,7 @@ var Union = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 that._changeRole(id, TYPE_UNION_ELDERS);
+                TipLayer.tip("设置成功");
                 cb();
             } else {
                 TipLayer.tip(data.msg);
@@ -385,6 +386,7 @@ var Union = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 that._changeRole(id, TYPE_UNION_MEMBER);
+                TipLayer.tip("取消成功");
                 cb();
             } else {
                 TipLayer.tip(data.msg);

@@ -129,12 +129,18 @@ var UnionManageLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickUnionMembers: function () {
+    _onClickUnionMembers: function (id) {
         cc.log("UnionManageLayer _onClickUnionMembers");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        ShowUnionLayer.pop(gameData.union.get("memberList"), TYPE_UNION_SHOW_MYSELF);
+        var unionId = gameData.union.get('id');
+        gameData.union.getMemberList(function(list) {
+            if (list) {
+                gameData.union.set("memberList", list);
+                ShowUnionLayer.pop(list, TYPE_UNION_SHOW_MYSELF);        
+            }
+        }, unionId);
+        
     },
 
     _onClickUnionApplyFor: function () {

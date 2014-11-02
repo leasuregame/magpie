@@ -103,6 +103,18 @@ var UnionLayer = cc.Layer.extend({
         rightIcon.setPosition(this._unionLayerFit.rightIconPoint);
         this.addChild(rightIcon);
 
+        var union = gameData.union;
+
+        var idLabel= StrokeLabel.create("id：  " + union.get("id"), "STHeitiTC-Medium", 25);
+        idLabel.setAnchorPoint(cc.p(0, 0.5));
+        idLabel.setPosition(this._unionLayerFit.idLabelPoint);
+        this.addChild(idLabel);
+
+        var nameLabel= StrokeLabel.create("名字：" + union.get("name"), "STHeitiTC-Medium", 25);
+        nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        nameLabel.setPosition(this._unionLayerFit.nameLabelPoint);
+        this.addChild(nameLabel);
+
         var noticeLabel = StrokeLabel.create("公会宣言", "STHeitiTC-Medium", 35);
         noticeLabel.setPosition(this._unionLayerFit.noticeLabelPoint);
         this.addChild(noticeLabel);
@@ -111,7 +123,7 @@ var UnionLayer = cc.Layer.extend({
         bgSprite.setPosition(this._unionLayerFit.unionNoticeLabelPoint);
         this.addChild(bgSprite);
 
-        var notice = gameData.union.get("notice");
+        var notice = union.get("notice");
         var unionNoticeLabel = cc.LabelTTF.create(notice, "STHeitiTC-Medium", 22);
         unionNoticeLabel.setPosition(this._unionLayerFit.unionNoticeLabelPoint);
         this.addChild(unionNoticeLabel);

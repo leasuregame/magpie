@@ -488,22 +488,28 @@ var Player = Entity.extend({
                 cc.log("invite success");
 
                 var msg = data.msg;
-                for (key in msg) {
+                var rewards = msg.rewards || {};
+                var playerData = msg.playerData || {};
+                for (key in rewards) {
                     if (key == "cardArray") {
-                        var cards = msg[key];
+                        var cards = rewards[key];
                         var len = cards.length;
                         for (var i = 0; i < len; i++) {
                             var card = Card.create(cards[i]);
                             gameData.cardList.push(card);
                         }
                     } else if (key == "fragments") {
-                        that.add("fragment", msg[key]);
+                        that.add("fragment", rewards[key]);
                     } else {
-                        that.add(key, msg[key]);
+                        that.add(key, rewards[key]);
                     }
                 }
 
-                cb(msg);
+                for (var k in playerData) {
+                    that.set(k, playerData[k]);
+                }
+
+                cb(rewards);
             } else {
                 cc.log("invite fail");
 

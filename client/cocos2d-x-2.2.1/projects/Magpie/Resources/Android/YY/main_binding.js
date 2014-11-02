@@ -232,6 +232,7 @@ var appFiles = [
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
 
+    'src/view/mainModule/unionTipsLabel.js',
     'src/view/mainModule/unionLayer.js',//
     'src/view/mainModule/unionManageLayer.js',//
     'src/view/mainModule/unionRequestListLayer.js',//

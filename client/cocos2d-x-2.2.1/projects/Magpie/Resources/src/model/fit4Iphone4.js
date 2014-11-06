@@ -1584,7 +1584,9 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(110, 165),
             "scrollViewHeight": 470,
             "closeItemPoint": cc.p(605, 760),
-            "speakerNumPoint": cc.p(127, 711)
+            "speakerNumPoint": cc.p(127, 711),
+            "unionTabPoint": cc.p(440, 400),
+            "worldTabPoint": cc.p(440, 350)
         },
         "unionLayer": {
             "bgSpritePoint": cc.p(40, 106),

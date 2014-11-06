@@ -14,7 +14,7 @@ lz.platformConfig = {
     OS: "IOS",
     PLATFORM: "AppStore",
     VERSION: "1.5.0",
-    GATE_SERVER_HOST: "124.238.236.33",
+    GATE_SERVER_HOST: "127.0.0.1",
     GATE_SERVER_PORT: "3009",
     UPDATE_PACKAGE_URL: "http://124.238.236.33:9090/api/app/update/",
     UPDATE_VERSION_URL: "http://124.238.236.33:9090/api/app/version",

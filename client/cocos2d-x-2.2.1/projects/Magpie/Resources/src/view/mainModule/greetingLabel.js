@@ -14,7 +14,8 @@ var GreetingLabel = LazyLayer.extend({
     onEnter: function () {
         cc.log("GreetingLabel onEnter");
         this._super();
-        this.update();
+
+        this.insertMessages();
     },
 
     init: function () {
@@ -112,7 +113,23 @@ var GreetingLabel = LazyLayer.extend({
         );
         closeItem.setPosition(this._greetingLabelFit.closeItemPoint);
 
-        var menu = cc.Menu.create(sendItem, closeItem);
+        var unionTab = cc.MenuItemImage.create(
+            main_scene_image.button37,
+            main_scene_image.button37s,
+            this._onClickUnionTab,
+            this
+        );
+        unionTab.setPosition(this._greetingLabelFit.unionTabPoint);
+
+        var worldTab = cc.MenuItemImage.create(
+            main_scene_image.button37,
+            main_scene_image.button37s,
+            this._onClickWorldTab,
+            this
+        );
+        worldTab.setPosition(this._greetingLabelFit.worldTabPoint);
+
+        var menu = cc.Menu.create(sendItem, closeItem, unionTab, worldTab);
         menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
@@ -161,9 +178,16 @@ var GreetingLabel = LazyLayer.extend({
         return true;
     },
 
-    insertMessages: function () {
+    insertMessages: function (type) {
         cc.log("GreetingLabel insertMessages");
-        var msgList = gameData.greeting.getMsgList();
+
+        this._layer = [];
+        this._msgList = [];
+        this._playerItem = [];
+        this.update();
+
+        var msgList = gameData.greeting.getMsgList(type);
+        cc.log(JSON.stringify(msgList));
         var len = msgList.length;
         this._speakerNumLabel.setString(gameData.player.get("speaker"));
         for (var i = 0; i < len; i++) {
@@ -285,6 +309,14 @@ var GreetingLabel = LazyLayer.extend({
 
     _sort: function (a, b) {
         return b.created - a.created;
+    },
+
+    _onClickUnionTab: function() {
+        this.insertMessages(gameData.greeting.TYPE.UNIONCHAT);
+    },
+
+    _onClickWorldTab: function() {
+        this.insertMessages(gameData.greeting.TYPE.WORLD);
     },
 
     _onClickSend: function () {

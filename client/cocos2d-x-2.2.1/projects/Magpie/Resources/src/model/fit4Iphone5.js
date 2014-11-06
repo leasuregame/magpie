@@ -178,7 +178,9 @@ var fit4Iphone5 = {
             "subItemPoint": cc.p(200, 570),
             "subSubItemPoint": cc.p(120, 570),
             "okItemPoint": cc.p(220, 490),
-            "closeItemPoint": cc.p(420, 490)
+            "closeItemPoint": cc.p(420, 490),
+            "unionTabPoint": cc.p(440, 400),
+            "worldTabPoint": cc.p(440, 350)
         },
         "attackDetailsLayer": {
             "bgSpriteSize": cc.size(650, 985),
@@ -1641,7 +1643,9 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(70, 205),
             "scrollViewHeight": 590,
             "closeItemPoint": cc.p(565, 918),
-            "speakerNumPoint": cc.p(87, 861)
+            "speakerNumPoint": cc.p(87, 861),
+            "unionTabPoint": cc.p(610, 768),
+            "worldTabPoint": cc.p(610, 688)
         },
         "vipDailyRewardLayer": {
             "bgLabelScaleY": 1.23,

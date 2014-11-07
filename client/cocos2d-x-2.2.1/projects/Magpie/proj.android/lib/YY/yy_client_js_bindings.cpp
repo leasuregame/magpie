@@ -25,6 +25,24 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 JSClass  *jsb_YYClient_class;
 JSObject *jsb_YYClient_prototype;
 
+JSBool js_yy_client_js_bindings_YYClient_OnRoleLevelChange(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	if (argc == 2) {
+		const char* arg0;
+		int arg1;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		YYClient::OnRoleLevelChange(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "wrong number of arguments");
+	return JS_FALSE;
+}
+
 JSBool js_yy_client_js_bindings_YYClient_getTime(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -88,6 +106,22 @@ JSBool js_yy_client_js_bindings_YYClient_exitSDK(JSContext *cx, uint32_t argc, j
 {
 	if (argc == 0) {
 		YYClient::exitSDK();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "wrong number of arguments");
+	return JS_FALSE;
+}
+
+JSBool js_yy_client_js_bindings_YYClient_CreateUserRole(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	if (argc == 1) {
+		const char* arg0;
+		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
+		YYClient::CreateUserRole(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
@@ -250,10 +284,12 @@ void js_register_yy_client_js_bindings_YYClient(JSContext *cx, JSObject *global)
 	JSFunctionSpec *funcs = NULL;
 
 	static JSFunctionSpec st_funcs[] = {
+		JS_FN("OnRoleLevelChange", js_yy_client_js_bindings_YYClient_OnRoleLevelChange, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTime", js_yy_client_js_bindings_YYClient_getTime, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("pay", js_yy_client_js_bindings_YYClient_pay, 6, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("enterGameServer", js_yy_client_js_bindings_YYClient_enterGameServer, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("exitSDK", js_yy_client_js_bindings_YYClient_exitSDK, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("CreateUserRole", js_yy_client_js_bindings_YYClient_CreateUserRole, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getInitResult", js_yy_client_js_bindings_YYClient_getInitResult, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLoginResult", js_yy_client_js_bindings_YYClient_getLoginResult, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPayResult", js_yy_client_js_bindings_YYClient_getPayResult, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

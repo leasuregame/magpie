@@ -173,12 +173,20 @@ var User = Entity.extend({
 
                 var msg = data.msg;
 
-                // YY数据收集
-                //yyAdapter.YYCreateUserRole(msg.player.name, msg.player.lv);
+                YY数据收集
+                cc.log("CreateUserRole: " + msg.player.name);
+                yy.YYClient.CreateUserRole(msg.player.name);
     
                 gameData.gameStart(msg.player);
 
                 cb();
+
+                cc.log("enterGameServer: "+that._area+", "+player.id+", "+player.name);
+
+                yy.YYClient.enterGameServer(
+                    that._area,
+                    player.id,
+                    player.name);
 
                 lz.um.event("event_create_player", that._area);
             } else {

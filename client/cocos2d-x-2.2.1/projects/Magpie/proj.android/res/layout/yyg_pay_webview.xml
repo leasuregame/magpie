@@ -10,6 +10,7 @@
         layout="@layout/yyg_header" />
 
     <FrameLayout
+        android:id="@+id/webviewlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 

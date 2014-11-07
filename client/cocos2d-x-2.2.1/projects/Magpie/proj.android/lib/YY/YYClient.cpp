@@ -72,6 +72,46 @@ string YYClient::getInitResult() {
 	return ret;
 }
 
+void YYClient::CreateUserRole(const char* roleName)
+{
+	JniMethodInfo t;
+	if( JniHelper::getStaticMethodInfo(t
+		, yyWrapperClassName
+		, "CreateUserRole"
+		, "(Ljava/lang/String;)V"))
+	{
+		jstring jstrRoleName = GET_JSTRING(roleName);
+
+		t.env->CallStaticVoidMethod(
+			t.classID,
+			t.methodID,
+			jstrRoleName);
+
+		SAFE_RELEASE_JOBJ(jstrRoleName);
+	}
+}
+
+void YYClient::OnRoleLevelChange(const char* roleName, int roleLevel)
+{
+	JniMethodInfo t;
+	if( JniHelper::getStaticMethodInfo(t
+		, yyWrapperClassName
+		, "OnRoleLevelChange"
+		, "(Ljava/lang/String;I)V"))
+	{
+		jstring jstrRoleName = GET_JSTRING(roleName);
+		jint jroleLevel = (jint)roleLevel;
+
+		t.env->CallStaticVoidMethod(
+			t.classID,
+			t.methodID,
+			jstrRoleName,
+			jroleLevel);
+
+		SAFE_RELEASE_JOBJ(jstrRoleName);
+	}
+}
+
 void YYClient::login() {
 	JniMethodInfo t;
 	if( JniHelper::getStaticMethodInfo( t

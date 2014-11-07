@@ -9,6 +9,13 @@ var yy = yy || {};
 yy.YYClient = {
 
 /**
+ * @method OnRoleLevelChange
+ * @param {const char*}
+ * @param {int}
+ */
+OnRoleLevelChange : function () {},
+
+/**
  * @method getTime
  * @return A value converted from C/C++ "std::string"
  */
@@ -37,6 +44,12 @@ enterGameServer : function () {},
  * @method exitSDK
  */
 exitSDK : function () {},
+
+/**
+ * @method CreateUserRole
+ * @param {const char*}
+ */
+CreateUserRole : function () {},
 
 /**
  * @method getInitResult

@@ -32,6 +32,16 @@ public class YYWrapper {
 		}
 	}
 	
+	public static void CreateUserRole(String roleName) {
+		YYGame.getInstance().OnCreateNewRole(roleName);
+		Log.d("debug", "OnCreateUserRole: " + roleName);
+	}
+
+	public static void OnRoleLevelChange(String roleName, int roleLevel) {
+		YYGame.getInstance().OnRoleLevelChanged(roleName, roleLevel);
+		Log.d("debug", "OnRoleLevelChange- " + "RoleName:" + roleName + "RoleLevel: " +  Integer.toString(roleLevel));
+	}
+	
 	public static void login(Context ctx) {
 		final Activity activity = (Activity)ctx;
 		

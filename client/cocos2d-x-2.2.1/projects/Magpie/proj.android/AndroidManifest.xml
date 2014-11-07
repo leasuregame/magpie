@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.LeasureGame.Magpie"
-    android:versionCode="3"
-    android:versionName="1.6.6" >
+    android:versionCode="4"
+    android:versionName="1.6.8" >
 
     <uses-sdk android:minSdkVersion="8" />
 
@@ -12,13 +12,15 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 获取网络类型状态所需权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 网络请求所需权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 上报所需权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:icon="@drawable/icon"
@@ -35,29 +37,46 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name="com.yy.gamesdk.act.YYGPayWeb"
-            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="behind"
             android:theme="@style/yyg_theme" >
         </activity>
         <activity
             android:name="com.yy.gamesdk.act.YYGLogin"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="behind"
             android:theme="@style/yyg_theme" >
         </activity>
         <activity
             android:name="com.yy.gamesdk.act.YYGRegistGetAC"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="behind"
             android:theme="@style/yyg_theme" >
         </activity>
         <activity
             android:name="com.yy.gamesdk.act.YYGRegistPwd"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="behind"
             android:theme="@style/yyg_theme" >
         </activity>
         <activity
             android:name="com.yy.gamesdk.act.YYGRetrieveGetAC"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="behind"
             android:theme="@style/yyg_theme" >
         </activity>
         <activity
             android:name="com.yy.gamesdk.act.YYGRetrievePwd"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="behind"
             android:theme="@style/yyg_theme" >
         </activity>
         <activity
@@ -80,10 +99,26 @@
             android:theme="@android:style/Theme.NoDisplay" >
         </activity>
 
+        <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <!-- alipay sdk end -->
+
         <!-- YYGameSDK需要的provider， authorities改为包名.yygamesdkprovider -->
         <provider
             android:name="com.yy.gamesdk.provider.YYDataProvider"
-            android:authorities="com.LeasureGame.Magpie.yygamesdkprovider" >
+            android:authorities="com.LeasureGame.Magpie.yygamesdkprovider"
+	    android:exported="true" >
         </provider>
 
         <!-- 移动话费充值配置 -->

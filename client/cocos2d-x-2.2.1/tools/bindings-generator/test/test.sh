@@ -55,12 +55,12 @@ fi
 
 if [ -z "${NDK_ROOT+aaa}" ]; then
 # ... if NDK_ROOT is not set, use "$HOME/bin/android-ndk"
-    NDK_ROOT="$HOME/Documents/Development/android-ndk-r9c"
+    NDK_ROOT="/Users/uRyn/Documents/Development/android-ndk-r9c"
 fi
 
 if [ -z "${CLANG_ROOT+aaa}" ]; then
 # ... if CLANG_ROOT is not set, use "$HOME/bin/clang+llvm-3.1"
-    CLANG_ROOT="$HOME/Documents/Development/clang+llvm-3.3-x86_64-apple-darwin12"
+    CLANG_ROOT="/Users/uRyn/Documents/Development/clang+llvm-3.3-x86_64-apple-darwin12"
 fi
 
 if [ -z "${PYTHON_BIN+aaa}" ]; then
@@ -82,4 +82,4 @@ echo "PYTHON_BIN: $PYTHON_BIN"
 # Generate bindings for simpletest using Android's system headers
 echo "Generating bindings for simpletest with Android headers..."
 set -x
-LD_LIBRARY_PATH=${CLANG_ROOT}/lib $PYTHON_BIN ${CXX_GENERATOR_ROOT}/generator.py ${CXX_GENERATOR_ROOT}/test/test.ini -s testandroid -o /Users/uRyn/Athena/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/YY
+LD_LIBRARY_PATH=${CLANG_ROOT}/lib $PYTHON_BIN ${CXX_GENERATOR_ROOT}/generator.py ${CXX_GENERATOR_ROOT}/test/test.ini -s testandroid -o /Users/uRyn/Athena/magpie-client/magpie/client/cocos2d-x-2.2.1/projects/Magpie/proj.android/lib/YY

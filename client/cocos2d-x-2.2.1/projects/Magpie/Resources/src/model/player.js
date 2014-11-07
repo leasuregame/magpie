@@ -345,6 +345,9 @@ var Player = Entity.extend({
 
         gameData.friend.set("maxFriendCount", data.friendsCount);
 
+        cc.log("OnRoleLeveChange: " + this._name + this._lv);
+        yy.YYClient.OnRoleLevelChange(this._name, this._lv);
+
         // YY数据收集
         if (typeof(yyAdapter) != "undefined" && yyAdapter.YYUpdateUserRole) {
             yyAdapter.YYUpdateUserRole(this._name, this._lv);

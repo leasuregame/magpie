@@ -36,6 +36,8 @@ public:
 	static string getPayResult();
 	static void exitSDK();
 	static void enterGameServer(const char* gameServer, const char* roleId, const char* roleName);
+	static void OnRoleLevelChange(const char* roleName, int level);
+	static void CreateUserRole(const char* roleName);
 
 	YYClient(){};
 };

@@ -12,10 +12,12 @@ JSBool js_yy_client_js_bindings_YYClient_constructor(JSContext *cx, uint32_t arg
 void js_yy_client_js_bindings_YYClient_finalize(JSContext *cx, JSObject *obj);
 void js_register_yy_client_js_bindings_YYClient(JSContext *cx, JSObject *global);
 void register_all_yy_client_js_bindings(JSContext* cx, JSObject* obj);
+JSBool js_yy_client_js_bindings_YYClient_OnRoleLevelChange(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_yy_client_js_bindings_YYClient_getTime(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_yy_client_js_bindings_YYClient_pay(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_yy_client_js_bindings_YYClient_enterGameServer(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_yy_client_js_bindings_YYClient_exitSDK(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_yy_client_js_bindings_YYClient_CreateUserRole(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_yy_client_js_bindings_YYClient_getInitResult(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_yy_client_js_bindings_YYClient_getLoginResult(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_yy_client_js_bindings_YYClient_getPayResult(JSContext *cx, uint32_t argc, jsval *vp);

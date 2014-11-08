@@ -89,7 +89,7 @@ var Greeting = Entity.extend({
         );
     },
 
-    sendMsg: function (cb, msg) {
+    sendWorldMsg: function (cb, msg) {
         cc.log("Greeting send: " + msg);
 
         lz.server.request(
@@ -99,6 +99,25 @@ var Greeting = Entity.extend({
                 if (data.code == 200) {
                     cc.log("send success");
                     gameData.player.add("speaker", -1);
+                    cb();
+                } else {
+                    cc.log("send fail");
+                    TipLayer.tip(data.msg);
+                    cb();
+                }
+            }
+        );
+    },
+
+    sendUnionMsg: function (cb, msg) {
+        cc.log("Greeting send: " + msg);
+
+        lz.server.request(
+            "area.unionChatHandler.send",
+            {content: msg},
+            function (data) {
+                if (data.code == 200) {
+                    cc.log("send success");
                     cb();
                 } else {
                     cc.log("send fail");

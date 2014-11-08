@@ -19,7 +19,7 @@ var CardHeadNode = cc.Node.extend({
 
     init: function (card) {
         cc.log("CardHeadNode init");
-
+        cc.log(JSON.stringify(card));
         if (!this._super()) return false;
 
         this._card = card;
@@ -46,7 +46,7 @@ var CardHeadNode = cc.Node.extend({
             effect.setPosition(cc.p(51, 57));
             this.addChild(effect, 1);
         }
-
+        cc.log('card url=======' + url);
         this._cardSprite = cc.Sprite.create(main_scene_image[url]);
         this._cardSprite.setAnchorPoint(cc.p(0, 0));
         if (star <= 5) {

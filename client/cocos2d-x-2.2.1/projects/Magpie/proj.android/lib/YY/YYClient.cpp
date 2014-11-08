@@ -88,6 +88,7 @@ void YYClient::CreateUserRole(const char* roleName)
 			jstrRoleName);
 
 		SAFE_RELEASE_JOBJ(jstrRoleName);
+		SAFE_RELEASE_JOBJ(t.classID);
 	}
 }
 
@@ -109,6 +110,7 @@ void YYClient::OnRoleLevelChange(const char* roleName, int roleLevel)
 			jroleLevel);
 
 		SAFE_RELEASE_JOBJ(jstrRoleName);
+		SAFE_RELEASE_JOBJ(t.classID);
 	}
 }
 

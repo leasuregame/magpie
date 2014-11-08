@@ -331,6 +331,9 @@ var GreetingLabel = LazyLayer.extend({
     },
 
     _onClickUnionTab: function() {
+        cc.log("GreetingLabel _onClickUnionTab");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.insertMessages(gameData.greeting.TYPE.UNIONCHAT);
         this._worldTab.setEnabled(true);
         this._unionTab.setEnabled(false);
@@ -338,6 +341,8 @@ var GreetingLabel = LazyLayer.extend({
     },
 
     _onClickWorldTab: function() {
+        cc.log("GreetingLabel _onClickWorldTab");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.insertMessages(gameData.greeting.TYPE.WORLD);
         this._worldTab.setEnabled(false);
         this._unionTab.setEnabled(true);

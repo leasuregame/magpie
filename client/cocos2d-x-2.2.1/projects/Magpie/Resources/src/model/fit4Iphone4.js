@@ -1031,6 +1031,8 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(40, 812),
             "topLabelPoint": cc.p(610, 383),
             "topIconPoint": cc.p(545, 385),
+            "descLabelPoint": cc.p(545, 650),
+            "lostCountLabelPoint": cc.p(605, 650),
             "skillPointIconPoint": cc.p(460, 722),
             "skillPointLabelPoint": cc.p(588, 749),
             "towerSpritePoint": cc.p(524, 138),
@@ -1585,8 +1587,8 @@ var fit4Iphone4 = {
             "scrollViewHeight": 470,
             "closeItemPoint": cc.p(605, 760),
             "speakerNumPoint": cc.p(127, 711),
-            "unionTabPoint": cc.p(440, 400),
-            "worldTabPoint": cc.p(440, 350)
+            "worldTabPoint": cc.p(640, 618),
+            "unionTabPoint": cc.p(640, 498)
         },
         "unionLayer": {
             "bgSpritePoint": cc.p(40, 106),

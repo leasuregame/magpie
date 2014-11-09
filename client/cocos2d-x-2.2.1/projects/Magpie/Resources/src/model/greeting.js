@@ -81,8 +81,6 @@ var Greeting = Entity.extend({
                     });
                 } else {
                     cc.log("sync fail");
-
-                    that.sync();
                 }
             },
             true

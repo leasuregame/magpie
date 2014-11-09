@@ -46,6 +46,7 @@ var Pass = Entity.extend({
     },
 
     getLoseCount: function() {
+        cc.log('---losecount--: ' + this._loseCount);
         return this._loseCount;
     },
 
@@ -151,19 +152,18 @@ var Pass = Entity.extend({
                     cbData.level9Box = box;
                 }
 
+                if (msg.battleLog.winner == 'enemy') {
+                    that.update({
+                        loseCount: that.getLoseCount()
+                    });
+                }
 
                 cc.log("firstWin: " + msg.firstWin);
-
                 if (msg.firstWin) {
                     cbData.isFirstPassWin = msg.firstWin;
                 }
 
                 cbData.battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
-                if (msg.battleLog.winner == 'enemy') {
-                    that.update({
-                        loseCount: that.getLoseCount() - 1
-                    });
-                }
                 cb(cbData);
 
                 lz.um.event("event_pass", id);
@@ -327,8 +327,9 @@ var Pass = Entity.extend({
                 gameData.player.sets({
                     gold: msg.gold
                 });
+
                 that.update({
-                    loseCount: that.getLoseCount() + 1
+                    loseCount: msg.loseCount
                 });
                 cb();
 

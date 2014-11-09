@@ -336,12 +336,13 @@ var GreetingLabel = LazyLayer.extend({
         var limitLv = outputTables.function_limit.rows[1].union;
         var union = gameData.union;
 
-        cc.log("------log----------")
-        cc.log(union);
-        cc.log(JSON.stringify(union));
-
         if(gameData.player.get("lv") < limitLv) {
             TipLayer.tip(limitLv + "级开启");
+            return;
+        }
+
+        if(!gameData.union.get("name")) {
+            TipLayer.tip("请先加入公会或者创建一个");
             return;
         }
 

@@ -481,10 +481,12 @@ var PassLayer = cc.Layer.extend({
             cc.log("PassLayer _onClickDefiance: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_building_sound, false);
-
+            var that = this;
             if (gameData.pass.getLoseCount() <= 0) {
                 AdvancedTipsLabel.pop(TYPE_BUY_PASS_COUNT_TIPS, function () {
-                    gameData.pass.buyPassCount(function () {});
+                    gameData.pass.buyPassCount(function () {
+                        that._loseCountLabel.setString(gameData.pass.get('loseCount'));
+                    });
                 });
             } else {
 
@@ -504,8 +506,6 @@ var PassLayer = cc.Layer.extend({
                 }
 
                 LazyLayer.showCloudAll();
-
-                var that = this;
                 gameData.pass.defiance(function (data) {
                     cc.log(data);
 

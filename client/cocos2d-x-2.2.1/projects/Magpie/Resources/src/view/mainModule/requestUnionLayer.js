@@ -26,7 +26,7 @@ var RequestUnionLayer = cc.Layer.extend({
         headIcon.setPosition(this._requestUnionLayerFit.headIconPoint);
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon504);
         titleIcon.setPosition(this._requestUnionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
@@ -61,6 +61,7 @@ var RequestUnionLayer = cc.Layer.extend({
             var info = union.name + "（" + union.count + "人）";
             var unionInfoLabel = cc.LabelTTF.create(info, "STHeitiTC-Medium", 25);
             unionInfoLabel.setAnchorPoint(cc.p(0, 0.5));
+            unionInfoLabel.setColor(cc.c3b(56, 3, 5));
             unionInfoLabel.setPosition(cc.p(30, 50));
             bgLabel.addChild(unionInfoLabel);
 

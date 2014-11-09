@@ -32,7 +32,7 @@ var ShowUnionLayer = LazyLayer.extend({
         headIcon.setPosition(this._showUnionLayerFit.headIconPoint);
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon504);
         titleIcon.setPosition(this._showUnionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 

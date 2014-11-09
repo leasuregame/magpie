@@ -21,7 +21,7 @@ var CreateUnionLayer = cc.Layer.extend({
         headIcon.setPosition(this._createUnionLayerFit.headIconPoint);
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon504);
         titleIcon.setPosition(this._createUnionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
@@ -43,8 +43,8 @@ var CreateUnionLayer = cc.Layer.extend({
         inputLabel.setAnchorPoint(cc.p(0, 0.5));
         bgLayer.addChild(inputLabel);
 
-        var nameEditBoxIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
-        nameEditBoxIcon.setContentSize(cc.size(400, 60));
+        var nameEditBoxIcon = cc.Scale9Sprite.create(main_scene_image.icon169);
+        nameEditBoxIcon.setScale(0.8, 0.2);
         nameEditBoxIcon.setPosition(cc.p(360, 350));
         bgLayer.addChild(nameEditBoxIcon);
 

@@ -20,9 +20,9 @@ var MainMenuLayer = cc.Layer.extend({
     _markSprite: null,
     _layer: [
         [MainLayer],
-        [InstancesLayer, ExploreLayer, ExpInstanceLayer],
+        [InstancesLayer, ExploreLayer, ExpInstanceLayer, BossListLayer],
         [TournamentLayer],
-        [UnionLayer],
+        [UnionLayer, UnionManageLayer, UnionRequestListLayer, CreateUnionLayer,ShowUnionLayer, SearchUnionLayer],
         [CardListLayer],
         [ShopLayer]
     ],
@@ -77,7 +77,7 @@ var MainMenuLayer = cc.Layer.extend({
         }
 
 //        this._bossMark = cc.BuilderReader.load(main_scene_image.uiEffect91, this);
-//        this._bossMark.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
+//        this._bossMark.setPosition(cc.p(basePoint.x + offsetX, basePoint.y));
 //        this.addChild(this._bossMark);
 
         return true;

@@ -25,7 +25,7 @@ var SearchUnionLayer = cc.Layer.extend({
         headIcon.setPosition(this._searchUnionLayerFit.headIconPoint);
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon504);
         titleIcon.setPosition(this._searchUnionLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
@@ -107,6 +107,7 @@ var SearchUnionLayer = cc.Layer.extend({
             var unionInfoLabel = cc.LabelTTF.create(info, "STHeitiTC-Medium", 25);
             unionInfoLabel.setAnchorPoint(cc.p(0, 0.5));
             unionInfoLabel.setPosition(cc.p(30, 50));
+            unionInfoLabel.setColor(cc.c3b(56, 3, 5));
             bgLabel.addChild(unionInfoLabel);
 
             var detailItem = cc.MenuItemImage.createWithIcon(

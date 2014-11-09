@@ -10,6 +10,7 @@ var ShowUnionLayer = LazyLayer.extend({
     _removeElderItem: null,
     _elderIcons: [],
     _role: null,
+    _countLabel: null,
 
     init: function (members, type) {
         if (!this._super()) return false;
@@ -162,6 +163,18 @@ var ShowUnionLayer = LazyLayer.extend({
         if (this._type == TYPE_UNION_SHOW_MYSELF) {
             this._addSkyDialog();
         }
+
+        var membersLabel = cc.LabelTTF.create("公会成员：", "STHeitiTC-Medium", 25);
+        membersLabel.setPosition(this._showUnionLayerFit.membersLabelPoint);
+        this.addChild(membersLabel);
+
+        this._countLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
+        this._countLabel.setAnchorPoint(cc.p(0,0.5));
+        this._countLabel.setPosition(this._showUnionLayerFit.countLabelPoint);
+        this.addChild(this._countLabel);
+
+        var union = gameData.union;
+        this._countLabel.setString(union.get("count") + "/" + union.get("maxCount"));
 
         return true;
     },

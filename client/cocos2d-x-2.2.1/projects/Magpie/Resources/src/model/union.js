@@ -42,6 +42,22 @@ var Union = Entity.extend({
         lz.server.request("area.unionHandler.getUnion", {}, function (data) {
             cc.log(data);
 
+            lz.server.on("onUnionRequestApprove", function (data) {
+                cc.log("onUnionRequestApprove");
+                cc.log(data);
+
+                var msg = data.msg.union;
+                for (var key in msg) {
+                    that.set(key, msg[key]);
+                }
+            });
+
+            lz.server.on("onUnionDismiss", function (data) {
+                cc.log("onUnionDismiss");
+                cc.log(data);
+                that._id = null;
+            });
+
             if (data.code == 200) {
                 cc.log("Union getUnion success");
 
@@ -49,6 +65,7 @@ var Union = Entity.extend({
                 for (var key in msg) {
                     that.set(key, msg[key]);
                 }
+
                 cb();
             } else if (data.code == 400) {
                 cc.log("Union getUnion: not join");
@@ -213,6 +230,9 @@ var Union = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 that._memberList.push(data.msg.member);
+                that.update({
+                    count: data.msg.unionCount
+                });
                 cb(data.msg.requestList);
             } else {
                 TipLayer.tip(data.msg);

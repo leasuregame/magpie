@@ -1244,7 +1244,9 @@ var fit4Iphone5 = {
             "detailItemPoint": cc.p(108, 240),
             "sendMessageItemPoint": cc.p(108, 150),
             "battleItemPoint": cc.p(108, 60),
-            "skyDialogRect": cc.rect(0, 198, 640, 968)
+            "skyDialogRect": cc.rect(0, 198, 640, 968),
+            "membersLabelPoint": cc.p(510, 140),
+            "countLabelPoint": cc.p(560, 140),
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),

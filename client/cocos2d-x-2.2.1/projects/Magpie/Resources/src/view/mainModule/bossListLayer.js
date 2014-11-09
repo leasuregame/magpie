@@ -54,14 +54,14 @@ var BossListLayer = cc.Layer.extend({
         bgSprite.setPosition(this._bossListLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon2);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._bossListLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
-        var titleIcon = cc.Sprite.create(main_scene_image.icon394);
-        titleIcon.setPosition(this._bossListLayerFit.titleIconPoint);
-        this.addChild(titleIcon);
+//        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+//        headIcon.setAnchorPoint(cc.p(0, 0));
+//        headIcon.setPosition(this._bossListLayerFit.headIconPoint);
+//        this.addChild(headIcon);
+//
+//        var titleIcon = cc.Sprite.create(main_scene_image.icon394);
+//        titleIcon.setPosition(this._bossListLayerFit.titleIconPoint);
+//        this.addChild(titleIcon);
 
         var cdTimeIcon = cc.Sprite.create(main_scene_image.icon412);
         cdTimeIcon.setPosition(this._bossListLayerFit.cdTimeIconPoint);

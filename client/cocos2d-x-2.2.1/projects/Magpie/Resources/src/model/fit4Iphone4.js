@@ -253,6 +253,7 @@ var fit4Iphone4 = {
             "superHonorLabelPoint": cc.p(550, 185),
             "rewardItemPoint": cc.p(160, 830),
             "rankItemPoint": cc.p(580, 830),
+            "backItemPoint": cc.p(100, 920),
             "exchangeItemPoint": cc.p(490, 114),
             "scrollViewLayerRect": cc.rect(0, 0, 621, 538),
             "scrollViewHeight": 538,
@@ -442,8 +443,17 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 755),
             "scrollViewPoint": cc.p(40, 115)
         },
+        "createUnionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920)
+        },
         "dailyInstancesLayer": {
             "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
             "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
             "scrollViewSize": cc.size(640, 740),
             "scrollViewPoint": cc.p(40, 122)
@@ -708,10 +718,17 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(56, 124)
         },
         "instancesLayer": {
-            "headIconPoint": cc.p(40, 874),
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "scrollViewHeight": 680,
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 680),
+            "scrollViewSize": cc.size(640, 680),
+            "scrollViewPoint": cc.p(40, 122),
             "taskLayerItemPoint": cc.p(111, 914),
             "passLayerItemPoint": cc.p(254, 914),
-            "dailyInstancesLayerItemPoint": cc.p(402, 914)
+            "dailyInstancesLayerItemPoint": cc.p(402, 914),
+            "bossListLayerItemPoint": cc.p(550, 914)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -1014,6 +1031,8 @@ var fit4Iphone4 = {
             "tipLabelPoint": cc.p(40, 812),
             "topLabelPoint": cc.p(610, 383),
             "topIconPoint": cc.p(545, 385),
+            "descLabelPoint": cc.p(545, 650),
+            "lostCountLabelPoint": cc.p(605, 650),
             "skillPointIconPoint": cc.p(460, 722),
             "skillPointLabelPoint": cc.p(588, 749),
             "towerSpritePoint": cc.p(524, 138),
@@ -1021,6 +1040,7 @@ var fit4Iphone4 = {
             "lineUpItemPoint": cc.p(140, 846),
             "wipeOutItemPoint": cc.p(580, 846),
             "resetItemPoint": cc.p(580, 846),
+            "backItemPoint": cc.p(100, 920),
             "bgLayerPoint": cc.p(40, 0),
             "bgSprite2Point": cc.p(360, 492),
             "rewardLabel1Point": cc.p(210, 562),
@@ -1165,10 +1185,32 @@ var fit4Iphone4 = {
             "go2PaymentItemPoint": cc.p(360, 212),
             "btnTitlePoint": cc.p(360, 212)
         },
+        "requestUnionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
+            "scrollViewSize": cc.size(640, 740),
+            "scrollViewPoint": cc.p(40, 122)
+        },
         "invitationLayer": {
             "iconSpritePoint": cc.p(360, 520),
             "okItemPoint": cc.p(360, 280),
             "editBoxPoint": cc.p(463, 433)
+        },
+        "searchUnionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+            "nameEditBoxIconPoint": cc.p(340, 772),
+            "nameEditBoxSize": cc.size(538, 67),
+            "nameEditBoxPoint": cc.p(350, 772),
+            "searchUnionItemPoint": cc.p(620, 772),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 590),
+            "scrollViewSize": cc.size(640, 590),
+            "scrollViewPoint": cc.p(40, 132)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -1185,6 +1227,22 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 874),
             "vipLayerItemPoint": cc.p(254, 914),
             "propsLayerItemPoint": cc.p(111, 914)
+        },
+        "showUnionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 740),
+            "scrollViewSize": cc.size(640, 740),
+            "scrollViewPoint": cc.p(40, 122),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "battleItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 808),
+            "membersLabelPoint": cc.p(550, 140),
+            "countLabelPoint": cc.p(600, 140),
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
@@ -1390,7 +1448,8 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(640, 774),
             "scrollViewContentSize": cc.size(6400, 774),
             "scrollViewPoint": cc.p(40, 106),
-            "titlePointY": 745
+            "titlePointY": 745,
+            "backItemPoint": cc.p(100, 920)
         },
         "tenLotteryCardLayer": {
             "ccbNodePoint": cc.p(360, 480),
@@ -1529,7 +1588,48 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(110, 165),
             "scrollViewHeight": 470,
             "closeItemPoint": cc.p(605, 760),
-            "speakerNumPoint": cc.p(127, 711)
+            "speakerNumPoint": cc.p(127, 711),
+            "worldTabPoint": cc.p(640, 618),
+            "unionTabPoint": cc.p(640, 498)
+        },
+        "unionLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "applyForItemPoint": cc.p(360, 700),
+            "createUnionItemPoint": cc.p(360, 550),
+            "searchUnionItemPoint": cc.p(360, 400),
+            "leftIconPoint": cc.p(270, 772),
+            "rightIconPoint": cc.p(680, 772),
+            "idLabelPoint": cc.p(60, 840),
+            "nameLabelPoint": cc.p(60, 810),
+            "noticeLabelPoint": cc.p(360, 780),
+            "unionNoticeLabelPoint": cc.p(360, 730),
+            "updateNoticeItemPoint": cc.p(555, 675),
+            "wishTreeItemPoint": cc.p(200, 520),
+            "unionWarsItemPoint": cc.p(520, 520),
+            "unionShopItemPoint": cc.p(200, 260),
+            "unionManageItemPoint": cc.p(520, 260)
+        },
+        "unionManageLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920)
+        },
+        "unionRequestListLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+            "membersLabelPoint": cc.p(550, 140),
+            "countLabelPoint": cc.p(600, 140),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 700),
+            "scrollViewSize": cc.size(640, 700),
+            "scrollViewPoint": cc.p(40, 162),
+            "labelContentSize": cc.size(216, 120),
+            "detailItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 808)
         },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(364, 485),
@@ -1595,6 +1695,21 @@ var fit4Iphone4 = {
             "scrollViewLayerRect": cc.rect(0, 0, 500, 600),
             "scrollViewSize": cc.size(500, 600),
             "scrollViewPoint": cc.p(110, 172)
+        },
+        "wishTreeLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "backItemPoint": cc.p(100, 920),
+            "nextCollectLabelPoint": cc.p(440, 830),
+            "collectCdTimePoint": cc.p(560, 830),
+            "removeCdTimeItemPoint": cc.p(640, 830),
+            "todayCollectLabelPoint": cc.p(440, 790),
+            "collectTimeLabelPoint": cc.p(585, 790),
+            "lvLabelPoint": cc.p(70, 200),
+            "expLabelPoint": cc.p(590, 200),
+            "progressPoint": cc.p(360, 200),
+            "tipLabelPoint": cc.p(360, 150)
         },
         "worldCupLayer": {
             "bgSpritePoint": cc.p(40, -96),

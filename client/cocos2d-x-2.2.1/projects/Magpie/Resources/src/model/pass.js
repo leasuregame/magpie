@@ -21,6 +21,7 @@ var Pass = Entity.extend({
     _mark: [],
     _hasMystical: false,
     _canReset: false,
+    _loseCount: 3,
 
     init: function (data) {
         cc.log("Pass init");
@@ -41,6 +42,12 @@ var Pass = Entity.extend({
         this.set("mark", data.mark);
         this.set("hasMystical", data.hasMystical);
         this.set("canReset", data.canReset);
+        this.set("loseCount", data.loseCount);
+    },
+
+    getLoseCount: function() {
+        cc.log('---losecount--: ' + this._loseCount);
+        return this._loseCount;
     },
 
     getTop: function () {
@@ -145,15 +152,18 @@ var Pass = Entity.extend({
                     cbData.level9Box = box;
                 }
 
+                if (msg.battleLog.winner == 'enemy') {
+                    that.update({
+                        loseCount: that.getLoseCount()
+                    });
+                }
 
                 cc.log("firstWin: " + msg.firstWin);
-
                 if (msg.firstWin) {
                     cbData.isFirstPassWin = msg.firstWin;
                 }
 
                 cbData.battleLogId = BattleLogPool.getInstance().put(msg.battleLog);
-
                 cb(cbData);
 
                 lz.um.event("event_pass", id);
@@ -296,6 +306,36 @@ var Pass = Entity.extend({
                 lz.um.event("event_reset_pass");
             } else {
                 cc.log("reset fail");
+
+                TipLayer.tip(data.msg);
+            }
+        });
+    },
+
+    buyPassCount: function(cb) {
+        cc.log("Buy pass count");
+
+        var that = this;
+        lz.server.request("area.taskHandler.buyPassCount", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buy pass count success");
+
+                var msg = data.msg;
+
+                gameData.player.sets({
+                    gold: msg.gold
+                });
+
+                that.update({
+                    loseCount: msg.loseCount
+                });
+                cb();
+
+                lz.um.event("event_buy_pass_count");
+            } else {
+                cc.log("buy pass count fail");
 
                 TipLayer.tip(data.msg);
             }

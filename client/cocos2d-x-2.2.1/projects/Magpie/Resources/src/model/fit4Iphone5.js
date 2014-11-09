@@ -254,6 +254,7 @@ var fit4Iphone5 = {
             "rewardItemPoint": cc.p(120, 988),
             "rankItemPoint": cc.p(540, 988),
             "exchangeItemPoint": cc.p(450, 114),
+            "backItemPoint": cc.p(60, 1096),
             "scrollViewLayerRect": cc.rect(0, 0, 621, 685),
             "scrollViewHeight": 685,
             "scrollViewSize": cc.size(621, 685),
@@ -442,8 +443,17 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 930),
             "scrollViewPoint": cc.p(0, 115)
         },
+        "createUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096)
+        },
         "dailyInstancesLayer": {
             "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
             "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
             "scrollViewSize": cc.size(640, 900),
             "scrollViewPoint": cc.p(0, 122)
@@ -709,10 +719,17 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(16, 140)
         },
         "instancesLayer": {
+            "bgSpritePoint": cc.p(0, 106),
             "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "scrollViewHeight": 843,
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 843),
+            "scrollViewSize": cc.size(640, 843),
+            "scrollViewPoint": cc.p(0, 122),
             "taskLayerItemPoint": cc.p(71, 1090),
             "passLayerItemPoint": cc.p(214, 1090),
-            "dailyInstancesLayerItemPoint": cc.p(362, 1090)
+            "dailyInstancesLayerItemPoint": cc.p(362, 1090),
+            "bossListLayerItemPoint": cc.p(510, 1090)
         },
         "lineUpDetail": {
             "locatePoints": {
@@ -1018,6 +1035,8 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(0, 988),
             "topLabelPoint": cc.p(570, 383),
             "topIconPoint": cc.p(505, 385),
+            "descLabelPoint": cc.p(503, 820),
+            "lostCountLabelPoint": cc.p(565, 820),
             "skillPointIconPoint": cc.p(420, 898),
             "skillPointLabelPoint": cc.p(548, 925),
             "towerSpritePoint": cc.p(484, 138),
@@ -1025,6 +1044,7 @@ var fit4Iphone5 = {
             "lineUpItemPoint": cc.p(100, 1022),
             "wipeOutItemPoint": cc.p(540, 1022),
             "resetItemPoint": cc.p(540, 1022),
+            "backItemPoint": cc.p(60, 1096),
             "bgLayerPoint": cc.p(0, 0),
             "bgSprite2Point": cc.p(320, 580),
             "rewardLabel1Point": cc.p(170, 650),
@@ -1169,10 +1189,32 @@ var fit4Iphone5 = {
             "go2PaymentItemPoint": cc.p(320, 220),
             "btnTitlePoint": cc.p(320, 220)
         },
+        "requestUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
+            "scrollViewSize": cc.size(640, 900),
+            "scrollViewPoint": cc.p(0, 122)
+        },
         "invitationLayer": {
             "iconSpritePoint": cc.p(320, 640),
             "okItemPoint": cc.p(320, 330),
             "editBoxPoint": cc.p(423, 553)
+        },
+        "searchUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "nameEditBoxIconPoint": cc.p(300, 948),
+            "nameEditBoxSize": cc.size(538, 67),
+            "nameEditBoxPoint": cc.p(310, 948),
+            "searchUnionItemPoint": cc.p(580, 948),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 750),
+            "scrollViewSize": cc.size(640, 750),
+            "scrollViewPoint": cc.p(0, 132)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(0, 0),
@@ -1189,6 +1231,22 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1050),
             "vipLayerItemPoint": cc.p(214, 1090),
             "propsLayerItemPoint": cc.p(71, 1090)
+        },
+        "showUnionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 900),
+            "scrollViewSize": cc.size(640, 900),
+            "scrollViewPoint": cc.p(0, 122),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "battleItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(0, 198, 640, 968),
+            "membersLabelPoint": cc.p(510, 140),
+            "countLabelPoint": cc.p(560, 140),
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
@@ -1395,7 +1453,8 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(640, 950),
             "scrollViewContentSize": cc.size(6400, 950),
             "scrollViewPoint": cc.p(0, 106),
-            "titlePointY": 920
+            "titlePointY": 920,
+            "backItemPoint": cc.p(60, 1096)
         },
         "tenLotteryCardLayer": {
             "ccbNodePoint": cc.p(320, 568),
@@ -1510,6 +1569,45 @@ var fit4Iphone5 = {
             "verticalIconScale": 1,
             "helpItemPoint": cc.p(50, 1021)
         },
+        "unionLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "applyForItemPoint": cc.p(320, 700),
+            "createUnionItemPoint": cc.p(320, 550),
+            "searchUnionItemPoint": cc.p(320, 400),
+            "leftIconPoint": cc.p(230, 942),
+            "rightIconPoint": cc.p(640, 942),
+            "idLabelPoint": cc.p(20, 980),
+            "nameLabelPoint": cc.p(20, 950),
+            "noticeLabelPoint": cc.p(320, 910),
+            "unionNoticeLabelPoint": cc.p(320, 860),
+            "updateNoticeItemPoint": cc.p(515, 805),
+            "wishTreeItemPoint": cc.p(160, 640),
+            "unionWarsItemPoint": cc.p(480, 640),
+            "unionShopItemPoint": cc.p(160, 340),
+            "unionManageItemPoint": cc.p(480, 340)
+        },
+        "unionManageLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096)
+        },
+        "unionRequestListLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "membersLabelPoint": cc.p(510, 140),
+            "countLabelPoint": cc.p(560, 140),
+            "scrollViewLayerRect": cc.rect(0, 0, 640, 860),
+            "scrollViewSize": cc.size(640, 860),
+            "scrollViewPoint": cc.p(0, 162),
+            "labelContentSize": cc.size(216, 120),
+            "detailItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(0, 198, 640, 968)
+        },
         "usePillLabel": {
             "awakenEffectPoint": cc.p(325, 610),
             "pillIconPoint": cc.p(435, 820),
@@ -1547,7 +1645,9 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(70, 205),
             "scrollViewHeight": 590,
             "closeItemPoint": cc.p(565, 918),
-            "speakerNumPoint": cc.p(87, 861)
+            "speakerNumPoint": cc.p(87, 861),
+            "worldTabPoint": cc.p(600, 768),
+            "unionTabPoint": cc.p(600, 648)
         },
         "vipDailyRewardLayer": {
             "bgLabelScaleY": 1.23,
@@ -1600,6 +1700,21 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(0, 0, 500, 665),
             "scrollViewSize": cc.size(500, 665),
             "scrollViewPoint": cc.p(70, 220)
+        },
+        "wishTreeLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1050),
+            "titleIconPoint": cc.p(320, 1096),
+            "backItemPoint": cc.p(60, 1096),
+            "nextCollectLabelPoint": cc.p(400, 1006),
+            "collectCdTimePoint": cc.p(520, 1006),
+            "removeCdTimeItemPoint": cc.p(600, 1006),
+            "todayCollectLabelPoint": cc.p(400, 966),
+            "collectTimeLabelPoint": cc.p(545, 966),
+            "lvLabelPoint": cc.p(30, 200),
+            "expLabelPoint": cc.p(550, 200),
+            "progressPoint": cc.p(320, 200),
+            "tipLabelPoint": cc.p(320, 150)
         },
         "worldCupLayer": {
             "bgSpritePoint": cc.p(0, 80),

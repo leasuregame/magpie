@@ -372,6 +372,16 @@ var ExploreLayer = cc.Layer.extend({
         this._updatePage();
     },
 
+    updateGuide: function () {
+        cc.log("ExploreLayer updateGuide");
+
+        if (gameGuide.get("bossGuide") && !this._bossGuide) {
+            this._bossGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._bossGuide.setPosition(this._exploreLayerFit.backItemPoint);
+            this.addChild(this._bossGuide);
+        }
+    },
+
     _updatePage: function () {
         cc.log("ExploreLayer _updatePage");
 
@@ -793,7 +803,7 @@ var ExploreLayer = cc.Layer.extend({
                                     passEffect.removeFromParent();
                                     that._index += 1;
 
-                                    if(that._pageIndex == that._getTaskId() - 1) {
+                                    if (that._pageIndex == that._getTaskId() - 1) {
                                         that._pageIndex++;
                                         that._updatePage();
                                     }
@@ -890,6 +900,11 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _onClickBack");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._bossGuide) {
+            this._bossGuide.removeFromParent();
+            this._bossGuide = null;
+        }
 
         gameData.task.currentChapter = Math.ceil(this._sectionId / TASK_SECTION_COUNT);
 

@@ -21,7 +21,7 @@ lz.platformConfig = {
     UPDATE_PACKAGE_URL: "http://183.56.170.243:9090/api/yy/update/",
     UPDATE_VERSION_URL: "http://183.56.170.243:9090/api/yy/version",
     GAME_NOTICE_URL: "http://183.56.170.243:9090/api/yy/notice",
-    UM_APP_KEY: "54151830fd98c55dc80008c9"
+    UM_APP_KEY: "543ba5b8fd98c507ac006a0c" // 新建的友盟APP Key (tosea账号)
 };
 
 

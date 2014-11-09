@@ -26,6 +26,7 @@ var PassLayer = cc.Layer.extend({
     _scrollView: null,
     _element: null,
     _scrollViewLayer: null,
+    _loseCountLabel: null,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -156,6 +157,15 @@ var PassLayer = cc.Layer.extend({
         skillPointIcon.setPosition(this._passLayerFit.skillPointIconPoint);
         this.addChild(skillPointIcon);
 
+        var descLabel = cc.LabelTTF.create("可失败次数：", "STHeitiTC-Medium", 20);
+        descLabel.setPosition(this._passLayerFit.descLabelPoint);
+        descLabel.setColor(cc.c3b(255, 242, 206));
+        this.addChild(descLabel);
+
+        this._loseCountLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
+        this._loseCountLabel.setPosition(this._passLayerFit.lostCountLabelPoint);
+        this.addChild(this._loseCountLabel);
+
         var topIcon = cc.Sprite.create(main_scene_image.icon62);
         topIcon.setPosition(this._passLayerFit.topIconPoint);
         this.addChild(topIcon);
@@ -243,6 +253,7 @@ var PassLayer = cc.Layer.extend({
 
         this._skillPointLabel.setString(gameData.player.get("skillPoint"));
         this._topLabel.setString(pass.get("top"));
+        this._loseCountLabel.setString(pass.get('loseCount'));
 
         var height = this._top / MAX_PASS_COUNT * 211;
         this._towerSprite.setTextureRect(cc.rect(0, 211 - height, 104, height));
@@ -470,106 +481,113 @@ var PassLayer = cc.Layer.extend({
             cc.log("PassLayer _onClickDefiance: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_building_sound, false);
-
-            this._element[id].passItem.stopAllActions();
-
-            this._element[id].passItem.runAction(
-                cc.Sequence.create(
-                    cc.ScaleTo.create(0.2, 1.2),
-                    cc.ScaleTo.create(0.3, 0.9),
-                    cc.ScaleTo.create(0.2, 1)
-                )
-            );
-
-            if (id > this._top) {
-                TipLayer.tip("请先挑战前面关卡");
-                return;
-            }
-
-            LazyLayer.showCloudAll();
-
             var that = this;
-            gameData.pass.defiance(function (data) {
-                cc.log(data);
+            if (gameData.pass.getLoseCount() <= 0) {
+                AdvancedTipsLabel.pop(TYPE_BUY_PASS_COUNT_TIPS, function () {
+                    gameData.pass.buyPassCount(function () {
+                        that._loseCountLabel.setString(gameData.pass.get('loseCount'));
+                    });
+                });
+            } else {
 
-                if (data) {
-                    var battleLogId = data.battleLogId;
-                    var upgradeReward = data.upgradeReward || null;
-                    var level9Box = data.level9Box || null;
-                    var isFirstPassWin = data.isFirstPassWin || false;
-                    var isWin = false;
-                    var next = function () {
-                        gameCombo.next();
-                    };
+                this._element[id].passItem.stopAllActions();
 
-                    gameCombo.push([
-                        function () {
-                            isWin = BattlePlayer.getInstance().play({
-                                cb: next,
-                                id: battleLogId
-                            });
-                        },
-                        function () {
-                            that._spirit.speak(isWin);
+                this._element[id].passItem.runAction(
+                    cc.Sequence.create(
+                        cc.ScaleTo.create(0.2, 1.2),
+                        cc.ScaleTo.create(0.3, 0.9),
+                        cc.ScaleTo.create(0.2, 1)
+                    )
+                );
 
-                            that.update();
-
-                            var top = gameData.pass.getTop();
-
-                            if (top != that._top) {
-                                that._top = top;
-                                that._defianceAnimation(next);
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            LazyLayer.closeCloudAll();
-                            next();
-                        },
-                        function () {
-                            if (upgradeReward) {
-                                PlayerUpgradeLayer.pop({
-                                    cb: next,
-                                    reward: upgradeReward
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (level9Box) {
-                                Level9BoxLayer.pop({
-                                    cb: next,
-                                    reward: level9Box
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (isFirstPassWin) {
-                                MandatoryTeachingLayer.pop({
-                                    cb: next,
-                                    progress: FIRST_PASS_WIN
-                                });
-                            } else {
-                                next();
-                            }
-                        },
-                        function () {
-                            if (upgradeReward) {
-                                gameGuide.updateGuide();
-                            }
-                            next();
-                        }
-                    ]);
-                } else {
-                    that.update();
-
-                    LazyLayer.closeCloudAll();
+                if (id > this._top) {
+                    TipLayer.tip("请先挑战前面关卡");
+                    return;
                 }
-            }, id);
+
+                LazyLayer.showCloudAll();
+                gameData.pass.defiance(function (data) {
+                    cc.log(data);
+
+                    if (data) {
+                        var battleLogId = data.battleLogId;
+                        var upgradeReward = data.upgradeReward || null;
+                        var level9Box = data.level9Box || null;
+                        var isFirstPassWin = data.isFirstPassWin || false;
+                        var isWin = false;
+                        var next = function () {
+                            gameCombo.next();
+                        };
+
+                        gameCombo.push([
+                            function () {
+                                isWin = BattlePlayer.getInstance().play({
+                                    cb: next,
+                                    id: battleLogId
+                                });
+                            },
+                            function () {
+                                that._spirit.speak(isWin);
+
+                                that.update();
+
+                                var top = gameData.pass.getTop();
+
+                                if (top != that._top) {
+                                    that._top = top;
+                                    that._defianceAnimation(next);
+                                } else {
+                                    next();
+                                }
+                            },
+                            function () {
+                                LazyLayer.closeCloudAll();
+                                next();
+                            },
+                            function () {
+                                if (upgradeReward) {
+                                    PlayerUpgradeLayer.pop({
+                                        cb: next,
+                                        reward: upgradeReward
+                                    });
+                                } else {
+                                    next();
+                                }
+                            },
+                            function () {
+                                if (level9Box) {
+                                    Level9BoxLayer.pop({
+                                        cb: next,
+                                        reward: level9Box
+                                    });
+                                } else {
+                                    next();
+                                }
+                            },
+                            function () {
+                                if (isFirstPassWin) {
+                                    MandatoryTeachingLayer.pop({
+                                        cb: next,
+                                        progress: FIRST_PASS_WIN
+                                    });
+                                } else {
+                                    next();
+                                }
+                            },
+                            function () {
+                                if (upgradeReward) {
+                                    gameGuide.updateGuide();
+                                }
+                                next();
+                            }
+                        ]);
+                    } else {
+                        that.update();
+
+                        LazyLayer.closeCloudAll();
+                    }
+                }, id);
+            }
         }
     },
 

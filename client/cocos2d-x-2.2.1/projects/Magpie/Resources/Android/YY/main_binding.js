@@ -75,6 +75,7 @@ var appFiles = [
     'src/model/activity.js',
     'src/model/greeting.js',
     'src/model/boss.js',
+    'src/model/union.js',
 
     'payment.js',
 
@@ -154,6 +155,7 @@ var appFiles = [
     'src/view/mainModule/cardSmeltLabel.js',
     'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
+    'src/view/mainModule/createUnionLayer.js',
     'src/view/mainModule/tipsLayer.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/expInstanceLayer.js',
@@ -200,8 +202,15 @@ var appFiles = [
     'src/view/mainModule/rankLayer.js',
     'src/view/mainModule/readMessageLayer.js',
     'src/view/mainModule/removeCdTipLabel.js',
+
+    'src/view/mainModule/requestUnionLayer.js',//
+    'src/view/mainModule/searchUnionLayer.js',//
+
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
+
+    'src/view/mainModule/showUnionLayer.js',//
+
     'src/view/mainModule/skillUpgradeLabel.js',
     'src/view/mainModule/smeltLayer.js',
     'src/view/mainModule/speakerLayer.js',
@@ -222,10 +231,18 @@ var appFiles = [
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/tournamentTipLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
+
+    'src/view/mainModule/unionTipsLabel.js',
+    'src/view/mainModule/unionLayer.js',//
+    'src/view/mainModule/unionManageLayer.js',//
+    'src/view/mainModule/unionRequestListLayer.js',//
+    'src/view/mainModule/updateUnionNoticeLabel.js',//
+    
     'src/view/mainModule/usePillLabel.js',
     'src/view/mainModule/vipLayer.js',
     'src/view/mainModule/vipPrivilegeLayer.js',
     'src/view/mainModule/vipUpgradeTipLabel.js',
+    'src/view/mainModule/wishTreeLayer.js',
     'src/view/mainModule/mainBgLayer.js',
     'src/view/mainModule/mainLayer.js',
     'src/view/mainModule/mainMenuLayer.js',

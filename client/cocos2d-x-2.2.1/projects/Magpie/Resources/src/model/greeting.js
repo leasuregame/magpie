@@ -6,19 +6,32 @@ var MAX_MSG_LEN = 50;
 
 var Greeting = Entity.extend({
 
-    _msgList: [],
+    _worldList: [],
+    _unionChatList: [],
+    TYPE: {
+        WORLD: '_worldList',
+        UNIONCHAT: '_unionChatList'
+    },
 
     init: function () {
         cc.log("Greeting init");
 
-        this._msgList = [];
+        this._worldList = [];
+        this._unionChatList = [];
         this.sync();
         return true;
     },
 
     sync: function () {
+        this.syncGreeting();
+        this.syncUnionChat();
+    },
+
+    syncGreeting: function() {
         cc.log("Greeting sync");
         var that = this;
+        var type = this.TYPE.WORLD;
+
         lz.server.request(
             "area.greetingHandler.getLatest",
             {},
@@ -27,14 +40,14 @@ var Greeting = Entity.extend({
                 cc.log(data);
                 if (data.code == 200) {
                     cc.log("sync success");
-                    that.update(data.msg);
+                    that.update(data.msg, type);
                     lz.server.on("onGreeting", function (data) {
                         cc.log("***** on Greeting:");
                         cc.log(data);
 
                         MainScene.getInstance().speaker(data.msg);
-                        GreetingLabel.getInstance().pushMsg(data.msg);
-                        that._push(data.msg);
+                        GreetingLabel.getInstance().pushMsg(data.msg, type);
+                        that._push(data.msg, type);
                     });
                 } else {
                     cc.log("sync fail");
@@ -46,7 +59,35 @@ var Greeting = Entity.extend({
         );
     },
 
-    sendMsg: function (cb, msg) {
+    syncUnionChat: function() {
+        cc.log("Union Chat sync");
+        var that = this;
+        var type = this.TYPE.UNIONCHAT;
+        lz.server.request(
+            "area.unionChatHandler.chatList",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+                if (data.code == 200) {
+                    cc.log("sync success");
+                    that.update(data.msg.chatList, type);
+                    lz.server.on("onUnionChatMessage", function (data) {
+                        cc.log("***** on Greeting:");
+                        cc.log(data);
+
+                        GreetingLabel.getInstance().pushMsg(data.msg, type);
+                        that._push(data.msg, type);
+                    });
+                } else {
+                    cc.log("sync fail");
+                }
+            },
+            true
+        );
+    },
+
+    sendWorldMsg: function (cb, msg) {
         cc.log("Greeting send: " + msg);
 
         lz.server.request(
@@ -66,22 +107,45 @@ var Greeting = Entity.extend({
         );
     },
 
-    update: function (data) {
-        cc.log("Greeting update");
-        this._msgList = data;
-        GreetingLabel.getInstance().insertMessages();
+    sendUnionMsg: function (cb, msg) {
+        cc.log("Greeting send: " + msg);
+
+        lz.server.request(
+            "area.unionChatHandler.send",
+            {content: msg},
+            function (data) {
+                if (data.code == 200) {
+                    cc.log("send success");
+                    cb();
+                } else {
+                    cc.log("send fail");
+                    TipLayer.tip(data.msg);
+                    cb();
+                }
+            }
+        );
     },
 
-    _push: function (msg) {
-        this._msgList.unshift(msg);
-        var len = this._msgList.length;
+    update: function (data, type) {
+        cc.log("Greeting update");
+        this[type] = data;
+        GreetingLabel.getInstance().insertMessages(type);
+    },
+
+    _push: function (msg, type) {
+        this[type].unshift(msg);
+        var len = this[type].length;
         if (len >= MAX_MSG_LEN) {
-            this._msgList.slice(0, MAX_MSG_LEN);
+            this[type].slice(0, MAX_MSG_LEN);
         }
     },
 
-    getMsgList: function () {
-        return this._msgList;
+    getMsgList: function (type) {
+        if (type) {
+            return this[type];
+        }
+
+        return this._worldList;
     }
 
 });

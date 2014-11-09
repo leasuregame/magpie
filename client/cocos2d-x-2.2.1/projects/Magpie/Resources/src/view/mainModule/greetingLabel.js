@@ -10,11 +10,20 @@ var GreetingLabel = LazyLayer.extend({
     _scrollViewLayer: null,
     _layer: [],
     _msgList: [],
+    _unionTab: null,
+    _worldTab: null,
+    _currentTab: 1, // 1: worldTab, 2: unionTab
 
     onEnter: function () {
         cc.log("GreetingLabel onEnter");
         this._super();
-        this.update();
+
+        if (this._currentTab == 1) {
+            this.insertMessages(gameData.greeting.TYPE.WORLD);
+        } else {
+            this.insertMessages(gameData.greeting.TYPE.UNIONCHAT);
+        }
+
     },
 
     init: function () {
@@ -30,6 +39,8 @@ var GreetingLabel = LazyLayer.extend({
         this._layer = [];
         this._msgList = [];
         this._playerItem = [];
+        this._unionTab = null;
+        this._worldTab = null;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 720, 1136);
         bgLayer.setPosition(cc.p(0, 0));
@@ -112,10 +123,32 @@ var GreetingLabel = LazyLayer.extend({
         );
         closeItem.setPosition(this._greetingLabelFit.closeItemPoint);
 
-        var menu = cc.Menu.create(sendItem, closeItem);
+        this._unionTab = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button96,
+            main_scene_image.button96s,
+            main_scene_image.button96d,
+            main_scene_image.icon510,
+            this._onClickUnionTab,
+            this
+        );
+        this._unionTab.setPosition(this._greetingLabelFit.unionTabPoint);
+
+        this._worldTab = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button96,
+            main_scene_image.button96s,
+            main_scene_image.button96d,
+            main_scene_image.icon511,
+            this._onClickWorldTab,
+            this
+        );
+        this._worldTab.setPosition(this._greetingLabelFit.worldTabPoint);
+
+        var menu = cc.Menu.create(sendItem, closeItem, this._unionTab, this._worldTab);
         menu.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+        this._worldTab.setEnabled(false);
+        this._unionTab.setEnabled(true);
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
@@ -161,9 +194,19 @@ var GreetingLabel = LazyLayer.extend({
         return true;
     },
 
-    insertMessages: function () {
+    insertMessages: function (type) {
         cc.log("GreetingLabel insertMessages");
-        var msgList = gameData.greeting.getMsgList();
+
+        for (var i = 0; i < this._layer.length; i++) {
+            this._layer[i].removeFromParent();
+        }
+
+        this._layer = [];
+        this._msgList = [];
+        this._playerItem = [];
+        this.update();
+
+        var msgList = gameData.greeting.getMsgList(type);
         var len = msgList.length;
         this._speakerNumLabel.setString(gameData.player.get("speaker"));
         for (var i = 0; i < len; i++) {
@@ -287,6 +330,38 @@ var GreetingLabel = LazyLayer.extend({
         return b.created - a.created;
     },
 
+    _onClickUnionTab: function() {
+        cc.log("GreetingLabel _onClickUnionTab");
+
+        var limitLv = outputTables.function_limit.rows[1].union;
+        var union = gameData.union;
+
+        if(gameData.player.get("lv") < limitLv) {
+            TipLayer.tip(limitLv + "级开启");
+            return;
+        }
+
+        if(!gameData.union.get("name")) {
+            TipLayer.tip("请先加入公会或者创建一个");
+            return;
+        }
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        this.insertMessages(gameData.greeting.TYPE.UNIONCHAT);
+        this._worldTab.setEnabled(true);
+        this._unionTab.setEnabled(false);
+        this._currentTab = 2;
+    },
+
+    _onClickWorldTab: function() {
+        cc.log("GreetingLabel _onClickWorldTab");
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        this.insertMessages(gameData.greeting.TYPE.WORLD);
+        this._worldTab.setEnabled(false);
+        this._unionTab.setEnabled(true);
+        this._currentTab = 1;
+    },
+
     _onClickSend: function () {
         cc.log("GreetingLabel _onClickSend");
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
@@ -301,28 +376,30 @@ var GreetingLabel = LazyLayer.extend({
             TipLayer.tip("信息长度不能超过20个字");
             return;
         }
-
-        var id = 8;
-        var product = gameData.shop.getProduct(id);
-        var that = this;
-
-        if (gameData.player.get("speaker") <= 0) {
-            AmountLayer.pop(
-                function (count) {
-                    that._buySpeaker(id, count);
-                },
-                product
-            );
-            return;
-        }
-
-
         text = lz.replaceStr(text);
+        var that = this;
+        if (this._currentTab == 1) {
+            var id = 8;
+            var product = gameData.shop.getProduct(id);
 
-        gameData.greeting.sendMsg(function () {
-            that._msgEditBox.setText("");
-            that._speakerNumLabel.setString(gameData.player.get("speaker"));
-        }, text);
+            if (gameData.player.get("speaker") <= 0) {
+                AmountLayer.pop(
+                    function (count) {
+                        that._buySpeaker(id, count);
+                    },
+                    product
+                );
+                return;
+            }
+            gameData.greeting.sendWorldMsg(function () {
+                that._msgEditBox.setText("");
+                that._speakerNumLabel.setString(gameData.player.get("speaker"));
+            }, text);
+        } else {
+            gameData.greeting.sendUnionMsg(function () {
+                that._msgEditBox.setText("");
+            }, text);
+        }
     },
 
     _buySpeaker: function (id, count) {

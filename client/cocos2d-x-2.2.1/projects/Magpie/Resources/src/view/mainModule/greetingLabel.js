@@ -333,6 +333,18 @@ var GreetingLabel = LazyLayer.extend({
     _onClickUnionTab: function() {
         cc.log("GreetingLabel _onClickUnionTab");
 
+        var limitLv = outputTables.function_limit.rows[1].union;
+        var union = gameData.union;
+
+        cc.log("------log----------")
+        cc.log(union);
+        cc.log(JSON.stringify(union));
+
+        if(gameData.player.get("lv") < limitLv) {
+            TipLayer.tip(limitLv + "级开启");
+            return;
+        }
+
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
         this.insertMessages(gameData.greeting.TYPE.UNIONCHAT);
         this._worldTab.setEnabled(true);

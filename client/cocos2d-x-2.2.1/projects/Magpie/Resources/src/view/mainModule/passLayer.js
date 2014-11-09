@@ -26,6 +26,7 @@ var PassLayer = cc.Layer.extend({
     _scrollView: null,
     _element: null,
     _scrollViewLayer: null,
+    _loseCountLabel: null,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -156,6 +157,15 @@ var PassLayer = cc.Layer.extend({
         skillPointIcon.setPosition(this._passLayerFit.skillPointIconPoint);
         this.addChild(skillPointIcon);
 
+        var descLabel = cc.LabelTTF.create("可失败次数：", "STHeitiTC-Medium", 20);
+        descLabel.setPosition(this._passLayerFit.descLabelPoint);
+        descLabel.setColor(cc.c3b(255, 242, 206));
+        this.addChild(descLabel);
+
+        this._loseCountLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
+        this._loseCountLabel.setPosition(this._passLayerFit.lostCountLabelPoint);
+        this.addChild(this._loseCountLabel);
+
         var topIcon = cc.Sprite.create(main_scene_image.icon62);
         topIcon.setPosition(this._passLayerFit.topIconPoint);
         this.addChild(topIcon);
@@ -243,6 +253,7 @@ var PassLayer = cc.Layer.extend({
 
         this._skillPointLabel.setString(gameData.player.get("skillPoint"));
         this._topLabel.setString(pass.get("top"));
+        this._loseCountLabel.setString(pass.get('loseCount'));
 
         var height = this._top / MAX_PASS_COUNT * 211;
         this._towerSprite.setTextureRect(cc.rect(0, 211 - height, 104, height));

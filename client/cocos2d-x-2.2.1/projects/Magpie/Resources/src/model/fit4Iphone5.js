@@ -1035,6 +1035,8 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(0, 988),
             "topLabelPoint": cc.p(570, 383),
             "topIconPoint": cc.p(505, 385),
+            "descLabelPoint": cc.p(495, 820),
+            "lostCountLabelPoint": cc.p(565, 820),
             "skillPointIconPoint": cc.p(420, 898),
             "skillPointLabelPoint": cc.p(548, 925),
             "towerSpritePoint": cc.p(484, 138),

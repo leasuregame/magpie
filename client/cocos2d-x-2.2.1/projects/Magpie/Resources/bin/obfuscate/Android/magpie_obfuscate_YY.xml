@@ -70,6 +70,7 @@
                 <file name="src/model/activity.js"/>
                 <file name="src/model/greeting.js"/>
                 <file name="src/model/boss.js"/>
+                <file name="src/model/union.js"/>
 
                 <file name="Android/YY/payment.js"/>
 
@@ -149,6 +150,7 @@
                 <file name="src/view/mainModule/cardSmeltLabel.js"/>
                 <file name="src/view/mainModule/cardTrainLabel.js"/>
                 <file name="src/view/mainModule/cardUpgradeLabel.js"/>
+                <file name="src/view/mainModule/createUnionLayer.js"/>
                 <file name="src/view/mainModule/tipsLayer.js"/>
                 <file name="src/view/mainModule/configLayer.js"/>
                 <file name="src/view/mainModule/expInstanceLayer.js"/>
@@ -195,8 +197,14 @@
                 <file name="src/view/mainModule/rankLayer.js"/>
                 <file name="src/view/mainModule/readMessageLayer.js"/>
                 <file name="src/view/mainModule/removeCdTipLabel.js"/>
+                <file name="src/view/mainModule/requestUnionLayer.js"/>
+                <file name="src/view/mainModule/searchUnionLayer.js"/>
+
+
                 <file name="src/view/mainModule/sendMessageLayer.js"/>
                 <file name="src/view/mainModule/shopLayer.js"/>
+                <file name="src/view/mainModule/showUnionLayer.js"/>
+
                 <file name="src/view/mainModule/skillUpgradeLabel.js"/>
                 <file name="src/view/mainModule/smeltLayer.js"/>
                 <file name="src/view/mainModule/speakerLayer.js"/>
@@ -217,9 +225,17 @@
                 <file name="src/view/mainModule/tournamentRankLayer.js"/>
                 <file name="src/view/mainModule/tournamentTipLayer.js"/>
                 <file name="src/view/mainModule/treasureHuntLayer.js"/>
+
+                <file name="src/view/mainModule/unionTipsLabel.js"/>
+                <file name="src/view/mainModule/unionLayer.js"/>
+                <file name="src/view/mainModule/unionManageLayer.js"/>
+                <file name="src/view/mainModule/unionRequestListLayer.js"/>
+                <file name="src/view/mainModule/updateUnionNoticeLabel.js"/>
+
                 <file name="src/view/mainModule/usePillLabel.js"/>
                 <file name="src/view/mainModule/vipLayer.js"/>
                 <file name="src/view/mainModule/vipPrivilegeLayer.js"/>
+                <file name="src/view/mainModule/wishTreeLayer.js"/>
                 <file name="src/view/mainModule/mainBgLayer.js"/>
                 <file name="src/view/mainModule/mainLayer.js"/>
                 <file name="src/view/mainModule/mainMenuLayer.js"/>

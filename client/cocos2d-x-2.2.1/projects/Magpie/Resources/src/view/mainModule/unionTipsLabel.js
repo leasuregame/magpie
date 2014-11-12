@@ -7,6 +7,7 @@
 
 var TYPE_UNION_QUIT = 0;
 var TYPE_UNION_DISMISS = 1;
+var TYPE_UNION_KICK = 2;    
 
 var UnionTipsLabel = LazyLayer.extend({
 
@@ -77,6 +78,8 @@ var UnionTipsLabel = LazyLayer.extend({
             case TYPE_UNION_DISMISS:
                 this._initUnionDismissTips();
                 break;
+            case TYPE_UNION_KICK:
+                this._initUnionKickoutTips();
         }
     },
 
@@ -90,7 +93,14 @@ var UnionTipsLabel = LazyLayer.extend({
 
     _initUnionDismissTips: function () {
         cc.log("UnionTipsLabel _initUnionDismissTips");
-        var tipLabel = cc.LabelTTF.create("你确定要取消公会么", "STHeitiTC-Medium", 25);
+        var tipLabel = cc.LabelTTF.create("你确定要解散公会么", "STHeitiTC-Medium", 25);
+        tipLabel.setPosition(cc.p(0, 30));
+        this._frameLayer.addChild(tipLabel);
+    },
+
+    _initUnionKickoutTips: function() {
+        cc.log("UnionTipsLabel _initUnionDismissTips");
+        var tipLabel = cc.LabelTTF.create("你确定要将辞退该玩家么", "STHeitiTC-Medium", 25);
         tipLabel.setPosition(cc.p(0, 30));
         this._frameLayer.addChild(tipLabel);
     },

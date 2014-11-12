@@ -375,12 +375,15 @@ var ShowUnionLayer = LazyLayer.extend({
         var player = this._members[this._selectId];
 
         var that = this;
-        gameData.union.kickoutMember(function () {
-            that._members = gameData.union.get("memberList").filter(function(m) {
-                return m.playerId != player.playerId;
-            });
-            that.update();
-        }, player.playerId);
+
+        UnionTipsLabel.pop(TYPE_UNION_KICK, function () {
+            gameData.union.kickoutMember(function () {
+                that._members = gameData.union.get("memberList").filter(function(m) {
+                    return m.playerId != player.playerId;
+                });
+                that.update();
+            }, player.playerId);
+        });
     },
 
     _onClickBack: function () {

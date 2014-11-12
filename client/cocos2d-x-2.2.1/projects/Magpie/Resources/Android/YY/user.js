@@ -9,16 +9,16 @@
 
 
 var User = Entity.extend({
-    _id: 0,                 // 帐号序号
-    _createTime: 0,         // 创建时间
-    _area: 1,               // 区
-    _name: "",              // 名字
-    _loginCount: 0,         // 总登录次数
-    _lastLoginArea: 0,      // 最后登录的区
-    _lastLoginTime: 0,      // 最后登录时间
-    _lastLoginDevice: "",   // 最后登录设备
+    _id: 0, // 帐号序号
+    _createTime: 0, // 创建时间
+    _area: 1, // 区
+    _name: "", // 名字
+    _loginCount: 0, // 总登录次数
+    _lastLoginArea: 0, // 最后登录的区
+    _lastLoginTime: 0, // 最后登录时间
+    _lastLoginDevice: "", // 最后登录设备
 
-    init: function () {
+    init: function() {
         cc.log("User init");
 
         this._load();
@@ -26,7 +26,7 @@ var User = Entity.extend({
         return true;
     },
 
-    update: function (data) {
+    update: function(data) {
         cc.log("User update");
 
         if (!data) return;
@@ -41,19 +41,19 @@ var User = Entity.extend({
         this.set("lastLoginDevice", data.lastLoginDevice);
     },
 
-    _load: function () {
+    _load: function() {
         cc.log("User _load");
 
         this._area = lz.load("area") || 0;
     },
 
-    _save: function () {
+    _save: function() {
         cc.log("User _save");
 
         lz.save("area", this._area);
     },
 
-    login: function (cb) {
+    login: function(cb) {
         cc.log("User login");
 
         cc.log(this._area);
@@ -62,7 +62,7 @@ var User = Entity.extend({
 
         var that = this;
 
-        var fn = function () {
+        var fn = function() {
             var version = lz.platformConfig.VERSION;
 
             if (typeof(cc.AssetsManager) != "undefined") {
@@ -80,7 +80,7 @@ var User = Entity.extend({
             cc.log(appVersion);
             cc.log("=================================================");
 
-            lz.server.connectGameServer(function () {
+            lz.server.connectGameServer(function() {
                 var yyUser = {
                     sid: yy.YYClient.getSid(),
                     account: yy.YYClient.getAccount(),
@@ -98,7 +98,7 @@ var User = Entity.extend({
                     version: version,
                     appVersion: appVersion,
                     os: 'android'
-                }, function (data) {
+                }, function(data) {
                     cc.log(JSON.stringify(data));
 
                     var msg = data.msg;
@@ -111,18 +111,17 @@ var User = Entity.extend({
                         var player = msg.player;
 
                         if (player) {
-                            cb(1);
+                            cc.log("enterGameServer: " + that._area + ", " + player.id + ", " + player.name);
                             gameData.gameStart(player);
+                            yy.YYClient.enterGameServer(
+                                that._area,
+                                player.id,
+                                player.name
+                            );
+                            cb(1);
                         } else {
                             cb(2);
                         }
-
-                        cc.log("enterGameServer: "+that._area+", "+player.id+", "+player.name);
-
-                        yy.YYClient.enterGameServer(
-                            that._area,
-                            player.id,
-                            player.name);
 
                         lz.um.event("event_login", that._area);
                     } else if (data.code == 600) {
@@ -130,7 +129,7 @@ var User = Entity.extend({
 
                         cb(3);
 
-                        Dialog.pop(data.msg, function () {
+                        Dialog.pop(data.msg, function() {
                             if (typeof(UpdateLayer) != "undefined") {
                                 cc.Director.getInstance().replaceScene(LoginScene.create(UpdateLayer));
                             } else {
@@ -159,13 +158,13 @@ var User = Entity.extend({
         }
     },
 
-    createPlayer: function (cb, name) {
+    createPlayer: function(cb, name) {
         cc.log("User createPlayer");
 
         var that = this;
         lz.server.request("connector.playerHandler.createPlayer", {
             name: name
-        }, function (data) {
+        }, function(data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -173,15 +172,14 @@ var User = Entity.extend({
 
                 var msg = data.msg;
 
-                YY数据收集
                 cc.log("CreateUserRole: " + msg.player.name);
                 yy.YYClient.CreateUserRole(msg.player.name);
-    
+
                 gameData.gameStart(msg.player);
 
                 cb();
 
-                cc.log("enterGameServer: "+that._area+", "+player.id+", "+player.name);
+                cc.log("enterGameServer: " + that._area + ", " + player.id + ", " + player.name);
 
                 yy.YYClient.enterGameServer(
                     that._area,
@@ -199,7 +197,7 @@ var User = Entity.extend({
 });
 
 
-User.create = function () {
+User.create = function() {
     var ret = new User();
 
     if (ret && ret.init()) {

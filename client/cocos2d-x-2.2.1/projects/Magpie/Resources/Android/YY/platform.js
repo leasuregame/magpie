@@ -21,7 +21,8 @@ lz.platformConfig = {
     UPDATE_PACKAGE_URL: "http://183.56.170.243:9090/api/yy/update/",
     UPDATE_VERSION_URL: "http://183.56.170.243:9090/api/yy/version",
     GAME_NOTICE_URL: "http://183.56.170.243:9090/api/yy/notice",
-    UM_APP_KEY: "543ba5b8fd98c507ac006a0c" // 新建的友盟APP Key (tosea账号)
+    UM_APP_KEY: "543ba5b8fd98c507ac006a0c", // 新建的友盟APP Key (tosea账号)
+    CHANNAL: 'yy'
 };
 
 
@@ -65,7 +66,7 @@ lz.platformConfig = {
         lz.NotificationHelp.start();
     }
 
-    lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY);
+    lz.um.startWithAppKey(lz.platformConfig.UM_APP_KEY, lz.platformConfig.CHANNAL);
 })();
     
 //yy.YYClient.init();

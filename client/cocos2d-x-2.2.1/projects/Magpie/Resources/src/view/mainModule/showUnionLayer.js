@@ -8,19 +8,22 @@ var ShowUnionLayer = LazyLayer.extend({
     _type: null,
     _addElderItem: null,
     _removeElderItem: null,
+    _kickoutItem: null,
     _elderIcons: [],
     _role: null,
     _countLabel: null,
 
     init: function (members, type) {
         if (!this._super()) return false;
-
-        this._showUnionLayerFit = gameFit.mainScene.showUnionLayer;
-
         this._members = members;
         this._playerItem = [];
         this._elderIcons = [];
         this._type = type || TYPE_UNION_SHOW_MYSELF;
+        return this.update();
+    },
+
+    update: function() {
+        this._showUnionLayerFit = gameFit.mainScene.showUnionLayer;
         this._role = gameData.union.get("role");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
@@ -184,7 +187,7 @@ var ShowUnionLayer = LazyLayer.extend({
         this.addChild(this._skyDialog, 10);
 
         var skyLabel = cc.Scale9Sprite.create(main_scene_image.bg16);
-        var size = (this._role == TYPE_UNION_DISMISS) ? cc.size(216, 390) : cc.size(216, 300);
+        var size = (this._role == TYPE_UNION_DISMISS) ? cc.size(216, 480) : cc.size(216, 300);
         skyLabel.setContentSize(size);
 
         var y = size.height;
@@ -236,12 +239,23 @@ var ShowUnionLayer = LazyLayer.extend({
         this._removeElderItem.setPosition(cc.p(108, y - 330));
         this._removeElderItem.setVisible(false);
 
+        this._kickoutItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon512,
+            this._onClickKickoutMember,
+            this
+        );
+        this._kickoutItem.setPosition(cc.p(108, y - 420));
+        this._kickoutItem.setVisible(false);
+
         var skyMenu = cc.Menu.create(
             detailItem,
             sendMessageItem,
             battleItem,
             this._addElderItem,
-            this._removeElderItem
+            this._removeElderItem,
+            this._kickoutItem
         );
         skyMenu.setPosition(cc.p(0, 0));
         skyLabel.addChild(skyMenu);
@@ -264,6 +278,7 @@ var ShowUnionLayer = LazyLayer.extend({
                 var playerRole = that._members[index].role;
                 that._addElderItem.setVisible(playerRole != TYPE_UNION_ELDERS);
                 that._removeElderItem.setVisible(playerRole == TYPE_UNION_ELDERS);
+                that._kickoutItem.setVisible(playerRole == TYPE_UNION_MEMBER);
             }
 
             that._skyDialog.show(point);
@@ -350,6 +365,22 @@ var ShowUnionLayer = LazyLayer.extend({
             that._elderIcons[that._selectId].setVisible(false);
         }, player.playerId);
 
+    },
+
+    _onClickKickoutMember: function (){
+        cc.log("ShowUnionLayer _onClickKickoutMember: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        var player = this._members[this._selectId];
+
+        var that = this;
+        gameData.union.kickoutMember(function () {
+            that._members = gameData.union.get("memberList").filter(function(m) {
+                return m.playerId != player.playerId;
+            });
+            that.update();
+        }, player.playerId);
     },
 
     _onClickBack: function () {

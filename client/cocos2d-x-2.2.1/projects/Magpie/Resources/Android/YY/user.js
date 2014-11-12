@@ -178,6 +178,12 @@ var User = Entity.extend({
                 gameData.gameStart(msg.player);
 
                 cb();
+                cc.log("enterGameServer: " + that._area + ", " + player.id + ", " + player.name);
+
+                yy.YYClient.enterGameServer(
+                    that._area,
+                    player.id,
+                    player.name);
 
                 cc.log("enterGameServer: " + that._area + ", " + player.id + ", " + player.name);
 

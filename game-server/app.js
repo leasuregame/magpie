@@ -88,14 +88,16 @@ app.configure('production|development', 'connector', function() {
     connector: pomelo.connectors.hybridconnector,
     heartbeat: 30,
     useDict: true,
-    useProtobuf: true
+    useProtobuf: true,
+    disconnectOnTimeout: true
   });
 });
 
 app.configure('production|development', 'gate', function() {
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector,
-    heartbeat: 30
+    heartbeat: 30,
+    disconnectOnTimeout: true
   });
 
   app.set('serverStateService', new ServerStateService(app));

@@ -148,6 +148,12 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
 
     # (cb) ->
     #   noticeNewYearActivity app, player, cb
+      (cb) =>
+        processRechargeActivity app, player, product.cash, cb
+
+      (cb) =>
+        processFinalRechargeReward app, player, cb
+
   ], (err) ->
     if err
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)
@@ -155,6 +161,86 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
 
     successMsg(app, player, isFirstRechage)
     done()
+
+processFinalRechargeReward = (app, player, cb) ->
+  rechargeInfo = app.get('sharedConf').activity?.recharge
+  final = rechargeInfo.final
+  if not final or not final.enable
+    return cb()
+
+  today = new Date().toDateString()
+  fDate = new Date(final.date).toDateString()
+  if today is fDate
+    checkAndExecuteFinalRechargeReward(app, player, final, cb)
+  else
+    cb()
+
+checkAndExecuteFinalRechargeReward = (app, player, final, cb) ->
+  dates = app.get('sharedConf').activity?.recharge?.dates
+  dates = dates.map (d) -> d.date
+  app.get('dao').buyRecord.amountGroupByDate player.id, dates, (err, res) ->
+    console.log('check final recharge', err, res);
+    if err
+      return cb(err)
+
+    if res.length == 0
+      return cb()
+
+    if player.hasGetFinalReward()
+      return cb()
+
+    ok = _.every(res.map (r) -> r.cash >= final.minValue)
+    if ok
+      console.log 'send final reward', player.id, final
+      app.get('sysService').sendReward player.id, final
+      player.updateFinalReward()
+
+    cb()
+
+processRechargeActivity = (app, player, orderCash, cb) ->
+  activityInfo = availableRechageActivity app.get('sharedConf').activity?.recharge
+  console.log 'processRechargeActivity', activityInfo
+  if not activityInfo or not activityInfo.enable
+    return cb()
+  else
+    return checkRechargeActivity app, player, activityInfo, orderCash, cb
+
+availableRechageActivity = (rechargeInfo) ->
+  dates = rechargeInfo.dates
+  if not dates or dates.length is 0
+    return
+
+  today = new Date().toDateString()
+  for d in dates
+    aDate = new Date(d.date).toDateString()
+    console.log 'availableRechageActivity', today, aDate
+    return d if today is aDate
+  return
+
+checkRechargeActivity = (app, player, activityInfo, orderCash, cb) ->
+  startDate = activityInfo.date
+  endDate = new Date(startDate)
+  endDate.setDate(endDate.getDate()+1)
+  endDate = utility.dateFormat endDate, 'yyyy-MM-dd'
+
+  app.get('dao').buyRecord.rechargeOnPeriod player.id, startDate, endDate, (err, cash) ->
+    console.log '-1-1-1-', err, cash
+    if err
+      return cb(err)
+
+    if cash <= 0
+      return cb()
+
+    [ok, rewards] = canGetRechargeReward(activityInfo, orderCash, cash)
+    console.log('checkRechargeActivity', ok , rewards)
+    if ok
+      app.get('sysService').sendRewards(player.id, rewards)
+    cb()
+
+canGetRechargeReward = (activityInfo, orderCash, cash) ->
+  items = activityInfo.items
+  rewards = items.filter (item) -> cash - orderCash < item.cash <= cash
+  return [rewards.length > 0, rewards]
 
 addGoldCard = (app, orderId, player, product, cb) ->
   return cb() if not isGoldCard(product)

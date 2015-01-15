@@ -108,6 +108,7 @@ app.configure('production|development', 'connector|auth', function() {
 
 app.configure('production|development', 'area', function() {
   app.set('messageService', new MessageService(app));
+  app.set('sysService', new SysService(app));
   app.set('playerManager', new PlayerManager(app));
   app.set('recordManager', new RecordManager(app));
 

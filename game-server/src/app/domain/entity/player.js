@@ -295,7 +295,7 @@ var Player = (function(_super) {
             },
             turn: {
                 collected: 0,
-                num: 1,
+                num: 1
             }
         },
         passLayer: 0,
@@ -339,7 +339,8 @@ var Player = (function(_super) {
                 count: 0,
                 got: false
             },
-            vipReward: 0
+            vipReward: 0,
+            hasGotFinalRechargeReward: 0 // 编辑是否当天已经领取了累计充值奖励
         },
         fragments: 0,
         energy: 0,
@@ -406,6 +407,13 @@ var Player = (function(_super) {
         pill: 0
     };
 
+    Player.prototype.hasGetFinalReward = function() {
+        return !!this.dailyGift.hasGotFinalRechargeReward;
+    };
+
+    Player.prototype.updateFinalReward = function() {
+        this.updateGift('hasGotFinalRechargeReward', 1);
+    };
 
     Player.prototype.expPassCount = function() {
         if (typeof this.dailyGift.expPassCount == 'undefined') {
@@ -516,7 +524,8 @@ var Player = (function(_super) {
                 count: 0,
                 got: false
             },
-            vipReward: 0 // vip登陆奖励是否已领取标记 1：已领取 0：未领取
+            vipReward: 0, // vip登陆奖励是否已领取标记 1：已领取 0：未领取
+            hasGotFinalRechargeReward: 0 // 编辑是否当天已经领取了累计充值奖励
         };
 
         var pass = utility.deepCopy(this.pass);
@@ -1656,7 +1665,7 @@ var Player = (function(_super) {
             kneelCountLeft: this.kneelCountLeft(),
             kneelList: this.dailyGift.kneelList || [],
             rmTimerCount: this.dailyGift.rmTimerCount || 1,
-            canReceive: this.hasFriendReward || false,
+            canReceive: this.hasFriendReward || false
         };
     };
 

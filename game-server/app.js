@@ -5,6 +5,7 @@ var pomelo = require('pomelo');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
 var ServerStateService = require('./app/service/serverStateService');
+var SysService = require('./app/service/sysService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var cdFilter = require('./app/servers/area/filter/cdFilter');

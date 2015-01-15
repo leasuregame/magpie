@@ -13,13 +13,13 @@
         },
         "boss": {
             "enable": true,
-            "startDate": "2014-6-1",
-            "endDate": "2014-6-3 23:59:59:999"
+            "startDate": "2015-1-16",
+            "endDate": "2015-1-18 23:59:59:999"
         },
         "power": {
             "enable": true,
-            "startDate": "2014-6-1",
-            "endDate": "2014-6-3 23:59:59:999"
+            "startDate": "2014-1-16",
+            "endDate": "2015-1-18 23:59:59:999"
         },
         "luckyCard": {
           "enable": true,
@@ -41,6 +41,181 @@
           "enable": true,
           "startDate": "2014-6-13",
           "endDate": "2014-7-14 23:59:59:999"
+        }
+    },
+    "recharge": {
+        "enable": true,
+        "dates": [
+            {
+                "enable": true,
+                "date": "2015-1-16",
+                "items": [
+                    {
+                        "cash": 30,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 150,
+                            "superHonor": 5,
+                            "fragments": 5
+                        }
+                    },
+                    {
+                        "cash": 60,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 300,
+                            "elixir": 50000,
+                            "cardArray": [
+                                {
+                                    "tableId": 45,
+                                    "lv": 1,
+                                    "qty": 1
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cash": 128,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 600,
+                            "elixir": 100000,
+                            "cardArray": [
+                                {
+                                    "tableId": 85,
+                                    "lv": 1,
+                                    "qty": 1
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "enable": true,
+                "date": "2015-1-17",
+                "items": [
+                    {
+                        "cash": 30,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 150,
+                            "superHonor": 5,
+                            "fragments": 5
+                        }
+                    },
+                    {
+                        "cash": 60,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 300,
+                            "elixir": 50000,
+                            "cardArray": [
+                                {
+                                    "tableId": 45,
+                                    "lv": 1,
+                                    "qty": 1
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cash": 128,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 600,
+                            "elixir": 100000,
+                            "cardArray": [
+                                {
+                                    "tableId": 85,
+                                    "lv": 1,
+                                    "qty": 1
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "enable": true,
+                "date": "2015-1-18",
+                "items": [
+                    {
+                        "cash": 30,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 150,
+                            "superHonor": 5,
+                            "fragments": 5
+                        }
+                    },
+                    {
+                        "cash": 60,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 300,
+                            "elixir": 50000,
+                            "cardArray": [
+                                {
+                                    "tableId": 45,
+                                    "lv": 1,
+                                    "qty": 1
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cash": 128,
+                        "title": "充值活动奖励",
+                        "content": "充值奖励",
+                        "validDate": "2020-1-1",
+                        "rewards": {
+                            "gold": 600,
+                            "elixir": 100000,
+                            "cardArray": [
+                                {
+                                    "tableId": 85,
+                                    "lv": 1,
+                                    "qty": 1
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ],
+        "final": {
+            "enable": true,
+            "date": "2015-1-18",
+            "minValue": 30,
+            "title": "累计充值奖励",
+            "content": "连续3天累计充值金额为30元以上，赠送30级5星李靖一张",
+            "validDate": "2020-1-1",
+            "rewards": {
+                "cardArray": [
+                    {
+                        "tableId": 245,
+                        "lv": 30,
+                        "qty": 1
+                    }
+                ]
+            }
         }
     }
 }

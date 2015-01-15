@@ -148,11 +148,11 @@ updatePlayer = (app, buyRecord, receiptResult, done) ->
 
     # (cb) ->
     #   noticeNewYearActivity app, player, cb
-      (cb) =>
-        processRechargeActivity app, player, product.cash, cb
+    (cb) =>
+      processRechargeActivity app, player, product.cash, cb
 
-      (cb) =>
-        processFinalRechargeReward app, player, cb
+    (cb) =>
+      processFinalRechargeReward app, player, cb
 
   ], (err) ->
     if err

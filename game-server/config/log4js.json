@@ -14,17 +14,18 @@
     "level": "ERROR",
     "appender": {
       "type": "smtp",
-      "recipients": "wuzhanghai@leasuregame.com,linchenchen@leasuregame.com",
-      "subject": "[YY Game Server Error]",
+      "recipients": "175040128@qq.com",
+      "subject": "[Test Game Server Error]",
       "sendInterval": 5,
       "transport": "SMTP",
+      "sender": "arthur.wu.34@qq.com",
       "SMTP": {
-        "host": "smtp.gmail.com",
+        "host": "smtp.qq.com",
         "secureConnection": true,
         "port": 465,
         "auth": {
-          "user": "leasuregame@gmail.com",
-          "pass": "leasure123game"
+            "user": "arthur.wu.34@qq.com",
+            "pass": "wuzhanghai34"
         }
       }
     }

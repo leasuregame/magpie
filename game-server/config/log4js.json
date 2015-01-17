@@ -15,7 +15,7 @@
     "appender": {
       "type": "smtp",
       "recipients": "175040128@qq.com",
-      "subject": "[Test Game Server Error]",
+      "subject": "[IOS ERROR]",
       "sendInterval": 5,
       "transport": "SMTP",
       "sender": "arthur.wu.34@qq.com",

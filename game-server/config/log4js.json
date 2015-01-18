@@ -16,7 +16,7 @@
       "type": "smtp",
       "recipients": "175040128@qq.com",
       "subject": "[IOS ERROR]",
-      "sendInterval": 5,
+      "sendInterval": 120,
       "transport": "SMTP",
       "sender": "arthur.wu.34@qq.com",
       "SMTP": {

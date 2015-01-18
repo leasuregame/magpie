@@ -18,14 +18,14 @@
       "subject": "[IOS ERROR]",
       "sendInterval": 120,
       "transport": "SMTP",
-      "sender": "arthur.wu.34@qq.com",
+      "sender": "wzh_34@163.com",
       "SMTP": {
-        "host": "smtp.qq.com",
+        "host": "smtp.163.com",
         "secureConnection": true,
         "port": 465,
         "auth": {
-            "user": "arthur.wu.34@qq.com",
-            "pass": "wuzhanghai34"
+            "user": "wzh_34@163.com",
+            "pass": "wenjin"
         }
       }
     }

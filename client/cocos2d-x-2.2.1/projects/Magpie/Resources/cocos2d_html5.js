@@ -243,6 +243,7 @@
             'src/view/mainModule/vipLayer.js',
             'src/view/mainModule/vipPrivilegeLayer.js',
             'src/view/mainModule/vipUpgradeTipLabel.js',
+            'src/view/mainModule/activeRechargeLayer.js',
             'src/view/mainModule/mainBgLayer.js',
             'src/view/mainModule/mainLayer.js',
             'src/view/mainModule/mainMenuLayer.js',

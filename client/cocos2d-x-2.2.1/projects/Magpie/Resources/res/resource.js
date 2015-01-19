@@ -824,6 +824,9 @@ var main_scene_image = {
     icon484: main_scene_path + "icon484.png",
     icon485: main_scene_path + "icon485.png",
     icon486: main_scene_path + "icon486.png",
+    icon487: main_scene_path + "icon487.png",
+    icon488: main_scene_path + "icon488.png",
+    icon489: main_scene_path + "icon489.png",
 
     card20000_head1: main_scene_path + "card20000_head1.png",
     card20000_skill: main_scene_path + "card20000_skill.png",
@@ -1466,7 +1469,7 @@ for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
 
 //稀有主角卡
 var rareCardResIdList = [
-    6, 42
+    6, 42, 48
 ];
 
 for (var cardIndex = 0; cardIndex < rareCardResIdList.length; ++cardIndex) {

@@ -29,7 +29,8 @@ var MainLayer = cc.Layer.extend({
         MessageLayer,
         ConfigLayer,
         WorldCupLayer,
-        FlashLotteryLayer
+        FlashLotteryLayer,
+        ActiveRechargeLayer
     ],
 
     _activityMark: null,
@@ -41,6 +42,7 @@ var MainLayer = cc.Layer.extend({
     _treasureHuntMark: null,
     _worldCupMark: null,
     _flashLotteryMark: null,
+    _activeRechargeMark: null,
 
     _rankGuide: null,
     _lotteryGuide: null,
@@ -49,6 +51,7 @@ var MainLayer = cc.Layer.extend({
     _spiritLayerItem: null,
     _worldCupLayerItem: null,
     _flashLotteryLayerItem: null,
+    _activeRechargeLayerItem: null,
 
     _activityMenu: null,
 
@@ -315,7 +318,7 @@ var MainLayer = cc.Layer.extend({
             this._worldCupLayerItem = null;
         }
 
-        if (Activity.IsShowHandler["worldCupLayer"]()) {
+        if (1 || Activity.IsShowHandler["worldCupLayer"]()) {
             this._worldCupLayerItem = cc.MenuItemImage.create(
                 main_scene_image.worldCupButton2,
                 main_scene_image.worldCupButton2s,
@@ -337,7 +340,7 @@ var MainLayer = cc.Layer.extend({
             this._flashLotteryLayerItem = null;
         }
 
-        if (Activity.IsShowHandler["flashLotteryLayer"]()) {
+        if (1 || Activity.IsShowHandler["flashLotteryLayer"]()) {
             this._flashLotteryLayerItem = cc.MenuItemImage.create(
                 main_scene_image.button90,
                 main_scene_image.button90s,
@@ -357,6 +360,28 @@ var MainLayer = cc.Layer.extend({
             lastDaysLabel.setBgColor(cc.c3b(0, 0, 0));
             lastDaysLabel.setPosition(cc.p(65, 20));
             this._flashLotteryLayerItem.addChild(lastDaysLabel);
+            index++;
+        }
+
+        if (this._activeRechargeLayerItem) {
+            this._activeRechargeLayerItem.removeFromParent();
+            this._activeRechargeLayerItem = null;
+        }
+
+        var isShowActiveRechargeLayer = true;
+        if (isShowActiveRechargeLayer) {
+            this._activeRechargeLayerItem = cc.MenuItemImage.create(
+                main_scene_image.button90,
+                main_scene_image.button90s,
+                this._onClickLayer(14),
+                this
+            );
+            this._activeRechargeLayerItem.setPosition(cc.p(point.x - 107 * index, point.y));
+            this._activityMenu.addChild(this._activeRechargeLayerItem);
+
+            this._activeRechargeMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
+            this._activeRechargeMark.setPosition(cc.p(75, 80));
+            this._activeRechargeLayerItem.addChild(this._activeRechargeMark);
             index++;
         }
     },

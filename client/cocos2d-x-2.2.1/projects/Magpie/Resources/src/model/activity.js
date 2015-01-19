@@ -44,6 +44,7 @@ var Activity = Entity.extend({
 
     _luckyCard: {},
     _worldCup: {},
+    _rechargeCardData: {},
 
     init: function () {
         cc.log("Activity init");
@@ -107,6 +108,10 @@ var Activity = Entity.extend({
 
         if (data.worldCup) {
             this.set("worldCup", data.worldCup);
+        }
+
+        if (data.rechargeCardData) {
+            this.set("rechargeCardData", data.rechargeCardData);
         }
 
         MainScene.getInstance().updateLayer();

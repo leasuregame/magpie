@@ -33,6 +33,7 @@ var Sound = Entity.extend({
         this._openMusicKey = "openMusic";
         this._openEffectKey = "openEffect";
 
+        this.closeMusic();
         return true;
     },
 

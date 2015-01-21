@@ -46,7 +46,7 @@
         engineDir: '../../../../Cocos2d-html5-v2.2.1/cocos2d/',
         //SingleEngineFile:'',
         appFiles: [
-            'res/resource.js',
+            'resYY/resource.js',
 
             'src/table/table.js',
 

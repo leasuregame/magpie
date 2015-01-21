@@ -17,9 +17,9 @@
   },
   "production": {
     "connector": [
-      { "id": "connector-server-1", "host": "125.90.93.74", "port": 3150, "clientPort": 3010, "frontend": true, "area": 1}
-      { "id": "connector-server-2", "host": "125.90.93.74", "port": 3151, "clientPort": 3011, "frontend": true, "area": 2}
-      { "id": "connector-server-3", "host": "125.90.93.74", "port": 3152, "clientPort": 3012, "frontend": true, "area": 3}
+      { "id": "connector-server-1", "host": "125.90.93.74", "port": 3150, "clientPort": 3010, "frontend": true, "area": 1},
+      { "id": "connector-server-2", "host": "125.90.93.74", "port": 3151, "clientPort": 3011, "frontend": true, "area": 2},
+      { "id": "connector-server-3", "host": "125.90.93.74", "port": 3152, "clientPort": 3012, "frontend": true, "area": 3},
       { "id": "connector-server-4", "host": "125.90.93.74", "port": 3153, "clientPort": 3013, "frontend": true, "area": 4}
     ],
     "gate": [
